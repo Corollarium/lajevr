@@ -1,0 +1,1 @@
+../../node_modules/three/examples/jsm/loaders/ColladaLoader.js
