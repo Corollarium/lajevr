@@ -2,6 +2,8 @@
 
 Dive and flight on Laje de Santos Marine Park / Mergulho e Voo virtual no Parque Laje de Santos 
 
+![Laje de Santos ALEXANDRE ANDREAZZI, CC BY-SA 4.0 https://commons.wikimedia.org/wiki/File:Parque_Estadual_Marinho_da_Laje_de_Santos.jpg](assets/images/laje/Laje_de_Santos.jpg)
+
 ## Build Setup
 
 ``` bash
