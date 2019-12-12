@@ -149,17 +149,6 @@ export default {
       }
     };
   },
-
-  head: {
-    title: 'Fauna da Laje de Santos',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Fauna aviária e aquática na Laje de Santos'
-      }
-    ]
-  },
   computed: {
     filteredAnimals () {
       return this.animals.filter((i) => {
@@ -183,6 +172,17 @@ export default {
       this.minRange = parseInt(values[0], 10);
       this.maxRange = parseInt(values[1], 10);
     });
+  },
+
+  head: {
+    title: 'Fauna da Laje de Santos',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Fauna aviária e aquática na Laje de Santos'
+      }
+    ]
   }
 };
 </script>
