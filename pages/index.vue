@@ -27,7 +27,7 @@
     </section>
     <section class="description">
       <figure class="image">
-        <img style="object-fit: cover; min-height: 70vh;" class="fade-bottom" :src="imagePeixes.src" :srcset="imagePeixes.srcSet" alt="Cardume de Xira">
+        <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-bottom" alt="Cardume de Xira">
         <figcaption class="attribution">
           By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
         </figcaption>
@@ -56,7 +56,7 @@
 
     <section class="map" style="background: linear-gradient(#FFFFFF, #46BCEC,); color: #000;">
       <figure class="image center-crop">
-        <img class="fade-top" :src="imageMapaGeral2.src" :srcset="imageMapaGeral2.srcSet" alt="Mapa da Laje de Santos">
+        <img :src="imageMapaGeral2.src" :srcset="imageMapaGeral2.srcSet" class="fade-top" alt="Mapa da Laje de Santos">
       </figure>
     </section>
 
