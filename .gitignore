@@ -93,3 +93,6 @@ sw.*
 # Settings
 .settings
 .project
+
+# temporary data
+stuff
