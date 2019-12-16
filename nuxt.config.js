@@ -1,3 +1,11 @@
+/* nuxt.config.js */
+// only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/lajevr/'
+  }
+} : {};
+
 export default {
   mode: 'universal',
   /*
@@ -93,5 +101,6 @@ export default {
       sizes: [ 360, 640, 1080 ],
       placeholder: true
     }
-  }
+  },
+  ...routerBase
 };
