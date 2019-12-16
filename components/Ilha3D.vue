@@ -100,7 +100,7 @@ export default {
 
     // collada
     const loader = new ColladaLoader(loadingManager);
-    loader.load('/PEMLS_skt.dae', function (collada) {
+    loader.load('/PEMLSdae/PEMLS_skt.dae', function (collada) {
       land = collada.scene;
       land.position.set(220, 0, -100);
       const degrees = 80;
