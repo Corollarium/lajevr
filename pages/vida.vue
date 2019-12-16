@@ -50,7 +50,7 @@
         </p>
 
         <GLTFModel
-          :model="'/models/manta/scene.gltf'"
+          :model="'./models/manta/scene.gltf'"
           :attribution="'<a href=\'https: sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8\'>Modelo 3D CC BY-NC por misaooo</a>'"
         />
         </GLTFModel>
@@ -117,7 +117,7 @@
         </h2>
 
         <GLTFModel
-          :model="'/models/fish/scene.gltf'"
+          :model="'./models/fish/scene.gltf'"
           :attribution="''"
         />
         </GLTFModel>

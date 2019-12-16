@@ -63,7 +63,7 @@
     <section class="columns" style="background: #46BCEC; margin-bottom: 0;">
       <div class="column">
         <GLTFModel
-          :model="'/models/manta/scene.gltf'"
+          :model="'./models/manta/scene.gltf'"
           :background-color="0x46BCEC"
           :attribution="'<a href=\'https: sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8\'>Modelo 3D CC BY-NC por misaooo</a>'"
         />

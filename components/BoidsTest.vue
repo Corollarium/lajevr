@@ -40,7 +40,7 @@ export default {
     this.bootScene(container);
     this.lights();
 
-    // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
+    // const fish = this.loadFishFlock('./models/fish/', 'scene.gltf', 3);
     const boxes = this.loadCubes(30);
     // this.debugUtils();
 

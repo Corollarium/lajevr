@@ -293,7 +293,7 @@ export default {
       }
     };
 
-    new THREE.TextureLoader().load('/Laje_de_Santos_transp.png',
+    new THREE.TextureLoader().load('./Laje_de_Santos_transp.png',
       (_mapLaje) => {
         mapLaje = _mapLaje;
         const materialLaje = new THREE.SpriteMaterial({ map: mapLaje, color: 0xFFFFFF });
