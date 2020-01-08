@@ -33,7 +33,7 @@
       <section id="intro" class="section">
         <p>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
-          É também habitada por corais, algas e outras formas de vida. Há bastantes áreas com algas marrons e vermelhas.
+          É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
           <nuxt-link to="/fauna">
             Se estiver procurando espécies, veja a lista completa.
           </nuxt-link>
@@ -59,7 +59,8 @@
           A jamanta tem o corpo em forma de losango e uma cauda longa sem espinho e pode atingir sete metros de envergadura e pesar até 1,350kg. Podem viver até 20 anos. Estes peixes não têm verdadeiros dentes e alimentam-se de plâncton e pequenos peixes, sendo portanto inofensivos. Ocasionalmente, podem aproximar-se de um barco ou de mergulhadores e podem executar curtos “voos” fora da água. Têm a maior taxa de volume de cérebro em relação ao do corpo de todos os tubarões e raias[1].
         </p>
         <p>
-          Durante as suas migrações, as jamantas efetuam mergulhos frequentes até profundidades de quase dois quilómetros (entre os maiores alguma vez medidos para um animal marinho), onde as temperaturas da água atingem os três graus centígrados.[2]
+          Durante as suas migrações, as jamantas efetuam mergulhos frequentes até profundidades de quase dois quilómetros (entre os maiores alguma vez medidos para um animal marinho), onde as temperaturas da água atingem os três graus centígrados.
+          A Laje está na rota migratória das raias mantas gigantes, que passam por lá nos meses de outono e inverno.
         </p>
         <p>Fonte: <a href="https://pt.wikipedia.org/wiki/Jamanta">Wikipedia: Jamanta</a>.</p>
       </section>
