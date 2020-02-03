@@ -48,7 +48,7 @@
       <div class="text-over-image">
         <div class="description-content" style="color: #c00" data-aos="slide-left">
           <p>
-            Fica na costa do Estado de São Paulo.
+            <translate>Fica na costa do Estado de São Paulo.</translate>
           </p>
         </div>
       </div>

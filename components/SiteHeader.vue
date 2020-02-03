@@ -20,22 +20,28 @@
       </div>
 
       <div id="main-navigation" class="navbar-menu is-marginless">
-        <div class="navbar-end" @click="isExpanded = false">
+        <div
+          @click="isExpanded = false"
+          class="navbar-end"
+        >
           <nuxt-link to="/" class="navbar-item">
-            Início
+            <translate>Início</translate>
           </nuxt-link>
           <nuxt-link to="/dive" class="navbar-item">
-            Mergulho
+            <translate>Mergulho</translate>
           </nuxt-link>
           <nuxt-link to="/vida" class="navbar-item">
-            Vida
+            <translate>Vida</translate>
           </nuxt-link>
           <nuxt-link to="/fauna" class="navbar-item">
-            Catálogo
+            <translate>Catálogo</translate>
           </nuxt-link>
           <nuxt-link to="/about" class="navbar-item">
-            Sobre
+            <translate>Sobre</translate>
           </nuxt-link>
+          <span class="navbar-item">
+            <LanguagePicker />
+          </span>
           <a
             class="navbar-item"
             href="https://corollarium.com"
@@ -52,7 +58,13 @@
 </template>
 
 <script>
+import LanguagePicker from './LanguagePicker.vue';
+
 export default {
+  components: {
+    LanguagePicker
+  },
+
   data () {
     return {
       isExpanded: false,

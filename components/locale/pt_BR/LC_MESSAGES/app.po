@@ -1,0 +1,43 @@
+# Portuguese translations for lajevr package
+# TraduÁıes em portuguÍs brasileiro para o pacote lajevr.
+# Copyright (C) 2020 THE lajevr'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lajevr package.
+# Automatically generated, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lajevr 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-03 15:03-0300\n"
+"PO-Revision-Date: 2020-02-03 14:44-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: components/SiteHeader.vue:36
+msgid "Cat√°logo"
+msgstr ""
+
+#: pages/index.vue:50
+msgid "Fica na costa do Estado de S√£o Paulo."
+msgstr ""
+
+#: components/SiteHeader.vue:27
+msgid "In√≠cio"
+msgstr ""
+
+#: components/SiteHeader.vue:30
+msgid "Mergulho"
+msgstr ""
+
+#: components/SiteHeader.vue:39
+msgid "Sobre"
+msgstr ""
+
+#: components/SiteHeader.vue:33
+msgid "Vida"
+msgstr ""

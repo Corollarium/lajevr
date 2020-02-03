@@ -44,6 +44,7 @@ export default {
    */
   plugins: [
     '~/plugins/global.js',
+    { src: '~/plugins/translations.js', mode: 'client' },
     { src: '@/plugins/aos', ssr: false }
   ],
   /*
