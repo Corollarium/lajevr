@@ -2,8 +2,8 @@
   <div class="object-embed-3d">
     <div class="object-embed-icon" />
     <p
-      class="attribution"
       v-html="attribution"
+      class="attribution"
     />
   </div>
 </template>
