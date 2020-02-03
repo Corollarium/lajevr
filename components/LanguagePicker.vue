@@ -1,10 +1,11 @@
 <template>
   <div>
     <select
-      v-model="$language.current"
+      v-model="current"
+      @change="changed()"
       name="language"
     >
-      <option v-for="(language, key) in $language.available" :value="key">
+      <option v-for="(language, key) in available" :value="key">
         {{ language }}
       </option>
     </select>
@@ -13,6 +14,23 @@
 
 <script>
 export default {
-  // TODO: window.localStorage.setItem('language', $language.current);
+  data () {
+    return {
+      current: 'en_US',
+      available: {}
+    };
+  },
+
+  mounted () {
+    this.current = this.$language.current;
+    this.available = this.$language.available;
+  },
+
+  methods: {
+    changed () {
+      // TODO: window.localStorage.setItem('language', $language.current);
+      this.$language.current = this.current;
+    }
+  }
 };
 </script>
