@@ -59,7 +59,8 @@ export default {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@bazzite/nuxt-optimized-images'
+    '@bazzite/nuxt-optimized-images',
+    ['@nuxtjs/pwa', { workbox: false }]
   ],
   /*
    ** Build configuration
@@ -95,6 +96,14 @@ export default {
       }
     }
   },
+
+  pwa: {
+    manifest: {
+      background_color: '#46BCEC',
+      theme_color: '#46BCEC'
+    }
+  },
+
   optimizedImages: {
     optimizeImages: true,
     optimizeImagesInDev: true,
