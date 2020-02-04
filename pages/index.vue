@@ -84,7 +84,9 @@
     <section class="section" style="background: linear-gradient(#46BCEC, #FFFFFF); color: #000;">
       <div class="container">
         <h2 class="title is-1">
-          A Laje em Números
+          <translate>
+            A Laje em Números
+          </translate>
         </h2>
         <div class="number-wrapper">
           <div class="number-info">
@@ -92,7 +94,9 @@
               550
             </div>
             <div class="number-explanation">
-              metros de comprimento
+              <translate>
+                metros de comprimento
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -100,7 +104,9 @@
               33
             </div>
             <div class="number-explanation">
-              metros de altura
+              <translate>
+                metros de altura
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -108,7 +114,9 @@
               185
             </div>
             <div class="number-explanation">
-              metros de largura
+              <translate>
+                metros de largura
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -116,7 +124,9 @@
               5<span style="font-size: 0.4em">.</span>000
             </div>
             <div class="number-explanation">
-              hectares preservados
+              <translate>
+                hectares preservados
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -124,7 +134,9 @@
               45
             </div>
             <div class="number-explanation">
-              metros de profundidade máxima
+              <translate>
+                metros de profundidade máxima
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -132,7 +144,9 @@
               40.7
             </div>
             <div class="number-explanation">
-              quilômetros da costa
+              <translate>
+                quilômetros da costa
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -140,7 +154,9 @@
               29
             </div>
             <div class="number-explanation">
-              espécies de aves
+              <translate>
+                espécies de aves
+              </translate>
             </div>
           </div>
           <div class="number-info">
@@ -148,7 +164,9 @@
               196
             </div>
             <div class="number-explanation">
-              espécies de peixes
+              <translate>
+                espécies de peixes
+              </translate>
             </div>
           </div>
         </div>

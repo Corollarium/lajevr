@@ -1,13 +1,15 @@
 <template>
   <article class="container">
     <h1 class="title is-1">
-      Tecnologia
+      <translate>Tecnologia</translate>
     </h1>
 
     <section class="section columns">
       <div class="column" data-aos="slide-right">
         <h2 class="title is-2">
-          Adquirindo dados
+          <translate>
+            Adquirindo dados
+          </translate>
         </h2>
         <p>
           Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
@@ -23,7 +25,7 @@
               X
             </div>
             <div class="number-explanation">
-              mergulhos
+              <translate>mergulhos</translate>
             </div>
           </div>
 
@@ -32,7 +34,7 @@
               X
             </div>
             <div class="number-explanation">
-              mergulhadores
+              <translate>mergulhadores</translate>
             </div>
           </div>
 
@@ -41,7 +43,7 @@
               X
             </div>
             <div class="number-explanation">
-              horas de mergulho
+              <translate>horas de mergulho</translate>
             </div>
           </div>
         </div>
@@ -54,11 +56,15 @@
     <section class="section columns">
       <div class="column" data-aos="slide-right">
         <h2 class="title is-2">
-          Desenvolvimento
+          <translate>
+            Desenvolvimento
+          </translate>
         </h2>
         <p>
-          Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.
-          Desde um celular até telas gigantes. Conte
+          <translate>
+            Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.
+            Desde um celular até telas gigantes.
+          </translate>
         </p>
         <div class="number-wrapper">
           <div class="number-info">
@@ -100,10 +106,12 @@
           Realidade virtual
         </h2>
         <p>
-          A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.
-          Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que
-          foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,
-          para terem qualidade, animação mas serem leves o suficiente para a web.
+          <translate>
+            A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.
+            Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que
+            foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,
+            para terem qualidade, animação mas serem leves o suficiente para a web.
+          </translate>
         </p>
         <div class="number-wrapper">
           <div class="number-info">
@@ -111,7 +119,9 @@
               X
             </div>
             <div class="number-explanation">
-              fotografias
+              <translate>
+                fotografias
+              </translate>
             </div>
           </div>
 
@@ -120,7 +130,9 @@
               X
             </div>
             <div class="number-explanation">
-              horas de processamento
+              <translate>
+                horas de processamento
+              </translate>
             </div>
           </div>
 
@@ -129,7 +141,9 @@
               X
             </div>
             <div class="number-explanation">
-              GB de dados
+              <translate>
+                GB de dados
+              </translate>
             </div>
           </div>
         </div>

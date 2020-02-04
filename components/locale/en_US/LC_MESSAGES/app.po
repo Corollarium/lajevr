@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lajevr 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-03 15:03-0300\n"
-"PO-Revision-Date: 2020-02-03 15:03-0300\n"
+"POT-Creation-Date: 2020-02-04 17:25-0300\n"
+"PO-Revision-Date: 2020-02-04 17:25-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -19,25 +19,226 @@ msgstr ""
 "X-Generator: Poedit 1.8.12\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
+#: pages/about.vue:32
+msgid ""
+"A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
+"        com visualização e realidade virtual.\n"
+"        A ideia de unir mergulho, tecnologia e meio ambiente em um projeto\n"
+"        da Corollarium era antiga. Finalmente a ideia de aplicar a tecnologia à\n"
+"        Laje de Santos surgiu: e se transformássemos uma experiência pouco comum,\n"
+"        de ir até um lugar lindo mas distante, em algo que fosse mais aberto ao\n"
+"        mundo? E se complementássemos a visita com informações e tecnologia?\n"
+"        Poderíamos finalmente trazer a experiência da Corollarium para isso."
+msgstr ""
+
+#: pages/about.vue:27
+msgid "A ideia e a execução"
+msgstr ""
+
+#: pages/dive.vue:14
+msgid ""
+"A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e\n"
+"        com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade."
+msgstr ""
+
+#: pages/index.vue:86
+msgid "A Laje em Números"
+msgstr ""
+
+#: pages/tecnologia.vue:108
+msgid ""
+"A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.\n"
+"          Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que\n"
+"          foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,\n"
+"          para terem qualidade, animação mas serem leves o suficiente para a web."
+msgstr ""
+
+#: pages/vida.vue:29
+msgid "A vida na Laje de Santos"
+msgstr ""
+
+#: pages/tecnologia.vue:9
+msgid "Adquirindo dados"
+msgstr ""
+
+#: pages/about.vue:110
+msgid ""
+"Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,\n"
+"        podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos. outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo, podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos."
+msgstr ""
+
 #: components/SiteHeader.vue:36
 msgid "Catálogo"
+msgstr ""
+
+#: pages/about.vue:45
+msgid ""
+"Com o surgimento de uma edital aberto do estado de São Paulo, o ProAC,\n"
+"        pudemos ver um caminho para realizar o projeto. A proposta deste projeto\n"
+"        foi aprovada."
+msgstr ""
+
+#: pages/tecnologia.vue:58
+msgid "Desenvolvimento"
+msgstr ""
+
+#: pages/index.vue:156
+msgid "espécies de aves"
+msgstr ""
+
+#: pages/index.vue:166
+msgid "espécies de peixes"
+msgstr ""
+
+#: pages/about.vue:14
+msgid ""
+"Este projeto usa a realidade virtual para gerar um modelo 3D da Parque\n"
+"        Estadual Marinho da Laje de Santos, inclusive com partes submersas,\n"
+"        permitindo que pessoas de todo o Brasil e do mundo possam visitar\n"
+"        virtualmente o parque, fazer mergulhos virtuais simulados, aprender\n"
+"        sobre a fauna que habita ou migra pelo parque e sobre o ambiente\n"
+"        marinho."
+msgstr ""
+
+#: pages/tecnologia.vue:63
+msgid ""
+"Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.\n"
+"          Desde um celular até telas gigantes."
 msgstr ""
 
 #: pages/index.vue:50
 msgid "Fica na costa do Estado de São Paulo."
 msgstr "It is located on the coast of São Paulo, Brazil."
 
+#: pages/tecnologia.vue:121
+msgid "fotografias"
+msgstr ""
+
+#: pages/tecnologia.vue:143
+msgid "GB de dados"
+msgstr ""
+
+#: pages/index.vue:126
+msgid "hectares preservados"
+msgstr ""
+
+#: pages/tecnologia.vue:45
+msgid "horas de mergulho"
+msgstr ""
+
+#: pages/tecnologia.vue:132
+msgid "horas de processamento"
+msgstr ""
+
+#: pages/about.vue:104
+msgid "Importância"
+msgstr ""
+
+#: pages/about.vue:90
+msgid ""
+"Inclui a Laje de Santos, os parcéis do Bandolim, das Âncoras, Brilhante, do Sul e Novo e os Rochedos\n"
+"        conhecidos como Calhaus, totalizando 5.000 hectares de área preservada com formato de retângulo (10.000 por 5.000 m).\n"
+"        A Laje de Santos apresenta formato que lembra uma baleia, com 550 m de comprimento, 33 m de altitude e 185 m de largura.\n"
+"        O farol de sinalização da Marinha do Brasil está localizado no seu ponto mais alto. Praticamente não possui vegetação\n"
+"        e abriga uma grande quantidade de aves marinhas, que utilizam o local como área de reprodução e descanso.\n"
+"        Várias espécies que ocorrem no PEMLS encontram-se na listagem de fauna brasileira ameaçada de extinção.\n"
+"        O Parque faz parte da rota de várias espécies migratórias como baleias, golfinhos e aves marinhas.\n"
+"        É uma importante área de alimentação de várias espécies, muitas das quais protegidas por convenções internacionais,\n"
+"        como as baleias-de-Bryde, as raias-manta já citadas, tartarugas marinhas e outras."
+msgstr ""
+
 #: components/SiteHeader.vue:27
 msgid "Início"
 msgstr ""
+
+#: pages/about.vue:9 pages/dive.vue:9
+msgid "Laje de Santos em Realidade Virtual"
+msgstr ""
+
+#: pages/tecnologia.vue:36
+msgid "mergulhadores"
+msgstr "divers"
 
 #: components/SiteHeader.vue:30
 msgid "Mergulho"
 msgstr "Dive"
 
+#: pages/dive.vue:4
+msgid "Mergulho na Laje de Santos"
+msgstr ""
+
+#: pages/tecnologia.vue:27
+msgid "mergulhos"
+msgstr "dives"
+
+#: pages/index.vue:106
+msgid "metros de altura"
+msgstr ""
+
+#: pages/index.vue:96
+msgid "metros de comprimento"
+msgstr ""
+
+#: pages/index.vue:116
+msgid "metros de largura"
+msgstr ""
+
+#: pages/index.vue:136
+msgid "metros de profundidade máxima"
+msgstr ""
+
+#: pages/about.vue:55
+msgid "O Parque Estadual Marinho da Laje de Santos"
+msgstr ""
+
+#: pages/about.vue:60
+msgid ""
+"O Parque Estadual Marinho da Laje de Santos (PEMLS) é o primeiro Parque\n"
+"        Marinho dentre as Unidades de Conservação do Estado de São Paulo, criado\n"
+"        em 27 de setembro de 1993, através do Decreto Estadual nº 37.537. Possui\n"
+"        o objetivo de proteger a biodiversidade marinha, e conservar a\n"
+"        diversidade biológica na costa do Estado de São Paulo. Dista cerca de\n"
+"        40km da costa da cidade de Santos."
+msgstr ""
+
+#: pages/about.vue:79
+msgid ""
+"O Parque pode ser visitado por meio de barcos, mas não é permitido\n"
+"        aportar na ilha. Está distante cerca de 22 milhas náuticas da barra de São Vicente (40km).\n"
+"        A navegação é longa, cerca de 1h30 a 2h em lanchas\n"
+"        rápidas ou 6h a 8h em barcos lentos, o que torna a visita difícil e de\n"
+"        custo considerável, ficando basicamente restrita a mergulhadores\n"
+"        autônomos credenciados. Com isso poucas pessoas têm acesso a um local de\n"
+"        enorme beleza e diversidade de fauna."
+msgstr ""
+
+#: pages/about.vue:3
+msgid "O projeto"
+msgstr ""
+
+#: pages/dive.vue:29
+msgid "Pontos de mergulho"
+msgstr ""
+
+#: pages/about.vue:70
+msgid ""
+"Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
+"        grande concentração de peixes de passagem e recifais, sendo um dos\n"
+"        principais pontos de mergulho e fotografia submarina do país. O Parque\n"
+"        também possui um barco naufragado."
+msgstr ""
+
+#: pages/index.vue:146
+msgid "quilômetros da costa"
+msgstr ""
+
 #: components/SiteHeader.vue:39
 msgid "Sobre"
 msgstr "About"
+
+#: pages/tecnologia.vue:3
+msgid "Tecnologia"
+msgstr ""
 
 #: components/SiteHeader.vue:33
 msgid "Vida"

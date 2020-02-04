@@ -27,7 +27,9 @@
 
     <div class="main column">
       <h1 class="title is-1">
-        A vida na Laje de Santos
+        <translate>
+          A vida na Laje de Santos
+        </translate>
       </h1>
 
       <section id="intro" class="section">
