@@ -34,6 +34,8 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Translations
 
+Uses [vue-gettext](https://github.com/Polyconseil/vue-gettext/).
+
 ``` bash
 
 # generate translation 
@@ -47,12 +49,6 @@ $ make translations
 
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-
-
-
-
-
 ## Sobre
 
-Projeto apoiado pelo ProAC do Estado de São Paulo.
+Projeto apoiado pelo ProAC do Estado de São Paulo em 2020.
