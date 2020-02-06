@@ -105,8 +105,9 @@ export default {
       iconFileName: 'images/logos/lajevr1024clear.png'
     },
     meta: {
+      name: 'Laje de Santos em Realidade Virtual',
       theme_color: '#46BCEC',
-      ogHost: 'https://corollarium.github.io/lajevr/',
+      ogHost: 'https://corollarium.github.io/',
       twitterCard: 'summary_large_image',
       twitterCreator: '@corollarium'
     }
