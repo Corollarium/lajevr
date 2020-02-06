@@ -1,5 +1,7 @@
 # lajevr
 
+[![Build Status](https://travis-ci.com/Corollarium/lajevr.svg?branch=master)](https://travis-ci.com/Corollarium/lajevr)
+
 Dive and flight on Laje de Santos Marine Park / Mergulho e Voo virtual no Parque Laje de Santos 
 
 Visite: https://corollarium.github.io/lajevr/
