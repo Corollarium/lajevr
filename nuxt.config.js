@@ -23,7 +23,6 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap' }
     ]
   },
@@ -101,6 +100,15 @@ export default {
     manifest: {
       background_color: '#46BCEC',
       theme_color: '#46BCEC'
+    },
+    icon: {
+      iconFileName: 'images/logos/lajevr1024clear.png'
+    },
+    meta: {
+      theme_color: '#46BCEC',
+      ogHost: 'https://corollarium.github.io/lajevr/',
+      twitterCard: 'summary_large_image',
+      twitterCreator: '@corollarium'
     }
   },
 
