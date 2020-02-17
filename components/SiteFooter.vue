@@ -51,6 +51,9 @@
             <a href="http://opensource.org/licenses/mit-license.php">Licença MIT</a>.
           </p>
           <p>
+            Projeto apoiado pelo <a href="http://www.proac.sp.gov.br/">ProAC do Estado de São Paulo</a> em 2020.
+          </p>
+          <p>
             Conteúdo do site sob
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"

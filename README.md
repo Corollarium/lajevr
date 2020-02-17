@@ -16,9 +16,6 @@ Visite: https://corollarium.github.io/lajevr/
 # install dependencies
 $ yarn install
 
-# generate translation 
-$ make makemessages
-
 # serve with hot reload at localhost:3000
 $ yarn dev
 
@@ -30,8 +27,7 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-
+This project uses [Nuxt.js](https://nuxtjs.org).
 
 
 ## Translations
