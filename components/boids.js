@@ -296,7 +296,6 @@ class Boids {
     makeSlider('separation');
     makeSlider('alignment');
     makeSlider('separationMinDistance', 10.0, (boids) => {
-      console.log(boids);
       if (this.debug.center) {
         this.birds.forEach((bird) => {
           bird.debug.influence.scaling.setAll(this.separationMinDistance);
