@@ -13,6 +13,9 @@
 </template>
 
 <script>
+/**
+ * This handles the SSR problem with vue-gettext by wrapping with client-only.
+ */
 export default {
   props: {
     // Always use v-bind for dynamically binding the `translateN` prop to data on the parent,
