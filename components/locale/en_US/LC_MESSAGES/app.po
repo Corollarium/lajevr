@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lajevr 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-04 17:25-0300\n"
-"PO-Revision-Date: 2020-02-04 17:25-0300\n"
+"POT-Creation-Date: 2020-02-18 14:47-0300\n"
+"PO-Revision-Date: 2020-02-18 14:35-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+
+#: components/i18n.vue:2
+msgid "<slot/>"
+msgstr ""
 
 #: pages/about.vue:32
 msgid ""
@@ -67,8 +71,24 @@ msgid ""
 "        podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos. outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo, podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos."
 msgstr ""
 
+#: pages/gallery.vue:11
+msgid "Buscar"
+msgstr "Search"
+
+#: pages/gallery.vue:63
+msgid "buscar na galeria"
+msgstr "search in gallery"
+
 #: components/SiteHeader.vue:36
 msgid "Catálogo"
+msgstr ""
+
+#: components/SiteFooter.vue:41
+msgid "Catálogo de vida"
+msgstr ""
+
+#: components/SiteFooter.vue:65
+msgid "Código disponível"
 msgstr ""
 
 #: pages/about.vue:45
@@ -76,6 +96,10 @@ msgid ""
 "Com o surgimento de uma edital aberto do estado de São Paulo, o ProAC,\n"
 "        pudemos ver um caminho para realizar o projeto. A proposta deste projeto\n"
 "        foi aprovada."
+msgstr ""
+
+#: components/SiteFooter.vue:74
+msgid "Conteúdo do site sob"
 msgstr ""
 
 #: pages/tecnologia.vue:58
@@ -106,6 +130,10 @@ msgid ""
 "          Desde um celular até telas gigantes."
 msgstr ""
 
+#: components/SiteFooter.vue:80
+msgid "exceto quando explicitamente referenciado."
+msgstr ""
+
 #: pages/index.vue:50
 msgid "Fica na costa do Estado de São Paulo."
 msgstr "It is located on the coast of São Paulo, Brazil."
@@ -113,6 +141,10 @@ msgstr "It is located on the coast of São Paulo, Brazil."
 #: pages/tecnologia.vue:121
 msgid "fotografias"
 msgstr ""
+
+#: pages/gallery.vue:3
+msgid "Galeria"
+msgstr "Gallery"
 
 #: pages/tecnologia.vue:143
 msgid "GB de dados"
@@ -147,12 +179,16 @@ msgid ""
 "        como as baleias-de-Bryde, as raias-manta já citadas, tartarugas marinhas e outras."
 msgstr ""
 
-#: components/SiteHeader.vue:27
+#: components/SiteFooter.vue:13 components/SiteHeader.vue:27
 msgid "Início"
 msgstr ""
 
 #: pages/about.vue:9 pages/dive.vue:9
 msgid "Laje de Santos em Realidade Virtual"
+msgstr ""
+
+#: components/SiteFooter.vue:6
+msgid "Mapa"
 msgstr ""
 
 #: pages/tecnologia.vue:36
@@ -170,6 +206,10 @@ msgstr ""
 #: pages/tecnologia.vue:27
 msgid "mergulhos"
 msgstr "dives"
+
+#: components/SiteFooter.vue:34
+msgid "Mergulhos"
+msgstr "Dives"
 
 #: pages/index.vue:106
 msgid "metros de altura"
@@ -220,6 +260,10 @@ msgstr ""
 msgid "Pontos de mergulho"
 msgstr ""
 
+#: pages/gallery.vue:33
+msgid "por"
+msgstr ""
+
 #: pages/about.vue:70
 msgid ""
 "Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
@@ -228,18 +272,22 @@ msgid ""
 "        também possui um barco naufragado."
 msgstr ""
 
+#: components/SiteFooter.vue:57
+msgid "Projeto e execução"
+msgstr ""
+
 #: pages/index.vue:146
 msgid "quilômetros da costa"
 msgstr ""
 
-#: components/SiteHeader.vue:39
+#: components/SiteFooter.vue:27 components/SiteHeader.vue:39
 msgid "Sobre"
 msgstr "About"
 
-#: pages/tecnologia.vue:3
+#: components/SiteFooter.vue:48 pages/tecnologia.vue:3
 msgid "Tecnologia"
 msgstr ""
 
-#: components/SiteHeader.vue:33
+#: components/SiteFooter.vue:20 components/SiteHeader.vue:33
 msgid "Vida"
 msgstr "Life"

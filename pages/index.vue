@@ -48,7 +48,7 @@
       <div class="text-over-image">
         <div class="description-content" style="color: #c00" data-aos="slide-left">
           <p>
-            <translate>Fica na costa do Estado de São Paulo.</translate>
+            <i18n>Fica na costa do Estado de São Paulo.</i18n>
           </p>
         </div>
       </div>
@@ -84,9 +84,9 @@
     <section class="section" style="background: linear-gradient(#46BCEC, #FFFFFF); color: #000;">
       <div class="container">
         <h2 class="title is-1">
-          <translate>
+          <i18n>
             A Laje em Números
-          </translate>
+          </i18n>
         </h2>
         <div class="number-wrapper">
           <div class="number-info">
@@ -94,9 +94,9 @@
               550
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 metros de comprimento
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -104,9 +104,9 @@
               33
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 metros de altura
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -114,9 +114,9 @@
               185
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 metros de largura
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -124,9 +124,9 @@
               5<span style="font-size: 0.4em">.</span>000
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 hectares preservados
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -134,9 +134,9 @@
               45
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 metros de profundidade máxima
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -144,9 +144,9 @@
               40.7
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 quilômetros da costa
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -154,9 +154,9 @@
               29
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 espécies de aves
-              </translate>
+              </i18n>
             </div>
           </div>
           <div class="number-info">
@@ -164,9 +164,9 @@
               196
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 espécies de peixes
-              </translate>
+              </i18n>
             </div>
           </div>
         </div>

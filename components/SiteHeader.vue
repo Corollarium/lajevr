@@ -25,19 +25,19 @@
           class="navbar-end"
         >
           <nuxt-link to="/" class="navbar-item">
-            <translate>Início</translate>
+            <i18n>Início</i18n>
           </nuxt-link>
           <nuxt-link to="/dive" class="navbar-item">
-            <translate>Mergulho</translate>
+            <i18n>Mergulho</i18n>
           </nuxt-link>
           <nuxt-link to="/vida" class="navbar-item">
-            <translate>Vida</translate>
+            <i18n>Vida</i18n>
           </nuxt-link>
           <nuxt-link to="/fauna" class="navbar-item">
-            <translate>Catálogo</translate>
+            <i18n>Catálogo</i18n>
           </nuxt-link>
           <nuxt-link to="/about" class="navbar-item">
-            <translate>Sobre</translate>
+            <i18n>Sobre</i18n>
           </nuxt-link>
           <span class="navbar-item">
             <LanguagePicker />

@@ -4,83 +4,83 @@
       <div class="columns">
         <div class="column">
           <h2 class="subtitle is-3">
-            <translate>
+            <i18n>
               Mapa
-            </translate>
+            </i18n>
           </h2>
           <ul>
             <li>
               <nuxt-link to="/">
-                <translate>
+                <i18n>
                   Início
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/vida">
-                <translate>
+                <i18n>
                   Vida
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/about">
-                <translate>
+                <i18n>
                   Sobre
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/dive">
-                <translate>
+                <i18n>
                   Mergulhos
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/fauna">
-                <translate>
+                <i18n>
                   Catálogo de vida
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/tecnologia">
-                <translate>
+                <i18n>
                   Tecnologia
-                </translate>
+                </i18n>
               </nuxt-link>
             </li>
           </ul>
         </div>
         <div class="column has-text-right">
           <h2 class="subtitle is-3">
-            <translate>
+            <i18n>
               Projeto e execução
-            </translate>
+            </i18n>
           </h2>
           <p>
             <a href="https://corollarium.com">Corollarium Tecnologia</a>.
           </p>
           <p>
-            <a href="https://github.com/Corollarium"><translate>
+            <a href="https://github.com/Corollarium"><i18n>
               Código disponível
-            </translate></a> sob
+            </i18n></a> sob
             <a href="http://opensource.org/licenses/mit-license.php">Licença MIT</a>.
           </p>
           <p>
             Projeto apoiado pelo <a href="http://www.proac.sp.gov.br/">ProAC do Estado de São Paulo</a> em 2020.
           </p>
           <p>
-            <translate>
+            <i18n>
               Conteúdo do site sob
-            </translate>
+            </i18n>
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-            >CC BY NC SA 4.0</a><br>
-            <translate>
+            >CC BY NC SA 4.0</a>
+            <i18n>
               exceto quando explicitamente referenciado.
-            </translate>
+            </i18n>
           </p>
         </div>
       </div>

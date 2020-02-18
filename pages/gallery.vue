@@ -1,7 +1,7 @@
 <template>
   <article class="container">
     <h1 class="title is-1">
-      <translate>Galeria</translate>
+      <i18n>Galeria</i18n>
     </h1>
 
     <form id="filters" class="form">
@@ -9,7 +9,7 @@
         <div class="field-body">
           <div class="field">
             <label class="label">
-              <translate>Buscar</translate>
+              <i18n>Buscar</i18n>
             </label>
             <div class="control has-icons-left">
               <input v-model="filterSearch" :placeholder="filterSearchPlaceholder" class="input" type="text">
@@ -31,7 +31,7 @@
         <img class="gallery-image" src="~assets/images/fish/goldfish-1900832_960_720.png">
       </figure>
       <p class="gallery-creator">
-        <translate>por</translate> {{ a.creator }} {{ a.license }}
+        <i18n>por</i18n> {{ a.creator }} {{ a.license }}
       </p>
       <p>{{ a.description }}</p>
     </section>
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {

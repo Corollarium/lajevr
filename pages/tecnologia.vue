@@ -1,15 +1,15 @@
 <template>
   <article class="container">
     <h1 class="title is-1">
-      <translate>Tecnologia</translate>
+      <i18n>Tecnologia</i18n>
     </h1>
 
     <section class="section columns">
       <div class="column" data-aos="slide-right">
         <h2 class="title is-2">
-          <translate>
+          <i18n>
             Adquirindo dados
-          </translate>
+          </i18n>
         </h2>
         <p>
           Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
@@ -25,7 +25,7 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>mergulhos</translate>
+              <i18n>mergulhos</i18n>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>mergulhadores</translate>
+              <i18n>mergulhadores</i18n>
             </div>
           </div>
 
@@ -43,7 +43,7 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>horas de mergulho</translate>
+              <i18n>horas de mergulho</i18n>
             </div>
           </div>
         </div>
@@ -56,15 +56,15 @@
     <section class="section columns">
       <div class="column" data-aos="slide-right">
         <h2 class="title is-2">
-          <translate>
+          <i18n>
             Desenvolvimento
-          </translate>
+          </i18n>
         </h2>
         <p>
-          <translate>
+          <i18n>
             Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.
             Desde um celular até telas gigantes.
-          </translate>
+          </i18n>
         </p>
         <div class="number-wrapper">
           <div class="number-info">
@@ -106,12 +106,12 @@
           Realidade virtual
         </h2>
         <p>
-          <translate>
+          <i18n>
             A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.
             Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que
             foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,
             para terem qualidade, animação mas serem leves o suficiente para a web.
-          </translate>
+          </i18n>
         </p>
         <div class="number-wrapper">
           <div class="number-info">
@@ -119,9 +119,9 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 fotografias
-              </translate>
+              </i18n>
             </div>
           </div>
 
@@ -130,9 +130,9 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 horas de processamento
-              </translate>
+              </i18n>
             </div>
           </div>
 
@@ -141,9 +141,9 @@
               X
             </div>
             <div class="number-explanation">
-              <translate>
+              <i18n>
                 GB de dados
-              </translate>
+              </i18n>
             </div>
           </div>
         </div>

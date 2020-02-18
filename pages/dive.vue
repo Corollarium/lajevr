@@ -2,20 +2,20 @@
   <article>
     <section class="section">
       <h1 class="title">
-        <translate>
+        <i18n>
           Mergulho na Laje de Santos
-        </translate>
+        </i18n>
       </h1>
       <h2 class="subtitle">
-        <translate>
+        <i18n>
           Laje de Santos em Realidade Virtual
-        </translate>
+        </i18n>
       </h2>
       <p>
-        <translate>
+        <i18n>
           A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
           com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade.
-        </translate>
+        </i18n>
       </p>
     </section>
 
@@ -27,9 +27,9 @@
 
     <section class="section">
       <h2 class="subtitle">
-        <translate>
+        <i18n>
           Pontos de mergulho
-        </translate>
+        </i18n>
       </h2>
       <div
         v-for="site in diveSites"
