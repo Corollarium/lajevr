@@ -4,60 +4,83 @@
       <div class="columns">
         <div class="column">
           <h2 class="subtitle is-3">
-            Mapa
+            <translate>
+              Mapa
+            </translate>
           </h2>
           <ul>
             <li>
               <nuxt-link to="/">
-                Início
+                <translate>
+                  Início
+                </translate>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/vida">
-                Vida
+                <translate>
+                  Vida
+                </translate>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/about">
-                Sobre
+                <translate>
+                  Sobre
+                </translate>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/dive">
-                Mergulhos
+                <translate>
+                  Mergulhos
+                </translate>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/fauna">
-                Catálogo de vida
+                <translate>
+                  Catálogo de vida
+                </translate>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link to="/tecnologia">
-                Tecnologia
+                <translate>
+                  Tecnologia
+                </translate>
               </nuxt-link>
             </li>
           </ul>
         </div>
         <div class="column has-text-right">
           <h2 class="subtitle is-3">
-            Projeto e execução
+            <translate>
+              Projeto e execução
+            </translate>
           </h2>
           <p>
             <a href="https://corollarium.com">Corollarium Tecnologia</a>.
           </p>
           <p>
-            <a href="https://github.com/Corollarium">Código disponível</a> sob
+            <a href="https://github.com/Corollarium"><translate>
+              Código disponível
+            </translate></a> sob
             <a href="http://opensource.org/licenses/mit-license.php">Licença MIT</a>.
           </p>
           <p>
             Projeto apoiado pelo <a href="http://www.proac.sp.gov.br/">ProAC do Estado de São Paulo</a> em 2020.
           </p>
           <p>
-            Conteúdo do site sob
+            <translate>
+              Conteúdo do site sob
+            </translate>
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-            >CC BY NC SA 4.0</a><br> exceto quando explicitamente referenciado.
+            >CC BY NC SA 4.0</a><br>
+            <translate>
+              exceto quando explicitamente referenciado.
+            </translate>
           </p>
         </div>
       </div>
