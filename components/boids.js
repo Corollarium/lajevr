@@ -19,21 +19,25 @@ class Bird {
 
 class Boids {
   constructor (total, center, initialRadius = 1.0, boundRadiusScale = 100.0, initialVelocity = null) {
+    // control factors
     this.cohesion = 0.3;
     this.separation = 0.4;
     this.alignment = 1.0;
     this.separationMinDistance = 3.0;
     this.maxSpeed = 1.0; // in units per second
+
+    // set bounds
     this.boundsMin = new BABYLON.Vector3(
       center.x - boundRadiusScale, center.y - boundRadiusScale, center.z - boundRadiusScale
     );
     this.boundsMax = new BABYLON.Vector3(
       center.x + boundRadiusScale, center.y + boundRadiusScale, center.z + boundRadiusScale
     );
-    this.otherForces = [];
+
+    this.otherForces = []; // other force callbacks
+    this.birds = []; // list of birds
 
     // debug
-    this.birds = [];
     this.debug = {
       show: false,
       influences: [],
@@ -41,9 +45,9 @@ class Boids {
     };
 
     if (!initialVelocity) {
-      initialVelocity = new BABYLON.Vector3(0.0, 0.0, 0.0);
+      initialVelocity = new BABYLON.Vector3(0.3, 0.1, 0.3);
     }
-    const initialSpeed = 0.93;
+    const initialSpeed = initialVelocity.length();
 
     // internal data, cached per frame
     this.center = center.clone();
@@ -51,12 +55,19 @@ class Boids {
 
     for (let i = 0; i < total; i++) {
       const position = this.center.add(
-        new BABYLON.Vector3((Math.random() - 0.5) * initialRadius, (Math.random() - 0.5) * initialRadius, (Math.random() - 0.5) * initialRadius)
+        new BABYLON.Vector3(
+          (Math.random() - 0.5) * initialRadius,
+          (Math.random() - 0.5) * initialRadius,
+          (Math.random() - 0.5) * initialRadius)
       );
-      const velocity = this.center.add(
-        new BABYLON.Vector3((Math.random() - 0.5) * initialSpeed, (Math.random() - 0.5) * initialSpeed, (Math.random() - 0.5) * initialSpeed)
-      );
-      const bird = new Bird(i, position, initialVelocity);
+      const velocity =
+        new BABYLON.Vector3(
+          initialVelocity.x + (Math.random() - 0.5) / 10.0 * initialSpeed,
+          initialVelocity.y + (Math.random() - 0.5) / 10.0 * initialSpeed,
+          initialVelocity.z + (Math.random() - 0.5) / 10.0 * initialSpeed
+        )
+      ;
+      const bird = new Bird(i, position, velocity);
       this.birds.push(bird);
     }
   }
@@ -157,11 +168,6 @@ class Boids {
     return this.avgVel.subtract(bird.velocity).scale(this.alignment);
   }
 
-  // Boids try to match velocity with near boids.
-  _forceObstacles (bird) {
-    // TODO
-  }
-
   /**
    * Boids want to get away from boundaries
    * @param {Bird} bird
@@ -188,10 +194,19 @@ class Boids {
     return f;
   }
 
+  /**
+   * Adds a new force to the callback list. The callback receives a {Bird} as argument.
+   *
+   * @param {callback} bird
+   */
   addForce (c) {
     this.otherForces.push(c);
   }
 
+  /**
+   * Turns on debug menu and helpers.
+   * @param {BABYLON.Scene} scene
+   */
   showDebug (scene) {
     this.debug.show = true;
 
@@ -246,6 +261,9 @@ class Boids {
     }
   }
 
+  /**
+   * Updates debug data internally.
+   */
   _updateDebug () {
     if (!this.debug.show) {
       return;
@@ -258,6 +276,10 @@ class Boids {
     });
   }
 
+  /**
+   * Setup GUI.
+   * @param {BABYLON.Scene} scene
+   */
   gui (scene) {
     // GUI
     const advancedTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, scene);

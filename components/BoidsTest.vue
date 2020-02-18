@@ -40,8 +40,8 @@ export default {
     this.bootScene(container);
     this.lights();
 
-    // const fish = this.loadFishFlock('./models/fish/', 'scene.gltf', 3);
-    const boxes = this.loadCubes(30);
+    const fish = this.loadFishFlock('./models/borboleta/', 'borboleta.glb', 3);
+    // const boxes = this.loadCubes(30);
     // this.debugUtils();
 
     // Register a render loop to repeatedly render the scene
@@ -54,8 +54,8 @@ export default {
         t.style.position = 'absolute';
       }
 
-      // fish.update(timeDiff);
-      boxes.update(timeDiff);
+      fish.update(timeDiff);
+      // boxes.update(timeDiff);
 
       this.scene.render();
     });
