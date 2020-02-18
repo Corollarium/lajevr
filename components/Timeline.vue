@@ -36,8 +36,8 @@
       <header class="timeline-header">
         <span class="tag is-primary">1993</span>
       </header>
-      <div class="timeline-item is-warning">
-        <div class="timeline-marker is-warning" />
+      <div class="timeline-item is-primary">
+        <div class="timeline-marker is-primary" />
         <div class="timeline-content">
           <p class="heading">
             27 de setembro de 1993
@@ -56,8 +56,8 @@
       <header class="timeline-header">
         <span class="tag is-primary">2003</span>
       </header>
-      <div class="timeline-item is-warning">
-        <div class="timeline-marker is-warning" />
+      <div class="timeline-item is-primary">
+        <div class="timeline-marker is-primary" />
         <div class="timeline-content">
           <p class="heading">
             2003
@@ -71,8 +71,8 @@
       <header class="timeline-header">
         <span class="tag is-primary">2009</span>
       </header>
-      <div class="timeline-item is-warning">
-        <div class="timeline-marker is-warning" />
+      <div class="timeline-item is-primary">
+        <div class="timeline-marker is-primary" />
         <div class="timeline-content">
           <p class="heading">
             2009
@@ -111,6 +111,21 @@
         <div class="timeline-content">
           <p class="heading" />
           <p>Mais bla</p>
+        </div>
+      </div>
+      <header class="timeline-header">
+        <span class="tag is-primary">2020</span>
+      </header>
+      <div class="timeline-item is-primary">
+        <div class="timeline-marker is-primary" />
+        <div class="timeline-content">
+          <p class="heading">
+            2020
+          </p>
+          <p>Projeto "A Laje em Realidade Virtual".</p>
+          <figure>
+            <img src="~assets/images/logos/lajevr1024clear.png" alt="Laje de Santos em Realidade Virtual">
+          </figure>
         </div>
       </div>
       <header class="timeline-header">
