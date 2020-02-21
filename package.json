@@ -19,6 +19,7 @@
     "@babylonjs/inspector": "^4.0.3",
     "@babylonjs/post-processes": "^4.0.3",
     "@bazzite/nuxt-optimized-images": "^0.2.1",
+    "@corollarium/babylon-boids": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",

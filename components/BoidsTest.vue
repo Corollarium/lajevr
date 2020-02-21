@@ -9,7 +9,8 @@
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 import * as Materials from 'babylonjs-materials';
-import Boids from './boids.js';
+import BoidsManager from '@corollarium/babylon-boids';
+
 /* eslint-enable */
 
 /* eslint-disable no-unused-vars */
@@ -40,7 +41,7 @@ export default {
     this.bootScene(container);
     this.lights();
 
-    const fish = this.loadFishFlock('./models/borboleta/', 'borboleta.glb', 3);
+    const fish = this.loadFishFlock('./models/borboleta/', 'borboleta.glb', 20);
     // const boxes = this.loadCubes(30);
     // this.debugUtils();
 
@@ -138,7 +139,7 @@ export default {
     },
 
     loadCubes (total) {
-      const boids = new Boids(total, new BABYLON.Vector3(0.0, 0.0, 0.0), 10.0, 10.0);
+      const boids = new BoidsManager(total, new BABYLON.Vector3(0.0, 0.0, 0.0), 10.0, 10.0);
       const models = [];
       const brickMaterial = new BABYLON.StandardMaterial('brickMaterial', this.scene);
       brickMaterial.diffuseTexture = new BABYLON.Texture('/brick_diffuse.jpg', this.scene);
@@ -149,7 +150,7 @@ export default {
             width: 0.3, height: 0.5, depth: 1.0
           }
         );
-        box.bird = boids.birds[i];
+        box.boid = boids.boids[i];
         box.material = brickMaterial;
         models.push(box);
       }
@@ -164,8 +165,8 @@ export default {
           return (deltaTime) => {
             _boids.update(deltaTime);
             _models.forEach((m) => {
-              m.position.copyFrom(m.bird.position);
-              m.setDirection(m.bird.orientation);
+              m.position.copyFrom(m.boid.position);
+              m.setDirection(m.boid.orientation);
             });
           };
         })(boids, models)
@@ -174,15 +175,16 @@ export default {
     },
 
     loadFishFlock (modelpath, modelfile, total) {
-      const boids = new Boids(total, new BABYLON.Vector3(0.0, 10.0, 0.0), 50.0);
+      const boids = new BoidsManager(total, new BABYLON.Vector3(0.0, 10.0, 0.0), 50.0);
       const models = [];
+      total = 3;
       BABYLON.SceneLoader.LoadAssetContainer(
         modelpath, modelfile, this.scene,
         (container) => {
           container.addAllToScene();
 
           container.meshes.forEach((mesh) => {
-            mesh.position.y = 10;
+            mesh.scaling.set(5, 5, 5);
             mesh.setEnabled(false);
             if (mesh.material) {
               mesh.material.freeze();
@@ -192,14 +194,18 @@ export default {
           for (let i = 0; i < total; i++) {
             const entries = container.instantiateModelsToScene(p => 'fish' + p + i);
             for (const node of entries.rootNodes) {
-              node.position.x += (i + 1) * 10;
+              node.position.set(boids.boids[i].position);
             }
-            entries.bird = boids.birds[i];
+            if (entries.animationGroups) {
+              entries.animationGroups[0].speedRatio = 1.0 + (0.1 * (Math.random() - 0.5));
+              entries.animationGroups[0].play(true);
+            }
+            entries.boid = boids.boids[i];
             models.push(entries);
           }
         }
       );
-      boids.showDebug();
+      // boids.showDebug();
 
       return {
         models,
@@ -209,8 +215,8 @@ export default {
             _boids.update(deltaTime);
             _models.forEach((m) => {
               for (const node of m.rootNodes) {
-                node.position.copyFrom(m.bird.position);
-                // node.setDirection(m.bird.velocity);
+                node.position.copyFrom(m.boid.position);
+                node.setDirection(m.boid.orientation);
               }
             });
           };
