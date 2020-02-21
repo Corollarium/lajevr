@@ -54,13 +54,13 @@
       </div>
     </section>
 
-    <section class="map" style="background: linear-gradient(#FFFFFF, #46BCEC,); color: #000;">
+    <section id="map" class="map" style="background: linear-gradient(#FFFFFF, #46BCEC,); color: #000;">
       <figure class="image center-crop">
         <img :src="imageMapaGeral2.src" :srcset="imageMapaGeral2.srcSet" class="fade-top" alt="Mapa da Laje de Santos">
       </figure>
     </section>
 
-    <section class="columns" style="background: #46BCEC; margin-bottom: 0;">
+    <section id="mantas" class="columns" style="background: #46BCEC; margin-bottom: 0;">
       <div class="column">
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
@@ -81,7 +81,7 @@
       </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(#46BCEC, #FFFFFF); color: #000;">
+    <section id="numeros" class="section" style="background: linear-gradient(#46BCEC, #FFFFFF); color: #000;">
       <div class="container">
         <h2 class="title is-1">
           <i18n>
@@ -179,10 +179,10 @@
         </p>
       </div>
     </section>
-    <section class="section">
+    <section id="timeline" class="section">
       <Timeline />
     </section>
-    <section class="section">
+    <section id="explore" class="section">
       <h1 class="title is-1">
         Explore mais
       </h1>
