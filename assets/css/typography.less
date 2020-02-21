@@ -1,0 +1,16 @@
+// font
+@bigFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@smallFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+.font-define (@size:1, @weight: 500, @font-family: @bigFont) {
+  font-size: 8px*@size;
+  line-height: 1.2;
+  font-weight: @weight;
+  font-family: @font-family;
+}
+
+//headings
+
+h1 {
+  .font-define(7, 600);
+}
