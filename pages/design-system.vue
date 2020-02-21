@@ -6,29 +6,28 @@
     </h1>
 
     <section class="section">
+      <p>
+        See <a href="https://bulma.io/documentation/">Bulma docs</a>, particularly
+        <a href="https://bulma.io/documentation/customize/variables/">customization</a>
+      </p>
+    </section>
+
+    <section class="section">
       <h2 class="title is-2">
         Typography
       </h2>
       <hr>
       <h1 class="title is-1">
         This is Heading 1 appeareance
-        <span class="show-mobile-only">in mobile devices</span>
-        <span class="show-tablet-only">in tablet devices</span>
       </h1>
       <h2 class="title is-2">
         This is Heading 2 appeareance
-        <span class="show-mobile-only">in mobile devices</span>
-        <span class="show-tablet-only">in tablet devices</span>
       </h2>
       <h3 class="title is-3">
         This is Heading 3 appeareance
-        <span class="show-mobile-only">in mobile devices</span>
-        <span class="show-tablet-only">in tablet devices</span>
       </h3>
       <h4 class="title is-4">
         This is Heading 4 appeareance
-        <span class="show-mobile-only">in mobile devices</span>
-        <span class="show-tablet-only">in tablet devices</span>
       </h4>
       <p>
         This is a normal paragraph <a href="#">with a link</a> and here's a text example:
@@ -37,12 +36,31 @@
       </p>
     </section>
     <section class="section">
+      <h2 class="title is-2">
+        Responsive
+      </h2>
+      <p>see <a href="https://bulma.io/documentation/modifiers/responsive-helpers/">responsive</a>.</p>
+      <span class="is-hidden-tablet">in mobile devices</span>
+      <span class="show-tablet-only">in tablet devices</span>
+    </section>
+    <section class="section">
       <h2>Colors</h2>
       <hr>
+      <p>
+        <a class="button" href="#">Button in link</a>
+        <a class="button is-primary" href="#">Button Primary</a>
+        <a class="button is-dark" href="#">Button Primary</a>
+        <a class="button is-info" href="#">Button Info</a>
+        <a class="button is-success" href="#">Button Success</a>
+        <a class="button is-warning" href="#">Button Warning</a>
+        <a class="button is-danger" href="#">Button danger</a>
+        </div>
+      </p>
     </section>
     <section class="section">
       <h2>Elements</h2>
     </section>
     </div>
+    </section>
   </article>
 </template>
