@@ -64,6 +64,9 @@
         Elements
       </h2>
 
+      <h3 class="title is-3">
+        number bullet
+      </h3>
       <div class="number-wrapper">
         <number-bullet
           :to="550"
@@ -71,8 +74,23 @@
           <i18n>metros de comprimento</i18n>
         </number-bullet>
       </div>
+
+      <h3 class="title is-3">
+        Language Picker
+      </h3>
+      <LanguagePicker />
     </section>
     </div>
     </section>
   </article>
 </template>
+
+<script>
+import LanguagePicker from '../components/LanguagePicker.vue';
+
+export default {
+  components: {
+    LanguagePicker
+  }
+};
+</script>
