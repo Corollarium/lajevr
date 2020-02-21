@@ -44,7 +44,9 @@
       <span class="show-tablet-only">in tablet devices</span>
     </section>
     <section class="section">
-      <h2>Colors</h2>
+      <h2 class="title is-2">
+        Colors
+      </h2>
       <hr>
       <p>
         <a class="button" href="#">Button in link</a>
@@ -58,7 +60,14 @@
       </p>
     </section>
     <section class="section">
-      <h2>Elements</h2>
+      <h2 class="title is-2">
+        Elements
+      </h2>
+
+      <number-bullet
+        :to="550"
+        :description="'metros de comprimento'"
+      />
     </section>
     </div>
     </section>

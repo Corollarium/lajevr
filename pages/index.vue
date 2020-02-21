@@ -89,86 +89,63 @@
           </i18n>
         </h2>
         <div class="number-wrapper">
-          <div class="number-info">
-            <div class="number-round">
-              550
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                metros de comprimento
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              33
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                metros de altura
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              185
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                metros de largura
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              5<span style="font-size: 0.4em">.</span>000
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                hectares preservados
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              45
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                metros de profundidade máxima
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              40.7
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                quilômetros da costa
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              29
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                espécies de aves
-              </i18n>
-            </div>
-          </div>
-          <div class="number-info">
-            <div class="number-round">
-              196
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                espécies de peixes
-              </i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="550"
+          >
+            <i18n>
+              metros de comprimento
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="33"
+          >
+            <i18n>
+              metros de altura
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="185"
+          >
+            <i18n>
+              metros de largura
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="5000"
+          >
+            <i18n>
+              hectares preservados
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="45"
+          >
+            <i18n>
+              metros de profundidade máxima
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="40.7"
+            :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
+          >
+            <i18n>
+              quilômetros da costa
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="29"
+          >
+            <i18n>
+              espécies de aves
+            </i18n>
+          </number-bullet>
+          <number-bullet
+            :to="196"
+          >
+            <i18n>
+              espécies de peixes
+            </i18n>
+          </number-bullet>
         </div>
       </div>
     </section>

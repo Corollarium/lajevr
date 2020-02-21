@@ -20,32 +20,23 @@
         </p>
 
         <div class="number-wrapper">
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>mergulhos</i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>mergulhos</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>mergulhadores</i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>mergulhadores</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>horas de mergulho</i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>horas de mergulho</i18n>
+          </number-bullet>
         </div>
       </div>
       <div class="column" data-aos="zoom-out-down">
@@ -67,32 +58,23 @@
           </i18n>
         </p>
         <div class="number-wrapper">
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              imagens
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>imagens</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              vídeos
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>vídeos</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              modelos 3D
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>modelos 3D</i18n>
+          </number-bullet>
         </div>
       </div>
       <div class="column" data-aos="zoom-out-down">
@@ -114,38 +96,23 @@
           </i18n>
         </p>
         <div class="number-wrapper">
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                fotografias
-              </i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>fotografias</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                horas de processamento
-              </i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>horas de processamento</i18n>
+          </number-bullet>
 
-          <div class="number-info">
-            <div class="number-round">
-              X
-            </div>
-            <div class="number-explanation">
-              <i18n>
-                GB de dados
-              </i18n>
-            </div>
-          </div>
+          <number-bullet
+            :to="X"
+          >
+            <i18n>GB de dados</i18n>
+          </number-bullet>
         </div>
       </div>
       <div class="column" data-aos="zoom-out-down">
