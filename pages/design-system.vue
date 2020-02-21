@@ -64,10 +64,13 @@
         Elements
       </h2>
 
-      <number-bullet
-        :to="550"
-        :description="'metros de comprimento'"
-      />
+      <div class="number-wrapper">
+        <number-bullet
+          :to="550"
+        >
+          <i18n>metros de comprimento</i18n>
+        </number-bullet>
+      </div>
     </section>
     </div>
     </section>
