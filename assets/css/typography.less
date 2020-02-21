@@ -3,10 +3,10 @@
 @smallFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 .font-define (@size:1, @weight: 500, @font-family: @bigFont) {
-  font-size: 8px*@size;
+  font-size: 8px*@size; // TODO: não usar px, bulma usa rem, seus artigos usam pt
   line-height: 1.2;
   font-weight: @weight;
-  font-family: @font-family;
+  font-family: @font-family; // TODO: bulma já usa @bigFont, aqui é redundante
 }
 
 //headings
