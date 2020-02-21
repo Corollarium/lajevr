@@ -114,6 +114,19 @@
         </i18n>
       </p>
     </section>
+
+    <section class="section">
+      <h2 class="title is-2">
+        <i18n>
+          Agradecimentos
+        </i18n>
+      </h2>
+      <p>
+        <i18n>
+          Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto, onde.
+        </i18n>
+      </p>
+    </section>
   </article>
 </template>
 
