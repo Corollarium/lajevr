@@ -1,16 +1,54 @@
 // font
-@bigFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-@smallFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@mainFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@secondaryFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
-.font-define (@size:1, @weight: 500, @font-family: @bigFont) {
-  font-size: 8px*@size; // TODO: não usar px, bulma usa rem, seus artigos usam pt
-  line-height: 1.2;
+//fallback
+* {
+  font-size: 16px;
+  font-family: @mainFont;
+}
+
+.font-select (@weight: 500, @font-family: @mainFont) {
+  font-family: @font-family;
   font-weight: @weight;
-  font-family: @font-family; // TODO: bulma já usa @bigFont, aqui é redundante
+}
+
+// usage, x is the pixel size needed: .font-size(x);
+.font-size(@sizeValue: 16) {
+  @remValue: @sizeValue / 16;
+  @pxValue: (@sizeValue);
+  font-size:~"@{pxValue}px";
+  font-size:~"@{remValue}rem";
+}
+
+.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14) {
+  .font-size(@fontdesk);
+  line-height: 1.2em;
+
+  @media screen and (min-width: @tablet) and (max-width: ~"@{desktop}-1px") {
+    .font-size(@fonttablet);
+    line-height: 1em;
+  }
+
+  @media screen and (max-width: ~"@{tablet}-1px") {
+    .font-size(@fontmobile);
+    line-height: 1em;
+  }
 }
 
 //headings
 
 h1 {
-  .font-define(7, 600);
+  .font-responsive(56, 40, 32);
+  .font-select(400);
+}
+
+h2 {
+  .font-responsive(48, 32, 24);
+  .font-select(300);
+}
+
+h3 {
+  .font-responsive(32, 24, 16);
+  .font-select(400);
 }

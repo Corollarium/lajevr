@@ -238,7 +238,6 @@ export default {
     text-transform: capitalize;
     font-variant: small-caps;
     font-weight: bold;
-    font-family: @bigFont;
   }
 
   .hero-subtitle {
