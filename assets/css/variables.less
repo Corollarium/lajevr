@@ -7,15 +7,21 @@
 @darkBlue: #2A3A60;
 
 //spacing
-@spacing: 8px;
+@spacing: 8; //value in PX
 
-@mobile: 576px;
-@tablet: 768px;
-@desktop: 992px;
-@desktopBig: 1200px;
+.marginBottom (@value: 1;) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-bottom: ~"@{remValue}rem";
+}
 
-@mobileSmall: ~"only screen and (max-width: @mobile)";
-@mobile: ~"only screen and (min-width: @mobile) and (max-width: (@tablet)-1px))";
-@tablet: ~"only screen and (min-width: @tablet) and (max-width: (@desktop)-1px))";
-@desktop: ~"only screen and (min-width: @desktop) and (max-width: (@desktopBig)-1px))";
-@desktopBig: ~"only screen and (@desktopBig)";
+@mobileSize: 576px;
+@tabletSize: 768px;
+@desktopSize: 992px;
+@desktopBigSize: 1200px;
+
+@mobileSmall: ~"screen and (max-width: @mobileSize)";
+@mobile: ~"screen and (min-width: @mobile) and (max-width: (@tabletSize - 1))";
+@tablet: ~"screen and (min-width: @tablet) and (max-width: (@desktopSize - 1))";
+@desktop: ~"screen and (min-width: @desktop) and (max-width: (@desktopBigSize - 1))";
+@desktopBig: ~"screen and (@desktopBigSize)";

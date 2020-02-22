@@ -22,18 +22,21 @@
   font-size:~"@{remValue}rem";
 }
 
-.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14) {
+.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14, @marginG: 4, @marginM: 3, @marginP: 2) {
   .font-size(@fontdesk);
   line-height: 1.2em;
+  .marginBottom(@marginG);
 
-  @media screen and (min-width: @tablet) and (max-width: ~"@{desktop}-1px") {
+  @media screen and (min-width: @tabletSize) and (max-width: (@desktopSize - 1)) {
     .font-size(@fonttablet);
     line-height: 1em;
+    .marginBottom(@marginM);
   }
 
-  @media screen and (max-width: ~"@{tablet}-1px") {
+  @media screen and (max-width: (@tabletSize - 1)) {
     .font-size(@fontmobile);
     line-height: 1em;
+    .marginBottom(@marginP);
   }
 }
 
