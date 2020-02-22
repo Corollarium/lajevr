@@ -12,21 +12,21 @@
       </p>
     </section>
 
-    <section class="section">
-      <h2 class="title is-2">
+    <section class="section dark-background-section">
+      <h2>
         Typography
       </h2>
       <hr>
-      <h1 class="title is-1">
+      <h1>
         This is Heading 1 appeareance
       </h1>
-      <h2 class="title is-2">
+      <h2>
         This is Heading 2 appeareance
       </h2>
-      <h3 class="title is-3">
+      <h3>
         This is Heading 3 appeareance
       </h3>
-      <h4 class="title is-4">
+      <h4>
         This is Heading 4 appeareance
       </h4>
       <p>

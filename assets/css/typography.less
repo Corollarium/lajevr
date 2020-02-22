@@ -8,7 +8,8 @@
   font-family: @mainFont;
 }
 
-.font-select (@weight: 500, @font-family: @mainFont) {
+.font-select (@weight: 500, @font-color: @secondaryColor, @font-family: @mainFont) {
+  color: @font-color;
   font-family: @font-family;
   font-weight: @weight;
 }
@@ -51,4 +52,14 @@ h2 {
 h3 {
   .font-responsive(32, 24, 16);
   .font-select(400);
+}
+
+h4 {
+  .font-responsive(24, 20, 15);
+  .font-select(400);
+}
+
+p {
+  .font-responsive(16, 15, 14);
+  .font-select(400, #ffffff);
 }
