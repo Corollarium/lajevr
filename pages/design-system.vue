@@ -43,8 +43,8 @@
       <span class="is-hidden-tablet">in mobile devices</span>
       <span class="show-tablet-only">in tablet devices</span>
     </section>
-    <section class="section">
-      <h2 class="title is-2">
+    <section class="section dark-background-section">
+      <h2>
         Colors
       </h2>
       <hr>
@@ -56,6 +56,10 @@
         <a class="button is-success" href="#">Button Success</a>
         <a class="button is-warning" href="#">Button Warning</a>
         <a class="button is-danger" href="#">Button danger</a>
+        </div>
+      </p>
+      <p>
+        <a class="button" href="#">Button in link</a>
         </div>
       </p>
     </section>
