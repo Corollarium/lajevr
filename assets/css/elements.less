@@ -1,5 +1,18 @@
+.define-layout {
+  max-width: @gridWidth;
+}
+
 .button {
   background-color: @primaryColor;
   background-image: linear-gradient(30deg, @primaryColor, @secondaryColor-2);
   color: #ffffff;
+}
+
+/**GENERAL ELEMENTS**/
+.transition (@duration: 15ms, @property: all, @ease: ease-in-out) {
+  -webkit-transition: @property @duration @ease;
+  -moz-transition: @property @duration @ease;
+  -ms-transition: @property @duration @ease;
+  -o-transition: @property @duration @ease;
+  transition: @property @duration @ease;
 }

@@ -4,14 +4,23 @@
 @primaryColor: hsl(206, 100%, 33%);
 @secondaryColor-1: hsl(188, 100%, 45%);
 @secondaryColor-2: hsl(199, 100%, 42%);
+
+//grayscale
+
+@darkColor1: hsl(206, 20%, 10%);
+@darkColor2: hsl(206, 20%, 20%);
+@darkColor3: hsl(206, 20%, 30%);
+
+
 @grayBackground: #303030;
 @darkGrey: rgb(63, 59, 59);
 @darkBlue: #2A3A60;
 
 @background-image: linear-gradient(19deg, #0061a9 108%, #0094d7 59%, #00c5e3 32%);
 
-//spacing
+//layout
 @spacing: 8; //value in PX
+@gridWidth: 1344px; //same as bulma (to review)
 
 .marginBottom (@value: 1;) {
   @sizeResult: @spacing * @value;
@@ -24,8 +33,10 @@
 @desktopSize: 992px;
 @desktopBigSize: 1200px;
 
-@mobileSmall: ~"screen and (max-width: @mobileSize)";
-@mobile: ~"screen and (min-width: @mobile) and (max-width: (@tabletSize - 1))";
-@tablet: ~"screen and (min-width: @tablet) and (max-width: (@desktopSize - 1))";
-@desktop: ~"screen and (min-width: @desktop) and (max-width: (@desktopBigSize - 1))";
-@desktopBig: ~"screen and (@desktopBigSize)";
+@mobileSmall: ~"only screen and (max-width: @mobileSize)";
+@mobileLandscape: ~"only screen and (min-width: @mobileSize) and (max-width: (@tabletSize - 1))";
+@mobile: ~"only screen and (max-width: (@tabletSize - 1))";
+@tablet: ~"only screen and (min-width: @tabletSize) and (max-width: (@desktopSize - 1))";
+@desktop: ~"only screen and (min-width: @desktopSize)";
+@desktopSmall: ~"only screen and (min-width: @desktopSize) and (max-width: (@desktopBigSize - 1))";
+@desktopBig: ~"only screen and (@desktopBigSize)";

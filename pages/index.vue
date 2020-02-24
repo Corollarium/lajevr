@@ -213,7 +213,6 @@ export default {
 
 <style lang="less">
 @import '~assets/css/index.less';
-
 .hero {
   .hero-body {
     padding: 0;
