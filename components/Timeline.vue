@@ -148,19 +148,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "~/assets/bulma.scss";
-@import "~bulma-timeline";
+<style lang="less" scoped>
 
-figure {
-  position: relative;
-}
-.timeline {
-  margin: 5em 0;
-}
-.heading {
-  font-family: $title-family;
-  font-size: 1.2em;
-  font-feature-settings: "lnum";
-}
 </style>

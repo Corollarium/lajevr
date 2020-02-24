@@ -36,7 +36,7 @@ export default {
    */
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
-    { src: '~/assets/bulma.scss', lang: 'scss' }
+    'purecss/build/pure-min.css'
   ],
   /*
    ** Plugins to load before mounting the App

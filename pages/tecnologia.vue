@@ -1,12 +1,12 @@
 <template>
   <article class="container">
-    <h1 class="title is-1">
+    <h1>
       <i18n>Tecnologia</i18n>
     </h1>
 
     <section class="section columns">
       <div class="column" data-aos="slide-right">
-        <h2 class="title is-2">
+        <h2>
           <i18n>
             Adquirindo dados
           </i18n>
@@ -46,7 +46,7 @@
 
     <section class="section columns">
       <div class="column" data-aos="slide-right">
-        <h2 class="title is-2">
+        <h2>
           <i18n>
             Desenvolvimento
           </i18n>
@@ -84,7 +84,7 @@
 
     <section class="section columns">
       <div class="column" data-aos="slide-left">
-        <h2 class="title is-2">
+        <h2>
           Realidade virtual
         </h2>
         <p>
