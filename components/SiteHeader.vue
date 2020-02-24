@@ -1,60 +1,68 @@
 <template>
   <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
-    <div class="header-container">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <input id="menu" v-model="isExpanded" type="checkbox" class="custom-wrapper">
-        <div class="navbar-brand is-marginless">
-          <a class="navbar-item" href="/" rel="home">
-            <span class="logo-main" />
+    <!-- <input id="menu" v-model="isExpanded" type="checkbox" class="custom-wrapper"> -->
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed" role="navigation" aria-label="main navigation">
+      <a class="pure-menu-heading" href="/" rel="home">
+        <span class="logo-main" />
+      </a>
+
+      <!-- <label
+        for="menu"
+        class="navbar-burger burger"
+        aria-label="menu"
+        aria-expanded="false"
+      >
+        <span />
+        <span />
+        <span />
+      </label> -->
+
+      <ul @click="isExpanded = false" class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-selected">
+          <nuxt-link to="/" class="pure-menu-item">
+            <i18n>Conheça a Laje</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <nuxt-link to="/mergulho-virtual" class="pure-menu-item">
+            <i18n>Mergulho Virtual</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <nuxt-link to="/especies" class="pure-menu-item">
+            <i18n>Espécies</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <nuxt-link to="/pontos-de-mergulho" class="pure-menu-item">
+            <i18n>Pontos de Mergulho</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <nuxt-link to="/galeria" class="pure-menu-item">
+            <i18n>Galeria</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <nuxt-link to="/sobre" class="pure-menu-item">
+            <i18n>Sobre</i18n>
+          </nuxt-link>
+        </li>
+        <li class="pure-menu-item">
+          <LanguagePicker />
+        </li>
+        <li class="pure-menu-item">
+          <a
+            class="navbar-item"
+            href="https://corollarium.com"
+            title="Corollarium"
+            target="_blank"
+          >
+            <span class="logo-corollarium" />
+            <span class>Corollarium</span>
           </a>
-
-          <label
-            for="menu"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span />
-            <span />
-            <span />
-          </label>
-        </div>
-
-        <div id="main-navigation" class="navbar-menu is-marginless">
-          <div
-            @click="isExpanded = false"
-            class="navbar-end"
-          >
-            <nuxt-link to="/" class="navbar-item">
-              <i18n>Início</i18n>
-            </nuxt-link>
-            <nuxt-link to="/dive" class="navbar-item">
-              <i18n>Mergulho</i18n>
-            </nuxt-link>
-            <nuxt-link to="/vida" class="navbar-item">
-              <i18n>Vida</i18n>
-            </nuxt-link>
-            <nuxt-link to="/fauna" class="navbar-item">
-              <i18n>Catálogo</i18n>
-            </nuxt-link>
-            <nuxt-link to="/about" class="navbar-item">
-              <i18n>Sobre</i18n>
-            </nuxt-link>
-            <span class="navbar-item">
-              <LanguagePicker />
-            </span>
-            <a
-              class="navbar-item"
-              href="https://corollarium.com"
-              title="Corollarium"
-              target="_blank"
-            >
-              <span class="logo-corollarium" />
-              <span class>Corollarium</span>
-            </a>
-          </div>
-        </div>
-      </nav>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
