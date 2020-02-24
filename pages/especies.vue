@@ -106,8 +106,10 @@
 <script>
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
+import page from './page.vue';
 
 export default {
+  extends: page,
   data () {
     return {
       animals: [
@@ -149,6 +151,7 @@ export default {
       }
     };
   },
+
   computed: {
     filteredAnimals () {
       return this.animals.filter((i) => {
@@ -165,6 +168,9 @@ export default {
   },
 
   mounted () {
+    this.head.title = this.$gettext('Espécies da Laje de Santos');
+    this.head.description = this.$gettext('Espécies aviáticas e aquáticas da Laje de Santos');
+
     noUiSlider.create(
       this.$refs.slider, this.slider
     );
@@ -172,17 +178,6 @@ export default {
       this.minRange = parseInt(values[0], 10);
       this.maxRange = parseInt(values[1], 10);
     });
-  },
-
-  head: {
-    title: 'Fauna da Laje de Santos',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Fauna aviária e aquática na Laje de Santos'
-      }
-    ]
   }
 };
 </script>
