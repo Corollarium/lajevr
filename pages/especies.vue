@@ -38,6 +38,7 @@
               >
                 <select
                   v-model="filterColor"
+                  :style="{'background-color': filterColor}"
                 >
                   <option v-translate value="">
                     Todas as cores
@@ -98,7 +99,7 @@
     >
       <section
         v-for="a in filteredAnimals"
-        :key="a"
+        :key="a.name"
         class="section section-fauna"
       >
         <figure>
