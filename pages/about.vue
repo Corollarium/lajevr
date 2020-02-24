@@ -1,12 +1,12 @@
 <template>
   <article class="container">
-    <h1 class="title is-1">
+    <h1>
       <i18n>
         O projeto
       </i18n>
     </h1>
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           Laje de Santos em Realidade Virtual
         </i18n>
@@ -24,7 +24,7 @@
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           A ideia e a execução
         </i18n>
@@ -52,7 +52,7 @@
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           O Parque Estadual Marinho da Laje de Santos
         </i18n>
@@ -116,7 +116,7 @@
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           Agradecimentos
         </i18n>
@@ -131,7 +131,17 @@
 </template>
 
 <script>
-export default {};
+import page from './page.vue';
+
+export default {
+  extends: page,
+
+  mounted () {
+    this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
+    this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
+  }
+
+};
 </script>
 
 <style></style>
