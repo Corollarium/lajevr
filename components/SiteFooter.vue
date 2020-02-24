@@ -1,9 +1,9 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="columns">
-        <div class="column">
-          <h2 class="subtitle is-3">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <h2>
             <i18n>
               Mapa
             </i18n>
@@ -53,8 +53,8 @@
             </li>
           </ul>
         </div>
-        <div class="column has-text-right">
-          <h2 class="subtitle is-3">
+        <div class="pure-u-1-2 has-text-right">
+          <h2>
             <i18n>
               Projeto e execução
             </i18n>
@@ -89,8 +89,6 @@
 </template>
 
 <style lang="less" scoped>
-@import '~assets/css/index.less';
-
 .footer {
   background: #000;
   color: #fff;
