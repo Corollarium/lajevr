@@ -48,6 +48,9 @@
                   <option v-translate value="blue">
                     Azul
                   </option>
+                  <option v-translate value="red">
+                    Vermelho
+                  </option>
                   <option v-translate value="yellow">
                     Amarelo
                   </option>
@@ -89,25 +92,30 @@
       </div>
     </form>
 
-    <section
-      v-for="(a, i) in filteredAnimals"
-      :key="i"
-      class="section section-fauna"
+    <transition-group
+      name="fauna-list"
+      tag="div"
     >
-      <figure>
-        <img class="fauna-image" src="~assets/images/fish/goldfish-1900832_960_720.png">
-      </figure>
-      <div class="fauna-name">
-        {{ a.name }}
-      </div>
-      <span class="fauna-other-names">
-        {{ a.othernames }}
-      </span>
-      <p class="fauna-info">
-        {{ a.size }} cm
-      </p>
-      <p>{{ a.description }}</p>
-    </section>
+      <section
+        v-for="a in filteredAnimals"
+        :key="a"
+        class="section section-fauna"
+      >
+        <figure>
+          <img :src="a.pic" class="fauna-image">
+        </figure>
+        <div class="fauna-name">
+          {{ a.name }}
+        </div>
+        <span class="fauna-other-names">
+          {{ a.othernames }}
+        </span>
+        <p class="fauna-info">
+          {{ a.size }} cm
+        </p>
+        <p>{{ a.description }}</p>
+      </section>
+    </transition-group>
   </article>
 </template>
 
@@ -125,16 +133,32 @@ export default {
           name: 'Nome do animal',
           colors: ['orange', 'red'],
           size: 5,
-          pic: '~assets/images/fish/goldfish-1900832_960_720.png',
+          pic: '/images/fish/goldfish-1900832_960_720.png',
           othernames: 'Nome científico e outros nomes',
           description: 'Sobre o bicho bla bla bla'
         },
         {
-          name: 'Outro animal',
+          name: 'Blue animal',
           colors: ['blue', 'black'],
           size: 20,
-          pic: '~assets/images/fish/goldfish-1900832_960_720.png',
+          pic: '/images/fish/bluefish-1900832_960_720.png',
+          othernames: 'Blue fish',
+          description: 'Sobre o bicho bla bla bla'
+        },
+        {
+          name: 'Red fish',
+          colors: ['orange', 'red'],
+          size: 5,
+          pic: '/images/fish/goldfish-1900832_960_720.png',
           othernames: 'Nome científico e outros nomes',
+          description: 'Sobre o bicho bla bla bla'
+        },
+        {
+          name: 'Outro blue fish',
+          colors: ['blue', 'black'],
+          size: 20,
+          pic: '/images/fish/bluefish-1900832_960_720.png',
+          othernames: 'Other blue fish',
           description: 'Sobre o bicho bla bla bla'
         }
       ],
@@ -212,5 +236,22 @@ export default {
 }
 .control {
   margin-right: 3em;
+}
+
+// Transitions
+.fauna-list-item {
+  transition: all 1s;
+  display: inline-block;
+  margin-right: 10px;
+}
+.fauna-list-enter, .fauna-list-leave-to{
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fauna-list-leave-active {
+  position: absolute;
+}
+.fauna-list-move {
+  transition: transform 1s;
 }
 </style>
