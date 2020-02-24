@@ -1,24 +1,52 @@
-.main-header {
-  background-color: @darkColor1;
-}
-
-.main-menu {
-  .define-layout();
-  margin: auto;
-
-  .main-nav {
-    @media @desktop {
-      float: right;
-    }
-  }
-}
-
 .logo-main {
   background-color: #fff;
   background: url("~assets/images/logos/logo-laje-header.png") no-repeat left center;
   background-size: contain;
   height: 3rem;
   width: 4rem;
+  display: block;
+}
+.main-header {
+  background-color: @darkColor1;
+  display: inline-block;
+  width: 100%;
+}
+.main-menu {
+  .define-layout();
+  display: block;
+  margin: auto;
+
+  .main-nav {
+    @media @desktop {
+      float: right;
+    }
+
+    .pure-menu-item {
+      float: left;
+    }
+
+    .pure-menu-link {
+      color: lighten(@secondaryColor-2,20);
+      text-transform: uppercase;
+      font-weight: @regular;
+      border-bottom: 4px solid fade(@primaryColor, 30);
+      .transition();
+
+      &:hover {
+        color: lighten(@secondaryColor-2,30);
+        background-color: transparent;
+        border-bottom: 4px solid @secondaryColor-2;
+        .transition();
+      }
+
+      &.is-active,
+      &.nuxt-link-exact-active {
+        font-weight: bold;
+        border-color: @secondaryColor-2;
+        border-bottom: 4px solid @secondaryColor-2;
+      }
+    }
+  }
 }
 
 .logo-corollarium {
@@ -26,40 +54,6 @@
   background-size: contain;
   height: 30px;
   width: 30px;
-}
-
-@media @desktop {
-  header {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: block;
-    background-color: darken(@primaryColor, 35);
-  }
-}
-
-#main-navigation,
-.navbar.navbar-admin {
-  .navbar-link,
-  a.navbar-item {
-    color: lighten(@secondaryColor-2,20);
-    text-transform: uppercase;
-    font-weight: @regular;
-    border-bottom: 2px solid fade(@primaryColor, 30);
-    .transition();
-
-    &:hover {
-      color: lighten(@secondaryColor-2,30);
-      font-weight: bold;
-      background-color: transparent;
-      border-bottom: 4px solid @secondaryColor-2;
-      .transition();
-    }
-
-    &.is-active,
-    &.nuxt-link-exact-active {
-      border-color: @secondaryColor-2;
-      border-bottom: 2px solid @secondaryColor-2;
-    }
-  }
 }
 
 .burger {

@@ -19,32 +19,32 @@
 
       <ul @click="isExpanded = false" class="pure-menu-list main-nav">
         <li class="pure-menu-item pure-menu-selected">
-          <nuxt-link to="/" class="pure-menu-item">
-            <i18n>Conheça a Laje</i18n>
+          <nuxt-link to="/" class="pure-menu-link">
+            <i18n>Conheça</i18n>
           </nuxt-link>
         </li>
         <li class="pure-menu-item">
-          <nuxt-link to="/mergulho-virtual" class="pure-menu-item">
+          <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
             <i18n>Mergulho Virtual</i18n>
           </nuxt-link>
         </li>
         <li class="pure-menu-item">
-          <nuxt-link to="/especies" class="pure-menu-item">
+          <nuxt-link to="/especies" class="pure-menu-link">
             <i18n>Espécies</i18n>
           </nuxt-link>
         </li>
         <li class="pure-menu-item">
-          <nuxt-link to="/pontos-de-mergulho" class="pure-menu-item">
+          <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
             <i18n>Pontos de Mergulho</i18n>
           </nuxt-link>
         </li>
         <li class="pure-menu-item">
-          <nuxt-link to="/galeria" class="pure-menu-item">
+          <nuxt-link to="/galeria" class="pure-menu-link">
             <i18n>Galeria</i18n>
           </nuxt-link>
         </li>
         <li class="pure-menu-item">
-          <nuxt-link to="/sobre" class="pure-menu-item">
+          <nuxt-link to="/sobre" class="pure-menu-link">
             <i18n>Sobre</i18n>
           </nuxt-link>
         </li>
@@ -53,7 +53,7 @@
         </li>
         <li class="pure-menu-item">
           <a
-            class="navbar-item"
+            class="pure-menu-link"
             href="https://corollarium.com"
             title="Corollarium"
             target="_blank"
