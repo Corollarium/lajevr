@@ -123,7 +123,7 @@
       </h2>
       <p>
         <i18n>
-          Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto, onde.
+          Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto.
         </i18n>
       </p>
     </section>
