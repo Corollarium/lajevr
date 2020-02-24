@@ -222,6 +222,7 @@ export default {
 .section-fauna {
   width: 300px;
   display: inline-block;
+  vertical-align: top;
 
   .fauna-name {
     font-variant: small-caps;
