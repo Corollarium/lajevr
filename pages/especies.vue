@@ -6,7 +6,7 @@
       Fauna
     </h1>
     <p>
-      Foram já identificadas 196 espécies de peixes na Laje de Santos.
+      <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
       <a
         href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
       >The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation</a>
@@ -20,13 +20,17 @@
           <div class="field">
             <div class="control">
               <span style="font-weight: bold; font-size: 1.4em;">
-                Filtros
+                <i18n>
+                  Filtros
+                </i18n>
               </span>
             </div>
           </div>
           <div class="field">
             <label class="label">
-              Cor
+              <i18n>
+                Cor
+              </i18n>
             </label>
             <div class="control">
               <div
@@ -35,19 +39,19 @@
                 <select
                   v-model="filterColor"
                 >
-                  <option value="">
+                  <option v-translate value="">
                     Todas as cores
                   </option>
-                  <option value="black">
+                  <option v-translate value="black">
                     Preto
                   </option>
-                  <option value="blue">
+                  <option v-translate value="blue">
                     Azul
                   </option>
-                  <option value="yellow">
+                  <option v-translate value="yellow">
                     Amarelo
                   </option>
-                  <option value="orange">
+                  <option v-translate value="orange">
                     Laranja
                   </option>
                 </select>
@@ -56,7 +60,9 @@
           </div>
           <div class="field">
             <label class="label">
-              Tamanho (em cm)
+              <i18n>
+                Tamanho (em cm)
+              </i18n>
             </label>
             <div class="control">
               <div>
@@ -68,7 +74,9 @@
           </div>
           <div class="field">
             <label class="label">
-              Nome
+              <i18n>
+                Nome
+              </i18n>
             </label>
             <div class="control has-icons-left">
               <input v-model="filterSearch" class="input" type="text" placeholder="busque">
@@ -89,12 +97,12 @@
       <figure>
         <img class="fauna-image" src="~assets/images/fish/goldfish-1900832_960_720.png">
       </figure>
-      <h2 class="fauna-name">
+      <div class="fauna-name">
         {{ a.name }}
-      </h2>
-      <h3 class="fauna-other-names">
+      </div>
+      <span class="fauna-other-names">
         {{ a.othernames }}
-      </h3>
+      </span>
       <p class="fauna-info">
         {{ a.size }} cm
       </p>
