@@ -20,6 +20,9 @@
       <h1>
         This is Heading 1 appeareance
       </h1>
+      <h1>
+        <i18n>Título com tradução</i18n>
+      </h1>
       <h2>
         This is Heading 2 appeareance
       </h2>
