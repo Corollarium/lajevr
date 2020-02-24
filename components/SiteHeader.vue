@@ -1,7 +1,7 @@
 <template>
   <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
     <!-- <input id="menu" v-model="isExpanded" type="checkbox" class="custom-wrapper"> -->
-    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed" role="navigation" aria-label="main navigation">
+    <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
       <a class="pure-menu-heading" href="/" rel="home">
         <span class="logo-main" />
       </a>
@@ -17,7 +17,7 @@
         <span />
       </label> -->
 
-      <ul @click="isExpanded = false" class="pure-menu-list">
+      <ul @click="isExpanded = false" class="pure-menu-list main-nav">
         <li class="pure-menu-item pure-menu-selected">
           <nuxt-link to="/" class="pure-menu-item">
             <i18n>Conheça a Laje</i18n>
