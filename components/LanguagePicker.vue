@@ -1,15 +1,14 @@
 <template>
-  <div>
-    <select
-      v-model="current"
-      @change="changed()"
-      name="language"
-    >
-      <option v-for="(language, key) in available" :value="key">
-        {{ language }}
-      </option>
-    </select>
-  </div>
+  <select
+    v-model="current"
+    @change="changed()"
+    class="language-select"
+    name="language"
+  >
+    <option v-for="(language, key) in available" :value="key">
+      {{ language }}
+    </option>
+  </select>
 </template>
 
 <script>

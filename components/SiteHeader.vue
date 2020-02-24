@@ -16,44 +16,11 @@
         <span />
         <span />
       </label> -->
-
-      <ul @click="isExpanded = false" class="pure-menu-list main-nav">
-        <li class="pure-menu-item pure-menu-selected">
-          <nuxt-link to="/" class="pure-menu-link">
-            <i18n>Conheça</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
-          <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
-            <i18n>Mergulho Virtual</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
-          <nuxt-link to="/especies" class="pure-menu-link">
-            <i18n>Espécies</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
-          <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
-            <i18n>Pontos de Mergulho</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
-          <nuxt-link to="/galeria" class="pure-menu-link">
-            <i18n>Galeria</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
-          <nuxt-link to="/sobre" class="pure-menu-link">
-            <i18n>Sobre</i18n>
-          </nuxt-link>
-        </li>
-        <li class="pure-menu-item">
+      <div class=" main-nav">
+        <div class="nav-top">
           <LanguagePicker />
-        </li>
-        <li class="pure-menu-item">
           <a
-            class="pure-menu-link"
+            class=""
             href="https://corollarium.com"
             title="Corollarium"
             target="_blank"
@@ -61,8 +28,41 @@
             <span class="logo-corollarium" />
             <span class>Corollarium</span>
           </a>
-        </li>
-      </ul>
+        </div>
+        <div class="clear-both" />
+        <ul @click="isExpanded = false" class="pure-menu-list">
+          <li class="pure-menu-item pure-menu-selected">
+            <nuxt-link to="/" class="pure-menu-link">
+              <i18n>Conheça</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
+              <i18n>Mergulho Virtual</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/especies" class="pure-menu-link">
+              <i18n>Espécies</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
+              <i18n>Pontos de Mergulho</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/galeria" class="pure-menu-link">
+              <i18n>Galeria</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/sobre" class="pure-menu-link">
+              <i18n>Sobre</i18n>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
 </template>
