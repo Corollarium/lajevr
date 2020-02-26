@@ -8,7 +8,6 @@
 @bold: 700;
 
 
-
 html {
   font-size: 16px;
   font-family: @mainFont;
@@ -68,8 +67,17 @@ h4 {
   .font-select(@regular);
 }
 
-p {
-  .font-responsive(16, 15, 14);
+body {
+  .font-size(16);
+
+  @media @tablet {
+    .font-size(15);
+  }
+
+  @media @mobile {
+    .font-size(14);
+  }
+
   .font-select(@regular, #000000);//, #ffffff);
 }
 
