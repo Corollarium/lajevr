@@ -1,24 +1,47 @@
-.logo-main {
-  background-color: #fff;
-  background: url("~assets/images/logos/logo-laje-header.png") no-repeat left center;
-  background-size: contain;
-  height: 3rem;
-  width: 4rem;
-  display: block;
-}
 .main-header {
   background-color: @darkColor1;
   display: inline-block;
   width: 100%;
+  @media @desktop {
+    height: 5rem;
+  }
+
 }
+
+.pure-menu-heading {
+  @media @desktop {
+    float: left;
+  }
+
+  .logo-main {
+    background-color: #fff;
+    background: url("~assets/images/logos/logo-laje-header.png") no-repeat left center;
+    background-size: contain;
+    display: block;
+    height: 5rem;
+    width: 6rem;
+  }
+}
+
+
+.language-select {
+  margin-right: 1rem;
+}
+
 .main-menu {
   .define-layout();
-  display: block;
   margin: auto;
+  font-size: 0;
 
   .main-nav {
     @media @desktop {
       float: right;
+    }
+
+    .nav-top {
+      float: right;
+      font-size: .8rem;
+      margin: .5rem 0 .7rem;
     }
 
     .pure-menu-item {
@@ -29,13 +52,15 @@
       color: lighten(@secondaryColor-2,20);
       text-transform: uppercase;
       font-weight: @regular;
-      border-bottom: 4px solid fade(@primaryColor, 30);
-      .transition();
+      border-bottom: .25rem inset fade(@primaryColor, 30);
+      padding: .25rem .75rem;
+      font-size: .9rem;
+      .transition(.3s, border-bottom);
 
       &:hover {
-        color: lighten(@secondaryColor-2,30);
+        color: lighten(@secondaryColor-2,40);
         background-color: transparent;
-        border-bottom: 4px solid @secondaryColor-2;
+        border-bottom: .25rem inset @secondaryColor-2;
         .transition();
       }
 
@@ -43,7 +68,7 @@
       &.nuxt-link-exact-active {
         font-weight: bold;
         border-color: @secondaryColor-2;
-        border-bottom: 4px solid @secondaryColor-2;
+        border-bottom: .25rem inset @secondaryColor-2;
       }
     }
   }
@@ -51,9 +76,10 @@
 
 .logo-corollarium {
   background: url("~assets/images/logos/logo-mobi.svg") no-repeat left center;
+  display: inline-block;
   background-size: contain;
-  height: 30px;
-  width: 30px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .burger {
