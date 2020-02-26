@@ -23,12 +23,15 @@
       <h1>
         <i18n>Título com tradução</i18n>
       </h1>
+      <p>Algum texto</p>
       <h2>
         This is Heading 2 appeareance
       </h2>
+      <p>Algum texto</p>
       <h3>
         This is Heading 3 appeareance
       </h3>
+      <p>Algum texto</p>
       <h4>
         This is Heading 4 appeareance
       </h4>
