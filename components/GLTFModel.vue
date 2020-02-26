@@ -2,9 +2,15 @@
   <div class="object-embed-3d">
     <div class="object-embed-icon" />
     <p
-      v-html="attribution"
       class="attribution"
-    />
+    >
+      <a :href="link" v-if="link" target="_blank">
+        {{ attribution }}
+      </a>
+      <span v-else>
+        {{ attribution }}
+      </span>
+    </p>
   </div>
 </template>
 
@@ -25,6 +31,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    link: {
+      type: String,
+      required: false,
+      default: null
     },
     backgroundColor: {
       type: Number,

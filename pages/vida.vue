@@ -53,7 +53,8 @@
 
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
-          :attribution="'<a href=\'https: sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8\'>Modelo 3D CC BY-NC por misaooo</a>'"
+          :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
+          :attribution="'Modelo 3D CC BY-NC por misaooo'"
         />
         </GLTFModel>
 
