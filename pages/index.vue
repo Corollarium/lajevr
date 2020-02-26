@@ -165,7 +165,7 @@
         Explore mais
       </h1>
       <div class="buttons are-large is-centered">
-        <nuxt-link to="/dive" class="button">
+        <nuxt-link to="/mergulho-virtual" class="button">
           Mergulho
         </nuxt-link>
         <nuxt-link to="/vida" class="button">
@@ -177,7 +177,7 @@
         <nuxt-link to="/tecnologia" class="button">
           Tecnologia
         </nuxt-link>
-        <nuxt-link to="/about" class="button">
+        <nuxt-link to="/sobre" class="button">
           Sobre
         </nuxt-link>
       </div>
