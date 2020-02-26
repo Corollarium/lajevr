@@ -221,9 +221,9 @@ export default {
     text-shadow: 0px 0px 10px @darkGrey;
   }
 
-  .hero-html {
-    .text-over-image;
-  }
+  // .hero-html {
+  //   .text-over-image;
+  // }
 
   .hero-title {
     font-size: 8vw;

@@ -30,6 +30,9 @@ export default {
   mounted () {
     let land, lastTime;
 
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     const diveSiteGroup = new THREE.Group();
@@ -46,7 +49,7 @@ export default {
 
     const container = document.getElementById('ilha-container');
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 20000);
+    const camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 1, 20000);
     camera.position.set(0, 1000, 100);
     camera.lookAt(0, 0, 0);
 
@@ -55,7 +58,7 @@ export default {
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(windowWidth, windowHeight);
 
     const controls = new TrackballControls(camera, container);
     controls.rotateSpeed = 2.0;
