@@ -65,7 +65,9 @@ export default {
     this.observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.96 && !this.countStarted) {
+          if (entry.target.isSameNode(this.$el) &&
+            entry.intersectionRatio >= 0.9 &&
+            !this.countStarted) {
             this.countStarted = true;
             this.tween(this.to);
           }
