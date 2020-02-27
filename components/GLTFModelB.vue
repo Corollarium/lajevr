@@ -1,7 +1,7 @@
 <template>
   <div class="object-embed-3d">
-    <div class="object-embed-icon" />
-    <canvas class="object-3d" touch-action="none" />
+    <div class="object-embed-icon" touch-action="none" />
+    <canvas class="object-3d" />
     <p
       class="attribution"
     >
@@ -57,20 +57,21 @@ export default {
     const container = this.$el.querySelector('.object-3d');
 
     this.engine = new BABYLON.Engine(container, true); // Generate the BABYLON 3D engine
-    this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+    // this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
-    this.scene.clearColor = BABYLON.Color3.FromHexString(this.backgroundColor);
+    // this.scene.clearColor = BABYLON.Color3.FromHexString(this.backgroundColor);
 
     // Add a camera to the scene and attach it to the canvas
     this.camera = new BABYLON.ArcRotateCamera(
       'Camera',
-      0, // alpha
-      0, // beta
-      20, // radius
+      Math.PI / 2, // alpha
+      Math.PI / 2, // beta
+      80, // TODO: radius
       new BABYLON.Vector3(0, 0, 0), // target
       this.scene
     );
+
     this.camera.applyGravity = false;
     this.camera.speed = 0.1;
 
@@ -79,13 +80,15 @@ export default {
     this.camera.keysUp.push('W'.charCodeAt(0));
 
     // near/far
-    this.camera.minZ = 0.1;
-    this.camera.maxZ = 120;
-    this.camera.attachControl(container, true);
+    this.camera.attachControl(container, false);
+
+    // Add lights to the scene
+    this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
+    this.light2 = new BABYLON.PointLight('light2', new BABYLON.Vector3(0, 1, -1), this.scene);
 
     // Append glTF model to scene.
-    const path = 'https://playground.babylonjs.com/scenes/'; // this.model.slice(0, this.model.lastIndexOf('/') + 1);
-    const filename = 'Rabbit.babylon'; // this.model.slice(this.model.lastIndexOf('/') + 1);
+    const path = this.model.slice(0, this.model.lastIndexOf('/') + 1);
+    const filename = this.model.slice(this.model.lastIndexOf('/') + 1);
 
     // loader
     // const loader = new BABYLON.AssetsManager(this.scene);
@@ -95,11 +98,18 @@ export default {
     // };
     // loader.load();
 
+    let loaded = false;
     BABYLON.SceneLoader.Append(path, filename, this.scene, function (scene) {
-      console.log('loaded');
+      loaded = true;
     });
 
     this.engine.runRenderLoop(() => {
+      const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
+
+      if (loaded) {
+        this.camera.alpha = (this.camera.alpha + deltaTime * 0.2) % (2 * Math.PI);
+      }
+
       this.scene.render();
     });
 
@@ -116,11 +126,9 @@ export default {
   },
 
   methods: {
-
     resize () {
       this.engine.resize();
     }
-
   }
 };
 </script>

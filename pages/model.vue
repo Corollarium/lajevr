@@ -2,8 +2,7 @@
   <article>
     <section>
       <GLTFModel
-        :model="'./models/borboleta/borboleta.glb'"
-        :background-color="0x46BCEC"
+        :model="'./models/manta/scene.gltf'"
         :attribution="'xxxxx'"
       />
       </GLTFModel>
@@ -12,7 +11,7 @@
 </template>
 
 <script>
-import GLTFModel from '~/components/GLTFModel.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 
 export default {
   components: {
