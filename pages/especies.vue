@@ -68,7 +68,7 @@
                 Tamanho (em cm)
               </i18n>
             </label>
-            <div class="control">
+            <div id="slider-container" class="control">
               <div>
                 <output>{{ minRange }}</output>
                 <output style="float: right;">{{ maxRange }}</output>
@@ -163,10 +163,10 @@ export default {
           description: 'Sobre o bicho bla bla bla'
         }
       ],
-      filterColor: '', // TODO https://vue-select.org/guide/slots.html
+      filterColor: '',
       filterSearch: '',
-      minRange: null,
-      maxRange: null,
+      minRange: null, // slider
+      maxRange: null, // slider
       slider: {
         range: {
           min: 0,
@@ -187,11 +187,17 @@ export default {
 
   computed: {
     filteredAnimals () {
+      const r = this.filterSearch ? new RegExp(this.filterSearch, 'i') : null;
       return this.animals.filter((i) => {
-        // TODO if (this.filterSearch && (i.description.match())
+        // texto
+        if (r && i.name.search(r) === -1 && i.description.search(r) === -1) {
+          return false;
+        }
+        // tamanho
         if (i.size < this.minRange || i.size > this.maxRange) {
           return false;
         }
+        // cor
         if (this.filterColor && !i.colors.includes(this.filterColor)) {
           return false;
         }
@@ -219,6 +225,11 @@ export default {
 #filters {
   margin-top: 1em;
 }
+
+#slider-container { // BG temporario até arrumar form
+  height: 5em;
+}
+
 .section-fauna {
   width: 300px;
   display: inline-block;
