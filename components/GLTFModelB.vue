@@ -57,10 +57,10 @@ export default {
     const container = this.$el.querySelector('.object-3d');
 
     this.engine = new BABYLON.Engine(container, true); // Generate the BABYLON 3D engine
-    // this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+    this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
-    // this.scene.clearColor = BABYLON.Color3.FromHexString(this.backgroundColor);
+    this.scene.clearColor = BABYLON.Color3.FromHexString(this.backgroundColor);
 
     // Add a camera to the scene and attach it to the canvas
     this.camera = new BABYLON.ArcRotateCamera(
@@ -91,17 +91,34 @@ export default {
     const filename = this.model.slice(this.model.lastIndexOf('/') + 1);
 
     // loader
-    // const loader = new BABYLON.AssetsManager(this.scene);
-    // loader.addMeshTask('box', '', path, 'filename');
-    // loader.onFinish = (task) => {
-    //   this.camera.setTarget(task[0].loadedMeshes[0].position);
-    // };
-    // loader.load();
-
     let loaded = false;
-    BABYLON.SceneLoader.Append(path, filename, this.scene, function (scene) {
+    const loader = new BABYLON.AssetsManager(this.scene);
+    loader.addMeshTask('box', '', path, filename);
+    loader.onFinish = (task) => {
       loaded = true;
-    });
+      let radius = 1;
+      for (const o of task[0].loadedMeshes) {
+        // TODO this.camera.setTarget(task[0].loadedMeshes[1].centerWorld);
+        if (o) {
+          const s = o.getBoundingInfo().boundingBox.extendSize;
+          if (radius < s.x / 2.0) {
+            radius = s.x / 2.0;
+          }
+          if (radius < s.y / 2.0) {
+            radius = s.y / 2.0;
+          }
+          if (radius < s.z / 2.0) {
+            radius = s.z / 2.0;
+          }
+        }
+      }
+      this.camera.radius = radius * 2.4;
+    };
+    loader.load();
+
+    // BABYLON.SceneLoader.Append(path, filename, this.scene, function (scene) {
+    //   loaded = true;
+    // });
 
     this.engine.runRenderLoop(() => {
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
