@@ -19,8 +19,8 @@
 /* eslint-disable */
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
-import * as Materials from 'babylonjs-materials';
-import Boids from './boids.js';
+// import * as Materials from 'babylonjs-materials';
+import Boids from '@corollarium/babylon-boids';
 
 const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
@@ -562,7 +562,6 @@ export default {
           };
         })(boids, models)
       };
-      // TODO
     },
 
     loadMantas (total = 2) {
