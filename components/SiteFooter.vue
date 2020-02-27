@@ -24,23 +24,23 @@
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/about">
+              <nuxt-link to="/sobre">
                 <i18n>
                   Sobre
                 </i18n>
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/dive">
+              <nuxt-link to="/mergulho-virtual">
                 <i18n>
                   Mergulhos
                 </i18n>
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/fauna">
+              <nuxt-link to="/especies">
                 <i18n>
-                  Catálogo de vida
+                  Catálogo de espécies
                 </i18n>
               </nuxt-link>
             </li>
@@ -48,6 +48,13 @@
               <nuxt-link to="/tecnologia">
                 <i18n>
                   Tecnologia
+                </i18n>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/galeria">
+                <i18n>
+                  Galeria
                 </i18n>
               </nuxt-link>
             </li>
@@ -60,7 +67,10 @@
             </i18n>
           </h2>
           <p>
-            <a href="https://corollarium.com">Corollarium Tecnologia</a>.
+            <a href="https://corollarium.com">
+              <span class="logo-corollarium" />
+              Corollarium Tecnologia
+            </a>
           </p>
           <p>
             <a href="https://github.com/Corollarium"><i18n>
@@ -79,7 +89,7 @@
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
             >CC BY NC SA 4.0</a>
             <i18n>
-              exceto quando explicitamente referenciado.
+              exceto quando explicitamente referenciado
             </i18n>
           </p>
         </div>
