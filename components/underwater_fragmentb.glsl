@@ -1,10 +1,11 @@
 precision highp float;
 
 varying vec2 vUV;
-// varying vec3 vPosition;
+
 uniform float time;
 uniform vec3 fogColor;
 uniform vec2 cameraMinMaxZ;
+uniform vec3 cameraPosition;
 
 uniform sampler2D textureSampler;
 uniform sampler2D causticTexture;
@@ -65,6 +66,16 @@ void main() {
   vec4 depthVec = texture2D(depthTexture, vUV);
   float depth = depthVec.r;
 
+  // base texture
+  vec4 base = texture2D(textureSampler, vUV);
+
+  // no effect above water
+  if (cameraPosition.y >= 0.0) {
+    gl_FragColor.rgb = base.rgb;
+    gl_FragColor.w = 1.0;
+    return;
+  }
+
   // actual distance from the lens in scene units
   float distance = (cameraMinMaxZ.x + (cameraMinMaxZ.y - cameraMinMaxZ.x)*depth);
   float normalizedDistance = distance / cameraMinMaxZ.y;
@@ -73,11 +84,10 @@ void main() {
   // god rays
   vec3 skyColor = vec3(0.3, 1.0, 1.0);
   // TODO: godRays should take camera angle into consideration
-  vec3 godRays = (godRaysCalc(vUV*2.)*mix(float(skyColor), 1.0, vUV.y*vUV.y) * vec3(0.7,1.0,1.0));
+  vec3 godRays = 0.7*(godRaysCalc(vUV*2.)*mix(float(skyColor), 1.0, vUV.y*vUV.y) * vec3(0.7,1.0,1.0));
 
   // TODO: noise
   // TODO: color loss with depth
-  vec4 base = texture2D(textureSampler, vUV);
   vec4 caustic = texture2D(causticTexture, vUV);
 
   vec4 color;
@@ -90,7 +100,7 @@ void main() {
   // color.rgb = vec3(fogFactor, fogFactor, fogFactor); // pure fog
   // color.rgb = mix(base.rgb, fogColor, fogFactor); // fog + texture
   //color.rgb = mix(base.rgb, caustic.rgb, max(depth, 0.1)); // caustics + texture
-  color.rgb = mix(mix(base.rgb, caustic.rgb, caustic.a * depth), fogColor, fogFactor) + godRays; // everything
+  color.rgb = mix(mix(base.rgb, caustic.rgb, caustic.a * 0.5 * depth), fogColor, fogFactor) + godRays; // everything
 
   // color, saturation, brightness
   color.rgb = csb(color.rgb, 1.1, 1.05, 1.22);

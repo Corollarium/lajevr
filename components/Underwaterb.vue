@@ -6,10 +6,14 @@
     </div>
     <div id="underwater-hud">
       <div id="underwater-hud-depth">
-        {{ depth }}m
+        <span id="underwater-hud-depth-name"><i18n>Profundidade</i18n></span><br>
+        <span id="underwater-hud-depth-ascent" :style="{color: ascentSpeedColor}">{{ ascentSpeedGraph }}</span>
+        <span id="underwater-hud-depth-value">{{ depth }}</span>
+        <span id="underwater-hud-depth-unit">m</span>
       </div>
       <div id="underwater-hud-time">
-        {{ parseInt(time/60, 10) }}:{{ parseInt(time%60, 10).toString().padStart(2, '0') }}
+        <span id="underwater-hud-time-name"><i18n>Tempo</i18n></span><br>
+        <span id="underwater-hud-time-value">{{ parseInt(time/60, 10) }}:{{ parseInt(time%60, 10).toString().padStart(2, '0') }}</span>
       </div>
     </div>
   </div>
@@ -20,7 +24,7 @@
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 // import * as Materials from 'babylonjs-materials';
-import Boids from '@corollarium/babylon-boids';
+// import Boids from '@corollarium/babylon-boids';
 
 const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
@@ -57,11 +61,42 @@ export default {
       mantas: [],
 
       // simulation / GUI
+      ascentSpeed: 0,
       depth: 0,
+      lastDepth: 0,
       time: 0,
       air: 100,
       fps: 0
     };
+  },
+
+  computed: {
+    ascentSpeedColor () {
+      if (this.ascentSpeed < 1.0 / 60.0) {
+        return '#000';
+      } else if (this.ascentSpeed < 6.0 / 60.0) {
+        return '#0f0';
+      } else if (this.ascentSpeed < 12.0 / 60.0) {
+        return '#0f0';
+      } else if (this.ascentSpeed < 18.0 / 60.0) {
+        return '#ff0';
+      } else {
+        return '#f00';
+      }
+    },
+    ascentSpeedGraph () {
+      if (this.ascentSpeed < 1.0 / 60.0) {
+        return '<';
+      } else if (this.ascentSpeed < 6.0 / 60.0) {
+        return '<';
+      } else if (this.ascentSpeed < 12.0 / 60.0) {
+        return '<<';
+      } else if (this.ascentSpeed < 18.0 / 60.0) {
+        return '<<<';
+      } else {
+        return '<<<<';
+      }
+    }
   },
 
   mounted () {
@@ -81,9 +116,9 @@ export default {
     this.loadOcean();
     const promises = [];
     promises.push(this.loadTerrain());
-    promises.push(this.loadMantas());
-    const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
-    promises.push(fish.promise);
+    // promises.push(this.loadMantas());
+    // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
+    // promises.push(fish.promise);
     Promise.all(promises).then(() => {
       console.log('all loaded');
     });
@@ -96,8 +131,14 @@ export default {
     const startTime = new Date();
     this.engine.runRenderLoop(() => {
       const endTime = new Date();
-      const timeDiff = (endTime - startTime) / 1000.0; // in s
+      const timeElapsed = (endTime - startTime) / 1000.0; // in s
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
+
+      // update UI
+      this.depth = (this.camera.position.y <= 0 ? (-this.camera.position.y).toFixed(1) : 0.0);
+      this.time = timeElapsed;
+      this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
+      this.lastDepth = this.camera.position.y;
 
       // inspector
       const t = document.getElementById('inspector-host');
@@ -107,20 +148,17 @@ export default {
 
       // update shaders
       if (this.causticMaterial) {
-        this.causticMaterial.setFloat('time', timeDiff);
+        this.causticMaterial.setFloat('time', timeElapsed);
       }
       if (this.waterMaterial) {
-        this.waterMaterial.setFloat('time', timeDiff);
+        this.waterMaterial.setFloat('time', timeElapsed);
         this.waterMaterial.setVector3('cameraPosition', this.camera.position);
       }
       this.rttMaterials.forEach(
         (c) => {
-          c.setFloat('time', timeDiff);
+          c.setFloat('time', timeElapsed);
         }
       );
-
-      // update UI
-      this.depth = (this.camera.position.y <= 0 ? (-this.camera.position.y).toFixed(1) : 0.0);
 
       // animate objects
       let d = 0;
@@ -180,11 +218,11 @@ export default {
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
-        new BABYLON.Vector3(0, 5, 0),
+        new BABYLON.Vector3(-16.12, -6, 28),
         this.scene
       );
       this.camera.applyGravity = false;
-      this.camera.speed = 0.1;
+      this.camera.speed = 0.05;
       // Set the ellipsoid around the camera (e.g. your player's size)
       this.camera.ellipsoid = new BABYLON.Vector3(0.5, 1, 0.5);
       window.camera = this.camera;
@@ -193,10 +231,21 @@ export default {
       this.camera.keysUp.push('w'.charCodeAt(0));
       this.camera.keysUp.push('W'.charCodeAt(0));
 
+      this.scene.onKeyboardObservable.add((kbInfo) => {
+        switch (kbInfo.type) {
+          case BABYLON.KeyboardEventTypes.KEYDOWN:
+            console.log('KEY DOWN: ', kbInfo.event.key);
+            break;
+          case BABYLON.KeyboardEventTypes.KEYUP:
+            console.log('KEY UP: ', kbInfo.event.keyCode);
+            break;
+        }
+      });
+
       // near/far
       this.camera.minZ = 0.1;
-      this.camera.maxZ = 120;
-      this.camera.setTarget(new BABYLON.Vector3(-0.7411525845527649, 5.202267646789551, -0.6401410698890686));
+      this.camera.maxZ = 50;
+      this.camera.setTarget(new BABYLON.Vector3(-15.2, -6.36, 27.62));
       this.camera.attachControl(container, true);
 
       // Enable Collisions
@@ -305,6 +354,7 @@ export default {
         [
           'fogColor',
           'cameraMinMaxZ',
+          'cameraPosition',
           'time'
         ],
         [
@@ -326,6 +376,7 @@ export default {
         effect.setFloat('time', timeDiff);
         effect.setTexture('causticTexture', this.renderTargetCaustic);
         effect.setTexture('depthTexture', depthPass.getDepthMap());
+        effect.setVector3('cameraPosition', this.camera.position);
       };
 
       const renderLayer = new BABYLON.PostProcessRenderEffect(
@@ -378,7 +429,6 @@ export default {
 
       this.waterMesh = BABYLON.Mesh.CreateGround('waterMesh', 128, 128, 16, this.scene, false);
       // this.waterMesh = BABYLON.Mesh.CreatePlane('waterMesh', { width: 32, height: 32, updatable: false, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, this.scene);
-      this.waterMesh.position.y = 15; // TODO
       this.waterMesh.flipFaces();
       this.waterMesh.material = this.waterMaterial = waterMaterial;
 
@@ -481,7 +531,7 @@ export default {
 
     loadTerrain () {
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('terrain', null, '/models/', 'terrain.glb').onSuccess = (task) => {
+        this.assetsManager.addMeshTask('terrain', null, '/models/', 'island.glb').onSuccess = (task) => {
           /* task.loadedMeshes[1].simplify(
             [{ quality: 0.9, distance: 25 }, { quality: 0.3, distance: 50 }],
             false,
@@ -513,6 +563,7 @@ export default {
     },
 
     loadFishFlock (modelpath, modelfile, total) {
+      /*
       const boids = new Boids(total, new BABYLON.Vector3(0.0, 10.0, 0.0), 10.0);
       boids.cohesion = 0.05;
       boids.separationMinDistance = 10.0;
@@ -562,6 +613,7 @@ export default {
           };
         })(boids, models)
       };
+      */
     },
 
     loadMantas (total = 2) {
@@ -650,14 +702,42 @@ export default {
   left: 0;
   padding: 10px;
   width: 160px;
-  height: 200px;
+  height: 150px;
   z-index: 1000;
   border-radius: 10px;
   background: #000;
-  font-family: 'Oxygen', monospace;
-  font-size: 64px;
+  font-family: monospace;
   color: #fff;
   text-align: right;
+
+  span {
+    display: inline-block;
+  }
+
+  #underwater-hud-time {
+    margin-top: 10px;
+  }
+
+  #underwater-hud-depth-value,
+  #underwater-hud-time-value {
+    line-height: 0.9;
+    font-size: 42px;
+    font-family: monospace;
+  }
+
+  #underwater-hud-depth-ascent {
+    writing-mode: vertical-rl;
+  }
+
+  #underwater-hud-depth-name,
+  #underwater-hud-time-name {
+    color: #4c70ff;
+  }
+
+  #underwater-hud-depth-unit,
+  #underwater-hud-time-unit {
+    vertical-align: top;
+  }
 }
 
 #sceneExplorer, #inspector-host {
