@@ -34,6 +34,14 @@ figcaption {
   transition: @property @duration @ease;
 }
 
+.custom-transition (...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
 .transform(...) {
   -webkit-transform: @arguments;
   -moz-transform: @arguments;

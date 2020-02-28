@@ -1,26 +1,55 @@
+//layout
+@spacing: 8; //value in PX
+@gridWidth: 1280px;
+
+.marginBottom (@value: 1;) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-bottom: ~"@{remValue}rem";
+}
+
+.add-padding (@valueV: 1, @valueH: 1) {
+  @resultV: @spacing * @valueV;
+  @resultH: @spacing * @valueH;
+  @remValueV: @resultV / 16;
+  @remValueH: @resultH / 16;
+  padding: ~"@{remValueV}rem" ~"@{remValueH}rem";
+}
+
+.add-margin (@valueV: 1, @valueH: 1) {
+  @resultV: @spacing * @valueV;
+  @resultH: @spacing * @valueH;
+  @remValueV: @resultV / 16;
+  @remValueH: @resultH / 16;
+  margin: ~"@{remValueV}rem" ~"@{remValueH}rem";
+}
+
 .container {
   -webkit-box-flex: 1;
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
   width: auto;
+  max-width: @gridWidth;
 
-  @media screen and (min-width:@mobileSize) {
-    max-width: @mobileSize;
-  }
-  @media screen and (max-width:@tabletSize) {
-    max-width: calc(@tabletSize - 30px);
-  }
-  @media screen and (min-width:@desktopSize) {
-    max-width: calc(@desktopSize - 50px);
-  }
-  @media screen and (min-width:@desktopBigSize) {
-    max-width: @desktopBigSize;
-  }
 }
 
 .section {
-  padding: 3rem 1.5rem;
+  @media @desktopBig {
+    .add-padding(10,5);
+  }
+
+  @media @desktopSmall {
+    .add-padding(7,4);
+  }
+
+  @media @tablet {
+    .add-padding(5,3);
+  }
+
+  @media @mobile {
+    .add-padding(3,2);
+  }
 }
 
 img {
