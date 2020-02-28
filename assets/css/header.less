@@ -33,8 +33,16 @@
     font-size: 0;
 
     .main-nav {
+      @media @responsiveDevices {
+        clear: both;
+        max-height: 0;
+        overflow: hidden;
+        .transition(max-height, .2s, ease-out);
+      }
       @media @desktop {
+        clear: none;
         float: right;
+        max-height: none;
       }
 
       .nav-top {
@@ -45,6 +53,12 @@
 
       .pure-menu-item {
         float: left;
+
+        @media @responsiveDevices {
+          float: right;
+          display: block;
+          clear: both;
+        }
       }
 
       .pure-menu-link {
@@ -71,28 +85,75 @@
         }
       }
     }
-  }
 
-  .burger {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-  }
+    /** MOBILE MENU **/
+    .hamburger {
+      float: right;
+      cursor: pointer;
+      padding: 1.5rem;
+      position: relative;
+      user-select: none;
 
-  /** Hamburgers **/
-  .menu-toggle-input {
-    display: none;
-
-    .navbar-brand>.navbar-burger>span {
-      .transition(6ms, transform);
-    }
-
-    &:checked {
-      ~.navbar-menu {
+      @media @desktop {
+        display: none;
+      }
+      .burger-bar {
+        background: @linkColor;
         display: block;
+        height: 2px;
+        position: relative;
+        .transition(.2s, background, ease-in);
+        width: 1.5rem;
+
+        &:before,
+        &:after {
+          background: @linkColor;
+          content: '';
+          height: 100%;
+          position: absolute;
+          .transition(.2s, transform, ease-out);
+          width: 100%;
+        }
+
+        &:before {
+          top: .5rem;
+        }
+
+        &:after {
+          top: -.5rem;
+        }
+      }
+    }
+    .menu-toggle-input {
+      display: none;
+
+      &:checked {
+        ~.main-nav {
+          max-height: 240px;
+        }
+
+        ~.hamburger  > .burger-bar {
+          background: transparent;
+
+          &:before {
+            top: 0;
+            .transform(rotate(-45deg));
+          }
+
+          &:after {
+            top: 0;
+            .transform(rotate(45deg));
+          }
+        }
+
       }
     }
   }
 
+
+
+
+  /**??**/
   &.header-overlay {
     position: absolute;
     background: rgba(0, 0, 0, 0.2);
@@ -100,7 +161,6 @@
     .navbar {
       background: transparent;
     }
-
     width: 100%;
   }
 }

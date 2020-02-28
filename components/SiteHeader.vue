@@ -1,22 +1,19 @@
 <template>
   <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
-    <input id="menu-toggle-mobile" v-model="isExpanded" type="checkbox" class="menu-toggle-input">
     <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
       <a class="pure-menu-heading" href="/" rel="home">
         <span class="logo-main" />
       </a>
-
+      <input id="menu-toggle" v-model="isExpanded" type="checkbox" class="menu-toggle-input">
       <label
-        for="menu"
-        class="navbar-burger burger"
+        for="menu-toggle"
+        class="hamburger"
         aria-label="menu"
         aria-expanded="false"
       >
-        <span />
-        <span />
-        <span />
+        <span class="burger-bar" />
       </label>
-      <div class=" main-nav">
+      <div class="main-nav">
         <div class="nav-top">
           <LanguagePicker />
           <a

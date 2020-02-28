@@ -78,7 +78,7 @@ body {
     .font-size(14);
   }
 
-  .font-select(@regular, #000000);//, #ffffff);
+  .font-select(@regular, #000000);
 }
 
 // text helpers
@@ -92,9 +92,9 @@ body {
 
 // links
 a {
-  .font-select(@bold, lighten(@secondaryColor-1, 15));
+  .font-select(@bold, @linkColor);
 
   &:hover {
-    color: lighten(@secondaryColor-1, 30);
+    color: @linkColorHover;
   }
 }
