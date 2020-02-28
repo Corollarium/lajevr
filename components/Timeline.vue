@@ -95,7 +95,7 @@
             />
           </figure>
           <h2 class="timeline__content-title">
-            2009
+            2012
           </h2>
           <p class="timeline__content-desc">
             <i18n>Produzido o documentário Laje dos Sonhos.</i18n>
