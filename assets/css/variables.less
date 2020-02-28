@@ -36,8 +36,8 @@
 
 @mobileSmall: ~"only screen and (max-width: @{mobileSize})";
 @mobileLandscape: ~"only screen and (min-width: @{mobileSize}) and (max-width:" @tabletSize - 1 ~")";
-@mobile: ~"only screen and (max-width: (@{tabletSize} - 1))";
-@tablet: ~"only screen and (min-width: @tabletSize) and (max-width:" @desktopSize - 1 ~")";
+@mobile: ~"only screen and (max-width: "@tabletSize - 1 ~")";
+@tablet: ~"only screen and (min-width: @{tabletSize}) and (max-width:" @desktopSize - 1 ~")";
 @desktop: ~"only screen and (min-width: @{desktopSize})";
 @desktopSmall: ~"only screen and (min-width: @{desktopSize}) and (max-width:" @desktopBigSize - 1 ~")";
 @desktopBig: ~"only screen and (@{desktopBigSize})";
