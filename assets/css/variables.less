@@ -20,7 +20,7 @@
 
 //layout
 @spacing: 8; //value in PX
-@gridWidth: 1280px; //same as bulma (to review)
+@gridWidth: 1280px;
 
 .marginBottom (@value: 1;) {
   @sizeResult: @spacing * @value;
@@ -28,10 +28,11 @@
   margin-bottom: ~"@{remValue}rem";
 }
 
-@mobileSize: 576px;
-@tabletSize: 768px;
-@desktopSize: 992px;
-@desktopBigSize: 1200px;
+/** PURE CSS BASED GRID **/
+@mobileSize: 35.5; //sm 568px
+@tabletSize: 48em; //md 768px
+@desktopSize: 64em; //lg 1024px
+@desktopBigSize: 80em; //xl 1280px
 
 @mobileSmall: ~"only screen and (max-width: @{mobileSize})";
 @mobileLandscape: ~"only screen and (min-width: @{mobileSize}) and (max-width:" @tabletSize - 1 ~")";
