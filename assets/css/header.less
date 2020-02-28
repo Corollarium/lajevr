@@ -79,7 +79,7 @@
   }
 
   /** Hamburgers **/
-  .custom-wrapper {
+  .menu-toggle-input {
     display: none;
 
     .navbar-brand>.navbar-burger>span {
@@ -89,22 +89,6 @@
     &:checked {
       ~.navbar-menu {
         display: block;
-      }
-
-      ~.navbar-brand>.navbar-burger>span {
-        &:nth-child(1) {
-          -webkit-transform: translateY(5px) rotate(45deg);
-          transform: translateY(5px) rotate(45deg);
-        }
-
-        &:nth-child(2) {
-          opacity: 0;
-        }
-
-        &:nth-child(3) {
-          -webkit-transform: translateY(-5px) rotate(-45deg);
-          transform: translateY(-5px) rotate(-45deg);
-        }
       }
     }
   }
@@ -128,4 +112,3 @@
   height: 1.5rem;
   width: 1.5rem;
 }
-

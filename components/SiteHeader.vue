@@ -1,12 +1,12 @@
 <template>
   <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
-    <!-- <input id="menu" v-model="isExpanded" type="checkbox" class="custom-wrapper"> -->
+    <input id="menu-toggle-mobile" v-model="isExpanded" type="checkbox" class="menu-toggle-input">
     <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
       <a class="pure-menu-heading" href="/" rel="home">
         <span class="logo-main" />
       </a>
 
-      <!-- <label
+      <label
         for="menu"
         class="navbar-burger burger"
         aria-label="menu"
@@ -15,7 +15,7 @@
         <span />
         <span />
         <span />
-      </label> -->
+      </label>
       <div class=" main-nav">
         <div class="nav-top">
           <LanguagePicker />

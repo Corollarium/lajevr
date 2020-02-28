@@ -7,10 +7,11 @@ figcaption {
   max-width: @gridWidth;
 }
 
-.button {
+.button-blue {
   background-color: @primaryColor;
   background-image: linear-gradient(30deg, @primaryColor, @secondaryColor-2);
   color: #ffffff;
+  margin-bottom: 1rem;
 }
 
 .eliminate-space {
@@ -31,4 +32,12 @@ figcaption {
   -ms-transition: @property @duration @ease;
   -o-transition: @property @duration @ease;
   transition: @property @duration @ease;
+}
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -o-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
 }

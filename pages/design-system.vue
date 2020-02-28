@@ -4,14 +4,6 @@
       Laje VR
       <span>Design System</span>
     </h1>
-
-    <section class="section">
-      <p>
-        See <a href="https://bulma.io/documentation/">Bulma docs</a>, particularly
-        <a href="https://bulma.io/documentation/customize/variables/">customization</a>
-      </p>
-    </section>
-
     <section class="section dark-background-section">
       <h2>
         Typography
@@ -45,7 +37,6 @@
       <h2 class="title is-2">
         Responsive
       </h2>
-      <p>see <a href="https://bulma.io/documentation/modifiers/responsive-helpers/">responsive</a>.</p>
       <span class="is-hidden-tablet">in mobile devices</span>
       <span class="show-tablet-only">in tablet devices</span>
     </section>
@@ -55,8 +46,11 @@
       </h2>
       <hr>
       <p>
-        <a class="button" href="#">Button in link</a>
-        <a class="button is-primary" href="#">Button Primary</a>
+        <a class="pure-button button-blue" href="#">Button Blue</a>
+        <br>
+        <span>TODO (if necessary)</span>
+        <br>
+
         <a class="button is-dark" href="#">Button Primary</a>
         <a class="button is-info" href="#">Button Info</a>
         <a class="button is-success" href="#">Button Success</a>

@@ -89,3 +89,12 @@ body {
 .has-text-center {
   text-align: center;
 }
+
+// links
+a {
+  .font-select(@bold, lighten(@secondaryColor-1, 15));
+
+  &:hover {
+    color: lighten(@secondaryColor-1, 30);
+  }
+}
