@@ -1,0 +1,19 @@
+.ocean-bg-animated {
+  background-image: linear-gradient(60deg, darken(@primaryColor, 25) 0%, darken(@primaryColor, 10) 50%, darken(@primaryColor, 25) 100%);
+  animation: ocean-bg 15s ease infinite;
+  background-size: 600% 600%;
+}
+
+@keyframes ocean-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
