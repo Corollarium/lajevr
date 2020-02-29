@@ -27,25 +27,13 @@ figcaption {
 
 /**GENERAL ELEMENTS**/
 .transition (@duration: 15ms, @property: all, @ease: ease-in-out) {
-  -webkit-transition: @property @duration @ease;
-  -moz-transition: @property @duration @ease;
-  -ms-transition: @property @duration @ease;
-  -o-transition: @property @duration @ease;
   transition: @property @duration @ease;
 }
 
 .custom-transition (...) {
-  -webkit-transition: @arguments;
-  -moz-transition: @arguments;
-  -ms-transition: @arguments;
-  -o-transition: @arguments;
   transition: @arguments;
 }
 
 .transform(...) {
-  -webkit-transform: @arguments;
-  -moz-transform: @arguments;
-  -o-transform: @arguments;
-  -ms-transform: @arguments;
   transform: @arguments;
 }
