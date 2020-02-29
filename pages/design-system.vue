@@ -47,6 +47,10 @@
       <hr>
       <p>
         <a class="pure-button button-blue" href="#">Button Blue</a>
+        <a class="pure-button button-is-liquid">
+          <span>Button Liquid</span>
+          <div class="button-liquid" />
+        </a>
         <br>
         <span>TODO (if necessary)</span>
         <br>

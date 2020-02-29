@@ -14,6 +14,61 @@ figcaption {
   margin-bottom: 1rem;
 }
 
+.button-is-liquid {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 2px 2rem fade(darken(@primaryColor, 40), 30);
+
+  > span {
+    position: relative;
+    color: #ffffff;
+    text-transform: uppercase;
+    z-index: 1;
+    letter-spacing: .25rem;
+  }
+
+  .button-liquid {
+    position: absolute;
+    top: -5rem;
+    left: 0;
+    width: 100%;
+    height: 12.5rem;
+    background: linear-gradient(45deg, @primaryColor, @secondaryColor-2);
+    transition: .5s;
+
+    &::after, &::before {
+      content: '';
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -75%);
+      background: #000;
+    }
+
+    &:before {
+      border-radius: 45%;
+      background: rgba(20, 20, 20, 1);
+      animation: liquid-in-button 5s linear infinite;
+    }
+
+    &:after {
+      border-radius: 40%;
+      background: rgba(20, 20, 20, .5);
+      animation: liquid-in-button 10s linear infinite;
+    }
+  }
+  &:hover > .button-liquid {
+    top: -8rem;
+    background: linear-gradient(45deg, lighten(@primaryColor, 5), @secondaryColor-2);
+  }
+}
+
 .eliminate-space {
   font-size: 0px;
   > * {
@@ -37,3 +92,5 @@ figcaption {
 .transform(...) {
   transform: @arguments;
 }
+
+
