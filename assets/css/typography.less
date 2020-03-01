@@ -27,21 +27,34 @@ html {
   font-size:~"@{remValue}rem";
 }
 
+.text-margin (@value: 1) {
+  @result: @spacing * @value;
+  @remValue: @result / 16;
+  &:not(:last-child) {
+    margin: 0 0 ~"@{remValue}rem" 0;
+  }
+
+  &:not(:first-child) {
+    margin-top: @remValue*2rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14, @marginG: 4, @marginM: 3, @marginP: 2) {
   .font-size(@fontdesk);
   line-height: 1.2em;
-  .marginBottom(@marginG);
+  .text-margin(@marginG);
 
   @media @tablet {
     .font-size(@fonttablet);
     line-height: 1em;
-    .marginBottom(@marginM);
+    .text-margin(@marginM);
   }
 
   @media @mobile {
     .font-size(@fontmobile);
     line-height: 1em;
-    .marginBottom(@marginP);
+    .text-margin(@marginP);
   }
 }
 
@@ -67,8 +80,17 @@ h4 {
   .font-select(@regular);
 }
 
+p {
+  margin: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
 body {
   .font-size(16);
+  .font-select(@regular, #ffffff);
 
   @media @tablet {
     .font-size(15);
@@ -77,9 +99,8 @@ body {
   @media @mobile {
     .font-size(14);
   }
-
-  .font-select(@regular, #ffffff);
 }
+
 
 // text helpers
 .has-text-right {
