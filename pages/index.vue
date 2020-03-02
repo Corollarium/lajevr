@@ -214,36 +214,6 @@ export default {
 
 <style lang="less">
 @import '~assets/css/index.less';
-.hero {
-  .hero-body {
-    padding: 0;
-    position: relative;
-    text-shadow: 0px 0px 10px @darkGrey;
-  }
-
-  // .hero-html {
-  //   .text-over-image;
-  // }
-
-  .hero-title {
-    font-size: 8vw;
-    font-weight: bold;
-    text-align: right;
-    color: #d2d2d2;
-    letter-spacing: 0.35em;
-    display: block;
-    margin-top: 50px;
-    position: relative;
-    padding-bottom: 15%;
-    text-transform: capitalize;
-    font-variant: small-caps;
-    font-weight: bold;
-  }
-
-  .hero-subtitle {
-    color: #ffffff;
-  }
-}
 
 .background-light {
   background-color: #72797D;
