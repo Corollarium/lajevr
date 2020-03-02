@@ -1,5 +1,5 @@
 <template>
-  <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
+  <header :class="{'main-header': true, 'header-overlay': isOverlay}">
     <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
       <a class="pure-menu-heading" href="/" rel="home">
         <span class="logo-main" />
@@ -74,9 +74,18 @@ export default {
 
   data () {
     return {
-      isExpanded: false,
-      overlay: false
+      isExpanded: false
     };
+  },
+
+  computed: {
+    isOverlay () {
+      const p = this.$nuxt.$route.path;
+      if (p === '/' || p === '/mergulho-virtual') {
+        return true;
+      }
+      return false;
+    }
   }
 };
 </script>

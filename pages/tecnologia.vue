@@ -21,19 +21,19 @@
 
         <div class="number-wrapper">
           <number-bullet
-            :to="X"
+            :to="0"
           >
             <i18n>mergulhos</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="2"
           >
             <i18n>mergulhadores</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="0"
           >
             <i18n>horas de mergulho</i18n>
           </number-bullet>
