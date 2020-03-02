@@ -123,7 +123,16 @@
 </template>
 
 <script>
-export default {};
+import page from './page.vue';
+
+export default {
+  extends: page,
+
+  mounted () {
+    this.head.title = this.$gettext('Tecnologia');
+    this.head.description = this.$gettext('Tecnologia usada para o simulador de realidade virtual na Laje de Santos');
+  }
+};
 </script>
 
 <style></style>

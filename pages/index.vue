@@ -186,6 +186,7 @@
 </template>
 
 <script>
+import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/Ocean.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
@@ -202,13 +203,22 @@ export default {
     GLTFModel,
     Bubbles
   },
+
+  extends: page,
+
   data () {
     return {
       imagePeixes,
       imageMapNoBorders,
       imageMapaGeral2
     };
+  },
+
+  mounted () {
+    this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
+    this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
   }
+
 };
 </script>
 
