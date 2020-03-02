@@ -75,7 +75,14 @@ body {
     .font-size(14);
   }
 
-  .font-select(@regular, #000); // TODO tá zoando select, #ffffff);
+  .font-select(@regular, #ffffff);
+}
+
+input,
+button,
+textarea,
+select {
+  .font-select(@regular, #000);
 }
 
 // text helpers
