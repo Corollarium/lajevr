@@ -2,7 +2,13 @@
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
 
-.marginBottom (@value: 1;) {
+.marginTop (@value: 1) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-top: ~"@{remValue}rem";
+}
+
+.marginBottom (@value: 1) {
   @sizeResult: @spacing * @value;
   @remValue: @sizeResult / 16;
   margin-bottom: ~"@{remValue}rem";
