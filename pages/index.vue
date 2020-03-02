@@ -60,11 +60,11 @@
       </figure>
     </section>
 
-    <section id="mantas" class="columns" style="background: #46BCEC; margin-bottom: 0;">
+    <section id="mantas" class="columns" style="margin-bottom: 0;">
       <div class="column">
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
-          :background-color="0x46BCEC"
+          :background-color="0x001B33"
           :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
           :attribution="'Modelo 3D CC BY-NC por misaooo'"
         />
@@ -82,7 +82,7 @@
       </div>
     </section>
 
-    <section id="numeros" class="section" style="background: linear-gradient(#46BCEC, #FFFFFF); color: #000;">
+    <section id="numeros" class="section">
       <div class="container">
         <h2 class="title is-1">
           <i18n>

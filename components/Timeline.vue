@@ -157,8 +157,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@content-font: Cardo;
-@heading-font: 'Pathway Gothic One', sans-serif;
+@import '~assets/css/variables.less';
+
+@content-font: @mainFont;
+@heading-font: @secondaryFont;
 @timeline-width:700px;
 @timeline-container-width:100%;
 
