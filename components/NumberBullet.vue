@@ -113,3 +113,47 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+@import '~assets/css/variables.less';
+
+.number-wrapper {
+  margin: 0 auto;
+  text-align: justify;
+  position: relative;
+  width: 100%;
+
+  &:after {
+    display:inline-block;
+    width:100%;
+    content:'';
+  }
+
+  .number-info {
+    vertical-align: top;
+    font-family: @mainFont;
+    display: inline-block;
+    width: 15em;
+    text-align: center;
+    margin: 2em auto;
+
+    .number-round {
+      background: @darkBlue;
+      border-radius: 2em;
+      color: #ffffff;
+      font-weight: bold;
+      line-height: 2.2em;
+      margin: 0 auto;
+      text-align: center;
+      width: 2.8em;
+      height: 2.2em;
+      font-size: 5em;
+    }
+
+    .number-explanation {
+      width: 100%;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  }
+}
+</style>
