@@ -36,8 +36,10 @@
       const float SEA_CHOPPY = 2.0;
       const float SEA_SPEED = 0.8;
       const float SEA_FREQ = 0.16;
-      const vec3 SEA_BASE = vec3(0.1,0.19,0.22);
-      const vec3 SEA_WATER_COLOR = vec3(0.8,0.9,0.6);
+      // const vec3 SEA_BASE = vec3(0.1,0.19,0.22);
+      // const vec3 SEA_WATER_COLOR = vec3(0.8,0.9,0.6);
+      const vec3 SEA_BASE = vec3(0.0,0.09,0.18);
+      const vec3 SEA_WATER_COLOR = vec3(0.8,0.9,0.6)*0.6;
       const float SKY_INTENSITY = 0.4;
 
       #define SEA_TIME time * SEA_SPEED
@@ -223,6 +225,7 @@
 
 <script>
 const THREE = require('three');
+/* eslint-disable no-unused-vars */
 
 export default {
   data () {
@@ -284,7 +287,7 @@ export default {
     cameraOrtho.position.z = 10;
     const sceneOrtho = new THREE.Scene(); // overlay scene
     let spriteLaje = null;
-    let mapLaje;
+    let mapLaje, mapCeu;
 
     const fitLaje = () => {
       if (spriteLaje) {
@@ -293,12 +296,13 @@ export default {
       }
     };
 
-    new THREE.TextureLoader().load('./Laje_de_Santos_transp.png',
+    const x = new THREE.TextureLoader().load('/textures/ocean/laje_com_ceu.png',
       (_mapLaje) => {
         mapLaje = _mapLaje;
-        const materialLaje = new THREE.SpriteMaterial({ map: mapLaje, color: 0xFFFFFF });
+        const materialLaje = new THREE.SpriteMaterial({ map: mapLaje, color: 0xFFFFFF, depthTest: true });
         spriteLaje = new THREE.Sprite(materialLaje);
         spriteLaje.center.set(0.5, 0.3);
+        spriteLaje.renderDepth = -1;
         const SCALE = 0.7;
         spriteLaje.scale.set(mapLaje.image.width * SCALE, mapLaje.image.height * SCALE, 1);
         spriteLaje.position.set(0, 0, 1);
@@ -306,6 +310,7 @@ export default {
         sceneOrtho.add(spriteLaje);
       }
     );
+
     this.renderer.autoClear = false;
 
     // resize canvas function

@@ -188,7 +188,7 @@
 <script>
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
-import Ocean from '~/components/Ocean.vue';
+import Ocean from '~/components/OceanB.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 // import Globe from '~/components/Globe.vue';
