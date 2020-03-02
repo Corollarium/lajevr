@@ -27,18 +27,21 @@ html {
 .font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14, @marginG: 4, @marginM: 3, @marginP: 2) {
   .font-size(@fontdesk);
   line-height: 1.2em;
-  .marginBottom(@marginG);
+  .marginBottom(@marginG/2);
+  .marginTop(@marginG);
 
   @media @tablet {
     .font-size(@fonttablet);
     line-height: 1em;
-    .marginBottom(@marginM);
+    .marginTop(@marginM);
+    .marginBottom(@marginM/2);
   }
 
   @media @mobile {
     .font-size(@fontmobile);
     line-height: 1em;
-    .marginBottom(@marginP);
+    .marginTop(@marginP);
+    .marginBottom(@marginP/2);
   }
 }
 
