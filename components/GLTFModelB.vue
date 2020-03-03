@@ -40,7 +40,7 @@ export default {
     backgroundColor: {
       type: String,
       required: false,
-      default: '0x000000'
+      default: 'transparent'
     }
   },
 
@@ -60,7 +60,10 @@ export default {
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
-    this.scene.clearColor = BABYLON.Color3.FromHexString(this.backgroundColor);
+
+    this.scene.clearColor = (this.backgroundColor === 'transparent'
+      ? new BABYLON.Color4(0, 0, 0, 0.1)
+      : BABYLON.Color3.FromHexString(this.backgroundColor));
 
     // Add a camera to the scene and attach it to the canvas
     this.camera = new BABYLON.ArcRotateCamera(
