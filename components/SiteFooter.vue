@@ -21,14 +21,21 @@
             <li class="pure-menu-item">
               <nuxt-link to="/sobre" class="pure-menu-link">
                 <i18n>
-                  Sobre
+                  Projeto
                 </i18n>
               </nuxt-link>
             </li>
             <li class="pure-menu-item">
               <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
                 <i18n>
-                  Mergulhos
+                  Mergulho virtual
+                </i18n>
+              </nuxt-link>
+            </li>
+            <li class="pure-menu-item">
+              <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
+                <i18n>
+                  Pontos de mergulho
                 </i18n>
               </nuxt-link>
             </li>
@@ -63,9 +70,14 @@
             </i18n>
           </h2>
           <p>
-            <a href="https://corollarium.com">
-              <span class="logo-corollarium" />
-              Corollarium Tecnologia
+            <a
+              class="corollarium-brand"
+              href="https://corollarium.com"
+              title="Corollarium"
+              target="_blank"
+            >
+              <span class="logo-img" />
+              <span class="">Corollarium Tecnologia</span>
             </a>
           </p>
           <p>
