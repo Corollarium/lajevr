@@ -92,6 +92,7 @@
               frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
+              loading="lazy"
             />
           </figure>
           <h2 class="timeline__content-title">
@@ -137,7 +138,7 @@ export default {
             if (bkg && !this.$el.style.background.includes(bkg.src)) {
               background.style.opacity = 0.5;
               setTimeout(() => {
-                background.style.background = 'center / cover fixed no-repeat url(' + bkg.src + ') rgba(33, 33, 33, 0.8)';
+                // TODO: background.style.background = 'center / cover fixed no-repeat url(' + bkg.src + ') rgba(33, 33, 33, 0.8)';
                 background.style.opacity = 1.0;
               }, 300);
             }
@@ -215,7 +216,6 @@ export default {
     position: relative;
     transform: translateY(-80px);
     &:before {
-      content: attr(data-text);
       letter-spacing: 3px;
       width: 100%;
       position: absolute;
