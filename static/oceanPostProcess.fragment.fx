@@ -38,8 +38,8 @@ const float SEA_CHOPPY = 4.0;
 const float SEA_SPEED = 0.8;
 const float SEA_FREQ = 0.16;
 
-const vec3 SEA_BASE = vec3(0.1,0.39,0.62);
-const vec3 SEA_WATER_COLOR = vec3(0.1,0.2,0.8);
+const vec3 SEA_BASE = vec3(0.0,0.13,0.25); // vec3(0.1,0.39,0.62);
+const vec3 SEA_WATER_COLOR = vec3(0.0,0.13,0.25);//vec3(0.1,0.2,0.8);
 #define SEA_TIME (1.0 + time * SEA_SPEED)
 const mat2 octave_m = mat2(1.6,1.2,-1.2,1.6);
 
