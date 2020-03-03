@@ -23,7 +23,7 @@ figcaption {
   border-radius: .5rem;
   box-shadow: 0 2px 2rem fade(darken(@primaryColor, 40), 30);
 
-  > span {
+  .button-is-liquid__text {
     position: relative;
     color: #ffffff;
     text-transform: uppercase;
@@ -31,7 +31,8 @@ figcaption {
     letter-spacing: .25rem;
   }
 
-  .button-liquid {
+  .button-is-liquid__animation {
+    display: block;
     position: absolute;
     top: -5rem;
     left: 0;
@@ -63,9 +64,14 @@ figcaption {
       animation: liquid-in-button 10s linear infinite;
     }
   }
-  &:hover > .button-liquid {
-    top: -8rem;
-    background: linear-gradient(45deg, lighten(@primaryColor, 5), @secondaryColor-2);
+  &:hover .button-is-liquid__text {
+    font-weight: bold;
+    color: @linkColorHover;
+  }
+
+  &:hover > .button-is-liquid__animation {
+    top: -9rem;
+    background: @primaryColor;
   }
 }
 
