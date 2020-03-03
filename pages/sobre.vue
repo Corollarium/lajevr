@@ -1,12 +1,12 @@
 <template>
   <article class="container">
-    <h1 class="title is-1">
+    <h1>
       <i18n>
         O projeto
       </i18n>
     </h1>
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           Laje de Santos em Realidade Virtual
         </i18n>
@@ -24,7 +24,7 @@
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           A ideia e a execução
         </i18n>
@@ -44,15 +44,15 @@
 
       <p>
         <i18n>
-          Com o surgimento de uma edital aberto do estado de São Paulo, o ProAC,
-          pudemos ver um caminho para realizar o projeto. A proposta deste projeto
-          foi aprovada.
+          Com o surgimento de um edital aberto pelo estado de São Paulo, o ProAC,
+          pudemos ver um caminho para realizar o projeto. Enviamos a proposta deste projeto
+          e ela foi aprovada.
         </i18n>
       </p>
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           O Parque Estadual Marinho da Laje de Santos
         </i18n>
@@ -110,20 +110,26 @@
       <p>
         <i18n>
           Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,
-          podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos. outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo, podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos.
+          podendo alcançar oito metros de envergadura e pesar mais de duas toneladas. Há o
+          <a href="https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta">Projeto Mantas do Brasil</a>, que busca a
+          ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente
+          incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio
+          de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN.
+          Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas
+          algumas centenas de indivíduos.
         </i18n>
       </p>
     </section>
 
     <section class="section">
-      <h2 class="title is-2">
+      <h2>
         <i18n>
           Agradecimentos
         </i18n>
       </h2>
       <p>
         <i18n>
-          Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto, onde.
+          Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto.
         </i18n>
       </p>
     </section>
@@ -131,7 +137,17 @@
 </template>
 
 <script>
-export default {};
+import page from './page.vue';
+
+export default {
+  extends: page,
+
+  mounted () {
+    this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
+    this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
+  }
+
+};
 </script>
 
 <style></style>

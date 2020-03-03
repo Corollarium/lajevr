@@ -4,29 +4,27 @@
       Laje VR
       <span>Design System</span>
     </h1>
-
-    <section class="section">
-      <p>
-        See <a href="https://bulma.io/documentation/">Bulma docs</a>, particularly
-        <a href="https://bulma.io/documentation/customize/variables/">customization</a>
-      </p>
-    </section>
-
-    <section class="section">
-      <h2 class="title is-2">
+    <section class="section dark-background-section">
+      <h2>
         Typography
       </h2>
       <hr>
-      <h1 class="title is-1">
+      <h1>
         This is Heading 1 appeareance
       </h1>
-      <h2 class="title is-2">
+      <h1>
+        <i18n>Título com tradução</i18n>
+      </h1>
+      <p>Algum texto</p>
+      <h2>
         This is Heading 2 appeareance
       </h2>
-      <h3 class="title is-3">
+      <p>Algum texto</p>
+      <h3>
         This is Heading 3 appeareance
       </h3>
-      <h4 class="title is-4">
+      <p>Algum texto</p>
+      <h4>
         This is Heading 4 appeareance
       </h4>
       <p>
@@ -39,23 +37,33 @@
       <h2 class="title is-2">
         Responsive
       </h2>
-      <p>see <a href="https://bulma.io/documentation/modifiers/responsive-helpers/">responsive</a>.</p>
       <span class="is-hidden-tablet">in mobile devices</span>
       <span class="show-tablet-only">in tablet devices</span>
     </section>
-    <section class="section">
-      <h2 class="title is-2">
+    <section class="section dark-background-section">
+      <h2>
         Colors
       </h2>
       <hr>
       <p>
-        <a class="button" href="#">Button in link</a>
-        <a class="button is-primary" href="#">Button Primary</a>
+        <a class="pure-button button-blue" href="#">Button Blue</a>
+        <a class="pure-button button-is-liquid">
+          <span class="button-is-liquid__text">Button Liquid</span>
+          <span class="button-is-liquid__animation" />
+        </a>
+        <br>
+        <span>TODO (if necessary)</span>
+        <br>
+
         <a class="button is-dark" href="#">Button Primary</a>
         <a class="button is-info" href="#">Button Info</a>
         <a class="button is-success" href="#">Button Success</a>
         <a class="button is-warning" href="#">Button Warning</a>
         <a class="button is-danger" href="#">Button danger</a>
+        </div>
+      </p>
+      <p>
+        <a class="button" href="#">Button in link</a>
         </div>
       </p>
     </section>

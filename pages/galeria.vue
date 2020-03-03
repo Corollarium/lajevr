@@ -28,23 +28,25 @@
       class="section section-gallery"
     >
       <figure>
-        <img class="gallery-image" src="~assets/images/fish/goldfish-1900832_960_720.png">
+        <img :src="a.url" class="gallery-image">
       </figure>
       <p class="gallery-creator">
-        <i18n>por</i18n> {{ a.creator }} {{ a.license }}
+        <i18n>foto por</i18n> {{ a.creator }} {{ a.license }}
       </p>
-      <p>{{ a.description }}</p>
+      <p class="gallery-description">
+        {{ a.description }}
+      </p>
     </section>
   </article>
 </template>
 
 <script>
+import galleryData from '~/components/gallery.json';
+
 export default {
   data () {
     return {
-      gallery: [
-
-      ],
+      gallery: galleryData,
       filterSearch: '',
       filterSearchPlaceholder: ''
     };
@@ -66,4 +68,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+.section-gallery {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  .gallery-creator {
+    font-size: 90%;
+    font-style: italic;
+  }
+  .gallery-description {
+    font-weight: bold;
+  }
+}
+
 </style>

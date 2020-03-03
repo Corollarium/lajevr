@@ -2,9 +2,15 @@
   <div class="object-embed-3d">
     <div class="object-embed-icon" />
     <p
-      v-html="attribution"
       class="attribution"
-    />
+    >
+      <a :href="link" v-if="link" target="_blank">
+        {{ attribution }}
+      </a>
+      <span v-else>
+        {{ attribution }}
+      </span>
+    </p>
   </div>
 </template>
 
@@ -26,10 +32,15 @@ export default {
       required: false,
       default: ''
     },
-    backgroundColor: {
-      type: Number,
+    link: {
+      type: String,
       required: false,
-      default: 0xFFFFFF
+      default: null
+    },
+    backgroundColor: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
 
@@ -47,9 +58,15 @@ export default {
     camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(this.backgroundColor);
+    if (!this.backgroundColor) {
+      scene.background = null;
+      this.renderer = new THREE.WebGLRenderer({ alpha: true, powerPreference: 'high-performance' });
+      this.renderer.setClearColor(0xFFFFFF, 0);
+    } else {
+      scene.background = new THREE.Color(this.backgroundColor);
+      this.renderer = new THREE.WebGLRenderer({ powerPreference: 'high-performance' });
+    }
 
-    this.renderer = new THREE.WebGLRenderer({ powerPreference: 'high-performance' });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(container.clientWidth, window.innerHeight);
 

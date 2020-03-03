@@ -1,3 +1,72 @@
+//layout
+@spacing: 8; //value in PX
+@gridWidth: 1280px;
+
+.marginTop (@value: 1) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-top: ~"@{remValue}rem";
+}
+
+.marginBottom (@value: 1) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-bottom: ~"@{remValue}rem";
+}
+
+.add-padding (@valueV: 1, @valueH: 1) {
+  @resultV: @spacing * @valueV;
+  @resultH: @spacing * @valueH;
+  @remValueV: @resultV / 16;
+  @remValueH: @resultH / 16;
+  padding: ~"@{remValueV}rem" ~"@{remValueH}rem";
+}
+
+.add-margin (@valueV: 1, @valueH: 1) {
+  @resultV: @spacing * @valueV;
+  @resultH: @spacing * @valueH;
+  @remValueV: @resultV / 16;
+  @remValueH: @resultH / 16;
+  margin: ~"@{remValueV}rem" ~"@{remValueH}rem";
+}
+
+.container {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  max-width: @gridWidth;
+
+}
+
+.section {
+  @media @desktopBig {
+    .add-padding(10,5);
+  }
+
+  @media @desktopSmall {
+    .add-padding(7,4);
+  }
+
+  @media @tablet {
+    .add-padding(5,3);
+  }
+
+  @media @mobile {
+    .add-padding(3,2);
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.is-fullheight {
+  min-height: 100vh;
+}
+
 .text-over-image {
   padding: 0 2vw;
   position: absolute;
@@ -5,12 +74,7 @@
   bottom: 0%;
   color: #eee;
   text-shadow: 0px 0px 10px @darkGrey;
-  font-family: @bigFont;
-}
-
-.text-larger {
-  font-size: 1.3em;
-  font-weight: bold;
+  font-family: @mainFont;
 }
 
 .fade-top-bottom {

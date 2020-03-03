@@ -1,16 +1,119 @@
 // font
-@bigFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-@smallFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@light: 300;
+@regular: 400;
+@medium: 500;
+@bold: 700;
 
-.font-define (@size:1, @weight: 500, @font-family: @bigFont) {
-  font-size: 8px*@size; // TODO: não usar px, bulma usa rem, seus artigos usam pt
-  line-height: 1.2;
+
+html {
+  font-size: 16px;
+  font-family: @mainFont;
+}
+
+.font-select (@weight: 500, @font-color: @secondaryColor-1, @font-family: @mainFont) {
+  color: @font-color;
+  font-family: @font-family;
   font-weight: @weight;
-  font-family: @font-family; // TODO: bulma já usa @bigFont, aqui é redundante
+}
+
+// usage, x is the pixel size needed: .font-size(x);
+.font-size(@sizeValue: 16) {
+  @remValue: @sizeValue / 16;
+  @pxValue: (@sizeValue);
+  font-size:~"@{pxValue}px";
+  font-size:~"@{remValue}rem";
+}
+
+.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14, @marginG: 4, @marginM: 3, @marginP: 2) {
+  .font-size(@fontdesk);
+  line-height: 1.2em;
+  .marginBottom(@marginG/2);
+  .marginTop(@marginG);
+
+  @media @tablet {
+    .font-size(@fonttablet);
+    line-height: 1em;
+    .marginTop(@marginM);
+    .marginBottom(@marginM/2);
+  }
+
+  @media @mobile {
+    .font-size(@fontmobile);
+    line-height: 1em;
+    .marginTop(@marginP);
+    .marginBottom(@marginP/2);
+  }
 }
 
 //headings
 
 h1 {
-  .font-define(7, 600);
+  .font-responsive(56, 40, 32);
+  .font-select(@regular);
+}
+
+h2 {
+  .font-responsive(48, 32, 24);
+  .font-select(@light);
+}
+
+h3 {
+  .font-responsive(32, 24, 16);
+  .font-select(@regular);
+}
+
+h4 {
+  .font-responsive(24, 20, 15);
+  .font-select(@regular);
+}
+
+body {
+  .font-size(16);
+
+  @media @tablet {
+    .font-size(15);
+  }
+
+  @media @mobile {
+    .font-size(14);
+  }
+
+  .font-select(@regular, #ffffff);
+}
+
+.text-larger {
+  .font-size(20);
+
+  @media @tablet {
+    .font-size(18);
+  }
+
+  @media @mobile {
+    .font-size(16);
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  .font-select(@regular, #000);
+}
+
+// text helpers
+.has-text-right {
+  text-align: right;
+}
+
+.has-text-center {
+  text-align: center;
+}
+
+// links
+a {
+  .font-select(@bold, @linkColor);
+
+  &:hover {
+    color: @linkColorHover;
+  }
 }

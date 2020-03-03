@@ -1,0 +1,218 @@
+.main-header {
+  background-color: @darkColor1;
+  display: inline-block;
+  width: 100%;
+  z-index: 10;
+
+  @media @desktop {
+    height: 5rem;
+  }
+
+  .pure-menu-heading {
+    width: 6rem;
+
+    @media @responsiveDevices {
+      margin: auto;
+      display: block;
+    }
+
+    @media @desktop {
+      float: left;
+    }
+
+    .logo-main {
+      background-color: #fff;
+      background: url("~assets/images/logos/logo-laje-header.png") no-repeat left center;
+      background-size: contain;
+      display: block;
+      height: 5rem;
+      width: 100%;
+    }
+  }
+
+  .language-select {
+    margin-right: 1rem;
+  }
+
+  .main-menu {
+    .define-layout();
+    margin: auto;
+    font-size: 0;
+
+    .main-nav {
+      @media @responsiveDevices {
+        clear: both;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition-property: opacity, max-height;
+        transition-duration: 20ms, 25ms;
+        transition-timing-function: ease-out;
+        .add-margin(3, 2);
+        margin-top: 0;
+
+        .pure-menu-list {
+          display: block;
+        }
+      }
+
+      @media @desktop {
+        clear: none;
+        float: right;
+        max-height: none;
+      }
+
+      .nav-top {
+        float: right;
+        font-size: .8rem;
+        margin: .5rem 0 .7rem;
+      }
+
+      .pure-menu-item {
+        float: left;
+
+        @media @responsiveDevices {
+          float: right;
+          display: block;
+          clear: both;
+        }
+      }
+
+      .pure-menu-link {
+        color: lighten(@secondaryColor-2, 20);
+        text-transform: uppercase;
+        font-weight: @regular;
+        padding: .25rem .75rem;
+        font-size: .9rem;
+        .transition(.3s, border-bottom);
+
+        @media @desktop {
+          border-bottom: .25rem inset fade(@primaryColor, 30);
+        }
+
+        &:hover {
+          color: lighten(@secondaryColor-2, 40);
+          background-color: transparent;
+          border-bottom-color: @secondaryColor-2;
+          .transition();
+        }
+
+        &.is-active,
+        &.nuxt-link-exact-active,
+        &:focus {
+          font-weight: bold;
+          border-color: @secondaryColor-2;
+          background-color: transparent;
+
+          @media @desktop {
+            border-bottom: .25rem inset @secondaryColor-2;
+          }
+        }
+
+        @media @responsiveDevices {
+          text-align: center;
+        }
+      }
+    }
+
+    /**TEMPORARIO ATE MUDAR LANG PICKER **/
+    .language-select {
+      border: none;
+      background: none;
+      color: lighten(@secondaryColor-2, 20);
+      text-transform: uppercase;
+    }
+
+    /** MOBILE MENU **/
+    .hamburger {
+      float: right;
+      cursor: pointer;
+      padding: 1.5rem;
+      position: absolute;
+      top: 1rem;
+      right: 0;
+      user-select: none;
+
+      @media @desktop {
+        display: none;
+
+      }
+
+      .burger-bar {
+        background: @linkColor;
+        display: block;
+        height: 2px;
+        position: relative;
+        .transition(.2s, background, ease-in);
+        width: 1.5rem;
+
+        &:before,
+        &:after {
+          background: @linkColor;
+          content: '';
+          height: 100%;
+          position: absolute;
+          .transition(.2s, transform, ease-out);
+          width: 100%;
+        }
+
+        &:before {
+          top: .5rem;
+        }
+
+        &:after {
+          top: -.5rem;
+        }
+      }
+    }
+
+    .menu-toggle-input {
+      display: none;
+
+      &:checked {
+        ~.main-nav {
+          max-height: 240px;
+          opacity: 1;
+        }
+
+        ~.hamburger>.burger-bar {
+          background: transparent;
+
+          &:before {
+            top: 0;
+            .transform(rotate(-45deg));
+          }
+
+          &:after {
+            top: 0;
+            .transform(rotate(45deg));
+          }
+        }
+
+      }
+    }
+  }
+
+  /** transparent mode **/
+  &.header-overlay {
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    width: 100%;
+  }
+}
+
+.corollarium-brand {
+  color: lighten(@primaryColor,20);
+  text-decoration: none;
+  .logo-img {
+    background: url("~assets/images/logos/logo-mobi.svg") no-repeat left center;
+    display: inline-block;
+    background-size: contain;
+    margin-right: -5px;
+    margin-top: .3rem;
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+}

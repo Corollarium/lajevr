@@ -18,5 +18,6 @@
   "vetur.validation.template": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "html.customData": ["./html.html-data.json"]
 }

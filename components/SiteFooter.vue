@@ -1,66 +1,84 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="columns">
-        <div class="column">
-          <h2 class="subtitle is-3">
-            <i18n>
-              Mapa
-            </i18n>
-          </h2>
-          <ul>
-            <li>
-              <nuxt-link to="/">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <ul class="pure-menu-list pure-menu-horizontal">
+            <li class="pure-menu-item">
+              <nuxt-link to="/" class="pure-menu-link">
                 <i18n>
                   Início
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/vida">
+            <li class="pure-menu-item">
+              <nuxt-link to="/vida" class="pure-menu-link">
                 <i18n>
                   Vida
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/about">
+            <li class="pure-menu-item">
+              <nuxt-link to="/sobre" class="pure-menu-link">
                 <i18n>
-                  Sobre
+                  Projeto
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/dive">
+            <li class="pure-menu-item">
+              <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
                 <i18n>
-                  Mergulhos
+                  Mergulho virtual
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/fauna">
+            <li class="pure-menu-item">
+              <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
                 <i18n>
-                  Catálogo de vida
+                  Pontos de mergulho
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/tecnologia">
+            <li class="pure-menu-item">
+              <nuxt-link to="/especies" class="pure-menu-link">
+                <i18n>
+                  Catálogo de espécies
+                </i18n>
+              </nuxt-link>
+            </li>
+            <li class="pure-menu-item">
+              <nuxt-link to="/tecnologia" class="pure-menu-link">
                 <i18n>
                   Tecnologia
                 </i18n>
               </nuxt-link>
             </li>
+            <li class="pure-menu-item">
+              <nuxt-link to="/galeria" class="pure-menu-link">
+                <i18n>
+                  Galeria
+                </i18n>
+              </nuxt-link>
+            </li>
           </ul>
         </div>
-        <div class="column has-text-right">
-          <h2 class="subtitle is-3">
+        <div class="pure-u-1">
+          <hr style="opacity: .2">
+          <h2 class="footer-title">
             <i18n>
               Projeto e execução
             </i18n>
           </h2>
           <p>
-            <a href="https://corollarium.com">Corollarium Tecnologia</a>.
+            <a
+              class="corollarium-brand"
+              href="https://corollarium.com"
+              title="Corollarium"
+              target="_blank"
+            >
+              <span class="logo-img" />
+              <span class="">Corollarium Tecnologia</span>
+            </a>
           </p>
           <p>
             <a href="https://github.com/Corollarium"><i18n>
@@ -79,7 +97,7 @@
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
             >CC BY NC SA 4.0</a>
             <i18n>
-              exceto quando explicitamente referenciado.
+              exceto quando explicitamente referenciado
             </i18n>
           </p>
         </div>
@@ -87,13 +105,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="less" scoped>
-@import '~assets/css/index.less';
-
-.footer {
-  background: #000;
-  color: #fff;
-  display: block;
-}
-</style>

@@ -1,0 +1,15 @@
+.columns {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+
+  .column {
+    flex-basis: content;
+    flex: 1;
+
+    &.is-2, &.is-2-tablet {
+      flex: none;
+      width: 16.66667%;
+    }
+  }
+}

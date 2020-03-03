@@ -1,59 +1,66 @@
 <template>
-  <header :class="{'main-header': true, 'header-overlay': $nuxt.$route.path == '/'}">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <input id="menu" v-model="isExpanded" type="checkbox" class="custom-wrapper">
-      <div class="navbar-brand is-marginless">
-        <a class="navbar-item" href="/" rel="home">
-          <span class="logo-main" />
-        </a>
-
-        <label
-          for="menu"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span />
-          <span />
-          <span />
-        </label>
-      </div>
-
-      <div id="main-navigation" class="navbar-menu is-marginless">
-        <div
-          @click="isExpanded = false"
-          class="navbar-end"
-        >
-          <nuxt-link to="/" class="navbar-item">
-            <i18n>Início</i18n>
-          </nuxt-link>
-          <nuxt-link to="/dive" class="navbar-item">
-            <i18n>Mergulho</i18n>
-          </nuxt-link>
-          <nuxt-link to="/vida" class="navbar-item">
-            <i18n>Vida</i18n>
-          </nuxt-link>
-          <nuxt-link to="/fauna" class="navbar-item">
-            <i18n>Catálogo</i18n>
-          </nuxt-link>
-          <nuxt-link to="/about" class="navbar-item">
-            <i18n>Sobre</i18n>
-          </nuxt-link>
-          <span class="navbar-item">
-            <LanguagePicker />
-          </span>
+  <header :class="{'main-header': true, 'header-overlay': isOverlay}">
+    <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
+      <a class="pure-menu-heading" href="/" rel="home">
+        <span class="logo-main" />
+      </a>
+      <input id="menu-toggle" v-model="isExpanded" type="checkbox" class="menu-toggle-input">
+      <label
+        for="menu-toggle"
+        class="hamburger"
+        aria-label="menu"
+        aria-expanded="false"
+      >
+        <span class="burger-bar" />
+      </label>
+      <div class="main-nav">
+        <div class="nav-top">
+          <LanguagePicker />
           <a
-            class="navbar-item"
+            class="corollarium-brand"
             href="https://corollarium.com"
             title="Corollarium"
             target="_blank"
           >
-            <span class="logo-corollarium" />
-            <span class>Corollarium</span>
+            <span class="logo-img" />
+            <span class="">Corollarium</span>
           </a>
         </div>
+        <div class="clear-both" />
+        <ul @click="isExpanded = false" class="pure-menu-list">
+          <li class="pure-menu-item pure-menu-selected">
+            <nuxt-link to="/" class="pure-menu-link">
+              <i18n>Conheça</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
+              <i18n>Mergulho Virtual</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/especies" class="pure-menu-link">
+              <i18n>Espécies</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/pontos-de-mergulho" class="pure-menu-link">
+              <i18n>Pontos de Mergulho</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/galeria" class="pure-menu-link">
+              <i18n>Galeria</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
+            <nuxt-link to="/sobre" class="pure-menu-link">
+              <i18n>Sobre</i18n>
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
   </header>
 </template>
 
@@ -67,99 +74,18 @@ export default {
 
   data () {
     return {
-      isExpanded: false,
-      overlay: false
+      isExpanded: false
     };
+  },
+
+  computed: {
+    isOverlay () {
+      const p = this.$nuxt.$route.path;
+      if (p === '/' || p === '/mergulho-virtual') {
+        return true;
+      }
+      return false;
+    }
   }
 };
 </script>
-
-<style lang="less" scoped>
-@import '~assets/css/index.less';
-
-.logo-main {
-  // background: url("/assets/images/logo-videowall.svg") no-repeat left center;
-  background-size: contain;
-  height: 30px;
-  width: 110px;
-}
-
-.logo-corollarium {
-  background: url("/assets/images/logo-mobi.svg") no-repeat left center;
-  background-size: contain;
-  height: 30px;
-  width: 30px;
-}
-
-@media screen and (min-width:1024px) {
-  header.main-header {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: block;
-    margin-bottom: 30px;
-  }
-
-.navbar {
-    background-color: @grayBackground;
-  }
-}
-
-#main-navigation,
-.navbar.navbar-admin {
-  .navbar-link,
-  a.navbar-item {
-    color: #3273dc;
-    font-weight: bold;
-
-    &:hover,
-    &.is-active,
-    &.nuxt-link-exact-active {
-      // something?
-    }
-  }
-}
-
-.burger {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-}
-
-/** Hamburgers **/
-.custom-wrapper {
-  display: none;
-
-  .navbar-brand > .navbar-burger > span {
-    transition: transform 0.6s;
-  }
-
-  &:checked {
-    ~ .navbar-menu {
-      display: block;
-    }
-
-    ~ .navbar-brand > .navbar-burger > span {
-      &:nth-child(1) {
-        -webkit-transform: translateY(5px) rotate(45deg);
-        transform: translateY(5px) rotate(45deg);
-      }
-
-      &:nth-child(2) {
-        opacity: 0;
-      }
-
-      &:nth-child(3) {
-        -webkit-transform: translateY(-5px) rotate(-45deg);
-        transform: translateY(-5px) rotate(-45deg);
-      }
-    }
-  }
-}
-
-header.main-header.header-overlay {
-  position: absolute;
-  background: transparent;
-  .navbar {
-    background: transparent;
-  }
-  width: 100%;
-}
-</style>
