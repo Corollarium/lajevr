@@ -1,14 +1,9 @@
 <template>
   <div>
-    <section class="hero is-fullheight">
-      <div class="hero-body">
+    <section class="sticky-hero">
+      <div class="sticky-hero-content">
         <Ocean />
-        <div class="hero-html container">
-          <!--div class="hero-image">
-            <figure class="image">
-              <img :src="imageLogoLaje.src" :srcset="imageLogoLaje.srcSet" alt="Logo Laje de Santos">
-            </figure>
-          </div -->
+        <div class="sticky-hero-attribution">
           <p class="attribution">
             Photo
             <a
@@ -27,6 +22,7 @@
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="pure-g">
         <div class="pure-u-1 pure-u-md-1-2 description">
@@ -89,7 +85,7 @@
 
     <section class="description">
       <figure class="image">
-        <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-bottom" alt="Cardume de Xira">
+        <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-top-bottom" alt="Cardume de Xira">
         <figcaption class="attribution">
           By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
         </figcaption>
@@ -106,6 +102,26 @@
     <section class="section">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
+          <i18n>Mergulho virtual</i18n>
+        </h2>
+        <p>
+          <i18n>
+            A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas. É habitada
+            por corais, golfinhos, tartarugas, algas, raias-manta.
+          </i18n>
+        </p>
+        <p>
+          <a class="pure-button button-is-liquid" href="/mergulho-virtual">
+            <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
+            <span class="button-is-liquid__animation" />
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <h2>
           <i18n>A vida na Laje</i18n>
         </h2>
         <p>
@@ -115,13 +131,51 @@
           </i18n>
         </p>
       </div>
+      <div style="text-align: center">
+        <figure class="image image-fish">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Peixe_Frade.jpg/320px-Peixe_Frade.jpg" alt="Salmeidas / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
+          <figcaption>
+            Peixe frade
+          </figcaption>
+        </figure>
+        <figure class="image image-fish">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Mola_mola2.jpg/240px-Mola_mola2.jpg" alt="OpenCage / CC BY-SA (https://creativecommons.org/licenses/by-sa/2.5)">
+          <figcaption>
+            Peixe lua
+          </figcaption>
+        </figure>
+
+        <figure class="image image-fish">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tartaruga_da_Laje.jpg/320px-Tartaruga_da_Laje.jpg" alt="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons">
+          <figcaption>
+            Tartaruga de pente
+          </figcaption>
+        </figure>
+        <figure class="image image-fish">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
+          <figcaption>
+            Coió
+          </figcaption>
+        </figure>
+      </div>
+
+      <div style="text-align: center">
+        <a class="pure-button button-is-liquid" href="/vida">
+          <span class="button-is-liquid__text"><i18n>Aprenda sobre a vida na laje</i18n></span>
+          <span class="button-is-liquid__animation" />
+        </a>
+
+        <a class="pure-button button-is-liquid" href="/especies">
+          <span class="button-is-liquid__text"><i18n>Catálogo de espécies</i18n></span>
+          <span class="button-is-liquid__animation" />
+        </a>
+      </div>
     </section>
 
     <section id="mantas" class="columns" style="margin-bottom: 0;">
       <div class="column">
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
-          :background-color="0x001B33"
           :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
           :attribution="'Modelo 3D CC BY-NC por misaooo'"
         />
@@ -204,6 +258,8 @@
       <Timeline />
     </section>
   </div>
+  </section>
+  </div></section>
 </template>
 
 <script>
@@ -258,11 +314,30 @@ h1, h2 {
   text-transform: uppercase
 }
 
+.sticky-hero {
+  height: 300vh;
+  .sticky-hero-content {
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+  }
+  .sticky-hero-attribution {
+    margin: 0 auto;
+    position: static;
+    width: auto;
+    max-width: 1280px;
+  }
+}
+
 .number-wrapper .number-info {
   width: 20em !important;
 }
 .number-wrapper .number-info .number-round {
   width: 3.2em !important;
+}
+
+.image-fish {
+  display: inline-block
 }
 
 .bubbles {
