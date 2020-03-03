@@ -26,6 +26,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "aos": "^2.3.4",
     "babylonjs-loaders": "^4.1.0",
+    "blueprint-css": "^3.0.0-beta.0",
     "easygettext": "^2.9.0",
     "esm": "^3.2.25",
     "gsap": "^3.1.1",

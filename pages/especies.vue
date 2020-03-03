@@ -32,8 +32,8 @@
             </h3>
           </div>
         </div>
-        <div class="field-body columns">
-          <div class="field column">
+        <div class="field-body" bp="grid">
+          <div class="field" bp="1 4@md">
             <label class="label">
               <i18n>
                 Nome
@@ -46,7 +46,7 @@
               </span>
             </div>
           </div>
-          <div class="field column">
+          <div class="field" bp="1 2@md">
             <label class="label">
               <i18n>
                 Cor
@@ -82,7 +82,7 @@
               </div>
             </div>
           </div>
-          <div class="field column">
+          <div class="field" bp="1 4@md">
             <label class="label">
               <i18n>
                 Tamanho (em cm)
