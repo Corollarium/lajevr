@@ -29,8 +29,8 @@
     </section>
     <section class="section">
       <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-1-2">
-          <section class="section">
+        <div class="pure-u-1 pure-u-md-1-2 description">
+          <section class="section description-content">
             <h1>
               <i18n>Laje de Santos</i18n>
             </h1>
@@ -59,7 +59,9 @@
         <div class="pure-u-1 pure-u-md-1-2">
           <section class="section">
             <p class="text-larger">
-              Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do Estado de São Paulo, no Brasil.
+              <i18n>
+                Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do Estado de São Paulo, no Brasil.
+              </i18n>
             </p>
             <figure class="image">
               <img :src="imageMapNoBorders.src" :srcset="imageMapNoBorders.srcSet" alt="Mapa-mundi com a Laje de Santos">
@@ -71,7 +73,7 @@
         <div class="pure-u-1 pure-u-md-1-2">
           <section class="section">
             <p class="text-larger">
-              Reconhecido local de mergulho, tem profundidade máxima de 42m no seu entorno.
+              <i18n>A Laje oferece ótimas condições de mergulho, com boa visibilidade da água e muita vida, sendo um dos principais pontos do país.</i18n>
             </p>
           </section>
         </div>
@@ -84,6 +86,7 @@
         </div>
       </div>
     </section>
+
     <section class="description">
       <figure class="image">
         <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-bottom" alt="Cardume de Xira">
@@ -94,10 +97,23 @@
       <div class="text-over-image">
         <div class="description-content" data-aos="slide-left">
           <p>
-            O <span class="text-larger">Parque Estadual Marinho da Laje de Santos</span> é uma area de proteção da
-            biodiversidade marinha e aviária.
+            <i18n />
           </p>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <h2>
+          <i18n>A vida na Laje</i18n>
+        </h2>
+        <p>
+          <i18n>
+            A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas. É habitada
+            por corais, golfinhos, tartarugas, algas, raias-manta.
+          </i18n>
+        </p>
       </div>
     </section>
 
@@ -115,7 +131,7 @@
         <Bubbles />
         <div class="description">
           <div class="description-content" data-aos="fade-left">
-            No inverno <nuxt-link to="/manta">
+            No inverno <nuxt-link to="/vida#manta">
               as raias mantas
             </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
           </div>
@@ -137,51 +153,44 @@
             <i18n>
               metros de comprimento
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="33"
           >
             <i18n>
               metros de altura
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="185"
           >
             <i18n>
               metros de largura
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="5000"
           >
             <i18n>
               hectares preservados
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="45"
           >
             <i18n>
               metros de profundidade máxima
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="40.7"
             :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
           >
             <i18n>
               quilômetros da costa
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="29"
           >
             <i18n>
               espécies de aves
             </i18n>
-          </number-bullet>
-          <number-bullet
+          </number-bullet><number-bullet
             :to="196"
           >
             <i18n>
@@ -191,37 +200,8 @@
         </div>
       </div>
     </section>
-    <section class="description">
-      <div class="description-content">
-        <p>
-          Já de longe a Laje é visível, com a linda forma de uma baleia.
-        </p>
-      </div>
-    </section>
     <section id="timeline" class="section">
       <Timeline />
-    </section>
-    <section id="explore" class="section">
-      <h1 class="title is-1">
-        Explore mais
-      </h1>
-      <div class="buttons are-large is-centered">
-        <nuxt-link to="/mergulho-virtual" class="button">
-          Mergulho
-        </nuxt-link>
-        <nuxt-link to="/vida" class="button">
-          Vida
-        </nuxt-link>
-        <nuxt-link to="/fauna" class="button">
-          Catálogo
-        </nuxt-link>
-        <nuxt-link to="/tecnologia" class="button">
-          Tecnologia
-        </nuxt-link>
-        <nuxt-link to="/sobre" class="button">
-          Sobre
-        </nuxt-link>
-      </div>
     </section>
   </div>
 </template>
@@ -273,63 +253,17 @@ export default {
 };
 </script>
 
-<style lang="less">
-@import '~assets/css/index.less';
-// .hero {
-//   .hero-body {
-//     padding: 0;
-//     position: relative;
-//     text-shadow: 0px 0px 10px @darkGrey;
-//   }
+<style lang="less" scoped>
+h1, h2 {
+  text-transform: uppercase
+}
 
-//   // .hero-html {
-//   //   .text-over-image;
-//   // }
-
-//   .hero-title {
-//     font-size: 8vw;
-//     font-weight: bold;
-//     text-align: right;
-//     color: #d2d2d2;
-//     letter-spacing: 0.35em;
-//     display: block;
-//     margin-top: 50px;
-//     position: relative;
-//     padding-bottom: 15%;
-//     text-transform: capitalize;
-//     font-variant: small-caps;
-//     font-weight: bold;
-//   }
-
-//   .hero-subtitle {
-//     color: #ffffff;
-//   }
-// }
-
-// .background-light {
-//   background-color: #72797d;
-// }
-// .background-dark {
-//   background-color: #05111f;
-// }
-
-// .center-crop {
-//   position: relative;
-//   height: 100vh;
-//   overflow: hidden;
-
-//   > img {
-//     max-width: initial;
-//     height: 100vh;
-//     width: auto;
-//     position: absolute;
-//     top: -9999px;
-//     bottom: -9999px;
-//     left: -9999px;
-//     right: -9999px;
-//     margin: auto;
-//   }
-// }
+.number-wrapper .number-info {
+  width: 20em !important;
+}
+.number-wrapper .number-info .number-round {
+  width: 3.2em !important;
+}
 
 .bubbles {
   background: transparent;
