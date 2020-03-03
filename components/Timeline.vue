@@ -162,7 +162,7 @@ export default {
 
 @content-font: @mainFont;
 @heading-font: @secondaryFont;
-@timeline-width:700px;
+@timeline-max-width: 1280px;
 @timeline-container-width:100%;
 
 .timeline {
@@ -170,9 +170,10 @@ export default {
   margin: 0 auto;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: @timeline-width;
+  max-width: @timeline-max-width;
   position: relative;
-  &__content {
+
+&__content {
     &-title {
       font-weight: normal;
       font-size: 66px;
