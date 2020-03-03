@@ -1,6 +1,6 @@
 <template>
   <div class="object-embed-3d">
-    <canvas class="object-3d" />
+    <canvas class="object-3d" touch-action="none" />
   </div>
 </template>
 
@@ -118,6 +118,8 @@ export default {
   .object-3d {
     width: 100%;
     height: 100%;
+    touch-action: none;
+    pointer-events: none;
   }
 }
 
