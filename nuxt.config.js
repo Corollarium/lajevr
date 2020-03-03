@@ -36,6 +36,7 @@ export default {
    */
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
+    'blueprint-css/dist/blueprint.min.css',
     'purecss/build/pure-min.css',
     'purecss/build/grids-responsive-min.css'
   ],

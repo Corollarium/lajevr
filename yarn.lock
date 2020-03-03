@@ -2436,6 +2436,11 @@ bluebird@^3.1.1, bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
+blueprint-css@^3.0.0-beta.0:
+  version "3.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/blueprint-css/-/blueprint-css-3.0.0-beta.0.tgz#e5558337afacc1f1f8627252dc4a2e8ef9de63c7"
+  integrity sha512-V9rLWZqufsu1ZEtqxs5WagWn+k7s3kiKyrYnIHjkoNVqXDpA1PAvmhLe6g8t+ct9VZl2JjspaZ0XqVCNJSyosA==
+
 bmp-js@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/bmp-js/-/bmp-js-0.0.3.tgz#64113e9c7cf1202b376ed607bf30626ebe57b18a"

@@ -1,6 +1,6 @@
 <template>
   <div class="object-embed-3d">
-    <canvas class="object-3d" />
+    <canvas class="object-3d" touch-action="none" />
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
     const planeWidth = 150;
     const plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
     plane.position.x = 0;
-    plane.position.y = 22;
+    plane.position.y = 21.2;
     plane.position.z = 151;
     const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
     lajeMaterial.diffuseTexture = new BABYLON.Texture('./Laje_de_Santos_transp.png', this.scene);
@@ -118,6 +118,8 @@ export default {
   .object-3d {
     width: 100%;
     height: 100%;
+    touch-action: none;
+    pointer-events: none;
   }
 }
 

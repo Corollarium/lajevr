@@ -24,8 +24,8 @@
     </section>
 
     <section class="section">
-      <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-1-2 description">
+      <div bp="grid 12 6@md">
+        <div class="description">
           <section class="section description-content">
             <h1>
               <i18n>Laje de Santos</i18n>
@@ -36,7 +36,7 @@
             </p>
           </section>
         </div>
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div>
           <section class="section">
             <figure class="image">
               <img :src="imageIlha.src" :srcset="imageIlha.srcSet" alt="Mapa esquematizado da Laje de Santos">
@@ -44,15 +44,15 @@
           </section>
         </div>
       </div>
-      <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-1-2">
+      <div bp="grid 12 6@md">
+        <div>
           <section class="section">
             <figure class="image">
               <img :src="imageMapDistance.src" :srcset="imageMapDistance.srcSet" alt="Mapa esquematizado da Laje de Santos">
             </figure>
           </section>
         </div>
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div bp="first@sm last@md">
           <section class="section">
             <p class="text-larger">
               <i18n>
@@ -65,15 +65,15 @@
           </section>
         </div>
       </div>
-      <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-1-2">
+      <div bp="grid 12 6@md">
+        <div>
           <section class="section">
             <p class="text-larger">
               <i18n>A Laje oferece ótimas condições de mergulho, com boa visibilidade da água e muita vida, sendo um dos principais pontos do país.</i18n>
             </p>
           </section>
         </div>
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div>
           <section class="section">
             <figure class="image">
               <img :src="imageProfundidade.src" :srcset="imageProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
@@ -111,7 +111,7 @@
           </i18n>
         </p>
         <p>
-          <a class="pure-button button-is-liquid" href="/mergulho-virtual">
+          <a class="button-is-liquid" href="/mergulho-virtual">
             <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
             <span class="button-is-liquid__animation" />
           </a>
@@ -160,12 +160,12 @@
       </div>
 
       <div style="text-align: center">
-        <a class="pure-button button-is-liquid" href="/vida">
+        <a class="button-is-liquid" href="/vida">
           <span class="button-is-liquid__text"><i18n>Aprenda sobre a vida na laje</i18n></span>
           <span class="button-is-liquid__animation" />
         </a>
 
-        <a class="pure-button button-is-liquid" href="/especies">
+        <a class="button-is-liquid" href="/especies">
           <span class="button-is-liquid__text"><i18n>Catálogo de espécies</i18n></span>
           <span class="button-is-liquid__animation" />
         </a>
