@@ -12,11 +12,13 @@
           </i18n>
         </h2>
         <p>
-          Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
-          abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
-          por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
-          gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
-          tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.
+          <i18n>
+            Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
+            abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
+            por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
+            gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
+            tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.
+          </i18n>
         </p>
 
         <div class="number-wrapper">
