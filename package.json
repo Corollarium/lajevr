@@ -13,7 +13,8 @@
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "package": "tar cjf laje.tar.bz2 --exclude docs --exclude laje.tar.bz2 --exclude node_modules --exclude dist .",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "cloc": "cloc assets/css/ components/ layouts/ pages/ plugins/"
   },
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
