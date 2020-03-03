@@ -4,7 +4,7 @@
       <div class="hero-body">
         <Ocean />
         <div class="hero-html container">
-          <div class="hero-title">
+          <div class="hero-image">
             <figure class="image">
               <img :src="imageLogoLaje.src" :srcset="imageLogoLaje.srcSet" alt="Logo Laje de Santos">
             </figure>
@@ -198,7 +198,7 @@ const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders
 const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
 
 // pivaNew
-const imageLogoLaje = require('~assets/images/logos/logo-laje-de-santos.png');
+const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 
 export default {
   components: {
