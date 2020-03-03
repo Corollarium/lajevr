@@ -17,13 +17,13 @@
         <div class="nav-top">
           <LanguagePicker />
           <a
-            class=""
+            class="corollarium-brand"
             href="https://corollarium.com"
             title="Corollarium"
             target="_blank"
           >
-            <span class="logo-corollarium" />
-            <span class>Corollarium</span>
+            <span class="logo-img" />
+            <span class="">Corollarium</span>
           </a>
         </div>
         <div class="clear-both" />
