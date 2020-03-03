@@ -77,6 +77,11 @@
           >
             <i18n>modelos 3D</i18n>
           </number-bullet>
+          <number-bullet
+            :to="12622"
+          >
+            <i18n>linhas de código</i18n>
+          </number-bullet>
         </div>
       </div>
       <div class="column" data-aos="zoom-out-down">
