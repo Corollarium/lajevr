@@ -2,57 +2,52 @@
   <footer class="footer">
     <div class="container">
       <div class="pure-g">
-        <div class="pure-u-1-2">
-          <h2>
-            <i18n>
-              Mapa
-            </i18n>
-          </h2>
-          <ul>
-            <li>
-              <nuxt-link to="/">
+        <div class="pure-u-1">
+          <ul class="pure-menu-list pure-menu-horizontal">
+            <li class="pure-menu-item">
+              <nuxt-link to="/" class="pure-menu-link">
                 <i18n>
                   Início
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/vida">
+            <li class="pure-menu-item">
+              <nuxt-link to="/vida" class="pure-menu-link">
                 <i18n>
                   Vida
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/sobre">
+            <li class="pure-menu-item">
+              <nuxt-link to="/sobre" class="pure-menu-link">
                 <i18n>
                   Sobre
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/mergulho-virtual">
+            <li class="pure-menu-item">
+              <nuxt-link to="/mergulho-virtual" class="pure-menu-link">
                 <i18n>
                   Mergulhos
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/especies">
+            <li class="pure-menu-item">
+              <nuxt-link to="/especies" class="pure-menu-link">
                 <i18n>
                   Catálogo de espécies
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/tecnologia">
+            <li class="pure-menu-item">
+              <nuxt-link to="/tecnologia" class="pure-menu-link">
                 <i18n>
                   Tecnologia
                 </i18n>
               </nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/galeria">
+            <li class="pure-menu-item">
+              <nuxt-link to="/galeria" class="pure-menu-link">
                 <i18n>
                   Galeria
                 </i18n>
@@ -60,8 +55,9 @@
             </li>
           </ul>
         </div>
-        <div class="pure-u-1-2 has-text-right">
-          <h2>
+        <div class="pure-u-1">
+          <hr style="opacity: .2">
+          <h2 class="footer-title">
             <i18n>
               Projeto e execução
             </i18n>
@@ -97,11 +93,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="less" scoped>
-.footer {
-  background: #000;
-  color: #fff;
-  display: block;
-}
-</style>
