@@ -81,6 +81,18 @@ body {
   .font-select(@regular, #ffffff);
 }
 
+.text-larger {
+  .font-size(20);
+
+  @media @tablet {
+    .font-size(18);
+  }
+
+  @media @mobile {
+    .font-size(16);
+  }
+}
+
 input,
 button,
 textarea,

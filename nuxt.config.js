@@ -36,7 +36,8 @@ export default {
    */
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
-    'purecss/build/pure-min.css'
+    'purecss/build/pure-min.css',
+    'purecss/build/grids-responsive-min.css'
   ],
   /*
    ** Plugins to load before mounting the App
