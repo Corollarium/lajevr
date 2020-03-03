@@ -5,7 +5,9 @@
         <Ocean />
         <div class="hero-html container">
           <div class="hero-title">
-            LAJE DE SANTOS
+            <figure class="image">
+              <img :src="imageLogoLaje.src" :srcset="imageLogoLaje.srcSet" alt="Logo Laje de Santos">
+            </figure>
           </div>
           <p class="attribution">
             Photo
@@ -195,6 +197,9 @@ const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Ma
 const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
 const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
 
+// pivaNew
+const imageLogoLaje = require('~assets/images/logos/logo-laje-de-santos.png');
+
 export default {
   components: {
     Timeline,
@@ -206,14 +211,15 @@ export default {
     return {
       imagePeixes,
       imageMapNoBorders,
-      imageMapaGeral2
+      imageMapaGeral2,
+      imageLogoLaje
     };
   }
 };
 </script>
 
 <style lang="less">
-@import '~assets/css/index.less';
+@import "~assets/css/index.less";
 .hero {
   .hero-body {
     padding: 0;
@@ -246,7 +252,7 @@ export default {
 }
 
 .background-light {
-  background-color: #72797D;
+  background-color: #72797d;
 }
 .background-dark {
   background-color: #05111f;
@@ -274,5 +280,4 @@ export default {
   background: transparent;
   position: absolute;
 }
-
 </style>
