@@ -26,7 +26,7 @@
     </div>
 
     <div class="main column">
-      <h1 class="title is-1">
+      <h1>
         <i18n>
           A vida na Laje de Santos
         </i18n>
@@ -36,7 +36,7 @@
         <p>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
           É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
-          <nuxt-link to="/fauna">
+          <nuxt-link to="/especies">
             Se estiver procurando espécies, veja a lista completa.
           </nuxt-link>
         </p>
@@ -59,7 +59,7 @@
         </GLTFModel>
 
         <p>
-          A jamanta tem o corpo em forma de losango e uma cauda longa sem espinho e pode atingir sete metros de envergadura e pesar até 1,350kg. Podem viver até 20 anos. Estes peixes não têm verdadeiros dentes e alimentam-se de plâncton e pequenos peixes, sendo portanto inofensivos. Ocasionalmente, podem aproximar-se de um barco ou de mergulhadores e podem executar curtos “voos” fora da água. Têm a maior taxa de volume de cérebro em relação ao do corpo de todos os tubarões e raias[1].
+          A jamanta tem o corpo em forma de losango e uma cauda longa sem espinho e pode atingir sete metros de envergadura e pesar até 1,350kg. Podem viver até 20 anos. Estes peixes não têm verdadeiros dentes e alimentam-se de plâncton e pequenos peixes, sendo portanto inofensivos. Ocasionalmente, podem aproximar-se de um barco ou de mergulhadores e podem executar curtos “voos” fora da água. Têm a maior taxa de volume de cérebro em relação ao do corpo de todos os tubarões e raias.
         </p>
         <p>
           Durante as suas migrações, as jamantas efetuam mergulhos frequentes até profundidades de quase dois quilómetros (entre os maiores alguma vez medidos para um animal marinho), onde as temperaturas da água atingem os três graus centígrados.
@@ -113,6 +113,10 @@
         <h2 class="title is-2">
           Aves
         </h2>
+
+        <p>
+          29 espécies de aves já foram catalogadas na Laje.
+        </p>
       </section>
 
       <section id="fish" class="section">
@@ -169,6 +173,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '~assets/css/variables.less';
+
 @media (min-width: 640px) {
   .sidebar {
     position: sticky;
@@ -176,10 +182,10 @@ export default {
   }
 }
 .menu-list {
+  list-style: none;
+  margin-right: 1em;
   li {
     height: 5em;
-    background-color: #eee;
-    border: 6px solid #fff;
     vertical-align: middle;
     @media screen and (min-width: 1024px) {
       font-size: 1.2em;
@@ -193,7 +199,7 @@ export default {
     }
   }
   li.active {
-    background-color: #ccc;
+    background-color: @secondaryColor-2;
   }
 }
 
