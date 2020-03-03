@@ -14,68 +14,78 @@ export default {
   data () {
     return {
       // 3D
+      shouldRender: true,
       engine: null,
       scene: null,
-      camera: null
+      camera: null,
+      container: null
     };
   },
 
   mounted () {
-    const container = this.$el.querySelector('.object-3d');
+    this.container = this.$el.querySelector('.object-3d');
 
-    this.engine = new BABYLON.Engine(container, true); // Generate the BABYLON 3D engine
+    this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
+    this.scene.clearColor = BABYLON.Color3.FromHexString('0x002141');
     this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), this.scene);
     this.camera.setTarget(new BABYLON.Vector3(0, 5, 0));
-    this.camera.attachControl(container, false);
+    // this.camera.attachControl(this.container, false);
 
     // background
     this.layer = new BABYLON.Layer('', '/textures/ocean/ceu_laje.jpg', this.scene, true);
 
-    // Create a sprite manager
-    const spriteManager = new BABYLON.SpriteManager('lajeManager', '/Laje_de_Santos_transp.png', 1, { width: 1920, height: 1272 }, this.scene);
-    this.laje = new BABYLON.Sprite('laje', spriteManager);
-    const SCALE = 1.6 * 1920 / window.innerWidth;
-    this.laje.width = 19.20 / SCALE;
-    this.laje.height = 12.72 / SCALE;
-    this.laje.position.x = 0;
-    this.laje.position.y = 6.3;
-    this.laje.position.z = -1;
-
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
-    this.light2 = new BABYLON.PointLight('light2', new BABYLON.Vector3(0, 1, -1), this.scene);
 
-    const sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, this.scene);
-    sphere.position.y = 1;
+    // island
+    const aspectLaje = 1920 / 1272;
+    const planeWidth = 150;
+    const plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
+    plane.position.x = 0;
+    plane.position.y = 22;
+    plane.position.z = 151;
+    const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
+    lajeMaterial.diffuseTexture = new BABYLON.Texture('/Laje_de_Santos_transp.png', this.scene);
+    lajeMaterial.diffuseTexture.hasAlpha = true;
+    lajeMaterial.useAlphaFromDiffuseTexture = true;
+    plane.material = lajeMaterial;
 
-    // const aspectLaje = 1920 / 1272;
-    // const plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: 10, height: 10 / aspectLaje }, this.scene);
-    // plane.position.x = 0;
-    // plane.position.y = 6;
-    // plane.position.z = -1;
-    // const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
-    // lajeMaterial.diffuseTexture = new BABYLON.Texture('/Laje_de_Santos_transp.png', this.scene);
-    // lajeMaterial.diffuseTexture.hasAlpha = true;
-    // plane.material = lajeMaterial;
-
+    // ocean
     const pp = new OceanPostProcess('myOcean', this.camera);
     pp.reflectionEnabled = false;
 
+    this.shouldRender = true;
     this.engine.runRenderLoop(() => {
-      // const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
-
-      this.scene.render();
+      if (this.shouldRender) {
+        this.scene.render();
+      }
     });
+
+    // don't render when not visible
+    this.observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          this.shouldRender = (entry.intersectionRatio >= 0.05);
+        });
+      },
+      {
+        threshold: [0, 0.05]
+      });
+    this.observer.observe(this.container);
 
     // Watch for browser/canvas resize events
     window.addEventListener('resize', this.resize);
+    window.addEventListener('scroll', this.scroll);
   },
 
   beforeDestroy () {
     window.removeEventListener('resize', this.resize);
+    window.removeEventListener('scroll', this.scroll);
+    this.observer.unobserve(this.container);
+    this.observer = null;
     this.engine.stopRenderLoop();
     this.scene.dispose();
     this.scene = null;
@@ -84,10 +94,15 @@ export default {
 
   methods: {
     resize () {
-      const SCALE = 1.6 * 1920 / window.innerWidth;
-      this.laje.width = 19.20 / SCALE;
-      this.laje.height = 12.72 / SCALE;
       this.engine.resize();
+    },
+
+    scroll (x, y) {
+      if (this.shouldRender) {
+        const bbox = this.container.getBoundingClientRect();
+        const offset = (window.scrollY - bbox.top) / bbox.height;
+        this.camera.position.y = 6 - offset * 3;
+      }
     }
   }
 };

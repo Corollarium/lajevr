@@ -4,11 +4,11 @@
       <div class="hero-body">
         <Ocean />
         <div class="hero-html container">
-          <div class="hero-image">
+          <!--div class="hero-image">
             <figure class="image">
               <img :src="imageLogoLaje.src" :srcset="imageLogoLaje.srcSet" alt="Logo Laje de Santos">
             </figure>
-          </div>
+          </div -->
           <p class="attribution">
             Photo
             <a
@@ -27,6 +27,63 @@
         </div>
       </div>
     </section>
+    <section class="section">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <h1>
+              <i18n>Laje de Santos</i18n>
+            </h1>
+            <p class="text-larger">
+              O Parque Estadual Marinho da Laje de Santos é uma area de proteção da
+              biodiversidade marinha e aviária.
+            </p>
+          </section>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <figure class="image">
+              <img :src="imageIlha.src" :srcset="imageIlha.srcSet" alt="Mapa esquematizado da Laje de Santos">
+            </figure>
+          </section>
+        </div>
+      </div>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <figure class="image">
+              <img :src="imageMapDistance.src" :srcset="imageMapDistance.srcSet" alt="Mapa esquematizado da Laje de Santos">
+            </figure>
+          </section>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <p class="text-larger">
+              Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do Estado de São Paulo, no Brasil.
+            </p>
+            <figure class="image">
+              <img :src="imageMapNoBorders.src" :srcset="imageMapNoBorders.srcSet" alt="Mapa-mundi com a Laje de Santos">
+            </figure>
+          </section>
+        </div>
+      </div>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <p class="text-larger">
+              Reconhecido local de mergulho, tem profundidade máxima de 42m no seu entorno.
+            </p>
+          </section>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2">
+          <section class="section">
+            <figure class="image">
+              <img :src="imageProfundidade.src" :srcset="imageProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
+            </figure>
+          </section>
+        </div>
+      </div>
+    </section>
     <section class="description">
       <figure class="image">
         <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-bottom" alt="Cardume de Xira">
@@ -42,24 +99,6 @@
           </p>
         </div>
       </div>
-    </section>
-    <section class="description">
-      <figure class="image">
-        <img :src="imageMapNoBorders.src" :srcset="imageMapNoBorders.srcSet" alt="Mapa-mundi com a Laje de Santos">
-      </figure>
-      <div class="text-over-image">
-        <div class="description-content" style="color: #c00" data-aos="slide-left">
-          <p>
-            <i18n>Fica na costa do Estado de São Paulo.</i18n>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="map" class="map" style="background: linear-gradient(#FFFFFF, #46BCEC,); color: #000;">
-      <figure class="image center-crop">
-        <img :src="imageMapaGeral2.src" :srcset="imageMapaGeral2.srcSet" class="fade-top" alt="Mapa da Laje de Santos">
-      </figure>
     </section>
 
     <section id="mantas" class="columns" style="margin-bottom: 0;">
@@ -195,6 +234,9 @@ import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 // import Globe from '~/components/Globe.vue';
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
+const imageIlha = require('~/assets/images/graficos/ilha-desktop.png?resize');
+const imageMapDistance = require('~/assets/images/graficos/mapa.png?resize');
+const imageProfundidade = require('~/assets/images/graficos/profundidade.png?resize');
 const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
 const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
 
@@ -214,6 +256,9 @@ export default {
   data () {
     return {
       imagePeixes,
+      imageIlha,
+      imageMapDistance,
+      imageProfundidade,
       imageMapNoBorders,
       imageMapaGeral2,
       imageLogoLaje
@@ -230,61 +275,61 @@ export default {
 
 <style lang="less">
 @import '~assets/css/index.less';
-.hero {
-  .hero-body {
-    padding: 0;
-    position: relative;
-    text-shadow: 0px 0px 10px @darkGrey;
-  }
+// .hero {
+//   .hero-body {
+//     padding: 0;
+//     position: relative;
+//     text-shadow: 0px 0px 10px @darkGrey;
+//   }
 
-  // .hero-html {
-  //   .text-over-image;
-  // }
+//   // .hero-html {
+//   //   .text-over-image;
+//   // }
 
-  .hero-title {
-    font-size: 8vw;
-    font-weight: bold;
-    text-align: right;
-    color: #d2d2d2;
-    letter-spacing: 0.35em;
-    display: block;
-    margin-top: 50px;
-    position: relative;
-    padding-bottom: 15%;
-    text-transform: capitalize;
-    font-variant: small-caps;
-    font-weight: bold;
-  }
+//   .hero-title {
+//     font-size: 8vw;
+//     font-weight: bold;
+//     text-align: right;
+//     color: #d2d2d2;
+//     letter-spacing: 0.35em;
+//     display: block;
+//     margin-top: 50px;
+//     position: relative;
+//     padding-bottom: 15%;
+//     text-transform: capitalize;
+//     font-variant: small-caps;
+//     font-weight: bold;
+//   }
 
-  .hero-subtitle {
-    color: #ffffff;
-  }
-}
+//   .hero-subtitle {
+//     color: #ffffff;
+//   }
+// }
 
-.background-light {
-  background-color: #72797d;
-}
-.background-dark {
-  background-color: #05111f;
-}
+// .background-light {
+//   background-color: #72797d;
+// }
+// .background-dark {
+//   background-color: #05111f;
+// }
 
-.center-crop {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+// .center-crop {
+//   position: relative;
+//   height: 100vh;
+//   overflow: hidden;
 
-  > img {
-    max-width: initial;
-    height: 100vh;
-    width: auto;
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto;
-  }
-}
+//   > img {
+//     max-width: initial;
+//     height: 100vh;
+//     width: auto;
+//     position: absolute;
+//     top: -9999px;
+//     bottom: -9999px;
+//     left: -9999px;
+//     right: -9999px;
+//     margin: auto;
+//   }
+// }
 
 .bubbles {
   background: transparent;
