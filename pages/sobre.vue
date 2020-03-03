@@ -44,9 +44,9 @@
 
       <p>
         <i18n>
-          Com o surgimento de uma edital aberto do estado de São Paulo, o ProAC,
-          pudemos ver um caminho para realizar o projeto. A proposta deste projeto
-          foi aprovada.
+          Com o surgimento de um edital aberto pelo estado de São Paulo, o ProAC,
+          pudemos ver um caminho para realizar o projeto. Enviamos a proposta deste projeto
+          e ela foi aprovada.
         </i18n>
       </p>
     </section>
