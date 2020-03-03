@@ -35,7 +35,7 @@ export default {
     // this.camera.attachControl(this.container, false);
 
     // background
-    this.layer = new BABYLON.Layer('', '/textures/ocean/ceu_laje.jpg', this.scene, true);
+    this.layer = new BABYLON.Layer('', './textures/ocean/ceu_laje.jpg', this.scene, true);
 
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
@@ -48,7 +48,7 @@ export default {
     plane.position.y = 22;
     plane.position.z = 151;
     const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
-    lajeMaterial.diffuseTexture = new BABYLON.Texture('/Laje_de_Santos_transp.png', this.scene);
+    lajeMaterial.diffuseTexture = new BABYLON.Texture('./Laje_de_Santos_transp.png', this.scene);
     lajeMaterial.diffuseTexture.hasAlpha = true;
     lajeMaterial.useAlphaFromDiffuseTexture = true;
     plane.material = lajeMaterial;
