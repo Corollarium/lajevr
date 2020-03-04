@@ -99,3 +99,6 @@ sw.*
 
 # temporary data
 stuff
+
+# Blender
+*.blend1
