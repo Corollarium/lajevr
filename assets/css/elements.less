@@ -7,14 +7,45 @@ figcaption {
   max-width: @gridWidth;
 }
 
+.button {
+  font-size: 100%;
+  background-color: #000;
+  color: #ffffff;
+  line-height: normal;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-drag: none;
+  user-select: none;
+  padding: .5em 1em;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.button-hover, .button:focus, .button:hover {
+  background-image: linear-gradient(transparent, rgba(0,0,0,.05) 40%, rgba(0,0,0,.1));
+}
+
 .button-blue {
+  .button();
   background-color: @primaryColor;
   background-image: linear-gradient(30deg, @primaryColor, @secondaryColor-2);
   color: #ffffff;
   margin-bottom: 1rem;
 }
 
+.button-blue:hover {
+  background-image: linear-gradient(transparent, rgba(0,0,0,.05) 40%, rgba(0,0,0,.1));
+}
+
 .button-is-liquid {
+  .button();
   position: relative;
   overflow: hidden;
   background: transparent;
@@ -23,7 +54,7 @@ figcaption {
   border-radius: .5rem;
   box-shadow: 0 2px 2rem fade(darken(@primaryColor, 40), 30);
 
-  > span {
+  .button-is-liquid__text {
     position: relative;
     color: #ffffff;
     text-transform: uppercase;
@@ -31,7 +62,8 @@ figcaption {
     letter-spacing: .25rem;
   }
 
-  .button-liquid {
+  .button-is-liquid__animation {
+    display: block;
     position: absolute;
     top: -5rem;
     left: 0;
@@ -63,9 +95,14 @@ figcaption {
       animation: liquid-in-button 10s linear infinite;
     }
   }
-  &:hover > .button-liquid {
-    top: -8rem;
-    background: linear-gradient(45deg, lighten(@primaryColor, 5), @secondaryColor-2);
+  &:hover .button-is-liquid__text {
+    font-weight: bold;
+    color: @linkColorHover;
+  }
+
+  &:hover > .button-is-liquid__animation {
+    top: -9rem;
+    background: @primaryColor;
   }
 }
 
