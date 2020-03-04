@@ -197,9 +197,24 @@
   &.header-overlay {
     position: absolute;
     top: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+
+    .logo-main {
+      display: none;
+    }
 
     width: 100%;
+
+    .main-menu .main-nav .pure-menu-link {
+      color: darken(@primaryColor,10);
+      &:hover {
+        font-weight: @bold;
+      }
+    }
+
+    .language-select {
+      color: darken(@primaryColor,10);
+    }
   }
 }
 

@@ -52,7 +52,7 @@
             </figure>
           </section>
         </div>
-        <div bp="first@sm last@md">
+        <div bp="first first@sm last@md">
           <section class="section">
             <p class="text-larger">
               <i18n>
@@ -111,10 +111,10 @@
           </i18n>
         </p>
         <p>
-          <a class="button-is-liquid" href="/mergulho-virtual">
+          <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
             <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
             <span class="button-is-liquid__animation" />
-          </a>
+          </nuxt-link>
         </p>
       </div>
     </section>
@@ -160,15 +160,15 @@
       </div>
 
       <div style="text-align: center">
-        <a class="button-is-liquid" href="/vida">
-          <span class="button-is-liquid__text"><i18n>Aprenda sobre a vida na laje</i18n></span>
+        <nuxt-link class="button-is-liquid" to="/vida">
+          <span class="button-is-liquid__text"><i18n>Mais sobre a vida</i18n></span>
           <span class="button-is-liquid__animation" />
-        </a>
+        </nuxt-link>
 
-        <a class="button-is-liquid" href="/especies">
+        <nuxt-link class="button-is-liquid" to="/especies">
           <span class="button-is-liquid__text"><i18n>Catálogo de espécies</i18n></span>
           <span class="button-is-liquid__animation" />
-        </a>
+        </nuxt-link>
       </div>
     </section>
 
@@ -316,11 +316,14 @@ h1, h2 {
 
 .sticky-hero {
   height: 300vh;
-  .sticky-hero-content {
+
+.sticky-hero-content {
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     position: sticky;
     top: 0px;
   }
+
   .sticky-hero-attribution {
     margin: 0 auto;
     position: static;
