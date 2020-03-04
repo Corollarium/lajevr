@@ -57,6 +57,9 @@ export default {
     const pp = new OceanPostProcess('myOcean', this.camera);
     pp.reflectionEnabled = false;
 
+    const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
+    this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
+
     this.shouldRender = true;
     this.engine.runRenderLoop(() => {
       if (this.shouldRender) {
