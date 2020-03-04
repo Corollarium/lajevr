@@ -111,10 +111,10 @@
           </i18n>
         </p>
         <p>
-          <a class="button-is-liquid" href="/mergulho-virtual">
+          <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
             <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
             <span class="button-is-liquid__animation" />
-          </a>
+          </nuxt-link>
         </p>
       </div>
     </section>
@@ -160,15 +160,15 @@
       </div>
 
       <div style="text-align: center">
-        <a class="button-is-liquid" href="/vida">
+        <nuxt-link class="button-is-liquid" to="/vida">
           <span class="button-is-liquid__text"><i18n>Mais sobre a vida</i18n></span>
           <span class="button-is-liquid__animation" />
-        </a>
+        </nuxt-link>
 
-        <a class="button-is-liquid" href="/especies">
+        <nuxt-link class="button-is-liquid" to="/especies">
           <span class="button-is-liquid__text"><i18n>Catálogo de espécies</i18n></span>
           <span class="button-is-liquid__animation" />
-        </a>
+        </nuxt-link>
       </div>
     </section>
 
