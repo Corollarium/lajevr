@@ -18,6 +18,15 @@ module.exports = {
   // add your custom rules here
   rules: {
     'semi': [2, "always"],
-    'no-console': [1, { allow: ["warn", "error"] }]
+    'no-console': [1, { allow: ["warn", "error"] }],
+    "indent": [
+      "error",
+      2,
+      {
+          "ignoredNodes": [
+              "TemplateLiteral"
+          ]
+      }
+    ],
   }
 }
