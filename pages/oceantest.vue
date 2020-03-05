@@ -2,7 +2,7 @@
   <div>
     <section class="sticky-hero">
       <div class="sticky-hero-content">
-        <Ocean />
+        <Ocean :forceLoad="true" />
         <div class="sticky-hero-attribution">
           <p class="attribution">
             Photo
