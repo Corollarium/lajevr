@@ -1,6 +1,9 @@
 <template>
   <div class="object-embed-3d">
     <canvas v-show="!isSafari" class="object-3d" touch-action="none" />
+    <div id="underwater-debug">
+      {{ fps }} fps
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,12 @@ import Bowser from "bowser";
 /* eslint-enable */
 
 export default {
+  props: {
+    forceLoad: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       // 3D
@@ -21,6 +30,7 @@ export default {
       camera: null,
       container: null,
       plane: null,
+      fps: 0,
       isSafari: false
     };
   },
@@ -38,11 +48,11 @@ export default {
         safari: '>=9'
       }
     });
-    if (this.isSafari) {
+    if (!this.forceLoad && this.isSafari) {
       return;
     }
     this.container = this.$el.querySelector('.object-3d');
-    console.log(this.container);
+    const params = new URLSearchParams(document.location.search);
 
     this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
@@ -52,56 +62,68 @@ export default {
     this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), this.scene);
     this.camera.setTarget(new BABYLON.Vector3(0, 5, 0));
 
-    // background
-    this.layer = new BABYLON.Layer('', './textures/ocean/ceu_laje_512.jpg', this.scene, true);
-
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
 
+    // background
+    if (params.get('layer') !== 'false') {
+      this.layer = new BABYLON.Layer('', './textures/ocean/ceu_laje_512.jpg', this.scene, true);
+    }
+
     // island
-    const aspectLaje = 1024 / 128;
-    const planeWidth = 250;
-    this.plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
-    this.plane.position.x = 0;
-    this.plane.position.y = 14.2;
-    this.plane.position.z = 251;
-    const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
-    lajeMaterial.diffuseTexture = new BABYLON.Texture('./textures/ocean/Laje_de_Santos_transp_1024x128.png', this.scene, true);
-    lajeMaterial.diffuseTexture.hasAlpha = true;
-    lajeMaterial.useAlphaFromDiffuseTexture = true;
-    this.plane.material = lajeMaterial;
-    this.planeSize();
+    if (params.get('island') !== 'false') {
+      const aspectLaje = 1024 / 128;
+      const planeWidth = 250;
+      this.plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
+      this.plane.position.x = 0;
+      this.plane.position.y = 14.2;
+      this.plane.position.z = 251;
+      const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
+      lajeMaterial.diffuseTexture = new BABYLON.Texture('./textures/ocean/Laje_de_Santos_transp_1024x128.png', this.scene, true);
+      lajeMaterial.diffuseTexture.hasAlpha = true;
+      lajeMaterial.useAlphaFromDiffuseTexture = true;
+      this.plane.material = lajeMaterial;
+      this.planeSize();
+    }
 
     // ocean
-    const pp = new OceanPostProcess('myOcean', this.camera);
-    pp.reflectionEnabled = false;
+    if (params.get('ocean') !== 'false') {
+      const pp = new OceanPostProcess('myOcean', this.camera);
+      pp.reflectionEnabled = false;
+    }
 
-    // temp test
-    const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
-    this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
+    if (params.get('opt') !== 'false') {
+      const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
+      this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
+    }
 
     this.shouldRender = true;
     this.engine.runRenderLoop(() => {
       if (this.shouldRender) {
+        this.fps = this.engine.getFps().toFixed();
         this.scene.render();
       }
     });
 
     // don't render when not visible
-    this.observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          this.shouldRender = (entry.intersectionRatio >= 0.05);
+    if (params.get('observer') !== 'false') {
+      this.observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            this.shouldRender = (entry.intersectionRatio >= 0.05);
+          });
+        },
+        {
+          threshold: [0, 0.05]
         });
-      },
-      {
-        threshold: [0, 0.05]
-      });
-    this.observer.observe(this.container);
+      this.observer.observe(this.container);
+    }
 
     // Watch for browser/canvas resize events
-    window.addEventListener('resize', this.resize);
-    window.addEventListener('scroll', this.scroll);
+    if (params.get('callbacks') !== 'false') {
+      window.addEventListener('resize', this.resize);
+      window.addEventListener('scroll', this.scroll);
+    }
   },
 
   beforeDestroy () {
@@ -142,6 +164,20 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+
+#underwater-debug {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 10px;
+  background: #000;
+  font-family: 'Oxygen', monospace;
+  color: #fff;
+  text-align: right;
+}
+
 .object-embed-3d {
   height: 100%;
   width: 100%;
