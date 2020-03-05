@@ -236,12 +236,12 @@ export default {
 
       this.scene.onKeyboardObservable.add((kbInfo) => {
         switch (kbInfo.type) {
-          case BABYLON.KeyboardEventTypes.KEYDOWN:
-            console.log('KEY DOWN: ', kbInfo.event.key);
-            break;
-          case BABYLON.KeyboardEventTypes.KEYUP:
-            console.log('KEY UP: ', kbInfo.event.keyCode);
-            break;
+        case BABYLON.KeyboardEventTypes.KEYDOWN:
+          console.log('KEY DOWN: ', kbInfo.event.key);
+          break;
+        case BABYLON.KeyboardEventTypes.KEYUP:
+          console.log('KEY UP: ', kbInfo.event.keyCode);
+          break;
         }
       });
 
