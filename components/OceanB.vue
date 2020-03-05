@@ -1,6 +1,6 @@
 <template>
   <div class="object-embed-3d">
-    <canvas v-show="!isSafari" class="object-3d" touch-action="none" />
+    <canvas v-show="!blocked" class="object-3d" touch-action="none" />
     <div id="underwater-debug">
       {{ fps }} fps
     </div>
@@ -31,13 +31,13 @@ export default {
       container: null,
       plane: null,
       fps: 0,
-      isSafari: false
+      blocked: false
     };
   },
 
   mounted () {
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isSafari = browser.satisfies({
+    const isSafari = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
@@ -49,9 +49,9 @@ export default {
       }
     });
     if (this.forceLoad) {
-      this.isSafari = false;
-    }
-    if (this.isSafari) {
+      this.blocked = false;
+    } else if (isSafari) {
+      this.blocked = true;
       return;
     }
     this.container = this.$el.querySelector('.object-3d');
@@ -91,8 +91,26 @@ export default {
 
     // ocean
     if (params.get('ocean') !== 'false') {
-      const pp = new OceanPostProcess('myOcean', this.camera);
+      const nearestPOT = x => 2 ** Math.ceil(Math.log(x) / Math.log(2));
+      const options = {
+        width: nearestPOT(this.camera.getEngine().getRenderWidth()),
+        height: nearestPOT(this.camera.getEngine().getRenderHeight())
+      };
+
+      if (options.width > 2048) {
+        options.width = 2048;
+      }
+      if (options.height > 2048) {
+        options.height = 2048;
+      }
+      if (this.isSafari) { // safari requires square textures for mipmap
+        const t = Math.min(options.width, options.height);
+        options.width = options.height = t;
+      }
+
+      const pp = new OceanPostProcess('myOcean', this.camera, options);
       pp.reflectionEnabled = false;
+      pp.refractionEnabled = false;
     }
 
     if (params.get('opt') !== 'false') {
