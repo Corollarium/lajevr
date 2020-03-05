@@ -37,7 +37,7 @@ export default ({ app }) => {
       },
       defaultLanguage: getBestLanguage(),
       translations,
-      silent: false
+      silent: true
     }
   );
 };
