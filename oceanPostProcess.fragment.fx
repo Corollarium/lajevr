@@ -212,6 +212,12 @@ void main()
   // Just work as a pass through
   gl_FragColor = texture2D(textureSampler, vUV);
   #else
+
+  if (cameraPosition.y < 0.0) {
+    gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+    return;
+  }
+
   vec2 uv = vUV;
   uv = uv * 2.0 - 1.0;
   uv.x *= resolution.x / resolution.y;
@@ -219,6 +225,7 @@ void main()
   // ray
   vec3 ang = vec3(cameraRotation.z, cameraRotation.x, cameraRotation.y);
   vec3 ori = vec3(cameraPosition.x, cameraPosition.y, -cameraPosition.z);
+
 
   vec3 dir = normalize(vec3(uv.xy, -3.0));
   dir = normalize(dir) * fromEuler(ang);
