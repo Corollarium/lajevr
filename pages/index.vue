@@ -21,6 +21,19 @@
           </p>
         </div>
       </div>
+      <div class="sticky-back">
+        <div class="description">
+          <section class="section description-content">
+            <h1>
+              <i18n>Laje de Santos</i18n>
+            </h1>
+            <p class="text-larger">
+              O Parque Estadual Marinho da Laje de Santos é uma area de proteção da
+              biodiversidade marinha e aviária.
+            </p>
+          </section>
+        </div>
+      </div>
     </section>
 
     <section class="section">
@@ -316,8 +329,9 @@ h1, h2 {
 
 .sticky-hero {
   height: 300vh;
+  position: relative;
 
-.sticky-hero-content {
+  .sticky-hero-content {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     position: sticky;
@@ -330,6 +344,15 @@ h1, h2 {
     width: auto;
     max-width: 1280px;
   }
+
+  .sticky-back {
+    position: absolute;
+    height: 70vh;
+    height: calc(var(--vh, 1vh) * 70);
+    bottom: 0;
+    width: 100%;
+  }
+
 }
 
 .number-wrapper .number-info {
