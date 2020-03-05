@@ -1,10 +1,11 @@
 <template>
   <div class="number-info">
-    <div class="number-round">
-      <span v-on="$listeners" v-bind="$attrs">{{ tweenedNumber }}</span>
+    <div class="number-circle">
+      <span v-on="$listeners" v-bind="$attrs" class="bubble">{{ tweenedNumber }}</span>
     </div>
     <div class="number-explanation">
       <slot />
+      </span></span>
     </div>
   </div>
 </template>
@@ -65,9 +66,11 @@ export default {
     this.observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.target.isSameNode(this.$el) &&
+          if (
+            entry.target.isSameNode(this.$el) &&
             entry.intersectionRatio >= 0.9 &&
-            !this.countStarted) {
+            !this.countStarted
+          ) {
             this.countStarted = true;
             this.tween(this.to);
           }
@@ -82,16 +85,15 @@ export default {
   methods: {
     tween (value) {
       const vm = this;
-      const tLite = TweenLite
-        .to(vm.$data, vm.duration, {
-          fromProp: value,
-          paused: vm.animationPaused,
-          ease: vm.easeCheck(),
-          onStart: () => vm.$emit('start'),
-          onComplete: () => vm.$emit('complete'),
-          onUpdate: () => vm.$emit('update'),
-          delay: vm.delay // In seconds
-        });
+      const tLite = TweenLite.to(vm.$data, vm.duration, {
+        fromProp: value,
+        paused: vm.animationPaused,
+        ease: vm.easeCheck(),
+        onStart: () => vm.$emit('start'),
+        onComplete: () => vm.$emit('complete'),
+        onUpdate: () => vm.$emit('update'),
+        delay: vm.delay // In seconds
+      });
       vm.tween.tLite = tLite;
     },
     play () {

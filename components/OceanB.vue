@@ -18,7 +18,8 @@ export default {
       engine: null,
       scene: null,
       camera: null,
-      container: null
+      container: null,
+      plane: null
     };
   },
 
@@ -32,33 +33,34 @@ export default {
     this.scene.clearColor = BABYLON.Color3.FromHexString('0x002141');
     this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), this.scene);
     this.camera.setTarget(new BABYLON.Vector3(0, 5, 0));
-    // this.camera.attachControl(this.container, false);
 
     // background
-    this.layer = new BABYLON.Layer('', './textures/ocean/ceu_laje.jpg', this.scene, true);
+    this.layer = new BABYLON.Layer('', './textures/ocean/ceu_laje_512.jpg', this.scene, true);
 
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
 
     // island
-    const aspectLaje = 1920 / 1272;
-    const planeWidth = 150;
-    const plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
-    plane.position.x = 0;
-    plane.position.y = 21.2;
-    plane.position.z = 151;
+    const aspectLaje = 1024 / 128;
+    const planeWidth = 250;
+    this.plane = BABYLON.MeshBuilder.CreatePlane('myPlane', { width: planeWidth, height: planeWidth / aspectLaje }, this.scene);
+    this.plane.position.x = 0;
+    this.plane.position.y = 14.2;
+    this.plane.position.z = 251;
     const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
-    lajeMaterial.diffuseTexture = new BABYLON.Texture('./Laje_de_Santos_transp.png', this.scene);
+    lajeMaterial.diffuseTexture = new BABYLON.Texture('./textures/ocean/Laje_de_Santos_transp_1024x128.png', this.scene, true);
     lajeMaterial.diffuseTexture.hasAlpha = true;
     lajeMaterial.useAlphaFromDiffuseTexture = true;
-    plane.material = lajeMaterial;
+    this.plane.material = lajeMaterial;
+    this.planeSize();
 
     // ocean
     const pp = new OceanPostProcess('myOcean', this.camera);
     pp.reflectionEnabled = false;
 
-    const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
-    this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
+    // temp test
+    // const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
+    // this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
 
     this.shouldRender = true;
     this.engine.runRenderLoop(() => {
@@ -96,7 +98,16 @@ export default {
   },
 
   methods: {
+    planeSize () {
+      const w = window.innerWidth;
+      const s = w * 1.5 / 1920;
+      this.plane.scaling = new BABYLON.Vector3(s, s, s);
+      const y = (w - 1920) * (3.2 - 14.2) / (320 - 1920) + 14.2; // TODO 1920 / 14.2 = 320 / 4.2
+      this.plane.position.y = y;
+    },
+
     resize () {
+      this.planeSize();
       this.engine.resize();
     },
 

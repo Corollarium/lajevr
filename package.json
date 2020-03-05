@@ -47,7 +47,6 @@
     "stats.js": "^0.17.0",
     "three": "^0.111.0",
     "three-text2d": "^0.5.3",
-    "topojson": "^3.0.2",
     "vue-gettext": "^2.1.8",
     "webfontloader": "^1.6.28",
     "webp-loader": "^0.6.0"

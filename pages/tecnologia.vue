@@ -61,19 +61,19 @@
         </p>
         <div class="number-wrapper">
           <number-bullet
-            :to="X"
+            :to="53"
           >
             <i18n>imagens</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="0"
           >
             <i18n>vídeos</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="5"
           >
             <i18n>modelos 3D</i18n>
           </number-bullet>

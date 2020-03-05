@@ -75,20 +75,64 @@
       <h3 class="title is-3">
         number bullet
       </h3>
-      <div class="number-wrapper">
+      <div class="number-wrapper" bp="grid 6@md 3@lg">
         <number-bullet
           :to="550"
         >
-          <i18n>metros de comprimento</i18n>
+          <i18n>
+            metros de comprimento
+          </i18n>
+        </number-bullet><number-bullet
+          :to="33"
+        >
+          <i18n>
+            metros de altura
+          </i18n>
+        </number-bullet><number-bullet
+          :to="185"
+        >
+          <i18n>
+            metros de largura
+          </i18n>
+        </number-bullet><number-bullet
+          :to="5000"
+        >
+          <i18n>
+            hectares preservados
+          </i18n>
+        </number-bullet><number-bullet
+          :to="45"
+        >
+          <i18n>
+            metros de profundidade máxima
+          </i18n>
+        </number-bullet><number-bullet
+          :to="40.7"
+          :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
+        >
+          <i18n>
+            quilômetros da costa
+          </i18n>
+        </number-bullet><number-bullet
+          :to="29"
+        >
+          <i18n>
+            espécies de aves
+          </i18n>
+        </number-bullet><number-bullet
+          :to="196"
+        >
+          <i18n>
+            espécies de peixes
+          </i18n>
         </number-bullet>
       </div>
-
-      <h3 class="title is-3">
-        Language Picker
-      </h3>
-      <LanguagePicker />
-    </section>
-    </div>
+      <section>
+        <h3 class="title is-3">
+          Language Picker
+        </h3>
+        <LanguagePicker />
+      </section>
     </section>
   </article>
 </template>

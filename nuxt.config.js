@@ -90,7 +90,7 @@ export default {
           exclude: /(node_modules)/
         });
         config.module.rules.push({
-          test: /\.(glsl|vs|fs|vert|frag)$/i,
+          test: /\.(glsl|vs|fx|fs|vert|frag)$/i,
           exclude: /node_modules/,
           use: 'raw-loader'
         });
