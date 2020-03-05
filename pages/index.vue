@@ -213,7 +213,7 @@
             A Laje em Números
           </i18n>
         </h2>
-        <div class="number-wrapper">
+        <div class="number-wrapper" bp="grid 6@md 3@lg">
           <number-bullet
             :to="550"
           >

@@ -169,19 +169,19 @@ export default {
 
     document.addEventListener('keydown', (event) => {
       switch (event.key) {
-        case 'w':
-          speed += 0.1;
-          this.clamp(speed, 0, 2);
-          break;
+      case 'w':
+        speed += 0.1;
+        this.clamp(speed, 0, 2);
+        break;
 
-        case 's':
-          speed -= 0.1;
-          this.clamp(speed, 0, 2);
-          break;
+      case 's':
+        speed -= 0.1;
+        this.clamp(speed, 0, 2);
+        break;
 
-        case 't':
-          speed = 0.0;
-          break;
+      case 't':
+        speed = 0.0;
+        break;
       }
     });
 
