@@ -1,9 +1,6 @@
 <template>
   <div class="object-embed-3d">
     <canvas v-show="!isSafari" class="object-3d" touch-action="none" />
-    <div v-show="isSafari" class="object-fallback">
-      <img src="~assets/images/laje/Laje_de_Santos.jpg">
-    </div>
   </div>
 </template>
 
@@ -30,7 +27,7 @@ export default {
 
   mounted () {
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isSafari = !browser.satisfies({
+    this.isSafari = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
