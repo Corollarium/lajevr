@@ -3,6 +3,14 @@
 </template>
 <script>
 export default {
+  props: {
+    total: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  },
+
   data () {
     return {
       observer: null
@@ -14,7 +22,7 @@ export default {
     const ctx = c.getContext('2d');
     let cw = c.width = this.$el.parentElement.clientWidth;
     let ch = c.height = this.$el.parentElement.clientHeight;
-    const totalBubbles = 75;
+    const totalBubbles = this.total ? this.total : parseInt(cw / 10);
     const kappa = 0.5522847498;
     const Rgrd = Math.sqrt(ch * ch + (cw / 2) * (cw / 2));
     let grd = ctx.createRadialGradient(cw / 2, 0, 0, cw / 2, 0, Rgrd); // x0, y0, r0, x1, y1, r1
