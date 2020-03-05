@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="sticky-hero">
+    <section v-show="!isSafari" class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
         <div class="sticky-hero-attribution">
@@ -24,20 +24,38 @@
       <div class="sticky-back">
         <div class="description">
           <section class="section description-content">
-            <h1>
-              <i18n>Laje de Santos</i18n>
-            </h1>
-            <p class="text-larger">
-              O Parque Estadual Marinho da Laje de Santos é uma area de proteção da
-              biodiversidade marinha e aviária.
-            </p>
+            <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo">
           </section>
         </div>
       </div>
     </section>
+    <section v-show="isSafari" class="hero">
+      <div class="hero-body">
+        <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
+      </div>
+      <div class="hero-html">
+        <section class="section description-content">
+          <p class="attribution">
+            Photo
+            <a
+              href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
+              class="new"
+              title="User:Afcarv (page does not exist)"
+            >Anael Ferraz de Carvalho</a>
+            -
+            <span class="int-own-work" lang="en">Own work</span>,
+            <a
+              href="https://creativecommons.org/licenses/by-sa/3.0"
+              title="Creative Commons Attribution-Share Alike 3.0"
+            >CC BY-SA 3.0</a>
+            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744">Link</a>
+          </p>
+        </section>
+      </div>
+    </section>
 
     <section class="section">
-      <div bp="grid 12 6@md">
+      <div bp="grid 12 6@md vertical-center">
         <div class="description">
           <section class="section description-content">
             <h1>
@@ -57,7 +75,7 @@
           </section>
         </div>
       </div>
-      <div bp="grid 12 6@md">
+      <div bp="grid 12 6@md vertical-center">
         <div>
           <section class="section">
             <figure class="image">
@@ -78,7 +96,7 @@
           </section>
         </div>
       </div>
-      <div bp="grid 12 6@md">
+      <div bp="grid 12 6@md vertical-center">
         <div>
           <section class="section">
             <p class="text-larger">
@@ -95,7 +113,6 @@
         </div>
       </div>
     </section>
-
     <section class="description">
       <figure class="image">
         <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-top-bottom" alt="Cardume de Xira">
@@ -119,8 +136,7 @@
         </h2>
         <p>
           <i18n>
-            A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas. É habitada
-            por corais, golfinhos, tartarugas, algas, raias-manta.
+            Experimente como é mergulhar na Laje de Santos do seu próprio navegador.
           </i18n>
         </p>
         <p>
@@ -185,8 +201,8 @@
       </div>
     </section>
 
-    <section id="mantas" class="columns" style="margin-bottom: 0;">
-      <div class="column">
+    <section id="mantas" bp="grid 12 6@md">
+      <div>
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
           :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
@@ -194,7 +210,7 @@
         />
         </GLTFModel>
       </div>
-      <div class="column">
+      <div>
         <Bubbles />
         <div class="description">
           <div class="description-content" data-aos="fade-left">
@@ -271,11 +287,10 @@
       <Timeline />
     </section>
   </div>
-  </section>
-  </div></section>
 </template>
 
 <script>
+import Bowser from 'bowser';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
@@ -284,12 +299,11 @@ import Bubbles from '~/components/Bubbles.vue';
 // import Globe from '~/components/Globe.vue';
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageIlha = require('~/assets/images/graficos/ilha-desktop.png?resize');
+const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageMapDistance = require('~/assets/images/graficos/mapa.png?resize');
 const imageProfundidade = require('~/assets/images/graficos/profundidade.png?resize');
 const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
 const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
-
-// pivaNew
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 
 export default {
@@ -306,17 +320,31 @@ export default {
     return {
       imagePeixes,
       imageIlha,
+      imageIlhaFoto,
       imageMapDistance,
       imageProfundidade,
       imageMapNoBorders,
       imageMapaGeral2,
-      imageLogoLaje
+      imageLogoLaje,
+      isSafari: false
     };
   },
 
   mounted () {
     this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
+    const browser = Bowser.getParser(window.navigator.userAgent);
+    this.isSafari = browser.satisfies({
+      // declare browsers per OS
+      macos: {
+        safari: '>10.1'
+      },
+
+      // per platform (mobile, desktop or tablet)
+      mobile: {
+        safari: '>=9'
+      }
+    });
   }
 
 };

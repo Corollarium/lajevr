@@ -1,6 +1,6 @@
 <template>
   <div class="object-embed-3d">
-    <canvas class="object-3d" touch-action="none" />
+    <canvas v-show="!isSafari" class="object-3d" touch-action="none" />
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 /* eslint-disable */
 import * as BABYLON from 'babylonjs';
 import OceanPostProcess from './OceanPostProcess';
+import Bowser from "bowser";
 /* eslint-enable */
 
 export default {
@@ -19,12 +20,29 @@ export default {
       scene: null,
       camera: null,
       container: null,
-      plane: null
+      plane: null,
+      isSafari: false
     };
   },
 
   mounted () {
+    const browser = Bowser.getParser(window.navigator.userAgent);
+    this.isSafari = browser.satisfies({
+      // declare browsers per OS
+      macos: {
+        safari: '>10.1'
+      },
+
+      // per platform (mobile, desktop or tablet)
+      mobile: {
+        safari: '>=9'
+      }
+    });
+    if (this.isSafari) {
+      return;
+    }
     this.container = this.$el.querySelector('.object-3d');
+    console.log(this.container);
 
     this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
@@ -59,8 +77,8 @@ export default {
     pp.reflectionEnabled = false;
 
     // temp test
-    // const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
-    // this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
+    const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
+    this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);
 
     this.shouldRender = true;
     this.engine.runRenderLoop(() => {
@@ -89,12 +107,14 @@ export default {
   beforeDestroy () {
     window.removeEventListener('resize', this.resize);
     window.removeEventListener('scroll', this.scroll);
-    this.observer.unobserve(this.container);
-    this.observer = null;
-    this.engine.stopRenderLoop();
-    this.scene.dispose();
-    this.scene = null;
-    this.engine = null;
+    if (this.observer) {
+      this.observer.unobserve(this.container);
+      this.observer = null;
+      this.engine.stopRenderLoop();
+      this.scene.dispose();
+      this.scene = null;
+      this.engine = null;
+    }
   },
 
   methods: {
