@@ -1,7 +1,4 @@
 // font
-@mainFont: "Montserrat", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-@secondaryFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
 @light: 300;
 @regular: 400;
 @medium: 500;
@@ -44,17 +41,22 @@ html {
   .font-size(@fontdesk);
   line-height: 1.2em;
   .text-margin(@marginG);
+  .marginBottom(@marginG/2);
+  .marginTop(@marginG);
 
   @media @tablet {
     .font-size(@fonttablet);
     line-height: 1em;
     .text-margin(@marginM);
+    .marginTop(@marginM);
+    .marginBottom(@marginM/2);
   }
 
   @media @mobile {
     .font-size(@fontmobile);
     line-height: 1em;
-    .text-margin(@marginP);
+    .marginTop(@marginP);
+    .marginBottom(@marginP/2);
   }
 }
 
@@ -101,6 +103,24 @@ body {
   }
 }
 
+.text-larger {
+  .font-size(20);
+
+  @media @tablet {
+    .font-size(18);
+  }
+
+  @media @mobile {
+    .font-size(16);
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  .font-select(@regular, #000);
+}
 
 // text helpers
 .has-text-right {

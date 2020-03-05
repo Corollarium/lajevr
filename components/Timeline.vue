@@ -92,6 +92,7 @@
               frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
+              loading="lazy"
             />
           </figure>
           <h2 class="timeline__content-title">
@@ -137,7 +138,7 @@ export default {
             if (bkg && !this.$el.style.background.includes(bkg.src)) {
               background.style.opacity = 0.5;
               setTimeout(() => {
-                background.style.background = 'center / cover fixed no-repeat url(' + bkg.src + ') rgba(33, 33, 33, 0.8)';
+                // TODO: background.style.background = 'center / cover fixed no-repeat url(' + bkg.src + ') rgba(33, 33, 33, 0.8)';
                 background.style.opacity = 1.0;
               }, 300);
             }
@@ -157,9 +158,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@content-font: Cardo;
-@heading-font: 'Pathway Gothic One', sans-serif;
-@timeline-width:700px;
+@import '~assets/css/variables.less';
+
+@content-font: @mainFont;
+@heading-font: @secondaryFont;
+@timeline-max-width: 1280px;
 @timeline-container-width:100%;
 
 .timeline {
@@ -167,9 +170,10 @@ export default {
   margin: 0 auto;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: @timeline-width;
+  max-width: @timeline-max-width;
   position: relative;
-  &__content {
+
+&__content {
     &-title {
       font-weight: normal;
       font-size: 66px;
@@ -213,7 +217,6 @@ export default {
     position: relative;
     transform: translateY(-80px);
     &:before {
-      content: attr(data-text);
       letter-spacing: 3px;
       width: 100%;
       position: absolute;

@@ -1,9 +1,27 @@
 .columns {
   display: flex;
+  height: 100%;
+  flex-direction: row;
 
   .column {
-    flex-direction: column;
-    flex-basis: 100%;
+    flex-basis: content;
     flex: 1;
+
+    &.is-2, &.is-2-tablet {
+      flex: none;
+      width: 16.66667%;
+    }
+  }
+}
+
+.is-hidden-mobile {
+  @media @mobile {
+    display: none;
+  }
+}
+
+.is-hidden-tablet {
+  @media @tablet {
+    display: none;
   }
 }

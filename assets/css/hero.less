@@ -1,0 +1,64 @@
+.hero {
+
+  align-items: stretch;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+
+  .hero-body, .section {
+    padding: 3rem 1.5rem;
+  }
+  .hero-body {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 0;
+    position: relative;
+    text-shadow: 0px 0px 10px @darkGrey;
+  }
+
+  .hero-html {
+    padding: 0 2vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #eee;
+    text-shadow: 0 0 10px #3f3b3b;
+  }
+
+  .hero-title {
+    font-size: 8vw;
+    font-weight: bold;
+    text-align: right;
+    color: #d2d2d2;
+    letter-spacing: 0.35em;
+    display: block;
+    margin-top: 50px;
+    position: relative;
+    padding-bottom: 15%;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-weight: bold;
+  }
+
+  .hero-subtitle {
+    color: #ffffff;
+  }
+}
+
+.hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body, .hero.is-halfheight .hero-body {
+  -webkit-box-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: flex;
+}
+
+.hero.is-fullheight .hero-body > .container, .hero.is-fullheight-with-navbar .hero-body > .container, .hero.is-halfheight .hero-body > .container {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+}

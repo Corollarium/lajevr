@@ -7,26 +7,46 @@
     </h1>
     <p>
       <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
-      <a
-        href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
-      >The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation</a>
-      http://www.lajeviva.org.br/Lajeviva/wp-content/uploads/2015/10/2008_Luiz-Jr-et-al-Reef-Fishes-of-Laje-de-Santos-Marine-Park-ZOOTAXA.pdf
-      https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf
     </p>
+    <ul>
+      <li>
+        <a
+          href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
+        >Luiz, Osmar J., Alfredo Carvalho-Filho, Carlos E. L. Ferreira, Sergio R. Floeter, João Luiz Gasparini and Ivan Sazima. “The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation.” (2008)</a>
+      </li>
+      <li>
+        <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">
+          Laje de Santos, plano de manejo.
+        </a>
+      </li>
+    </ul>
 
     <form id="filters" class="form">
       <div class="field is-horizontal ">
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <span style="font-weight: bold; font-size: 1.4em;">
-                <i18n>
-                  Filtros
-                </i18n>
+        <div class="field">
+          <div class="control">
+            <h3>
+              <i18n>
+                Filtros
+              </i18n>
+            </h3>
+          </div>
+        </div>
+        <div class="field-body" bp="grid">
+          <div class="field" bp="1 4@md">
+            <label class="label">
+              <i18n>
+                Nome
+              </i18n>
+            </label>
+            <div class="control has-icons-left">
+              <input v-model="filterSearch" class="input" type="text" placeholder="busque">
+              <span class="icon is-small is-left">
+                <font-awesome-icon :icon="['fas', 'search']" />
               </span>
             </div>
           </div>
-          <div class="field">
+          <div class="field" bp="1 2@md">
             <label class="label">
               <i18n>
                 Cor
@@ -62,7 +82,7 @@
               </div>
             </div>
           </div>
-          <div class="field">
+          <div class="field" bp="1 4@md">
             <label class="label">
               <i18n>
                 Tamanho (em cm)
@@ -74,19 +94,6 @@
                 <output style="float: right;">{{ maxRange }}</output>
               </div>
               <div id="slider" ref="slider" />
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">
-              <i18n>
-                Nome
-              </i18n>
-            </label>
-            <div class="control has-icons-left">
-              <input v-model="filterSearch" class="input" type="text" placeholder="busque">
-              <span class="icon is-small is-left">
-                <font-awesome-icon :icon="['fas', 'search']" />
-              </span>
             </div>
           </div>
         </div>

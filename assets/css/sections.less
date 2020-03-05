@@ -2,7 +2,13 @@
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
 
-.marginBottom (@value: 1;) {
+.marginTop (@value: 1) {
+  @sizeResult: @spacing * @value;
+  @remValue: @sizeResult / 16;
+  margin-top: ~"@{remValue}rem";
+}
+
+.marginBottom (@value: 1) {
   @sizeResult: @spacing * @value;
   @remValue: @sizeResult / 16;
   margin-bottom: ~"@{remValue}rem";
@@ -69,11 +75,6 @@ img {
   color: #eee;
   text-shadow: 0px 0px 10px @darkGrey;
   font-family: @mainFont;
-}
-
-.text-larger {
-  font-size: 1.3em;
-  font-weight: bold;
 }
 
 .fade-top-bottom {

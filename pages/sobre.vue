@@ -44,9 +44,9 @@
 
       <p>
         <i18n>
-          Com o surgimento de uma edital aberto do estado de São Paulo, o ProAC,
-          pudemos ver um caminho para realizar o projeto. A proposta deste projeto
-          foi aprovada.
+          Com o surgimento de um edital aberto pelo estado de São Paulo, o ProAC,
+          pudemos ver um caminho para realizar o projeto. Enviamos a proposta deste projeto
+          e ela foi aprovada.
         </i18n>
       </p>
     </section>
@@ -110,7 +110,13 @@
       <p>
         <i18n>
           Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,
-          podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos. outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo, podendo alcançar oito metros de envergadura e pesar mais de duas toneladas (https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta). Há o Projeto Mantas do Brasil, que busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN. Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas algumas centenas de indivíduos.
+          podendo alcançar oito metros de envergadura e pesar mais de duas toneladas. Há o
+          <a href="https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta">Projeto Mantas do Brasil</a>, que busca a
+          ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente
+          incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio
+          de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN.
+          Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas
+          algumas centenas de indivíduos.
         </i18n>
       </p>
     </section>

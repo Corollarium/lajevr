@@ -153,6 +153,8 @@ export default {
       if (this.waterMaterial) {
         this.waterMaterial.setFloat('time', timeElapsed);
         this.waterMaterial.setVector3('cameraPosition', this.camera.position);
+        this.waterMesh.position.x = this.camera.x;
+        this.waterMesh.position.z = this.camera.z;
       }
       this.rttMaterials.forEach(
         (c) => {
@@ -192,6 +194,7 @@ export default {
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
+    document.querySelector('footer.footer').style.display = 'inherit';
   },
 
   methods: {
@@ -671,7 +674,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 #underwater {
   height: 100vh;
   width: 100vw;

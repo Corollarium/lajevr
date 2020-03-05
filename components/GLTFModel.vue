@@ -38,9 +38,9 @@ export default {
       default: null
     },
     backgroundColor: {
-      type: Number,
+      type: String,
       required: false,
-      default: 0xFFFFFF
+      default: ''
     }
   },
 
@@ -58,9 +58,15 @@ export default {
     camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(this.backgroundColor);
+    if (!this.backgroundColor) {
+      scene.background = null;
+      this.renderer = new THREE.WebGLRenderer({ alpha: true, powerPreference: 'high-performance' });
+      this.renderer.setClearColor(0xFFFFFF, 0);
+    } else {
+      scene.background = new THREE.Color(this.backgroundColor);
+      this.renderer = new THREE.WebGLRenderer({ powerPreference: 'high-performance' });
+    }
 
-    this.renderer = new THREE.WebGLRenderer({ powerPreference: 'high-performance' });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(container.clientWidth, window.innerHeight);
 

@@ -12,28 +12,30 @@
           </i18n>
         </h2>
         <p>
-          Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
-          abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
-          por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
-          gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
-          tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.
+          <i18n>
+            Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
+            abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
+            por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
+            gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
+            tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.
+          </i18n>
         </p>
 
         <div class="number-wrapper">
           <number-bullet
-            :to="X"
+            :to="0"
           >
             <i18n>mergulhos</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="2"
           >
             <i18n>mergulhadores</i18n>
           </number-bullet>
 
           <number-bullet
-            :to="X"
+            :to="0"
           >
             <i18n>horas de mergulho</i18n>
           </number-bullet>
@@ -74,6 +76,11 @@
             :to="X"
           >
             <i18n>modelos 3D</i18n>
+          </number-bullet>
+          <number-bullet
+            :to="12622"
+          >
+            <i18n>linhas de código</i18n>
           </number-bullet>
         </div>
       </div>
@@ -123,7 +130,16 @@
 </template>
 
 <script>
-export default {};
+import page from './page.vue';
+
+export default {
+  extends: page,
+
+  mounted () {
+    this.head.title = this.$gettext('Tecnologia');
+    this.head.description = this.$gettext('Tecnologia usada para o simulador de realidade virtual na Laje de Santos');
+  }
+};
 </script>
 
 <style></style>
