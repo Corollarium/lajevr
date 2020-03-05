@@ -48,7 +48,10 @@ export default {
         safari: '>=9'
       }
     });
-    if (!this.forceLoad && this.isSafari) {
+    if (this.forceLoad) {
+      this.isSafari = false;
+    }
+    if (this.isSafari) {
       return;
     }
     this.container = this.$el.querySelector('.object-3d');
