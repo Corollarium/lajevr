@@ -383,13 +383,6 @@ h1, h2 {
 
 }
 
-.number-wrapper .number-info {
-  width: 20em !important;
-}
-.number-wrapper .number-info .number-round {
-  width: 3.2em !important;
-}
-
 .image-fish {
   display: inline-block
 }
