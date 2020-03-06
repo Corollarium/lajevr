@@ -58,6 +58,9 @@
       <div bp="grid 12 6@md vertical-center">
         <div class="description">
           <section class="section description-content">
+            <figure class="image">
+              <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santoss">
+            </figure>
             <h1>
               <i18n>Laje de Santos</i18n>
             </h1>
@@ -305,6 +308,7 @@ const imageProfundidade = require('~/assets/images/graficos/profundidade.png?res
 const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
 const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
+const imageIconLaje = require('~/assets/images/graficos/icon-laje.png?resize');
 
 export default {
   components: {
@@ -326,6 +330,7 @@ export default {
       imageMapNoBorders,
       imageMapaGeral2,
       imageLogoLaje,
+      imageIconLaje,
       isSafari: false
     };
   },
