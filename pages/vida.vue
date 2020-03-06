@@ -135,13 +135,18 @@
 </template>
 
 <script>
+import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 
 export default {
+
   components: {
     GLTFModel
   },
+  extends: page,
   mounted () {
+    this.head.title = this.$gettext('Vida na Laje de Santos');
+    this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
     this.asideMenu();
   },
   methods: {
