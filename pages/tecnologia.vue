@@ -4,8 +4,8 @@
       <i18n>Tecnologia</i18n>
     </h1>
 
-    <section class="section columns">
-      <div class="column" data-aos="slide-right">
+    <section class="section" bp="grid 12 6@md">
+      <div data-aos="slide-right">
         <h2>
           <i18n>
             Adquirindo dados
@@ -41,13 +41,16 @@
           </number-bullet>
         </div>
       </div>
-      <div class="column" data-aos="zoom-out-down">
+      <div data-aos="zoom-out-down">
         <img src="~/assets/images/placeholder480.png">
       </div>
     </section>
 
-    <section class="section columns">
-      <div class="column" data-aos="slide-right">
+    <section class="section" bp="grid 12 6@md">
+      <div data-aos="zoom-out-down">
+        <img src="~/assets/images/placeholder480.png">
+      </div>
+      <div data-aos="slide-right">
         <h2>
           <i18n>
             Desenvolvimento
@@ -84,13 +87,10 @@
           </number-bullet>
         </div>
       </div>
-      <div class="column" data-aos="zoom-out-down">
-        <img src="~/assets/images/placeholder480.png">
-      </div>
     </section>
 
-    <section class="section columns">
-      <div class="column" data-aos="slide-left">
+    <section class="section" bp="grid 12 6@md">
+      <div data-aos="slide-left">
         <h2>
           Realidade virtual
         </h2>
@@ -108,7 +108,11 @@
           >
             <i18n>fotografias</i18n>
           </number-bullet>
-
+          <number-bullet
+            :to="X"
+          >
+            <i18n>horas de vídeo</i18n>
+          </number-bullet>
           <number-bullet
             :to="X"
           >
@@ -122,7 +126,7 @@
           </number-bullet>
         </div>
       </div>
-      <div class="column" data-aos="zoom-out-down">
+      <div data-aos="zoom-out-down">
         <img src="~/assets/images/placeholder480.png">
       </div>
     </section>
