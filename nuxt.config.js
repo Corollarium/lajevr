@@ -100,15 +100,15 @@ export default {
 
   pwa: {
     manifest: {
-      background_color: '#00172A',
-      theme_color: '#00172A'
+      background_color: '#011d32',
+      theme_color: '#0094d7'
     },
     icon: {
-      iconFileName: 'images/logos/lajevr1024clear.png'
+      iconFileName: 'images/icons/favicon/android-icon-48x48.png'
     },
     meta: {
       name: 'Laje de Santos em Realidade Virtual',
-      theme_color: '#00172A',
+      theme_color: '#0094d7',
       ogHost: 'https://corollarium.github.io/',
       twitterCard: 'summary_large_image',
       twitterCreator: '@corollarium'
