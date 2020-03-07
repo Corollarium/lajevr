@@ -227,60 +227,60 @@
 
     <section id="numeros" class="section">
       <div class="container">
-        <h2 class="title is-1">
+        <h2 class="has-text-center">
           <i18n>
             A Laje em Números
           </i18n>
         </h2>
-        <div class="number-wrapper" bp="grid 6@md 3@lg">
+        <div class="number-wrapper" bp="grid 6@sm 4@md 3@lg">
           <number-bullet
             :to="550"
           >
             <i18n>
-              metros de comprimento
+              Metros de comprimento
             </i18n>
           </number-bullet><number-bullet
             :to="33"
           >
             <i18n>
-              metros de altura
+              Metros de altura
             </i18n>
           </number-bullet><number-bullet
             :to="185"
           >
             <i18n>
-              metros de largura
+              Metros de largura
             </i18n>
           </number-bullet><number-bullet
             :to="5000"
           >
             <i18n>
-              hectares preservados
+              Hectares preservados
             </i18n>
           </number-bullet><number-bullet
             :to="45"
           >
             <i18n>
-              metros de profundidade máxima
+              Metros de profundidade máxima
             </i18n>
           </number-bullet><number-bullet
             :to="40.7"
             :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
           >
             <i18n>
-              quilômetros da costa
+              Quilômetros da costa
             </i18n>
           </number-bullet><number-bullet
             :to="29"
           >
             <i18n>
-              espécies de aves
+              Espécies de aves
             </i18n>
           </number-bullet><number-bullet
             :to="196"
           >
             <i18n>
-              espécies de peixes
+              Espécies de peixes
             </i18n>
           </number-bullet>
         </div>

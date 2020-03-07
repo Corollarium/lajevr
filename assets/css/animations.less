@@ -28,3 +28,13 @@
     transform: translate(-50%, -75%) rotate(360deg);
   }
 }
+
+@keyframes bubble-light {
+  0% {
+    box-shadow: 0px 5px 20px 5px fade(@secondaryColor-1, 80);
+  }
+
+  100% {
+    box-shadow: 0px 5px 30px fade(@secondaryColor-1, 40);
+  }
+}

@@ -3,6 +3,7 @@
 
   .number-info {
     display: inline-block;
+    margin-bottom: 2rem;
   }
 
   .number-circle {
@@ -14,13 +15,20 @@
     height: @circle-size;
     position: relative;
 
-    > span {
-      line-height: @circle-size;
+    .bubble {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       display: block;
       background-image: linear-gradient(to bottom, darken(@primaryColor, 25), darken(@primaryColor, 30));
+      animation: bubble-light 3s infinite alternate-reverse;
+
+      .number-icon {
+        font-size: .75em;
+        display: block;
+        padding-top: 1.5rem;
+        margin-bottom: -.5rem;
+      }
     }
 
     &:after {
@@ -36,5 +44,8 @@
       background-image: radial-gradient(circle at 54% -35%, hsl(188, 100%, 45%), hsla(195, 100%, 43%, 0.2) 41%, hsla(202, 100%, 38%, 0.25) 80%, hsl(206, 100%, 33%) 103%);
       border: inset 1px @secondaryColor-1;
     }
+  }
+  .number-explanation {
+    margin-top: 1rem;
   }
 }

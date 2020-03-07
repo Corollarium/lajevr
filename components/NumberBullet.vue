@@ -1,7 +1,10 @@
 <template>
   <div class="number-info">
     <div class="number-circle">
-      <span v-on="$listeners" v-bind="$attrs" class="bubble">{{ tweenedNumber }}</span>
+      <div class="bubble">
+        <span class="number-icon"><font-awesome-icon :icon="['fas', 'fish']" /></span>
+        <span v-on="$listeners" v-bind="$attrs" class="number">{{ tweenedNumber }}</span>
+      </div>
     </div>
     <div class="number-explanation">
       <slot />
