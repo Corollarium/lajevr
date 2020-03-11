@@ -193,15 +193,19 @@
           Equipe
         </i18n>
       </h2>
-      <ul>
+      <ul class="people">
         <li>
           <img src="~/assets/images/placeholder480.png">
-          <h3>Bruno Barberi Gnecco</h3>
+          <p class="people-name">
+            Bruno Barberi Gnecco
+          </p>
           <p>Bla bla bla</p>
         </li>
         <li>
           <img src="~/assets/images/placeholder480.png">
-          <h3>Vinicius Piva</h3>
+          <p class="people-name">
+            Vinicius Piva
+          </p>
           <p>Bla bla bla</p>
         </li>
       </ul>
@@ -309,4 +313,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="less" scoped>
+.people {
+  list-style: none;
+  li {
+    max-width: 360px;
+    display: inline-block;
+    .people-name {
+      font-size: 120%;
+    }
+    img {
+      width: 360px;
+    }
+  }
+}
+</style>
+</style>
