@@ -73,7 +73,7 @@
         <div>
           <section class="section">
             <figure class="image">
-              <img :src="imageIlha.src" :srcset="imageIlha.srcSet" alt="Mapa esquematizado da Laje de Santos">
+              <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" alt="Mapa esquematizado da Laje de Santos">
             </figure>
           </section>
         </div>
@@ -82,7 +82,7 @@
         <div>
           <section class="section">
             <figure class="image">
-              <img :src="imageMapDistance.src" :srcset="imageMapDistance.srcSet" alt="Mapa esquematizado da Laje de Santos">
+              <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa esquematizado da Laje de Santos">
             </figure>
           </section>
         </div>
@@ -94,7 +94,7 @@
               </i18n>
             </p>
             <figure class="image">
-              <img :src="imageMapNoBorders.src" :srcset="imageMapNoBorders.srcSet" alt="Mapa-mundi com a Laje de Santos">
+              <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa-mundi com a Laje de Santos">
             </figure>
           </section>
         </div>
@@ -110,7 +110,7 @@
         <div>
           <section class="section">
             <figure class="image">
-              <img :src="imageProfundidade.src" :srcset="imageProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
+              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
             </figure>
           </section>
         </div>
@@ -301,12 +301,10 @@ import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 // import Globe from '~/components/Globe.vue';
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
-const imageIlha = require('~/assets/images/graficos/ilha-desktop.png?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
-const imageMapDistance = require('~/assets/images/graficos/mapa.png?resize');
-const imageProfundidade = require('~/assets/images/graficos/profundidade.png?resize');
-const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
-const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
+const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
+const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundidade.png?resize');
+const imageAboutMapa = require('~/assets/images/graficos/laje-mapa.png?resize');
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 const imageIconLaje = require('~/assets/images/graficos/icon-laje.png?resize');
 
@@ -323,12 +321,10 @@ export default {
   data () {
     return {
       imagePeixes,
-      imageIlha,
+      imageAboutIlha,
       imageIlhaFoto,
-      imageMapDistance,
-      imageProfundidade,
-      imageMapNoBorders,
-      imageMapaGeral2,
+      imageAboutProfundidade,
+      imageAboutMapa,
       imageLogoLaje,
       imageIconLaje,
       isSafari: false
@@ -356,10 +352,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-h1, h2 {
-  text-transform: uppercase
-}
-
 .sticky-hero {
   height: 300vh;
   position: relative;

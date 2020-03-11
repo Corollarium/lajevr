@@ -102,12 +102,12 @@
 import page from './page.vue';
 import Ocean from '~/components/OceanB.vue';
 // import Globe from '~/components/Globe.vue';
-const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
-const imageIlha = require('~/assets/images/graficos/ilha-desktop.png?resize');
-const imageMapDistance = require('~/assets/images/graficos/mapa.png?resize');
-const imageProfundidade = require('~/assets/images/graficos/profundidade.png?resize');
-const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
-const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
+// const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
+// const imageIlha = require('~/assets/images/graficos/ilha-desktop.png?resize');
+// const imageMapDistance = require('~/assets/images/graficos/mapa.png?resize');
+// const imageProfundidade = require('~/assets/images/graficos/profundidade.png?resize');
+// const imageMapNoBorders = require('~/assets/images/maps/BlankMap-World-noborders.png?resize');
+// const imageMapaGeral2 = require('~/assets/images/maps/MapaGeral2.png?resize');
 
 // pivaNew
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
@@ -121,12 +121,12 @@ export default {
 
   data () {
     return {
-      imagePeixes,
-      imageIlha,
-      imageMapDistance,
-      imageProfundidade,
-      imageMapNoBorders,
-      imageMapaGeral2,
+      //      imagePeixes,
+      //      imageIlha,
+      //      imageMapDistance,
+      //      imageProfundidade,
+      //      imageMapNoBorders,
+      //      imageMapaGeral2,
       imageLogoLaje
     };
   },
