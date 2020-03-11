@@ -275,6 +275,7 @@
             </i18n>
           </number-bullet><number-bullet
             :to="29"
+            :icon="['fas', 'dove']"
           >
             <i18n>
               Espécies de aves
