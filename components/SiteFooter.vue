@@ -105,14 +105,22 @@
       <hr style="opacity: .2">
       <div class="footer-logos" bp="grid 4@sm 2@lg vertical-center">
         <figure bp="offset-4-lg">
-          <img src="~/static/images/logos/logo-corollarium.png" alt="Logo Corollarium Technologies">
+          <a href="https://corollarium.com" target="_blank">
+            <img src="~/static/images/logos/logo-corollarium.png" alt="Logo Corollarium Technologies">
+          </a>
         </figure>
         <figure>
-          <img src="~/static/images/logos/logo-proac-cor-texto-branco.png" alt="Logo Programa de Ação Cultural do Governo do Estado de São Paulo">
+          <a href="http://www.proac.sp.gov.br/" target="_blank">
+            <img src="~/static/images/logos/logo-proac-cor-texto-branco.png" alt="Logo Programa de Ação Cultural do Governo do Estado de São Paulo">
+          </a>
         </figure>
         <figure>
-          <img src="~/static/images/logos/logo-gesp-slogan-horizontal-cor-texto-branco.png" alt="Logo Governo do Estado de São Paulo">
+          <a href="http://www.proac.sp.gov.br/" target="_blank">
+            <img src="~/static/images/logos/logo-gesp-slogan-horizontal-cor-texto-branco.png" alt="Logo Governo do Estado de São Paulo">
+          </a>
         </figure>
+        </a>
+        </figure></a>
       </div>
     </div>
   </footer>
