@@ -21,14 +21,11 @@
           marinho.
         </i18n>
       </p>
-    </section>
-
-    <section class="section">
-      <h2>
+      <h3>
         <i18n>
           A ideia e a execução
         </i18n>
-      </h2>
+      </h3>
       <p>
         <i18n>
           A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou
@@ -38,17 +35,176 @@
           Laje de Santos surgiu: e se transformássemos uma experiência pouco comum,
           de ir até um lugar lindo mas distante, em algo que fosse mais aberto ao
           mundo? E se complementássemos a visita com informações e tecnologia?
-          Poderíamos finalmente trazer a experiência da Corollarium para isso.
+          Poderíamos finalmente trazer a experiência da Corollarium para isso, com o apoio
+          do ProAC.
         </i18n>
       </p>
+    </section>
 
-      <p>
+    <section class="section">
+      <h2>
         <i18n>
-          Com o surgimento de um edital aberto pelo estado de São Paulo, o ProAC,
-          pudemos ver um caminho para realizar o projeto. Enviamos a proposta deste projeto
-          e ela foi aprovada.
+          Tecnologia
         </i18n>
-      </p>
+      </h2>
+
+      <div bp="grid 12 6@md">
+        <div data-aos="slide-right">
+          <h3>
+            <i18n>
+              Adquirindo dados
+            </i18n>
+          </h3>
+          <p>
+            <i18n>
+              Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
+              abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
+              por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
+              gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
+              tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.
+            </i18n>
+          </p>
+
+          <div class="number-wrapper">
+            <number-bullet
+              :to="0"
+              :icon="['fas', 'mask']"
+            >
+              <i18n>mergulhos</i18n>
+            </number-bullet>
+
+            <number-bullet
+              :to="2"
+              :icon="['fas', 'users']"
+            >
+              <i18n>mergulhadores</i18n>
+            </number-bullet>
+
+            <number-bullet
+              :to="0"
+              :icon="['fas', 'clock']"
+            >
+              <i18n>horas de mergulho</i18n>
+            </number-bullet>
+          </div>
+        </div>
+        <div data-aos="zoom-out-down">
+          <img src="~/assets/images/placeholder480.png">
+        </div>
+      </div>
+
+      <div bp="grid 12 6@md">
+        <div data-aos="zoom-out-down">
+          <img src="~/assets/images/placeholder480.png">
+        </div>
+        <div data-aos="slide-right">
+          <h2>
+            <i18n>
+              Desenvolvimento
+            </i18n>
+          </h2>
+          <p>
+            <i18n>
+              Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.
+              Desde um celular até telas gigantes.
+            </i18n>
+          </p>
+          <div class="number-wrapper">
+            <number-bullet
+              :to="53"
+              :icon="['fas', 'images']"
+            >
+              <i18n>imagens</i18n>
+            </number-bullet>
+
+            <number-bullet
+              :to="0"
+              :icon="['fas', 'video']"
+            >
+              <i18n>vídeos</i18n>
+            </number-bullet>
+
+            <number-bullet
+              :to="5"
+              :icon="['fas', 'cubes']"
+            >
+              <i18n>modelos 3D</i18n>
+            </number-bullet>
+            <number-bullet
+              :to="12622"
+              :icon="['fas', 'code']"
+            >
+              <i18n>linhas de código</i18n>
+            </number-bullet>
+          </div>
+        </div>
+      </div>
+
+      <div bp="grid 12 6@md">
+        <div data-aos="slide-left">
+          <h2>
+            Realidade virtual
+          </h2>
+          <p>
+            <i18n>
+              A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.
+              Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que
+              foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,
+              para terem qualidade, animação mas serem leves o suficiente para a web.
+            </i18n>
+          </p>
+          <div class="number-wrapper">
+            <number-bullet
+              :to="X"
+              :icon="['fas', 'camera']"
+            >
+              <i18n>fotografias</i18n>
+            </number-bullet>
+            <number-bullet
+              :to="X"
+              :icon="['fas', 'video']"
+            >
+              <i18n>horas de vídeo</i18n>
+            </number-bullet>
+            <number-bullet
+              :to="X"
+              :icon="['fas', 'hdd']"
+            >
+              <i18n>horas de processamento</i18n>
+            </number-bullet>
+
+            <number-bullet
+              :to="X"
+              :icon="['fas', 'save']"
+            >
+              <i18n>GB de dados</i18n>
+            </number-bullet>
+          </div>
+        </div>
+        <div data-aos="zoom-out-down">
+          <img src="~/assets/images/placeholder480.png">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>
+        <i18n>
+          Equipe
+        </i18n>
+      </h2>
+      <ul>
+        <li>
+          <img src="~/assets/images/placeholder480.png">
+          <h3>Bruno Barberi Gnecco</h3>
+          <p>Bla bla bla</p>
+        </li>
+        <li>
+          <img src="~/assets/images/placeholder480.png">
+          <h3>Vinicius Piva</h3>
+          <p>Bla bla bla</p>
+        </li>
+      </ul>
     </section>
 
     <section class="section">
