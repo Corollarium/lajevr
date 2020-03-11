@@ -155,26 +155,26 @@
           </p>
           <div class="number-wrapper">
             <number-bullet
-              :to="X"
+              :to="0"
               :icon="['fas', 'camera']"
             >
               <i18n>fotografias</i18n>
             </number-bullet>
             <number-bullet
-              :to="X"
+              :to="0"
               :icon="['fas', 'video']"
             >
               <i18n>horas de vídeo</i18n>
             </number-bullet>
             <number-bullet
-              :to="X"
+              :to="0"
               :icon="['fas', 'hdd']"
             >
               <i18n>horas de processamento</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="X"
+              :to="0"
               :icon="['fas', 'save']"
             >
               <i18n>GB de dados</i18n>
