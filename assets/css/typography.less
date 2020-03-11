@@ -16,6 +16,26 @@ html {
   font-weight: @weight;
 }
 
+
+input,
+button,
+textarea,
+select {
+  .font-select(@regular, #000);
+}
+
+// text helpers
+.text-is-bold {
+  font-weight: @bold;
+}
+.has-text-right {
+  text-align: right;
+}
+
+.has-text-center {
+  text-align: center;
+}
+
 // usage, x is the pixel size needed: .font-size(x);
 .font-size(@sizeValue: 16) {
   @remValue: @sizeValue / 16;
@@ -24,7 +44,7 @@ html {
   font-size:~"@{remValue}rem";
 }
 
-.text-margin (@value-lg: 4, @value-md: 3, @value-sm: 2) {
+.text-margin (@value-lg: 5, @value-md: 3, @value-sm: 2) {
   //H1 H2
   @result-lg: @spacing * @value-lg;
   @result-md: @spacing * @value-md;
@@ -69,6 +89,7 @@ h1 {
   .font-select(@regular);
   .text-margin();
   margin-top: 0;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -115,34 +136,6 @@ body {
   @media @mobile {
     .font-size(14);
   }
-}
-
-.text-larger {
-  .font-size(20);
-
-  @media @tablet {
-    .font-size(18);
-  }
-
-  @media @mobile {
-    .font-size(16);
-  }
-}
-
-input,
-button,
-textarea,
-select {
-  .font-select(@regular, #000);
-}
-
-// text helpers
-.has-text-right {
-  text-align: right;
-}
-
-.has-text-center {
-  text-align: center;
 }
 
 // links

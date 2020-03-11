@@ -1,3 +1,4 @@
+//Also BlueprintCSS overlays
 //layout
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
@@ -30,32 +31,36 @@
   margin: ~"@{remValueV}rem" ~"@{remValueH}rem";
 }
 
-.container {
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  margin: 0 auto;
-  position: relative;
-  width: auto;
+.container, [bp~=container] {
   max-width: @gridWidth;
 
+  @media only screen and (max-width: @gridWidth - 1) {
+    max-width: calc(100% - 40px);
+  }
 }
 
-.section {
+.section (@paddingXl: 6, @paddingLg: 5, @paddingMd: 4, @paddingSm: 3) {
+
+
   @media @desktopBig {
-    .add-padding(6,0);
+    .add-padding(@paddingXl,0);
   }
 
   @media @desktopSmall {
-    .add-padding(5,0);
+    .add-padding(@paddingLg,0);
   }
 
   @media @tablet {
-    .add-padding(4,0);
+    .add-padding(@paddingMd,0);
   }
 
   @media @mobile {
-    .add-padding(3,0);
+    .add-padding(@paddingSm,0);
   }
+}
+
+.inner-section {
+  .section(5,4,3,2);
 }
 
 img {
@@ -107,17 +112,4 @@ mask-image: linear-gradient(
   color: #000;
   background-color: rgba(255, 255, 255, 0.5);
   font-size: 70%;
-}
-
-.description {
-  position: relative;
-
-  .description-content {
-    font-size: 2rem;
-    padding: 6em 30%;
-    @media screen and (max-width: 640px) {
-      font-size: 1.5rem;
-      padding: 3em 5%;
-    }
-  }
 }

@@ -9,3 +9,21 @@
     margin-left: -5rem;
   }
 }
+
+.icon-about-heading {
+  @media @desktop {
+    max-width: 15rem;
+  }
+
+  @media @responsiveDevices {
+    max-width: 10rem;
+  }
+}
+
+.boxed-description {
+  padding: 1rem;
+  background-color: fade(@primaryColor, 30);
+  text-align: center;
+  .font-responsive(20,18,16);
+  border-radius: .5rem;
+}

@@ -21,20 +21,22 @@
           </p>
         </div>
       </div>
+      <!--ISSO DAQUI VAI NO TOPO DO SITE
       <div class="sticky-back">
-        <div class="description">
-          <section class="section description-content">
+        <div>
+          <section class="section">
             <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo">
           </section>
         </div>
       </div>
+      -->
     </section>
     <section v-show="isSafari" class="hero">
       <div class="hero-body">
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
       <div class="hero-html">
-        <section class="section description-content">
+        <section class="section">
           <p class="attribution">
             Photo
             <a
@@ -54,69 +56,70 @@
       </div>
     </section>
 
-    <section class="section">
-      <div bp="grid 12 6@md vertical-center">
-        <div class="description">
-          <section class="section description-content">
-            <figure class="image">
-              <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santoss">
-            </figure>
-            <h1>
-              <i18n>Laje de Santos</i18n>
-            </h1>
-            <p class="text-larger">
-              O Parque Estadual Marinho da Laje de Santos é uma area de proteção da
-              biodiversidade marinha e aviária.
-            </p>
-          </section>
+    <!-- About Section -->
+    <section bp="container" class="section">
+      <figure bp="float-center" class="image icon-about-heading">
+        <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
+      </figure>
+      <h1 class="has-text-center">
+        <i18n>Laje de Santos</i18n>
+      </h1>
+
+      <div class="inner-section" bp="grid 12 6@md">
+        <div>
+          <p>
+            O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
+            É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
+            à concentração de peixes de passagem e recifais com grande diversidade biológica.
+            Essas características fazem da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
+            e de <span class="text-is-bold">fotografia subaquática</span> do país.
+          </p>
         </div>
         <div>
-          <section class="section">
-            <figure class="image">
-              <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" alt="Mapa esquematizado da Laje de Santos">
-            </figure>
-          </section>
+          <figure class="image">
+            <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" alt="Ilustração da Laje de Santos">
+          </figure>
         </div>
       </div>
-      <div bp="grid 12 6@md vertical-center">
-        <div>
-          <section class="section">
-            <figure class="image">
-              <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa esquematizado da Laje de Santos">
-            </figure>
-          </section>
+
+      <div class="inner-section" bp="grid vertical-center">
+        <div bp="7">
+          <figure class="image">
+            <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa-mundi com a Laje de Santos">
+          </figure>
         </div>
-        <div bp="first first@sm last@md">
-          <section class="section">
-            <p class="text-larger">
-              <i18n>
-                Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do Estado de São Paulo, no Brasil.
-              </i18n>
-            </p>
-            <figure class="image">
-              <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa-mundi com a Laje de Santos">
-            </figure>
-          </section>
+
+        <div bp="5">
+          <p class="boxed-description">
+            Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
+            Estado de <span class="text-is-bold">São Paulo</span>, no <span class="text-is-bold">Brasil</span>.
+          </p>
         </div>
       </div>
-      <div bp="grid 12 6@md vertical-center">
+
+      <div class="inner-section" bp="grid 12 6@md">
         <div>
-          <section class="section">
-            <p class="text-larger">
-              <i18n>A Laje oferece ótimas condições de mergulho, com boa visibilidade da água e muita vida, sendo um dos principais pontos do país.</i18n>
-            </p>
-          </section>
+          <h3>
+            <i18n>Um paraíso para mergulhadores</i18n>
+          </h3>
+          <p>
+            <i18n>
+              A Laje oferece condições muito especiais em termos de profundidade
+              e visibilidade para mergulho tornando-o um dos principais pontos do país;
+            </i18n>
+          </p>
+          <span>Profundidade média:  20m</span>
+          <span>Profundidade máxima no entorno:  42m</span>
         </div>
         <div>
-          <section class="section">
-            <figure class="image">
-              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
-            </figure>
-          </section>
+          <figure class="image">
+            <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
+          </figure>
         </div>
       </div>
     </section>
-    <section class="description">
+
+    <section>
       <figure class="image">
         <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-top-bottom" alt="Cardume de Xira">
         <figcaption class="attribution">
@@ -124,7 +127,7 @@
         </figcaption>
       </figure>
       <div class="text-over-image">
-        <div class="description-content" data-aos="slide-left">
+        <div data-aos="slide-left">
           <p>
             <i18n />
           </p>
@@ -215,8 +218,8 @@
       </div>
       <div>
         <Bubbles />
-        <div class="description">
-          <div class="description-content" data-aos="fade-left">
+        <div>
+          <div data-aos="fade-left">
             No inverno <nuxt-link to="/vida#manta">
               as raias mantas
             </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
