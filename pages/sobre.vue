@@ -132,6 +132,9 @@
           Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto.
         </i18n>
       </p>
+      <ul>
+        <li><a href="https://www.instagram.com/nautherandres/" target="_blank">Nauther Andres</a></li>
+      </ul>
     </section>
   </article>
 </template>
