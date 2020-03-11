@@ -24,18 +24,21 @@
         <div class="number-wrapper">
           <number-bullet
             :to="0"
+            :icon="['fas', 'mask']"
           >
             <i18n>mergulhos</i18n>
           </number-bullet>
 
           <number-bullet
             :to="2"
+            :icon="['fas', 'users']"
           >
             <i18n>mergulhadores</i18n>
           </number-bullet>
 
           <number-bullet
             :to="0"
+            :icon="['fas', 'clock']"
           >
             <i18n>horas de mergulho</i18n>
           </number-bullet>
@@ -65,23 +68,27 @@
         <div class="number-wrapper">
           <number-bullet
             :to="53"
+            :icon="['fas', 'images']"
           >
             <i18n>imagens</i18n>
           </number-bullet>
 
           <number-bullet
             :to="0"
+            :icon="['fas', 'video']"
           >
             <i18n>vídeos</i18n>
           </number-bullet>
 
           <number-bullet
             :to="5"
+            :icon="['fas', 'cubes']"
           >
             <i18n>modelos 3D</i18n>
           </number-bullet>
           <number-bullet
             :to="12622"
+            :icon="['fas', 'code']"
           >
             <i18n>linhas de código</i18n>
           </number-bullet>
@@ -105,22 +112,26 @@
         <div class="number-wrapper">
           <number-bullet
             :to="X"
+            :icon="['fas', 'camera']"
           >
             <i18n>fotografias</i18n>
           </number-bullet>
           <number-bullet
             :to="X"
+            :icon="['fas', 'video']"
           >
             <i18n>horas de vídeo</i18n>
           </number-bullet>
           <number-bullet
             :to="X"
+            :icon="['fas', 'hdd']"
           >
             <i18n>horas de processamento</i18n>
           </number-bullet>
 
           <number-bullet
             :to="X"
+            :icon="['fas', 'save']"
           >
             <i18n>GB de dados</i18n>
           </number-bullet>

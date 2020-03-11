@@ -238,49 +238,62 @@
         <div class="number-wrapper" bp="grid 6@sm 4@md 3@lg">
           <number-bullet
             :to="550"
+            :icon="['fas', 'ruler-horizontal']"
           >
             <i18n>
               Metros de comprimento
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="33"
+            :icon="['fas', 'ruler-vertical']"
           >
             <i18n>
               Metros de altura
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="185"
+            :icon="['fas', 'ruler']"
           >
             <i18n>
               Metros de largura
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="5000"
+            :icon="['fas', 'ruler-combined']"
           >
             <i18n>
               Hectares preservados
             </i18n>
-          </number-bullet><number-bullet
-            :to="45"
+          </number-bullet>
+          <number-bullet
+            :to="42"
+            :icon="['fas', 'wave-square']"
           >
             <i18n>
               Metros de profundidade máxima
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="40.7"
+            :icon="['fas', 'ruler-vertical']"
             :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
           >
             <i18n>
               Quilômetros da costa
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="29"
             :icon="['fas', 'dove']"
           >
             <i18n>
               Espécies de aves
             </i18n>
-          </number-bullet><number-bullet
+          </number-bullet>
+          <number-bullet
             :to="196"
           >
             <i18n>
