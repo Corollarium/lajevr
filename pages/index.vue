@@ -71,8 +71,6 @@
             O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
             É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
             à concentração de peixes de passagem e recifais com grande diversidade biológica.
-            Essas características fazem da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
-            e de <span class="text-is-bold">fotografia subaquática</span> do país.
           </p>
         </div>
         <div>
@@ -105,7 +103,9 @@
           <p>
             <i18n>
               A Laje oferece condições muito especiais em termos de profundidade
-              e visibilidade para mergulho tornando-o um dos principais pontos do país;
+              e visibilidade para mergulho. Junto com a preservação e variedade da vida,
+              isso faz da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
+              e de <span class="text-is-bold">fotografia subaquática</span> do país.
             </i18n>
           </p>
           <span>Profundidade média:  20m</span>
