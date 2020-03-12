@@ -20,10 +20,24 @@
   }
 }
 
+.about-description {
+  font-size: 1.2em;
+  line-height: 1.5em;
+
+  @media @desktop {
+    max-width: 35rem;
+  }
+}
+
 .boxed-description {
+  .about-description();
   padding: 1rem;
   background-color: fade(@primaryColor, 30);
   text-align: center;
-  .font-responsive(20,18,16);
   border-radius: .5rem;
+  @media @responsiveDevices {
+    max-width: 35rem;
+    display: block;
+    margin: auto;
+  }
 }

@@ -66,55 +66,57 @@
         <i18n>Laje de Santos</i18n>
       </h1>
 
-      <div class="inner-section" bp="grid 12 6@md">
+      <div class="inner-section" bp="grid 12 6@md vertical-center">
         <div>
-          <p>
+          <p class="about-description">
             O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
             É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
             à concentração de peixes de passagem e recifais com grande diversidade biológica.
           </p>
         </div>
         <div>
-          <figure class="image">
-            <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" alt="Ilustração da Laje de Santos">
+          <figure class="image spaced-image">
+            <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" class="spaced-image" alt="Ilustração da Laje de Santos">
           </figure>
         </div>
       </div>
 
       <div class="inner-section" bp="grid vertical-center">
-        <div bp="7">
-          <figure class="image">
-            <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" alt="Mapa-mundi com a Laje de Santos">
-          </figure>
-        </div>
-
-        <div bp="5">
+        <div bp="12 5@md">
           <p class="boxed-description">
             Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
             Estado de <span class="text-is-bold">São Paulo</span>, no <span class="text-is-bold">Brasil</span>.
           </p>
         </div>
+
+        <div bp="first@md  12 7@md">
+          <figure class="image">
+            <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" class="spaced-image" alt="Mapa-mundi com a Laje de Santos">
+          </figure>
+        </div>
       </div>
 
-      <div class="inner-section" bp="grid 12 6@md">
+      <div class="inner-section" bp="grid 12 6@md vertical-center">
         <div>
           <h3>
-            <i18n>Um paraíso para mergulhadores</i18n>
+            <i18n>Um paraíso do mergulho</i18n>
           </h3>
-          <p>
+          <p class="about-description">
             <i18n>
               A Laje oferece condições muito especiais em termos de profundidade
               e visibilidade para mergulho. Junto com a preservação e variedade da vida,
               isso faz da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
               e de <span class="text-is-bold">fotografia subaquática</span> do país.
             </i18n>
+            <br>
+            <span class="text-is-bold">Profundidade média:  20m</span>
+            <br>
+            <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
           </p>
-          <span>Profundidade média:  20m</span>
-          <span>Profundidade máxima no entorno:  42m</span>
         </div>
         <div>
           <figure class="image">
-            <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
+            <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
           </figure>
         </div>
       </div>

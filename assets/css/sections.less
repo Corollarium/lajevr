@@ -39,7 +39,7 @@
   }
 }
 
-.section (@paddingXl: 6, @paddingLg: 5, @paddingMd: 4, @paddingSm: 3) {
+.make-padding (@paddingXl: 6, @paddingLg: 5, @paddingMd: 4, @paddingSm: 3) {
 
 
   @media @desktopBig {
@@ -60,11 +60,9 @@
 }
 
 .base-section {
-  .section();
+  .make-padding();
   &:not(last-child) {
-    @media @desktop {
       margin: 0 auto 2rem;
-    }
 
     @media @responsiveDevices {
       margin: 0 auto 1rem;
@@ -73,12 +71,16 @@
 }
 
 .inner-section {
-  .section(5,4,3,2);
+  .make-padding(4,3,2,1);
 }
 
 img {
   height: auto;
   max-width: 100%;
+}
+
+.spaced-image {
+    padding: 1rem;
 }
 
 .is-fullheight {
