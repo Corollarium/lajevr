@@ -232,7 +232,8 @@
     </section>
 
     <section id="numeros" class="base-section">
-      <div class="container">
+      <Bubbles />
+      <div bp="container">
         <h2 class="has-text-center">
           <i18n>
             A Laje em Números
@@ -281,7 +282,7 @@
           </number-bullet>
           <number-bullet
             :to="40.7"
-            :icon="['fas', 'ruler-vertical']"
+            :icon="['fas', 'water']"
             :format="num => new Intl.NumberFormat().format(parseFloat(num).toFixed(1))"
           >
             <i18n>
