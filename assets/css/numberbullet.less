@@ -15,6 +15,12 @@
     height: @circle-size;
     position: relative;
 
+    @media @mobile {
+      width: @circle-size*.7;
+      height: @circle-size*.7;
+      .font-size(32);
+    }
+
     .bubble {
       width: 100%;
       height: 100%;
@@ -23,10 +29,13 @@
       background-image: linear-gradient(to bottom, darken(@primaryColor, 25), darken(@primaryColor, 30));
 
       .number-icon {
-        font-size: .75em;
+        font-size: .7em;
         display: block;
         padding-top: 1.5rem;
         margin-bottom: -.5rem;
+        @media @mobile {
+          margin-bottom: .5rem;
+        }
       }
     }
 
@@ -46,5 +55,7 @@
   }
   .number-explanation {
     margin-top: 1rem;
+    font-weight: @bold;
+    .font-responsive(18,16,15);
   }
 }

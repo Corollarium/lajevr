@@ -239,7 +239,7 @@
             A Laje em Números
           </i18n>
         </h2>
-        <div class="number-wrapper" bp="grid 6@sm 4@md 3@lg">
+        <div class="number-wrapper inner-section" bp="grid 6@sm 4@md 3@lg">
           <number-bullet
             :to="550"
             :icon="['fas', 'ruler-horizontal']"
