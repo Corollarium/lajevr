@@ -25,7 +25,7 @@
       EU TINHA ACHADO LEGAL ALGO QUE APARECE CONFORME O MAR "SOBE" E VOCÊ AFUNDA. FICA MAIS LEGAL QUE UM LOGO GIGANTE PRA MIM
       <div class="sticky-back">
         <div>
-          <section class="section">
+          <section class="base-section">
             <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo">
           </section>
         </div>
@@ -37,7 +37,7 @@
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
       <div class="hero-html">
-        <section class="section">
+        <section class="base-section">
           <p class="attribution">
             Photo
             <a
@@ -58,7 +58,7 @@
     </section>
 
     <!-- About Section -->
-    <section bp="container" class="section">
+    <section bp="container" class="base-section">
       <figure bp="float-center" class="image icon-about-heading">
         <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
       </figure>
@@ -136,7 +136,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="base-section">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>Mergulho virtual</i18n>
@@ -155,7 +155,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="base-section">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>A vida na Laje</i18n>
@@ -229,7 +229,7 @@
       </div>
     </section>
 
-    <section id="numeros" class="section">
+    <section id="numeros" class="base-section">
       <div class="container">
         <h2 class="has-text-center">
           <i18n>
@@ -304,7 +304,7 @@
         </div>
       </div>
     </section>
-    <section id="timeline" class="section">
+    <section id="timeline" class="base-section">
       <Timeline />
     </section>
   </div>
