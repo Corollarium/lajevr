@@ -45,11 +45,6 @@ export default {
       this.rw = randomIntFromInterval(5, 25);
       this.cx = Math.round(Math.random() * cw) + 1;
       this.cy = Math.round(Math.random() * ch) + 1;
-      if (this.cx < this.rw * 1.2) {
-        this.cx = this.rw;
-      } else if (this.cx > ch - this.rw * 1.2) {
-        this.cx = this.rw;
-      }
       this.x = this.cx;
       this.y = this.cy;
       const deformation = randomIntFromInterval(75, 95) / 100;
@@ -181,6 +176,7 @@ export default {
       cw = c.width = this.$el.parentElement.clientWidth;
       ch = c.height = this.$el.parentElement.clientHeight;
       buildData();
+      console.log(cw, ch);
     }, false);
 
     // don't render when not visible
