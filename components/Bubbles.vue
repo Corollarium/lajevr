@@ -18,10 +18,9 @@ export default {
   },
 
   mounted () {
-    const c = this.$el;
-    const ctx = c.getContext('2d');
-    let cw = c.width = this.$el.parentElement.clientWidth;
-    let ch = c.height = this.$el.parentElement.clientHeight;
+    const ctx = this.$el.getContext('2d');
+    let cw = this.$el.width = this.$el.parentElement.clientWidth;
+    let ch = this.$el.height = this.$el.parentElement.clientHeight;
     const totalBubbles = this.total ? this.total : parseInt(cw / 10);
     const kappa = 0.5522847498;
     const Rgrd = Math.sqrt(ch * ch + (cw / 2) * (cw / 2));
@@ -173,10 +172,9 @@ export default {
     buildData();
     window.requestAnimationFrame(Draw);
     window.addEventListener('resize', () => {
-      cw = c.width = this.$el.parentElement.clientWidth;
-      ch = c.height = this.$el.parentElement.clientHeight;
+      cw = this.$el.width = this.$el.parentElement.clientWidth;
+      ch = this.$el.height = this.$el.parentElement.clientHeight;
       buildData();
-      console.log(cw, ch);
     }, false);
 
     // don't render when not visible
@@ -193,7 +191,7 @@ export default {
   },
 
   beforeDestroy () {
-    // TODO window.addEventListener('resize',
+    // TODO window.removeEventListener('resize',
     this.observer.unobserve(this.$el);
     this.observer = null;
     // TODO: handle requestFrame
