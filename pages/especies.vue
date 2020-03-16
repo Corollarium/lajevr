@@ -1,9 +1,7 @@
 <template>
   <article class="container">
     <h1 class="title">
-      <font-awesome-icon :icon="['fas', 'fish']" />
-      <font-awesome-icon :icon="['fas', 'dove']" />
-      Fauna
+      Espécies
     </h1>
     <p>
       <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
@@ -78,6 +76,15 @@
                   <option v-translate value="orange">
                     Laranja
                   </option>
+                  <option v-translate value="white">
+                    Branco
+                  </option>
+                  <option v-translate value="grey">
+                    Cinza
+                  </option>
+                  <option v-translate value="brown">
+                    Marrom
+                  </option>
                 </select>
               </div>
             </div>
@@ -103,6 +110,7 @@
     <transition-group
       name="fauna-list"
       tag="div"
+      bp="grid 6@md 4@lg 3@xl"
     >
       <section
         v-for="a in filteredAnimals"
@@ -111,16 +119,21 @@
       >
         <figure>
           <img :src="a.pic" class="fauna-image">
+          <figcaption v-if="a.creator" class="attribution">
+            <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
+          </figcaption>
         </figure>
         <div class="fauna-name">
           {{ a.name }}
         </div>
-        <span class="fauna-other-names">
-          {{ a.othernames }}
-        </span>
-        <p class="fauna-info">
-          {{ a.size }} cm
-        </p>
+        <div class="fauna-info">
+          <span class="fauna-other-names">
+            {{ a.othernames }}
+          </span>
+          <p class="fauna-size">
+            {{ a.size }} cm
+          </p>
+        </div>
         <p>{{ a.description }}</p>
       </section>
     </transition-group>
@@ -138,36 +151,52 @@ export default {
     return {
       animals: [
         {
-          name: 'Nome do animal',
-          colors: ['orange', 'red'],
-          size: 5,
-          pic: '/images/fish/goldfish-1900832_960_720.png',
-          othernames: 'Nome científico e outros nomes',
-          description: 'Sobre o bicho bla bla bla'
+          name: 'Bodião brasileiro',
+          colors: ['yellow', 'blue'],
+          size: 35,
+          pic: '/images/nauther/IMG_1209.JPG ',
+          othernames: 'Halichoeres brasiliensis',
+          description: '',
+          about: '/vida/#frade',
+          creator: 'Nauther Andres',
+          creator_link: 'https://www.instagram.com/nautherandres/',
+          license: 'CC 4.0'
         },
         {
-          name: 'Blue animal',
-          colors: ['blue', 'black'],
-          size: 20,
-          pic: '/images/fish/bluefish-1900832_960_720.png',
-          othernames: 'Blue fish',
-          description: 'Sobre o bicho bla bla bla'
+          name: 'Peixe frade',
+          colors: ['yellow', 'blue'],
+          size: 30,
+          pic: '/images/nauther/1545605014265-1484188416.jpg',
+          othernames: 'Pomacanthus paru',
+          description: 'O peixe-frade normalmente habita áreas recifais rasas, e nada em pares.',
+          about: '/vida/#frade',
+          creator: 'Nauther Andres',
+          creator_link: 'https://www.instagram.com/nautherandres/',
+          license: 'CC 4.0'
         },
         {
-          name: 'Red fish',
-          colors: ['orange', 'red'],
-          size: 5,
-          pic: '/images/fish/goldfish-1900832_960_720.png',
-          othernames: 'Nome científico e outros nomes',
-          description: 'Sobre o bicho bla bla bla'
+          name: 'Coió',
+          colors: ['white', 'blue', 'brown'],
+          size: 45,
+          pic: '/images/nauther/IMG_0184.JPG',
+          othernames: 'Dactylopterus volitans',
+          description: 'Costuma ficar no fundo de areia e cascalho. É também conhecido como falso voador',
+          about: '/vida/#frade',
+          creator: 'Nauther Andres',
+          creator_link: 'https://www.instagram.com/nautherandres/',
+          license: 'CC 4.0'
         },
         {
-          name: 'Outro blue fish',
-          colors: ['blue', 'black'],
-          size: 20,
-          pic: '/images/fish/bluefish-1900832_960_720.png',
-          othernames: 'Other blue fish',
-          description: 'Sobre o bicho bla bla bla'
+          name: 'Raia chita',
+          colors: ['white', 'grey'],
+          size: 300,
+          pic: '/images/nauther/15473512064421989571056.jpg',
+          othernames: '',
+          description: '',
+          about: '/vida/',
+          creator: 'Nauther Andres',
+          creator_link: 'https://www.instagram.com/nautherandres/',
+          license: 'CC 4.0'
         }
       ],
       filterColor: '',
@@ -177,16 +206,16 @@ export default {
       slider: {
         range: {
           min: 0,
-          max: 200
+          max: 300
         },
-        step: 5,
-        margin: 5,
-        start: [0, 200],
+        step: 6,
+        margin: 6,
+        start: [0, 300],
         connect: true,
         pips: {
           mode: 'count',
-          values: 9,
-          density: 3
+          values: 7,
+          density: 4
         }
       }
     };
@@ -244,14 +273,14 @@ export default {
 
   .fauna-name {
     font-variant: small-caps;
-    color: #4a4a4a;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.25;
   }
 
-  .fauna-other-names {
+  .fauna-info {
     font-style: italic;
+    color: #999 ;
   }
 }
 .control {

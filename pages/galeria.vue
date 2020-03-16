@@ -5,38 +5,36 @@
     </h1>
 
     <form id="filters" class="form">
-      <div class="field is-horizontal ">
-        <div class="field-body">
-          <div class="field">
-            <label class="label">
-              <i18n>Buscar</i18n>
-            </label>
-            <div class="control has-icons-left">
-              <input v-model="filterSearch" :placeholder="filterSearchPlaceholder" class="input" type="text">
-              <span class="icon is-small is-left">
-                <font-awesome-icon :icon="['fas', 'search']" />
-              </span>
-            </div>
-          </div>
+      <div class="field">
+        <label class="label">
+          <i18n>Buscar</i18n>
+        </label>
+        <div class="control has-icons-left">
+          <input v-model="filterSearch" :placeholder="filterSearchPlaceholder" class="input" type="text">
+          <span class="icon is-small is-left">
+            <font-awesome-icon :icon="['fas', 'search']" />
+          </span>
         </div>
       </div>
     </form>
 
-    <section
-      v-for="(a, i) in filteredGallery"
-      :key="i"
-      class="section section-gallery"
-    >
-      <figure>
-        <img :src="a.url" class="gallery-image">
-      </figure>
-      <p class="gallery-creator">
-        <i18n>foto por</i18n> {{ a.creator }} {{ a.license }}
-      </p>
-      <p class="gallery-description">
-        {{ a.description }}
-      </p>
-    </section>
+    <div bp="grid 6@md 4@lg 3@xl">
+      <section
+        v-for="(a, i) in filteredGallery"
+        :key="i"
+        class="section section-gallery"
+      >
+        <figure>
+          <img :src="a.url" class="gallery-image">
+        </figure>
+        <p class="gallery-creator">
+          <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
+        </p>
+        <p class="gallery-description">
+          {{ a.description }}
+        </p>
+      </section>
+    </div>
   </article>
 </template>
 
