@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <div class="field" bp="1 4@md">
+          <div class="field" bp="1 6@md">
             <label class="label">
               <i18n>
                 Tamanho (em cm)
@@ -144,61 +144,13 @@
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 import page from './page.vue';
+import animalData from '~/components/especies.json';
 
 export default {
   extends: page,
   data () {
     return {
-      animals: [
-        {
-          name: 'Bodião brasileiro',
-          colors: ['yellow', 'blue'],
-          size: 35,
-          pic: '/images/nauther/IMG_1209.JPG ',
-          othernames: 'Halichoeres brasiliensis',
-          description: '',
-          about: '/vida/#frade',
-          creator: 'Nauther Andres',
-          creator_link: 'https://www.instagram.com/nautherandres/',
-          license: 'CC 4.0'
-        },
-        {
-          name: 'Peixe frade',
-          colors: ['yellow', 'blue'],
-          size: 30,
-          pic: '/images/nauther/1545605014265-1484188416.jpg',
-          othernames: 'Pomacanthus paru',
-          description: 'O peixe-frade normalmente habita áreas recifais rasas, e nada em pares.',
-          about: '/vida/#frade',
-          creator: 'Nauther Andres',
-          creator_link: 'https://www.instagram.com/nautherandres/',
-          license: 'CC 4.0'
-        },
-        {
-          name: 'Coió',
-          colors: ['white', 'blue', 'brown'],
-          size: 45,
-          pic: '/images/nauther/IMG_0184.JPG',
-          othernames: 'Dactylopterus volitans',
-          description: 'Costuma ficar no fundo de areia e cascalho. É também conhecido como falso voador',
-          about: '/vida/#frade',
-          creator: 'Nauther Andres',
-          creator_link: 'https://www.instagram.com/nautherandres/',
-          license: 'CC 4.0'
-        },
-        {
-          name: 'Raia chita',
-          colors: ['white', 'grey'],
-          size: 300,
-          pic: '/images/nauther/15473512064421989571056.jpg',
-          othernames: '',
-          description: '',
-          about: '/vida/',
-          creator: 'Nauther Andres',
-          creator_link: 'https://www.instagram.com/nautherandres/',
-          license: 'CC 4.0'
-        }
-      ],
+      animals: animalData,
       filterColor: '',
       filterSearch: '',
       minRange: null, // slider
