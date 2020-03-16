@@ -655,14 +655,6 @@ export default {
     clamp (t, min, max) {
       return Math.min(Math.max(t, min), max);
     }
-  },
-
-  head () {
-    return {
-      link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap' }
-      ]
-    };
   }
 };
 </script>
@@ -687,7 +679,6 @@ export default {
   z-index: 1000;
   border-radius: 10px;
   background: #000;
-  font-family: 'Oxygen', monospace;
   color: #fff;
   text-align: right;
 }
