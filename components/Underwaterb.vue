@@ -267,13 +267,6 @@ export default {
     },
 
     debugUtils () {
-      // debug object
-      // const brickMaterial = new BABYLON.StandardMaterial('brickMaterial', this.scene);
-      // brickMaterial.diffuseTexture = new BABYLON.Texture('/brick_diffuse.jpg', this.scene);
-      // const sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 8, this.scene);
-      // sphere.material = brickMaterial;
-      // sphere.checkCollisions = true;
-      // this.addToSceneAndCaustic([sphere]);
       this.scene.debugLayer.show();
       document.querySelector('footer.footer').style.display = 'none';
     },
