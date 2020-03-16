@@ -727,19 +727,4 @@ export default {
   }
 }
 
-#sceneExplorer, #inspector-host {
-  .label {
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-  }
-  .title {
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: normal;
-    font-family: "Arial";
-    line-height: 1;
-  }
-}
 </style>
