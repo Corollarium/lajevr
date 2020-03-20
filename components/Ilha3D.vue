@@ -93,10 +93,13 @@ export default {
       siteMeshes[site.name] = mesh;
 
       // create html overlay box
-      const sprite = new SpriteText2D(site.name, { align: textAlign.center, font: '40px Arial', fillStyle: '#000000', antialias: true });
-      sprite.position.set(pos[0], 50, pos[1]);
+      const sprite = new SpriteText2D(
+        site.name,
+        { align: textAlign.center, font: '40px Arial', fillStyle: '#FFFFFF', antialias: true, shadowColor: '#333333', shadowOffsetX: 2, shadowOffsetY: 2 }
+      );
+      sprite.position.set(pos[0], 60, pos[1]);
       sprite.sprite.userData = sprite.userData = site;
-
+      sprite.material.depthWrite = false;
       diveSiteGroup.add(mesh, sprite);
     }
     scene.add(diveSiteGroup);
@@ -110,7 +113,7 @@ export default {
       land.rotateZ((degrees / 180.0) * Math.PI);
     });
 
-    const gsize = 2048;
+    const gsize = 8192;
     const res = 1024;
     const gres = res / 2;
     const origx = -gsize / 2;
@@ -178,28 +181,25 @@ export default {
 
       requestAnimationFrame(animate);
 
-      /* eslint-disable */
-      var currentTime = new Date().getTime();
-      ocean.deltaTime = ( currentTime - lastTime ) / 1000 || 0.0;
+      const currentTime = new Date().getTime();
+      ocean.deltaTime = (currentTime - lastTime) / 1000 || 0.0;
       lastTime = currentTime;
-      ocean.render( ocean.deltaTime * .02 );
+      ocean.render(ocean.deltaTime * 0.02);
       ocean.overrideMaterial = ocean.materialOcean;
 
-      if ( ocean.changed ) {
-
-        ocean.materialOcean.uniforms[ "u_size" ].value = ocean.size;
-        ocean.materialOcean.uniforms[ "u_sunDirection" ].value.set( ocean.sunDirectionX, ocean.sunDirectionY, ocean.sunDirectionZ );
-        ocean.materialOcean.uniforms[ "u_exposure" ].value = ocean.exposure;
+      if (ocean.changed) {
+        ocean.materialOcean.uniforms.u_size.value = ocean.size;
+        ocean.materialOcean.uniforms.u_sunDirection.value.set(ocean.sunDirectionX, ocean.sunDirectionY, ocean.sunDirectionZ);
+        ocean.materialOcean.uniforms.u_exposure.value = ocean.exposure;
         ocean.changed = false;
       }
 
-      ocean.materialOcean.uniforms[ "u_normalMap" ].value = ocean.normalMapFramebuffer.texture;
-      ocean.materialOcean.uniforms[ "u_displacementMap" ].value = ocean.displacementMapFramebuffer.texture;
-      ocean.materialOcean.uniforms[ "u_projectionMatrix" ].value = camera.projectionMatrix;
-      ocean.materialOcean.uniforms[ "u_viewMatrix" ].value = camera.matrixWorldInverse;
-      ocean.materialOcean.uniforms[ "u_cameraPosition" ].value = camera.position;
+      ocean.materialOcean.uniforms.u_normalMap.value = ocean.normalMapFramebuffer.texture;
+      ocean.materialOcean.uniforms.u_displacementMap.value = ocean.displacementMapFramebuffer.texture;
+      ocean.materialOcean.uniforms.u_projectionMatrix.value = camera.projectionMatrix;
+      ocean.materialOcean.uniforms.u_viewMatrix.value = camera.matrixWorldInverse;
+      ocean.materialOcean.uniforms.u_cameraPosition.value = camera.position;
       ocean.materialOcean.depthTest = true;
-      /* eslint-enable */
 
       controls.update();
       render();

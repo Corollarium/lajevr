@@ -8,6 +8,13 @@
               Pontos de Mergulho na Laje de Santos
             </i18n>
           </h1>
+
+          <p>
+            <i18n>
+              Clique em um ponto de mergulho para ter mais informações.
+            </i18n>
+          </p>
+
           <p>
             <i18n>
               A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
@@ -18,9 +25,9 @@
 
           <p>
             <i18n>Fontes das informações:</i18n>
-            <a href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
-            <a href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
-            <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
+            <a target="_blank" href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
+            <a target="_blank" href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
+            <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
           </p>
         </div>
         <div
@@ -125,8 +132,8 @@ export default {
         { name: 'Calhaus Túnel',
           lat: -24.328,
           long: -46.160722,
-          dificuldade: 'Paredão levemente acidentado com incidência de correntes e profundidades que podem variar de 8 a 40m.',
-          description: 'Alto grau de dificuldade.'
+          dificuldade: 'Passagem em forma de ”U” e um arco central emerso, com grande apelo visual e profundidade máxima de 18m, porém exige bom equilíbrio hidrostático por parte do mergulhador. Sujeito a boas condições de mar.',
+          description: 'Baixo grau de dificuldade.'
         },
         { name: 'Parcel Novo',
           lat: -24.345472,
@@ -137,14 +144,14 @@ export default {
         { name: 'Parcel do Brilhante',
           lat: -24.28888889,
           long: -46.16388889,
-          dificuldade: '',
-          description: ''
+          dificuldade: '-',
+          description: 'Não há atividade turística. Área de preservação.'
         },
         { name: 'Laje do Bandolim',
           lat: -24.27666667,
           long: -46.18194444,
-          dificuldade: '',
-          description: ''
+          dificuldade: '-',
+          description: 'Não há atividade turística. Área de preservação.'
         }
       ]
     };
@@ -166,7 +173,6 @@ export default {
 
   methods: {
     pick (diveSite) {
-      console.log(diveSite);
       for (let i = 0; i < this.diveSites.length; i++) {
         if (this.diveSites[i].name === diveSite) {
           this.selectedSite = i;
