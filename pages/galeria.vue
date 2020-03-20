@@ -25,7 +25,10 @@
         class="section section-gallery"
       >
         <figure>
-          <img :src="a.url" class="gallery-image">
+          <img :src="a.url" v-if="a.type == 'image'" class="gallery-image">
+          <video v-if="a.type == 'video'" class="gallery-video" controls preload="metadata">
+            <source :src="a.url">
+          </video>
         </figure>
         <p class="gallery-creator">
           <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
