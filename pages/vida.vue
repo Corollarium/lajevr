@@ -1,6 +1,6 @@
 <template>
-  <article class="container columns">
-    <div class="column is-2 is-fullheight is-hidden-mobile">
+  <article class="container" bp="flex">
+    <div bp="fit">
       <div class="sidebar">
         <ul class="menu-list">
           <li class="sidebar-link" data-target="intro">
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="main column">
+    <div class="main" bp="fill">
       <h1>
         <i18n>
           A vida na Laje de Santos

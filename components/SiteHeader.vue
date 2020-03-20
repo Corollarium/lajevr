@@ -39,7 +39,7 @@
             </nuxt-link>
           </li>
           <li class="pure-menu-item">
-            <nuxt-link to="/especies" class="pure-menu-link">
+            <nuxt-link to="/vida" class="pure-menu-link">
               <i18n>Vida</i18n>
             </nuxt-link>
           </li>
