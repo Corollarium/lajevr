@@ -1,46 +1,47 @@
 <template>
   <article class="dive-container">
     <aside class="dive-aside">
-      <h1>
-        <i18n>
-          Pontos de Mergulho na Laje de Santos
-        </i18n>
-      </h1>
-
-      <div v-show="selectedSite == -1">
-        <p>
-          <i18n>
-            A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
-            com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade.
-            Selecione um local para ter mais informações.
-          </i18n>
-        </p>
-
-        <p>
-          <i18n>Fontes das informações:</i18n>
-          <a href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
-          <a href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
-          <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
-        </p>
-      </div>
-      <div
-        v-show="selectedSite != -1"
-      >
-        <h2 class="subtitle is-3">
-          {{ selectedSiteData.name }}
-        </h2>
-        <div>
-          <p class="dive-dificuldade">
-            {{ selectedSiteData.dificuldade }}
-          </p>
-          <p class="dive-coordinates">
-            Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
-          </p>
+      <section class="base-section">
+        <div v-show="selectedSite == -1">
+          <h1>
+            <i18n>
+              Pontos de Mergulho na Laje de Santos
+            </i18n>
+          </h1>
           <p>
-            <span class="dive-description">{{ selectedSiteData.description }}</span>
+            <i18n>
+              A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
+              com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade.
+              Selecione um local para ter mais informações.
+            </i18n>
+          </p>
+
+          <p>
+            <i18n>Fontes das informações:</i18n>
+            <a href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
+            <a href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
+            <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
           </p>
         </div>
-      </div>
+        <div
+          v-show="selectedSite != -1"
+        >
+          <h2 class="subtitle is-3">
+            {{ selectedSiteData.name }}
+          </h2>
+          <div>
+            <p class="dive-dificuldade">
+              {{ selectedSiteData.dificuldade }}
+            </p>
+            <p class="dive-coordinates">
+              Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
+            </p>
+            <p>
+              <span class="dive-description">{{ selectedSiteData.description }}</span>
+            </p>
+          </div>
+        </div>
+      </section>
     </aside>
 
     <section class="dive-3d">
@@ -166,6 +167,12 @@ export default {
   methods: {
     pick (diveSite) {
       console.log(diveSite);
+      for (let i = 0; i < this.diveSites.length; i++) {
+        if (this.diveSites[i].name === diveSite) {
+          this.selectedSite = i;
+          break;
+        }
+      }
     }
   }
 };

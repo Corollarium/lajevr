@@ -79,7 +79,9 @@ export default {
       scene.add(land);
     });
 
-    const siteMaterial = new THREE.MeshLambertMaterial({ color: 0xFF0000, side: 2, shading: THREE.FlatShading });
+    const siteMaterial = new THREE.MeshLambertMaterial({ color: 0x0077FF, side: 2, shading: THREE.FlatShading });
+    const siteSelectedMaterial = new THREE.MeshLambertMaterial({ color: 0xFF0000, side: 2, shading: THREE.FlatShading });
+    const siteMeshes = {};
     for (const site of this.diveSites) {
       const radius = 20;
       const tube = 10;
@@ -88,6 +90,7 @@ export default {
       const pos = latlongToPixel(site.lat, site.long);
       mesh.position.set(pos[0], 20, pos[1]);
       mesh.userData = site;
+      siteMeshes[site.name] = mesh;
 
       // create html overlay box
       const sprite = new SpriteText2D(site.name, { align: textAlign.center, font: '40px Arial', fillStyle: '#000000', antialias: true });
@@ -140,17 +143,22 @@ export default {
     };
 
     const clickEvent = (e) => {
-      mouse.x = (event.clientX / this.renderer.domElement.clientWidth) * 2 - 1;
-      mouse.y = -(event.clientY / this.renderer.domElement.clientHeight) * 2 + 1;
+      const rect = this.renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / (rect.right - rect.left)) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / (rect.bottom - rect.top)) * 2 + 1;
+
       raycaster.setFromCamera(mouse, camera);
 
       const intersects = raycaster.intersectObject(diveSiteGroup, true);
 
       if (intersects.length > 0) {
         const object = intersects[0].object;
-        // TODO:
-        console.log(object.userData.name);
-        this.$emit(object.userData.name);
+
+        for (const name in siteMeshes) {
+          siteMeshes[name].material = siteMaterial;
+        }
+        siteMeshes[object.userData.name].material = siteSelectedMaterial;
+        this.$emit('pick', object.userData.name);
       }
     };
 
