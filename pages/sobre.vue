@@ -293,7 +293,9 @@
         </i18n>
       </p>
       <ul>
-        <li><a href="https://www.instagram.com/nautherandres/" target="_blank">Nauther Andres</a></li>
+        <li><a href="https://www.instagram.com/deia_morales/" target="_blank">Andréa Pontes</a> pelas suas fotos e vídeos</li>
+        <li>José Edmilson Júnior, gestor do Parque Estadual Marinho da Laje de Santos, por acreditar e apoiar o projeto imediatamente</li>
+        <li><a href="https://www.instagram.com/nautherandres/" target="_blank">Nauther Andres</a> pelo conteúdo, texto e fotos, e inestimável ajuda no projeto todo.</li>
       </ul>
     </section>
   </article>
