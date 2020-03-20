@@ -21,16 +21,18 @@
           </p>
         </div>
       </div>
-      <!--ISSO DAQUI VAI NO TOPO DO SITE
-      EU TINHA ACHADO LEGAL ALGO QUE APARECE CONFORME O MAR "SOBE" E VOCÊ AFUNDA. FICA MAIS LEGAL QUE UM LOGO GIGANTE PRA MIM
       <div class="sticky-back">
-        <div>
-          <section class="base-section">
-            <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo">
-          </section>
-        </div>
+        <video autoplay loop muted playsinline>
+          <source src="/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
+          <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
+        </video>
+        <p class="attribution">
+          Video
+          <a
+            href="https://www.instagram.com/deia_morales/"
+          >Andréa Pontes</a>
+        </p>
       </div>
-      -->
     </section>
     <section v-show="isSafari" class="hero">
       <div class="hero-body">
@@ -394,7 +396,8 @@ export default {
 
 <style lang="less" scoped>
 .sticky-hero {
-  height: 300vh;
+  height: 340vh;
+  height: calc(var(--vh, 1vh) * 340);
   position: relative;
 
   .sticky-hero-content {
@@ -402,21 +405,29 @@ export default {
     height: calc(var(--vh, 1vh) * 100);
     position: sticky;
     top: 0px;
+    z-index: 2;
   }
 
   .sticky-hero-attribution {
+    display: none;
     margin: 0 auto;
-    position: static;
+    position: absolute;
     width: auto;
     max-width: 1280px;
   }
 
   .sticky-back {
     position: absolute;
-    height: 70vh;
-    height: calc(var(--vh, 1vh) * 70);
+    min-height: 270vh;
+    min-height: calc(var(--vh, 1vh) * 270);
     bottom: 0;
     width: 100%;
+
+    video {
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+    }
   }
 
 }
