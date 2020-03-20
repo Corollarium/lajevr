@@ -51,12 +51,14 @@
           Encontra-se nas regiões tropicais e subtropicais de todos os oceanos, tipicamente perto de recifes de coral.
         </p>
 
-        <GLTFModel
-          :model="'./models/manta/scene.gltf'"
-          :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
-          :attribution="'Modelo 3D CC BY-NC por misaooo'"
-        />
-        </GLTFModel>
+        <div class="model-container" style="min-height: 70vh;">
+          <GLTFModel
+            :model="'./models/manta/scene.gltf'"
+            :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
+            :attribution="'Modelo 3D CC BY-NC por misaooo'"
+          />
+          </GLTFModel>
+        </div>
 
         <p>
           A jamanta tem o corpo em forma de losango e uma cauda longa sem espinho e pode atingir sete metros de envergadura e pesar até 1,350kg. Podem viver até 20 anos. Estes peixes não têm verdadeiros dentes e alimentam-se de plâncton e pequenos peixes, sendo portanto inofensivos. Ocasionalmente, podem aproximar-se de um barco ou de mergulhadores e podem executar curtos “voos” fora da água. Têm a maior taxa de volume de cérebro em relação ao do corpo de todos os tubarões e raias.

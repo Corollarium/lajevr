@@ -159,7 +159,7 @@
       </div>
     </section>
 
-    <section class="base-section">
+    <section id="visitar" class="base-section">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>Como visitar a Laje</i18n>
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-    <section class="base-section">
+    <section id="vida" class="base-section">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>A vida na Laje</i18n>
@@ -233,7 +233,7 @@
     </section>
 
     <section id="mantas" bp="grid 12 6@md">
-      <div>
+      <div class="model-container" style="min-height: 70vh;">
         <GLTFModel
           :model="'./models/manta/scene.gltf'"
           :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"

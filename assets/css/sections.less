@@ -81,6 +81,7 @@
 
 .is-fullheight {
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .text-over-image {
@@ -126,4 +127,8 @@ mask-image: linear-gradient(
   a {
     color: #000;
   }
+}
+
+.model-container {
+  display: flex;
 }

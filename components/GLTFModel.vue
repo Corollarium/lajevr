@@ -172,28 +172,28 @@ export default {
 .object-embed-3d {
   position: relative;
   cursor: move;
-}
-
-.object-embed-3d:hover .object-embed-icon {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.object-embed-icon {
-  background-image: url('~assets/images/icons/arrows3d.svg');
   width: 100%;
-  height: 100%;
-  z-index: 10;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
 
-  &:hover {
+  &:hover .object-embed-icon {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+  }
+  .object-embed-icon {
+    background-image: url('~assets/images/icons/arrows3d.svg');
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
   }
 }
 </style>
