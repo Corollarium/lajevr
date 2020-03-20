@@ -32,7 +32,7 @@
         </i18n>
       </h1>
 
-      <section id="intro" class="section">
+      <section id="intro" class="inner-section">
         <p>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
           É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
@@ -42,7 +42,7 @@
         </p>
       </section>
 
-      <section id="manta" class="section">
+      <section id="manta" class="inner-section">
         <h2 class="title is-2">
           Raias Mantas
         </h2>
@@ -70,7 +70,7 @@
         <p>Fonte: <a href="https://pt.wikipedia.org/wiki/Jamanta">Wikipedia: Jamanta</a>.</p>
       </section>
 
-      <section id="turtles" class="section">
+      <section id="turtles" class="inner-section">
         <h2 class="title is-2">
           Tartarugas
         </h2>
@@ -95,7 +95,7 @@
         </figure>
       </section>
 
-      <section id="dolphins" class="section">
+      <section id="dolphins" class="inner-section">
         <h2 class="title is-2">
           Golfinhos
         </h2>
@@ -111,7 +111,7 @@
         </p>
       </section>
 
-      <section id="birds" class="section">
+      <section id="birds" class="inner-section">
         <h2 class="title is-2">
           Aves
         </h2>
@@ -121,7 +121,7 @@
         </p>
       </section>
 
-      <section id="fish" class="section">
+      <section id="fish" class="inner-section">
         <h2 class="title is-2">
           Peixes
         </h2>
