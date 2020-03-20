@@ -9,7 +9,7 @@
       </video>
     </figure>
     <p class="gallery-creator">
-      <i18n>foto por</i18n> <a :href="creator_link" target="_blank">{{ creator }}</a> {{ license }}
+      <i18n>foto por</i18n> <a :href="creatorLink" target="_blank">{{ creator }}</a> {{ license }}
     </p>
     <p class="gallery-description">
       {{ description }}
