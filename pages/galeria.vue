@@ -19,32 +19,33 @@
     </form>
 
     <div bp="grid 6@md 4@lg 3@xl">
-      <section
+      <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"
-        class="section section-gallery"
-      >
-        <figure>
-          <img :src="a.url" v-if="a.type == 'image'" class="gallery-image">
-          <video v-if="a.type == 'video'" class="gallery-video" controls preload="metadata">
-            <source :src="a.url">
-          </video>
-        </figure>
-        <p class="gallery-creator">
-          <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
-        </p>
-        <p class="gallery-description">
-          {{ a.description }}
-        </p>
-      </section>
+        v-bind:creator="a.creator"
+        v-bind:creatorLink="a.creatorLink"
+        v-bind:license="a.license"
+        v-bind:url="a.url"
+        v-bind:description="a.description"
+        v-bind:type="a.type"
+      />
     </div>
   </article>
 </template>
 
 <script>
-import galleryData from '~/components/gallery.json';
+import page from './page.vue';
+import galleryData from '~/components/galleryData.js';
+
+import GalleryCard from '~/components/GalleryCard.vue';
 
 export default {
+  components: {
+    GalleryCard
+  },
+
+  extends: page,
+
   data () {
     return {
       gallery: galleryData,
@@ -55,8 +56,12 @@ export default {
 
   computed: {
     filteredGallery () {
+      const r = this.filterSearch ? new RegExp(this.filterSearch, 'i') : null;
       return this.gallery.filter((i) => {
-        // TODO if (this.filterSearch && (i.description.match())
+        // texto
+        if (r && i.creator.search(r) === -1 && i.description.search(r) === -1) {
+          return false;
+        }
         return true;
       }, this);
     }

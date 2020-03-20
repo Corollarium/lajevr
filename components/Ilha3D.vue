@@ -6,7 +6,8 @@
 /* eslint-disable */
 import * as THREE from 'three';
 import { ColladaLoader } from './three/ColladaLoader.mjs';
-import { TrackballControls } from './three/TrackballControls.mjs';
+//import { TrackballControls } from './three/TrackballControls.mjs';
+import { OrbitControls } from './three/OrbitControls.mjs';
 import { Ocean } from './Ocean.js';
 import { SpriteText2D, textAlign } from 'three-text2d';
 /* eslint-enable */
@@ -23,6 +24,9 @@ export default {
 
   data () {
     return {
+      container: null,
+      controls: null,
+      camera: null,
       renderer: null
     };
   },
@@ -44,27 +48,30 @@ export default {
       ];
     }
 
-    const container = document.getElementById('ilha-container');
+    this.container = document.getElementById('ilha-container');
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 20000);
-    camera.position.set(0, 1000, 100);
-    camera.lookAt(0, 0, 0);
+    this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight, 1, 20000);
+    this.camera.position.set(0, 1000, 100);
+    this.camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x46BCEC);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(container.clientWidth, container.clientHeight);
+    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
 
-    const controls = new TrackballControls(camera, container);
-    controls.rotateSpeed = 2.0;
-    controls.zoomSpeed = 1.2;
-    controls.panSpeed = 0.8;
-    controls.noPan = false;
-    controls.staticMoving = false;
-    controls.dynamicDampingFactor = 0.3;
-    controls.keys = [ 65, 83, 68 ];
+    this.controls = new OrbitControls(this.camera, this.container);
+    this.controls.rotateSpeed = 2.0;
+    this.controls.zoomSpeed = 1.2;
+    this.controls.panSpeed = 0.8;
+    this.controls.noPan = false;
+    this.controls.staticMoving = false;
+    this.controls.dynamicDampingFactor = 0.3;
+    this.controls.keys = [ 65, 83, 68 ];
+    this.controls.maxDistance = 100.0;
+    this.controls.maxDistance = 5000.0;
+    this.controls.maxPolarAngle = Math.PI / 2.0 - Math.PI / 20.0;
 
     // lights
     const ambientLight = new THREE.AmbientLight(0xCCCCCC, 0.4);
@@ -118,7 +125,7 @@ export default {
     const gres = res / 2;
     const origx = -gsize / 2;
     const origz = -gsize / 2;
-    const ocean = new Ocean(this.renderer, camera, scene,
+    const ocean = new Ocean(this.renderer, this.camera, scene,
       {
         USE_HALF_FLOAT: false,
         INITIAL_SIZE: 2048.0,
@@ -135,14 +142,14 @@ export default {
         RESOLUTION: res
       });
 
-    ocean.materialOcean.uniforms.u_projectionMatrix = { value: camera.projectionMatrix };
-    ocean.materialOcean.uniforms.u_viewMatrix = { value: camera.matrixWorldInverse };
-    ocean.materialOcean.uniforms.u_cameraPosition = { value: camera.position };
+    ocean.materialOcean.uniforms.u_projectionMatrix = { value: this.camera.projectionMatrix };
+    ocean.materialOcean.uniforms.u_viewMatrix = { value: this.camera.matrixWorldInverse };
+    ocean.materialOcean.uniforms.u_cameraPosition = { value: this.camera.position };
     ocean.oceanMesh.scale.set(2, 2, 2);
     scene.add(ocean.oceanMesh);
 
     const render = () => {
-      this.renderer.render(scene, camera);
+      this.renderer.render(scene, this.camera);
     };
 
     const clickEvent = (e) => {
@@ -150,7 +157,7 @@ export default {
       mouse.x = ((event.clientX - rect.left) / (rect.right - rect.left)) * 2 - 1;
       mouse.y = -((event.clientY - rect.top) / (rect.bottom - rect.top)) * 2 + 1;
 
-      raycaster.setFromCamera(mouse, camera);
+      raycaster.setFromCamera(mouse, this.camera);
 
       const intersects = raycaster.intersectObject(diveSiteGroup, true);
 
@@ -163,14 +170,6 @@ export default {
         siteMeshes[object.userData.name].material = siteSelectedMaterial;
         this.$emit('pick', object.userData.name);
       }
-    };
-
-    const onWindowResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      controls.handleResize();
-      this.renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     const animate = () => {
@@ -196,31 +195,40 @@ export default {
 
       ocean.materialOcean.uniforms.u_normalMap.value = ocean.normalMapFramebuffer.texture;
       ocean.materialOcean.uniforms.u_displacementMap.value = ocean.displacementMapFramebuffer.texture;
-      ocean.materialOcean.uniforms.u_projectionMatrix.value = camera.projectionMatrix;
-      ocean.materialOcean.uniforms.u_viewMatrix.value = camera.matrixWorldInverse;
-      ocean.materialOcean.uniforms.u_cameraPosition.value = camera.position;
+      ocean.materialOcean.uniforms.u_projectionMatrix.value = this.camera.projectionMatrix;
+      ocean.materialOcean.uniforms.u_viewMatrix.value = this.camera.matrixWorldInverse;
+      ocean.materialOcean.uniforms.u_cameraPosition.value = this.camera.position;
       ocean.materialOcean.depthTest = true;
 
-      controls.update();
+      this.controls.update();
       render();
     };
 
     animate();
 
     // on initialization
-    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('resize', this.onWindowResize, false);
     this.renderer.domElement.addEventListener('mousedown', clickEvent);
-    controls.addEventListener('change', render);
-    container.appendChild(this.renderer.domElement);
+
+    this.container.appendChild(this.renderer.domElement);
   },
 
   beforeDestroy () {
-    // TODO window.removeEventListener('mousedown',
-    // TODO window.removeEventListener('resize',
-    // TODO: controls.removeEventL
+    // TODO window.removeEventListener('mousedown', t
+    window.removeEventListener('resize', this.onWindowResize);
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;
     this.renderer = null;
+  },
+
+  methods: {
+    onWindowResize () {
+      this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+
+      this.controls.handleResize();
+      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    }
   }
 };
 </script>
