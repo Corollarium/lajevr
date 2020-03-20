@@ -81,7 +81,7 @@ export default {
   computed: {
     isOverlay () {
       const p = this.$nuxt.$route.path;
-      if (p === '/' || p === '/mergulho-virtual') {
+      if (p === '/' || p === '/mergulho-virtual') { // TODO: ugly workaround
         return true;
       }
       return false;

@@ -1,70 +1,71 @@
 <template>
-  <article>
-    <section class="section">
-      <h1 class="title">
+  <article class="dive-container">
+    <aside class="dive-aside">
+      <h1>
         <i18n>
-          Mergulho na Laje de Santos
+          Pontos de Mergulho na Laje de Santos
         </i18n>
       </h1>
-      <h2 class="subtitle">
-        <i18n>
-          Laje de Santos em Realidade Virtual
-        </i18n>
-      </h2>
-      <p>
-        <i18n>
-          A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
-          com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade.
-        </i18n>
-      </p>
-    </section>
 
-    <section>
+      <div v-show="selectedSite == -1">
+        <p>
+          <i18n>
+            A Laje de Santos é um local popular para a prática do mergulho. Próxima da cidade de São Paulo, a 1h30m de barco da costa e
+            com uma diversidade de espécies que poucos lugares são capazes de igualar, raramente com menos de 10 metros de visibilidade.
+            Selecione um local para ter mais informações.
+          </i18n>
+        </p>
+
+        <p>
+          <i18n>Fontes das informações:</i18n>
+          <a href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
+          <a href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
+          <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
+        </p>
+      </div>
+      <div
+        v-show="selectedSite != -1"
+      >
+        <h2 class="subtitle is-3">
+          {{ selectedSiteData.name }}
+        </h2>
+        <div>
+          <p class="dive-dificuldade">
+            {{ selectedSiteData.dificuldade }}
+          </p>
+          <p class="dive-coordinates">
+            Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
+          </p>
+          <p>
+            <span class="dive-description">{{ selectedSiteData.description }}</span>
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <section class="dive-3d">
       <Ilha3D
         :dive-sites="diveSites"
+        v-on:pick="pick"
       />
-    </section>
-
-    <section class="section">
-      <h2 class="subtitle">
-        <i18n>
-          Pontos de mergulho
-        </i18n>
-      </h2>
-      <div
-        v-for="site in diveSites"
-        :key="site.name"
-      >
-        <h3 class="subtitle is-3">
-          {{ site.name }}
-        </h3>
-        <span class="dive-dificuldade">{{ site.dificuldade }}</span>
-        <span class="dive-coordinates">Latitude: {{ site.lat }} Longitude: {{ site.long }}</span>
-        <span class="dive-description">{{ site.description }}</span>
-      </div>
-    </section>
-
-    <section>
-      <p>
-        Fontes das informações:
-        <a href="https://www.lajeviva.org.br/Lajeviva/parque/pontos-de-mergulho/">Instituto Laje Viva</a>,
-        <a href="http://arquivos.ambiente.sp.gov.br/fundacaoflorestal/2014/04/Plano-Emergencial-de-Uso-P%C3%BAblico_PEMLS_versaoFinal.pdf">Plano Emergencial de Uso Público do PEMLS</a>
-        <a href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
-      </p>
     </section>
   </article>
 </template>
 
 <script>
+import page from './page.vue';
 import Ilha3D from '~/components/Ilha3D.vue';
 
 export default {
-
   components: {
     Ilha3D
   },
+
+  extends: page,
+
   data () {
     return {
+      selectedSite: -1,
       diveSites: [
         { name: 'Portinho',
           lat: -24.318083,
@@ -146,8 +147,48 @@ export default {
         }
       ]
     };
+  },
+
+  computed: {
+    selectedSiteData () {
+      if (this.selectedSite === -1) {
+        return {};
+      }
+      return this.diveSites[this.selectedSite];
+    }
+  },
+
+  mounted () {
+    this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
+    this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
+  },
+
+  methods: {
+    pick (diveSite) {
+      console.log(diveSite);
+    }
   }
 };
 </script>
 
-<style></style>
+<style lang="less" scoped>
+.dive-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
+
+  .dive-aside {
+    flex-basis: 20%;
+    min-width: 500px;
+  }
+
+  .dive-3d {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+  }
+}
+
+</style>

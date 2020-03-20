@@ -53,7 +53,7 @@ export default {
   mounted () {
     const container = this.$el;
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / window.innerHeight, 1, 20000);
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 20000);
     camera.position.set(0, 0, 150); // TODO: scale
     camera.lookAt(0, 0, 0);
 
@@ -68,7 +68,7 @@ export default {
     }
 
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(container.clientWidth, window.innerHeight);
+    this.renderer.setSize(container.clientWidth, container.clientHeight);
 
     const controls = new OrbitControls(camera, this.renderer.domElement);
     controls.autoRotate = true;
