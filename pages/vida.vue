@@ -17,9 +17,6 @@
         <li class="pure-menu-item topbar-list-item" data-target="birds">
           <a class="pure-menu-link" href="#birds">Aves</a>
         </li>
-        <li class="pure-menu-item topbar-list-item" data-target="fish">
-          <a class="pure-menu-link" href="#fish">Peixes</a>
-        </li>
       </ul>
     </div>
 
@@ -51,7 +48,7 @@
       </div>
     </section>
 
-    <section id="intro" class="section-base section-text">
+    <section id="intro" class="section-index section-base section-text">
       <p>
         A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
         É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
@@ -61,7 +58,7 @@
       </p>
     </section>
 
-    <section id="manta">
+    <section id="manta" class="section-index">
       <section class="section-base section-text">
         <h2 class="title is-2">
           Raias Mantas (Mobula birostris)
@@ -117,7 +114,7 @@
       </section>
     </section>
 
-    <section id="turtles">
+    <section id="turtles" class="section-index">
       <section class="section-base section-text">
         <h2 class="title is-2">
           Tartarugas
@@ -167,42 +164,34 @@
       </section>
     </section>
 
-    <section id="dolphins" class="section-base section-text">
-      <h2 class="title is-2">
-        Golfinhos
-      </h2>
-      <p>
-        Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que
-        aparecem, acompanham o barco por alguns minutos e de novo somem em mar aberto, parecendo nos recepcionar.
-      </p>
-      <p>
-        O Golfinho nariz de garrafa
-      </p>
-      <p>
-        O Golfinho pintado do Atlântico.
-      </p>
+    <section id="dolphins" class="section-index">
+      <section class="section-base section-text">
+        <h2 class="title is-2">
+          Golfinhos
+        </h2>
+        <p>
+          Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que
+          aparecem, acompanham o barco por alguns minutos e de novo somem em mar aberto, parecendo nos recepcionar.
+        </p>
+        <p>
+          O Golfinho nariz de garrafa
+        </p>
+        <p>
+          O Golfinho pintado do Atlântico.
+        </p>
+      </section>
     </section>
 
-    <section id="birds" class="section-base section-text">
-      <h2 class="title is-2">
-        Aves
-      </h2>
+    <section id="birds" class="section-index">
+      <section class="section-base section-text">
+        <h2 class="title is-2">
+          Aves
+        </h2>
 
-      <p>
-        29 espécies de aves já foram catalogadas na Laje.
-      </p>
-    </section>
-
-    <section id="fish" class="section-base section-text">
-      <h2 class="title is-2">
-        Peixes
-      </h2>
-
-      <GLTFModel
-        :model="'./models/fish/scene.gltf'"
-        :attribution="''"
-      />
-      </GLTFModel>
+        <p>
+          29 espécies de aves já foram catalogadas na Laje.
+        </p>
+      </section>
     </section>
   </article>
 </template>
@@ -253,7 +242,7 @@ export default {
           threshold: [0.1, 0.9]
         };
         const observer = new IntersectionObserver(callback, options);
-        document.querySelectorAll('section.section-base').forEach((x) => { observer.observe(x); });
+        document.querySelectorAll('section.section-index').forEach((x) => { observer.observe(x); });
       }
     }
   }
