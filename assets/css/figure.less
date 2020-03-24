@@ -1,4 +1,8 @@
-figure.fullsize {
+figure.fullscreen {
+  .is-fullheight();
+}
+
+figure.figure-text {
   position: relative;
 
   img {
@@ -12,6 +16,17 @@ figure.fullsize {
   figcaption {
     display: block;
     .section-text();
+    font-family: @secondaryFont;
     margin-bottom: 5em;
+  }
+
+  figcaption::after {
+    content: " ";
+    display: block;
+    position: relative;
+    width: 64px;
+    height: 4px;
+    background-color: @secondaryColor-1;
+    margin-top: 20px;
   }
 }

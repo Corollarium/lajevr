@@ -61,62 +61,111 @@
       </p>
     </section>
 
-    <section id="manta" class="section-base section-text">
-      <h2 class="title is-2">
-        Raias Mantas
-      </h2>
-      <p>
-        A jamanta (Mobula birostris), também conhecida como manta. é uma espécie de peixes pelágicos e oceânicos. É a maior espécie atual de raias.
-        Encontra-se nas regiões tropicais e subtropicais de todos os oceanos, tipicamente perto de recifes de coral.
-      </p>
+    <section id="manta">
+      <section class="section-base section-text">
+        <h2 class="title is-2">
+          Raias Mantas (Mobula birostris)
+        </h2>
+      </section>
 
-      <div class="model-container" style="min-height: 70vh;">
-        <GLTFModel
-          :model="'./models/manta/scene.gltf'"
-          :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
-          :attribution="'Modelo 3D CC BY-NC por misaooo'"
-        />
-        </GLTFModel>
-      </div>
+      <figure class="figure-text">
+        <img alt="Tartaruga de pente" src="/images/nauther/1549889531894-1082715277.jpg">
+        <figcaption>
+          <p>
+            Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
+          </p>
+        </figcaption>
+      </figure>
 
-      <p>
-        A jamanta tem o corpo em forma de losango e uma cauda longa sem espinho e pode atingir sete metros de envergadura e pesar até 1,350kg. Podem viver até 20 anos. Estes peixes não têm verdadeiros dentes e alimentam-se de plâncton e pequenos peixes, sendo portanto inofensivos. Ocasionalmente, podem aproximar-se de um barco ou de mergulhadores e podem executar curtos “voos” fora da água. Têm a maior taxa de volume de cérebro em relação ao do corpo de todos os tubarões e raias.
-      </p>
-      <p>
-        Durante as suas migrações, as jamantas efetuam mergulhos frequentes até profundidades de quase dois quilómetros (entre os maiores alguma vez medidos para um animal marinho), onde as temperaturas da água atingem os três graus centígrados.
-        A Laje está na rota migratória das raias mantas gigantes, que passam por lá nos meses de outono e inverno.
-      </p>
-      <p>Fonte: <a href="https://pt.wikipedia.org/wiki/Jamanta">Wikipedia: Jamanta</a>.</p>
+      <section class="section-base section-text">
+        <p>
+          Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
+          os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
+          mil quilos, a raia manta não possui ferrão. É o peixe com o maior
+          cérebro de todos os outros peixes do mar, por isso é extremamente
+          inteligente, um animal muito dócil e curioso. Quando encontra um
+          mergulhador, permite a interação e por vezes permanece por vários
+          minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
+          mergulhadores parecem fazer cócegas em sua barriga
+        </p>
+
+        <div class="model-container" style="min-height: 70vh;">
+          <GLTFModel
+            :model="'./models/manta/scene.gltf'"
+            :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
+            :attribution="'Modelo 3D CC BY-NC por misaooo'"
+          />
+          </GLTFModel>
+        </div>
+
+        <p>
+          Podem ser
+          encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
+          Santos aparecem no período de inverno, nos meses de abril a setembro. As
+          mantas são identificadas individualmente através de fotografia das
+          manchas ventrais que formam padrões únicos. Esses dados são inserido em
+          bancos de dados brasileiro e mundial para organização, assim é possível
+          a quantificação de números populacionais.
+        </p>
+
+        <p>
+          Durante as suas migrações, as jamantas efetuam mergulhos frequentes até
+          profundidades de quase dois quilômetros (entre os maiores alguma vez
+          medidos para um animal marinho), onde as temperaturas da água atingem os
+          três graus centígrados.
+        </p>
+      </section>
     </section>
 
-    <section id="turtles" class="section-base section-text">
-      <h2 class="title is-2">
-        Tartarugas
-      </h2>
-      <p>
-        Há duas espécies de tartarugas na Laje de Santos: a tartaruga de pente e a tartaruga-verde.
-      </p>
+    <section id="turtles">
+      <section class="section-base section-text">
+        <h2 class="title is-2">
+          Tartarugas
+        </h2>
+        <p>
+          Existem duas espécies de tartarugas que frequentam a Laje de Santos, a
+          Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns
+          detalhes são importantes para diferenciá-las: no caso da
+          tartaruga-de-pente, apresentam cabeça mais fina e comprida, bico como de
+          falcão, placas do casco sobrepostas ou imbricadas como telha, coloração
+          marrom amarelada, o casco geralmente bem ornamentado. Já as tartarugas
+          verdes possuem o casco mais simétrico, com placas intercaladas e
+          conectadas como um quebra-cabeça, cabeça arredondada e coloração do
+          casco predominante do verde e marrom, para amarelo claro em seu ventre.
+        </p>
+      </section>
+
+      <figure class="figure-text">
+        <div bp="grid">
+          <div bp="6">
+            <img alt="Tartaruga de pente" src="/images/nauther/1552316930246-911010432.jpg">
+          </div>
+          <div bp="6">
+            <img alt="Tartaruga verde" src="/images/nauther/1547073690808-2036926563.jpg">
+          </div>
+        </div>
+        <figcaption>
+          <p>
+            Tartaruga verde (à esquerda)
+            e tartaruga de pente (à direita).
+          </p>
+        </figcaption>
+      </figure>
+
+      <section class="section-base section-text">
+        <p>
+          Graças à beleza do casco, as tartarugas-de-pente foram extremamente
+          caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer
+          utensílios como porta-jóias e objetos como pentes, daí seu nome popular
+          "tartaruga-de-pente".
+        </p>
+        <p>
+          Como são animais de vida longa, atingindo a maturidade sexual após os 30
+          anos, as tartarugas encontradas na Laje de Santos são animais juvenis
+          utilizando a área para alimentação e abrigo.
+        </p>
+      </section>
     </section>
-
-    <figure class="fullsize">
-      <img alt="Tartaruga de pente" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tartaruga_da_Laje.jpg/800px-Tartaruga_da_Laje.jpg">
-      <figcaption>
-        <p>
-          Tartaruga de pente. REVER FOTO
-          <a title="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Tartaruga_da_Laje.jpg">Ronaldo art [CC BY-SA 3.0]</a>
-        </p>
-      </figcaption>
-    </figure>
-
-    <figure class="fullsize">
-      <img alt="Tartaruga verde" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Green_sea_turtle_near_Marsa_Alam.JPG/800px-Green_sea_turtle_near_Marsa_Alam.JPG">
-      <figcaption>
-        <p>
-          Tartaruga verde. REVER FOTO
-          <a title="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Tartaruga_da_Laje.jpg">Alexander Vasenin [CC BY-SA 3.0]</a>
-        </p>
-      </figcaption>
-    </figure>
 
     <section id="dolphins" class="section-base section-text">
       <h2 class="title is-2">

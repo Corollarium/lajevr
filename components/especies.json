@@ -59,5 +59,35 @@
     "creator": "Nauther Andres",
     "creator_link": "https://www.instagram.com/nautherandres/",
     "license": "CC 4.0"
+  },
+  {
+    "name": "Tartaruga verde",
+    "colors": [
+      "green",
+      "white"
+    ],
+    "size": 120,
+    "pic": "/images/nauther/15473512064421989571056.jpg",
+    "othernames": "",
+    "description": "",
+    "about": "",
+    "creator": "Nauther Andres",
+    "creator_link": "https://www.instagram.com/nautherandres/",
+    "license": "CC 4.0"
+  },
+  {
+    "name": "Tartaruga de pente",
+    "colors": [
+      "green",
+      "white"
+    ],
+    "size": 120,
+    "pic": "/images/nauther/1552316930246-911010432.jpg",
+    "othernames": "",
+    "description": "",
+    "about": "",
+    "creator": "Nauther Andres",
+    "creator_link": "https://www.instagram.com/nautherandres/",
+    "license": "CC 4.0"
   }
 ]
