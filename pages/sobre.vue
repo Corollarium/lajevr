@@ -1,12 +1,38 @@
 <template>
-  <article class="container">
-    <h1>
-      <i18n>
-        O projeto
-      </i18n>
-    </h1>
+  <article>
+    <section class="hero">
+      <div class="hero-body">
+        <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
+      </div>
+      <div class="hero-html">
+        <h1>
+          <i18n>
+            Laje de Santos Virtual
+          </i18n>
+          <br>
+          <i18n>
+            O projeto
+          </i18n>
+        </h1>
+        <p class="attribution">
+          Photo
+          <a
+            href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
+            class="new"
+            title="User:Afcarv (page does not exist)"
+          >Anael Ferraz de Carvalho</a>
+          -
+          <span class="int-own-work" lang="en">Own work</span>,
+          <a
+            href="https://creativecommons.org/licenses/by-sa/3.0"
+            title="Creative Commons Attribution-Share Alike 3.0"
+          >CC BY-SA 3.0</a>
+          <a href="https://commons.wikimedia.org/w/index.php?curid=40439744">Link</a>
+        </p>
+      </div>
+    </section>
 
-    <section class="base-section">
+    <section class="section-base container">
       <h2>
         <i18n>
           Laje de Santos em Realidade Virtual
@@ -42,14 +68,14 @@
       </p>
     </section>
 
-    <section class="base-section">
+    <section class="section-base container">
       <h2>
         <i18n>
           Tecnologia
         </i18n>
       </h2>
 
-      <section class="inner-section" bp="grid 12 6@md">
+      <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="slide-left">
           <h3>
             <i18n>
@@ -94,7 +120,7 @@
         </div>
       </section>
 
-      <section class="inner-section" bp="grid 12 6@md">
+      <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="zoom-out-down">
           <img src="~/assets/images/placeholder480.png">
         </div>
@@ -141,7 +167,7 @@
         </div>
       </section>
 
-      <section class="inner-section" bp="grid 12 6@md">
+      <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="slide-left">
           <h2>
             Realidade virtual
@@ -188,7 +214,7 @@
         </div>
       </section>
 
-      <section class="base-section">
+      <section class="section-base container">
         <h2>
           <i18n>
             Equipe
@@ -216,7 +242,7 @@
         </ul>
       </section>
 
-      <section class="base-section">
+      <section class="section-base container">
         <h2>
           <i18n>
             O Parque Estadual Marinho da Laje de Santos
@@ -286,7 +312,7 @@
         </p>
       </section>
 
-      <section class="base-section">
+      <section class="section-base container">
         <h2>
           <i18n>
             Agradecimentos
@@ -304,7 +330,6 @@
         </ul>
       </section>
     </section>
-    </section>
   </article>
 </template>
 
@@ -312,11 +337,14 @@
 import page from './page.vue';
 import statisticsData from '~/components/statistics.json';
 
+const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
+
 export default {
   extends: page,
 
   data () {
     return {
+      imageIlhaFoto,
       stats: statisticsData
     };
   },
