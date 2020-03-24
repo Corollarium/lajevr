@@ -25,7 +25,7 @@
 
     <section class="hero">
       <div class="hero-body">
-        <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
+        <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
       </div>
       <div class="hero-html">
         <h1>
@@ -211,7 +211,7 @@
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 
-const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
+const imageCardume = require('~/static/images/nauther/1556498262088345578492.jpg?resize');
 
 export default {
   components: {
@@ -222,7 +222,7 @@ export default {
 
   data () {
     return {
-      imageIlhaFoto
+      imageCardume
     };
   },
 
