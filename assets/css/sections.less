@@ -60,7 +60,7 @@
   }
 }
 
-.base-section {
+.section-base {
   .make-padding();
   &:not(last-child) {
       margin: 0 auto 2rem;
@@ -71,8 +71,15 @@
   }
 }
 
-.inner-section {
+.section-inner {
   .make-padding(4,3,2,1);
+}
+
+.section-text {
+  .container();
+  p {
+    max-width: 50em;
+  }
 }
 
 .spaced-image {
@@ -115,6 +122,10 @@ mask-image: linear-gradient(
   rgba(0,0,0,1) 85%,
   rgba(0,0,0,0) 100%,
 );
+}
+
+figure.fullscreen {
+  .is-fullheight()
 }
 
 .attribution {

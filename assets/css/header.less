@@ -78,41 +78,6 @@
         }
       }
 
-      .pure-menu-link {
-        color: lighten(@secondaryColor-2, 20);
-        text-transform: uppercase;
-        font-weight: @regular;
-        padding: .25rem .75rem;
-        font-size: .9rem;
-        .transition(.3s, border-bottom);
-
-        @media @desktop {
-          border-bottom: .25rem inset fade(@primaryColor, 30);
-        }
-
-        &:hover {
-          color: lighten(@secondaryColor-2, 40);
-          background-color: transparent;
-          border-bottom-color: @secondaryColor-2;
-          .transition();
-        }
-
-        &.is-active,
-        &.nuxt-link-exact-active,
-        &:focus {
-          font-weight: bold;
-          border-color: @secondaryColor-2;
-          background-color: transparent;
-
-          @media @desktop {
-            border-bottom: .25rem inset @secondaryColor-2;
-          }
-        }
-
-        @media @responsiveDevices {
-          text-align: center;
-        }
-      }
     }
 
     /**TEMPORARIO ATE MUDAR LANG PICKER **/
