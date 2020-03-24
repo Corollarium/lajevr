@@ -1,7 +1,7 @@
 <template>
   <article class="dive-container">
     <aside class="dive-aside">
-      <section class="base-section">
+      <section class="section-base">
         <div v-show="selectedSite == -1">
           <h1>
             <i18n>

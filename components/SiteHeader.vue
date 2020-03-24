@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="clear-both" />
-        <ul @click="isExpanded = false" class="pure-menu-list">
+        <ul @click="isExpanded = false" class="pure-menu-list horizontal-menu">
           <li class="pure-menu-item pure-menu-selected">
             <nuxt-link to="/" class="pure-menu-link">
               <i18n>Início</i18n>

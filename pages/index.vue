@@ -39,7 +39,7 @@
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
       <div class="hero-html">
-        <section class="base-section">
+        <section class="section-base">
           <p class="attribution">
             Photo
             <a
@@ -60,7 +60,7 @@
     </section>
 
     <!-- About Section -->
-    <section bp="container" class="base-section">
+    <section bp="container" class="section-base">
       <figure bp="float-center" class="image icon-about-heading">
         <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
       </figure>
@@ -68,7 +68,7 @@
         <i18n>Laje de Santos</i18n>
       </h1>
 
-      <div class="inner-section" bp="grid 12 6@md vertical-center">
+      <div class="section-inner" bp="grid 12 6@md vertical-center">
         <div>
           <p class="about-description">
             O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <div class="inner-section" bp="grid vertical-center">
+      <div class="section-inner" bp="grid vertical-center">
         <div bp="12 5@md">
           <p class="boxed-description">
             Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      <div class="inner-section" bp="grid 12 6@md vertical-center">
+      <div class="section-inner" bp="grid 12 6@md vertical-center">
         <div>
           <h3>
             <i18n>Um paraíso do mergulho</i18n>
@@ -140,7 +140,7 @@
       </div>
     </section>
 
-    <section class="base-section">
+    <section class="section-base">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>Mergulho virtual</i18n>
@@ -159,7 +159,7 @@
       </div>
     </section>
 
-    <section id="visitar" class="base-section">
+    <section id="visitar" class="section-base">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>Como visitar a Laje</i18n>
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-    <section id="vida" class="base-section">
+    <section id="vida" class="section-base">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>A vida na Laje</i18n>
@@ -253,7 +253,7 @@
       </div>
     </section>
 
-    <section id="numeros" class="base-section">
+    <section id="numeros" class="section-base">
       <Bubbles />
       <div bp="container">
         <h2 class="has-text-center">
@@ -261,7 +261,7 @@
             A Laje em Números
           </i18n>
         </h2>
-        <div class="number-wrapper inner-section" bp="grid 6@sm 4@md 3@lg">
+        <div class="number-wrapper section-inner" bp="grid 6@sm 4@md 3@lg">
           <number-bullet
             :to="550"
             :icon="['fas', 'ruler-horizontal']"
@@ -329,7 +329,7 @@
         </div>
       </div>
     </section>
-    <section id="timeline" class="base-section">
+    <section id="timeline" class="section-base">
       <Timeline />
     </section>
   </div>
