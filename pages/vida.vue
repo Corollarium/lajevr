@@ -5,8 +5,8 @@
         <li class="pure-menu-item topbar-list-item" data-target="intro">
           <a class="pure-menu-link" href="#intro">Introdução</a>
         </li>
-        <li class="pure-menu-item topbar-list-item" data-target="manta">
-          <a class="pure-menu-link" href="#manta">Mantas</a>
+        <li class="pure-menu-item topbar-list-item" data-target="raias">
+          <a class="pure-menu-link" href="#manta">Raias</a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="turtles">
           <a class="pure-menu-link" href="#turtles">Tartarugas</a>
@@ -58,11 +58,22 @@
       </p>
     </section>
 
-    <section id="manta" class="section-index">
+    <section id="raias" class="section-index">
       <section class="section-base section-text">
-        <h2 class="title is-2">
-          Raias Mantas (Mobula birostris)
+        <h1>
+          Raias
+        </h1>
+      </section>
+
+      <section class="section-base section-text">
+        <h2>
+          Raia-Manta
         </h2>
+
+        <div class="especie-info">
+          <p>Espécie: Mobula birostris</p>
+          <p>Estado de conservação: Vulnerável a extinção</p>
+        </div>
       </section>
 
       <figure class="figure-text">
@@ -112,11 +123,134 @@
           três graus centígrados.
         </p>
       </section>
+
+      <section class="section-base section-text">
+        <h2>
+          Raia-chita
+        </h2>
+
+        <div class="especie-info">
+          <p>Espécie: Aetobatus narinari</p>
+          <p>Estado de conservação: Quase ameaçada</p>
+        </div>
+
+        <p>
+          Vive em quase todos os oceanos, mas na Laje pode ser vista quase o ano
+          todo, onde seus indivíduos são inclusive reconhecidos pelos
+          mergulhadores mais frequentes, graças ao padrão único de pintas nas
+          costas. Pode viver até 18 anos. Pode ser vista navegando sozinha ou em
+          cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora
+          d’água, se alimentam de pequenos crustáceos e moluscos bivalves
+          (animais de duas conchas) sua mandíbula é extremamente forte capaz de
+          triturar carapaças e conchas.
+        </p>
+
+        <figure class="figure-text">
+          <img alt="Raia Chita" src="/images/nauther/1545946134598879623409.jpg">
+          <figcaption>
+            <p>
+              Raia Chita
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section-base section-text">
+        <h2>
+          Raia-prego
+        </h2>
+
+        <div class="especie-info">
+          <p>Espécie: Dasyatis centroura</p>
+          <p>Estado de conservação: pouco preocupante</p>
+        </div>
+
+        <p>
+          As raias-prego, ou raias manteiga como são conhecidas pelos
+          mergulhadores, sempre dão show quando encontradas. São animais de
+          corpo achatado associados ao substrato ou fundo de areia, pois
+          geralmente param ali e jogam a areia por cima de seu corpo para se
+          camuflarem e desta forma descansarem.
+        </p>
+
+        <p>
+          Dizem que as raias e os tubarões não podem parar de nadar por que
+          podem morrer afogados, mas nem tudo é verdade. No caso de algumas
+          espécies de raias, quando estão paradas, elas abrem e fecham o
+          opérculo, órgão responsável por sua respiração, sugando a água que
+          passa por suas brânquias fazendo a troca de oxigênio. Apesar de não
+          atacarem pessoas, por causa deste comportamento de se enterrar na
+          areia e permanecer muitas vezes em águas rasas, ocorrem alguns
+          acidentes pelo mundo afora pelo seu ferrão venenoso. Foi o caso do
+          zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como
+          Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia
+          do gênero Dasyatis.
+        </p>
+
+        <figure class="figure-text">
+          <div bp="grid">
+            <div bp="6">
+              <img alt="Raia prego" src="/images/nauther/1549752089536-353729687.jpg">
+            </div>
+            <div bp="6">
+              <img alt="Raia prego" src="/images/nauther/1562034454874570542648.jpg">
+            </div>
+          </div>
+          <figcaption>
+            <p>
+              Na Laje de Santos raias-prego aparecem em determinadas épocas do ano e
+              geralmente estão prenhas ou grávidas como na foto. A
+              gravidez das raias é perceptível pelo ventre e pelo dorso
+              deixando-as protuberantes em ambos os lados.
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section-base section-text">
+        <h2>
+          Raia-borboleta
+        </h2>
+
+        <div class="especie-info">
+          <p>Espécie: Gymnura altavela</p>
+          <p>Estado de conservação: Vulnerável a extinção e decaindo</p>
+        </div>
+
+        <p>
+          A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar
+          negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a
+          100 metros de profundidade, e na Laje de Santos são vistas nas
+          estações primavera e verão, utilizando a região para descanso no
+          período reprodutivo.
+        </p>
+
+        <p>
+          Como a maioria das raias, elas também possuem o comportamento de se
+          camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina
+          camada de sedimentos para se protegerem de possíveis predadores. Todos
+          os anos as encontramos e geralmente as fêmeas estão grávidas, o que é
+          possível saber por ficarem com o dorso proeminente.
+        </p>
+
+        <figure class="figure-text">
+          <img src="~/assets/images/placeholder480.png">
+          <figcaption>
+            <p>
+              Raias-borboleta. Pode ser bem difícil diferenciar o macho da
+              fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
+              ou raias e tubarões, é que os machos possuem dois clásperes ou
+              (pênis) que é possível ser visualizado na base da cauda dos machos
+              e ausente nas fêmeas.
+            </p>
+          </figcaption>
+        </figure>
+      </section>
     </section>
 
     <section id="turtles" class="section-index">
       <section class="section-base section-text">
-        <h2 class="title is-2">
+        <h2>
           Tartarugas
         </h2>
         <p>
@@ -166,7 +300,7 @@
 
     <section id="dolphins" class="section-index">
       <section class="section-base section-text">
-        <h2 class="title is-2">
+        <h2>
           Golfinhos
         </h2>
         <p>
@@ -179,12 +313,21 @@
         <p>
           O Golfinho pintado do Atlântico.
         </p>
+
+        <figure class="figure-text">
+          <img src="/images/nauther/20190626_093259.jpg">
+          <figcaption>
+            <p>
+              Golfinhos
+            </p>
+          </figcaption>
+        </figure>
       </section>
     </section>
 
     <section id="birds" class="section-index">
       <section class="section-base section-text">
-        <h2 class="title is-2">
+        <h2>
           Aves
         </h2>
 
@@ -251,4 +394,13 @@ export default {
 
 <style lang="less" scoped>
 @import '~assets/css/variables.less';
+
+.especie-info {
+  font-style: italic;
+  p {
+    margin: 0;
+  }
+  margin: 0;
+  margin-bottom: 1em;
+}
 </style>

@@ -17,16 +17,19 @@ figure.figure-text {
     display: block;
     .section-text();
     font-family: @secondaryFont;
+    margin: 0;
     margin-bottom: 5em;
+    padding-left: 2em;
+    max-width: @textMaxWidth;
   }
 
   figcaption::after {
     content: " ";
     display: block;
     position: relative;
-    width: 64px;
-    height: 4px;
-    background-color: @secondaryColor-1;
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, @secondaryColor-1, @primaryColor);
     margin-top: 20px;
   }
 }
