@@ -24,7 +24,7 @@ export default {
     const self = this;
     this.cw = this.$el.width = this.$el.parentElement.clientWidth;
     this.ch = this.$el.height = this.$el.parentElement.clientHeight;
-    const totalBubbles = this.total ? this.total : parseInt(this.cw * this.ch / 20000);
+    let totalBubbles = this.total ? this.total : parseInt(this.cw * this.ch / 20000);
     const kappa = 0.5522847498;
     const Rgrd = Math.sqrt(this.ch * this.ch + (this.cw / 2) * (this.cw / 2));
     let grd = ctx.createRadialGradient(this.cw / 2, 0, 0, this.cw / 2, 0, Rgrd); // x0, y0, r0, x1, y1, r1
@@ -186,6 +186,7 @@ export default {
     window.addEventListener('resize', () => {
       this.cw = this.$el.width = this.$el.parentElement.clientWidth;
       this.ch = this.$el.height = this.$el.parentElement.clientHeight;
+      totalBubbles = this.total ? this.total : parseInt(this.cw * this.ch / 20000);
       buildData();
     }, false);
 
