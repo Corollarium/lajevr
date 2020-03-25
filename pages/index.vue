@@ -396,8 +396,8 @@ export default {
 
 <style lang="less" scoped>
 .sticky-hero {
-  height: 340vh;
-  height: calc(var(--vh, 1vh) * 340);
+  height: 320vh;
+  height: calc(var(--vh, 1vh) * 320);
   position: relative;
 
   .sticky-hero-content {

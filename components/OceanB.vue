@@ -165,7 +165,8 @@ export default {
       const w = window.innerWidth;
       const s = w * 1.5 / 1920;
       this.plane.scaling = new BABYLON.Vector3(s, s, s);
-      const y = (w - 1920) * (3.2 - 14.2) / (320 - 1920) + 14.2; // TODO 1920 / 14.2 = 320 / 4.2
+      const basey = 22.2;
+      const y = (w - 1920) * (3.2 - basey) / (320 - 1920) + basey; // TODO 1920 / 14.2 = 320 / 4.2
       this.plane.position.y = y;
     },
 
