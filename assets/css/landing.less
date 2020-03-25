@@ -41,3 +41,33 @@
     margin: auto;
   }
 }
+
+.section-with-slideshow {
+  position: relative;
+  min-height: 90vh;
+  overflow: hidden;
+}
+
+.background-slideshow {
+  position: absolute;
+
+  figure {
+    object-fit: cover;
+  }
+
+}
+
+.over-image-box {
+  position: relative;
+  background-color: darken(fade(@primaryColor, 80), 15);
+  border-radius: .5rem;
+
+  @media @desktop {
+    .add-padding(5,5);
+  }
+
+  @media @responsiveDevices {
+    .add-padding(2,2);
+
+  }
+}

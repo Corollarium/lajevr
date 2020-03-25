@@ -124,34 +124,25 @@
       </div>
     </section>
 
-    <section>
-      <figure class="image">
-        <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" style="object-fit: cover; min-height: 70vh;" class="fade-top-bottom" alt="Cardume de Xira">
-        <figcaption class="attribution">
-          By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
-        </figcaption>
-      </figure>
-      <div class="text-over-image">
-        <div data-aos="slide-left">
-          <p>
-            <i18n />
-          </p>
-        </div>
+    <section bp="grid vertical-center" class="section-with-slideshow">
+      <div class="background-slideshow">
+        <figure class="image">
+          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          <figcaption class="attribution">
+            By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
+          </figcaption>
+        </figure>
       </div>
-    </section>
-
-    <section class="section-base">
-      <div style="max-width: 500px; margin: 0 auto;">
-        <h2>
-          <i18n>Mergulho virtual</i18n>
+      <div bp="4 offset-5" class="over-image-box">
+        <h2 class="has-text-center">
+          Mergulho Virtual
         </h2>
-        <p>
-          <i18n>
-            Experimente como é mergulhar na Laje de Santos do seu próprio navegador.
-          </i18n>
+        <p class="has-text-center">
+          Veja no seu computador cardumes de peixes, naufrágio moreia e animais fantásticos.
+          Experimente como é mergulhar na Laje de Santos agora mesmo.
         </p>
-        <p>
-          <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
+        <p class="has-text-center">
+          <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/mergulho-virtual">
             <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
             <span class="button-is-liquid__animation" />
           </nuxt-link>
@@ -430,14 +421,5 @@ export default {
     }
   }
 
-}
-
-.image-fish {
-  display: inline-block
-}
-
-.bubbles {
-  background: transparent;
-  position: absolute;
 }
 </style>
