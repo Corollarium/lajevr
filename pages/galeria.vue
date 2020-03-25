@@ -22,6 +22,7 @@
       <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"
+        v-bind:name="a.name"
         v-bind:creator="a.creator"
         v-bind:creatorLink="a.creatorLink"
         v-bind:license="a.license"
@@ -73,18 +74,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-.section-gallery {
-  width: 300px;
-  display: inline-block;
-  vertical-align: top;
-  .gallery-creator {
-    font-size: 90%;
-    font-style: italic;
-  }
-  .gallery-description {
-    font-weight: bold;
-  }
-}
 
 </style>
