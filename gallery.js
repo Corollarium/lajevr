@@ -24,19 +24,26 @@ const main = () => {
   for (const d of dirs) {
     try {
       const urlpath = d.replace(path.join(__dirname, '/static/'), '', d);
-      const attribution = JSON.parse(fs.readFileSync(path.join(d, 'attribution.json')));
+      const datafile = path.join(d, 'attribution.json');
+      if (!fs.existsSync(datafile)) {
+        continue;
+      }
+      const dirdata = JSON.parse(fs.readFileSync(datafile));
       const media = fs.readdirSync(d).filter(isMedia);
 
       for (const m of media) {
-        const data = Object.assign({}, attribution);
+        const data = Object.assign({ description: '' }, dirdata.attribution, (m in dirdata.media ? dirdata.media[m] : {}));
+        if (!(m in dirdata.media)) {
+          // eslint-disable
+          console.warn(m + ' does not have metadata.');
+        }
         data.url = '/' + urlpath + '/' + m;
-        data.description = '';
+        data.filename = m;
         data.type = (isImage(m) ? 'image' : (isVideo(m) ? 'video' : ''));
         gallery.push(data);
       }
     } catch (error) {
-      // pass
-      // console.trace(error);
+      console.trace(error);
     }
   }
 

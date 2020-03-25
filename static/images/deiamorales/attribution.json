@@ -1,5 +1,8 @@
 {
-  "creator": "Andréa Pontes",
-  "creatorLink": "https://www.instagram.com/deia_morales/",
-  "license": "CC 4.0"
+  "attribution": {
+    "creator": "Andréa Pontes",
+    "creatorLink": "https://www.instagram.com/deia_morales/",
+    "license": "CC 4.0"
+  },
+  "media": {}
 }

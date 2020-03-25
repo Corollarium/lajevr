@@ -118,7 +118,7 @@
         class="section section-fauna"
       >
         <figure>
-          <img :src="a.pic" class="fauna-image">
+          <img :src="a.url" class="fauna-image">
           <figcaption v-if="a.creator" class="attribution">
             <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
           </figcaption>
@@ -144,7 +144,7 @@
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 import page from './page.vue';
-import animalData from '~/components/especies.json';
+import animalData from '~/components/especies.js';
 
 export default {
   extends: page,
@@ -197,6 +197,7 @@ export default {
   mounted () {
     this.head.title = this.$gettext('Espécies da Laje de Santos');
     this.head.description = this.$gettext('Espécies aviáticas e aquáticas da Laje de Santos');
+    console.log('boot,', this.animals);
 
     noUiSlider.create(
       this.$refs.slider, this.slider
