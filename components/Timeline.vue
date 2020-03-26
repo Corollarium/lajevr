@@ -83,6 +83,19 @@
       <div class="timeline-item" data-text="LAJE DE SANTOS">
         <div class="timeline__content">
           <figure class="timeline__figure">
+            <img class="timeline__img" src="~assets/images/logos/projeto-mantas-do-brasil-footer.png" alt="Projeto Mantas do Brasil">
+          </figure>
+          <h2 class="timeline__content-title">
+            2010
+          </h2>
+          <p class="timeline__content-desc">
+            <i18n>Criado o projeto Mantas do Brasil.</i18n>
+          </p>
+        </div>
+      </div>
+      <div class="timeline-item" data-text="LAJE DE SANTOS">
+        <div class="timeline__content">
+          <figure class="timeline__figure">
             <iframe
               class="image"
               style="width: 560px; height: 315px; max-width: 100%;"

@@ -211,3 +211,9 @@ export default {
   }
 };
 </script>
+<style>
+.bubbles {
+  background: transparent;
+  position: absolute;
+}
+</style>

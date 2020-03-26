@@ -124,7 +124,7 @@
       </div>
     </section>
 
-    <section bp="grid vertical-center" class="section-with-slideshow">
+    <section class="section-with-slideshow">
       <div class="background-slideshow">
         <figure class="image">
           <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
@@ -133,20 +133,45 @@
           </figcaption>
         </figure>
       </div>
-      <div bp="4 offset-5" class="over-image-box">
-        <h2 class="has-text-center">
-          Mergulho Virtual
-        </h2>
-        <p class="has-text-center">
-          Veja no seu computador cardumes de peixes, naufrágio moreia e animais fantásticos.
-          Experimente como é mergulhar na Laje de Santos agora mesmo.
-        </p>
-        <p class="has-text-center">
-          <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/mergulho-virtual">
-            <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
-            <span class="button-is-liquid__animation" />
-          </nuxt-link>
-        </p>
+
+      <div bp="grid">
+        <div bp="4 offset-5" class="over-image-box">
+          <h2 class="has-text-center">
+            Mergulho Virtual
+          </h2>
+          <p class="has-text-center">
+            Veja no seu computador cardumes de peixes, naufrágio moreia e animais fantásticos.
+            Experimente como é mergulhar na Laje de Santos agora mesmo.
+          </p>
+          <p class="has-text-center">
+            <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/mergulho-virtual">
+              <span class="button-is-liquid__text"><i18n>Mergulhe agora</i18n></span>
+              <span class="button-is-liquid__animation" />
+            </nuxt-link>
+          </p>
+        </div>
+      </div>
+
+      <div bp="float-center 8--max">
+        <div bp="float-left 4--max">
+          <figure class="image image-circle-border">
+            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          </figure>
+          <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
+        </div>
+        <div bp="float-right 4--max">
+          <figure class="image image-circle-border">
+            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          </figure>
+          <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
+        </div>
+        <div bp="float-center 4--max">
+          <figure class="image image-circle-border">
+            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+            <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
+          </figure>
+        </div>
+        <div bp="clear-fix" />
       </div>
     </section>
 
@@ -420,6 +445,17 @@ export default {
       position: absolute;
     }
   }
+}
 
+  .image-fish {
+    display: inline-block
+  }
+
+  .bubbles {
+    background: transparent;
+    position: absolute;
+  }
+.image-fish {
+  display: inline-block;
 }
 </style>
