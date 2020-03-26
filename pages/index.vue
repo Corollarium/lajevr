@@ -446,15 +446,6 @@ export default {
     }
   }
 }
-
-  .image-fish {
-    display: inline-block
-  }
-
-  .bubbles {
-    background: transparent;
-    position: absolute;
-  }
 .image-fish {
   display: inline-block;
 }
