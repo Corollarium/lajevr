@@ -420,6 +420,9 @@ export default {
       position: absolute;
     }
   }
+}
 
+.image-fish {
+  display: inline-block;
 }
 </style>
