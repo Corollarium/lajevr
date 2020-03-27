@@ -174,6 +174,34 @@
       </div>
     </section>
 
+    <section class="section-with-slideshow section-base">
+      <div class="background-slideshow">
+        <figure class="image">
+          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          <figcaption class="attribution">
+            By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div bp="grid container">
+        <div bp="4" class="over-image-box">
+          <h2 class="has-text-center">
+            Pontos de mergulho
+          </h2>
+          <p class="has-text-center">
+            Um mapa interativo para conhecer os pontos de mergulhos presentes na laje
+          </p>
+          <p class="has-text-center">
+            <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/pontos-de-mergulho">
+              <span class="button-is-liquid__text"><i18n>Ver mapa</i18n></span>
+              <span class="button-is-liquid__animation" />
+            </nuxt-link>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="visitar" class="section-base">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
