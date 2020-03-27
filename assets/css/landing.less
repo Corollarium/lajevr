@@ -35,6 +35,7 @@
   background-color: fade(@primaryColor, 30);
   text-align: center;
   border-radius: .5rem;
+
   @media @responsiveDevices {
     max-width: 35rem;
     display: block;
@@ -50,6 +51,7 @@
 
 .background-slideshow {
   position: absolute;
+  top: 0;
 
   figure {
     object-fit: cover;
@@ -63,27 +65,52 @@
   border-radius: .5rem;
 
   @media @desktop {
-    .add-padding(5,5);
+    .add-padding(5, 5);
   }
 
   @media @responsiveDevices {
-    .add-padding(2,2);
+    .add-padding(2, 2);
 
   }
 }
 
 .image-circle-border {
-  overflow: hidden;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 50%;
   position: relative;
+  transform: translate3d(0,-1rem,0);
+
+  &.side-circle {
+    transform: translate3d(0,-4rem,0);
+  }
+
+  figure {
+    overflow: hidden;
+    width: 16rem;
+    height: 16rem;
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    border: solid 1rem fade(darken(@primaryColor, 20), 60);
+    border-radius: 50%;
+  }
 
   .modal-button {
-    position: absolute;
-    bottom: 0;
-    background-color: darken(@primaryColor, 20);
+    display: block;
+    margin: 0 auto;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    border: 1px solid darken(@primaryColor, 20);
+    border-radius: 50%;
+    background-color: darken(@primaryColor, 30);
     padding: .5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    transform: translate3d(0,-2rem,0) scale(1);
+    transition: transform .15s ease-out;
+
+    &:hover {
+      transform: translate3d(0,-2rem,0) scale(1.1);
+    }
   }
 }

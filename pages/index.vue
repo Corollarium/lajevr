@@ -124,7 +124,7 @@
       </div>
     </section>
 
-    <section class="section-with-slideshow">
+    <section class="section-with-slideshow section-base">
       <div class="background-slideshow">
         <figure class="image">
           <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
@@ -152,26 +152,25 @@
         </div>
       </div>
 
-      <div bp="float-center 8--max">
-        <div bp="float-left 4--max">
-          <figure class="image image-circle-border">
+      <div bp="grid float-center 10--max">
+        <div class="image-circle-border side-circle" bp="4">
+          <figure class="image">
             <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
           </figure>
           <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
-        <div bp="float-right 4--max">
-          <figure class="image image-circle-border">
+        <div class="image-circle-border" bp="4">
+          <figure class="image">
             <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
           </figure>
           <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
-        <div bp="float-center 4--max">
-          <figure class="image image-circle-border">
+        <div class="image-circle-border side-circle" bp="4">
+          <figure class="image">
             <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
-            <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
           </figure>
+          <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
-        <div bp="clear-fix" />
       </div>
     </section>
 
