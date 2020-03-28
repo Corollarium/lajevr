@@ -366,7 +366,6 @@
 
 <script>
 import Bowser from 'bowser';
-import { Carousel, Slide } from 'vue-carousel';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
@@ -387,9 +386,7 @@ export default {
     Timeline,
     Ocean,
     GLTFModel,
-    Bubbles,
-    Carousel,
-    Slide
+    Bubbles
   },
 
   extends: page,
