@@ -212,6 +212,14 @@
           </i18n>
         </p>
       </div>
+      <carousel>
+        <slide>
+          Slide 1 Content
+        </slide>
+        <slide>
+          Slide 2 Content
+        </slide>
+      </carousel>
       <div style="text-align: center">
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Peixe_Frade.jpg/320px-Peixe_Frade.jpg" alt="Salmeidas / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
@@ -358,11 +366,13 @@
 
 <script>
 import Bowser from 'bowser';
+import { Carousel, Slide } from 'vue-carousel';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
+
 // import Globe from '~/components/Globe.vue';
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
@@ -377,7 +387,9 @@ export default {
     Timeline,
     Ocean,
     GLTFModel,
-    Bubbles
+    Bubbles,
+    Carousel,
+    Slide
   },
 
   extends: page,
