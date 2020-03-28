@@ -60,7 +60,7 @@
     </section>
 
     <!-- About Section -->
-    <section bp="container" class="section-base">
+    <section bp="container" class="section-base about-section">
       <figure bp="float-center" class="image icon-about-heading">
         <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
       </figure>
