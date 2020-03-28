@@ -44,12 +44,14 @@
 
 .section-with-slideshow {
   position: relative;
+  .make-padding();
   min-height: 90vh;
   overflow: hidden;
 }
 
 .background-slideshow {
   position: absolute;
+  top: 0;
 
   figure {
     object-fit: cover;
@@ -57,33 +59,65 @@
 
 }
 
-.over-image-box {
+.over-image-box (@paddingD:5, @paddingM: 2) {
   position: relative;
   background-color: darken(fade(@primaryColor, 80), 15);
   border-radius: .5rem;
 
   @media @desktop {
-    .add-padding(5,5);
+    .add-padding(@paddingD,@paddingD);
   }
 
   @media @responsiveDevices {
-    .add-padding(2,2);
+    .add-padding(@paddingM,@paddingM);
 
   }
 }
 
-.image-circle-border {
-  overflow: hidden;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 50%;
-  position: relative;
-
-  .modal-button {
-    position: absolute;
-    bottom: 0;
-    background-color: darken(@primaryColor, 20);
-    padding: .5rem;
-    font-size: 1.2rem;
-  }
+.section-div-intro {
+  .over-image-box();
 }
+
+.section-dive-images {
+  max-width: 56rem;
+  margin: auto;
+
+  .image-circle-border {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+
+    &.side-image {
+      margin-top: -4rem;
+      @media @mobile {
+        margin-top: 0;
+      }
+    }
+
+    img {
+      display: block;
+      margin: -1rem auto;
+      overflow: hidden;
+      border-radius: 50%;
+
+      @media @mobile {
+        margin: .5rem auto -1rem;
+      }
+    }
+
+    .caption {
+      .over-image-box(2,1);
+    }
+
+    .modal-button {
+      position: absolute;
+      bottom: 0;
+      background-color: darken(@primaryColor, 20);
+      padding: .5rem;
+      font-size: 1.2rem;
+    }
+  }
+
+}
+
+
