@@ -267,13 +267,6 @@ export default {
     },
 
     debugUtils () {
-      // debug object
-      // const brickMaterial = new BABYLON.StandardMaterial('brickMaterial', this.scene);
-      // brickMaterial.diffuseTexture = new BABYLON.Texture('/brick_diffuse.jpg', this.scene);
-      // const sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 8, this.scene);
-      // sphere.material = brickMaterial;
-      // sphere.checkCollisions = true;
-      // this.addToSceneAndCaustic([sphere]);
       this.scene.debugLayer.show();
       document.querySelector('footer.footer').style.display = 'none';
     },
@@ -662,14 +655,6 @@ export default {
     clamp (t, min, max) {
       return Math.min(Math.max(t, min), max);
     }
-  },
-
-  head () {
-    return {
-      link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap' }
-      ]
-    };
   }
 };
 </script>
@@ -694,7 +679,6 @@ export default {
   z-index: 1000;
   border-radius: 10px;
   background: #000;
-  font-family: 'Oxygen', monospace;
   color: #fff;
   text-align: right;
 }
@@ -743,19 +727,4 @@ export default {
   }
 }
 
-#sceneExplorer, #inspector-host {
-  .label {
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-  }
-  .title {
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: normal;
-    font-family: "Arial";
-    line-height: 1;
-  }
-}
 </style>

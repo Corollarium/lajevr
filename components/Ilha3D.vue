@@ -6,7 +6,8 @@
 /* eslint-disable */
 import * as THREE from 'three';
 import { ColladaLoader } from './three/ColladaLoader.mjs';
-import { TrackballControls } from './three/TrackballControls.mjs';
+//import { TrackballControls } from './three/TrackballControls.mjs';
+import { OrbitControls } from './three/OrbitControls.mjs';
 import { Ocean } from './Ocean.js';
 import { SpriteText2D, textAlign } from 'three-text2d';
 /* eslint-enable */
@@ -23,15 +24,15 @@ export default {
 
   data () {
     return {
+      container: null,
+      controls: null,
+      camera: null,
       renderer: null
     };
   },
 
   mounted () {
     let land, lastTime;
-
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
@@ -47,27 +48,30 @@ export default {
       ];
     }
 
-    const container = document.getElementById('ilha-container');
+    this.container = document.getElementById('ilha-container');
 
-    const camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 1, 20000);
-    camera.position.set(0, 1000, 100);
-    camera.lookAt(0, 0, 0);
+    this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight, 1, 20000);
+    this.camera.position.set(0, 1000, 100);
+    this.camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x46BCEC);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(windowWidth, windowHeight);
+    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
 
-    const controls = new TrackballControls(camera, container);
-    controls.rotateSpeed = 2.0;
-    controls.zoomSpeed = 1.2;
-    controls.panSpeed = 0.8;
-    controls.noPan = false;
-    controls.staticMoving = false;
-    controls.dynamicDampingFactor = 0.3;
-    controls.keys = [ 65, 83, 68 ];
+    this.controls = new OrbitControls(this.camera, this.container);
+    this.controls.rotateSpeed = 2.0;
+    this.controls.zoomSpeed = 1.2;
+    this.controls.panSpeed = 0.8;
+    this.controls.noPan = false;
+    this.controls.staticMoving = false;
+    this.controls.dynamicDampingFactor = 0.3;
+    this.controls.keys = [ 65, 83, 68 ];
+    this.controls.maxDistance = 100.0;
+    this.controls.maxDistance = 5000.0;
+    this.controls.maxPolarAngle = Math.PI / 2.0 - Math.PI / 20.0;
 
     // lights
     const ambientLight = new THREE.AmbientLight(0xCCCCCC, 0.4);
@@ -82,7 +86,9 @@ export default {
       scene.add(land);
     });
 
-    const siteMaterial = new THREE.MeshLambertMaterial({ color: 0xFF0000, side: 2, shading: THREE.FlatShading });
+    const siteMaterial = new THREE.MeshLambertMaterial({ color: 0x0077FF, side: 2, shading: THREE.FlatShading });
+    const siteSelectedMaterial = new THREE.MeshLambertMaterial({ color: 0xFF0000, side: 2, shading: THREE.FlatShading });
+    const siteMeshes = {};
     for (const site of this.diveSites) {
       const radius = 20;
       const tube = 10;
@@ -91,12 +97,16 @@ export default {
       const pos = latlongToPixel(site.lat, site.long);
       mesh.position.set(pos[0], 20, pos[1]);
       mesh.userData = site;
+      siteMeshes[site.name] = mesh;
 
       // create html overlay box
-      const sprite = new SpriteText2D(site.name, { align: textAlign.center, font: '40px Arial', fillStyle: '#000000', antialias: true });
-      sprite.position.set(pos[0], 50, pos[1]);
+      const sprite = new SpriteText2D(
+        site.name,
+        { align: textAlign.center, font: '40px Arial', fillStyle: '#FFFFFF', antialias: true, shadowColor: '#333333', shadowOffsetX: 2, shadowOffsetY: 2 }
+      );
+      sprite.position.set(pos[0], 60, pos[1]);
       sprite.sprite.userData = sprite.userData = site;
-
+      sprite.material.depthWrite = false;
       diveSiteGroup.add(mesh, sprite);
     }
     scene.add(diveSiteGroup);
@@ -110,12 +120,12 @@ export default {
       land.rotateZ((degrees / 180.0) * Math.PI);
     });
 
-    const gsize = 2048;
+    const gsize = 8192;
     const res = 1024;
     const gres = res / 2;
     const origx = -gsize / 2;
     const origz = -gsize / 2;
-    const ocean = new Ocean(this.renderer, camera, scene,
+    const ocean = new Ocean(this.renderer, this.camera, scene,
       {
         USE_HALF_FLOAT: false,
         INITIAL_SIZE: 2048.0,
@@ -132,36 +142,34 @@ export default {
         RESOLUTION: res
       });
 
-    ocean.materialOcean.uniforms.u_projectionMatrix = { value: camera.projectionMatrix };
-    ocean.materialOcean.uniforms.u_viewMatrix = { value: camera.matrixWorldInverse };
-    ocean.materialOcean.uniforms.u_cameraPosition = { value: camera.position };
+    ocean.materialOcean.uniforms.u_projectionMatrix = { value: this.camera.projectionMatrix };
+    ocean.materialOcean.uniforms.u_viewMatrix = { value: this.camera.matrixWorldInverse };
+    ocean.materialOcean.uniforms.u_cameraPosition = { value: this.camera.position };
     ocean.oceanMesh.scale.set(2, 2, 2);
     scene.add(ocean.oceanMesh);
 
     const render = () => {
-      this.renderer.render(scene, camera);
+      this.renderer.render(scene, this.camera);
     };
 
     const clickEvent = (e) => {
-      mouse.x = (event.clientX / this.renderer.domElement.clientWidth) * 2 - 1;
-      mouse.y = -(event.clientY / this.renderer.domElement.clientHeight) * 2 + 1;
-      raycaster.setFromCamera(mouse, camera);
+      const rect = this.renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / (rect.right - rect.left)) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / (rect.bottom - rect.top)) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, this.camera);
 
       const intersects = raycaster.intersectObject(diveSiteGroup, true);
 
       if (intersects.length > 0) {
         const object = intersects[0].object;
-        // TODO:
-        alert(object.userData.name);
+
+        for (const name in siteMeshes) {
+          siteMeshes[name].material = siteMaterial;
+        }
+        siteMeshes[object.userData.name].material = siteSelectedMaterial;
+        this.$emit('pick', object.userData.name);
       }
-    };
-
-    const onWindowResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      controls.handleResize();
-      this.renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     const animate = () => {
@@ -172,56 +180,68 @@ export default {
 
       requestAnimationFrame(animate);
 
-      /* eslint-disable */
-      var currentTime = new Date().getTime();
-      ocean.deltaTime = ( currentTime - lastTime ) / 1000 || 0.0;
+      const currentTime = new Date().getTime();
+      ocean.deltaTime = (currentTime - lastTime) / 1000 || 0.0;
       lastTime = currentTime;
-      ocean.render( ocean.deltaTime * .02 );
+      ocean.render(ocean.deltaTime * 0.02);
       ocean.overrideMaterial = ocean.materialOcean;
 
-      if ( ocean.changed ) {
-
-        ocean.materialOcean.uniforms[ "u_size" ].value = ocean.size;
-        ocean.materialOcean.uniforms[ "u_sunDirection" ].value.set( ocean.sunDirectionX, ocean.sunDirectionY, ocean.sunDirectionZ );
-        ocean.materialOcean.uniforms[ "u_exposure" ].value = ocean.exposure;
+      if (ocean.changed) {
+        ocean.materialOcean.uniforms.u_size.value = ocean.size;
+        ocean.materialOcean.uniforms.u_sunDirection.value.set(ocean.sunDirectionX, ocean.sunDirectionY, ocean.sunDirectionZ);
+        ocean.materialOcean.uniforms.u_exposure.value = ocean.exposure;
         ocean.changed = false;
       }
 
-      ocean.materialOcean.uniforms[ "u_normalMap" ].value = ocean.normalMapFramebuffer.texture;
-      ocean.materialOcean.uniforms[ "u_displacementMap" ].value = ocean.displacementMapFramebuffer.texture;
-      ocean.materialOcean.uniforms[ "u_projectionMatrix" ].value = camera.projectionMatrix;
-      ocean.materialOcean.uniforms[ "u_viewMatrix" ].value = camera.matrixWorldInverse;
-      ocean.materialOcean.uniforms[ "u_cameraPosition" ].value = camera.position;
+      ocean.materialOcean.uniforms.u_normalMap.value = ocean.normalMapFramebuffer.texture;
+      ocean.materialOcean.uniforms.u_displacementMap.value = ocean.displacementMapFramebuffer.texture;
+      ocean.materialOcean.uniforms.u_projectionMatrix.value = this.camera.projectionMatrix;
+      ocean.materialOcean.uniforms.u_viewMatrix.value = this.camera.matrixWorldInverse;
+      ocean.materialOcean.uniforms.u_cameraPosition.value = this.camera.position;
       ocean.materialOcean.depthTest = true;
-      /* eslint-enable */
 
-      controls.update();
+      this.controls.update();
       render();
     };
 
     animate();
 
     // on initialization
-    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('resize', this.onWindowResize, false);
     this.renderer.domElement.addEventListener('mousedown', clickEvent);
-    controls.addEventListener('change', render);
-    container.appendChild(this.renderer.domElement);
+
+    this.container.appendChild(this.renderer.domElement);
   },
 
   beforeDestroy () {
-    // TODO window.removeEventListener('mousedown',
-    // TODO window.removeEventListener('resize',
-    // TODO: controls.removeEventL
+    // TODO window.removeEventListener('mousedown', t
+    window.removeEventListener('resize', this.onWindowResize);
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;
     this.renderer = null;
+  },
+
+  methods: {
+    onWindowResize () {
+      this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+
+      this.controls.handleResize();
+      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
-#ocean {
-  position: absolute;
+#ilha-container {
+  width: 100%;
   height: 100%;
+
+  #ocean {
+    position: absolute;
+    height: 100%;
+  }
 }
+
 </style>

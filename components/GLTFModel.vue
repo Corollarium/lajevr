@@ -53,7 +53,7 @@ export default {
   mounted () {
     const container = this.$el;
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / window.innerHeight, 1, 20000);
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 20000);
     camera.position.set(0, 0, 150); // TODO: scale
     camera.lookAt(0, 0, 0);
 
@@ -68,7 +68,7 @@ export default {
     }
 
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(container.clientWidth, window.innerHeight);
+    this.renderer.setSize(container.clientWidth, container.clientHeight);
 
     const controls = new OrbitControls(camera, this.renderer.domElement);
     controls.autoRotate = true;
@@ -172,28 +172,28 @@ export default {
 .object-embed-3d {
   position: relative;
   cursor: move;
-}
-
-.object-embed-3d:hover .object-embed-icon {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.object-embed-icon {
-  background-image: url('~assets/images/icons/arrows3d.svg');
   width: 100%;
-  height: 100%;
-  z-index: 10;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
 
-  &:hover {
+  &:hover .object-embed-icon {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+  }
+  .object-embed-icon {
+    background-image: url('~assets/images/icons/arrows3d.svg');
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
   }
 }
 </style>

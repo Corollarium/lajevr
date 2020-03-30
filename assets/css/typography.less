@@ -16,6 +16,26 @@ html {
   font-weight: @weight;
 }
 
+
+input,
+button,
+textarea,
+select {
+  .font-select(@regular, #000);
+}
+
+// text helpers
+.text-is-bold {
+  font-weight: @bold;
+}
+.has-text-right {
+  text-align: right;
+}
+
+.has-text-center {
+  text-align: center;
+}
+
 // usage, x is the pixel size needed: .font-size(x);
 .font-size(@sizeValue: 16) {
   @remValue: @sizeValue / 16;
@@ -24,39 +44,41 @@ html {
   font-size:~"@{remValue}rem";
 }
 
-.text-margin (@value: 1) {
-  @result: @spacing * @value;
-  @remValue: @result / 16;
-  &:not(:last-child) {
-    margin: 0 0 ~"@{remValue}rem" 0;
-  }
+.text-margin (@value-lg: 3, @value-md: 2, @value-sm: 1) {
+  //H1 H2
+  @result-lg: @spacing * @value-lg;
+  @result-md: @spacing * @value-md;
+  @result-sm: @spacing * @value-sm;
 
-  &:not(:first-child) {
-    margin-top: @remValue*2rem;
-    margin-bottom: 1rem;
+  @remValue-lg: @result-lg / 16;
+  @remValue-md: @result-md / 16;
+  @remValue-sm: @result-sm / 16;
+
+  &:not(:last-child) {
+    margin-bottom: ~"@{remValue-lg}rem";
+
+    @media @tablet {
+      margin-bottom: ~"@{remValue-md}rem";
+    }
+
+    @media @mobile {
+      margin-bottom: ~"@{remValue-sm}rem";
+    }
   }
 }
 
-.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14, @marginG: 4, @marginM: 3, @marginP: 2) {
+.font-responsive (@fontdesk: 16, @fonttablet: 15, @fontmobile: 14) {
   .font-size(@fontdesk);
   line-height: 1.2em;
-  .text-margin(@marginG);
-  .marginBottom(@marginG/2);
-  .marginTop(@marginG);
 
   @media @tablet {
     .font-size(@fonttablet);
     line-height: 1em;
-    .text-margin(@marginM);
-    .marginTop(@marginM);
-    .marginBottom(@marginM/2);
   }
 
   @media @mobile {
     .font-size(@fontmobile);
     line-height: 1em;
-    .marginTop(@marginP);
-    .marginBottom(@marginP/2);
   }
 }
 
@@ -65,16 +87,29 @@ html {
 h1 {
   .font-responsive(56, 40, 32);
   .font-select(@regular);
+  .text-margin();
+  margin-top: 0;
+  text-transform: uppercase;
 }
 
 h2 {
   .font-responsive(48, 32, 24);
   .font-select(@light);
+  .text-margin();
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 h3 {
   .font-responsive(32, 24, 16);
   .font-select(@regular);
+  .text-margin(3, 2, 1);
+
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
 }
 
 h4 {
@@ -84,6 +119,8 @@ h4 {
 
 p {
   margin: 0;
+  .font-responsive(18, 16, 16);
+  line-height: 1.6em;
 
   &:not(:last-child) {
     margin-bottom: 1rem;
@@ -101,34 +138,6 @@ body {
   @media @mobile {
     .font-size(14);
   }
-}
-
-.text-larger {
-  .font-size(20);
-
-  @media @tablet {
-    .font-size(18);
-  }
-
-  @media @mobile {
-    .font-size(16);
-  }
-}
-
-input,
-button,
-textarea,
-select {
-  .font-select(@regular, #000);
-}
-
-// text helpers
-.has-text-right {
-  text-align: right;
-}
-
-.has-text-center {
-  text-align: center;
 }
 
 // links

@@ -1,7 +1,12 @@
 <template>
   <div class="number-info">
     <div class="number-circle">
-      <span v-on="$listeners" v-bind="$attrs" class="bubble">{{ tweenedNumber }}</span>
+      <div class="bubble">
+        <span class="number-icon">
+          <font-awesome-icon v-if="icon.length" :icon="icon" />
+        </span>
+        <span v-on="$listeners" v-bind="$attrs" class="number">{{ tweenedNumber }}</span>
+      </div>
     </div>
     <div class="number-explanation">
       <slot />
@@ -42,6 +47,10 @@ export default {
     delay: {
       type: Number,
       default: 0.4 // Delay the animation in seconds
+    },
+    icon: {
+      type: Array,
+      default: () => ['fas', 'fish']
     },
     animationPaused: Boolean // Stops animation before start
   },

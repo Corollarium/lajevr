@@ -9,12 +9,12 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "gallery": "node gallery.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "package": "tar cjf laje.tar.bz2 --exclude docs --exclude laje.tar.bz2 --exclude node_modules --exclude dist .",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
-    "cloc": "cloc assets/css/ components/ layouts/ pages/ plugins/"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",

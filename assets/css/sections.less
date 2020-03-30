@@ -1,3 +1,4 @@
+//Also BlueprintCSS overlays
 //layout
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
@@ -30,41 +31,64 @@
   margin: ~"@{remValueV}rem" ~"@{remValueH}rem";
 }
 
-.container {
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  margin: 0 auto;
-  position: relative;
-  width: auto;
+.container, [bp~=container] {
   max-width: @gridWidth;
+  margin: 0 auto; // isso ja resolve altos problemas, se remover ja coloque outra solucao
 
+  @media only screen and (max-width: @gridWidth - 1) {
+    max-width: calc(100% - 40px);
+  }
 }
 
-.section {
+.make-padding (@paddingXl: 8, @paddingLg: 7, @paddingMd: 5, @paddingSm: 4) {
+
+
   @media @desktopBig {
-    .add-padding(10,5);
+    .add-padding(@paddingXl,0);
   }
 
   @media @desktopSmall {
-    .add-padding(7,4);
+    .add-padding(@paddingLg,0);
   }
 
   @media @tablet {
-    .add-padding(5,3);
+    .add-padding(@paddingMd,0);
   }
 
   @media @mobile {
-    .add-padding(3,2);
+    .add-padding(@paddingSm,0);
   }
 }
 
-img {
-  height: auto;
-  max-width: 100%;
+.section-base {
+  .make-padding();
+  &:not(last-child) {
+      margin: 0 auto 2rem;
+
+    @media @responsiveDevices {
+      margin: 0 auto 1rem;
+    }
+  }
+}
+
+.section-inner {
+  .make-padding(4,3,2,1);
+}
+
+.section-text {
+  .container();
+  p {
+    max-width: @textMaxWidth;
+  }
+}
+
+.spaced-image {
+    padding: 1rem;
 }
 
 .is-fullheight {
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .text-over-image {
@@ -105,19 +129,13 @@ mask-image: linear-gradient(
   bottom: 0;
   right: 0;
   color: #000;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   font-size: 70%;
+  a {
+    color: #000;
+  }
 }
 
-.description {
-  position: relative;
-
-  .description-content {
-    font-size: 2rem;
-    padding: 6em 30%;
-    @media screen and (max-width: 640px) {
-      font-size: 1.5rem;
-      padding: 3em 5%;
-    }
-  }
+.model-container {
+  display: flex;
 }

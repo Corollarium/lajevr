@@ -46,7 +46,30 @@
       }
     }
   }
+  .footer-copyright {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      padding: .5rem 0;
+
+      &:not(:first-child)::before {
+        content: '•';
+        margin: 0 .25rem;
+        display: inline-block;
+      }
+    }
+  }
   .footer-title {
     .font-responsive(24, 20, 20);
+    margin: 2rem 0 0;
+  }
+
+  .footer-logos {
+    text-align: center;
+    img {
+      width: 10rem;
+    }
   }
 }

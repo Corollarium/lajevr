@@ -1,14 +1,26 @@
 figure,
 figcaption {
   margin: 0;
+  position: relative;
 }
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+video {
+  height: auto;
+  max-width: 100%;
+}
+
 
 .define-layout {
   max-width: @gridWidth;
 }
 
 .button {
-  font-size: 100%;
+  font-size: 1rem;
   background-color: #000;
   color: #ffffff;
   line-height: normal;
@@ -26,6 +38,10 @@ figcaption {
   padding: .5em 1em;
   text-decoration: none;
   border-radius: 2px;
+
+  @media @mobile {
+    font-size: .8rem;
+  }
 }
 
 .button-hover, .button:focus, .button:hover {
@@ -52,7 +68,7 @@ figcaption {
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: .5rem;
-  box-shadow: 0 2px 2rem fade(darken(@primaryColor, 40), 30);
+  box-shadow: 0 2px 2rem fade(darken(@primaryColor, 50), 40);
   border: 1px solid fade(@secondaryColor-2, 55);
 
   .button-is-liquid__text {
@@ -70,7 +86,7 @@ figcaption {
     left: 0;
     width: 100%;
     height: 12.5rem;
-    background: linear-gradient(45deg, @primaryColor, @secondaryColor-2);
+    background: linear-gradient(45deg, @primaryColor, @secondaryColor-2, darken(@primaryColor,20));
     transition: all .2s ease-out;
 
     &::after, &::before {
@@ -86,24 +102,28 @@ figcaption {
 
     &:before {
       border-radius: 45%;
-      background: rgba(20, 20, 20, 1);
+      background: fade(darken(@primaryColor,35), 35);
       animation: liquid-in-button 5s linear infinite;
     }
 
     &:after {
       border-radius: 40%;
-      background: rgba(20, 20, 20, .5);
+      background: fade(darken(@primaryColor,45), 45);
       animation: liquid-in-button 10s linear infinite;
     }
   }
 
-  &:hover .button-is-liquid__text {
-    color: #fff;
-  }
+  &:hover {
+    box-shadow: 0 0px 1rem fade(darken(@primaryColor, 50), 30);
 
-  &:hover > .button-is-liquid__animation {
-    top: -9rem;
-    transition: top .2s ease-out;
+    .button-is-liquid__text {
+      color: #fff;
+    }
+
+    &:hover > .button-is-liquid__animation {
+      top: -9rem;
+      transition: top .2s ease-out;
+    }
   }
 }
 

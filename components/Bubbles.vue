@@ -13,19 +13,21 @@ export default {
 
   data () {
     return {
+      cw: 0, // client width
+      ch: 0, // client height
       observer: null
     };
   },
 
   mounted () {
-    const c = this.$el;
-    const ctx = c.getContext('2d');
-    let cw = c.width = this.$el.parentElement.clientWidth;
-    let ch = c.height = this.$el.parentElement.clientHeight;
-    const totalBubbles = this.total ? this.total : parseInt(cw / 10);
+    const ctx = this.$el.getContext('2d');
+    const self = this;
+    this.cw = this.$el.width = this.$el.parentElement.clientWidth;
+    this.ch = this.$el.height = this.$el.parentElement.clientHeight;
+    let totalBubbles = this.total ? this.total : parseInt(this.cw * this.ch / 20000);
     const kappa = 0.5522847498;
-    const Rgrd = Math.sqrt(ch * ch + (cw / 2) * (cw / 2));
-    let grd = ctx.createRadialGradient(cw / 2, 0, 0, cw / 2, 0, Rgrd); // x0, y0, r0, x1, y1, r1
+    const Rgrd = Math.sqrt(this.ch * this.ch + (this.cw / 2) * (this.cw / 2));
+    let grd = ctx.createRadialGradient(this.cw / 2, 0, 0, this.cw / 2, 0, Rgrd); // x0, y0, r0, x1, y1, r1
     grd.addColorStop(0, '#badbf5');
     grd.addColorStop(0.35, '#53a5dd');
     grd.addColorStop(0.75, '#306eab');
@@ -34,7 +36,7 @@ export default {
     let backGrad;
 
     function buildBackGrad () {
-      backGrad = ctx.createLinearGradient(0, 0, 0, ch);
+      backGrad = ctx.createLinearGradient(0, 0, 0, self.ch);
       backGrad.addColorStop(0.0, 'rgba(0, 0, 200, 1)');
       backGrad.addColorStop(0.1, 'rgba(0, 0, 200, 0)');
       backGrad.addColorStop(0.9, 'rgba(0, 0, 200, 0)');
@@ -42,22 +44,17 @@ export default {
     }
 
     function ElementArray () {
-      this.rw = randomIntFromInterval(5, 25);
-      this.cx = Math.round(Math.random() * cw) + 1;
-      this.cy = Math.round(Math.random() * ch) + 1;
-      if (this.cx < this.rw * 1.2) {
-        this.cx = this.rw;
-      } else if (this.cx > ch - this.rw * 1.2) {
-        this.cx = this.rw;
-      }
+      this.cx = Math.round(Math.random() * self.cw) + 1; // center x
+      this.cy = Math.round(Math.random() * self.ch) + 1; // center y
       this.x = this.cx;
       this.y = this.cy;
-      const deformation = randomIntFromInterval(75, 95) / 100;
-      this.rh = ~~(this.rw * deformation);
-      this.a = (Math.round(Math.random() * 360) + 1) * (Math.PI / 180);
+      const deformation = randomIntFromInterval(93, 99) / 100; // ellipse deformation
+      this.rw = randomIntFromInterval(5, 25); // radius w
+      this.rh = ~~(this.rw * deformation); // radius h
+      this.a = (Math.round(Math.random() * 360) + 1) * (Math.PI / 180); // rotation
       this.driftFlag = !(Math.random() < 0.5);
-      this.lift = randomIntFromInterval(2, 10) / 10;
-      this.grd = Grd(this.cx, this.cy, this.rw);
+      this.lift = randomIntFromInterval(2, 10) / 18; // lift speed
+      this.grd = Grd(this.cx, this.cy, this.rw); // gradient
     }
     const e1 = []; /* ellipses */
 
@@ -68,6 +65,15 @@ export default {
       buildBackGrad();
     }
 
+    /**
+     * Draws an ellipse
+     * @param cx Center x
+     * @param cy Center y
+     * @param w Width
+     * @param h Height
+     * @param a angle
+     * @param fill Gradient to fill
+     */
     function ellipse (cx, cy, w, h, a, fill) {
       const ox = w * kappa;
       const oy = h * kappa;
@@ -106,7 +112,7 @@ export default {
       ctx.save();
 
       ctx.fillStyle = fill;
-      ctx.strokeStyle = 'rgba(200,200,200,.3)';
+      ctx.strokeStyle = 'rgba(200,200,200,.1)';
       ctx.beginPath();
       ctx.moveTo(x0, y0);
       ctx.bezierCurveTo(px1, py1, px2, py2, x1, y1);
@@ -120,8 +126,8 @@ export default {
 
     function Grd (x, y, r) {
       grd = ctx.createRadialGradient(x, y - r / 20 * r, 0, x, y - r / 20 * r, r);
-      grd.addColorStop(0, 'rgba(186,219,245,.9)');
-      grd.addColorStop(1, 'rgba(186,219,245, 0.1)');
+      grd.addColorStop(0, 'rgba(186,219,245, .6)');
+      grd.addColorStop(1, 'rgba(186,219,245, 0.05)');
       return grd;
     }
 
@@ -136,14 +142,14 @@ export default {
         return;
       }
 
-      ctx.clearRect(0, 0, cw, ch);
+      ctx.clearRect(0, 0, self.cw, self.ch);
       for (let j = 0; j < e1.length; j++) {
-      // rotation
+        // rotation
         e1[j].a += 0.1;
 
         // lift
         if (e1[j].cy < -1 * e1[j].rw) {
-          e1[j].cy = ch + e1[j].rw;
+          e1[j].cy = self.ch + e1[j].rw;
         } else {
           e1[j].cy -= e1[j].lift;
         }
@@ -171,15 +177,16 @@ export default {
       ctx.globalAlpha = 1.0;
       ctx.globalCompositeOperation = 'destination-out';
       ctx.fillStyle = backGrad;
-      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillRect(0, 0, self.cw, self.ch);
       ctx.restore();
     }
     // Draw()
     buildData();
     window.requestAnimationFrame(Draw);
     window.addEventListener('resize', () => {
-      cw = c.width = this.$el.parentElement.clientWidth;
-      ch = c.height = this.$el.parentElement.clientHeight;
+      this.cw = this.$el.width = this.$el.parentElement.clientWidth;
+      this.ch = this.$el.height = this.$el.parentElement.clientHeight;
+      totalBubbles = this.total ? this.total : parseInt(this.cw * this.ch / 20000);
       buildData();
     }, false);
 
@@ -197,10 +204,16 @@ export default {
   },
 
   beforeDestroy () {
-    // TODO window.addEventListener('resize',
+    // TODO window.removeEventListener('resize',
     this.observer.unobserve(this.$el);
     this.observer = null;
     // TODO: handle requestFrame
   }
 };
 </script>
+<style>
+.bubbles {
+  background: transparent;
+  position: absolute;
+}
+</style>

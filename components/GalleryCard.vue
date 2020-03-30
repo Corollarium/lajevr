@@ -1,0 +1,82 @@
+<template>
+  <section
+    class="gallery-card"
+  >
+    <figure>
+      <img :src="url" v-if="type == 'image'" class="gallery-image">
+      <video v-if="type == 'video'" class="gallery-video" controls preload="metadata">
+        <source :src="url">
+      </video>
+      <figcaption class="gallery-name">
+        {{ name }}
+      </figcaption>
+    </figure>
+    <p class="gallery-creator">
+      <i18n>foto por</i18n> <a :href="creatorLink" target="_blank">{{ creator }}</a> {{ license }}
+    </p>
+    <p class="gallery-description">
+      {{ description }}
+    </p>
+  </section>
+</template>
+
+<script>
+export default {
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    creator: {
+      type: String,
+      required: true
+    },
+    creatorLink: {
+      type: String,
+      default: undefined,
+      required: false
+    },
+    license: {
+      type: String,
+      default: undefined,
+      required: false
+    },
+    url: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    type: {
+      type: String,
+      required: true
+    }
+  }
+
+};
+</script>
+<style lang="less" scoped>
+.gallery-card {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+
+  .gallery-name {
+    font-size: 120%;
+    font-weight: bold;
+  }
+
+  .gallery-creator {
+    font-size: 90%;
+    font-style: italic;
+    margin: 0;
+  }
+  .gallery-description {
+    font-size: 90%;
+    line-height: 1.5em;
+    margin: 0;
+  }
+}
+</style>
