@@ -119,7 +119,7 @@
         class="section section-fauna"
       >
         <figure>
-          <img :src="a.url" class="fauna-image">
+          <img :src="a.absoluteurl ? a.absoluteurl : base + a.url" class="fauna-image">
           <figcaption v-if="a.creator" class="attribution">
             <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
           </figcaption>
@@ -151,7 +151,7 @@ export default {
   extends: page,
   data () {
     return {
-      animals: animalData,
+      animals: animalData, // TODO: sort
       filterColor: '',
       filterSearch: '',
       minRange: null, // slider
@@ -192,13 +192,13 @@ export default {
         }
         return true;
       }, this);
-    }
+    },
+    base () { return this.$router.options.base; }
   },
 
   mounted () {
     this.head.title = this.$gettext('Espécies da Laje de Santos');
     this.head.description = this.$gettext('Espécies aviáticas e aquáticas da Laje de Santos');
-    console.log('boot,', this.animals);
 
     noUiSlider.create(
       this.$refs.slider, this.slider
