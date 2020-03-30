@@ -27,6 +27,7 @@
         v-bind:creatorLink="a.creatorLink"
         v-bind:license="a.license"
         v-bind:url="a.url"
+        v-bind:absoluteurl="a.absoluteurl"
         v-bind:description="a.description"
         v-bind:type="a.type"
       />
