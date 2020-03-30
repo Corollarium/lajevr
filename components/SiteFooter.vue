@@ -74,13 +74,13 @@
             </a>
           </li>
           <li>
-            <a href="https://github.com/Corollarium"><i18n>
+            <a href="https://github.com/Corollarium" target="_blank"><i18n>
               Código disponível
             </i18n></a> sob
-            <a href="http://opensource.org/licenses/mit-license.php">Licença MIT</a>.
+            <a href="http://opensource.org/licenses/mit-license.php" target="_blank">Licença MIT</a>.
           </li>
           <li>
-            Projeto apoiado pelo <a href="http://www.proac.sp.gov.br/">ProAC do Estado de São Paulo</a> em 2020.
+            Projeto apoiado pelo <a href="http://www.proac.sp.gov.br/" target="_blank">ProAC do Estado de São Paulo</a> em 2020.
           </li>
           <li>
             <i18n>
@@ -88,6 +88,7 @@
             </i18n>
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              target="_blank"
             >CC BY NC SA 4.0</a>
             <i18n>
               exceto quando explicitamente referenciado

@@ -1,9 +1,9 @@
 <template>
   <header :class="{'main-header': true, 'header-overlay': isOverlay}">
     <div class="main-menu pure-menu pure-menu-horizontal" role="navigation" aria-label="main navigation">
-      <a class="pure-menu-heading" href="/" rel="home">
+      <nuxt-link class="pure-menu-heading" to="/" rel="home">
         <span class="logo-main" />
-      </a>
+      </nuxt-link>
       <input id="menu-toggle" v-model="isExpanded" type="checkbox" class="menu-toggle-input">
       <label
         for="menu-toggle"
