@@ -10,14 +10,16 @@
               href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
               class="new"
               title="User:Afcarv (page does not exist)"
+              target="_blank"
             >Anael Ferraz de Carvalho</a>
             -
             <span class="int-own-work" lang="en">Own work</span>,
             <a
               href="https://creativecommons.org/licenses/by-sa/3.0"
               title="Creative Commons Attribution-Share Alike 3.0"
+              target="_blank"
             >CC BY-SA 3.0</a>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744">Link</a>
+            <a target="_blank" href="https://commons.wikimedia.org/w/index.php?curid=40439744">Link</a>
           </p>
         </div>
       </div>
@@ -30,6 +32,7 @@
           Video
           <a
             href="https://www.instagram.com/deia_morales/"
+            target="_blank"
           >Andréa Pontes</a>
         </p>
       </div>
@@ -46,14 +49,16 @@
               href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
               class="new"
               title="User:Afcarv (page does not exist)"
+              target="_blank"
             >Anael Ferraz de Carvalho</a>
             -
             <span class="int-own-work" lang="en">Own work</span>,
             <a
               href="https://creativecommons.org/licenses/by-sa/3.0"
               title="Creative Commons Attribution-Share Alike 3.0"
+              target="_blank"
             >CC BY-SA 3.0</a>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744">Link</a>
+            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
           </p>
         </section>
       </div>
@@ -131,7 +136,7 @@
         <figure class="image">
           <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
           <figcaption class="attribution">
-            By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
+            By <a target="_blank" href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
           </figcaption>
         </figure>
       </div>
@@ -139,11 +144,15 @@
       <div bp="grid">
         <div bp="8 6@md offset-3 offset-4@md" class="section-div-intro">
           <h2 class="has-text-center">
-            Mergulho Virtual
+            <i18n>
+              Mergulho Virtual
+            </i18n>
           </h2>
           <p class="has-text-center">
-            Veja no seu computador cardumes de peixes, naufrágio moreia e animais fantásticos.
-            Experimente como é mergulhar na Laje de Santos agora mesmo.
+            <i18n>
+              Veja no seu computador cardumes de peixes, o naufrágio Moreia e animais fantásticos como se estivesse lá.
+              Experimente como é mergulhar na Laje de Santos agora mesmo.
+            </i18n>
           </p>
           <p class="has-text-center">
             <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/mergulho-virtual">
@@ -151,6 +160,8 @@
               <span class="button-is-liquid__animation" />
             </nuxt-link>
           </p>
+          </i18n>
+          </h2></i18n>
         </div>
       </div>
 
@@ -159,7 +170,7 @@
           <figure class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha01.src" :srcset="imageMergulhoBolha01.srcSet" draggable="false" alt="Tartaruga na Laje de Santos">
             <figcaption class="caption">
-              Veja espécies presentes na laje como tartarugas, mantas e golfinhos.
+              <i18n>Veja espécies presentes na laje como tartarugas, mantas e golfinhos.</i18n>
             </figcaption>
           </figure>
         </div>
@@ -167,7 +178,7 @@
           <figure class="image image-circle-border">
             <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
             <figcaption class="caption">
-              Mergulhe virtualmente  entre cardumes e recifes de corais
+              <i18n>Mergulhe virtualmente entre cardumes e recifes de corais.</i18n>
             </figcaption>
           </figure>
         </div>
@@ -175,7 +186,7 @@
           <figure class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
-              Moréia, O primeiro naufrágio induzido, para prática de mergulho no Brasil.
+              <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
             </figcaption>
           </figure>
         </div>
@@ -187,7 +198,7 @@
         <figure class="image">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
           <figcaption class="attribution">
-            By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
+            <a target="_blank" href="https://www.instagram.com/nautherandres/" target="_blank">Nauther Andres</a>
           </figcaption>
         </figure>
       </div>
@@ -195,10 +206,10 @@
       <div bp="grid container">
         <div bp="10 8@md offset-2 offset-0@lg" class="section-div-intro">
           <h2 class="has-text-center">
-            Pontos de Mergulho
+            <i18n>Pontos de Mergulho</i18n>
           </h2>
           <p class="has-text-center">
-            Um mapa interativo para conhecer os pontos de mergulhos presentes na laje
+            <i18n>Um mapa interativo para conhecer os pontos de mergulhos presentes na laje</i18n>
           </p>
           <p class="has-text-center">
             <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
@@ -247,26 +258,26 @@
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Peixe_Frade.jpg/320px-Peixe_Frade.jpg" alt="Salmeidas / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
           <figcaption>
-            Peixe frade
+            <i18n>Peixe frade</i18n>
           </figcaption>
         </figure>
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Mola_mola2.jpg/240px-Mola_mola2.jpg" alt="OpenCage / CC BY-SA (https://creativecommons.org/licenses/by-sa/2.5)">
           <figcaption>
-            Peixe lua
+            <i18n>Peixe lua</i18n>
           </figcaption>
         </figure>
 
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tartaruga_da_Laje.jpg/320px-Tartaruga_da_Laje.jpg" alt="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons">
           <figcaption>
-            Tartaruga de pente
+            <i18n>Tartaruga de pente</i18n>
           </figcaption>
         </figure>
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
           <figcaption>
-            Coió
+            <i18n>Coió</i18n>
           </figcaption>
         </figure>
       </div>
