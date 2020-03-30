@@ -208,8 +208,6 @@
             </nuxt-link>
           </p>
         </div>
-        <<<<<<< HEAD
-        =======
       </div>
     </section>
 
