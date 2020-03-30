@@ -1,5 +1,24 @@
 <template>
   <article>
+    <section class="hero">
+      <div class="hero-body">
+        <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
+      </div>
+      <div class="hero-html">
+        <h1>
+          <i18n>
+            A vida na Laje de Santos
+          </i18n>
+        </h1>
+        <p class="attribution">
+          <i18n>
+            Foto
+          </i18n>
+          <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
+        </p>
+      </div>
+    </section>
+
     <div class="topbar-sticky">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
@@ -19,25 +38,6 @@
         </li>
       </ul>
     </div>
-
-    <section class="hero">
-      <div class="hero-body">
-        <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
-      </div>
-      <div class="hero-html">
-        <h1>
-          <i18n>
-            A vida na Laje de Santos
-          </i18n>
-        </h1>
-        <p class="attribution">
-          <i18n>
-            Foto
-          </i18n>
-          <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
-        </p>
-      </div>
-    </section>
 
     <section id="intro" class="section-index section-base section-text">
       <p>
@@ -68,7 +68,7 @@
       </section>
 
       <figure class="figure-text">
-        <img alt="Tartaruga de pente" src="/images/nauther/1549889531894-1082715277.jpg">
+        <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
         <figcaption>
           <p>
             Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
@@ -137,7 +137,7 @@
         </p>
 
         <figure class="figure-text">
-          <img alt="Raia Chita" src="/images/nauther/1545946134598879623409.jpg">
+          <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
           <figcaption>
             <p>
               Raia Chita
@@ -181,10 +181,10 @@
         <figure class="figure-text">
           <div bp="grid">
             <div bp="6">
-              <img alt="Raia prego" src="/images/nauther/1549752089536-353729687.jpg">
+              <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
             </div>
             <div bp="6">
-              <img alt="Raia prego" src="/images/nauther/1562034454874570542648.jpg">
+              <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
             </div>
           </div>
           <figcaption>
@@ -260,10 +260,10 @@
       <figure class="figure-text">
         <div bp="grid">
           <div bp="6">
-            <img alt="Tartaruga de pente" src="/images/nauther/1552316930246-911010432.jpg">
+            <img alt="Tartaruga de pente" src="~static/images/nauther/1552316930246-911010432.jpg">
           </div>
           <div bp="6">
-            <img alt="Tartaruga verde" src="/images/nauther/1547073690808-2036926563.jpg">
+            <img alt="Tartaruga verde" src="~static/images/nauther/1547073690808-2036926563.jpg">
           </div>
         </div>
         <figcaption>
@@ -306,7 +306,7 @@
         </p>
 
         <figure class="figure-text">
-          <img src="/images/nauther/20190626_093259.jpg">
+          <img src="~static/images/nauther/20190626_093259.jpg">
           <figcaption>
             <p>
               Golfinhos
