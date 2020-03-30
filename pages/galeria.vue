@@ -104,7 +104,6 @@ export default {
 
   methods: {
     showModalClick (i) {
-      console.log(i);
       this.galleryPicked = i;
       this.showModal = true;
     }
