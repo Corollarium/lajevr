@@ -70,7 +70,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .gallery-card {
-  width: 300px;
   display: inline-block;
   vertical-align: top;
 
