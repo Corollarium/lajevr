@@ -472,7 +472,8 @@ export default {
 <style lang="less" scoped>
 .sticky-hero {
   height: 320vh;
-  height: calc(var(--vh, 1vh) * 320);
+  height: calc(100vh + 1750px); // 1 screeen + scroll height in ocean.vue
+  height: calc(var(--vh, 1vh) * 100 + 1750px);
   position: relative;
 
   .sticky-hero-content {

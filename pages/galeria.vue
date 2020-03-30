@@ -18,18 +18,44 @@
       </div>
     </form>
 
-    <div bp="grid 6@md 4@lg 3@xl">
+    <div bp="grid 6@md 4@lg 3@xl" class="gallery-container">
       <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"
+        @click.native="showModalClick(i)"
         v-bind:name="a.name"
         v-bind:creator="a.creator"
         v-bind:creatorLink="a.creatorLink"
         v-bind:license="a.license"
         v-bind:url="a.url"
+        v-bind:absoluteurl="a.absoluteurl"
         v-bind:description="a.description"
         v-bind:type="a.type"
       />
+    </div>
+
+    <div v-if="showModal" @click="showModal = false" name="modal" class="modal">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h3>custom header</h3>
+          </div>
+          <div class="modal-body">
+            <GalleryCard
+              v-bind:name="modalItem.name"
+              v-bind:creator="modalItem.creator"
+              v-bind:creatorLink="modalItem.creatorLink"
+              v-bind:license="modalItem.license"
+              v-bind:url="modalItem.url"
+              v-bind:absoluteurl="modalItem.absoluteurl"
+              v-bind:description="modalItem.description"
+              v-bind:type="modalItem.type"
+            />
+          </div>
+          OK
+          </button>
+        </div>
+      </div>
     </div>
   </article>
 </template>
@@ -50,7 +76,9 @@ export default {
     return {
       gallery: galleryData,
       filterSearch: '',
-      filterSearchPlaceholder: ''
+      filterSearchPlaceholder: '',
+      galleryPicked: 0,
+      showModal: false
     };
   },
 
@@ -64,15 +92,31 @@ export default {
         }
         return true;
       }, this);
+    },
+    modalItem () {
+      return this.gallery[this.galleryPicked];
     }
   },
 
   mounted () {
     this.filterSearchPlaceholder = this.$gettext('buscar na galeria');
+  },
+
+  methods: {
+    showModalClick (i) {
+      console.log(i);
+      this.galleryPicked = i;
+      this.showModal = true;
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
+.gallery-container {
+  .gallery-card {
+    width: 320px;
+  }
+}
 
 </style>

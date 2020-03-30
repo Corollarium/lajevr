@@ -37,7 +37,7 @@ const main = () => {
           // eslint-disable
           console.warn(m + ' does not have metadata.');
         }
-        data.url = '/' + urlpath + '/' + m;
+        data.url = urlpath + '/' + m;
         data.filename = m;
         data.type = (isImage(m) ? 'image' : (isVideo(m) ? 'video' : ''));
         gallery.push(data);

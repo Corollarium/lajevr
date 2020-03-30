@@ -3,9 +3,9 @@
     class="gallery-card"
   >
     <figure>
-      <img :src="url" v-if="type == 'image'" class="gallery-image">
+      <img :src="absoluteurl ? absoluteurl : base + url" v-if="type == 'image'" class="gallery-image">
       <video v-if="type == 'video'" class="gallery-video" controls preload="metadata">
-        <source :src="url">
+        <source :src="absoluteurl ? absoluteurl : base + url">
       </video>
       <figcaption class="gallery-name">
         {{ name }}
@@ -25,7 +25,8 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
+      default: '',
+      required: false
     },
     creator: {
       type: String,
@@ -45,21 +46,30 @@ export default {
       type: String,
       required: true
     },
+    absoluteurl: {
+      type: String,
+      required: false,
+      default: null
+    },
     description: {
       type: String,
-      required: true
+      default: '',
+      required: false
     },
     type: {
       type: String,
       required: true
     }
+  },
+
+  computed: {
+    base () { return this.$router.options.base; }
   }
 
 };
 </script>
 <style lang="less" scoped>
 .gallery-card {
-  width: 300px;
   display: inline-block;
   vertical-align: top;
 
