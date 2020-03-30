@@ -68,7 +68,7 @@
       </section>
 
       <figure class="figure-text">
-        <img alt="Tartaruga de pente" src="/images/nauther/1549889531894-1082715277.jpg">
+        <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
         <figcaption>
           <p>
             Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
@@ -137,7 +137,7 @@
         </p>
 
         <figure class="figure-text">
-          <img alt="Raia Chita" src="/images/nauther/1545946134598879623409.jpg">
+          <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
           <figcaption>
             <p>
               Raia Chita
@@ -181,10 +181,10 @@
         <figure class="figure-text">
           <div bp="grid">
             <div bp="6">
-              <img alt="Raia prego" src="/images/nauther/1549752089536-353729687.jpg">
+              <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
             </div>
             <div bp="6">
-              <img alt="Raia prego" src="/images/nauther/1562034454874570542648.jpg">
+              <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
             </div>
           </div>
           <figcaption>
@@ -260,10 +260,10 @@
       <figure class="figure-text">
         <div bp="grid">
           <div bp="6">
-            <img alt="Tartaruga de pente" src="/images/nauther/1552316930246-911010432.jpg">
+            <img alt="Tartaruga de pente" src="~static/images/nauther/1552316930246-911010432.jpg">
           </div>
           <div bp="6">
-            <img alt="Tartaruga verde" src="/images/nauther/1547073690808-2036926563.jpg">
+            <img alt="Tartaruga verde" src="~static/images/nauther/1547073690808-2036926563.jpg">
           </div>
         </div>
         <figcaption>
@@ -306,7 +306,7 @@
         </p>
 
         <figure class="figure-text">
-          <img src="/images/nauther/20190626_093259.jpg">
+          <img src="~static/images/nauther/20190626_093259.jpg">
           <figcaption>
             <p>
               Golfinhos
