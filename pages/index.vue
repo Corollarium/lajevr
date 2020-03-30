@@ -60,66 +60,68 @@
     </section>
 
     <!-- About Section -->
-    <section bp="container" class="section-base">
-      <figure bp="float-center" class="image icon-about-heading">
-        <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
-      </figure>
-      <h1 class="has-text-center">
-        <i18n>Laje de Santos</i18n>
-      </h1>
+    <section class="about-section">
+      <div bp="container" class="section-base" style="margin-bottom: 0;">
+        <figure bp="float-center" class="image icon-about-heading">
+          <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
+        </figure>
+        <h1 class="has-text-center">
+          <i18n>Laje de Santos</i18n>
+        </h1>
 
-      <div class="section-inner" bp="grid 12 6@md vertical-center">
-        <div>
-          <p class="about-description">
-            O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
-            É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
-            à concentração de peixes de passagem e recifais com grande diversidade biológica.
-          </p>
-        </div>
-        <div>
-          <figure class="image spaced-image">
-            <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" class="spaced-image" alt="Ilustração da Laje de Santos">
-          </figure>
-        </div>
-      </div>
-
-      <div class="section-inner" bp="grid vertical-center">
-        <div bp="12 5@md">
-          <p class="boxed-description">
-            Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
-            Estado de <span class="text-is-bold">São Paulo</span>, no <span class="text-is-bold">Brasil</span>.
-          </p>
+        <div class="section-inner" bp="grid 12 6@md vertical-center">
+          <div>
+            <p class="about-description">
+              O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
+              É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
+              à concentração de peixes de passagem e recifais com grande diversidade biológica.
+            </p>
+          </div>
+          <div>
+            <figure class="image spaced-image">
+              <img :src="imageAboutIlha.src" :srcset="imageAboutIlha.srcSet" class="spaced-image" alt="Ilustração da Laje de Santos">
+            </figure>
+          </div>
         </div>
 
-        <div bp="first@md  12 7@md">
-          <figure class="image">
-            <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" class="spaced-image" alt="Mapa-mundi com a Laje de Santos">
-          </figure>
-        </div>
-      </div>
+        <div class="section-inner" bp="grid vertical-center">
+          <div bp="12 5@md">
+            <p class="boxed-description">
+              Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
+              Estado de <span class="text-is-bold">São Paulo</span>, no <span class="text-is-bold">Brasil</span>.
+            </p>
+          </div>
 
-      <div class="section-inner" bp="grid 12 6@md vertical-center">
-        <div>
-          <h3>
-            <i18n>Um paraíso do mergulho</i18n>
-          </h3>
-          <p class="about-description">
-            <i18n>
-              A Laje oferece condições muito especiais em termos de profundidade
-              e visibilidade para mergulho. Junto com a preservação e variedade da vida,
-              isso faz da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
-              e de <span class="text-is-bold">fotografia subaquática</span> do país.
-            </i18n>
-            <br>
-            <span class="text-is-bold">Profundidade média:  20m</span>
-            <br>
-            <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
-          </p>
+          <div bp="first@md  12 7@md">
+            <figure class="image">
+              <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" class="spaced-image" alt="Mapa-mundi com a Laje de Santos">
+            </figure>
+          </div>
         </div>
-        <div>
-          <figure class="image">
-            <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
-          </figure>
+
+        <div class="section-inner" bp="grid 12 6@md vertical-center">
+          <div>
+            <h3>
+              <i18n>Um paraíso do mergulho</i18n>
+            </h3>
+            <p class="about-description">
+              <i18n>
+                A Laje oferece condições muito especiais em termos de profundidade
+                e visibilidade para mergulho. Junto com a preservação e variedade da vida,
+                isso faz da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
+                e de <span class="text-is-bold">fotografia subaquática</span> do país.
+              </i18n>
+              <br>
+              <span class="text-is-bold">Profundidade média:  20m</span>
+              <br>
+              <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
+            </p>
+          </div>
+          <div>
+            <figure class="image">
+              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -135,7 +137,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="4 offset-5" class="over-image-box">
+        <div bp="@3md 4@lg offset-5" class="section-div-intro">
           <h2 class="has-text-center">
             Mergulho Virtual
           </h2>
@@ -152,22 +154,29 @@
         </div>
       </div>
 
-      <div bp="grid float-center 10--max">
-        <div class="image-circle-border side-circle" bp="4">
-          <figure class="image">
-            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+      <div bp="grid" class="section-dive-images">
+        <div bp="4">
+          <figure class="image image-circle-border side-image">
+            <img :src="imageMergulhoBolha01.src" :srcset="imageMergulhoBolha01.srcSet" draggable="false" alt="Tartaruga na Laje de Santos">
+            <figcaption class="caption">
+              Veja espécies presentes na laje como tartarugas, mantas e golfinhos.
+            </figcaption>
           </figure>
-          <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
-        <div class="image-circle-border" bp="4">
-          <figure class="image">
-            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+        <div bp="4">
+          <figure class="image image-circle-border">
+            <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
+            <figcaption class="caption">
+              Mergulhe virtualmente  entre cardumes e recifes de corais
+            </figcaption>
           </figure>
-          <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
-        <div class="image-circle-border side-circle" bp="4">
-          <figure class="image">
-            <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+        <div bp="4">
+          <figure class="image image-circle-border side-image">
+            <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
+            <figcaption class="caption">
+              Moréia, O primeiro naufrágio induzido, para prática de mergulho no Brasil.
+            </figcaption>
           </figure>
           <a href="#" class="modal-button"><font-awesome-icon :icon="['fas', 'search-plus']" /></a>
         </div>
@@ -199,10 +208,42 @@
             </nuxt-link>
           </p>
         </div>
+        <<<<<<< HEAD
+        =======
+      </div>
+    </section>
+
+    <section class="section-with-slideshow">
+      <div class="background-slideshow">
+        <figure class="image">
+          <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
+          <figcaption class="attribution">
+            By <a href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div bp="grid container">
+        <div bp="5" class="section-div-intro">
+          <h2 class="has-text-center">
+            Pontos de Mergulho
+          </h2>
+          <p class="has-text-center">
+            Um mapa interativo para conhecer os pontos de mergulhos presentes na laje
+          </p>
+          <p class="has-text-center">
+            <nuxt-link bp="b4 offset-5" class="button-is-liquid" to="/mergulho-virtual">
+              <span class="button-is-liquid__text"><i18n>Ver pontos de mergulho</i18n></span>
+              <span class="button-is-liquid__animation" />
+            </nuxt-link>
+          </p>
+        </div>
+        >>>>>>> 47397f8ababdcc518f9b28d4984b8baf64479e0d
       </div>
     </section>
 
     <section id="visitar" class="section-base">
+      <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>Como visitar a Laje</i18n>
@@ -385,6 +426,7 @@ import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
+
 // import Globe from '~/components/Globe.vue';
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
@@ -393,6 +435,11 @@ const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundida
 const imageAboutMapa = require('~/assets/images/graficos/laje-mapa.png?resize');
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 const imageIconLaje = require('~/assets/images/graficos/icon-laje.png?resize');
+const imageMergulhoBolha01 = require('~/assets/images/graficos/bolha-mergulho1.jpg?resize');
+const imageMergulhoBolha02 = require('~/assets/images/graficos/bolha-mergulho2.jpg?resize');
+const imageMergulhoBolha03 = require('~/assets/images/graficos/bolha-mergulho3.jpg?resize');
+const imageFundoPontoMergulho = require('~/assets/images/graficos/bg-pontos-de-mergulho.jpg?resize');
+const imageGraficoEstrelaMar = require('~/assets/images/graficos/estrela-do-mar.png?resize');
 
 export default {
   components: {
@@ -413,6 +460,11 @@ export default {
       imageAboutMapa,
       imageLogoLaje,
       imageIconLaje,
+      imageMergulhoBolha01,
+      imageMergulhoBolha02,
+      imageMergulhoBolha03,
+      imageFundoPontoMergulho,
+      imageGraficoEstrelaMar,
       isSafari: false
     };
   },

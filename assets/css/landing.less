@@ -10,6 +10,11 @@
   }
 }
 
+.about-section {
+  background: url('/images/graphic-content/bg-about.jpg') no-repeat center;
+  background-size: cover;
+}
+
 .icon-about-heading {
   @media @desktop {
     max-width: 15rem;
@@ -45,9 +50,12 @@
 
 .section-with-slideshow {
   position: relative;
-  min-height: 90vh;
+  .make-padding();
   overflow: hidden;
-  margin-bottom: 0 !important;
+
+  @media @desktop {
+    min-height: 80vh;
+  }
 }
 
 .background-slideshow {
@@ -60,58 +68,66 @@
 
 }
 
-.over-image-box {
+.over-image-box (@paddingD:5, @paddingM: 2) {
   position: relative;
   background-color: darken(fade(@primaryColor, 80), 15);
   border-radius: .5rem;
 
   @media @desktop {
-    .add-padding(5, 5);
+    .add-padding(@paddingD,@paddingD);
   }
 
   @media @responsiveDevices {
-    .add-padding(2, 2);
+    .add-padding(@paddingM,@paddingM);
 
   }
 }
 
-.image-circle-border {
-  position: relative;
-  margin-top: 1.5rem;
+.section-div-intro {
+  .over-image-box();
+}
 
-  &.side-circle {
-    transform: translate3d(0,-4rem,0);
-  }
+.section-dive-images {
+  max-width: 56rem;
+  margin: auto;
 
-  figure {
-    overflow: hidden;
-    width: 16rem;
-    height: 16rem;
-  }
-
-  img {
-    object-fit: cover;
-    height: 100%;
-    border: solid 1rem fade(darken(@primaryColor, 20), 60);
-    border-radius: 50%;
-  }
-
-  .modal-button {
-    display: block;
-    margin: 0 auto;
-    width: 3rem;
-    height: 3rem;
+  .image-circle-border {
+    width: 90%;
     text-align: center;
-    border: 1px solid darken(@primaryColor, 20);
-    border-radius: 50%;
-    background-color: darken(@primaryColor, 30);
-    padding: .5rem;
-    font-size: 1.5rem;
-    transform: translate3d(0,-2rem,0) scale(1);
-    transition: transform .15s ease-out;
+    margin: 0 auto;
 
-    &:hover {
-      transform: translate3d(0,-2rem,0) scale(1.1);
+    &.side-image {
+      margin-top: -4rem;
+      @media @mobile {
+        margin-top: 0;
+      }
+    }
+
+    img {
+      display: block;
+      margin: -1rem auto;
+      overflow: hidden;
+      border-radius: 50%;
+      border: .25rem solid fade(darken(@primaryColor,10), 20);
+      box-shadow: 0px 8px 32px fade(lighten(@primaryColor,20), 30);
+
+      @media @mobile {
+        margin: .5rem auto -1rem;
+      }
+    }
+
+    .caption {
+      .over-image-box(2,1);
     }
   }
 }
+
+.estrela-do-mar {
+  max-width: 400px;
+  width: 40%;
+  position: absolute;
+  margin-top: -10rem;
+  left: -6rem;
+}
+
+
