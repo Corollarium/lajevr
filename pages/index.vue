@@ -306,8 +306,9 @@
       </div>
       <div>
         <Bubbles />
-        <div>
-          <div data-aos="fade-left">
+        <div style="display: table; height: 400px; overflow: hidden;">
+          <!-- TODO: layoutar isso direito -->
+          <div data-aos="fade-left" style="display: table-cell; vertical-align: middle; font-size: 200%;">
             No inverno <nuxt-link to="/vida#manta">
               as raias mantas
             </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
