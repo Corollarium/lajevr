@@ -198,7 +198,7 @@
         <figure class="image">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
           <figcaption class="attribution">
-            <a target="_blank" href="https://www.instagram.com/nautherandres/" target="_blank">Nauther Andres</a>
+            <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
           </figcaption>
         </figure>
       </div>
