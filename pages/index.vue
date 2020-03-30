@@ -25,7 +25,7 @@
       </div>
       <div class="sticky-back">
         <video autoplay loop muted playsinline>
-          <source src="/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
+          <source src="images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
           <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
         </video>
         <p class="attribution">
