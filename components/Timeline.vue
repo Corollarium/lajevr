@@ -40,7 +40,7 @@
           <figure class="timeline__figure">
             <img class="timeline__img" src="~assets/images/laje/Parque_Estadual_Marinho_da_Laje_de_Santos.jpg" alt="Parque Estadual, vista aérea">
             <figcaption class="attribution">
-              <a href="https://commons.wikimedia.org/wiki/File:Parque_Estadual_Marinho_da_Laje_de_Santos.jpg">
+              <a href="https://commons.wikimedia.org/wiki/File:Parque_Estadual_Marinho_da_Laje_de_Santos.jpg" target="_blank">
                 ALEXANDRE ANDREAZZI, CC BY-SA 4.0
               </a>
             </figcaption>
@@ -63,7 +63,7 @@
             2003
           </h2>
           <p class="timeline__content-desc">
-            <i18n>Criado o <a href="https://www.lajeviva.org.br/">Instituto Laje Viva</a>, para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro.</i18n>
+            <i18n>Criado o <a href="https://www.lajeviva.org.br/" target="_blank">Instituto Laje Viva</a>, para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro.</i18n>
           </p>
         </div>
       </div>
