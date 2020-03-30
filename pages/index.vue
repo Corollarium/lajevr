@@ -137,7 +137,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="4 offset-5" class="section-div-intro">
+        <div bp="@3md 4@lg offset-5" class="section-div-intro">
           <h2 class="has-text-center">
             Mergulho Virtual
           </h2>

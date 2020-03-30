@@ -50,8 +50,11 @@
 .section-with-slideshow {
   position: relative;
   .make-padding();
-  min-height: 90vh;
   overflow: hidden;
+
+  @media @desktop {
+    min-height: 80vh;
+  }
 }
 
 .background-slideshow {
