@@ -1,5 +1,24 @@
 <template>
   <article>
+    <section class="hero">
+      <div class="hero-body">
+        <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
+      </div>
+      <div class="hero-html">
+        <h1>
+          <i18n>
+            A vida na Laje de Santos
+          </i18n>
+        </h1>
+        <p class="attribution">
+          <i18n>
+            Foto
+          </i18n>
+          <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
+        </p>
+      </div>
+    </section>
+
     <div class="topbar-sticky">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
@@ -19,25 +38,6 @@
         </li>
       </ul>
     </div>
-
-    <section class="hero">
-      <div class="hero-body">
-        <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
-      </div>
-      <div class="hero-html">
-        <h1>
-          <i18n>
-            A vida na Laje de Santos
-          </i18n>
-        </h1>
-        <p class="attribution">
-          <i18n>
-            Foto
-          </i18n>
-          <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
-        </p>
-      </div>
-    </section>
 
     <section id="intro" class="section-index section-base section-text">
       <p>
