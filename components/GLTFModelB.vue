@@ -41,6 +41,16 @@ export default {
       type: String,
       required: false,
       default: 'transparent'
+    },
+    autoRotate: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    initialAlpha: {
+      type: [Number, String],
+      required: false,
+      default: 'random'
     }
   },
 
@@ -68,7 +78,7 @@ export default {
     // Add a camera to the scene and attach it to the canvas
     this.camera = new BABYLON.ArcRotateCamera(
       'Camera',
-      Math.PI / 2, // alpha
+      isNaN(parseFloat(this.initialAlpha)) ? (Math.random() * 6) % (2 * Math.PI) : this.initialAlpha, // alpha
       Math.PI / 2, // beta
       80, // TODO: radius
       new BABYLON.Vector3(0, 0, 0), // target
@@ -126,7 +136,7 @@ export default {
     this.engine.runRenderLoop(() => {
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
-      if (loaded) {
+      if (loaded && this.autoRotate) {
         this.camera.alpha = (this.camera.alpha + deltaTime * 0.2) % (2 * Math.PI);
       }
 

@@ -33,7 +33,16 @@
         <br>It protects a marine area off the coast of the state, and was the first such park to be created by São Paulo. It includes a rocky islet, tidal reefs and surrounding waters, with various areas suitable for diving, including a boat that was deliberately wrecked to form an artificial reef. The combination of warm surface waters and cold deeper waters supports a high level of biodiversity.
       </p>
     </section>
-    <section class="section">
+
+    <section
+      class="section"
+    >
+      <h1>Carrosel</h1>
+      <Carousel3D />
+    </section>
+    <section
+      class="section"
+    >
       <h2 class="title is-2">
         Responsive
       </h2>
@@ -134,14 +143,17 @@
         <LanguagePicker />
       </section>
     </section>
+    </caro>
   </article>
 </template>
 
 <script>
 import LanguagePicker from '../components/LanguagePicker.vue';
+import Carousel3D from '../components/Carousel3D.vue';
 
 export default {
   components: {
+    Carousel3D,
     LanguagePicker
   }
 };
