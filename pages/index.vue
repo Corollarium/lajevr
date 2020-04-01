@@ -213,7 +213,7 @@
           </p>
           <p class="has-text-center">
             <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
-              <span class="button-is-liquid__text"><i18n>Ver pontos de mergulho</i18n></span>
+              <span class="button-is-liquid__text"><i18n>Ver pontos</i18n></span>
               <span class="button-is-liquid__animation" />
             </nuxt-link>
           </p>
@@ -221,28 +221,8 @@
       </div>
     </section>
 
-    <section id="visitar" class="section-base">
-      <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
-      <div style="max-width: 500px; margin: 0 auto;">
-        <h2>
-          <i18n>Como visitar a Laje</i18n>
-        </h2>
-        <p>
-          <i18n>
-            É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.
-            Outra opção para visitar a Laje, é através as operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
-          </i18n>
-        </p>
-
-        <p>
-          <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank">
-            <i18n>Verifique as informações sobre visitação e compra de ingresso com a Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
-          </a>.
-        </p>
-      </div>
-    </section>
-
     <section id="vida" class="section-base">
+      <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
       <div style="max-width: 500px; margin: 0 auto;">
         <h2>
           <i18n>A vida na Laje</i18n>
@@ -294,7 +274,25 @@
         </nuxt-link>
       </div>
     </section>
+    <section id="visitar" class="section-base">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <h2>
+          <i18n>Como visitar a Laje</i18n>
+        </h2>
+        <p>
+          <i18n>
+            É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.
+            Outra opção para visitar a Laje, é através as operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
+          </i18n>
+        </p>
 
+        <p>
+          <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank">
+            <i18n>Verifique as informações sobre visitação e compra de ingresso com a Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
+          </a>.
+        </p>
+      </div>
+    </section>
     <section id="mantas" bp="grid 12 6@md">
       <div class="model-container" style="min-height: 70vh;">
         <GLTFModel
@@ -325,7 +323,7 @@
             A Laje em Números
           </i18n>
         </h2>
-        <div class="number-wrapper section-inner" bp="grid 6@sm 4@md 3@lg">
+        <div class="number-wrapper section-inner" bp="grid 6 4@md 3@lg">
           <number-bullet
             :to="550"
             :icon="['fas', 'ruler-horizontal']"
