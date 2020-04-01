@@ -204,7 +204,7 @@
       </div>
 
       <div bp="grid container">
-        <div bp="10 8@md offset-2 offset-0@lg" class="section-div-intro">
+        <div bp="10 8@md 6@lg 5@xl offset-2 offset-2@lg" class="section-div-intro">
           <h2 class="has-text-center">
             <i18n>Pontos de Mergulho</i18n>
           </h2>
