@@ -50,7 +50,7 @@
     </section>
 
     <section id="raias" class="section-index">
-      <section class="section-base section-text">
+      <section class="section-text">
         <h1>
           Raias
         </h1>
