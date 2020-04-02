@@ -172,15 +172,13 @@
 </template>
 
 <script>
-import Slick from 'vue-slick';
 import LanguagePicker from '../components/LanguagePicker.vue';
 import Carousel3D from '../components/Carousel3D.vue';
 
 export default {
   components: {
     Carousel3D,
-    LanguagePicker,
-    Slick
+    LanguagePicker
   }
 };
 </script>
