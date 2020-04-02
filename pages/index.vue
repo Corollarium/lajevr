@@ -448,6 +448,7 @@ export default {
   },
 
   mounted () {
+    this.headerOverlay = true;
     this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     const browser = Bowser.getParser(window.navigator.userAgent);

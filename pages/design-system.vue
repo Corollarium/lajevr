@@ -42,7 +42,7 @@
     </section>
 
     <section>
-      <slick
+      <!--slick
         ref="slick"
         :options="slickOptions"
         @afterChange="handleAfterChange"
@@ -62,7 +62,7 @@
         <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
         <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
         <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
-      </slick>
+      </slick-->
     </section>
     <section
       class="section"
