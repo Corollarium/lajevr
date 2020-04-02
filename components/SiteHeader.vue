@@ -79,18 +79,15 @@ export default {
 
   data () {
     return {
-      isExpanded: false
+      isExpanded: false,
+      isOverlay: false
     };
   },
 
-  computed: {
-    isOverlay () {
-      const p = this.$nuxt.$route.path;
-      if (p === '/' || p === '/mergulho-virtual') { // TODO: ugly workaround
-        return true;
-      }
-      return false;
-    }
+  created () {
+    this.$root.$on('headerOverlay', (data) => {
+      this.isOverlay = data;
+    });
   }
 };
 </script>
