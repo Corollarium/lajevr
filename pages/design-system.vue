@@ -37,8 +37,32 @@
     <section
       class="section"
     >
-      <h1>Carrosel</h1>
+      <h2>Carrosel</h2>
       <Carousel3D />
+    </section>
+
+    <section>
+      <slick
+        ref="slick"
+        :options="slickOptions"
+        @afterChange="handleAfterChange"
+        @beforeChange="handleBeforeChange"
+        @breakpoint="handleBreakpoint"
+        @destroy="handleDestroy"
+        @edge="handleEdge"
+        @init="handleInit"
+        @reInit="handleReInit"
+        @setPosition="handleSetPosition"
+        @swipe="handleSwipe"
+        @lazyLoaded="handleLazyLoaded"
+        @lazyLoadError="handleLazeLoadError"
+      >
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+      </slick>
     </section>
     <section
       class="section"
@@ -148,13 +172,15 @@
 </template>
 
 <script>
+import Slick from 'vue-slick';
 import LanguagePicker from '../components/LanguagePicker.vue';
 import Carousel3D from '../components/Carousel3D.vue';
 
 export default {
   components: {
     Carousel3D,
-    LanguagePicker
+    LanguagePicker,
+    Slick
   }
 };
 </script>
