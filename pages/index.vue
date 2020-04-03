@@ -293,23 +293,24 @@
         </p>
       </div>
     </section>
-    <section id="mantas" bp="grid 12 6@md">
-      <div class="model-container" style="min-height: 70vh;">
-        <GLTFModel
-          :model="'./models/manta/scene.gltf'"
-          :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
-          :attribution="'Modelo 3D CC BY-NC por misaooo'"
-        />
-        </GLTFModel>
-      </div>
-      <div>
-        <Bubbles />
-        <div style="display: table; height: 400px; overflow: hidden;">
-          <!-- TODO: layoutar isso direito -->
-          <div data-aos="fade-left" style="display: table-cell; vertical-align: middle; font-size: 200%;">
-            No inverno <nuxt-link to="/vida#manta">
-              as raias mantas
-            </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
+    <section id="mantas" class="mantinha section-base">
+      <div bp="grid container 12 6@md vertical-center">
+        <div class="model-container">
+          <GLTFModel
+            :model="'./models/manta/scene.gltf'"
+            :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
+            :attribution="'Modelo 3D CC BY-NC por misaooo'"
+          />
+          </GLTFModel>
+        </div>
+        <div>
+          <Bubbles />
+          <div>
+            <div class="description">
+              No inverno <nuxt-link to="/vida#manta">
+                as raias mantas
+              </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
+            </div>
           </div>
         </div>
       </div>

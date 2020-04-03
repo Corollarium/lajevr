@@ -99,10 +99,6 @@
   max-width: 56rem;
   margin: auto;
 
-  @media @mobile {
-    max-width: 80%;
-  }
-
   .image-circle-border {
     text-align: center;
     margin: 0 auto;
@@ -154,4 +150,29 @@
   }
 }
 
+.mantinha {
+  background-image: linear-gradient(45deg, darken(@primaryColor, 10) 108%, @primaryColor 59%, lighten(@primaryColor, 30) 32%);
 
+  .model-container {
+    min-height: 70vh;
+    @media @mobile {
+      min-height: 0;
+
+      canvas {
+        height: 50vh !important;
+      }
+    }
+  }
+
+  .description {
+    text-align: center;
+    max-width: 32rem;
+    display: block;
+    margin: auto;
+    .over-image-box(2,1);
+    .font-responsive (20, 18, 16);
+    @media @mobile {
+      margin: 2rem auto;
+    }
+  }
+}
