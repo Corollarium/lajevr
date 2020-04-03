@@ -34,28 +34,21 @@
       />
     </div>
 
-    <div v-if="showModal" @click="showModal = false" name="modal" class="modal">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-header">
-            <h3>custom header</h3>
-          </div>
-          <div class="modal-body">
-            <GalleryCard
-              v-bind:name="modalItem.name"
-              v-bind:creator="modalItem.creator"
-              v-bind:creatorLink="modalItem.creatorLink"
-              v-bind:license="modalItem.license"
-              v-bind:url="modalItem.url"
-              v-bind:absoluteurl="modalItem.absoluteurl"
-              v-bind:description="modalItem.description"
-              v-bind:type="modalItem.type"
-            />
-          </div>
-          OK
-          </button>
-        </div>
+    <div v-if="showModal" name="modal" class="modal-window">
+      <div class="modal-inner">
+        <span @click="showModal = false" title="Close" class="modal-close">X</span>
+        <GalleryCard
+          v-bind:name="modalItem.name"
+          v-bind:creator="modalItem.creator"
+          v-bind:creatorLink="modalItem.creatorLink"
+          v-bind:license="modalItem.license"
+          v-bind:url="modalItem.url"
+          v-bind:absoluteurl="modalItem.absoluteurl"
+          v-bind:description="modalItem.description"
+          v-bind:type="modalItem.type"
+        />
       </div>
+    </div>
     </div>
   </article>
 </template>

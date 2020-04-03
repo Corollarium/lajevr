@@ -44,7 +44,8 @@ export default {
     },
     url: {
       type: String,
-      required: true
+      required: false,
+      default: null
     },
     absoluteurl: {
       type: String,
