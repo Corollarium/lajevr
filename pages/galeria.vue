@@ -23,14 +23,7 @@
         v-for="(a, i) in filteredGallery"
         :key="i"
         @click.native="showModalClick(i)"
-        v-bind:name="a.name"
-        v-bind:creator="a.creator"
-        v-bind:creatorLink="a.creatorLink"
-        v-bind:license="a.license"
-        v-bind:url="a.url"
-        v-bind:absoluteurl="a.absoluteurl"
-        v-bind:description="a.description"
-        v-bind:type="a.type"
+        v-bind="a"
       />
     </div>
 
@@ -38,14 +31,7 @@
       <div class="modal-inner">
         <span @click="showModal = false" title="Close" class="modal-close">X</span>
         <GalleryCard
-          v-bind:name="modalItem.name"
-          v-bind:creator="modalItem.creator"
-          v-bind:creatorLink="modalItem.creatorLink"
-          v-bind:license="modalItem.license"
-          v-bind:url="modalItem.url"
-          v-bind:absoluteurl="modalItem.absoluteurl"
-          v-bind:description="modalItem.description"
-          v-bind:type="modalItem.type"
+          v-bind="modalItem"
         />
       </div>
     </div>
