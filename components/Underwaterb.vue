@@ -194,7 +194,6 @@ export default {
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
-    document.querySelector('footer.footer').style.display = 'inherit';
   },
 
   methods: {
@@ -268,7 +267,6 @@ export default {
 
     debugUtils () {
       this.scene.debugLayer.show();
-      document.querySelector('footer.footer').style.display = 'none';
     },
 
     resize () {
