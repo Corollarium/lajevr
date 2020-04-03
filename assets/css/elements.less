@@ -44,8 +44,10 @@ video {
   }
 }
 
-.button-hover, .button:focus, .button:hover {
-  background-image: linear-gradient(transparent, rgba(0,0,0,.05) 40%, rgba(0,0,0,.1));
+.button-hover,
+.button:focus,
+.button:hover {
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
 }
 
 .button-blue {
@@ -57,7 +59,7 @@ video {
 }
 
 .button-blue:hover {
-  background-image: linear-gradient(transparent, rgba(0,0,0,.05) 40%, rgba(0,0,0,.1));
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
 }
 
 .button-is-liquid {
@@ -86,10 +88,11 @@ video {
     left: 0;
     width: 100%;
     height: 12.5rem;
-    background: linear-gradient(45deg, @primaryColor, @secondaryColor-2, darken(@primaryColor,20));
+    background: linear-gradient(45deg, @primaryColor, @secondaryColor-2, darken(@primaryColor, 20));
     transition: all .2s ease-out;
 
-    &::after, &::before {
+    &::after,
+    &::before {
       content: '';
       width: 200%;
       height: 200%;
@@ -102,13 +105,13 @@ video {
 
     &:before {
       border-radius: 45%;
-      background: fade(darken(@primaryColor,35), 35);
+      background: fade(darken(@primaryColor, 35), 35);
       animation: liquid-in-button 5s linear infinite;
     }
 
     &:after {
       border-radius: 40%;
-      background: fade(darken(@primaryColor,45), 45);
+      background: fade(darken(@primaryColor, 45), 45);
       animation: liquid-in-button 10s linear infinite;
     }
   }
@@ -120,7 +123,7 @@ video {
       color: #fff;
     }
 
-    &:hover > .button-is-liquid__animation {
+    &:hover>.button-is-liquid__animation {
       top: -9rem;
       transition: top .2s ease-out;
     }
@@ -129,7 +132,8 @@ video {
 
 .eliminate-space {
   font-size: 0px;
-  > * {
+
+  >* {
     font-size: 1rem;
   }
 }
@@ -152,4 +156,61 @@ video {
 }
 
 /** MODAL **/
+.modal-window {
+  position: fixed;
+  background-image: linear-gradient(to bottom, fade(@primaryColor, 95), 30%, fade(darken(@primaryColor, 20), 95) 60%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+ visibility: hidden;
+  opacity: 0;
+ pointer-events: none;
+  transition: all 0.3s;
 
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  >.modal-inner {
+    width: auto;
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 10px 32px rgba(0,0,0,.3);
+
+    figure {
+      overflow: hidden;
+    }
+
+    .modal-caption {
+
+    }
+  }
+
+  .modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
