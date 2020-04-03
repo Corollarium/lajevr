@@ -135,9 +135,19 @@
             {{ a.size }} cm
           </p>
         </div>
-        <p>{{ a.description }}</p>
+        <p>
+          {{ a.description }}
+          <span @click="showModalClick(a)" style="cursor: pointer;"><i18n>Ver mais fotos</i18n></span>
+        </p>
       </section>
     </transition-group>
+
+    <div v-if="showModal" name="modal" class="modal-window">
+      <div class="modal-inner">
+        <span @click="showModal = false" title="Close" class="modal-close">X</span>
+        outras fotos do mesmo animal
+      </div>
+    </div>
   </article>
 </template>
 
@@ -170,7 +180,9 @@ export default {
           values: 7,
           density: 4
         }
-      }
+      },
+
+      showModal: false
     };
   },
 
@@ -207,7 +219,14 @@ export default {
       this.minRange = parseInt(values[0], 10);
       this.maxRange = parseInt(values[1], 10);
     });
+  },
+
+  methods: {
+    showModalClick (i) {
+      this.showModal = true;
+    }
   }
+
 };
 </script>
 
