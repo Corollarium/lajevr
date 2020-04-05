@@ -47,7 +47,7 @@
     width: calc(50% - 40px);
     display: flex;
     position: relative;
-    transform: translate3d(-10rem,0,0);
+    transform: translate3d(0,5rem,0);
 
     &:before {
       letter-spacing: 3px;
@@ -66,7 +66,6 @@
 
     &:nth-child(even) {
       align-self: flex-end;
-      transform: translate3d(10rem,0,0);
 
       &:before {
         right: auto;
@@ -101,7 +100,8 @@
     @media @mobile {
       align-self: baseline !important;
       width: 100%;
-      padding: 0 30px 150px 80px;
+      padding: 0 2rem 5rem 4rem;
+
       &:before {
         left: 10px !important;
         padding: 0 !important;
@@ -160,22 +160,6 @@
   &-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 80px;
     position: relative;
-    &__title {
-      color: #fff;
-      font-size: 46px;
-      font-family: @content-font;
-      font-weight: normal;
-      margin: 0;
-    }
-    &__subtitle {
-      color: rgba(255, 255, 255, .5);
-      font-family: @heading-font;
-      font-size: 16px;
-      letter-spacing: 5px;
-      margin: 10px 0 0 0;
-      font-weight: normal;
-    }
   }
 }
