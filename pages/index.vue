@@ -229,7 +229,7 @@
             <i18n>Um mapa interativo para conhecer os pontos de mergulhos presentes na laje</i18n>
           </p>
           <p class="has-text-center">
-            <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
+            <nuxt-link class="button-is-liquid" to="/pontos-de-mergulho">
               <span class="button-is-liquid__text"><i18n>Ver pontos</i18n></span>
               <span class="button-is-liquid__animation" />
             </nuxt-link>
