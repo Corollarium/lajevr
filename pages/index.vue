@@ -183,25 +183,18 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border side-image">
-            <a href="#modal-imagem-3">
-              <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
-            </a>
+          <figure @click.native="showModalClick(imageMergulhoBolha03.src)" class="image image-circle-border side-image">
+            <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
             </figcaption>
           </figure>
         </div>
       </div>
-      <div id="#modal-imagem-3" class="modal-window">
+
+      <div v-if="showModal" name="modal" class="modal-window">
         <div class="modal-inner">
-          <a href="#" title="Close" class="modal-close">Close</a>
-          <figure class="image">
-            <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
-            <figcaption class="modal-caption">
-              <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
-            </figcaption>
-          </figure>
+          <span @click="showModal = false" title="Close" class="modal-close">Fechar</span>
         </div>
       </div>
     </section>
