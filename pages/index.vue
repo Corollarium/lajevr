@@ -133,12 +133,17 @@
 
     <section class="section-with-slideshow">
       <div class="background-slideshow">
-        <figure class="image">
-          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
-          <figcaption class="attribution">
-            By <a target="_blank" href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
-          </figcaption>
-        </figure>
+        <video autoplay loop muted playsinline>
+          <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
+          <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
+        </video>
+        <p class="attribution">
+          Video
+          <a
+            href="https://www.instagram.com/deia_morales/"
+            target="_blank"
+          >Andréa Pontes</a>
+        </p>
       </div>
 
       <div bp="grid">
@@ -200,11 +205,17 @@
     </section>
 
     <section class="section-with-slideshow">
-      <div class="background-slideshow">
-        <figure class="image">
+      <div class="background-slideshow two-slides">
+        <figure class="image slide-1">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
           <figcaption class="attribution">
             <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
+          </figcaption>
+        </figure>
+        <figure class="image slide-2">
+          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          <figcaption class="attribution">
+            By <a target="_blank" href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
           </figcaption>
         </figure>
       </div>
