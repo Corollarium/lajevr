@@ -133,12 +133,17 @@
 
     <section class="section-with-slideshow">
       <div class="background-slideshow">
-        <figure class="image">
-          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
-          <figcaption class="attribution">
-            By <a target="_blank" href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
-          </figcaption>
-        </figure>
+        <video autoplay loop muted playsinline>
+          <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
+          <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
+        </video>
+        <p class="attribution">
+          Video
+          <a
+            href="https://www.instagram.com/deia_morales/"
+            target="_blank"
+          >Andréa Pontes</a>
+        </p>
       </div>
 
       <div bp="grid">
@@ -183,35 +188,34 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border side-image">
-            <a href="#modal-imagem-3">
-              <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
-            </a>
+          <figure @click.native="showModalClick(imageMergulhoBolha03.src)" class="image image-circle-border side-image">
+            <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
             </figcaption>
           </figure>
         </div>
       </div>
-      <div id="#modal-imagem-3" class="modal-window">
+
+      <div v-if="showModal" name="modal" class="modal-window">
         <div class="modal-inner">
-          <a href="#" title="Close" class="modal-close">Close</a>
-          <figure class="image">
-            <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
-            <figcaption class="modal-caption">
-              <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
-            </figcaption>
-          </figure>
+          <span @click="showModal = false" title="Close" class="modal-close">Fechar</span>
         </div>
       </div>
     </section>
 
     <section class="section-with-slideshow">
-      <div class="background-slideshow">
-        <figure class="image">
+      <div class="background-slideshow two-slides">
+        <figure class="image slide-1">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
           <figcaption class="attribution">
             <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
+          </figcaption>
+        </figure>
+        <figure class="image slide-2">
+          <img :src="imagePeixes.src" :srcset="imagePeixes.srcSet" draggable="false" alt="Cardume de Xira">
+          <figcaption class="attribution">
+            By <a target="_blank" href="//commons.wikimedia.org/w/index.php?title=User:Rafa_Tecchio&amp;action=edit&amp;redlink=1" class="new" title="User:Rafa Tecchio (page does not exist)">Rafa Tecchio</a> - <span class="int-own-work" lang="en">Own work</span>, <a target="_blank" href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40644073">Link</a>
           </figcaption>
         </figure>
       </div>
@@ -225,7 +229,7 @@
             <i18n>Um mapa interativo para conhecer os pontos de mergulhos presentes na laje</i18n>
           </p>
           <p class="has-text-center">
-            <nuxt-link class="button-is-liquid" to="/mergulho-virtual">
+            <nuxt-link class="button-is-liquid" to="/pontos-de-mergulho">
               <span class="button-is-liquid__text"><i18n>Ver pontos</i18n></span>
               <span class="button-is-liquid__animation" />
             </nuxt-link>
@@ -234,9 +238,9 @@
       </div>
     </section>
 
-    <section id="vida" class="section-base">
+    <section id="vida" bp="container" class="section-base">
       <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
-      <div style="max-width: 500px; margin: 0 auto;">
+      <div class="has-text-center" style="max-width: 32rem; display: block; margin: 2rem auto 3rem;">
         <h2>
           <i18n>A vida na Laje</i18n>
         </h2>
@@ -247,49 +251,45 @@
           </i18n>
         </p>
       </div>
-      <div style="text-align: center">
+      <div bp="grid 6 3@md">
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Peixe_Frade.jpg/320px-Peixe_Frade.jpg" alt="Salmeidas / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
-          <figcaption>
+          <figcaption class="attribution">
             <i18n>Peixe frade</i18n>
           </figcaption>
         </figure>
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Mola_mola2.jpg/240px-Mola_mola2.jpg" alt="OpenCage / CC BY-SA (https://creativecommons.org/licenses/by-sa/2.5)">
-          <figcaption>
+          <figcaption class="attribution">
             <i18n>Peixe lua</i18n>
           </figcaption>
         </figure>
 
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tartaruga_da_Laje.jpg/320px-Tartaruga_da_Laje.jpg" alt="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons">
-          <figcaption>
+          <figcaption class="attribution">
             <i18n>Tartaruga de pente</i18n>
           </figcaption>
         </figure>
         <figure class="image image-fish">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
-          <figcaption>
+          <figcaption class="attribution">
             <i18n>Coió</i18n>
           </figcaption>
         </figure>
       </div>
 
-      <div style="text-align: center">
+      <div style="text-align: center; margin-top: 3rem;">
         <nuxt-link class="button-is-liquid" to="/vida">
           <span class="button-is-liquid__text"><i18n>Mais sobre a vida</i18n></span>
           <span class="button-is-liquid__animation" />
         </nuxt-link>
-
-        <nuxt-link class="button-is-liquid" to="/especies">
-          <span class="button-is-liquid__text"><i18n>Catálogo de espécies</i18n></span>
-          <span class="button-is-liquid__animation" />
-        </nuxt-link>
       </div>
     </section>
-    <section id="visitar" class="section-base">
-      <div style="max-width: 500px; margin: 0 auto;">
-        <h2>
+
+    <section id="visitar" bp="container" class="section-base">
+      <div style="max-width: 32rem; margin: 0 auto;">
+        <h2 class="has-text-center">
           <i18n>Como visitar a Laje</i18n>
         </h2>
         <p>
@@ -518,8 +518,5 @@ export default {
       position: absolute;
     }
   }
-}
-.image-fish {
-  display: inline-block;
 }
 </style>

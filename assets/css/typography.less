@@ -90,6 +90,10 @@ h1 {
   .text-margin();
   margin-top: 0;
   text-transform: uppercase;
+
+  &.subpage-title {
+    margin-bottom: 0;
+  }
 }
 
 h2 {
@@ -102,7 +106,7 @@ h2 {
   }
 }
 
-h3 {
+h3, .title-timeline {
   .font-responsive(32, 24, 16);
   .font-select(@regular);
   .text-margin(3, 2, 1);

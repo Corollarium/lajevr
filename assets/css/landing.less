@@ -64,8 +64,23 @@
   bottom: 0;
   max-width: 100%;
 
+  &.two-slides {
+    .slide-1 {
+      animation: bg-slideshow 8s infinite;
+    }
+
+    .slide-2 {
+      animation: bg-slideshow 8s infinite;
+      animation-delay: 4s;
+    }
+  }
+
   figure {
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
     img {
       object-fit: cover;
@@ -74,19 +89,23 @@
     }
   }
 
+  video {
+    min-width: 100vw;
+  }
+
 }
 
-.over-image-box (@paddingD:5, @paddingM: 2) {
+.over-image-box (@paddingD: 5, @paddingM: 2) {
   position: relative;
   background-color: darken(fade(@primaryColor, 80), 15);
   border-radius: .5rem;
 
   @media @desktop {
-    .add-padding(@paddingD,@paddingD);
+    .add-padding(@paddingD, @paddingD);
   }
 
   @media @responsiveDevices {
-    .add-padding(@paddingM,@paddingM);
+    .add-padding(@paddingM, @paddingM);
 
   }
 }
@@ -116,8 +135,8 @@
       margin: -1rem auto;
       overflow: hidden;
       border-radius: 50%;
-      border: .25rem solid fade(darken(@primaryColor,10), 20);
-      box-shadow: 0px 8px 32px fade(lighten(@primaryColor,20), 30);
+      border: .25rem solid fade(darken(@primaryColor, 10), 20);
+      box-shadow: 0px 8px 32px fade(lighten(@primaryColor, 20), 30);
 
       @media @mobile {
         margin: 0;
@@ -125,7 +144,8 @@
     }
 
     .caption {
-      .over-image-box(2,1);
+      .over-image-box(2, 1);
+
       @media @mobile {
         display: none;
       }
@@ -144,9 +164,21 @@
     left: -4rem;
     margin-top: -6rem;
   }
+
   @media @mobile {
     left: -3rem;
     margin-top: -5rem;
+  }
+}
+
+/**SECAO VIDA **/
+.image-fish {
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: none;
   }
 }
 
@@ -155,6 +187,7 @@
 
   .model-container {
     min-height: 70vh;
+
     @media @mobile {
       min-height: 0;
 
@@ -169,8 +202,9 @@
     max-width: 32rem;
     display: block;
     margin: auto;
-    .over-image-box(2,1);
+    .over-image-box(2, 1);
     .font-responsive (20, 18, 16);
+
     @media @mobile {
       margin: 2rem auto;
     }

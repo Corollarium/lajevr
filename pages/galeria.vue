@@ -1,24 +1,26 @@
 <template>
-  <article class="container">
-    <h1 class="title is-1">
-      <i18n>Galeria</i18n>
-    </h1>
+  <article>
+    <div bp="grid container vertical-center" style="padding: 1rem 0 1.5rem">
+      <h1 bp="6 8@md" class="subpage-title">
+        <i18n>Galeria</i18n>
+      </h1>
 
-    <form id="filters" class="form">
-      <div class="field">
-        <label class="label">
-          <i18n>Buscar</i18n>
-        </label>
-        <div class="control has-icons-left">
-          <input v-model="filterSearch" :placeholder="filterSearchPlaceholder" class="input" type="text">
-          <span class="icon is-small is-left">
-            <font-awesome-icon :icon="['fas', 'search']" />
-          </span>
+      <form id="filters" bp="6 4@md" class="form">
+        <div class="field">
+          <label class="label">
+            <i18n>Buscar</i18n>
+          </label>
+          <div class="control has-icons-left">
+            <input v-model="filterSearch" :placeholder="filterSearchPlaceholder" class="input" type="text">
+            <span class="icon is-small is-left">
+              <font-awesome-icon :icon="['fas', 'search']" />
+            </span>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
 
-    <div bp="grid 6@md 4@lg 3@xl" class="gallery-container">
+    <div bp="grid container 6 4@md 3@lg">
       <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"
@@ -88,12 +90,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-.gallery-container {
-  .gallery-card {
-    width: 320px;
-  }
-}
-
-</style>
