@@ -1,0 +1,31 @@
+ .gallery-card {
+   background: darken(@primaryColor, 20);
+   padding: 0 1rem 1rem;
+   overflow: hidden;
+   border-radius: .5rem;
+   cursor: pointer;
+   box-shadow: 0 10px 8px fade(lighten(@primaryColor, 20), 10);
+   transition: all .25s;
+   border: 1px solid fade(@primaryColor,20);
+
+   &:hover {
+    box-shadow: 0 0 16px fade(lighten(@primaryColor, 20), 30);
+    img, video {
+      transform: translate3d(0,0,0) scale(1.03);
+      transition: all .15s;
+    }
+   }
+
+   >figure {
+     margin-left: -1rem;
+     margin-right: -1rem;
+     img, video {
+      transition: all .15s;
+     }
+
+   }
+
+   .gallery-name {
+     padding: .25rem 1rem;
+   }
+ }
