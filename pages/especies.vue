@@ -1,34 +1,33 @@
 <template>
   <article bp="container">
     <div bp="grid">
-      <h1 bp="12 4@lg">
+      <h1 bp="12 6@md 4@lg">
         Espécies
       </h1>
-      <form id="filters" bp="12 8@lg" class="form">
+      <form id="filters" bp="12 6@md 8@lg" class="form">
         <div bp="grid">
-          <div bp="1 4@md">
+          <div bp="5 7@md 3@lg">
             <label class="label">
               <i18n>
                 Nome
               </i18n>
             </label>
             <div>
-              <input v-model="filterSearch" class="input" type="text" placeholder="busque">
+              <input v-model="filterSearch" class="input" type="text" placeholder="Digite o nome">
               <span class="icon is-small is-left">
                 <font-awesome-icon :icon="['fas', 'search']" />
               </span>
             </div>
           </div>
-          <div bp="1 2@md">
-            <label class="label">
+
+          <div bp="4 5@md 3@lg">
+            <label>
               <i18n>
                 Cor
               </i18n>
             </label>
-            <div class="control">
-              <div
-                class="select"
-              >
+            <div>
+              <div>
                 <select
                   v-model="filterColor"
                   :style="{'background-color': filterColor}"
@@ -64,28 +63,26 @@
               </div>
             </div>
           </div>
-        </div>
-        <div bp="1 6@md">
-          <label class="label">
-            <i18n>
-              Tamanho (em cm)
-            </i18n>
-          </label>
-          <div id="slider-container">
-            <div>
-              <output>{{ minRange }}</output>
-              <output style="float: right;">{{ maxRange }}</output>
+          <div bp="12 6@lg">
+            <label>
+              <i18n>
+                Tamanho (em cm)
+              </i18n>
+            </label>
+            <div id="slider-container" class="range-slider">
+              <div>
+                <output>{{ minRange }}</output>
+                <output style="float: right;">{{ maxRange }}</output>
+              </div>
+              <div id="slider" ref="slider" />
             </div>
-            <div id="slider" ref="slider" />
           </div>
         </div>
       </form>
+      <p bp="12 6@md 12@lg">
+        <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
+      </p>
     </div>
-    </form>
-
-    <p>
-      <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
-    </p>
 
     <transition-group
       name="fauna-list"
@@ -121,7 +118,8 @@
         </p>
         <span @click="showModalClick(a)" class="open-modal"><font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></span>
       </div>
-      </div>
+    </transition-group>
+    </div>
     </transition-group>
 
     <ul>
@@ -225,51 +223,3 @@ export default {
 
 };
 </script>
-
-<style lang="less" scoped>
-#filters {
-  margin-top: 1em;
-}
-
-#slider-container { // BG temporario até arrumar form
-  height: 5em;
-}
-
-.section-fauna {
-  width: 300px;
-  display: inline-block;
-  vertical-align: top;
-
-  .fauna-name {
-    font-variant: small-caps;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.25;
-  }
-
-  .fauna-info {
-    font-style: italic;
-    color: #999 ;
-  }
-}
-.control {
-  margin-right: 3em;
-}
-
-// Transitions
-.fauna-list-item {
-  transition: all 1s;
-  display: inline-block;
-  margin-right: 10px;
-}
-.fauna-list-enter, .fauna-list-leave-to{
-  opacity: 0;
-  transform: translateY(30px);
-}
-.fauna-list-leave-active {
-  position: absolute;
-}
-.fauna-list-move {
-  transition: transform 1s;
-}
-</style>

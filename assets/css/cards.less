@@ -49,6 +49,7 @@
        font-weight: @bold;
        margin: 1rem 0 .25rem;
      }
+
      .fauna-info {
        font-size: .9em;
      }
@@ -62,7 +63,7 @@
 
      .fauna-description {
        font-size: .9em;
-       border: 1px solid rgba(255,255,255,.3);
+       border: 1px solid rgba(255, 255, 255, .3);
        border-left: 0;
        border-right: 0;
        margin: .5rem 0;
@@ -81,5 +82,26 @@
        font-size: .9em;
        .link-default();
      }
+   }
+
+   // Transitions
+   .fauna-list-item {
+     transition: all 1s;
+     display: inline-block;
+     margin-right: 10px;
+   }
+
+   .fauna-list-enter,
+   .fauna-list-leave-to {
+     opacity: 0;
+     transform: translateY(30px);
+   }
+
+   .fauna-list-leave-active {
+     position: absolute;
+   }
+
+   .fauna-list-move {
+     transition: transform 1s;
    }
  }
