@@ -86,7 +86,7 @@
 
    // Transitions
    .fauna-list-item {
-     transition: all 1s;
+     transition: all .25s;
      display: inline-block;
      margin-right: 10px;
    }
@@ -94,7 +94,7 @@
    .fauna-list-enter,
    .fauna-list-leave-to {
      opacity: 0;
-     transform: translateY(30px);
+     transform: translate3d(0,40px,0);
    }
 
    .fauna-list-leave-active {
@@ -102,6 +102,6 @@
    }
 
    .fauna-list-move {
-     transition: transform 1s;
+     transition: all .25s;
    }
  }

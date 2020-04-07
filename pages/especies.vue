@@ -1,7 +1,7 @@
 <template>
   <article bp="container">
     <div bp="grid">
-      <div bp="12 6@md 5@lg 6@xl">
+      <div bp="12 6@md 5@lg">
         <h1 class="subpage-title">
           Espécies
         </h1>
@@ -10,9 +10,9 @@
         </p>
       </div>
 
-      <form id="filters" bp="12 6@md 7@lg 6@xl" class="form">
+      <form id="filters" bp="12 6@md 7@lg" class="form">
         <div bp="grid">
-          <div bp="5 7@md 3@lg">
+          <div bp="5 7@md 4@lg">
             <label class="label">
               <i18n>
                 Nome
@@ -69,7 +69,7 @@
               </div>
             </div>
           </div>
-          <div bp="12 6@lg">
+          <div bp="12 5@lg">
             <label>
               <i18n>
                 Tamanho (em cm)
@@ -91,6 +91,7 @@
       name="fauna-list"
       tag="div"
       bp="grid 6 4@md 3@lg"
+      class="section-base"
     >
       <div
         v-for="a in filteredAnimals"
