@@ -1,10 +1,16 @@
 <template>
   <article bp="container">
     <div bp="grid">
-      <h1 bp="12 6@md 4@lg">
-        Espécies
-      </h1>
-      <form id="filters" bp="12 6@md 8@lg" class="form">
+      <div bp="12 6@md 5@lg 6@xl">
+        <h1 class="subpage-title">
+          Espécies
+        </h1>
+        <p>
+          <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
+        </p>
+      </div>
+
+      <form id="filters" bp="12 6@md 7@lg 6@xl" class="form">
         <div bp="grid">
           <div bp="5 7@md 3@lg">
             <label class="label">
@@ -79,9 +85,6 @@
           </div>
         </div>
       </form>
-      <p bp="12 6@md 12@lg">
-        <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
-      </p>
     </div>
 
     <transition-group
