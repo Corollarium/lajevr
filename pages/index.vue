@@ -77,9 +77,11 @@
         <div class="section-inner" bp="grid 12 6@md vertical-center">
           <div>
             <p class="about-description">
-              O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
-              É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
-              à concentração de peixes de passagem e recifais com grande diversidade biológica.
+              <i18n>
+                O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.
+                É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício
+                à concentração de peixes de passagem e recifais com grande diversidade biológica.
+              </i18n>
             </p>
           </div>
           <div>
@@ -92,8 +94,8 @@
         <div class="section-inner" bp="grid vertical-center">
           <div bp="12 5@md">
             <p class="boxed-description">
-              Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do
-              Estado de <span class="text-is-bold">São Paulo</span>, no <span class="text-is-bold">Brasil</span>.
+              <i18n>Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do </i18n>
+              Estado de <span class="text-is-bold">São Paulo</span>, <span class="text-is-bold">Brasil</span>.
             </p>
           </div>
 
