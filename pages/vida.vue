@@ -19,6 +19,16 @@
       </div>
     </section>
 
+    <div class="rellax">
+      I’m that default chill speed of "-2"
+    </div>
+    <div class="rellax" data-rellax-speed="7">
+      I’m super fast!!
+    </div>
+    <div class="rellax" data-rellax-speed="-4">
+      I’m extra slow and smooth
+    </div>
+
     <div class="topbar-sticky">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
@@ -333,6 +343,7 @@
 </template>
 
 <script>
+import Rellax from 'rellax';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 
@@ -347,13 +358,18 @@ export default {
 
   data () {
     return {
-      imageCardume
+      imageCardume,
+      lms: null,
+      rellax: null
     };
   },
 
   mounted () {
     this.head.title = this.$gettext('Vida na Laje de Santos');
     this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
+
+    this.rellax = new Rellax('.rellax');
+
     this.asideMenu();
   },
 

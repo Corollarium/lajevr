@@ -71,9 +71,27 @@
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
-      <img :src="graphicTartaruga.src" :srcset="graphicTartaruga.srcSet" class="animal-turtle" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
-      <img :src="graphicGolfinho.src" :srcset="graphicGolfinho.srcSet" class="animal-dolphin" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
-      <img :src="graphicRaia.src" :srcset="graphicRaia.srcSet" class="animal-ray" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
+      <img
+        :src="graphicTartaruga.src"
+        :srcset="graphicTartaruga.srcSet"
+        class="animal-turtle"
+        draggable="false"
+        alt="Mergulhadores na Laje de Santos entre um cardume de peixes"
+      >
+      <img
+        :src="graphicGolfinho.src"
+        :srcset="graphicGolfinho.srcSet"
+        class="animal-dolphin"
+        draggable="false"
+        alt="Mergulhadores na Laje de Santos entre um cardume de peixes"
+      >
+      <img
+        :src="graphicRaia.src"
+        :srcset="graphicRaia.srcSet"
+        class="animal-ray"
+        draggable="false"
+        alt="Mergulhadores na Laje de Santos entre um cardume de peixes"
+      >
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
