@@ -103,9 +103,25 @@
   }
 }
 
-.about-section {
-  background: url('~assets/images/graphic-content/bg-about.jpg') no-repeat center;
-  background-size: cover;
+.fade-effect (@bg-color: darken(@primaryColor,25)) {
+  &:after, &:before {
+    content:" ";
+    height: 25%;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &:before {
+    top:0;
+    background-image: linear-gradient(to bottom,  @bg-color 0%, fade(@bg-color, 40) 60%,  fade(@bg-color, 0) 100%);
+  }
+
+  &:after{
+    bottom:0;
+    background-image: linear-gradient(to top,  @bg-color 0%, fade(@bg-color, 40) 60%,  fade(@bg-color, 0) 100%);
+  }
 }
 
 .icon-about-heading {

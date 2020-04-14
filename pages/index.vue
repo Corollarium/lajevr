@@ -77,8 +77,17 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section">
-      <div bp="container" class="section-base" style="margin-bottom: 0;">
+    <section class="section-with-slideshow">
+      <div class="background-slideshow about-bg">
+        <figure class="image">
+          <img :src="imageAboutBG.src" :srcset="imageAboutBG.srcSet" draggable="false" alt="Tartaruga Verde no na Laje de Santos">
+          <figcaption class="attribution">
+            <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div bp="container">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
@@ -422,6 +431,7 @@
     <section id="timeline" class="section-base">
       <Timeline />
     </section>
+    </sectionclass="section-with-slideshow">
   </div>
 </template>
 
@@ -439,7 +449,7 @@ const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resi
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
 const graphicGolfinho = require('~/assets/images/graficos/dolphin.png?resize');
 const graphicRaia = require('~/assets/images/graficos/ray.png?resize');
-const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
+const imageAboutBG = require('~/assets/images/backgrounds/bg-about.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
 const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundidade.png?resize');
@@ -449,6 +459,7 @@ const imageIconLaje = require('~/assets/images/graficos/icon-laje.png?resize');
 const imageMergulhoBolha01 = require('~/assets/images/graficos/bolha-mergulho1.jpg?resize');
 const imageMergulhoBolha02 = require('~/assets/images/graficos/bolha-mergulho2.jpg?resize');
 const imageMergulhoBolha03 = require('~/assets/images/graficos/bolha-mergulho3.jpg?resize');
+const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageFundoPontoMergulho = require('~/assets/images/graficos/bg-pontos-de-mergulho.jpg?resize');
 const imageGraficoEstrelaMar = require('~/assets/images/graficos/estrela-do-mar.png?resize');
 
@@ -469,7 +480,7 @@ export default {
       graphicTartaruga,
       graphicGolfinho,
       graphicRaia,
-      imagePeixes,
+      imageAboutBG,
       imageAboutIlha,
       imageIlhaFoto,
       imageAboutProfundidade,
@@ -479,6 +490,7 @@ export default {
       imageMergulhoBolha01,
       imageMergulhoBolha02,
       imageMergulhoBolha03,
+      imagePeixes,
       imageFundoPontoMergulho,
       imageGraficoEstrelaMar,
       isSafari: false
