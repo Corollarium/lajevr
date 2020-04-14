@@ -38,7 +38,7 @@
         </p>
       </div> -->
     </section>
-    <section v-show="isSafari" class="hero">
+    <section v-show="isSafari" class="hero-lite">
       <div class="hero-body">
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
