@@ -66,7 +66,7 @@
     </section>
 
     <!-- Seção que liga hero com conteúdo -->
-    <section :class="{'surface-dive with-fade': true, 'after-3d': !isApple}">
+    <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
       <div class="fade-out" />
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
@@ -208,18 +208,12 @@
           </figure>
         </div>
         <div bp="4">
-          <figure @click.native="showModalClick(imageMergulhoBolha03.src)" class="image image-circle-border side-image">
+          <figure class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
             </figcaption>
           </figure>
-        </div>
-      </div>
-
-      <div v-if="showModal" name="modal" class="modal-window">
-        <div class="modal-inner">
-          <span @click="showModal = false" title="Close" class="modal-close">Fechar</span>
         </div>
       </div>
     </section>
