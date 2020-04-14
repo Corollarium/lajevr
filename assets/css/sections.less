@@ -101,6 +101,28 @@
   font-family: @mainFont;
 }
 
+@fade-color: darken(@primaryColor,25);
+
+.with-fade {
+  .fade-in, .fade-out {
+    display: block;
+    height: 30%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .fade-in {
+    top:0;
+    background-image: linear-gradient(to bottom,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
+
+  .fade-out {
+    bottom:0;
+    background-image: linear-gradient(to top,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
+}
+
 .fade-top-bottom {
 mask-image: linear-gradient(
   rgba(0,0,0,0) 0%,

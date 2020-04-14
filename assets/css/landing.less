@@ -36,25 +36,55 @@
   }
 }
 
-.hero-image {
-  position: absolute;
-  width: 10rem;
-  top: 6rem;
-  left: 2rem;
+//apple-hero - poderá ser usado de fallback
+.hero-apple {
+  background:  url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
+  background-size: cover;
 
-  @media @mobile {
+  @media screen and (orientation: portrait) {
+    height: 500px;
+    .ilha-hero {
+      top: 70%;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    height: 140vh;
+  }
+
+  .ilha-hero {
+    position: absolute;
+    width: 90vw;
+    max-width: 1860px;
+    top: 40%;
     left: 50%;
-    margin-left: -5rem;
+    margin-left: -45vw;
+  }
+
+  .ilha-logo {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 256px;
   }
 }
 
 .surface-dive {
   position: relative;
-  min-height: 300px;
+  min-height: 280px;
   z-index: 1;
+  margin-top: -20%;
+  .surface-agua {
+    opacity: 1;
+    display: none;
+  }
 
   &.after-3d {
       margin-top: -(@scroll-ocean-vue/4); //ESSE EFEITO VAI PRECISAR SER REVISTO
+
+      .surface-agua {
+        opacity: 1;
+      }
   }
 
   .surface-espuma, .surface-agua {
@@ -105,28 +135,6 @@
     @media screen and (min-width: 1600px) {
       right: 0;
     }
-  }
-}
-
-@fade-color: darken(@primaryColor,25);
-
-.with-fade {
-  .fade-in, .fade-out {
-    display: block;
-    height: 25%;
-    position: absolute;
-    left: 0;
-    right: 0;
-  }
-
-  .fade-in {
-    top:0;
-    background-image: linear-gradient(to bottom,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
-  }
-
-  .fade-out {
-    bottom:0;
-    background-image: linear-gradient(to top,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
   }
 }
 

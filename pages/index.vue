@@ -39,10 +39,10 @@
       </div> -->
     </section>
     <section v-show="isApple" class="hero-apple">
-      <div class="hero-body">
-        <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
-      </div>
-      <div class="hero-html">
+      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos">
+      <!-- Eu só usei a ilha numa colagem de foto, reveja atribuição pfv BG
+        <div class="hero-html">
         <section class="section-base">
           <p class="attribution">
             Photo
@@ -62,9 +62,12 @@
             <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
           </p>
         </section>
-      </div>
+      </div> -->
     </section>
-    <section :class="{'surface-dive': true, 'after-3d': !isApple}">
+
+    <!-- Seção que liga hero com conteúdo -->
+    <section :class="{'surface-dive with-fade': true, 'after-3d': !isApple}">
+      <div class="fade-out" />
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
@@ -152,7 +155,6 @@
       <div class="background-slideshow">
         <video autoplay loop muted playsinline>
           <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
-          <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
         </video>
         <p class="attribution">
           Video
@@ -444,12 +446,12 @@ import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 
 // import Globe from '~/components/Globe.vue';
+const imageIlha = require('~/assets/images/graficos/laje-ilha.png?resize');
 const introSurfaceA = require('~/assets/images/graficos/intro-surface-a.png?resize');
 const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resize');
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
 const graphicGolfinho = require('~/assets/images/graficos/dolphin.png?resize');
 const graphicRaia = require('~/assets/images/graficos/ray.png?resize');
-const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
 const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundidade.png?resize');
 const imageAboutMapa = require('~/assets/images/graficos/laje-mapa.png?resize');
@@ -474,13 +476,13 @@ export default {
 
   data () {
     return {
+      imageIlha,
       introSurfaceA,
       introSurfaceB,
       graphicTartaruga,
       graphicGolfinho,
       graphicRaia,
       imageAboutIlha,
-      imageIlhaFoto,
       imageAboutProfundidade,
       imageAboutMapa,
       imageLogoLaje,
