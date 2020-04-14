@@ -77,7 +77,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="section-with-slideshow about-section">
+    <section class="section-with-slideshow">
       <div class="background-slideshow">
         <figure class="image">
           <img :src="imageAboutBG.src" :srcset="imageAboutBG.srcSet" draggable="false" alt="Tartaruga Verde no na Laje de Santos">
@@ -87,7 +87,7 @@
         </figure>
       </div>
 
-      <div bp="container">
+      <div bp="container" class="about-section">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
