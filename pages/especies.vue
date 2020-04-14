@@ -3,7 +3,7 @@
     <div bp="grid">
       <div bp="12 6@md 5@lg">
         <h1 class="subpage-title">
-          Espécies
+          <i18n>Espécies</i18n>
         </h1>
         <p>
           <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
