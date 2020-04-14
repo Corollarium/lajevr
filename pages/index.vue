@@ -77,8 +77,8 @@
     </section>
 
     <!-- About Section -->
-    <section class="section-with-slideshow">
-      <div class="background-slideshow about-bg">
+    <section class="section-with-slideshow about-section">
+      <div class="background-slideshow">
         <figure class="image">
           <img :src="imageAboutBG.src" :srcset="imageAboutBG.srcSet" draggable="false" alt="Tartaruga Verde no na Laje de Santos">
           <figcaption class="attribution">
