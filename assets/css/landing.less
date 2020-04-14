@@ -1,3 +1,41 @@
+@scroll-ocean-vue: 1750px;
+
+.sticky-hero {
+  height: 320vh;
+  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  position: relative;
+
+  .sticky-hero-content {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+  }
+
+  .sticky-hero-attribution {
+    display: none;
+    margin: 0 auto;
+    position: absolute;
+    width: auto;
+    max-width: 1280px;
+  }
+
+  .sticky-back {
+    position: absolute;
+    min-height: 270vh;
+    min-height: calc(var(--vh, 1vh) * 270);
+    bottom: 0;
+    width: 100%;
+
+    video {
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}
+
 .hero-image {
   position: absolute;
   width: 10rem;
@@ -10,9 +48,14 @@
   }
 }
 
-.hero-dive {
+.surface-dive {
   position: relative;
-  min-height: 600px;
+  min-height: 300px;
+  z-index: 1;
+
+  &.after-3d {
+      margin-top: -(@scroll-ocean-vue/4); //ESSE EFEITO VAI PRECISAR SER REVISTO
+  }
 
   .surface-espuma, .surface-agua {
     position: absolute;
@@ -41,8 +84,8 @@
   .animal-turtle {
     max-width: 35rem;
     width: 30vw;
-    top: 50%;
-    left: 5%;
+    top: 100%;
+    left: 0;
   }
 
   .animal-ray {
@@ -56,8 +99,8 @@
   .animal-dolphin {
     width: 45vw;
     max-width: 60rem;
-    right: -5vw;
-    top: 25%;
+    right: -10vw;
+    top: 80%;
     transform: rotate(-5deg);
     @media screen and (min-width: 1600px) {
       right: 0;
@@ -65,19 +108,48 @@
   }
 }
 
-.about-section {
-  background: url('~assets/images/graphic-content/bg-about.jpg') no-repeat center;
-  background-size: cover;
+@fade-color: darken(@primaryColor,25);
+
+.with-fade {
+  .fade-in, .fade-out {
+    display: block;
+    height: 25%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .fade-in {
+    top:0;
+    background-image: linear-gradient(to bottom,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
+
+  .fade-out {
+    bottom:0;
+    background-image: linear-gradient(to top,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
 }
 
-.icon-about-heading {
-  @media @desktop {
-    max-width: 15rem;
+.about-section {
+  .make-padding();
+  position: relative;
+  background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
+  background-attachment: fixed;
+
+  .about-content {
+    position: relative;
   }
 
-  @media @responsiveDevices {
-    max-width: 10rem;
+  .icon-about-heading {
+    @media @desktop {
+      max-width: 15rem;
+    }
+
+    @media @responsiveDevices {
+      max-width: 10rem;
+    }
   }
+
 }
 
 .about-description {
@@ -238,6 +310,7 @@
 }
 
 .mantinha {
+  position: relative;
   background-image: linear-gradient(45deg, darken(@primaryColor, 10) 108%, @primaryColor 59%, lighten(@primaryColor, 30) 32%);
 
   .model-container {

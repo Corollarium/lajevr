@@ -41,10 +41,12 @@
 
     <section id="intro" class="section-index section-base section-text">
       <p>
-        A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
-        É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
+        <i18n>
+          A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
+          É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
+        </i18n>
         <nuxt-link to="/especies">
-          Se estiver procurando espécies, veja a lista completa.
+          <i18n>Se estiver procurando espécies, veja a lista completa.</i18n>
         </nuxt-link>
       </p>
     </section>

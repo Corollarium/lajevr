@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-show="!isSafari" class="sticky-hero">
+    <section v-show="!isApple" class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
         <div class="sticky-hero-attribution">
@@ -38,7 +38,7 @@
         </p>
       </div> -->
     </section>
-    <section v-show="isSafari" class="hero">
+    <section v-show="isApple" class="hero-apple">
       <div class="hero-body">
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
@@ -64,7 +64,7 @@
         </section>
       </div>
     </section>
-    <div class="hero-dive">
+    <section :class="{'surface-dive': true, 'after-3d': !isApple}">
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
@@ -74,11 +74,13 @@
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
-    </div>
+    </section>
 
     <!-- About Section -->
-    <section class="about-section">
-      <div bp="container" class="section-base" style="margin-bottom: 0;">
+    <section class="about-section with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
+      <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
@@ -145,7 +147,8 @@
       </div>
     </section>
 
-    <section class="section-with-slideshow">
+    <!-- Dive Section -->
+    <section class="section-with-slideshow with-fade">
       <div class="background-slideshow">
         <video autoplay loop muted playsinline>
           <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
@@ -158,6 +161,7 @@
             target="_blank"
           >Andréa Pontes</a>
         </p>
+        <div class="fade-in" />
       </div>
 
       <div bp="grid">
@@ -218,7 +222,8 @@
       </div>
     </section>
 
-    <section class="section-with-slideshow">
+    <!-- Pontos de Mergulho Section -->
+    <section class="section-with-slideshow with-fade">
       <div class="background-slideshow two-slides">
         <figure class="image slide-1">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
@@ -233,6 +238,7 @@
           </figcaption>
         </figure>
       </div>
+      <div class="fade-out" />
 
       <div bp="grid container">
         <div bp="10 8@md 6@lg 5@xl offset-2 offset-2@lg" class="section-div-intro">
@@ -252,6 +258,7 @@
       </div>
     </section>
 
+    <!-- Vida Section -->
     <section id="vida" bp="container" class="section-base">
       <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
       <div class="has-text-center" style="max-width: 32rem; display: block; margin: 2rem auto 3rem;">
@@ -320,7 +327,9 @@
         </p>
       </div>
     </section>
-    <section id="mantas" class="mantinha section-base">
+    <section id="mantas" class="mantinha section-base with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
       <div bp="grid container 12 6@md vertical-center">
         <div class="model-container">
           <GLTFModel
@@ -422,6 +431,7 @@
     <section id="timeline" class="section-base">
       <Timeline />
     </section>
+    </sectionclass="section-with-slideshow">
   </div>
 </template>
 
@@ -439,7 +449,6 @@ const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resi
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
 const graphicGolfinho = require('~/assets/images/graficos/dolphin.png?resize');
 const graphicRaia = require('~/assets/images/graficos/ray.png?resize');
-const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
 const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundidade.png?resize');
@@ -449,6 +458,7 @@ const imageIconLaje = require('~/assets/images/graficos/icon-laje.png?resize');
 const imageMergulhoBolha01 = require('~/assets/images/graficos/bolha-mergulho1.jpg?resize');
 const imageMergulhoBolha02 = require('~/assets/images/graficos/bolha-mergulho2.jpg?resize');
 const imageMergulhoBolha03 = require('~/assets/images/graficos/bolha-mergulho3.jpg?resize');
+const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageFundoPontoMergulho = require('~/assets/images/graficos/bg-pontos-de-mergulho.jpg?resize');
 const imageGraficoEstrelaMar = require('~/assets/images/graficos/estrela-do-mar.png?resize');
 
@@ -469,7 +479,6 @@ export default {
       graphicTartaruga,
       graphicGolfinho,
       graphicRaia,
-      imagePeixes,
       imageAboutIlha,
       imageIlhaFoto,
       imageAboutProfundidade,
@@ -479,9 +488,10 @@ export default {
       imageMergulhoBolha01,
       imageMergulhoBolha02,
       imageMergulhoBolha03,
+      imagePeixes,
       imageFundoPontoMergulho,
       imageGraficoEstrelaMar,
-      isSafari: false
+      isApple: false
     };
   },
 
@@ -490,7 +500,7 @@ export default {
     this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isSafari = browser.satisfies({
+    this.isApple = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
@@ -505,42 +515,3 @@ export default {
 
 };
 </script>
-
-<style lang="less" scoped>
-.sticky-hero {
-  height: 320vh;
-  height: calc(100vh + 1750px); // 1 screeen + scroll height in ocean.vue
-  height: calc(var(--vh, 1vh) * 100 + 1750px);
-  position: relative;
-
-  .sticky-hero-content {
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    position: sticky;
-    top: 0px;
-    z-index: 2;
-  }
-
-  .sticky-hero-attribution {
-    display: none;
-    margin: 0 auto;
-    position: absolute;
-    width: auto;
-    max-width: 1280px;
-  }
-
-  .sticky-back {
-    position: absolute;
-    min-height: 270vh;
-    min-height: calc(var(--vh, 1vh) * 270);
-    bottom: 0;
-    width: 100%;
-
-    video {
-      width: 100%;
-      bottom: 0;
-      position: absolute;
-    }
-  }
-}
-</style>
