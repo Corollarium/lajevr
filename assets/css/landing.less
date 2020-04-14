@@ -50,7 +50,8 @@
 
 .surface-dive {
   position: relative;
-  min-height: 600px;
+  min-height: 300px;
+  z-index: 1;
 
   .surface-espuma, .surface-agua {
     position: absolute;
@@ -79,8 +80,8 @@
   .animal-turtle {
     max-width: 35rem;
     width: 30vw;
-    top: 50%;
-    left: 5%;
+    top: 100%;
+    left: 0;
   }
 
   .animal-ray {
@@ -94,8 +95,8 @@
   .animal-dolphin {
     width: 45vw;
     max-width: 60rem;
-    right: -5vw;
-    top: 25%;
+    right: -10vw;
+    top: 80%;
     transform: rotate(-5deg);
     @media screen and (min-width: 1600px) {
       right: 0;
@@ -305,6 +306,7 @@
 }
 
 .mantinha {
+  position: relative;
   background-image: linear-gradient(45deg, darken(@primaryColor, 10) 108%, @primaryColor 59%, lighten(@primaryColor, 30) 32%);
 
   .model-container {

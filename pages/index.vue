@@ -147,7 +147,8 @@
       </div>
     </section>
 
-    <section class="section-with-slideshow">
+    <!-- Dive Section -->
+    <section class="section-with-slideshow with-fade">
       <div class="background-slideshow">
         <video autoplay loop muted playsinline>
           <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
@@ -160,6 +161,7 @@
             target="_blank"
           >Andréa Pontes</a>
         </p>
+        <div class="fade-in" />
       </div>
 
       <div bp="grid">
@@ -220,7 +222,8 @@
       </div>
     </section>
 
-    <section class="section-with-slideshow">
+    <!-- Pontos de Mergulho Section -->
+    <section class="section-with-slideshow with-fade">
       <div class="background-slideshow two-slides">
         <figure class="image slide-1">
           <img :src="imageFundoPontoMergulho.src" :srcset="imageFundoPontoMergulho.srcSet" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
@@ -235,6 +238,7 @@
           </figcaption>
         </figure>
       </div>
+      <div class="fade-out" />
 
       <div bp="grid container">
         <div bp="10 8@md 6@lg 5@xl offset-2 offset-2@lg" class="section-div-intro">
@@ -254,6 +258,7 @@
       </div>
     </section>
 
+    <!-- Vida Section -->
     <section id="vida" bp="container" class="section-base">
       <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
       <div class="has-text-center" style="max-width: 32rem; display: block; margin: 2rem auto 3rem;">
@@ -322,7 +327,9 @@
         </p>
       </div>
     </section>
-    <section id="mantas" class="mantinha section-base">
+    <section id="mantas" class="mantinha section-base with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
       <div bp="grid container 12 6@md vertical-center">
         <div class="model-container">
           <GLTFModel
