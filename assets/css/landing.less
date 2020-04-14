@@ -1,3 +1,41 @@
+@scroll-ocean-vue: 1750px;
+
+.sticky-hero {
+  height: 320vh;
+  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  position: relative;
+
+  .sticky-hero-content {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+  }
+
+  .sticky-hero-attribution {
+    display: none;
+    margin: 0 auto;
+    position: absolute;
+    width: auto;
+    max-width: 1280px;
+  }
+
+  .sticky-back {
+    position: absolute;
+    min-height: 270vh;
+    min-height: calc(var(--vh, 1vh) * 270);
+    bottom: 0;
+    width: 100%;
+
+    video {
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}
+
 .hero-image {
   position: absolute;
   width: 10rem;
@@ -10,7 +48,7 @@
   }
 }
 
-.hero-dive {
+.surface-dive {
   position: relative;
   min-height: 600px;
 

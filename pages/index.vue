@@ -64,7 +64,7 @@
         </section>
       </div>
     </section>
-    <div class="hero-dive">
+    <section class="surface-dive">
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
@@ -74,7 +74,7 @@
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
-    </div>
+    </section>
 
     <!-- About Section -->
     <section class="about-section">
@@ -505,42 +505,3 @@ export default {
 
 };
 </script>
-
-<style lang="less" scoped>
-.sticky-hero {
-  height: 320vh;
-  height: calc(100vh + 1750px); // 1 screeen + scroll height in ocean.vue
-  height: calc(var(--vh, 1vh) * 100 + 1750px);
-  position: relative;
-
-  .sticky-hero-content {
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-    position: sticky;
-    top: 0px;
-    z-index: 2;
-  }
-
-  .sticky-hero-attribution {
-    display: none;
-    margin: 0 auto;
-    position: absolute;
-    width: auto;
-    max-width: 1280px;
-  }
-
-  .sticky-back {
-    position: absolute;
-    min-height: 270vh;
-    min-height: calc(var(--vh, 1vh) * 270);
-    bottom: 0;
-    width: 100%;
-
-    video {
-      width: 100%;
-      bottom: 0;
-      position: absolute;
-    }
-  }
-}
-</style>
