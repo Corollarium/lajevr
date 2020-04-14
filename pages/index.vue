@@ -77,17 +77,10 @@
     </section>
 
     <!-- About Section -->
-    <section class="section-with-slideshow">
-      <div class="background-slideshow">
-        <figure class="image">
-          <img :src="imageAboutBG.src" :srcset="imageAboutBG.srcSet" draggable="false" alt="Tartaruga Verde no na Laje de Santos">
-          <figcaption class="attribution">
-            <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div bp="container" class="about-section">
+    <section class="about-section with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
+      <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
@@ -449,7 +442,6 @@ const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resi
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
 const graphicGolfinho = require('~/assets/images/graficos/dolphin.png?resize');
 const graphicRaia = require('~/assets/images/graficos/ray.png?resize');
-const imageAboutBG = require('~/assets/images/backgrounds/bg-about.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
 const imageAboutProfundidade = require('~/assets/images/graficos/laje-profundidade.png?resize');
@@ -480,7 +472,6 @@ export default {
       graphicTartaruga,
       graphicGolfinho,
       graphicRaia,
-      imageAboutBG,
       imageAboutIlha,
       imageIlhaFoto,
       imageAboutProfundidade,

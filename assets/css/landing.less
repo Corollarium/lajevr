@@ -103,29 +103,37 @@
   }
 }
 
-.fade-effect (@bg-color: darken(@primaryColor,25)) {
-  &:after, &:before {
-    content:" ";
-    height: 25%;
+@fade-color: darken(@primaryColor,25);
+
+.with-fade {
+  .fade-in, .fade-out {
     display: block;
+    height: 25%;
     position: absolute;
     left: 0;
     right: 0;
   }
 
-  &:before {
+  .fade-in {
     top:0;
-    background-image: linear-gradient(to bottom,  @bg-color 0%, fade(@bg-color, 40) 60%,  fade(@bg-color, 0) 100%);
+    background-image: linear-gradient(to bottom,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
   }
 
-  &:after{
+  .fade-out {
     bottom:0;
-    background-image: linear-gradient(to top,  @bg-color 0%, fade(@bg-color, 40) 60%,  fade(@bg-color, 0) 100%);
+    background-image: linear-gradient(to top,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
   }
 }
 
 .about-section {
+  .make-padding();
   position: relative;
+  background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
+  background-attachment: fixed;
+
+  .about-content {
+    position: relative;
+  }
 
   .icon-about-heading {
     @media @desktop {
@@ -136,6 +144,7 @@
       max-width: 10rem;
     }
   }
+
 }
 
 .about-description {
