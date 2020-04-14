@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-show="!isSafari" class="sticky-hero">
+    <section v-show="!isApple" class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
         <div class="sticky-hero-attribution">
@@ -38,7 +38,7 @@
         </p>
       </div> -->
     </section>
-    <section v-show="isSafari" class="hero-lite">
+    <section v-show="isApple" class="hero-apple">
       <div class="hero-body">
         <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
       </div>
@@ -64,7 +64,7 @@
         </section>
       </div>
     </section>
-    <section class="surface-dive">
+    <section :class="{'surface-dive': true, 'after-3d': !isApple}">
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
@@ -491,7 +491,7 @@ export default {
       imagePeixes,
       imageFundoPontoMergulho,
       imageGraficoEstrelaMar,
-      isSafari: false
+      isApple: false
     };
   },
 
@@ -500,7 +500,7 @@ export default {
     this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isSafari = browser.satisfies({
+    this.isApple = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
