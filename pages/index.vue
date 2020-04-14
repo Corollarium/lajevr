@@ -23,10 +23,11 @@
           </p>
         </div>
       </div>
+      <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
+      <!--
       <div class="sticky-back">
         <video autoplay loop muted playsinline>
           <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.31.mp4">
-          <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
         </video>
         <p class="attribution">
           Video
@@ -35,7 +36,7 @@
             target="_blank"
           >Andréa Pontes</a>
         </p>
-      </div>
+      </div> -->
     </section>
     <section v-show="isSafari" class="hero">
       <div class="hero-body">
@@ -63,6 +64,17 @@
         </section>
       </div>
     </section>
+    <div class="hero-dive">
+      <div class="surface-agua">
+        <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
+      </div>
+      <img :src="graphicTartaruga.src" :srcset="graphicTartaruga.srcSet" class="animal-turtle" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
+      <img :src="graphicGolfinho.src" :srcset="graphicGolfinho.srcSet" class="animal-dolphin" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
+      <img :src="graphicRaia.src" :srcset="graphicRaia.srcSet" class="animal-ray" draggable="false" alt="Mergulhadores na Laje de Santos entre um cardume de peixes">
+      <div class="surface-espuma">
+        <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
+      </div>
+    </div>
 
     <!-- About Section -->
     <section class="about-section">
@@ -422,6 +434,11 @@ import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 
 // import Globe from '~/components/Globe.vue';
+const introSurfaceA = require('~/assets/images/graficos/intro-surface-a.png?resize');
+const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resize');
+const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
+const graphicGolfinho = require('~/assets/images/graficos/dolphin.png?resize');
+const graphicRaia = require('~/assets/images/graficos/ray.png?resize');
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
 const imageAboutIlha = require('~/assets/images/graficos/ilha-sobre.png?resize');
@@ -447,6 +464,11 @@ export default {
 
   data () {
     return {
+      introSurfaceA,
+      introSurfaceB,
+      graphicTartaruga,
+      graphicGolfinho,
+      graphicRaia,
       imagePeixes,
       imageAboutIlha,
       imageIlhaFoto,

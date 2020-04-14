@@ -10,6 +10,61 @@
   }
 }
 
+.hero-dive {
+  position: relative;
+  min-height: 600px;
+
+  .surface-espuma, .surface-agua {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    > img {
+      width: 100vw;
+      height: auto;
+    }
+  }
+
+  .surface-espuma > img {
+      margin-top: -28%;
+  }
+
+  .surface-agua > img {
+    margin-top: -3.5%;
+  }
+
+  [class*="animal"] {
+    position: absolute;
+  }
+
+  .animal-turtle {
+    max-width: 35rem;
+    width: 30vw;
+    top: 50%;
+    left: 5%;
+  }
+
+  .animal-ray {
+    width: 35vw;
+    top: 10%;
+    max-width: 50rem;
+    left: 50%;
+    margin-left: -17.5vw;
+  }
+
+  .animal-dolphin {
+    width: 45vw;
+    max-width: 60rem;
+    right: -5vw;
+    top: 25%;
+    transform: rotate(-5deg);
+    @media screen and (min-width: 1600px) {
+      right: 0;
+    }
+  }
+}
+
 .about-section {
   background: url('~assets/images/graphic-content/bg-about.jpg') no-repeat center;
   background-size: cover;
