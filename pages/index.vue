@@ -313,7 +313,7 @@
           <p>
             <i18n>
               É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.
-              Outra opção para visitar a Laje, é através as operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
+              Outra opção para visitar a Laje, é através das operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
             </i18n>
           </p>
 
