@@ -131,7 +131,6 @@
   </div>
 </template>
 
-<!-- BG REVEJA E REMOVE ISSO O QUE NAO FOR NECESSARIO -->
 <script>
 export default {
   data () {
