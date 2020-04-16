@@ -307,13 +307,55 @@
 }
 
 /**SECAO VIDA **/
+@vida-altura-imagem: 32rem;
+
+.vida-btn {
+  display: block;
+  margin: 1rem auto 0;
+}
 .image-fish {
+  width: 100%;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0 16px 32px fade(darken(@primaryColor, 35), 50);
+
+  @media @desktop {
+    height: @vida-altura-imagem;
+  }
+
+  @media @tablet {
+    height: @vida-altura-imagem*0.6;
+  }
+
+  @media @mobile {
+    height: @vida-altura-imagem*0.4;
+  }
 
   img {
-    min-width: 100%;
-    min-height: 100%;
+    height: 100%;
     max-width: none;
+  }
+
+  &.vida-top {
+    transform: translate3d(0,10%,0) scale(.9);
+
+    @media @mobile {
+      transform: translate3d(0,0,0) scale(1);
+    }
+  }
+
+  &.vida-bottom {
+    transform: translate3d(0,-10%,0) scale(.9);
+
+    @media @mobile {
+      transform: translate3d(0,0,0) scale(1);
+    }
+  }
+
+  &.vida-center {
+    @media @mobile {
+      transform: scale(1.1);
+    }
   }
 }
 

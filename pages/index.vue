@@ -268,39 +268,49 @@
           </i18n>
         </p>
       </div>
-      <div bp="grid 6 3@md">
-        <figure class="image image-fish">
+      <div bp="grid" class="imagens-vida">
+        <figure bp="4" class="image image-fish vida-top">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Peixe_Frade.jpg/320px-Peixe_Frade.jpg" alt="Salmeidas / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
           <figcaption class="attribution">
             <i18n>Peixe frade</i18n>
           </figcaption>
         </figure>
-        <figure class="image image-fish">
+        <figure bp="4" class="image image-fish vida-center">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Mola_mola2.jpg/240px-Mola_mola2.jpg" alt="OpenCage / CC BY-SA (https://creativecommons.org/licenses/by-sa/2.5)">
           <figcaption class="attribution">
             <i18n>Peixe lua</i18n>
           </figcaption>
         </figure>
-
-        <figure class="image image-fish">
+        <figure bp="4" class="image image-fish vida-top">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tartaruga_da_Laje.jpg/320px-Tartaruga_da_Laje.jpg" alt="Ronaldo art [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons">
           <figcaption class="attribution">
             <i18n>Tartaruga de pente</i18n>
           </figcaption>
         </figure>
-        <figure class="image image-fish">
+        <div bp="12" class="vida-btn">
+          <nuxt-link class="button-is-liquid" to="/vida">
+            <span class="button-is-liquid__text"><i18n>Mais sobre a vida</i18n></span>
+            <span class="button-is-liquid__animation" />
+          </nuxt-link>
+        </div>
+        <figure bp="4" class="image image-fish vida-bottom">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
           <figcaption class="attribution">
             <i18n>Coió</i18n>
           </figcaption>
         </figure>
-      </div>
-
-      <div style="text-align: center; margin-top: 3rem;">
-        <nuxt-link class="button-is-liquid" to="/vida">
-          <span class="button-is-liquid__text"><i18n>Mais sobre a vida</i18n></span>
-          <span class="button-is-liquid__animation" />
-        </nuxt-link>
+        <figure bp="4" class="image image-fish vida-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
+          <figcaption class="attribution">
+            <i18n>Coió</i18n>
+          </figcaption>
+        </figure>
+        <figure bp="4" class="image image-fish vida-bottom">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dactylopterus_volitans.jpg/320px-Dactylopterus_volitans.jpg" alt="cralize / CC BY-SA (http://creativecommons.org/licenses/by-sa/3.0/)">
+          <figcaption class="attribution">
+            <i18n>Coió</i18n>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
