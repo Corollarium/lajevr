@@ -141,21 +141,11 @@ export default {
   },
 
   mounted () {
-    const background = this.$el.querySelector('.timeline-background');
     this.observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           const t = entry.target;
           if (entry.intersectionRatio >= 0.5) {
-            const bkg = t.querySelector('.timeline__img');
-
-            if (bkg && !this.$el.style.background.includes(bkg.src)) {
-              background.style.opacity = 0.5;
-              setTimeout(() => {
-                // TODO: background.style.background = 'center / cover fixed no-repeat url(' + bkg.src + ') rgba(33, 33, 33, 0.8)';
-                background.style.opacity = 1.0;
-              }, 300);
-            }
             t.classList.add('timeline-item--active');
           } else if (entry.intersectionRatio <= 0.3) {
             t.classList.remove('timeline-item--active');
