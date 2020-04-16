@@ -305,22 +305,30 @@
     </section>
 
     <section id="visitar" bp="container" class="section-base">
-      <div style="max-width: 32rem; margin: 0 auto;">
-        <h2 class="has-text-center">
+      <div bp="grid">
+        <h2 bp="12" class="has-text-center">
           <i18n>Como visitar a Laje</i18n>
         </h2>
-        <p>
-          <i18n>
-            É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.
-            Outra opção para visitar a Laje, é através as operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
-          </i18n>
-        </p>
+        <div bp="12 6@md offset-1" class="visit-text">
+          <p>
+            <i18n>
+              É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.
+              Outra opção para visitar a Laje, é através as operadoras de turismo e mergulho credenciadas. Contate também seu dive center.
+            </i18n>
+          </p>
 
-        <p>
-          <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank">
-            <i18n>Verifique as informações sobre visitação e compra de ingresso com a Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
-          </a>.
-        </p>
+          <p>
+            <i18n>
+              Você pode encontrar mais informações sobre visitação e compra de ingressos,
+              visitando o
+            </i18n>
+            <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank"><i18n>site da Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
+            </a>.
+          </p>
+        </div>
+        <div bp="12 6@md" class="visit-image">
+          <img :src="boatFigure.src" :srcset="boatFigure.srcSet" draggable="false" alt="Imagem de um barco ilustrando a seção sobre visitas na laje">
+        </div>
       </div>
     </section>
     <section id="mantas" class="mantinha section-base with-fade">
@@ -457,6 +465,7 @@ const imageMergulhoBolha03 = require('~/assets/images/graficos/bolha-mergulho3.j
 const imagePeixes = require('~/assets/images/laje/1280px-SP_-_Parque_Estadual_Marinho_Laje_de_Santos_-_Cardume_de_Xira_2.jpg?resize');
 const imageFundoPontoMergulho = require('~/assets/images/graficos/bg-pontos-de-mergulho.jpg?resize');
 const imageGraficoEstrelaMar = require('~/assets/images/graficos/estrela-do-mar.png?resize');
+const boatFigure = require('~/assets/images/graficos/boat.png?resize');
 
 export default {
   components: {
@@ -487,6 +496,7 @@ export default {
       imagePeixes,
       imageFundoPontoMergulho,
       imageGraficoEstrelaMar,
+      boatFigure,
       isApple: false
     };
   },

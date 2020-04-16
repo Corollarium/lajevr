@@ -317,6 +317,24 @@
   }
 }
 
+.visit-text {
+  .about-description();
+  padding: 1rem;
+}
+
+.visit-image img {
+  padding: 1rem;
+  @media @mobile {
+    max-width: 20rem;
+    margin: auto;
+    display: block;
+  }
+
+  @media @desktop {
+    margin-left: 2rem;
+  }
+}
+
 .mantinha {
   position: relative;
   background-image: linear-gradient(45deg, darken(@primaryColor, 10) 108%, @primaryColor 59%, lighten(@primaryColor, 30) 32%);
