@@ -87,11 +87,11 @@
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
-        <h1 class="has-text-center">
+        <h1 class="heading-intro has-text-center">
           <i18n>Laje de Santos</i18n>
         </h1>
 
-        <div class="section-inner" bp="grid 12 6@md vertical-center">
+        <div class="section-inner make-space-top" bp="grid 12 6@md vertical-center">
           <div>
             <p class="about-description">
               <i18n>
