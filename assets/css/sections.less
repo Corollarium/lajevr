@@ -3,10 +3,24 @@
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
 
-.marginTop (@value: 1) {
-  @sizeResult: @spacing * @value;
-  @remValue: @sizeResult / 16;
-  margin-top: ~"@{remValue}rem";
+.marginTop (@valuelg: 1, @valuemd: 1, @valuesm: 1) {
+  @sizeResultDesk: @spacing * @valuelg;
+  @sizeResultTablet:  @spacing * @valuemd;
+  @sizeResultMobile:  @spacing * @valuesm;
+
+  @remValueDesktop: @sizeResultDesk/ 16;
+  @remValueTablet: @sizeResultTablet / 16;
+  @remValueMobile: @sizeResultMobile / 16;
+
+  margin-top: ~"@{remValueDesktop}rem";
+
+  @media @tablet {
+    margin-top: ~"@{remValueTablet}rem";
+  }
+
+  @media @mobile {
+    margin-top: ~"@{remValueMobile}rem";
+  }
 }
 
 .marginBottom (@value: 1) {

@@ -71,9 +71,30 @@
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
       </div>
-      <img :src="graphicTartaruga.src" :srcset="graphicTartaruga.srcSet" class="animal-turtle" draggable="false" alt="Tartatuga">
-      <img :src="graphicGolfinho.src" :srcset="graphicGolfinho.srcSet" class="animal-dolphin" draggable="false" alt="Golfinho">
-      <img :src="graphicRaia.src" :srcset="graphicRaia.srcSet" class="animal-ray" draggable="false" alt="Raia">
+      <img
+        :src="graphicTartaruga.src"
+        :srcset="graphicTartaruga.srcSet"
+        class="animal-turtle rellax"
+        draggable="false"
+        alt="Tartatuga"
+        data-rellax-speed="-.5"
+      >
+      <img
+        :src="graphicGolfinho.src"
+        :srcset="graphicGolfinho.srcSet"
+        class="animal-dolphin rellax"
+        draggable="false"
+        alt="Golfinho"
+        data-rellax-speed="-.7"
+      >
+      <img
+        :src="graphicRaia.src"
+        :srcset="graphicRaia.srcSet"
+        class="animal-ray rellax"
+        draggable="false"
+        alt="Raia"
+        data-rellax-speed=".25"
+      >
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
@@ -87,11 +108,11 @@
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>
-        <h1 class="has-text-center">
+        <h1 class="heading-intro has-text-center">
           <i18n>Laje de Santos</i18n>
         </h1>
 
-        <div class="section-inner" bp="grid 12 6@md vertical-center">
+        <div class="section-inner make-space-top" bp="grid 12 6@md vertical-center">
           <div>
             <p class="about-description">
               <i18n>
@@ -256,7 +277,13 @@
 
     <!-- Vida Section -->
     <section id="vida" bp="container" class="section-base">
-      <img :src="imageGraficoEstrelaMar.src" :srcset="imageGraficoEstrelaMar.srcSet" class="estrela-do-mar" draggable="false" alt="Foto de uma estrela do mar">
+      <img
+        :src="imageGraficoEstrelaMar.src"
+        :srcset="imageGraficoEstrelaMar.srcSet"
+        class="estrela-do-mar"
+        draggable="false"
+        alt="Foto de uma estrela do mar"
+      >
       <div class="has-text-center" style="max-width: 32rem; display: block; margin: 2rem auto 3rem;">
         <h2>
           <i18n>A vida na Laje</i18n>
@@ -354,7 +381,6 @@
           </GLTFModel>
         </div>
         <div>
-          <Bubbles />
           <div>
             <div class="description">
               No inverno <nuxt-link to="/vida#manta">
@@ -451,6 +477,7 @@
 
 <script>
 import Bowser from 'bowser';
+import Rellax from 'rellax';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
@@ -507,7 +534,8 @@ export default {
       imageFundoPontoMergulho,
       imageGraficoEstrelaMar,
       boatFigure,
-      isApple: false
+      isApple: false,
+      rellax: null
     };
   },
 
@@ -515,6 +543,7 @@ export default {
     this.headerOverlay = true;
     this.head.title = this.$gettext('A Laje de Santos em Realidade Virtual');
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
+    this.rellax = new Rellax('.rellax');
     const browser = Bowser.getParser(window.navigator.userAgent);
     this.isApple = browser.satisfies({
       // declare browsers per OS

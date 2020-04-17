@@ -121,20 +121,17 @@
   .animal-ray {
     width: 35vw;
     top: 10%;
-    max-width: 50rem;
+    max-width: 40rem;
     left: 50%;
     margin-left: -17.5vw;
   }
 
   .animal-dolphin {
-    width: 45vw;
-    max-width: 60rem;
-    right: -10vw;
+    width: 50vw;
+    max-width: 50rem;
+    right: -5vw;
     top: 80%;
     transform: rotate(-5deg);
-    @media screen and (min-width: 1600px) {
-      right: 0;
-    }
   }
 }
 
@@ -142,10 +139,18 @@
   .make-padding();
   position: relative;
   background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
-  background-attachment: fixed;
+  background-size: cover;
+
+  .make-space-top {
+    .marginTop(6,4,3);
+  }
 
   .about-content {
     position: relative;
+
+    .intro-first-section {
+      margin-top: 4rem;
+    }
   }
 
   .icon-about-heading {
@@ -193,6 +198,7 @@
   }
 }
 
+@slideTime: 5s;
 .background-slideshow {
   position: absolute;
   top: 0;
@@ -201,12 +207,12 @@
 
   &.two-slides {
     .slide-1 {
-      animation: bg-slideshow 8s infinite;
+      animation: bg-slideshow @slideTime*2 infinite;
     }
 
     .slide-2 {
-      animation: bg-slideshow 8s infinite;
-      animation-delay: 4s;
+      animation: bg-slideshow @slideTime*2 infinite;
+      animation-delay: @slideTime;
     }
   }
 
@@ -226,6 +232,8 @@
 
   video {
     min-width: 100vw;
+    max-width: none;
+    min-height: 100%;
   }
 
 }
