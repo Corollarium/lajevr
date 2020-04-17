@@ -354,7 +354,6 @@
           </GLTFModel>
         </div>
         <div>
-          <Bubbles />
           <div>
             <div class="description">
               No inverno <nuxt-link to="/vida#manta">
