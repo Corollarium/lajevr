@@ -201,6 +201,7 @@
   }
 }
 
+@slideTime: 5s;
 .background-slideshow {
   position: absolute;
   top: 0;
@@ -209,12 +210,12 @@
 
   &.two-slides {
     .slide-1 {
-      animation: bg-slideshow 8s infinite;
+      animation: bg-slideshow @slideTime*2 infinite;
     }
 
     .slide-2 {
-      animation: bg-slideshow 8s infinite;
-      animation-delay: 4s;
+      animation: bg-slideshow @slideTime*2 infinite;
+      animation-delay: @slideTime;
     }
   }
 
