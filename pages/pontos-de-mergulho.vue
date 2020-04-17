@@ -183,10 +183,10 @@ export default {
       const r = name ? new RegExp(name, 'i') : null;
       return this.gallery.filter((i) => {
         // texto
-        if (r && i.description.search(r) === -1) {
-          return false;
+        if (r && i.description && i.description.search(r) !== -1) {
+          return true;
         }
-        return true;
+        return false;
       }, this);
     },
 
