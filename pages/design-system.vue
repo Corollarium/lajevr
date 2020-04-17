@@ -33,7 +33,40 @@
         <br>It protects a marine area off the coast of the state, and was the first such park to be created by São Paulo. It includes a rocky islet, tidal reefs and surrounding waters, with various areas suitable for diving, including a boat that was deliberately wrecked to form an artificial reef. The combination of warm surface waters and cold deeper waters supports a high level of biodiversity.
       </p>
     </section>
-    <section class="section">
+
+    <section
+      class="section"
+    >
+      <h2>Carrosel</h2>
+      <Carousel3D />
+    </section>
+
+    <section>
+      <!--slick
+        ref="slick"
+        :options="slickOptions"
+        @afterChange="handleAfterChange"
+        @beforeChange="handleBeforeChange"
+        @breakpoint="handleBreakpoint"
+        @destroy="handleDestroy"
+        @edge="handleEdge"
+        @init="handleInit"
+        @reInit="handleReInit"
+        @setPosition="handleSetPosition"
+        @swipe="handleSwipe"
+        @lazyLoaded="handleLazyLoaded"
+        @lazyLoadError="handleLazeLoadError"
+      >
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+        <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
+      </slick-->
+    </section>
+    <section
+      class="section"
+    >
       <h2 class="title is-2">
         Responsive
       </h2>
@@ -134,14 +167,17 @@
         <LanguagePicker />
       </section>
     </section>
+    </caro>
   </article>
 </template>
 
 <script>
 import LanguagePicker from '../components/LanguagePicker.vue';
+import Carousel3D from '../components/Carousel3D.vue';
 
 export default {
   components: {
+    Carousel3D,
     LanguagePicker
   }
 };

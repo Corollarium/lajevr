@@ -3,10 +3,24 @@
 @spacing: 8; //value in PX
 @gridWidth: 1280px;
 
-.marginTop (@value: 1) {
-  @sizeResult: @spacing * @value;
-  @remValue: @sizeResult / 16;
-  margin-top: ~"@{remValue}rem";
+.marginTop (@valuelg: 1, @valuemd: 1, @valuesm: 1) {
+  @sizeResultDesk: @spacing * @valuelg;
+  @sizeResultTablet:  @spacing * @valuemd;
+  @sizeResultMobile:  @spacing * @valuesm;
+
+  @remValueDesktop: @sizeResultDesk/ 16;
+  @remValueTablet: @sizeResultTablet / 16;
+  @remValueMobile: @sizeResultMobile / 16;
+
+  margin-top: ~"@{remValueDesktop}rem";
+
+  @media @tablet {
+    margin-top: ~"@{remValueTablet}rem";
+  }
+
+  @media @mobile {
+    margin-top: ~"@{remValueMobile}rem";
+  }
 }
 
 .marginBottom (@value: 1) {
@@ -101,6 +115,28 @@
   font-family: @mainFont;
 }
 
+@fade-color: darken(@primaryColor,25);
+
+.with-fade {
+  .fade-in, .fade-out {
+    display: block;
+    height: 30%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .fade-in {
+    top:0;
+    background-image: linear-gradient(to bottom,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
+
+  .fade-out {
+    bottom:0;
+    background-image: linear-gradient(to top,  @fade-color 0%, fade(@fade-color, 40) 60%,  fade(@fade-color, 0) 100%);
+  }
+}
+
 .fade-top-bottom {
 mask-image: linear-gradient(
   rgba(0,0,0,0) 0%,
@@ -126,13 +162,14 @@ mask-image: linear-gradient(
 
 .attribution {
   position: absolute;
-  bottom: 0;
+  bottom: .25rem;
   right: 0;
-  color: #000;
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background-color: fade(@primaryColor,80);
+  padding: .25rem .5rem;
   font-size: 70%;
   a {
-    color: #000;
+    color: #fff;
   }
 }
 

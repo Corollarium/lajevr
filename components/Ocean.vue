@@ -303,7 +303,7 @@ export default {
         spriteLaje = new THREE.Sprite(materialLaje);
         spriteLaje.center.set(0.5, 0.3);
         spriteLaje.renderDepth = -1;
-        const SCALE = 0.7;
+        const SCALE = 0.9;
         spriteLaje.scale.set(mapLaje.image.width * SCALE, mapLaje.image.height * SCALE, 1);
         spriteLaje.position.set(0, 0, 1);
         fitLaje();

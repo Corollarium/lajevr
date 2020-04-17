@@ -1,28 +1,168 @@
-.hero-image {
-  position: absolute;
-  width: 10rem;
-  top: 6rem;
-  left: 2rem;
+@scroll-ocean-vue: 1750px;
 
-  @media @mobile {
+.sticky-hero {
+  height: 320vh;
+  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  position: relative;
+
+  .sticky-hero-content {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+  }
+
+  .sticky-hero-attribution {
+    display: none;
+    margin: 0 auto;
+    position: absolute;
+    width: auto;
+    max-width: 1280px;
+  }
+
+  .sticky-back {
+    position: absolute;
+    min-height: 270vh;
+    min-height: calc(var(--vh, 1vh) * 270);
+    bottom: 0;
+    width: 100%;
+
+    video {
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}
+
+//apple-hero - poderá ser usado de fallback
+.hero-apple {
+  background:  url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
+  background-size: cover;
+
+  @media screen and (orientation: portrait) {
+    height: 500px;
+    .ilha-hero {
+      top: 70%;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    height: 140vh;
+  }
+
+  .ilha-hero {
+    position: absolute;
+    width: 90vw;
+    max-width: 1860px;
+    top: 40%;
     left: 50%;
-    margin-left: -5rem;
+    margin-left: -45vw;
+  }
+
+  .ilha-logo {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 256px;
+  }
+}
+
+.surface-dive {
+  position: relative;
+  min-height: 280px;
+  z-index: 1;
+  margin-top: -20%;
+  .surface-agua {
+    opacity: 1;
+    display: none;
+  }
+
+  &.after-3d {
+      margin-top: -(@scroll-ocean-vue/4); //ESSE EFEITO VAI PRECISAR SER REVISTO
+
+      .surface-agua {
+        opacity: 1;
+      }
+  }
+
+  .surface-espuma, .surface-agua {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    > img {
+      width: 100vw;
+      height: auto;
+    }
+  }
+
+  .surface-espuma > img {
+      margin-top: -28%;
+  }
+
+  .surface-agua > img {
+    margin-top: -3.5%;
+  }
+
+  [class*="animal"] {
+    position: absolute;
+  }
+
+  .animal-turtle {
+    max-width: 35rem;
+    width: 30vw;
+    top: 100%;
+    left: 0;
+  }
+
+  .animal-ray {
+    width: 35vw;
+    top: 10%;
+    max-width: 40rem;
+    left: 50%;
+    margin-left: -17.5vw;
+  }
+
+  .animal-dolphin {
+    width: 50vw;
+    max-width: 50rem;
+    right: -5vw;
+    top: 80%;
+    transform: rotate(-5deg);
   }
 }
 
 .about-section {
-  background: url('~assets/images/graphic-content/bg-about.jpg') no-repeat center;
+  .make-padding();
+  position: relative;
+  background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
   background-size: cover;
-}
 
-.icon-about-heading {
-  @media @desktop {
-    max-width: 15rem;
+  .make-space-top {
+    .marginTop(6,4,3);
   }
 
-  @media @responsiveDevices {
-    max-width: 10rem;
+  .about-content {
+    position: relative;
+
+    .intro-first-section {
+      margin-top: 4rem;
+    }
   }
+
+  .icon-about-heading {
+    @media @desktop {
+      max-width: 15rem;
+    }
+
+    @media @responsiveDevices {
+      max-width: 10rem;
+    }
+  }
+
 }
 
 .about-description {
@@ -58,14 +198,30 @@
   }
 }
 
+@slideTime: 5s;
 .background-slideshow {
   position: absolute;
   top: 0;
   bottom: 0;
   max-width: 100%;
 
+  &.two-slides {
+    .slide-1 {
+      animation: bg-slideshow @slideTime*2 infinite;
+    }
+
+    .slide-2 {
+      animation: bg-slideshow @slideTime*2 infinite;
+      animation-delay: @slideTime;
+    }
+  }
+
   figure {
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
     img {
       object-fit: cover;
@@ -74,19 +230,25 @@
     }
   }
 
+  video {
+    min-width: 100vw;
+    max-width: none;
+    min-height: 100%;
+  }
+
 }
 
-.over-image-box (@paddingD:5, @paddingM: 2) {
+.over-image-box (@paddingD: 5, @paddingM: 2) {
   position: relative;
   background-color: darken(fade(@primaryColor, 80), 15);
   border-radius: .5rem;
 
   @media @desktop {
-    .add-padding(@paddingD,@paddingD);
+    .add-padding(@paddingD, @paddingD);
   }
 
   @media @responsiveDevices {
-    .add-padding(@paddingM,@paddingM);
+    .add-padding(@paddingM, @paddingM);
 
   }
 }
@@ -98,10 +260,6 @@
 .section-dive-images {
   max-width: 56rem;
   margin: auto;
-
-  @media @mobile {
-    max-width: 80%;
-  }
 
   .image-circle-border {
     text-align: center;
@@ -120,8 +278,8 @@
       margin: -1rem auto;
       overflow: hidden;
       border-radius: 50%;
-      border: .25rem solid fade(darken(@primaryColor,10), 20);
-      box-shadow: 0px 8px 32px fade(lighten(@primaryColor,20), 30);
+      border: .25rem solid fade(darken(@primaryColor, 10), 20);
+      box-shadow: 0px 8px 32px fade(lighten(@primaryColor, 20), 30);
 
       @media @mobile {
         margin: 0;
@@ -129,7 +287,8 @@
     }
 
     .caption {
-      .over-image-box(2,1);
+      .over-image-box(2, 1);
+
       @media @mobile {
         display: none;
       }
@@ -148,10 +307,110 @@
     left: -4rem;
     margin-top: -6rem;
   }
+
   @media @mobile {
     left: -3rem;
     margin-top: -5rem;
   }
 }
 
+/**SECAO VIDA **/
+@vida-altura-imagem: 32rem;
 
+.vida-btn {
+  display: block;
+  margin: 1rem auto 0;
+}
+.image-fish {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 16px 32px fade(darken(@primaryColor, 35), 50);
+
+  @media @desktop {
+    height: @vida-altura-imagem;
+  }
+
+  @media @tablet {
+    height: @vida-altura-imagem*0.6;
+  }
+
+  @media @mobile {
+    height: @vida-altura-imagem*0.4;
+  }
+
+  img {
+    height: 100%;
+    max-width: none;
+  }
+
+  &.vida-top {
+    transform: translate3d(0,10%,0) scale(.9);
+
+    @media @mobile {
+      transform: translate3d(0,0,0) scale(1);
+    }
+  }
+
+  &.vida-bottom {
+    transform: translate3d(0,-10%,0) scale(.9);
+
+    @media @mobile {
+      transform: translate3d(0,0,0) scale(1);
+    }
+  }
+
+  &.vida-center {
+    @media @mobile {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.visit-text {
+  .about-description();
+  padding: 1rem;
+}
+
+.visit-image img {
+  padding: 1rem;
+  @media @mobile {
+    max-width: 20rem;
+    margin: auto;
+    display: block;
+  }
+
+  @media @desktop {
+    margin-left: 2rem;
+  }
+}
+
+.mantinha {
+  position: relative;
+  background-image: linear-gradient(45deg, darken(@primaryColor, 10) 108%, @primaryColor 59%, lighten(@primaryColor, 30) 32%);
+
+  .model-container {
+    min-height: 70vh;
+
+    @media @mobile {
+      min-height: 0;
+
+      canvas {
+        height: 50vh !important;
+      }
+    }
+  }
+
+  .description {
+    text-align: center;
+    max-width: 32rem;
+    display: block;
+    margin: auto;
+    .over-image-box(2, 1);
+    .font-responsive (20, 18, 16);
+
+    @media @mobile {
+      margin: 2rem auto;
+    }
+  }
+}

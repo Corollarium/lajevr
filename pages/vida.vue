@@ -19,6 +19,16 @@
       </div>
     </section>
 
+    <div class="rellax">
+      I’m that default chill speed of "-2"
+    </div>
+    <div class="rellax" data-rellax-speed="7">
+      I’m super fast!!
+    </div>
+    <div class="rellax" data-rellax-speed="-4">
+      I’m extra slow and smooth
+    </div>
+
     <div class="topbar-sticky">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
@@ -41,16 +51,18 @@
 
     <section id="intro" class="section-index section-base section-text">
       <p>
-        A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
-        É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
+        <i18n>
+          A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
+          É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas.
+        </i18n>
         <nuxt-link to="/especies">
-          Se estiver procurando espécies, veja a lista completa.
+          <i18n>Se estiver procurando espécies, veja a lista completa.</i18n>
         </nuxt-link>
       </p>
     </section>
 
     <section id="raias" class="section-index">
-      <section class="section-base section-text">
+      <section class="section-text">
         <h1>
           Raias
         </h1>
@@ -225,14 +237,24 @@
         </p>
 
         <figure class="figure-text">
-          <img src="~/assets/images/placeholder480.png">
+          <div bp="grid">
+            <div bp="6">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
+            </div>
+            <div bp="6">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
+            </div>
+          </div>
           <figcaption>
             <p>
               Raias-borboleta. Pode ser bem difícil diferenciar o macho da
               fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
               ou raias e tubarões, é que os machos possuem dois clásperes ou
               (pênis) que é possível ser visualizado na base da cauda dos machos
-              e ausente nas fêmeas.
+              e ausente nas fêmeas. Fotos: <a
+                href="https://www.instagram.com/marcelomigliari/"
+                target="_blank"
+              >Marcelo Migliari</a>
             </p>
           </figcaption>
         </figure>
@@ -331,6 +353,7 @@
 </template>
 
 <script>
+import Rellax from 'rellax';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 
@@ -345,13 +368,18 @@ export default {
 
   data () {
     return {
-      imageCardume
+      imageCardume,
+      lms: null,
+      rellax: null
     };
   },
 
   mounted () {
     this.head.title = this.$gettext('Vida na Laje de Santos');
     this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
+
+    this.rellax = new Rellax('.rellax');
+
     this.asideMenu();
   },
 

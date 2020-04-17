@@ -1,6 +1,6 @@
 <template>
   <section
-    class="gallery-card"
+    class="card"
   >
     <figure>
       <img :src="absoluteurl ? absoluteurl : base + url" v-if="type == 'image'" class="gallery-image">
@@ -44,7 +44,8 @@ export default {
     },
     url: {
       type: String,
-      required: true
+      required: false,
+      default: null
     },
     absoluteurl: {
       type: String,

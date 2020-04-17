@@ -1,45 +1,51 @@
-.modal {
+/** MODAL **/
+.modal-window {
   position: fixed;
-  z-index: 9998;
+  background-image: linear-gradient(to bottom, fade(@primaryColor, 95), 30%, fade(darken(@primaryColor, 20), 95) 60%);
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
+  z-index: 999;
+  transition: all 0.3s;
 
-  .modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-    height: 100%;
+  >.modal-inner {
+    width: auto;
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    background: @darkColor2;
+    overflow: hidden;
+    box-shadow: 0 10px 32px rgba(0,0,0,.3);
+
+    figure {
+      overflow: hidden;
+    }
+
+    .modal-caption {
+
+    }
   }
 
-  .modal-container {
-    width: 90%;
-    height: 90%;
-    margin: 0px auto;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
-    font-family: Helvetica, Arial, sans-serif;
-  }
+  .modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+    cursor: pointer;
 
-  .modal-header h3 {
-    margin-top: 0;
-    color: #42b983;
-  }
-
-  .modal-body {
-    margin: 20px 0;
-    max-height: 100%;
-  }
-
-  .modal-default-button {
-    float: right;
+    &:hover {
+      color: black;
+    }
   }
 
   .modal-enter {

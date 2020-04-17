@@ -41,6 +41,21 @@ export default {
       type: String,
       required: false,
       default: 'transparent'
+    },
+    autoRotate: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    initialAlpha: {
+      type: [Number, String],
+      required: false,
+      default: 'random'
+    },
+    inputEnabled: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
 
@@ -49,14 +64,25 @@ export default {
       // 3D
       engine: null,
       scene: null,
-      camera: null
+      camera: null,
+      container: null
     };
   },
 
-  mounted () {
-    const container = this.$el.querySelector('.object-3d');
+  watch: {
+    inputEnabled (newV) {
+      if (newV) {
+        this.camera.detachControl(this.container);
+      } else {
+        this.camera.attachControl(this.container);
+      }
+    }
+  },
 
-    this.engine = new BABYLON.Engine(container, true); // Generate the BABYLON 3D engine
+  mounted () {
+    this.container = this.$el.querySelector('.object-3d');
+
+    this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
@@ -68,7 +94,7 @@ export default {
     // Add a camera to the scene and attach it to the canvas
     this.camera = new BABYLON.ArcRotateCamera(
       'Camera',
-      Math.PI / 2, // alpha
+      isNaN(parseFloat(this.initialAlpha)) ? (Math.random() * 6) % (2 * Math.PI) : this.initialAlpha, // alpha
       Math.PI / 2, // beta
       80, // TODO: radius
       new BABYLON.Vector3(0, 0, 0), // target
@@ -82,8 +108,9 @@ export default {
     this.camera.keysUp.push('w'.charCodeAt(0));
     this.camera.keysUp.push('W'.charCodeAt(0));
 
-    // near/far
-    this.camera.attachControl(container, false);
+    if (this.inputEnabled) {
+      this.camera.attachControl(this.container, false);
+    }
 
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
@@ -115,7 +142,11 @@ export default {
           }
         }
       }
-      this.camera.radius = radius * 2.4;
+      let aspect = this.container.width / this.container.height;
+      if (aspect < 1.0) {
+        aspect = 1.0 / aspect;
+      }
+      this.camera.radius = radius * 2.8 * aspect;
     };
     loader.load();
 
@@ -126,7 +157,7 @@ export default {
     this.engine.runRenderLoop(() => {
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
-      if (loaded) {
+      if (loaded && this.autoRotate) {
         this.camera.alpha = (this.camera.alpha + deltaTime * 0.2) % (2 * Math.PI);
       }
 

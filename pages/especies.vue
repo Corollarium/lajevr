@@ -1,60 +1,39 @@
 <template>
-  <article class="container">
-    <h1 class="title">
-      Espécies
-    </h1>
-    <p>
-      <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
-    </p>
-    <ul>
-      <li>
-        <a
-          target="_blank"
-          href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
-        >Luiz, Osmar J., Alfredo Carvalho-Filho, Carlos E. L. Ferreira, Sergio R. Floeter, João Luiz Gasparini and Ivan Sazima. “The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation.” (2008)</a>
-      </li>
-      <li>
-        <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">
-          Laje de Santos, plano de manejo.
-        </a>
-      </li>
-    </ul>
+  <article bp="container">
+    <div bp="grid">
+      <div bp="12 6@md 5@lg">
+        <h1 class="subpage-title">
+          <i18n>Espécies</i18n>
+        </h1>
+        <p>
+          <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
+        </p>
+      </div>
 
-    <form id="filters" class="form">
-      <div class="field is-horizontal ">
-        <div class="field">
-          <div class="control">
-            <h3>
-              <i18n>
-                Filtros
-              </i18n>
-            </h3>
-          </div>
-        </div>
-        <div class="field-body" bp="grid">
-          <div class="field" bp="1 4@md">
+      <form id="filters" bp="12 6@md 7@lg" class="form">
+        <div bp="grid">
+          <div bp="5 7@md 4@lg">
             <label class="label">
               <i18n>
                 Nome
               </i18n>
             </label>
-            <div class="control has-icons-left">
-              <input v-model="filterSearch" class="input" type="text" placeholder="busque">
+            <div>
+              <input v-model="filterSearch" class="input" type="text" placeholder="Digite o nome">
               <span class="icon is-small is-left">
                 <font-awesome-icon :icon="['fas', 'search']" />
               </span>
             </div>
           </div>
-          <div class="field" bp="1 2@md">
-            <label class="label">
+
+          <div bp="4 5@md 3@lg">
+            <label>
               <i18n>
                 Cor
               </i18n>
             </label>
-            <div class="control">
-              <div
-                class="select"
-              >
+            <div>
+              <div>
                 <select
                   v-model="filterColor"
                   :style="{'background-color': filterColor}"
@@ -90,13 +69,13 @@
               </div>
             </div>
           </div>
-          <div class="field" bp="1 6@md">
-            <label class="label">
+          <div bp="12 5@lg">
+            <label>
               <i18n>
                 Tamanho (em cm)
               </i18n>
             </label>
-            <div id="slider-container" class="control">
+            <div id="slider-container" class="range-slider">
               <div>
                 <output>{{ minRange }}</output>
                 <output style="float: right;">{{ maxRange }}</output>
@@ -105,18 +84,19 @@
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
 
     <transition-group
       name="fauna-list"
       tag="div"
-      bp="grid 6@md 4@lg 3@xl"
+      bp="grid 6 4@md 3@lg"
+      class="section-base"
     >
-      <section
+      <div
         v-for="a in filteredAnimals"
         :key="a.name"
-        class="section section-fauna"
+        class="card fauna-card"
       >
         <figure>
           <img :src="a.absoluteurl ? a.absoluteurl : base + a.url" class="fauna-image">
@@ -132,12 +112,40 @@
             {{ a.othernames }}
           </span>
           <p class="fauna-size">
+            <font-awesome-icon :icon="['fas', 'ruler']" />
             {{ a.size }} cm
           </p>
         </div>
-        <p>{{ a.description }}</p>
-      </section>
+        <p v-if="a.description" class="fauna-description">
+          <font-awesome-icon :icon="['fas', 'info-circle']" />
+          {{ a.description }}
+        </p>
+        <span @click="showModalClick(a)" class="open-modal"><font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></span>
+      </div>
     </transition-group>
+    </div>
+    </transition-group>
+
+    <ul>
+      <li>
+        <a
+          target="_blank"
+          href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
+        >Luiz, Osmar J., Alfredo Carvalho-Filho, Carlos E. L. Ferreira, Sergio R. Floeter, João Luiz Gasparini and Ivan Sazima. “The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation.” (2008)</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">
+          Laje de Santos, plano de manejo.
+        </a>
+      </li>
+    </ul>
+
+    <div v-if="showModal" name="modal" class="modal-window">
+      <div class="modal-inner">
+        <span @click="showModal = false" title="Close" class="modal-close">X</span>
+        outras fotos do mesmo animal
+      </div>
+    </div>
   </article>
 </template>
 
@@ -170,7 +178,9 @@ export default {
           values: 7,
           density: 4
         }
-      }
+      },
+
+      showModal: false
     };
   },
 
@@ -207,54 +217,13 @@ export default {
       this.minRange = parseInt(values[0], 10);
       this.maxRange = parseInt(values[1], 10);
     });
+  },
+
+  methods: {
+    showModalClick (i) {
+      this.showModal = true;
+    }
   }
+
 };
 </script>
-
-<style lang="less" scoped>
-#filters {
-  margin-top: 1em;
-}
-
-#slider-container { // BG temporario até arrumar form
-  height: 5em;
-}
-
-.section-fauna {
-  width: 300px;
-  display: inline-block;
-  vertical-align: top;
-
-  .fauna-name {
-    font-variant: small-caps;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.25;
-  }
-
-  .fauna-info {
-    font-style: italic;
-    color: #999 ;
-  }
-}
-.control {
-  margin-right: 3em;
-}
-
-// Transitions
-.fauna-list-item {
-  transition: all 1s;
-  display: inline-block;
-  margin-right: 10px;
-}
-.fauna-list-enter, .fauna-list-leave-to{
-  opacity: 0;
-  transform: translateY(30px);
-}
-.fauna-list-leave-active {
-  position: absolute;
-}
-.fauna-list-move {
-  transition: transform 1s;
-}
-</style>
