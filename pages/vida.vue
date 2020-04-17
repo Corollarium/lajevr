@@ -237,14 +237,24 @@
         </p>
 
         <figure class="figure-text">
-          <img src="~/assets/images/placeholder480.png">
+          <div bp="grid">
+            <div bp="6">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
+            </div>
+            <div bp="6">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
+            </div>
+          </div>
           <figcaption>
             <p>
               Raias-borboleta. Pode ser bem difícil diferenciar o macho da
               fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
               ou raias e tubarões, é que os machos possuem dois clásperes ou
               (pênis) que é possível ser visualizado na base da cauda dos machos
-              e ausente nas fêmeas.
+              e ausente nas fêmeas. Fotos: <a
+                href="https://www.instagram.com/marcelomigliari/"
+                target="_blank"
+              >Marcelo Migliari</a>
             </p>
           </figcaption>
         </figure>
