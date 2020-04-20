@@ -59,6 +59,10 @@
     top: 40%;
     left: 50%;
     margin-left: -45vw;
+
+    @media @mobile {
+      top: 15em;
+    }
   }
 
   .ilha-logo {
@@ -66,6 +70,11 @@
     top: 20%;
     left: 10%;
     width: 256px;
+
+    @media @mobile {
+      width: 8rem;
+      top: 2.5rem;
+    }
   }
 }
 
@@ -73,10 +82,24 @@
   position: relative;
   min-height: 280px;
   z-index: 1;
-  margin-top: -20%;
+  margin-top: -20rem;
+
   .surface-agua {
     opacity: 1;
     display: none;
+  }
+
+  @media landscape and (min-width: 768px) {
+    margin-top: -20rem;
+  }
+
+  @media portrait and (min-width: 768px) {
+    margin-top: -0rem;
+  }
+
+  @media @mobile  {
+    margin-top: -10rem;
+    min-height: 5rem;
   }
 
   &.after-3d {
@@ -127,7 +150,7 @@
   }
 
   .animal-dolphin {
-    width: 50vw;
+    width: 45vw;
     max-width: 50rem;
     right: -5vw;
     top: 80%;

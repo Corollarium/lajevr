@@ -188,7 +188,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="8 6@md offset-3 offset-4@md" class="section-div-intro">
+        <div bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
           <h2 class="has-text-center">
             <i18n>
               Mergulho Virtual
