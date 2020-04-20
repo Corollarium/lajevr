@@ -128,7 +128,6 @@
             </figure>
           </div>
         </div>
-
         <div class="section-inner" bp="grid vertical-center">
           <div bp="12 5@md">
             <p class="boxed-description">

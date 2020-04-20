@@ -1,13 +1,12 @@
-@scroll-ocean-vue: 1750px;
+@scroll-ocean-vue: 96vh;
 
 .sticky-hero {
-  height: 320vh;
-  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  height: @scroll-ocean-vue;
   position: relative;
 
   .sticky-hero-content {
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: @scroll-ocean-vue;
+//    height: calc(var(--vh, 1vh) * 100);
     position: sticky;
     top: 0px;
     z-index: 2;
@@ -103,10 +102,12 @@
   }
 
   &.after-3d {
-      margin-top: -(@scroll-ocean-vue/4); //ESSE EFEITO VAI PRECISAR SER REVISTO
+      margin-top: 1rem;
+      z-index: 999; //Solucao que usei e deu certo(shame)
 
       .surface-agua {
         opacity: 1;
+        display: block;
       }
   }
 
