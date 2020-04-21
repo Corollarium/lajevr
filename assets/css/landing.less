@@ -1,13 +1,11 @@
-@scroll-ocean-vue: 1750px;
-
 .sticky-hero {
-  height: 320vh;
-  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  height: 250vh;
+  height: ~"calc(var(--vh, 1vh) * 250)"; // 100vh, screen, + 150vh scroll
   position: relative;
 
   .sticky-hero-content {
     height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: ~"calc(var(--vh, 1vh) * 100)";
     position: sticky;
     top: 0px;
     z-index: 2;
@@ -24,7 +22,7 @@
   .sticky-back {
     position: absolute;
     min-height: 270vh;
-    min-height: calc(var(--vh, 1vh) * 270);
+    min-height: ~"calc(var(--vh, 1vh) * 270)";
     bottom: 0;
     width: 100%;
 
@@ -38,74 +36,81 @@
 
 //apple-hero - poderá ser usado de fallback
 .hero-apple {
-  background:  url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
+  background: url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
   background-size: cover;
-
-  @media screen and (orientation: portrait) {
-    height: 500px;
-    .ilha-hero {
-      top: 70%;
-    }
-  }
-
-  @media screen and (orientation: landscape) {
-    height: 140vh;
-  }
+  height: 96vh;
 
   .ilha-hero {
     position: absolute;
     width: 90vw;
     max-width: 1860px;
-    top: 40%;
+    top: 45vh;
     left: 50%;
     margin-left: -45vw;
+
+    @media only screen and (min-height: 768px) {
+      top: 50vh;
+
+    }
+
+  }
+
+  @media @mobile {
+   height: 80vh;
+   background-size: cover;
   }
 
   .ilha-logo {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 10%;
-    width: 256px;
+    width: 15rem;
+
+    @media @mobile {
+      width: 8rem;
+      top: 2.5rem;
+    }
   }
 }
 
 .surface-dive {
   position: relative;
-  min-height: 280px;
+  min-height: 200px;
   z-index: 1;
-  margin-top: -20%;
-  .surface-agua {
-    opacity: 1;
-    display: none;
+  margin-top: -1.5rem;
+  width: 100%;
+
+  @media @mobile {
+    min-height: 150px;
   }
 
   &.after-3d {
-      margin-top: -(@scroll-ocean-vue/4); //ESSE EFEITO VAI PRECISAR SER REVISTO
-
-      .surface-agua {
-        opacity: 1;
-      }
+    z-index: 999; //Solucao que usei e deu certo(shame)
   }
 
-  .surface-espuma, .surface-agua {
+  .surface-espuma,
+  .surface-agua {
     position: absolute;
-    top: 0;
+    top: -1rem;
     right: 0;
     left: 0;
 
-    > img {
+    img {
       width: 100vw;
       height: auto;
     }
   }
 
-  .surface-espuma > img {
-      margin-top: -28%;
+  .surface-espuma img {
+    margin-top: -25%;
+    opacity: .75;
   }
+}
 
-  .surface-agua > img {
-    margin-top: -3.5%;
-  }
+.animals {
+  height: 800px;
+  overflow: hidden;
+  max-width: 100%;
 
   [class*="animal"] {
     position: absolute;
@@ -114,24 +119,42 @@
   .animal-turtle {
     max-width: 35rem;
     width: 30vw;
-    top: 100%;
+    top: 600px;
     left: 0;
+
+    @media @responsivePortrait {
+      width: 50vw;
+      left: -15vw;
+      top: 200px;
+    }
   }
 
   .animal-ray {
     width: 35vw;
-    top: 10%;
+    top: 200px;
     max-width: 40rem;
-    left: 50%;
+    left: 50vw;
     margin-left: -17.5vw;
+
+    @media @responsivePortrait {
+      top: 150px;
+      width: 60vw;
+      left: 45%;
+    }
   }
 
   .animal-dolphin {
-    width: 50vw;
+    width: 45vw;
     max-width: 50rem;
     right: -5vw;
-    top: 80%;
+    top: 400px;
     transform: rotate(-5deg);
+
+    @media @responsivePortrait {
+      width: 80vw;
+      right: -45vw;
+      top: 100px;
+    }
   }
 }
 
@@ -140,13 +163,15 @@
   position: relative;
   background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
   background-size: cover;
+  overflow: hidden;
 
   .make-space-top {
-    .marginTop(6,4,3);
+    .marginTop(6, 4, 3);
   }
 
   .about-content {
     position: relative;
+    overflow: hidden;
 
     .intro-first-section {
       margin-top: 4rem;
@@ -199,6 +224,7 @@
 }
 
 @slideTime: 5s;
+
 .background-slideshow {
   position: absolute;
   top: 0;
@@ -267,9 +293,17 @@
 
     &.side-image {
       margin-top: -4rem;
+      max-width: 90%;
 
       @media @mobile {
-        margin-top: -2rem;
+        margin-top: 0;
+      }
+    }
+
+    &.center-image {
+      transform: translate3d(0,0,0) scale(1.1);
+      @media @mobile {
+        transform: translate3d(0,0,0) scale(1.25);
       }
     }
 
@@ -321,6 +355,7 @@
   display: block;
   margin: 1rem auto 0;
 }
+
 .image-fish {
   width: 100%;
   overflow: hidden;
@@ -345,18 +380,18 @@
   }
 
   &.vida-top {
-    transform: translate3d(0,10%,0) scale(.9);
+    transform: translate3d(0, 10%, 0) scale(.9);
 
     @media @mobile {
-      transform: translate3d(0,0,0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
   }
 
   &.vida-bottom {
-    transform: translate3d(0,-10%,0) scale(.9);
+    transform: translate3d(0, -10%, 0) scale(.9);
 
     @media @mobile {
-      transform: translate3d(0,0,0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
   }
 
@@ -374,6 +409,7 @@
 
 .visit-image img {
   padding: 1rem;
+
   @media @mobile {
     max-width: 20rem;
     margin: auto;

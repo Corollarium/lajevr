@@ -1,6 +1,10 @@
 <template>
   <div>
-    <section v-show="!isApple" class="sticky-hero">
+    <section v-if="isApple" class="hero-apple">
+      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos CC SA 3.0, from https://commons.wikimedia.org/w/index.php?curid=40439744">
+    </section>
+    <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
         <div class="sticky-hero-attribution">
@@ -23,7 +27,6 @@
           </p>
         </div>
       </div>
-      <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
       <!--
       <div class="sticky-back">
         <video autoplay loop muted playsinline>
@@ -38,65 +41,20 @@
         </p>
       </div> -->
     </section>
-    <section v-show="isApple" class="hero-apple">
-      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
-      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos">
-      <!-- Eu só usei a ilha numa colagem de foto, reveja atribuição pfv BG
-        <div class="hero-html">
-        <section class="section-base">
-          <p class="attribution">
-            Photo
-            <a
-              href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
-              class="new"
-              title="User:Afcarv (page does not exist)"
-              target="_blank"
-            >Anael Ferraz de Carvalho</a>
-            -
-            <span class="int-own-work" lang="en">Own work</span>,
-            <a
-              href="https://creativecommons.org/licenses/by-sa/3.0"
-              title="Creative Commons Attribution-Share Alike 3.0"
-              target="_blank"
-            >CC BY-SA 3.0</a>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
-          </p>
-        </section>
-      </div> -->
-    </section>
 
     <!-- Seção que liga hero com conteúdo -->
+    <!-- TODO BG> Colocar o PNG do Background o mesmo usado no srcSet (para nao carregar 2x a mesma imagem) -->
     <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
       <div class="fade-out" />
       <div class="surface-agua">
-        <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" draggable="false" alt="Imagem contendo água do mar">
+        <div class="distorted-effect-containter">
+          <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
+        </div>
       </div>
-      <img
-        :src="graphicTartaruga.src"
-        :srcset="graphicTartaruga.srcSet"
-        class="animal-turtle rellax"
-        draggable="false"
-        alt="Tartatuga"
-        data-rellax-speed="-.5"
-      >
-      <img
-        :src="graphicGolfinho.src"
-        :srcset="graphicGolfinho.srcSet"
-        class="animal-dolphin rellax"
-        draggable="false"
-        alt="Golfinho"
-        data-rellax-speed="-.7"
-      >
-      <img
-        :src="graphicRaia.src"
-        :srcset="graphicRaia.srcSet"
-        class="animal-ray rellax"
-        draggable="false"
-        alt="Raia"
-        data-rellax-speed=".25"
-      >
       <div class="surface-espuma">
-        <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">
+        <div class="distorted-effect-containter">
+          <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
+        </div>
       </div>
     </section>
 
@@ -104,6 +62,33 @@
     <section class="about-section with-fade">
       <div class="fade-in" />
       <div class="fade-out" />
+      <div class="animals">
+        <img
+          :src="graphicTartaruga.src"
+          :srcset="graphicTartaruga.srcSet"
+          class="animal-turtle rellax"
+          draggable="false"
+          alt="Tartaruga"
+          data-rellax-speed="-.95"
+        >
+        <img
+          :src="graphicGolfinho.src"
+          :srcset="graphicGolfinho.srcSet"
+          class="animal-dolphin rellax"
+          draggable="false"
+          alt="Golfinho"
+          data-rellax-speed="-.7"
+        >
+        <img
+          :src="graphicRaia.src"
+          :srcset="graphicRaia.srcSet"
+          class="animal-ray rellax"
+          draggable="false"
+          alt="Raia"
+          data-rellax-speed=".45"
+        >
+      </div>
+
       <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
@@ -128,7 +113,6 @@
             </figure>
           </div>
         </div>
-
         <div class="section-inner" bp="grid vertical-center">
           <div bp="12 5@md">
             <p class="boxed-description">
@@ -188,7 +172,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="8 6@md offset-3 offset-4@md" class="section-div-intro">
+        <div data-aos="fade-up" bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
           <h2 class="has-text-center">
             <i18n>
               Mergulho Virtual
@@ -213,7 +197,7 @@
 
       <div bp="grid" class="section-dive-images">
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha01.src" :srcset="imageMergulhoBolha01.srcSet" draggable="false" alt="Tartaruga na Laje de Santos">
             <figcaption class="caption">
               <i18n>Veja espécies presentes na laje como tartarugas, mantas e golfinhos.</i18n>
@@ -221,7 +205,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border">
+          <figure data-aos="zoom-out-up" data-aos-duration="500" data-aos-easing="ease-out" class="image image-circle-border center-image">
             <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
             <figcaption class="caption">
               <i18n>Mergulhe virtualmente entre cardumes e recifes de corais.</i18n>
@@ -229,7 +213,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>

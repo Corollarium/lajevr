@@ -176,8 +176,8 @@ export default {
     },
 
     scroll (x, y) {
-      if (this.shouldRender) {
-        const bbox = this.container.getBoundingClientRect();
+      const bbox = this.container.getBoundingClientRect();
+      if (this.shouldRender && window.scrollY < bbox.height * 1.5) { // 250vh - 100vh
         const offset = (window.scrollY - bbox.top) / bbox.height;
         this.camera.position.y = 6 - offset * 3;
       }
