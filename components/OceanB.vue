@@ -14,8 +14,6 @@ import OceanPostProcess from './OceanPostProcess';
 import Bowser from "bowser";
 /* eslint-enable */
 
-// const MAX_SCROLL_Y = 1500; // comes from @scroll-ocean-vue
-
 export default {
   props: {
     forceLoad: {

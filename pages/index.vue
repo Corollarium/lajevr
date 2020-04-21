@@ -62,34 +62,34 @@
     <section class="about-section with-fade">
       <div class="fade-in" />
       <div class="fade-out" />
-      <div bp="container" class="about-content">
-        <div class="animals">
-          <img
-            :src="graphicTartaruga.src"
-            :srcset="graphicTartaruga.srcSet"
-            class="animal-turtle rellax"
-            draggable="false"
-            alt="Tartatuga"
-            data-rellax-speed="-.5"
-          >
-          <img
-            :src="graphicGolfinho.src"
-            :srcset="graphicGolfinho.srcSet"
-            class="animal-dolphin rellax"
-            draggable="false"
-            alt="Golfinho"
-            data-rellax-speed="-.7"
-          >
-          <img
-            :src="graphicRaia.src"
-            :srcset="graphicRaia.srcSet"
-            class="animal-ray rellax"
-            draggable="false"
-            alt="Raia"
-            data-rellax-speed=".45"
-          >
-        </div>
+      <div class="animals">
+        <img
+          :src="graphicTartaruga.src"
+          :srcset="graphicTartaruga.srcSet"
+          class="animal-turtle rellax"
+          draggable="false"
+          alt="Tartaruga"
+          data-rellax-speed="-.95"
+        >
+        <img
+          :src="graphicGolfinho.src"
+          :srcset="graphicGolfinho.srcSet"
+          class="animal-dolphin rellax"
+          draggable="false"
+          alt="Golfinho"
+          data-rellax-speed="-.7"
+        >
+        <img
+          :src="graphicRaia.src"
+          :srcset="graphicRaia.srcSet"
+          class="animal-ray rellax"
+          draggable="false"
+          alt="Raia"
+          data-rellax-speed=".45"
+        >
+      </div>
 
+      <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
         </figure>

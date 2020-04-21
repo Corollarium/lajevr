@@ -78,9 +78,10 @@
   min-height: 200px;
   z-index: 1;
   margin-top: -1.5rem;
+  width: 100%;
 
   @media @mobile {
-    min-height: 500px;
+    min-height: 150px;
   }
 
   &.after-3d {
@@ -162,6 +163,7 @@
   position: relative;
   background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
   background-size: cover;
+  overflow: hidden;
 
   .make-space-top {
     .marginTop(6, 4, 3);
