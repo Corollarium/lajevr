@@ -172,7 +172,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
+        <div data-aos="fade-up" bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
           <h2 class="has-text-center">
             <i18n>
               Mergulho Virtual
@@ -197,7 +197,7 @@
 
       <div bp="grid" class="section-dive-images">
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha01.src" :srcset="imageMergulhoBolha01.srcSet" draggable="false" alt="Tartaruga na Laje de Santos">
             <figcaption class="caption">
               <i18n>Veja espécies presentes na laje como tartarugas, mantas e golfinhos.</i18n>
@@ -205,7 +205,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border center-image">
+          <figure data-aos="zoom-out-up" data-aos-duration="500" data-aos-easing="ease-out" class="image image-circle-border center-image">
             <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
             <figcaption class="caption">
               <i18n>Mergulhe virtualmente entre cardumes e recifes de corais.</i18n>
@@ -213,7 +213,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
