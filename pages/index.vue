@@ -93,7 +93,7 @@
         class="animal-ray rellax"
         draggable="false"
         alt="Raia"
-        data-rellax-speed=".25"
+        data-rellax-speed=".45"
       >
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" draggable="false" alt="Gráfico representando as ondas do mar">

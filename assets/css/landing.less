@@ -1,4 +1,4 @@
-@scroll-ocean-vue: 96vh;
+@scroll-ocean-vue: 98vh;
 
 .sticky-hero {
   height: @scroll-ocean-vue;
@@ -77,8 +77,12 @@
   }
 
   &.after-3d {
-    margin-top: 1rem;
+    margin-top: 0;
     z-index: 999; //Solucao que usei e deu certo(shame)
+
+    @media @mobile {
+      margin-top: -1rem;
+    }
   }
 
   .surface-espuma,
