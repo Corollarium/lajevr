@@ -74,30 +74,42 @@
           <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
         </div>
       </div>
-      <img
-        :src="graphicTartaruga.src"
-        :srcset="graphicTartaruga.srcSet"
-        class="animal-turtle rellax"
-        draggable="false"
-        alt="Tartatuga"
-        data-rellax-speed="-.5"
-      >
-      <img
-        :src="graphicGolfinho.src"
-        :srcset="graphicGolfinho.srcSet"
-        class="animal-dolphin rellax"
-        draggable="false"
-        alt="Golfinho"
-        data-rellax-speed="-.7"
-      >
-      <img
-        :src="graphicRaia.src"
-        :srcset="graphicRaia.srcSet"
-        class="animal-ray rellax"
-        draggable="false"
-        alt="Raia"
-        data-rellax-speed=".45"
-      >
+      <div data-rellax-speed="-.5">
+        <img
+          :src="graphicTartaruga.src"
+          :srcset="graphicTartaruga.srcSet"
+          data-aos="slide-left"
+          data-aos-easing="ease-out"
+          data-aos-duration="400"
+          class="animal-turtle rellax"
+          draggable="false"
+          alt="Tartatuga"
+        >
+      </div>
+      <div data-rellax-speed="-.7">
+        <img
+          :src="graphicGolfinho.src"
+          :srcset="graphicGolfinho.srcSet"
+          data-aos="slide-right"
+          data-aos-easing="ease-out"
+          data-aos-duration="300"
+          class="animal-dolphin rellax"
+          draggable="false"
+          alt="Golfinho"
+        >
+      </div>
+      <div data-rellax-speed=".45">
+        <img
+          :src="graphicRaia.src"
+          :srcset="graphicRaia.srcSet"
+          data-aos="zoom-out-down"
+          data-aos-easing="ease-out"
+          data-aos-duration="200"
+          class="animal-ray rellax"
+          draggable="false"
+          alt="Raia"
+        >
+      </div>
       <div class="surface-espuma">
         <div class="distorted-effect-containter">
           <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
@@ -192,7 +204,7 @@
       </div>
 
       <div bp="grid">
-        <div bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
+        <div data-aos="fade-up" bp="10 6@md offset-2 offset-4@md" class="section-div-intro">
           <h2 class="has-text-center">
             <i18n>
               Mergulho Virtual
@@ -217,7 +229,7 @@
 
       <div bp="grid" class="section-dive-images">
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha01.src" :srcset="imageMergulhoBolha01.srcSet" draggable="false" alt="Tartaruga na Laje de Santos">
             <figcaption class="caption">
               <i18n>Veja espécies presentes na laje como tartarugas, mantas e golfinhos.</i18n>
@@ -225,7 +237,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border center-image">
+          <figure data-aos="zoom-out-up" data-aos-duration="500" data-aos-easing="ease-out" class="image image-circle-border center-image">
             <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
             <figcaption class="caption">
               <i18n>Mergulhe virtualmente entre cardumes e recifes de corais.</i18n>
@@ -233,7 +245,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border side-image">
+          <figure data-aos="zoom-out" data-aos-duration="200" data-aos-easing="ease-out" class="image image-circle-border side-image">
             <img :src="imageMergulhoBolha03.src" :srcset="imageMergulhoBolha03.srcSet" draggable="false" alt="Naufrágio Moréia">
             <figcaption class="caption">
               <i18n>Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil.</i18n>
