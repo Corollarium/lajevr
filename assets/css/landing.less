@@ -1,14 +1,15 @@
 @scroll-ocean-vue: 1500px;
 
 .sticky-hero {
-  height: 320vh;
-  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
-  height: calc(var(--vh, 1vh) * 100 + @scroll-ocean-vue);
+  height: 250vh;
+  height: ~"calc(var(--vh, 1vh) * 250)";
+  // height: ~"calc(100vh + @{scroll-ocean-vue})"; // 1 screeen + scroll height in ocean.vue
+  // height: ~"calc(var(--vh, 1vh) * 100 + @{scroll-ocean-vue})";
   position: relative;
 
   .sticky-hero-content {
     height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: ~"calc(var(--vh, 1vh) * 100)";
     position: sticky;
     top: 0px;
     z-index: 2;
@@ -25,7 +26,7 @@
   .sticky-back {
     position: absolute;
     min-height: 270vh;
-    min-height: calc(var(--vh, 1vh) * 270);
+    min-height: ~"calc(var(--vh, 1vh) * 270)";
     bottom: 0;
     width: 100%;
 
@@ -100,6 +101,12 @@
     margin-top: -25%;
     opacity: .75;
   }
+}
+
+.animals {
+  height: 800px;
+  overflow: hidden;
+  max-width: 100%;
 
   [class*="animal"] {
     position: absolute;
@@ -114,7 +121,7 @@
     @media @responsivePortrait {
       width: 50vw;
       left: -15vw;
-      top: 300px;
+      top: 200px;
     }
   }
 
@@ -142,7 +149,7 @@
     @media @responsivePortrait {
       width: 80vw;
       right: -45vw;
-      top: 200px;
+      top: 100px;
     }
   }
 }
@@ -159,6 +166,7 @@
 
   .about-content {
     position: relative;
+    overflow: hidden;
 
     .intro-first-section {
       margin-top: 4rem;
