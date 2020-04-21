@@ -71,24 +71,20 @@
   position: relative;
   min-height: 280px;
   z-index: 1;
+  margin-top: -1.5rem;
 
   @media @mobile {
     min-height: 5rem;
   }
 
   &.after-3d {
-    margin-top: 0;
     z-index: 999; //Solucao que usei e deu certo(shame)
-
-    @media @mobile {
-      margin-top: -1rem;
-    }
   }
 
   .surface-espuma,
   .surface-agua {
     position: absolute;
-    top: 0;
+    top: -1rem;
     right: 0;
     left: 0;
 
@@ -99,7 +95,7 @@
   }
 
   .surface-espuma img {
-    margin-top: -26%;
+    margin-top: -25%;
     opacity: .75;
   }
 

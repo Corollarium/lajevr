@@ -66,6 +66,7 @@
     </section>
 
     <!-- Seção que liga hero com conteúdo -->
+    <!-- TODO BG> Colocar o PNG do Background o mesmo usado no srcSet (para nao carregar 2x a mesma imagem) -->
     <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
       <div class="fade-out" />
       <div class="surface-agua">
