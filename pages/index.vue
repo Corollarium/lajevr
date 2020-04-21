@@ -1,32 +1,6 @@
 <template>
   <div>
-    <section v-if="isApple" class="hero-apple">
-      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
-      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos">
-      <!-- Eu só usei a ilha numa colagem de foto, reveja atribuição pfv BG
-        <div class="hero-html">
-        <section class="section-base">
-          <p class="attribution">
-            Photo
-            <a
-              href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
-              class="new"
-              title="User:Afcarv (page does not exist)"
-              target="_blank"
-            >Anael Ferraz de Carvalho</a>
-            -
-            <span class="int-own-work" lang="en">Own work</span>,
-            <a
-              href="https://creativecommons.org/licenses/by-sa/3.0"
-              title="Creative Commons Attribution-Share Alike 3.0"
-              target="_blank"
-            >CC BY-SA 3.0</a>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
-          </p>
-        </section>
-      </div> -->
-    </section>
-    <section v-else class="sticky-hero">
+    <section v-show="!isApple" class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
         <div class="sticky-hero-attribution">
@@ -64,6 +38,32 @@
         </p>
       </div> -->
     </section>
+    <section v-show="isApple" class="hero-apple">
+      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos">
+      <!-- Eu só usei a ilha numa colagem de foto, reveja atribuição pfv BG
+        <div class="hero-html">
+        <section class="section-base">
+          <p class="attribution">
+            Photo
+            <a
+              href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
+              class="new"
+              title="User:Afcarv (page does not exist)"
+              target="_blank"
+            >Anael Ferraz de Carvalho</a>
+            -
+            <span class="int-own-work" lang="en">Own work</span>,
+            <a
+              href="https://creativecommons.org/licenses/by-sa/3.0"
+              title="Creative Commons Attribution-Share Alike 3.0"
+              target="_blank"
+            >CC BY-SA 3.0</a>
+            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
+          </p>
+        </section>
+      </div> -->
+    </section>
 
     <!-- Seção que liga hero com conteúdo -->
     <!-- TODO BG> Colocar o PNG do Background o mesmo usado no srcSet (para nao carregar 2x a mesma imagem) -->
@@ -74,42 +74,30 @@
           <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
         </div>
       </div>
-      <div data-rellax-speed="-.5">
-        <img
-          :src="graphicTartaruga.src"
-          :srcset="graphicTartaruga.srcSet"
-          data-aos="slide-left"
-          data-aos-easing="ease-out"
-          data-aos-duration="400"
-          class="animal-turtle rellax"
-          draggable="false"
-          alt="Tartatuga"
-        >
-      </div>
-      <div data-rellax-speed="-.7">
-        <img
-          :src="graphicGolfinho.src"
-          :srcset="graphicGolfinho.srcSet"
-          data-aos="slide-right"
-          data-aos-easing="ease-out"
-          data-aos-duration="300"
-          class="animal-dolphin rellax"
-          draggable="false"
-          alt="Golfinho"
-        >
-      </div>
-      <div data-rellax-speed=".45">
-        <img
-          :src="graphicRaia.src"
-          :srcset="graphicRaia.srcSet"
-          data-aos="zoom-out-down"
-          data-aos-easing="ease-out"
-          data-aos-duration="200"
-          class="animal-ray rellax"
-          draggable="false"
-          alt="Raia"
-        >
-      </div>
+      <img
+        :src="graphicTartaruga.src"
+        :srcset="graphicTartaruga.srcSet"
+        class="animal-turtle rellax"
+        draggable="false"
+        alt="Tartatuga"
+        data-rellax-speed="-.5"
+      >
+      <img
+        :src="graphicGolfinho.src"
+        :srcset="graphicGolfinho.srcSet"
+        class="animal-dolphin rellax"
+        draggable="false"
+        alt="Golfinho"
+        data-rellax-speed="-.7"
+      >
+      <img
+        :src="graphicRaia.src"
+        :srcset="graphicRaia.srcSet"
+        class="animal-ray rellax"
+        draggable="false"
+        alt="Raia"
+        data-rellax-speed=".45"
+      >
       <div class="surface-espuma">
         <div class="distorted-effect-containter">
           <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
