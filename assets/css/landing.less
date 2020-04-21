@@ -40,15 +40,22 @@
 //apple-hero - poderá ser usado de fallback
 .hero-apple {
   background: url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
+  background-size: cover;
   height: 96vh;
 
   .ilha-hero {
     position: absolute;
     width: 90vw;
     max-width: 1860px;
-    top: 45%;
+    top: 45vh;
     left: 50%;
     margin-left: -45vw;
+
+    @media only screen and (min-height: 768px) {
+      top: 50vh;
+
+    }
+
   }
 
   @media @mobile {
