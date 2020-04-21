@@ -58,3 +58,37 @@
     transform: translate3d(0,0,0) scale(1.1);
   }
 }
+
+.distorted-effect-container {
+  overflow: hidden;
+}
+
+.distorted-effect {
+  transform-origin: center center;
+  animation: distorted 4s ease-in-out alternate infinite;
+}
+
+.delay-2s {
+  animation-delay: 2s;
+}
+
+@keyframes distorted {
+  0%,
+  100% {
+    transform: translate3d(0,0,0) skew(0deg, 0deg) scale(1.35, 1.35);
+    filter: saturate(100%) invert(0%);
+  }
+
+  25% {
+    filter: saturate(180%) invert(10%);
+  }
+
+  50% {
+    transform: translate3d(0,0,0)  skew(1.5deg, 1.5deg) scale(1.35, 1.35);
+    filter: saturate(100%) invert(0%);
+  }
+
+  75% {
+    filter: saturate(150%) invert(20%);
+  }
+}

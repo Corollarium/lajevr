@@ -36,6 +36,8 @@
 @mobile: ~"only screen and (max-width: "@tabletSize - 1 ~")";
 @tablet: ~"only screen and (min-width: @{tabletSize}) and (max-width:" @desktopSize - 1 ~")";
 @responsiveDevices: ~"only screen and (max-width: "@desktopSize - 1 ~")";
+@responsiveLandscape: ~"only screen and (orientation: landscape) and (max-width: "@desktopSize - 1 ~")";
+@responsivePortrait:  ~"only screen and (orientation: portrait) and (max-width: "@desktopSize - 1 ~")";
 @desktop: ~"only screen and (min-width: @{desktopSize})";
 @desktopSmall: ~"only screen and (min-width: @{desktopSize}) and (max-width:" @desktopBigSize - 1 ~")";
 @desktopBig: ~"only screen and (min-width: @{desktopBigSize})";
