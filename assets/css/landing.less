@@ -6,7 +6,7 @@
 
   .sticky-hero-content {
     height: @scroll-ocean-vue;
-//    height: calc(var(--vh, 1vh) * 100);
+    //    height: calc(var(--vh, 1vh) * 100);
     position: sticky;
     top: 0px;
     z-index: 2;
@@ -37,38 +37,28 @@
 
 //apple-hero - poderá ser usado de fallback
 .hero-apple {
-  background:  url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
-  background-size: cover;
-
-  @media screen and (orientation: portrait) {
-    height: 500px;
-    .ilha-hero {
-      top: 70%;
-    }
-  }
-
-  @media screen and (orientation: landscape) {
-    height: 140vh;
-  }
+  background: url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
+  height: 96vh;
 
   .ilha-hero {
     position: absolute;
     width: 90vw;
     max-width: 1860px;
-    top: 40%;
+    top: 45%;
     left: 50%;
     margin-left: -45vw;
+  }
 
-    @media @mobile {
-      top: 15em;
-    }
+  @media @mobile {
+   height: 80vh;
+   background-size: cover;
   }
 
   .ilha-logo {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 10%;
-    width: 256px;
+    width: 15rem;
 
     @media @mobile {
       width: 8rem;
@@ -81,53 +71,35 @@
   position: relative;
   min-height: 280px;
   z-index: 1;
-  margin-top: -20rem;
 
-  .surface-agua {
-    opacity: 1;
-    display: none;
-  }
-
-  @media landscape and (min-width: 768px) {
-    margin-top: -20rem;
-  }
-
-  @media portrait and (min-width: 768px) {
-    margin-top: -0rem;
-  }
-
-  @media @mobile  {
-    margin-top: -10rem;
+  @media @mobile {
     min-height: 5rem;
   }
 
   &.after-3d {
-      margin-top: 1rem;
-      z-index: 999; //Solucao que usei e deu certo(shame)
-
-      .surface-agua {
-        opacity: 1;
-        display: block;
-      }
+    margin-top: 1rem;
+    z-index: 999; //Solucao que usei e deu certo(shame)
   }
 
-  .surface-espuma, .surface-agua {
+  .surface-espuma,
+  .surface-agua {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
 
-    > img {
+    >img {
       width: 100vw;
       height: auto;
     }
   }
 
-  .surface-espuma > img {
-      margin-top: -28%;
+  .surface-espuma>img {
+    margin-top: -28%;
+    opacity: .9;
   }
 
-  .surface-agua > img {
+  .surface-agua>img {
     margin-top: -3.5%;
   }
 
@@ -166,7 +138,7 @@
   background-size: cover;
 
   .make-space-top {
-    .marginTop(6,4,3);
+    .marginTop(6, 4, 3);
   }
 
   .about-content {
@@ -223,6 +195,7 @@
 }
 
 @slideTime: 5s;
+
 .background-slideshow {
   position: absolute;
   top: 0;
@@ -345,6 +318,7 @@
   display: block;
   margin: 1rem auto 0;
 }
+
 .image-fish {
   width: 100%;
   overflow: hidden;
@@ -369,18 +343,18 @@
   }
 
   &.vida-top {
-    transform: translate3d(0,10%,0) scale(.9);
+    transform: translate3d(0, 10%, 0) scale(.9);
 
     @media @mobile {
-      transform: translate3d(0,0,0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
   }
 
   &.vida-bottom {
-    transform: translate3d(0,-10%,0) scale(.9);
+    transform: translate3d(0, -10%, 0) scale(.9);
 
     @media @mobile {
-      transform: translate3d(0,0,0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
   }
 
@@ -398,6 +372,7 @@
 
 .visit-image img {
   padding: 1rem;
+
   @media @mobile {
     max-width: 20rem;
     margin: auto;
