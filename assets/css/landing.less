@@ -278,8 +278,13 @@
       margin-top: -4rem;
 
       @media @mobile {
-        margin-top: -2rem;
+        margin-top: 0;
+        max-width: 90%;
       }
+    }
+
+    &.center-image {
+      transform: translate3d(0,0,0) scale(1.5);
     }
 
     img {

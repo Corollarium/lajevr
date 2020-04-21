@@ -225,7 +225,7 @@
           </figure>
         </div>
         <div bp="4">
-          <figure class="image image-circle-border">
+          <figure class="image image-circle-border center-image">
             <img :src="imageMergulhoBolha02.src" :srcset="imageMergulhoBolha02.srcSet" draggable="false" alt="Cardume de peixes">
             <figcaption class="caption">
               <i18n>Mergulhe virtualmente entre cardumes e recifes de corais.</i18n>
