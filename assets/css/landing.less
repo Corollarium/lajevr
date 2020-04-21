@@ -284,7 +284,10 @@
     }
 
     &.center-image {
-      transform: translate3d(0,0,0) scale(1.5);
+      transform: translate3d(0,0,0) scale(1.1);
+      @media @mobile {
+        transform: translate3d(0,0,0) scale(1.25);
+      }
     }
 
     img {
