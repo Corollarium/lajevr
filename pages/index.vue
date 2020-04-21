@@ -2,29 +2,7 @@
   <div>
     <section v-if="isApple" class="hero-apple">
       <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
-      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos">
-      <!-- Eu só usei a ilha numa colagem de foto, reveja atribuição pfv BG
-        <div class="hero-html">
-        <section class="section-base">
-          <p class="attribution">
-            Photo
-            <a
-              href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
-              class="new"
-              title="User:Afcarv (page does not exist)"
-              target="_blank"
-            >Anael Ferraz de Carvalho</a>
-            -
-            <span class="int-own-work" lang="en">Own work</span>,
-            <a
-              href="https://creativecommons.org/licenses/by-sa/3.0"
-              title="Creative Commons Attribution-Share Alike 3.0"
-              target="_blank"
-            >CC BY-SA 3.0</a>
-            <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
-          </p>
-        </section>
-      </div> -->
+      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos CC SA 3.0, from https://commons.wikimedia.org/w/index.php?curid=40439744">
     </section>
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
@@ -49,7 +27,6 @@
           </p>
         </div>
       </div>
-      <!-- img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo" -->
       <!--
       <div class="sticky-back">
         <video autoplay loop muted playsinline>

@@ -1,10 +1,6 @@
-@scroll-ocean-vue: 1500px;
-
 .sticky-hero {
   height: 250vh;
-  height: ~"calc(var(--vh, 1vh) * 250)";
-  // height: ~"calc(100vh + @{scroll-ocean-vue})"; // 1 screeen + scroll height in ocean.vue
-  // height: ~"calc(var(--vh, 1vh) * 100 + @{scroll-ocean-vue})";
+  height: ~"calc(var(--vh, 1vh) * 250)"; // 100vh, screen, + 150vh scroll
   position: relative;
 
   .sticky-hero-content {
@@ -72,7 +68,7 @@
 
 .surface-dive {
   position: relative;
-  min-height: 800px;
+  min-height: 200px;
   z-index: 1;
   margin-top: -1.5rem;
 
