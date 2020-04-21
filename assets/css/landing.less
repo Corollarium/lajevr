@@ -69,12 +69,12 @@
 
 .surface-dive {
   position: relative;
-  min-height: 280px;
+  min-height: 800px;
   z-index: 1;
   margin-top: -1.5rem;
 
   @media @mobile {
-    min-height: 5rem;
+    min-height: 500px;
   }
 
   &.after-3d {
@@ -106,24 +106,25 @@
   .animal-turtle {
     max-width: 35rem;
     width: 30vw;
-    top: 100%;
+    top: 600px;
     left: 0;
 
     @media @responsivePortrait {
       width: 50vw;
       left: -15vw;
-      top: 80%;
+      top: 300px;
     }
   }
 
   .animal-ray {
     width: 35vw;
-    top: 10%;
+    top: 200px;
     max-width: 40rem;
-    left: 50%;
+    left: 50vw;
     margin-left: -17.5vw;
 
     @media @responsivePortrait {
+      top: 150px;
       width: 60vw;
       left: 45%;
     }
@@ -133,12 +134,13 @@
     width: 45vw;
     max-width: 50rem;
     right: -5vw;
-    top: 80%;
+    top: 400px;
     transform: rotate(-5deg);
 
     @media @responsivePortrait {
       width: 80vw;
       right: -45vw;
+      top: 200px;
     }
   }
 }
