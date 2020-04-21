@@ -14,6 +14,8 @@ import OceanPostProcess from './OceanPostProcess';
 import Bowser from "bowser";
 /* eslint-enable */
 
+const MAX_SCROLL_Y = 1500; // comes from @scroll-ocean-vue
+
 export default {
   props: {
     forceLoad: {
@@ -176,7 +178,7 @@ export default {
     },
 
     scroll (x, y) {
-      if (this.shouldRender) {
+      if (this.shouldRender && window.scrollY < MAX_SCROLL_Y) {
         const bbox = this.container.getBoundingClientRect();
         const offset = (window.scrollY - bbox.top) / bbox.height;
         this.camera.position.y = 6 - offset * 3;

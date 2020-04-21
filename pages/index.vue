@@ -549,8 +549,7 @@ export default {
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     this.rellax = new Rellax('.rellax');
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isApple = true;
-    browser.satisfies({
+    this.isApple = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'

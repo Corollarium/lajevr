@@ -1,12 +1,14 @@
-@scroll-ocean-vue: 98vh;
+@scroll-ocean-vue: 1500px;
 
 .sticky-hero {
-  height: @scroll-ocean-vue;
+  height: 320vh;
+  height: calc(100vh + @scroll-ocean-vue); // 1 screeen + scroll height in ocean.vue
+  height: calc(var(--vh, 1vh) * 100 + @scroll-ocean-vue);
   position: relative;
 
   .sticky-hero-content {
-    height: @scroll-ocean-vue;
-    //    height: calc(var(--vh, 1vh) * 100);
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     position: sticky;
     top: 0px;
     z-index: 2;
