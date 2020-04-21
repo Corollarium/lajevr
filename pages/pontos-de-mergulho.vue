@@ -1,7 +1,7 @@
 <template>
   <article class="dive-container">
     <aside class="dive-aside">
-      <section class="section-base">
+      <section class="dive-point-info">
         <div v-show="selectedSite == -1">
           <h1>
             <i18n>
@@ -33,7 +33,7 @@
         <div
           v-show="selectedSite != -1"
         >
-          <h2 class="subtitle is-3">
+          <h2>
             {{ selectedSiteData.name }}
           </h2>
           <div>
