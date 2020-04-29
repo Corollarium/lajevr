@@ -36,12 +36,15 @@
   }
 }
 
+/**MENU DA PAGINA VIDA **/
 .topbar-sticky {
   width: 100%;
   display: flex;
   position: sticky;
-  top: 1px;
-  background-color: rgba(0.0, 0.0, 0.0, 0.7);
+  top: 0;
+  background-image: linear-gradient(to right, fade(darken(@primaryColor, 15), 70) 10%, fade(darken(@primaryColor, 20), 90), fade(darken(@primaryColor, 15), 70) 90%);
+  box-shadow: 0 .25rem 20px fade(@secondaryColor-2, 15);
+  padding-top: 1rem;
 
   .topbar-list {
     margin: 0 auto;
