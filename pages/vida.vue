@@ -21,22 +21,34 @@
       </p>
     </section>
 
-    <div class="topbar-sticky">
+    <div class="topbar-sticky menu-with-icons">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
           <a class="pure-menu-link" href="#intro">Introdução</a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="raias">
-          <a class="pure-menu-link" href="#manta">Raias</a>
+          <a class="pure-menu-link" href="#manta">
+            <img class="menu-icon" alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
+            Raias
+          </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="turtles">
-          <a class="pure-menu-link" href="#turtles">Tartarugas</a>
+          <a class="pure-menu-link" href="#turtles">
+            <img class="menu-icon" alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
+            Tartarugas
+          </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="dolphins">
-          <a class="pure-menu-link" href="#dolphins">Golfinhos</a>
+          <a class="pure-menu-link" href="#dolphins">
+            <img class="menu-icon" alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
+            Golfinhos
+          </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="birds">
-          <a class="pure-menu-link" href="#birds">Aves</a>
+          <a class="pure-menu-link" href="#birds">
+            <img class="menu-icon" alt="Icone de um pássaros" src="~static/images/graficos/bird.svg">
+            Aves
+          </a>
         </li>
       </ul>
     </div>
@@ -55,15 +67,16 @@
 
     <section id="raias" class="section-index">
       <section class="section-text">
-        <h1>
+        <h2>
+          <img alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
           Raias
-        </h1>
+        </h2>
       </section>
 
       <section class="section-base section-text">
-        <h2>
+        <h3>
           Raia-Manta
-        </h2>
+        </h3>
 
         <div class="especie-info">
           <p>Espécie: Mobula birostris</p>
@@ -120,9 +133,9 @@
       </section>
 
       <section class="section-base section-text">
-        <h2>
+        <h3>
           Raia-chita
-        </h2>
+        </h3>
 
         <div class="especie-info">
           <p>Espécie: Aetobatus narinari</p>
@@ -151,9 +164,9 @@
       </section>
 
       <section class="section-base section-text">
-        <h2>
+        <h3>
           Raia-prego
-        </h2>
+        </h3>
 
         <div class="especie-info">
           <p>Espécie: Dasyatis centroura</p>
@@ -203,9 +216,9 @@
       </section>
 
       <section class="section-base section-text">
-        <h2>
+        <h3>
           Raia-borboleta
-        </h2>
+        </h3>
 
         <div class="especie-info">
           <p>Espécie: Gymnura altavela</p>
@@ -256,6 +269,7 @@
     <section id="turtles" class="section-index">
       <section class="section-base section-text">
         <h2>
+          <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
           Tartarugas
         </h2>
         <p>
@@ -306,6 +320,7 @@
     <section id="dolphins" class="section-index">
       <section class="section-base section-text">
         <h2>
+          <img alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
           Golfinhos
         </h2>
         <p>
@@ -333,6 +348,7 @@
     <section id="birds" class="section-index">
       <section class="section-base section-text">
         <h2>
+          <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
           Aves
         </h2>
 
