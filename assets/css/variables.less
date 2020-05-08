@@ -41,3 +41,10 @@
 @desktop: ~"only screen and (min-width: @{desktopSize})";
 @desktopSmall: ~"only screen and (min-width: @{desktopSize}) and (max-width:" @desktopBigSize - 1 ~")";
 @desktopBig: ~"only screen and (min-width: @{desktopBigSize})";
+
+
+.mobile-hidden {
+  @media @mobile {
+    display: none;
+  }
+}

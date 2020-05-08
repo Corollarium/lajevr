@@ -1,5 +1,7 @@
 .horizontal-menu {
-  .pure-menu-link, .pure-menu-link:visited {
+
+  .pure-menu-link,
+  .pure-menu-link:visited {
     color: lighten(@secondaryColor-2, 20);
     text-transform: uppercase;
     font-weight: @regular;
@@ -24,10 +26,7 @@
       font-weight: bold;
       border-color: @secondaryColor-2;
       background-color: transparent;
-
-      @media @desktop {
-        border-bottom: .25rem inset @secondaryColor-2;
-      }
+      border-bottom: .25rem inset @secondaryColor-2;
     }
 
     @media @responsiveDevices {

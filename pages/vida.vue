@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="pagina-vida">
     <section class="hero">
       <div class="hero-body hero-vida">
         <figure>
@@ -24,7 +24,7 @@
     <div class="topbar-sticky menu-with-icons">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
-          <a class="pure-menu-link" href="#intro">Introdução</a>
+          <a class="pure-menu-link" href="#intro">Intro<span class="mobile-hidden">dução</span></a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="raias">
           <a class="pure-menu-link" href="#manta">
@@ -67,7 +67,7 @@
 
     <section id="raias" class="section-index">
       <section class="section-text">
-        <h2>
+        <h2 class="title-specimen">
           <img alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
           Raias
         </h2>
@@ -268,7 +268,7 @@
 
     <section id="turtles" class="section-index">
       <section class="section-base section-text">
-        <h2>
+        <h2 class="title-specimen">
           <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
           Tartarugas
         </h2>
@@ -319,7 +319,7 @@
 
     <section id="dolphins" class="section-index">
       <section class="section-base section-text">
-        <h2>
+        <h2 class="title-specimen">
           <img alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
           Golfinhos
         </h2>
@@ -347,7 +347,7 @@
 
     <section id="birds" class="section-index">
       <section class="section-base section-text">
-        <h2>
+        <h2 class="title-specimen">
           <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
           Aves
         </h2>
