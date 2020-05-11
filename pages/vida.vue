@@ -27,7 +27,7 @@
           <a class="pure-menu-link" href="#intro">Intro<span class="mobile-hidden">dução</span></a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="raias">
-          <a class="pure-menu-link" href="#manta">
+          <a class="pure-menu-link" href="#raias">
             <img class="menu-icon" alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
             Raias
           </a>
