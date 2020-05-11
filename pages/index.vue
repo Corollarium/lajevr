@@ -7,6 +7,7 @@
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
+        <Clouds />
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
           <p class="attribution">
@@ -453,6 +454,7 @@ import Rellax from 'rellax';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
+import Clouds from '~/components/Clouds.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 
@@ -480,6 +482,7 @@ export default {
   components: {
     Timeline,
     Ocean,
+    Clouds,
     GLTFModel,
     Bubbles
   },
