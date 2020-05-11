@@ -27,19 +27,6 @@
           </p>
         </div>
       </div>
-      <!--
-      <div class="sticky-back">
-        <video autoplay loop muted playsinline>
-          <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.31.mp4">
-        </video>
-        <p class="attribution">
-          Video
-          <a
-            href="https://www.instagram.com/deia_morales/"
-            target="_blank"
-          >Andréa Pontes</a>
-        </p>
-      </div> -->
     </section>
 
     <!-- Seção que liga hero com conteúdo -->

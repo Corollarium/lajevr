@@ -81,7 +81,7 @@
   width: 100%;
 
   @media @mobile {
-    min-height: 150px;
+    min-height: 100px;
   }
 
   &.after-3d {
@@ -108,9 +108,13 @@
 }
 
 .animals {
-  height: 800px;
+  height: 400px;
   overflow: hidden;
   max-width: 100%;
+
+  @media @responsivePortrait {
+    height: 200px;
+  }
 
   [class*="animal"] {
     position: absolute;
@@ -119,26 +123,26 @@
   .animal-turtle {
     max-width: 35rem;
     width: 30vw;
-    top: 600px;
+    top: 200px;
     left: 0;
 
     @media @responsivePortrait {
-      width: 50vw;
+      width: 45vw;
       left: -15vw;
-      top: 200px;
+      top: 100px;
     }
   }
 
   .animal-ray {
     width: 35vw;
-    top: 200px;
+    top: 100px;
     max-width: 40rem;
     left: 50vw;
     margin-left: -17.5vw;
 
     @media @responsivePortrait {
-      top: 150px;
-      width: 60vw;
+      top: 50px;
+      width: 50vw;
       left: 45%;
     }
   }
@@ -147,7 +151,7 @@
     width: 45vw;
     max-width: 50rem;
     right: -5vw;
-    top: 400px;
+    top: 250px;
     transform: rotate(-5deg);
 
     @media @responsivePortrait {
