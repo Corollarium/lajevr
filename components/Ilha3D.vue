@@ -214,7 +214,6 @@ export default {
   },
 
   beforeDestroy () {
-    // TODO window.removeEventListener('mousedown', t
     window.removeEventListener('resize', this.onWindowResize);
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;
@@ -226,7 +225,6 @@ export default {
       this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
       this.camera.updateProjectionMatrix();
 
-      this.controls.handleResize();
       this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     }
   }
