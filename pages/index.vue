@@ -7,7 +7,7 @@
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
-        <Clouds />
+        <Clouds /> <!-- TODO BG Ajustar nuvens no modelo 3D -->
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
           <p class="attribution">
@@ -136,7 +136,8 @@
             </p>
           </div>
           <div>
-            <figure class="image">
+            <figure class="image about-profundidade">
+              <Clouds />
               <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
             </figure>
           </div>

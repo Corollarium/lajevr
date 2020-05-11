@@ -6,30 +6,36 @@
 </template>
 
 <style lang="less" scoped>
-
 .cloud-animation {
   overflow-x: hidden;
   width: 100%;
-  height: auto;
-  position: relative;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
 
-   .clouds-a, .clouds-b {
-     top: 0;
-     position: absolute;
-     animation: cloudsMovement 5s infinite;
-   }
-   .clouds-b {
-     right: 0;
-   }
+  .clouds-a,
+  .clouds-b {
+    top: 0;
+    position: absolute;
+    animation: cloudsMovement 40s infinite linear;
+  }
+  .clouds-a {
+    left: 0;
+  }
+
+  .clouds-b {
+    left: 100%;
+  }
 }
 
 @keyframes cloudsMovement {
   0% {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 </style>
