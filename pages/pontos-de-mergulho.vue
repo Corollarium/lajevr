@@ -179,11 +179,22 @@ export default {
       if (this.selectedSite === -1) {
         return [];
       }
+      function replaceSpecialChars (str) {
+        str = str.replace(/[ÀÁÂÃÄÅ]/, 'A');
+        str = str.replace(/[àáâãäå]/, 'a');
+        str = str.replace(/[ÈÉÊË]/, 'E');
+        str = str.replace(/[Ç]/, 'C');
+        str = str.replace(/[ç]/, 'c');
+        return str.replace(/[^a-z0-9]/gi, '');
+      }
       const name = this.diveSites[this.selectedSite].name;
-      const r = name ? new RegExp(name, 'i') : null;
+      const r = name ? new RegExp(replaceSpecialChars(name), 'i') : null;
       return this.gallery.filter((i) => {
         // texto
-        if (r && i.description && i.description.search(r) !== -1) {
+        if (r && i.description && replaceSpecialChars(i.description).search(r) !== -1) {
+          return true;
+        }
+        if (r && i.name && replaceSpecialChars(i.name).search(r) !== -1) {
           return true;
         }
         return false;
