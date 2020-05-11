@@ -7,7 +7,7 @@
 
 <style lang="less" scoped>
 .cloud-animation {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   left: 0;
