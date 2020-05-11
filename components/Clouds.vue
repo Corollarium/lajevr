@@ -13,6 +13,14 @@
   left: 0;
   top: 0;
   position: absolute;
+  mask-image:
+  linear-gradient(to right,
+   rgba(0,0,0,0) 0%,
+   rgba(0,0,0,.2) 10%,
+   rgba(0,0,0,1) 30%,
+   rgba(0,0,0,1) 70%,
+   rgba(0,0,0,.5) 80%,
+   rgba(0,0,0,0) 100%);
 
   .clouds-a,
   .clouds-b {
