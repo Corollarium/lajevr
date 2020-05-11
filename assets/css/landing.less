@@ -191,10 +191,23 @@
       max-width: 10rem;
     }
   }
+
   .about-profundidade {
     position: relative;
-    padding-top: 200px;
-    height: 300px;
+    height: 16rem;
+    @media @desktop {
+      margin-top: 4rem;
+    }
+
+    figure {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    @media @responsiveDevices {
+      height: 15rem;
+    }
   }
 
 }

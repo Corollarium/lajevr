@@ -135,10 +135,10 @@
               <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
             </p>
           </div>
-          <div>
-            <figure class="image about-profundidade">
-              <Clouds />
-              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
+          <div class="about-profundidade">
+            <Clouds />
+            <figure class="image">
+              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
             </figure>
           </div>
         </div>
