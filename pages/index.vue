@@ -1,7 +1,9 @@
 <template>
   <div>
     <section v-if="isApple" class="hero-apple">
+      <Clouds />
       <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageMar.src" :srcset="imageMar.srcSet" class="ilha-mar" draggable="false" alt="Água do mar da Laje">
       <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos CC SA 3.0, from https://commons.wikimedia.org/w/index.php?curid=40439744">
     </section>
     <section v-else class="sticky-hero">
@@ -461,6 +463,7 @@ import Bubbles from '~/components/Bubbles.vue';
 
 // import Globe from '~/components/Globe.vue';
 const imageIlha = require('~/assets/images/graficos/laje-ilha.png?resize');
+const imageMar = require('~/assets/images/backgrounds/sea.jpg?resize');
 const introSurfaceA = require('~/assets/images/graficos/intro-surface-a.png?resize');
 const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resize');
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
@@ -493,6 +496,7 @@ export default {
   data () {
     return {
       imageIlha,
+      imageMar,
       introSurfaceA,
       introSurfaceB,
       graphicTartaruga,

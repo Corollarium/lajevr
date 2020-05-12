@@ -48,28 +48,31 @@
 
 //apple-hero - poderá ser usado de fallback
 .hero-apple {
-  background: url("~assets/images/backgrounds/hero-bg.jpg") no-repeat center center;
-  background-size: cover;
+  background-image: linear-gradient(to bottom, lighten(@secondaryColor-2, 40), lighten(@secondaryColor-2, 30), darken(@secondaryColor-2, 10) 60%);
   height: 96vh;
+  overflow: hidden;
+  position: relative;
+
+  @media @mobile {
+    height: 80vh;
+  }
 
   .ilha-hero {
     position: absolute;
-    width: 90vw;
+    width: 90%;
     max-width: 1860px;
-    top: 45vh;
+    bottom: 32%;
     left: 50%;
-    margin-left: -45vw;
-
-    @media only screen and (min-height: 768px) {
-      top: 50vh;
-
-    }
-
+    margin-left: -45%;
   }
 
-  @media @mobile {
-   height: 80vh;
-   background-size: cover;
+  .ilha-mar {
+    position: absolute;
+    height: 35%;
+    bottom: 0;
+    min-width: 100%;
+    max-width: none;
+    width: auto;
   }
 }
 
@@ -91,7 +94,6 @@
   .surface-espuma,
   .surface-agua {
     position: absolute;
-    top: -1rem;
     right: 0;
     left: 0;
 

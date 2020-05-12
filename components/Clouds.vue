@@ -12,22 +12,22 @@
 .cloud-animation {
   overflow: hidden;
   width: 100%;
-  height: 90%;
+  height: 100%;
   left: 0;
   top: 0;
   position: absolute;
   mask-image:
   linear-gradient(to right,
    rgba(0,0,0,0) 0%,
-   rgba(0,0,0,.2) 10%,
-   rgba(0,0,0,1) 30%,
-   rgba(0,0,0,1) 70%,
-   rgba(0,0,0,.5) 80%,
+   rgba(0,0,0,1) 20%,
+   rgba(0,0,0,1) 80%,
    rgba(0,0,0,0) 100%);
 
   .clouds-a,
   .clouds-b {
     top: 0;
+    max-width: none;
+    min-height: 100%;
     opacity: .7;
     position: absolute;
     animation: cloudsMovement @tempoAnimacao infinite linear;
