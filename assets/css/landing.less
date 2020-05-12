@@ -51,10 +51,12 @@
   background-image: linear-gradient(to bottom, lighten(@secondaryColor-2, 40), lighten(@secondaryColor-2, 30), darken(@secondaryColor-2, 10) 60%);
   height: 96vh;
   overflow: hidden;
+  margin-bottom: -3rem;
   position: relative;
 
   @media @mobile {
     height: 80vh;
+    margin-top: -1.5rem;
   }
 
   .ilha-hero {
@@ -80,7 +82,7 @@
   position: relative;
   min-height: 200px;
   z-index: 1;
-  margin-top: -1.5rem;
+  margin-top: -1rem;
   width: 100%;
 
   @media @mobile {
@@ -95,17 +97,19 @@
   .surface-agua {
     position: absolute;
     right: 0;
+    top: -50vh; //Para aparecer a espuma da agua sem dar overflow hidden
+    padding-top: 50vh;
     left: 0;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
+    overflow: hidden;
   }
 
   .surface-espuma img {
-    margin-top: -25%;
     opacity: .75;
+    margin-top: -25%;
+  }
+
+  .surface-agua img {
+    opacity: .95;
   }
 }
 
