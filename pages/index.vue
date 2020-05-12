@@ -36,12 +36,12 @@
     <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
       <div class="fade-out" />
       <div class="surface-agua">
-        <div class="distorted-effect-containter">
+        <div class="distorted-effect-container">
           <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
         </div>
       </div>
       <div class="surface-espuma">
-        <div class="distorted-effect-containter">
+        <div class="distorted-effect-container">
           <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
         </div>
       </div>

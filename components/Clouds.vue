@@ -1,9 +1,9 @@
 <template>
   <div class="cloud-animation">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a slow-clouds">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b slow-clouds">
     <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a">
     <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b">
+    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a slow-clouds">
+    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b slow-clouds">
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 .cloud-animation {
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 90%;
   left: 0;
   top: 0;
   position: absolute;
@@ -42,7 +42,7 @@
 
   .slow-clouds {
     opacity: .4;
-    animation: cloudsAppear @tempoAnimacao/4 linear, cloudsMovement @tempoAnimacao*.6 infinite linear;
+    animation: cloudsAppear @tempoAnimacao/4 linear, cloudsMovement-B @tempoAnimacao*.6 infinite linear;
   }
 }
 
@@ -58,11 +58,11 @@
 
 @keyframes cloudsMovement-B {
   0% {
-    transform: translate3d(0, 0, 0), scaleX(-1);
+    transform: translate3d(0, 0, 0) scale(-1, -1);
   }
 
   100% {
-    transform: translate3d(-100%, 0, 0), scaleX(-1);
+    transform: translate3d(-100%, 0, 0) scale(-1, -1);
   }
 }
 
