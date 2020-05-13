@@ -107,7 +107,8 @@
   .surface-agua img {
     opacity: .95;
   }
-  .animals { //HEIGHT REM BASED / margin top controls rellax
+
+  .animals { //HEIGHT REM BASED / top controls rellax
     width: 100%;
     position: absolute;
     height: 40rem;
@@ -127,10 +128,12 @@
       max-width: 35rem;
       width: 30vw;
       left: 0;
+      top: 10rem;
 
       @media @responsivePortrait {
         width: 45vw;
         left: -15vw;
+        top: -1rem;
       }
     }
 
@@ -139,11 +142,12 @@
       max-width: 40rem;
       left: 50vw;
       margin-left: -17.5vw;
-      margin-top: 5rem;
+      top: 8rem;
 
       @media @responsivePortrait {
         width: 50vw;
         left: 45%;
+        top: 6rem;
       }
     }
 
@@ -151,11 +155,12 @@
       width: 45vw;
       max-width: 50rem;
       right: -5vw;
-      margin-top: 0rem;
+      top: 6rem;
 
       @media @responsivePortrait {
         width: 80vw;
         right: -45vw;
+        top: 0;
       }
     }
   }
@@ -170,7 +175,7 @@
   overflow: hidden;
 
   @media @responsivePortrait {
-    padding-top: 10rem !important; //animals spacing
+    padding-top: 12rem !important; //animals spacing
   }
 
   .make-space-top {

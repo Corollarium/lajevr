@@ -45,14 +45,14 @@
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
-      <div class="animals">
+      <div :class="{'animals': true, 'rellax-apple': !isApple}">
         <img
           :src="graphicTartaruga.src"
           :srcset="graphicTartaruga.srcSet"
           class="animal-turtle rellax"
           draggable="false"
           alt="Tartaruga"
-          data-rellax-speed="-.95"
+          data-rellax-speed="-.75"
         >
         <img
           :src="graphicGolfinho.src"
