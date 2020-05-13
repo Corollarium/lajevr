@@ -8,9 +8,7 @@
     </section>
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
-        <div style="display: none;">
-          <Ocean />
-        </div> <!-- temp senao nao consigo mexer -->
+        <Ocean />
         <Clouds /> <!-- TODO BG Ajustar nuvens no modelo 3D -->
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
