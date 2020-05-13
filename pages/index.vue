@@ -9,7 +9,7 @@
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
-        <Clouds /> <!-- TODO BG Ajustar nuvens no modelo 3D -->
+        <!-- TODO <Clouds /> BG Ajustar nuvens no modelo 3D -->
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
           <p class="attribution">
@@ -509,6 +509,8 @@ export default {
       imageGraficoEstrelaMar,
       boatFigure,
       isApple: false,
+      isSafari: false,
+      isIos: false,
       rellax: null
     };
   },
@@ -519,17 +521,15 @@ export default {
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     this.rellax = new Rellax('.rellax');
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isApple = browser.satisfies({
+    const osName = browser.getOSName(true);
+    this.isIos = osName === 'ios';
+    this.isSafari = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
-      },
-
-      // per platform (mobile, desktop or tablet)
-      mobile: {
-        safari: '>=9'
       }
     });
+    this.isApple = this.isIos || this.isSafari;
   }
 
 };
