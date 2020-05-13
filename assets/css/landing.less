@@ -80,14 +80,9 @@
 
 .surface-dive {
   position: relative;
-  min-height: 200px;
   z-index: 1;
-  margin-top: -1rem;
   width: 100%;
 
-  @media @mobile {
-    min-height: 100px;
-  }
 
   &.after-3d {
     z-index: 999; //Solucao que usei e deu certo(shame)
@@ -99,6 +94,7 @@
     right: 0;
     top: -50vh; //Para aparecer a espuma da agua sem dar overflow hidden
     padding-top: 50vh;
+    margin-top: -1rem;
     left: 0;
     overflow: hidden;
   }
@@ -111,69 +107,71 @@
   .surface-agua img {
     opacity: .95;
   }
-}
-
-.animals {
-  height: 400px;
-  overflow: hidden;
-  max-width: 100%;
-
-  @media @responsivePortrait {
-    height: 200px;
-  }
-
-  [class*="animal"] {
+  .animals { //HEIGHT REM BASED / margin top controls rellax
+    width: 100%;
     position: absolute;
-  }
-
-  .animal-turtle {
-    max-width: 35rem;
-    width: 30vw;
-    top: 200px;
-    left: 0;
+    height: 40rem;
+    top: 2.5rem;
+    overflow: hidden;
 
     @media @responsivePortrait {
+      height: 28rem;
+      top: 0
+    }
+
+    [class*="animal"] {
+      position: absolute;
+    }
+
+    .animal-turtle {
+      max-width: 35rem;
+      width: 30vw;
+      left: 0;
+
+      @media @responsivePortrait {
+        width: 45vw;
+        left: -15vw;
+      }
+    }
+
+    .animal-ray {
+      width: 35vw;
+      max-width: 40rem;
+      left: 50vw;
+      margin-left: -17.5vw;
+      margin-top: 5rem;
+
+      @media @responsivePortrait {
+        width: 50vw;
+        left: 45%;
+      }
+    }
+
+    .animal-dolphin {
       width: 45vw;
-      left: -15vw;
-      top: 100px;
-    }
-  }
+      max-width: 50rem;
+      right: -5vw;
+      margin-top: 0rem;
 
-  .animal-ray {
-    width: 35vw;
-    top: 100px;
-    max-width: 40rem;
-    left: 50vw;
-    margin-left: -17.5vw;
-
-    @media @responsivePortrait {
-      top: 50px;
-      width: 50vw;
-      left: 45%;
-    }
-  }
-
-  .animal-dolphin {
-    width: 45vw;
-    max-width: 50rem;
-    right: -5vw;
-    top: 250px;
-    transform: rotate(-5deg);
-
-    @media @responsivePortrait {
-      width: 80vw;
-      right: -45vw;
-      top: 100px;
+      @media @responsivePortrait {
+        width: 80vw;
+        right: -45vw;
+      }
     }
   }
 }
 
 .about-section {
   .make-padding();
+  padding-top: 32rem !important; //animals spacing
   position: relative;
   background: url("~assets/images/backgrounds/bg-about.jpg") no-repeat center center;
   background-size: cover;
   overflow: hidden;
+
+  @media @responsivePortrait {
+    padding-top: 10rem !important; //animals spacing
+  }
 
   .make-space-top {
     .marginTop(6, 4, 3);

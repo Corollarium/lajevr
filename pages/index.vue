@@ -8,7 +8,9 @@
     </section>
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
-        <Ocean />
+        <div style="display: none;">
+          <Ocean />
+        </div> <!-- temp senao nao consigo mexer -->
         <Clouds /> <!-- TODO BG Ajustar nuvens no modelo 3D -->
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
@@ -43,12 +45,6 @@
       <div class="surface-espuma">
         <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section with-fade">
-      <div class="fade-in" />
-      <div class="fade-out" />
       <div class="animals">
         <img
           :src="graphicTartaruga.src"
@@ -75,7 +71,11 @@
           data-rellax-speed=".45"
         >
       </div>
-
+    </section>
+    <!-- About Section -->
+    <section class="about-section with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
       <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
