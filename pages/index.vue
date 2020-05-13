@@ -328,7 +328,8 @@
               Você pode encontrar mais informações sobre visitação e compra de ingressos,
               visitando o
             </i18n>
-            <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank"><i18n>site da Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
+            <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank">
+              <i18n>site da Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
             </a>.
           </p>
         </div>
@@ -352,7 +353,7 @@
         <div>
           <div>
             <div class="description">
-              No inverno <nuxt-link to="/vida#manta">
+              No inverno <nuxt-link to="/vida#raias">
                 as raias mantas
               </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
             </div>

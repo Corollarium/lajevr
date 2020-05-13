@@ -83,6 +83,7 @@ export default {
       this.plane.position.z = 251;
       const lajeMaterial = new BABYLON.StandardMaterial('lajeMaterial', this.scene);
       lajeMaterial.diffuseTexture = new BABYLON.Texture('./textures/ocean/Laje_de_Santos_transp_1024x128.png', this.scene, true);
+
       lajeMaterial.diffuseTexture.hasAlpha = true;
       lajeMaterial.useAlphaFromDiffuseTexture = true;
       this.plane.material = lajeMaterial;
@@ -121,7 +122,10 @@ export default {
     this.shouldRender = true;
     this.engine.runRenderLoop(() => {
       if (this.shouldRender) {
+        const elapsedTime = this.engine.getDeltaTime() / 1000.0;
+        const layerAnimationScale = 100.0;
         this.fps = this.engine.getFps().toFixed();
+        this.layer.texture.uOffset += elapsedTime / layerAnimationScale;
         this.scene.render();
       }
     });
