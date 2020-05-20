@@ -30,37 +30,43 @@
             <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
           </p>
         </div>
-        <div
-          v-show="selectedSite != -1"
-        >
-          <h2>
-            {{ selectedSiteData.name }}
-          </h2>
-          <div>
-            <p class="dive-dificuldade">
-              {{ selectedSiteData.dificuldade }}
-            </p>
-            <p class="dive-coordinates">
-              Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
-            </p>
-            <p>
-              <span class="dive-description">{{ selectedSiteData.description }}</span>
-            </p>
+        <transition name="fade-in-up">
+          <div
+            v-if="swapping"
+          >
+            <div
+              v-show="selectedSite != -1"
+            >
+              <h2>
+                {{ selectedSiteData.name }}
+              </h2>
+              <div>
+                <p class="dive-dificuldade">
+                  {{ selectedSiteData.dificuldade }}
+                </p>
+                <p class="dive-coordinates">
+                  Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
+                </p>
+                <p>
+                  <span class="dive-description">{{ selectedSiteData.description }}</span>
+                </p>
+              </div>
+              <div>
+                <GalleryCard
+                  v-for="(a, i) in filteredGallery"
+                  :key="i"
+                  v-bind:creator="a.creator"
+                  v-bind:creatorLink="a.creatorLink"
+                  v-bind:license="a.license"
+                  v-bind:url="a.url"
+                  v-bind:absoluteurl="a.absoluteurl"
+                  v-bind:description="a.description"
+                  v-bind:type="a.type"
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <GalleryCard
-              v-for="(a, i) in filteredGallery"
-              :key="i"
-              v-bind:creator="a.creator"
-              v-bind:creatorLink="a.creatorLink"
-              v-bind:license="a.license"
-              v-bind:url="a.url"
-              v-bind:absoluteurl="a.absoluteurl"
-              v-bind:description="a.description"
-              v-bind:type="a.type"
-            />
-          </div>
-        </div>
+        </transition>
       </section>
     </aside>
 
@@ -91,6 +97,7 @@ export default {
     return {
       gallery: galleryData,
       selectedSite: -1,
+      swapping: false,
       diveSites: [
         { name: 'Portinho',
           lat: -24.318083,
@@ -216,9 +223,16 @@ export default {
 
   methods: {
     pick (diveSite) {
+      this.swapping = !this.swapping;
       for (let i = 0; i < this.diveSites.length; i++) {
         if (this.diveSites[i].name === diveSite) {
-          this.selectedSite = i;
+          this.$nextTick(() => {
+            setTimeout(() => {
+              this.selectedSite = i;
+              this.swapping = true;
+            },
+            500);
+          });
           break;
         }
       }
