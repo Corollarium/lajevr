@@ -102,7 +102,7 @@
         <figure>
           <img :src="a.absoluteurl ? a.absoluteurl : base + a.url" class="fauna-image">
           <figcaption v-if="a.creator" class="attribution">
-            <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
+            <i18n>foto por</i18n> <a :href="a.creatorLink" target="_blank">{{ a.creator }}</a> {{ a.license }}
           </figcaption>
         </figure>
         <div class="fauna-name">
