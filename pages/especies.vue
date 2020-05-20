@@ -141,12 +141,14 @@
       </li>
     </ul>
 
-    <div v-if="showModal" name="modal" class="modal-window">
-      <div class="modal-inner">
-        <span @click="showModal = false" title="Close" class="modal-close">X</span>
-        outras fotos do mesmo animal
+    <transition name="fade-in-up">
+      <div v-if="showModal" name="modal" class="modal-window">
+        <div class="modal-inner">
+          <span @click="showModal = false" title="Close" class="modal-close">X</span>
+          outras fotos do mesmo animal
+        </div>
       </div>
-    </div>
+    </transition>
   </article>
 </template>
 
