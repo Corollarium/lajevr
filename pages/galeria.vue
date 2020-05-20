@@ -5,6 +5,8 @@
         <i18n>Galeria</i18n>
       </h1>
 
+      <p><i18n>Você tem imagens da Laje de Santos? Mande para nosso projeto:</i18n> {{ email }}.</p>
+
       <form id="filters" bp="6 4@md" class="form">
         <div class="field">
           <label class="label">
@@ -56,6 +58,7 @@ export default {
 
   data () {
     return {
+      email: 'email@corollarium.com',
       gallery: galleryData,
       filterSearch: '',
       filterSearchPlaceholder: '',

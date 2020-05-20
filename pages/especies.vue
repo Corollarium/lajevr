@@ -7,6 +7,7 @@
         </h1>
         <p>
           <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
+          <i18n>Você tem imagens da Laje de Santos? Mande para nosso projeto:</i18n> {{ email }}.
         </p>
       </div>
 
@@ -159,6 +160,7 @@ export default {
   extends: page,
   data () {
     return {
+      email: 'email@corollarium.com',
       animals: animalData, // TODO: sort
       filterColor: '',
       filterSearch: '',
