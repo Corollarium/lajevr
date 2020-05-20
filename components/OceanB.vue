@@ -28,6 +28,8 @@ export default {
       engine: null,
       scene: null,
       camera: null,
+      bob: 0, // bob effect
+      cameraY: 6.0,
       container: null,
       plane: null,
       fps: 0,
@@ -126,6 +128,10 @@ export default {
         const layerAnimationScale = 100.0;
         this.fps = this.engine.getFps().toFixed();
         this.layer.texture.uOffset += elapsedTime / layerAnimationScale;
+        this.layer.texture.uScale = 1.3;
+        const bobT = (new Date()).getTime() / 1000.0;
+        this.bob = 0.6 * Math.sin(bobT);
+        this.camera.position.y = this.cameraY + this.bob;
         this.scene.render();
       }
     });
@@ -183,7 +189,7 @@ export default {
       const bbox = this.container.getBoundingClientRect();
       if (this.shouldRender && window.scrollY < bbox.height * 1.5) { // 250vh - 100vh
         const offset = (window.scrollY - bbox.top) / bbox.height;
-        this.camera.position.y = 6 - offset * 3;
+        this.cameraY = 6 - offset * 3;
       }
     }
   }
