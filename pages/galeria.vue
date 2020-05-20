@@ -29,14 +29,16 @@
       />
     </div>
 
-    <div v-if="showModal" name="modal" class="modal-window">
-      <div class="modal-inner">
-        <span @click="showModal = false" title="Close" class="modal-close">X</span>
-        <GalleryCard
-          v-bind="modalItem"
-        />
+    <transition name="fade-in-up">
+      <div v-if="showModal" name="modal" class="modal-window">
+        <div class="modal-inner">
+          <span @click="showModal = false" title="Close" class="modal-close">X</span>
+          <GalleryCard
+            v-bind="modalItem"
+          />
+        </div>
       </div>
-    </div>
+    </transition>
   </article>
 </template>
 
