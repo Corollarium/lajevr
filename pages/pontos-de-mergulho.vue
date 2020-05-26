@@ -71,20 +71,18 @@
     </aside>
 
     <section class="dive-3d">
-      <select class="dive-point-selector">
-        <option>Portinho</option>
-        <option>Moréia</option>
-        <option>Piscinas</option>
-        <option>Boca da Baleia</option>
-        <option>Paredão Face Sul</option>
-        <option>Parcel das Âncoras</option>
-        <option>Parcel do Sul</option>
-        <option>Calhaus Face Norte</option>
-        <option>Calhaus Face Sul</option>
-        <option>Calhaus Túnel</option>
-        <option>Parcel Novo</option>
-        <option>Parcel do Brilhante</option>
-        <option>Laje do Bandolim</option>
+      <select
+        v-model="selectedSite"
+        @input="swapping = false; pick(i)"
+        class="dive-point-selector"
+      >
+        <option
+          v-for="(d, i) in diveSites"
+          :key="d.name"
+          :value="i"
+        >
+          {{ d.name }}
+        </option>
       </select>
       <Ilha3D
         :dive-sites="diveSites"
