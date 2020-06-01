@@ -172,6 +172,13 @@ export default {
       }
     };
 
+    this.$on('picker', (selectedIndex) => {
+      for (const name in siteMeshes) {
+        siteMeshes[name].material = siteMaterial;
+      }
+      siteMeshes[this.diveSites[selectedIndex].name].material = siteSelectedMaterial;
+    });
+
     const animate = () => {
       // TODO: if framerate too low
       if (!this || !this.renderer) {

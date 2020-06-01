@@ -73,7 +73,7 @@
     <section class="dive-3d">
       <select
         v-model="selectedSite"
-        @input="swapping = false; pick(i)"
+        @input="swapping = false; selectSite($event.target.value);"
         class="dive-point-selector"
       >
         <option
@@ -85,6 +85,7 @@
         </option>
       </select>
       <Ilha3D
+        ref="ilha3d"
         :dive-sites="diveSites"
         v-on:pick="pick"
       />
@@ -235,16 +236,20 @@ export default {
   },
 
   methods: {
+    // callback for select
+    selectSite (diveSiteIndex) {
+      this.$refs.ilha3d.$emit('picker', diveSiteIndex);
+      this.pick(this.diveSites[diveSiteIndex]);
+    },
+
+    // callback for select/ 3d pick, apply transition properly
     pick (diveSite) {
       this.swapping = !this.swapping;
       for (let i = 0; i < this.diveSites.length; i++) {
         if (this.diveSites[i].name === diveSite) {
           this.$nextTick(() => {
-            setTimeout(() => {
-              this.selectedSite = i;
-              this.swapping = true;
-            },
-            500);
+            this.selectedSite = i;
+            this.swapping = true;
           });
           break;
         }
