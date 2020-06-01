@@ -3,7 +3,7 @@
     <aside class="dive-aside">
       <section class="dive-point-info">
         <div v-show="selectedSite == -1">
-          <h1>
+          <h1 class="dive-point-title">
             <i18n>
               Pontos de Mergulho na Laje de Santos
             </i18n>
@@ -253,27 +253,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-.dive-container {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 100vh;
-
-  .dive-aside {
-    flex-basis: 20%;
-    min-width: 500px;
-    max-height: 100%;
-    overflow-y: auto;
-  }
-
-  .dive-3d {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-  }
-}
-
-</style>

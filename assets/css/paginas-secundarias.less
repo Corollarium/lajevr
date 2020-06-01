@@ -4,25 +4,57 @@
   z-index: 20;
 }
 
-.dive-3d {
-  position: relative;
+.dive-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: ~'calc(100vh - 6rem)'; //header
 
-  .dive-point-selector {
-    position: absolute;
-    top: 1rem;
+  @media @mobile {
+    flex-direction: column-reverse;
+    height: auto;
   }
-}
 
-.dive-aside {
-  overflow: hidden;
+  .dive-aside {
+    flex-basis: 20%;
+    min-width: 500px;
+    max-height: 100%;
+    overflow-y: auto;
+
+    @media @mobile {
+      flex-basis: auto;
+    }
+  }
 
   .dive-point-info {
-    .make-padding(4, 4, 3, 2);
+    .make-padding(2, 2, 1, 1);
     max-width: 90%;
     margin: auto;
 
     .fade-up {
       animation: info-fade-up .2s ease-out; //TODO Disparar animation cada vez que mudar e fazer o reverso quando sair de cena
+    }
+  }
+
+  .dive-point-title {
+    .font-responsive(24, 20, 16);
+    .text-margin(3, 2, 1);
+  }
+
+  .dive-3d {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    @media @mobile {
+      height: 15rem;
+    }
+
+    .dive-point-selector {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
     }
   }
 }
@@ -53,7 +85,7 @@
 
   .title-specimen {
     text-align: center;
-    border-bottom: 1px solid fade(@secondaryColor-1,20);
+    border-bottom: 1px solid fade(@secondaryColor-1, 20);
     padding-bottom: .5em;
     max-width: 80%;
     display: block;
