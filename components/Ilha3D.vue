@@ -221,6 +221,7 @@ export default {
   },
 
   beforeDestroy () {
+    this.$off('picker');
     window.removeEventListener('resize', this.onWindowResize);
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;

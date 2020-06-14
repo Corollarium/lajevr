@@ -1,7 +1,11 @@
 <template>
   <article class="dive-container">
-    <aside class="dive-aside">
+    <aside :class="{'dive-aside': true, 'dive-aside-showBottomSheet': showBottomSheet}">
       <section class="dive-point-info">
+        <div @click="showBottomSheet = !showBottomSheet" class="dive-swipe-show">
+          <hr>
+          <hr>
+        </div>
         <div v-show="selectedSite == -1">
           <h1 class="dive-point-title">
             <i18n>
@@ -113,6 +117,7 @@ export default {
       gallery: galleryData,
       selectedSite: -1,
       swapping: false,
+      showBottomSheet: false,
       diveSites: [
         { name: 'Portinho',
           lat: -24.318083,
