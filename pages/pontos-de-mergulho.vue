@@ -84,25 +84,26 @@
           {{ d.name }}
         </option>
       </select>
+      <!--
       <Ilha3D
         ref="ilha3d"
         :dive-sites="diveSites"
         v-on:pick="pick"
-      />
+      /> -->
     </section>
   </article>
 </template>
 
 <script>
 import page from './page.vue';
-import Ilha3D from '~/components/Ilha3D.vue';
+// import Ilha3D from '~/components/Ilha3D.vue';
 import GalleryCard from '~/components/GalleryCard.vue';
 import galleryData from '~/components/galleryData.js';
 
 export default {
   components: {
-    GalleryCard,
-    Ilha3D
+    GalleryCard
+    // Ilha3D
   },
 
   extends: page,
