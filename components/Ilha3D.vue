@@ -172,6 +172,13 @@ export default {
       }
     };
 
+    this.$on('picker', (selectedIndex) => {
+      for (const name in siteMeshes) {
+        siteMeshes[name].material = siteMaterial;
+      }
+      siteMeshes[this.diveSites[selectedIndex].name].material = siteSelectedMaterial;
+    });
+
     const animate = () => {
       // TODO: if framerate too low
       if (!this || !this.renderer) {
@@ -214,7 +221,7 @@ export default {
   },
 
   beforeDestroy () {
-    // TODO window.removeEventListener('mousedown', t
+    this.$off('picker');
     window.removeEventListener('resize', this.onWindowResize);
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;
@@ -226,7 +233,6 @@ export default {
       this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
       this.camera.updateProjectionMatrix();
 
-      this.controls.handleResize();
       this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     }
   }

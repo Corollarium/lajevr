@@ -1,12 +1,16 @@
 <template>
   <div>
     <section v-if="isApple" class="hero-apple">
+      <Clouds />
       <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageMar.src" :srcset="imageMar.srcSet" class="ilha-mar" draggable="false" alt="Água do mar da Laje">
       <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos CC SA 3.0, from https://commons.wikimedia.org/w/index.php?curid=40439744">
     </section>
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
+        <!-- TODO <Clouds /> BG Ajustar nuvens no modelo 3D -->
+        <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
           <p class="attribution">
             Photo
@@ -27,49 +31,25 @@
           </p>
         </div>
       </div>
-      <!--
-      <div class="sticky-back">
-        <video autoplay loop muted playsinline>
-          <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.31.mp4">
-        </video>
-        <p class="attribution">
-          Video
-          <a
-            href="https://www.instagram.com/deia_morales/"
-            target="_blank"
-          >Andréa Pontes</a>
-        </p>
-      </div> -->
     </section>
 
     <!-- Seção que liga hero com conteúdo -->
-    <!-- TODO BG> Colocar o PNG do Background o mesmo usado no srcSet (para nao carregar 2x a mesma imagem) -->
     <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
       <div class="fade-out" />
       <div class="surface-agua">
-        <div class="distorted-effect-containter">
-          <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
-        </div>
+        <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
       </div>
       <div class="surface-espuma">
-        <div class="distorted-effect-containter">
-          <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
-        </div>
+        <img :src="introSurfaceA.src" :srcset="introSurfaceA.srcSet" class="distorted-effect" draggable="false" alt="Gráfico representando as ondas do mar">
       </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section with-fade">
-      <div class="fade-in" />
-      <div class="fade-out" />
-      <div class="animals">
+      <div :class="{'animals': true, 'rellax-apple': !isApple}">
         <img
           :src="graphicTartaruga.src"
           :srcset="graphicTartaruga.srcSet"
           class="animal-turtle rellax"
           draggable="false"
           alt="Tartaruga"
-          data-rellax-speed="-.95"
+          data-rellax-speed="-.75"
         >
         <img
           :src="graphicGolfinho.src"
@@ -88,7 +68,11 @@
           data-rellax-speed=".45"
         >
       </div>
-
+    </section>
+    <!-- About Section -->
+    <section class="about-section with-fade">
+      <div class="fade-in" />
+      <div class="fade-out" />
       <div bp="container" class="about-content">
         <figure bp="float-center" class="image icon-about-heading">
           <img :src="imageIconLaje.src" :srcset="imageIconLaje.srcSet" alt="Ícone da Laje de Santos">
@@ -146,9 +130,10 @@
               <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
             </p>
           </div>
-          <div>
+          <div class="about-profundidade">
+            <Clouds />
             <figure class="image">
-              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" class="spaced-image" alt="Mapa profundidade da Laje de Santos">
+              <img :src="imageAboutProfundidade.src" :srcset="imageAboutProfundidade.srcSet" alt="Mapa profundidade da Laje de Santos">
             </figure>
           </div>
         </div>
@@ -343,7 +328,8 @@
               Você pode encontrar mais informações sobre visitação e compra de ingressos,
               visitando o
             </i18n>
-            <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank"><i18n>site da Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
+            <a href="https://www.infraestruturameioambiente.sp.gov.br/2017/09/parque-estadual-marinho-laje-de-santos-completa-24-anos/" target="_blank">
+              <i18n>site da Diretoria do Parque Estadual Marinho da Laje de Santos</i18n>
             </a>.
           </p>
         </div>
@@ -367,7 +353,7 @@
         <div>
           <div>
             <div class="description">
-              No inverno <nuxt-link to="/vida#manta">
+              No inverno <nuxt-link to="/vida#raias">
                 as raias mantas
               </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
             </div>
@@ -465,11 +451,13 @@ import Rellax from 'rellax';
 import page from './page.vue';
 import Timeline from '~/components/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
+import Clouds from '~/components/Clouds.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import Bubbles from '~/components/Bubbles.vue';
 
 // import Globe from '~/components/Globe.vue';
 const imageIlha = require('~/assets/images/graficos/laje-ilha.png?resize');
+const imageMar = require('~/assets/images/backgrounds/sea.jpg?resize');
 const introSurfaceA = require('~/assets/images/graficos/intro-surface-a.png?resize');
 const introSurfaceB = require('~/assets/images/graficos/intro-surface-b.png?resize');
 const graphicTartaruga = require('~/assets/images/graficos/turtle.png?resize');
@@ -492,6 +480,7 @@ export default {
   components: {
     Timeline,
     Ocean,
+    Clouds,
     GLTFModel,
     Bubbles
   },
@@ -501,6 +490,7 @@ export default {
   data () {
     return {
       imageIlha,
+      imageMar,
       introSurfaceA,
       introSurfaceB,
       graphicTartaruga,
@@ -519,6 +509,8 @@ export default {
       imageGraficoEstrelaMar,
       boatFigure,
       isApple: false,
+      isSafari: false,
+      isIos: false,
       rellax: null
     };
   },
@@ -529,17 +521,15 @@ export default {
     this.head.description = this.$gettext('Projeto de mapear a Laje de Santos em realidade virtual');
     this.rellax = new Rellax('.rellax');
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.isApple = browser.satisfies({
+    const osName = browser.getOSName(true);
+    this.isIos = osName === 'ios';
+    this.isSafari = browser.satisfies({
       // declare browsers per OS
       macos: {
         safari: '>10.1'
-      },
-
-      // per platform (mobile, desktop or tablet)
-      mobile: {
-        safari: '>=9'
       }
     });
+    this.isApple = this.isIos || this.isSafari;
   }
 
 };

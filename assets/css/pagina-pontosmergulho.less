@@ -1,0 +1,114 @@
+//** PAGINA PONTOS DE MERGULHO **//
+#scene-explorer-host,
+#inspector-host {
+  z-index: 20;
+}
+
+.dive-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: ~'calc(100vh - 5rem)'; //header
+  background-color: darken(@primaryColor, 18);
+
+  @media @responsiveDevices {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  +.footer {
+    display: none;
+  }
+
+  .dive-swipe-show {
+    margin: 0 auto;
+    width: 6rem;
+    display: none;
+    cursor: pointer;
+    padding: 1rem 0 1.5rem;
+
+    .indicador-swipe {
+      height: .3rem;
+      display: block;
+      background: rgba(255, 255, 255, .6);
+      border-radius: .25rem;
+    }
+
+    @media @responsiveDevices {
+      display: block;
+    }
+  }
+
+  .dive-aside-showBottomSheet {
+    margin-top: -60vh;
+    min-height: 100vh; // TODO: ajustar altura
+  }
+
+  .dive-aside {
+    overflow-y: auto;
+    z-index: 10;
+    background-color: darken(@primaryColor, 18);
+    transition: all .15s ease;
+
+    @media @desktop {
+      flex-basis: 30%;
+      min-width: 25rem;
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    @media @responsiveDevices {
+      flex-basis: auto;
+      max-height: 100%;
+
+      .card {
+        margin-top: 1rem;
+        max-width: 50%;
+      }
+
+      &:not(.dive-aside-showBottomSheet):hover {
+        margin-top: -1rem;
+      }
+    }
+  }
+
+  .dive-point-info {
+    .make-padding(2, 2, 1, 1);
+    max-width: 90%;
+    margin: auto;
+
+    .fade-up {
+      animation: info-fade-up .2s ease-out; //TODO Disparar animation cada vez que mudar e fazer o reverso quando sair de cena
+    }
+  }
+
+  .dive-point-title {
+    .font-responsive(24, 20, 16);
+    .text-margin(3, 2, 1);
+  }
+
+  .dive-3d {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    width: 100%;
+
+    @media @responsiveDevices {
+      height: 70vh; // TODO: ajustar altura
+    }
+
+    .dive-point-selector {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+
+      @media @responsiveDevices {
+        width: 12rem;
+        left: 50%;
+        margin-left: -6rem;
+      }
+    }
+  }
+}

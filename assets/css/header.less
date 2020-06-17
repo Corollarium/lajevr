@@ -5,7 +5,7 @@
   z-index: 10;
 
   @media @desktop {
-    height: 5rem;
+    height: 4.75rem;
   }
 
   .pure-menu-heading {
@@ -48,11 +48,10 @@
         transition-property: opacity, max-height;
         transition-duration: 20ms, 25ms;
         transition-timing-function: ease-out;
-        .add-margin(3, 2);
-        margin-top: 0;
 
         .pure-menu-list {
-          display: block;
+          float: right;
+          margin-bottom: 1rem;
         }
       }
 
@@ -92,15 +91,16 @@
     .hamburger {
       float: right;
       cursor: pointer;
-      padding: 1.5rem;
+      padding: 1rem .5rem;
       position: absolute;
       top: 1rem;
-      right: 0;
+      right: .5rem;
       user-select: none;
+      background-image: linear-gradient(35deg, @primaryColor, darken(@primaryColor,15));
+      border-radius: 4px;
 
       @media @desktop {
         display: none;
-
       }
 
       .burger-bar {
@@ -136,7 +136,7 @@
 
       &:checked {
         ~.main-nav {
-          max-height: 240px;
+          max-height: 20rem;
           opacity: 1;
         }
 
@@ -162,7 +162,25 @@
   &.header-overlay {
     position: absolute;
     top: 0;
-    background-color: transparent;
+    right: .5rem;
+    padding: 0;
+    height: 0;
+
+    @media @desktop {
+      background-color: transparent;
+    }
+
+    @media @responsiveDevices {
+      .main-nav {
+        margin-top: 3.5rem;
+        background-image: linear-gradient(-35deg, lighten(@primaryColor,45) 0%, fade(lighten(spin(@primaryColor,-10), 50), 90) 60%, fade(lighten(spin(@primaryColor,-10), 50), 80) 100%);
+        float: right;
+        padding: 1rem;
+        border-radius: .5rem;
+        box-shadow: 16px 16px 10px fade(darken(@primaryColor, 30), 15);
+      }
+    }
+
 
     .logo-main {
       display: none; //NA INDEX O LOGO APARECE GRANDÃO NO CANTO SUPERIOR ESQUERDO DO HERO

@@ -7,6 +7,7 @@
         </h1>
         <p>
           <i18n>Foram já identificadas 196 espécies de peixes na Laje de Santos.</i18n>
+          <i18n>Você tem imagens da Laje de Santos? Mande para nosso projeto:</i18n> {{ email }}.
         </p>
       </div>
 
@@ -101,7 +102,7 @@
         <figure>
           <img :src="a.absoluteurl ? a.absoluteurl : base + a.url" class="fauna-image">
           <figcaption v-if="a.creator" class="attribution">
-            <i18n>foto por</i18n> <a :href="a.creator_link" target="_blank">{{ a.creator }}</a> {{ a.license }}
+            <i18n>foto por</i18n> <a :href="a.creatorLink" target="_blank">{{ a.creator }}</a> {{ a.license }}
           </figcaption>
         </figure>
         <div class="fauna-name">
@@ -123,29 +124,32 @@
         <span @click="showModalClick(a)" class="open-modal"><font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></span>
       </div>
     </transition-group>
+
+    <div>
+      <h2>Bibliografia</h2>
+      <ul>
+        <li>
+          <a
+            target="_blank"
+            href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
+          >Luiz, Osmar J., Alfredo Carvalho-Filho, Carlos E. L. Ferreira, Sergio R. Floeter, João Luiz Gasparini and Ivan Sazima. “The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation.” (2008)</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">
+            Laje de Santos, plano de manejo.
+          </a>
+        </li>
+      </ul>
     </div>
-    </transition-group>
 
-    <ul>
-      <li>
-        <a
-          target="_blank"
-          href="https://www.semanticscholar.org/paper/The-reef-fish-assemblage-of-the-Laje-de-Santos-with-Luiz-Carvalho-Filho/53b6a911443d42724e6c0e75ff5eeebbc7c4ab59"
-        >Luiz, Osmar J., Alfredo Carvalho-Filho, Carlos E. L. Ferreira, Sergio R. Floeter, João Luiz Gasparini and Ivan Sazima. “The reef fish assemblage of the Laje de Santos Marine State Park, Southwestern Atlantic: annotated checklist with comments on abundance, distribution, trophic structure, symbiotic associations, and conservation.” (2008)</a>
-      </li>
-      <li>
-        <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">
-          Laje de Santos, plano de manejo.
-        </a>
-      </li>
-    </ul>
-
-    <div v-if="showModal" name="modal" class="modal-window">
-      <div class="modal-inner">
-        <span @click="showModal = false" title="Close" class="modal-close">X</span>
-        outras fotos do mesmo animal
+    <transition name="fade-in-up">
+      <div v-if="showModal" name="modal" class="modal-window">
+        <div class="modal-inner">
+          <span @click="showModal = false" title="Close" class="modal-close">X</span>
+          outras fotos do mesmo animal
+        </div>
       </div>
-    </div>
+    </transition>
   </article>
 </template>
 
@@ -159,6 +163,7 @@ export default {
   extends: page,
   data () {
     return {
+      email: 'email@corollarium.com',
       animals: animalData, // TODO: sort
       filterColor: '',
       filterSearch: '',

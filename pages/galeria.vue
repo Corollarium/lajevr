@@ -5,6 +5,8 @@
         <i18n>Galeria</i18n>
       </h1>
 
+      <p><i18n>Você tem imagens da Laje de Santos? Mande para nosso projeto:</i18n> {{ email }}.</p>
+
       <form id="filters" bp="6 4@md" class="form">
         <div class="field">
           <label class="label">
@@ -29,14 +31,16 @@
       />
     </div>
 
-    <div v-if="showModal" name="modal" class="modal-window">
-      <div class="modal-inner">
-        <span @click="showModal = false" title="Close" class="modal-close">X</span>
-        <GalleryCard
-          v-bind="modalItem"
-        />
+    <transition name="fade-in-up">
+      <div v-if="showModal" name="modal" class="modal-window">
+        <div class="modal-inner">
+          <span @click="showModal = false" title="Close" class="modal-close">X</span>
+          <GalleryCard
+            v-bind="modalItem"
+          />
+        </div>
       </div>
-    </div>
+    </transition>
   </article>
 </template>
 
@@ -54,6 +58,7 @@ export default {
 
   data () {
     return {
+      email: 'email@corollarium.com',
       gallery: galleryData,
       filterSearch: '',
       filterSearchPlaceholder: '',

@@ -1,9 +1,12 @@
 <template>
   <article class="dive-container">
-    <aside class="dive-aside">
+    <aside :class="{'dive-aside': true, 'dive-aside-showBottomSheet': showBottomSheet}">
       <section class="dive-point-info">
+        <div @click="showBottomSheet = !showBottomSheet" class="dive-swipe-show">
+          <span class="indicador-swipe" /></span>
+        </div>
         <div v-show="selectedSite == -1">
-          <h1>
+          <h1 class="dive-point-title">
             <i18n>
               Pontos de Mergulho na Laje de Santos
             </i18n>
@@ -30,44 +33,66 @@
             <a target="_blank" href="https://smastr16.blob.core.windows.net/consema/2018/11/e-laje-de-santos-plano-de-manejo.pdf">Plano de Manejo da Laje de Santos</a>
           </p>
         </div>
-        <div
-          v-show="selectedSite != -1"
-        >
-          <h2>
-            {{ selectedSiteData.name }}
-          </h2>
-          <div>
-            <p class="dive-dificuldade">
-              {{ selectedSiteData.dificuldade }}
-            </p>
-            <p class="dive-coordinates">
-              Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
-            </p>
-            <p>
-              <span class="dive-description">{{ selectedSiteData.description }}</span>
-            </p>
+        <transition name="fade-in-up">
+          <div
+            v-if="swapping"
+          >
+            <div
+              v-show="selectedSite != -1"
+            >
+              <h2>
+                {{ selectedSiteData.name }}
+              </h2>
+              <div>
+                <p class="dive-dificuldade">
+                  {{ selectedSiteData.dificuldade }}
+                </p>
+                <p class="dive-coordinates">
+                  Latitude: {{ selectedSiteData.lat }} Longitude: {{ selectedSiteData.long }}
+                </p>
+                <p>
+                  <span class="dive-description">{{ selectedSiteData.description }}</span>
+                </p>
+              </div>
+              <div>
+                <GalleryCard
+                  v-for="(a, i) in filteredGallery"
+                  :key="i"
+                  v-bind:creator="a.creator"
+                  v-bind:creatorLink="a.creatorLink"
+                  v-bind:license="a.license"
+                  v-bind:url="a.url"
+                  v-bind:absoluteurl="a.absoluteurl"
+                  v-bind:description="a.description"
+                  v-bind:type="a.type"
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <GalleryCard
-              v-for="(a, i) in filteredGallery"
-              :key="i"
-              v-bind:creator="a.creator"
-              v-bind:creatorLink="a.creatorLink"
-              v-bind:license="a.license"
-              v-bind:url="a.url"
-              v-bind:absoluteurl="a.absoluteurl"
-              v-bind:description="a.description"
-              v-bind:type="a.type"
-            />
-          </div>
-        </div>
+        </transition>
       </section>
     </aside>
 
     <section class="dive-3d">
+      <select
+        v-model="selectedSite"
+        @input="swapping = false; selectSite($event.target.value);"
+        class="dive-point-selector"
+      >
+        <option
+          v-for="(d, i) in diveSites"
+          :key="d.name"
+          :value="i"
+        >
+          {{ d.name }}
+        </option>
+      </select>
+      <!-- TODO isApple -->
       <Ilha3D
+        ref="ilha3d"
         :dive-sites="diveSites"
         v-on:pick="pick"
+        v-if=""
       />
     </section>
   </article>
@@ -91,6 +116,8 @@ export default {
     return {
       gallery: galleryData,
       selectedSite: -1,
+      swapping: false,
+      showBottomSheet: false,
       diveSites: [
         { name: 'Portinho',
           lat: -24.318083,
@@ -179,11 +206,22 @@ export default {
       if (this.selectedSite === -1) {
         return [];
       }
+      function replaceSpecialChars (str) {
+        str = str.replace(/[ÀÁÂÃÄÅ]/, 'A');
+        str = str.replace(/[àáâãäå]/, 'a');
+        str = str.replace(/[ÈÉÊË]/, 'E');
+        str = str.replace(/[Ç]/, 'C');
+        str = str.replace(/[ç]/, 'c');
+        return str.replace(/[^a-z0-9]/gi, '');
+      }
       const name = this.diveSites[this.selectedSite].name;
-      const r = name ? new RegExp(name, 'i') : null;
+      const r = name ? new RegExp(replaceSpecialChars(name), 'i') : null;
       return this.gallery.filter((i) => {
         // texto
-        if (r && i.description && i.description.search(r) !== -1) {
+        if (r && i.description && replaceSpecialChars(i.description).search(r) !== -1) {
+          return true;
+        }
+        if (r && i.name && replaceSpecialChars(i.name).search(r) !== -1) {
           return true;
         }
         return false;
@@ -204,10 +242,21 @@ export default {
   },
 
   methods: {
+    // callback for select
+    selectSite (diveSiteIndex) {
+      this.$refs.ilha3d.$emit('picker', diveSiteIndex);
+      this.pick(this.diveSites[diveSiteIndex]);
+    },
+
+    // callback for select/ 3d pick, apply transition properly
     pick (diveSite) {
+      this.swapping = !this.swapping;
       for (let i = 0; i < this.diveSites.length; i++) {
         if (this.diveSites[i].name === diveSite) {
-          this.selectedSite = i;
+          this.$nextTick(() => {
+            this.selectedSite = i;
+            this.swapping = true;
+          });
           break;
         }
       }
@@ -215,27 +264,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-.dive-container {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 100vh;
-
-  .dive-aside {
-    flex-basis: 20%;
-    min-width: 500px;
-    max-height: 100%;
-    overflow-y: auto;
-  }
-
-  .dive-3d {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-  }
-}
-
-</style>

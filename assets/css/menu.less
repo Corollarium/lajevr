@@ -1,5 +1,7 @@
 .horizontal-menu {
-  .pure-menu-link, .pure-menu-link:visited {
+
+  .pure-menu-link,
+  .pure-menu-link:visited {
     color: lighten(@secondaryColor-2, 20);
     text-transform: uppercase;
     font-weight: @regular;
@@ -24,10 +26,7 @@
       font-weight: bold;
       border-color: @secondaryColor-2;
       background-color: transparent;
-
-      @media @desktop {
-        border-bottom: .25rem inset @secondaryColor-2;
-      }
+      border-bottom: .25rem inset @secondaryColor-2;
     }
 
     @media @responsiveDevices {
@@ -36,12 +35,16 @@
   }
 }
 
+/**MENU DA PAGINA VIDA **/
 .topbar-sticky {
   width: 100%;
   display: flex;
   position: sticky;
-  top: 1px;
-  background-color: rgba(0.0, 0.0, 0.0, 0.7);
+  top: 0;
+  background-image: linear-gradient(to right, fade(darken(@primaryColor, 15), 70) 10%, fade(darken(@primaryColor, 20), 90), fade(darken(@primaryColor, 15), 70) 90%);
+  box-shadow: 0 .25rem 20px fade(@secondaryColor-2, 15);
+  padding-top: 1rem;
+  z-index: 999;
 
   .topbar-list {
     margin: 0 auto;

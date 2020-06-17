@@ -60,11 +60,6 @@
 }
 
 //WATER DISTORTION
-
-.distorted-effect-container {
-  overflow: hidden;
-}
-
 .distorted-effect {
   transform-origin: center center;
   animation: distorted 4s ease-in-out alternate infinite;
@@ -74,24 +69,25 @@
   animation-delay: 2s;
 }
 
+// filter is VERY slow on firefox
 @keyframes distorted {
   0%,
   100% {
     transform: translate3d(0,0,0) skew(0deg, 0deg) scale(1.1, 1.1);
-    filter: saturate(100%) invert(0%);
+    // filter: saturate(100%) invert(0%);
   }
 
   25% {
-    filter: saturate(180%) invert(10%);
+    // filter: saturate(180%) invert(10%);
   }
 
   50% {
     transform: translate3d(0,0,0)  skew(1.5deg, 1.5deg) scale(1.1, 1.1);
-    filter: saturate(100%) invert(0%);
+    // filter: saturate(100%) invert(0%);
   }
 
   75% {
-    filter: saturate(150%) invert(20%);
+    // filter: saturate(150%) invert(20%);
   }
 }
 

@@ -3,7 +3,7 @@
 @secondaryFont: "Raleway", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 // color
-@primaryColor: hsl(206, 100%, 33%);
+@primaryColor: #005fa8;
 @secondaryColor-1: hsl(188, 100%, 45%);
 @secondaryColor-2: hsl(199, 100%, 42%);
 
@@ -41,3 +41,10 @@
 @desktop: ~"only screen and (min-width: @{desktopSize})";
 @desktopSmall: ~"only screen and (min-width: @{desktopSize}) and (max-width:" @desktopBigSize - 1 ~")";
 @desktopBig: ~"only screen and (min-width: @{desktopBigSize})";
+
+
+.mobile-hidden {
+  @media @mobile {
+    display: none;
+  }
+}
