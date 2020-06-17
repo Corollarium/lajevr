@@ -67,6 +67,12 @@
             </i18n>
           </p>
 
+          <p>
+            <i18n>
+              Estamos aguardando a liberação da quarentena para o início dos mergulhos.
+            </i18n>
+          </p>
+
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
               :to="0"
