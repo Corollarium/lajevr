@@ -3,8 +3,7 @@
     <aside :class="{'dive-aside': true, 'dive-aside-showBottomSheet': showBottomSheet}">
       <section class="dive-point-info">
         <div @click="showBottomSheet = !showBottomSheet" class="dive-swipe-show">
-          <hr>
-          <hr>
+          <span class="indicador-swipe" /></span>
         </div>
         <div v-show="selectedSite == -1">
           <h1 class="dive-point-title">
@@ -88,10 +87,12 @@
           {{ d.name }}
         </option>
       </select>
+      <!-- TODO isApple -->
       <Ilha3D
         ref="ilha3d"
         :dive-sites="diveSites"
         v-on:pick="pick"
+        v-if=""
       />
     </section>
   </article>

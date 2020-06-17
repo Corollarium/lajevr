@@ -1,37 +1,10 @@
 <template>
   <article>
-    <section class="hero">
-      <div class="hero-body">
-        <img :src="imageIlhaFoto.src" :srcset="imageIlhaFoto.srcSet" alt="Laje de Santos">
-      </div>
-      <div class="hero-html">
-        <h1>
-          <i18n>
-            Laje de Santos Virtual
-          </i18n>
-          <br>
-          <i18n>
-            O projeto
-          </i18n>
-        </h1>
-        <p class="attribution">
-          Photo
-          <a
-            href="//commons.wikimedia.org/w/index.php?title=User:Afcarv&amp;action=edit&amp;redlink=1"
-            class="new"
-            title="User:Afcarv (page does not exist)"
-            target="_blank"
-          >Anael Ferraz de Carvalho</a>
-          -
-          <span class="int-own-work" lang="en">Own work</span>,
-          <a
-            href="https://creativecommons.org/licenses/by-sa/3.0"
-            title="Creative Commons Attribution-Share Alike 3.0"
-            target="_blank"
-          >CC BY-SA 3.0</a>
-          <a href="https://commons.wikimedia.org/w/index.php?curid=40439744" target="_blank">Link</a>
-        </p>
-      </div>
+    <section class="hero-about-page">
+      <Clouds />
+      <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+      <img :src="imageMar.src" :srcset="imageMar.srcSet" class="ilha-mar" draggable="false" alt="Água do mar da Laje">
+      <img :src="imageIlha.src" :srcset="imageIlha.srcSet" class="ilha-hero" draggable="false" alt="Ilha Laje de Santos CC SA 3.0, from https://commons.wikimedia.org/w/index.php?curid=40439744">
     </section>
 
     <section class="section-base container">
@@ -94,7 +67,7 @@
             </i18n>
           </p>
 
-          <div class="number-wrapper">
+          <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
               :to="0"
               :icon="['fas', 'mask']"
@@ -118,13 +91,13 @@
           </div>
         </div>
         <div data-aos="zoom-out-down">
-          <img src="~/assets/images/placeholder480.png">
+          <img src="~static/images/piva/about-page-1.png">
         </div>
       </section>
 
       <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="zoom-out-down">
-          <img src="~/assets/images/placeholder480.png">
+          <img src="~static/images/piva/about-page-2.png">
         </div>
         <div data-aos="slide-right">
           <h2>
@@ -138,7 +111,7 @@
               Desde um celular até telas gigantes.
             </i18n>
           </p>
-          <div class="number-wrapper">
+          <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
               :to="stats.images"
               :icon="['fas', 'images']"
@@ -182,7 +155,7 @@
               para terem qualidade, animação mas serem leves o suficiente para a web.
             </i18n>
           </p>
-          <div class="number-wrapper">
+          <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
               :to="0"
               :icon="['fas', 'camera']"
@@ -211,7 +184,7 @@
           </div>
         </div>
         <div data-aos="zoom-out-down">
-          <img src="~/assets/images/placeholder480.png">
+          <img src="~static/images/piva/about-page-3.png">
         </div>
         </div>
       </section>
@@ -222,26 +195,35 @@
             Equipe
           </i18n>
         </h2>
-        <ul class="people">
+        <div class="people" bp="grid 6 4@md 3@lg">
           <li>
-            <img src="~/assets/images/placeholder480.png">
-            <p class="people-name">
+            <img src="~static/images/piva/bg.jpg">
+            <h4 class="people-name">
               Bruno Barberi Gnecco
-            </p>
+            </h4>
             <p>
               <i18n>Coordenador do projeto, é engenheiro elétrico e mergulhador.</i18n>
             </p>
+            <a href="https://www.linkedin.com/in/bruno-barberi-gnecco-56579a75/" target="_blank" title="Ver linkedin de Bruno Barberi Gnecco" class="button-is-liquid">
+              <span class="button-is-liquid__text">Linkedin</span>
+              <span class="button-is-liquid__animation" />
+            </a>
           </li>
           <li>
-            <img src="~/assets/images/placeholder480.png">
-            <p class="people-name">
-              Vinicius Piva
-            </p>
+            <img src="~static/images/piva/piva.jpg">
+            <h4 class="people-name">
+              Vinícius Rodrigues Piva de Carvalho
+            </h4>
             <p>
-              <i18n>Publicitário, designer do projeto.</i18n>
+              <i18n>Comunicólogo, designer de experiência do projeto.</i18n>
             </p>
+            <a href="https://www.linkedin.com/in/vpcarvalho/" target="_blank" title="Ver linkedin de Vinícius Piva" class="button-is-liquid">
+              <span class="button-is-liquid__text">Linkedin</span>
+              <span class="button-is-liquid__animation" />
+            </a>
           </li>
-        </ul>
+          </ul>
+        </div>
       </section>
 
       <section class="section-base container">
@@ -338,15 +320,21 @@
 <script>
 import page from './page.vue';
 import statisticsData from '~/components/statistics.json';
+import Clouds from '~/components/Clouds.vue';
 
-const imageIlhaFoto = require('~/assets/images/laje/Laje_de_Santos.jpg?resize');
+const imageIlha = require('~/assets/images/graficos/laje-ilha.png?resize');
+const imageMar = require('~/assets/images/backgrounds/sea.jpg?resize');
+const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 
 export default {
+  components: Clouds,
   extends: page,
 
   data () {
     return {
-      imageIlhaFoto,
+      imageIlha,
+      imageMar,
+      imageLogoLaje,
       stats: statisticsData
     };
   },
@@ -362,18 +350,16 @@ export default {
 <style lang="less" scoped>
 .people {
   list-style: none;
-  li {
-    max-width: 360px;
-    display: inline-block;
-    vertical-align: top;
+  padding: 0;
 
-    .people-name {
-      font-size: 120%;
-    }
-    img {
-      width: 360px;
-    }
+  img {
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 1rem;
+  }
+
+  .people-name {
+    margin: 1rem 0 .5rem;
   }
 }
-</style>
 </style>
