@@ -232,7 +232,7 @@
         </div>
       </section>
 
-      <section class="section-base container">
+      <section class="section-base about-page-text">
         <h2>
           <i18n>
             O Parque Estadual Marinho da Laje de Santos
@@ -367,5 +367,9 @@ export default {
   .people-name {
     margin: 1rem 0 .5rem;
   }
+}
+
+.about-page-text p {
+  max-width: 50rem;
 }
 </style>
