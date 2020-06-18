@@ -111,4 +111,21 @@
       }
     }
   }
+
+  .pontos-apple {
+    height: 100%;
+    overflow: hidden;
+
+    .pontos-apple-desktop {
+      @media @responsiveDevices {
+        display: none;
+      }
+    }
+    .pontos-apple-mobile {
+      display: none;
+      @media @responsiveDevices {
+        display: inherit;
+      }
+    }
+  }
 }
