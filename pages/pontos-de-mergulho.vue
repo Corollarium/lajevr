@@ -87,22 +87,31 @@
           {{ d.name }}
         </option>
       </select>
-      <!-- TODO isApple -->
+
+      <section v-if="isApple" class="pontos-apple">
+        <img :src="imagePontosAppleDesk" :srcset="imagePontosAppleDesk.srcSet" class="pontos-apple-desktop" alt="Gráfico da Laje com Pontos de Mergulho">
+        <img :src="imagePontosAppleMobile" :srcset="imagePontosAppleMobile.srcSet" class="pontos-apple-mobile" alt="Gráfico da Laje com Pontos de Mergulho">
+      </section>
+
       <Ilha3D
         ref="ilha3d"
         :dive-sites="diveSites"
         v-on:pick="pick"
-        v-if=""
+        v-else
       />
     </section>
   </article>
 </template>
 
 <script>
+import Bowser from 'bowser';
 import page from './page.vue';
 import Ilha3D from '~/components/Ilha3D.vue';
 import GalleryCard from '~/components/GalleryCard.vue';
 import galleryData from '~/components/galleryData.js';
+
+const imagePontosAppleDesk = require('~/assets/images/graficos/pontos-ios-desktop.jpg?resize');
+const imagePontosAppleMobile = require('~/assets/images/graficos/pontos-ios-mobile.jpg?resize');
 
 export default {
   components: {
@@ -114,10 +123,15 @@ export default {
 
   data () {
     return {
+      imagePontosAppleDesk,
+      imagePontosAppleMobile,
       gallery: galleryData,
       selectedSite: -1,
       swapping: false,
       showBottomSheet: false,
+      isApple: false,
+      isSafari: false,
+      isIos: false,
       diveSites: [
         { name: 'Portinho',
           lat: -24.318083,
@@ -239,6 +253,16 @@ export default {
   mounted () {
     this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
     this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
+    const browser = Bowser.getParser(window.navigator.userAgent);
+    const osName = browser.getOSName(true);
+    this.isIos = osName === 'ios';
+    this.isSafari = browser.satisfies({
+      // declare browsers per OS
+      macos: {
+        safari: '>10.1'
+      }
+    });
+    this.isApple = this.isIos || this.isSafari;
   },
 
   methods: {
