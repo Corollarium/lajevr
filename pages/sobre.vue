@@ -333,7 +333,7 @@ const imageMar = require('~/assets/images/backgrounds/sea.jpg?resize');
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 
 export default {
-  components: Clouds,
+  components: { Clouds },
   extends: page,
 
   data () {
