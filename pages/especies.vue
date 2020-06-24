@@ -21,9 +21,6 @@
             </label>
             <div>
               <input v-model="filterSearch" class="input" type="text" placeholder="Digite o nome">
-              <span class="icon is-small is-left">
-                <font-awesome-icon :icon="['fas', 'search']" />
-              </span>
             </div>
           </div>
 
