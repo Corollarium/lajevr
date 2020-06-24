@@ -1,7 +1,32 @@
 .range-slider {
-  height: 5rem;
-  padding: 0 5%;
+  width: 100%;
+  max-width: 30rem;
+
+  .outputs {
+    width: 100%;
+    margin-top: -1.5rem;
+  }
+
+  output:first-child {
+    text-align: left;
+  }
+
+  output:last-child {
+    text-align: right;
+  }
+
+  #slider {
+    padding: 0 5%;
+    margin-top: .5rem;
+  }
+
+  /**noUi Overlay**/
+  .noUi-connect {
+    background-image: linear-gradient(to right, @secondaryColor-1, @secondaryColor-2);
+  }
 }
+
+
 
 .filter-header {
   margin-top: 4rem;

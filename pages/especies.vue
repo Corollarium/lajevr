@@ -68,13 +68,13 @@
             </div>
           </div>
           <div bp="12 5@lg">
-            <label>
+            <label style="text-align: center;">
               <i18n>
                 Tamanho (em cm)
               </i18n>
             </label>
             <div id="slider-container" class="range-slider">
-              <div>
+              <div class="outputs">
                 <output>{{ minRange }}</output>
                 <output style="float: right;">{{ maxRange }}</output>
               </div>
