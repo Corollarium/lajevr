@@ -1,6 +1,6 @@
 <template>
   <article bp="container">
-    <div bp="grid">
+    <div bp="grid" class="filter-header">
       <div bp="12 6@md 5@lg">
         <h1 class="subpage-title">
           <i18n>Espécies</i18n>
@@ -11,12 +11,12 @@
         </p>
       </div>
 
-      <form id="filters" bp="12 6@md 7@lg" class="form">
+      <form id="filters" bp="12 6@md 7@lg" class="filter-form">
         <div bp="grid">
           <div bp="5 7@md 4@lg">
             <label class="label">
               <i18n>
-                Nome
+                Filtrar pelo nome
               </i18n>
             </label>
             <div>
@@ -34,7 +34,7 @@
               <div>
                 <select
                   v-model="filterColor"
-                  :style="{'background-color': filterColor}"
+                  :class="filterColor"
                 >
                   <option v-translate value="">
                     Todas as cores
@@ -89,7 +89,7 @@
       name="fauna-list"
       tag="div"
       bp="grid 6 4@md 3@lg"
-      class="section-base"
+      class="section-article"
     >
       <div
         v-for="a in filteredAnimals"
