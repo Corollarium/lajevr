@@ -6,8 +6,8 @@
           <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Cardume">
         </figure>
       </div>
-      <div class="hero-html rellax" data-rellax-speed="2">
-        <h1 class="has-text-center">
+      <div class="vida-hero-text rellax" data-rellax-speed="2">
+        <h1 class="has-text-center vida-hero-title">
           <i18n>
             A vida na Laje de Santos
           </i18n>
@@ -20,7 +20,7 @@
         <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
       </p>
     </section>
-
+    <!-- adicionar smooth scroll na pagina https://www.npmjs.com/package/vue-smooth-scroll -->
     <div class="topbar-sticky menu-with-icons">
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="intro">
@@ -53,7 +53,7 @@
       </ul>
     </div>
 
-    <section id="intro" class="section-index section-base section-text">
+    <section id="intro" class="section-index section-life section-text">
       <p>
         <i18n>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
@@ -73,7 +73,7 @@
         </h2>
       </section>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h3>
           Raia-Manta
         </h3>
@@ -93,7 +93,7 @@
         </figcaption>
       </figure>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <p>
           Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
           os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
@@ -132,7 +132,7 @@
         </p>
       </section>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h3>
           Raia-chita
         </h3>
@@ -163,7 +163,7 @@
         </figure>
       </section>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h3>
           Raia-prego
         </h3>
@@ -215,7 +215,7 @@
         </figure>
       </section>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h3>
           Raia-borboleta
         </h3>
@@ -267,7 +267,7 @@
     </section>
 
     <section id="turtles" class="section-index">
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h2 class="title-specimen">
           <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
           Tartarugas
@@ -302,7 +302,7 @@
         </figcaption>
       </figure>
 
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <p>
           Graças à beleza do casco, as tartarugas-de-pente foram extremamente
           caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer
@@ -318,7 +318,7 @@
     </section>
 
     <section id="dolphins" class="section-index">
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h2 class="title-specimen">
           <img alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
           Golfinhos
@@ -346,7 +346,7 @@
     </section>
 
     <section id="birds" class="section-index">
-      <section class="section-base section-text">
+      <section class="section-life section-text">
         <h2 class="title-specimen">
           <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
           Aves
@@ -418,16 +418,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-@import '~assets/css/variables.less';
-
-.especie-info {
-  font-style: italic;
-  p {
-    margin: 0;
-  }
-  margin: 0;
-  margin-bottom: 1em;
-}
-</style>

@@ -23,7 +23,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;900&family=Raleway&display=swap' }
     ]
   },
 

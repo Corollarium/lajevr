@@ -85,6 +85,17 @@
   }
 }
 
+.section-life {
+  .make-padding(12, 10, 5, 5);
+  &:not(last-child) {
+      margin: 0 auto 2rem;
+
+    @media @responsiveDevices {
+      margin: 0 auto 1rem;
+    }
+  }
+}
+
 .section-article {
   .make-padding(12, 10, 5, 5);
 }

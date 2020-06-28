@@ -10,15 +10,35 @@
 
   .hero-vida {
     height: calc(100vh - 8rem); //calc menos os menus
+    overflow: hidden;
 
     figure {
       max-height: calc(100% + 6rem);
       .fade-bottom();
+      opacity: .5;
 
       img {
         max-width: none;
         min-height: 100%;
+        animation: image-zoom-animate 20s ease-out infinite alternate;
       }
+    }
+  }
+
+  .vida-hero-text {
+    letter-spacing: 0.45em;
+    display: block;
+    margin-top: 50px;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+
+    .vida-hero-title {
+      .font-responsive(80,56,40);
+      font-weight: @xbold;
+      color: lighten(@secondaryColor-1, 25);
+      text-shadow: 0 10px .25em darken(@primaryColor,10);
     }
   }
 
@@ -35,5 +55,15 @@
       margin: 0 auto .5rem;
       width: 2em;
     }
+  }
+}
+
+@keyframes image-zoom-animate {
+  0% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(0,0,0) scale(1.20);
   }
 }
