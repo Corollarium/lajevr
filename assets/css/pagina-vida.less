@@ -35,35 +35,106 @@
     bottom: 10%;
 
     .vida-hero-title {
-      .font-responsive(80,56,40);
+      .font-responsive(80, 56, 40);
       font-weight: @xbold;
       color: lighten(@secondaryColor-1, 25);
-      text-shadow: 0 10px .25em darken(@primaryColor,10);
+      text-shadow: 0 10px .25em darken(@primaryColor, 10);
     }
   }
 
   .title-specimen {
     text-align: center;
-    border-bottom: 1px solid fade(@secondaryColor-1, 20);
     padding-bottom: .5em;
-    max-width: 80%;
     display: block;
     margin: 0 auto 1em;
+    position: relative;
+    padding: 2rem;
 
     img {
       display: block;
       margin: 0 auto .5rem;
       width: 2em;
+      position: relative;
+    }
+
+    &:before {
+      content: ' ';
+      width: 6.2em;
+      height: 6.2em;
+      border-radius: 50%;
+      display: block;
+      background: radial-gradient(fade(darken(@secondaryColor-1, 25), 30), fade(darken(@secondaryColor-2, 15), 50));
+      animation: title-animated 4s infinite alternate ease-in;
+      position: absolute;
+      top: -.5em;
+      left: 50%;
+      margin-left: -3.1em;
+      opacity: .5;
+    }
+  }
+
+  .section-life {
+    .make-padding(10, 8, 6, 4);
+    &:not(last-child) {
+        margin: 0 auto 2rem;
+
+      @media @responsiveDevices {
+        margin: 0 auto 1rem;
+      }
+    }
+    &.with-bottom-content {
+      padding-bottom: 0;
+    }
+  }
+
+  .text-block {
+    max-width: 35rem;
+    background-color: darken(@primaryColor, 12);
+    border: 1px solid fade(@secondaryColor-2,30);
+    padding: 2rem;
+
+    &.centered {
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .text-block-b {
+    max-width: 40rem;
+    border: 1px solid fade(@secondaryColor-2,30);
+    border-left-color: transparent;
+    padding: 2rem 0;
+    border-right-color: transparent;
+
+    &.after-element {
+      margin-top: 2rem;
+    }
+
+    &.centered {
+      display: block;
+      margin: auto;
     }
   }
 }
 
 @keyframes image-zoom-animate {
   0% {
-    transform: translate3d(0,0,0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   100% {
-    transform: translate3d(0,0,0) scale(1.20);
+    transform: translate3d(0, 0, 0) scale(1.20);
+  }
+}
+
+@keyframes title-animated {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+
+  100% {
+    transform: translate3d(0,0,0) scale(.75);
+    opacity: .1;
+    filter: blur(20px);
   }
 }
