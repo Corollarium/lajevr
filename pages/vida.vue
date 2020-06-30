@@ -53,7 +53,7 @@
       </ul>
     </div>
 
-    <section id="intro" class="section-index section-life" bp="container">
+    <section id="intro" class="section-index section-life" bp="container" data-aos="fade-up">
       <p class="intro text-block-b centered rellax" data-rellax-speed="-.75">
         <i18n>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
@@ -73,7 +73,7 @@
         </h2>
       </section>
 
-      <section class="section-life container" style="padding-bottom:0;">
+      <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
           Raia-Manta
         </h3>
@@ -82,7 +82,7 @@
           <p>Estado de conservação: Vulnerável a extinção</p>
         </div>
       </section>
-      <figure class="figure-text">
+      <figure class="figure-text" data-aos="fade-up">
         <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
         <figcaption>
           <p>
@@ -92,7 +92,7 @@
       </figure>
 
       <section class="section-life " bp="grid container">
-        <div class="text-block-b" bp="12 6@md">
+        <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
           <p>
             Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
             os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
@@ -138,14 +138,14 @@
         </h3>
 
         <div bp="grid vertical-center">
-          <div bp="12 6@md">
+          <div bp="12 6@md" data-aos="fade-up">
             <div class="especie-info text-block">
               <p>Espécie: Aetobatus narinari</p>
               <p>Estado de conservação: Quase ameaçada</p>
             </div>
           </div>
 
-          <p class="text-block-b" bp="12 6@md">
+          <p class="text-block-b" bp="12 6@md" data-aos="fade-down">
             Vive em quase todos os oceanos, mas na Laje pode ser vista quase o ano
             todo, onde seus indivíduos são inclusive reconhecidos pelos
             mergulhadores mais frequentes, graças ao padrão único de pintas nas
@@ -157,7 +157,7 @@
           </p>
         </div>
       </section>
-      <figure class="figure-text">
+      <figure class="figure-text" data-aos="fade-up">
         <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
         <figcaption>
           <p>
@@ -172,7 +172,7 @@
         </h3>
 
         <div bp="grid vertical-center">
-          <div bp="12 6@md">
+          <div bp="12 6@md" data-aos="fade-down">
             <div class="especie-info text-block">
               <p>Espécie: Dasyatis centroura</p>
               <p>Estado de conservação: pouco preocupante</p>
@@ -186,7 +186,7 @@
             </div>
           </div>
 
-          <div class="text-block-b" bp="12 6@md">
+          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
             <p>
               Dizem que as raias e os tubarões não podem parar de nadar por que
               podem morrer afogados, mas nem tudo é verdade. No caso de algumas
@@ -206,10 +206,10 @@
       </section>
       <figure class="figure-text">
         <div bp="grid">
-          <div bp="6">
+          <div bp="6" data-aos="fade-right">
             <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
           </div>
-          <div bp="6">
+          <div bp="6" data-aos="fade-left">
             <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
           </div>
         </div>
@@ -228,14 +228,14 @@
           Raia-borboleta
         </h3>
         <div bp="grid vertical-center">
-          <div bp="12 6@md">
+          <div bp="12 6@md" data-aos="fade-down">
             <div class="especie-info text-block">
               <p>Espécie: Gymnura altavela</p>
               <p>Estado de conservação: Vulnerável a extinção e decaindo</p>
             </div>
           </div>
 
-          <div class="text-block-b" bp="12 6@md">
+          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
             <p>
               A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar
               negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a
@@ -256,10 +256,10 @@
       </section>
       <figure class="figure-text">
         <div bp="grid">
-          <div bp="6">
+          <div bp="6" data-aos="fade-right">
             <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
           </div>
-          <div bp="6">
+          <div bp="6" data-aos="fade-left">
             <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
           </div>
         </div>
@@ -286,7 +286,7 @@
         </h2>
 
         <div bp="grid vertical-center">
-          <div bp="12 6@md">
+          <div bp="12 6@md" data-aos="fade-down">
             <p class="text-block">
               Existem duas espécies de tartarugas que frequentam a Laje de Santos, a
               Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns
@@ -300,7 +300,7 @@
             </p>
           </div>
 
-          <div class="text-block-b" bp="12 6@md">
+          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
             <p>
               Graças à beleza do casco, as tartarugas-de-pente foram extremamente
               caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer
@@ -318,10 +318,10 @@
 
       <figure class="figure-text">
         <div bp="grid">
-          <div bp="12 6@md vertical-center">
+          <div bp="12 6@md vertical-center" data-aos="fade-right">
             <img alt="Tartaruga de pente" src="~static/images/nauther/1552316930246-911010432.jpg">
           </div>
-          <div bp="12 6@md vertical-center">
+          <div bp="12 6@md vertical-center" data-aos="fade-left">
             <img alt="Tartaruga verde" src="~static/images/nauther/1547073690808-2036926563.jpg">
           </div>
         </div>
@@ -341,7 +341,7 @@
           Golfinhos
         </h2>
 
-        <div class="text-block centered">
+        <div class="text-block centered" data-aos="zoom-in">
           <p>
             Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que
             aparecem, acompanham o barco por alguns minutos e de novo somem em mar aberto, parecendo nos recepcionar.
@@ -354,7 +354,7 @@
           </p>
         </div>
       </section>
-      <figure class="figure-text">
+      <figure class="figure-text" data-aos="fade-up">
         <img src="~static/images/nauther/20190626_093259.jpg">
         <figcaption>
           <p>
