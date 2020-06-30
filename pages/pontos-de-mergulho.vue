@@ -73,7 +73,7 @@
       </section>
     </aside>
 
-    <section class="dive-3d">
+    <section :class="{'dive-3d': true, 'dive-3d-apple': !isApple}">
       <select
         v-model="selectedSite"
         @input="swapping = false; selectSite($event.target.value);"
