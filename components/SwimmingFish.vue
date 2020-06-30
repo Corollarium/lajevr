@@ -57,6 +57,7 @@ export default {
 <style lang="less">
 .swimming-fish {
   position: relative;
+  z-index: -1;
 }
 
 /* Fish Animation */
