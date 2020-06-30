@@ -1,5 +1,5 @@
 <template>
-  <div class="swimming-fish">
+  <div :class="{'swimming-fish': true, flip: flip}">
     <svg class="fish">
       <path
         :style="{fill: color, 'fill-opacity': opacity}"
@@ -44,7 +44,11 @@ export default {
     },
     color: {
       type: String,
-      default: '#528484'
+      default: '#325454'
+    },
+    flip: {
+      type: Boolean,
+      default: false
     },
     opacity: {
       type: Number,
@@ -58,6 +62,10 @@ export default {
 .swimming-fish {
   position: relative;
   z-index: -1;
+}
+
+.flip {
+  transform: scaleX(-1);
 }
 
 /* Fish Animation */
