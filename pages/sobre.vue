@@ -107,11 +107,11 @@
           <img src="~static/images/piva/about-page-2.png">
         </div>
         <div data-aos="slide-right">
-          <h2>
+          <h3>
             <i18n>
               Desenvolvimento
             </i18n>
-          </h2>
+          </h3>
           <p>
             <i18n>
               Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.
@@ -151,9 +151,9 @@
 
       <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="slide-left">
-          <h2>
+          <h3>
             Realidade virtual
-          </h2>
+          </h3>
           <p>
             <i18n>
               A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.
