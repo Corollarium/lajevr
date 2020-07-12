@@ -244,7 +244,7 @@
     </section>
 
     <!-- Vida Section -->
-    <section id="vida" bp="container" class="section-base">
+    <section id="vida" bp="container" class="section-base" style="padding-bottom: 0;">
       <img
         :src="imageGraficoEstrelaMar.src"
         :srcset="imageGraficoEstrelaMar.srcSet"
