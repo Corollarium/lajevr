@@ -4,13 +4,22 @@
     .menu-icon {
       height: .9rem;
       width: auto;
-      .mobile-hidden();
+
+      @media @mobile {
+        display: block;
+        margin: 0 auto .5rem;
+        transform: scale(1.2);
+      }
     }
   }
 
   .hero-vida {
     height: calc(100vh - 8rem); //calc menos os menus
     overflow: hidden;
+
+    @media @mobile {
+      height: calc(100vh - 10rem);
+    }
 
     figure {
       max-height: calc(100% + 6rem);
