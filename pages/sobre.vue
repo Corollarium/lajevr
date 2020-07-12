@@ -348,6 +348,7 @@ export default {
   },
 
   mounted () {
+    this.headerOverlay = true;
     this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
     this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
   }
