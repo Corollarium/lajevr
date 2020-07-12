@@ -10,17 +10,21 @@
   transition: all 0.3s;
 
   >.modal-inner {
-    width: auto;
+    width: 95%;
+    height: auto;
     position: absolute;
-    max-width: 90%;
+    max-width: 100vh;
     max-height: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2rem;
     background: @darkColor2;
-    overflow: hidden;
     box-shadow: 0 10px 32px rgba(0,0,0,.3);
+
+    @media @responsiveDevices {
+      padding: .5rem;
+    }
 
     figure {
       overflow: hidden;
@@ -33,15 +37,20 @@
 
   .modal-close {
     color: #aaa;
-    line-height: 50px;
-    font-size: 80%;
+    line-height: 32px;
+    font-weight: @bold;
     position: absolute;
-    right: 0;
+    right: -8px;
     text-align: center;
-    top: 0;
+    top: -8px;
     width: 70px;
     text-decoration: none;
     cursor: pointer;
+    z-index: 999999;
+    background: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
 
     &:hover {
       color: black;
@@ -59,5 +68,17 @@
   .modal-enter .modal-container,
   .modal-leave-active .modal-container {
     transform: scale(1.1);
+  }
+}
+
+.modal-inner >.card {
+  margin: 0;
+  padding: 0;
+
+  @media @mobile {
+    .gallery-creator, .gallery-description, .gallery-name {
+      display: none;
+      padding: 0;
+    }
   }
 }
