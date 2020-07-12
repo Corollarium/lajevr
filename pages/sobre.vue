@@ -103,9 +103,6 @@
       </section>
 
       <section class="section-inner" bp="grid 12 6@md">
-        <div data-aos="zoom-out-down">
-          <img src="~static/images/piva/about-page-2.png">
-        </div>
         <div data-aos="slide-right">
           <h3>
             <i18n>
@@ -145,6 +142,9 @@
             >
               <i18n>linhas de código</i18n>
             </number-bullet>
+          </div>
+          <div data-aos="zoom-out-down" bp="first@md">
+            <img src="~static/images/piva/about-page-2.png">
           </div>
         </div>
       </section>
@@ -192,7 +192,6 @@
         </div>
         <div data-aos="zoom-out-down">
           <img src="~static/images/piva/about-page-3.png">
-        </div>
         </div>
       </section>
 
