@@ -54,7 +54,7 @@
                   <span class="dive-description">{{ selectedSiteData.description }}</span>
                 </p>
               </div>
-              <div>
+              <div class="galeria-pontos">
                 <GalleryCard
                   v-for="(a, i) in filteredGallery"
                   :key="i"
