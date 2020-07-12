@@ -13,7 +13,7 @@
 
       <form id="filters" bp="12 6@md 7@lg" class="filter-form">
         <div bp="grid">
-          <div bp="5 7@md 4@lg">
+          <div bp="6 7@md 4@lg">
             <label class="label">
               <i18n>
                 Filtrar pelo nome
@@ -24,7 +24,7 @@
             </div>
           </div>
 
-          <div bp="4 5@md 3@lg">
+          <div bp="6 5@md 3@lg">
             <label>
               <i18n>
                 Cor
