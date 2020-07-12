@@ -57,6 +57,15 @@
     width: 100%;
   }
 
+  .input-with-icon {
+    position: relative;
+    max-width: 20rem;
+
+    > input {
+      padding-right: 3rem;
+    }
+  }
+
   input {
     padding: .5em .6em;
     max-width: 20rem;
@@ -64,6 +73,16 @@
     box-shadow: inset 0 1px 3px #ddd;
     vertical-align: middle;
     box-shadow: inset 0 1px 3px #ddd;
+
+    & + .input-icon {
+      position: absolute;
+      height: 80%;
+      background-color: #ffffff;
+      top: 10%;
+      padding: .5em .6em;
+      right: 1rem;
+      color: #333;
+    }
   }
 
   select {
