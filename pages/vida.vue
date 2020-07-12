@@ -210,10 +210,10 @@
       </section>
       <figure class="figure-text">
         <div bp="grid">
-          <div bp="6" data-aos="fade-right">
+          <div bp="12 6@md" data-aos="fade-right">
             <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
           </div>
-          <div bp="6" data-aos="fade-left">
+          <div bp="12 6@md" data-aos="fade-left">
             <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
           </div>
         </div>
@@ -260,10 +260,10 @@
       </section>
       <figure class="figure-text">
         <div bp="grid">
-          <div bp="6" data-aos="fade-right">
+          <div bp="12 6@md" data-aos="fade-right">
             <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
           </div>
-          <div bp="6" data-aos="fade-left">
+          <div bp="12 6@md" data-aos="fade-left">
             <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
           </div>
         </div>
