@@ -45,7 +45,7 @@
           </li>
           <li class="pure-menu-item">
             <nuxt-link to="/especies" class="pure-menu-link">
-              <i18n>Catálogo</i18n>
+              <i18n>Espécies</i18n>
             </nuxt-link>
           </li>
           <li class="pure-menu-item">

@@ -22,7 +22,7 @@
       </form>
     </div>
 
-    <div bp="grid container 6 4@md 3@lg">
+    <div bp="grid container 12 6@sm 4@md 3@lg">
       <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"

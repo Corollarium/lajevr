@@ -88,7 +88,7 @@
     <transition-group
       name="fauna-list"
       tag="div"
-      bp="grid 6 4@md 3@lg"
+      bp="grid 12 6@sm 4@md 3@lg"
       class="section-article"
     >
       <div
