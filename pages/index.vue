@@ -9,7 +9,6 @@
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
-        <!-- TODO <Clouds /> BG Ajustar nuvens no modelo 3D -->
         <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
         <div class="sticky-hero-attribution">
           <p class="attribution">

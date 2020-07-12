@@ -29,6 +29,7 @@
         </i18n>
       </h3>
       <p>
+        <SwimmingFish />
         <i18n>
           A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou
           com visualização e realidade virtual.
@@ -327,13 +328,14 @@
 import page from './page.vue';
 import statisticsData from '~/components/statistics.json';
 import Clouds from '~/components/Clouds.vue';
+import SwimmingFish from '~/components/SwimmingFish.vue';
 
 const imageIlha = require('~/assets/images/graficos/laje-ilha.png?resize');
 const imageMar = require('~/assets/images/backgrounds/sea.jpg?resize');
 const imageLogoLaje = require('~/assets/images/logos/logo-laje-de-santos.png?resize');
 
 export default {
-  components: { Clouds },
+  components: { Clouds, SwimmingFish },
   extends: page,
 
   data () {

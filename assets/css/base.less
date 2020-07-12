@@ -18,6 +18,14 @@ html, body {
   height:100%;
 }
 
-#__nuxt {
-  background-image: linear-gradient(to bottom, darken(@primaryColor, 15), darken(@primaryColor, 25) 20%, darken(@primaryColor, 25) 100%);
+body {
+  z-index: -3;
+  position: relative;
 }
+
+#__nuxt {
+  position: relative;
+  background-image: linear-gradient(to bottom, darken(@primaryColor, 15), darken(@primaryColor, 25) 20%, darken(@primaryColor, 25) 100%);
+  z-index: -2;
+}
+

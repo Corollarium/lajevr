@@ -54,6 +54,7 @@
     </div>
 
     <section id="intro" class="section-index section-life" bp="container" data-aos="fade-up">
+      <swimming-fish />
       <p class="intro text-block-b centered rellax" data-rellax-speed="-.75">
         <i18n>
           A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas.
@@ -65,7 +66,7 @@
       </p>
     </section>
 
-    <section id="raias">
+    <section id="raias" class="section-index">
       <section>
         <h2 class="title-specimen rellax" data-rellax-speed="-0.5">
           <img alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
@@ -218,7 +219,7 @@
             Na Laje de Santos raias-prego aparecem em determinadas épocas do ano e
             geralmente estão prenhas ou grávidas como na foto. A
             gravidez das raias é perceptível pelo ventre e pelo dorso
-            deixando-as protuberantes em ambos os lados.
+            deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres.
           </p>
         </figcaption>
       </figure>
@@ -278,7 +279,7 @@
       </figure>
     </section>
 
-    <section id="turtles">
+    <section id="turtles" class="section-index">
       <section class="section-life container">
         <h2 class="title-specimen">
           <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
@@ -384,12 +385,14 @@
 import Rellax from 'rellax';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
+import SwimmingFish from '~/components/SwimmingFish.vue';
 
 const imageCardume = require('~/static/images/nauther/1556498262088345578492.jpg?resize');
 
 export default {
   components: {
-    GLTFModel
+    GLTFModel,
+    SwimmingFish
   },
 
   extends: page,

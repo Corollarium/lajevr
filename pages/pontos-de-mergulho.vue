@@ -268,7 +268,9 @@ export default {
   methods: {
     // callback for select
     selectSite (diveSiteIndex) {
-      this.$refs.ilha3d.$emit('picker', diveSiteIndex);
+      if (this.$refs.ilha3d) {
+        this.$refs.ilha3d.$emit('picker', diveSiteIndex);
+      }
       this.pick(this.diveSites[diveSiteIndex]);
     },
 
