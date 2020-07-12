@@ -28,6 +28,7 @@
         :key="i"
         @click.native="showModalClick(i)"
         v-bind="a"
+        class="gallery-card"
       />
     </div>
 
