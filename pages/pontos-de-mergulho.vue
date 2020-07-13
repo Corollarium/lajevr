@@ -139,7 +139,7 @@ export default {
           name: 'Portinho',
           lat: -24.318083,
           long: -46.183444,
-          dificuldade: '⭑✩✩ Baixo grau de dificuldade.',
+          dificuldade: '⭑✩ Baixo grau de dificuldade.',
           description:
             'A face norte é o local onde ocorre a maioria dos mergulhos, com profundidade de até 22m, mais abrigado das correntes e de fácil orientação.'
         },
@@ -147,7 +147,7 @@ export default {
           name: 'Moréia',
           lat: -24.317056,
           long: -46.182083,
-          dificuldade: '⭑✩✩ Baixo grau de dificuldade.',
+          dificuldade: '⭑✩ Baixo grau de dificuldade.',
           description:
             'Naufrágio do Moréia, um pesqueiro de ferro com 15m de comprimento. Na face norte, próximo à ponta leste, com estrutura em estado instável, desaconselhando penetração, profundidade máxima de 22m.'
         },
@@ -155,7 +155,7 @@ export default {
           name: 'Piscinas',
           lat: -24.321667,
           long: -46.184306,
-          dificuldade: '⭑⭑✩ Médio grau de dificuldade.',
+          dificuldade: '⭑⭑✩✩ Médio grau de dificuldade.',
           description:
             'Na ponta oeste/sudoeste da Laje, ambiente com profundidade que varia de 10 a 35m e requer boa noção de orientação subaquática.'
         },
@@ -163,7 +163,7 @@ export default {
           name: 'Boca da Baleia',
           lat: -24.316778,
           long: -46.179083,
-          dificuldade: '⭑⭑⭑ Alto grau de dificuldade',
+          dificuldade: '✩✩✩ Alto grau de dificuldade',
           description:
             'Fenda voltada para leste, com cerca de 50m de extensão e profundidade média de 15m. Requer excelente condição de mar e direção de ondulação adequada para que se possa adentrar.'
         },
@@ -171,7 +171,7 @@ export default {
           name: 'Paredão Face Sul',
           lat: -24.320333,
           long: -46.180194,
-          dificuldade: '⭑⭑✩ Médio grau de dificuldade.',
+          dificuldade: '⭑⭑✩✩ Médio grau de dificuldade.',
           description:
             'Encosta rochosa íngreme que desce verticalmente até 42m de profundidade. Mergulhos feitos em "drifting" a favor da corrente. Formação com inclinação negativa entre 12 e 27m de profundidade do centro para leste.'
         },
@@ -179,7 +179,7 @@ export default {
           name: 'Parcel das Âncoras',
           lat: -24.321833,
           long: -46.184972,
-          dificuldade: '⭑⭑⭑ Alto grau de dificuldade.',
+          dificuldade: '✩✩✩ Alto grau de dificuldade.',
           description:
             'Fundo rochoso que se destaca da Laje em direção ao continente, apresenta estrutura complexa, exigindo boa orientação subaquática. Profundidade entre 18 e 42m. Presença de muitas âncoras de pesqueiros que ficaram presas ao fundo rochoso. Sujeito a correntes.'
         },
@@ -187,7 +187,7 @@ export default {
           name: 'Parcel do Sul',
           lat: -24.326917,
           long: -46.183722,
-          dificuldade: '⭑⭑✩ Médio grau de dificuldade.',
+          dificuldade: '⭑⭑✩✩ Médio grau de dificuldade.',
           description:
             'Formação submersa a cerca de 400m a sudoeste da Laje, inicia aos 8m e segue até os 42m. Requer mar em boas condições, mas a formação permite orientação e deslocamento mais simples.'
         },
@@ -195,7 +195,7 @@ export default {
           name: 'Calhaus Face Norte',
           lat: -24.327167,
           long: -46.161667,
-          dificuldade: '⭑✩✩ Baixo a ⭑⭑✩ médio grau de dificuldade.',
+          dificuldade: '⭑✩ Baixo a ⭑⭑✩✩ Médio grau de dificuldade.',
           description:
             'Paredão levemente acidentado, com características de navegação subaquática semelhantes ao portinho da Laje, com profundidades que podem variar de 8 a 25m, passando a até 35m se houver afastamento das rochas na direção norte (sentido Laje).'
         },
@@ -203,7 +203,7 @@ export default {
           name: 'Calhaus Face Sul',
           lat: -24.32825,
           long: -46.159278,
-          dificuldade: '⭑⭑✩ Alto grau de dificuldade.',
+          dificuldade: '⭑⭑✩✩✩ Alto grau de dificuldade.',
           description:
             'Paredão levemente acidentado com incidência de correntes e profundidades que podem variar de 8 a 40m.'
         },
@@ -211,7 +211,7 @@ export default {
           name: 'Calhaus Túnel',
           lat: -24.328,
           long: -46.160722,
-          dificuldade: '⭑✩✩ Baixo grau de dificuldade.',
+          dificuldade: '⭑✩ Baixo grau de dificuldade.',
           description:
             'Passagem em forma de ”U” e um arco central emerso, com grande apelo visual e profundidade máxima de 18m, porém exige bom equilíbrio hidrostático por parte do mergulhador. Sujeito a boas condições de mar.'
         },
@@ -219,7 +219,7 @@ export default {
           name: 'Parcel Novo',
           lat: -24.345472,
           long: -46.173972,
-          dificuldade: '⭑⭑⭑ Alto grau de dificuldade.',
+          dificuldade: '⭑⭑⭑✩✩✩ Alto grau de dificuldade.',
           description:
             'Formação submersa localizada cerca de 1,5 milhas náuticas ao sul da Laje que inicia aos 26m de profundidade e chega aos 45m. Exige mar em excelentes condições e preparo adequado dos mergulhadores.'
         },

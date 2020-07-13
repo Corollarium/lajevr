@@ -47,9 +47,9 @@
             Aves
           </a>
         </li>
-        <li class="pure-menu-item topbar-list-item" data-target="birds">
-          <a class="pure-menu-link link-menu-vida" href="#fishes">
-            <img class="menu-icon" alt="Icone de um pássaros" src="~static/images/graficos/fish.svg">
+        <li class="pure-menu-item topbar-list-item" data-target="fish">
+          <a class="pure-menu-link link-menu-vida" href="#fish">
+            <img class="menu-icon" alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
             Peixes
           </a>
         </li>
@@ -66,6 +66,10 @@
         <nuxt-link to="/especies">
           <i18n>Se estiver procurando espécies, veja a lista completa.</i18n>
         </nuxt-link>
+        <br>
+        <i18n>
+          <small>Pesquisa e texto: Nauther Andres. Revisão: Bruno Barberi Gnecco.</small>
+        </i18n>
       </p>
     </section>
 
@@ -380,6 +384,18 @@
         </p>
       </section>
     </section>
+
+    <section id="fish" class="section-index">
+      <section class="section-life container">
+        <h2 class="title-specimen">
+          <img alt="Icone de uma ave" src="~static/images/graficos/fish.svg">
+          Peixes
+        </h2>
+
+        <p>
+          TODO
+        </p>
+      </section>
     </section>
   </article>
 </template>
