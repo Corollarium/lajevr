@@ -3,7 +3,6 @@
   padding: 0 1rem 1rem;
   overflow: hidden;
   border-radius: .5rem;
-  cursor: pointer;
   box-shadow: 0 10px 8px fade(lighten(@primaryColor, 15), 5);
   transition: all .2s;
   border: 1px solid fade(@primaryColor, 20);
@@ -13,13 +12,16 @@
     margin-bottom: 2rem;
   }
 
-  &:hover {
-    box-shadow: 0 0 8px fade(lighten(@primaryColor, 20), 30);
+  &.gallery-card {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 8px fade(lighten(@primaryColor, 20), 30);
 
-    img,
-    video {
-      transform: translate3d(0, 0, 0) scale(1.03);
-      transition: all .15s;
+      img,
+      video {
+        transform: translate3d(0, 0, 0) scale(1.03);
+        transition: all .15s;
+      }
     }
   }
 
