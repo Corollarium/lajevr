@@ -335,8 +335,8 @@
         </div>
         <figcaption>
           <p>
-            Tartaruga verde (à esquerda)
-            e tartaruga de pente (à direita).
+            Tartaruga de pente
+            e tartaruga verde.
           </p>
         </figcaption>
       </figure>
