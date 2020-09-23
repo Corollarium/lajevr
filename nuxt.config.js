@@ -1,13 +1,8 @@
 /* nuxt.config.js */
 // only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-  router: {
-    base: '/lajevr/'
-  }
-} : {};
+const routerBase = {};
 
 export default {
-  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -53,14 +48,14 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@aceforth/nuxt-optimized-images'
   ],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@bazzite/nuxt-optimized-images',
     ['@nuxtjs/pwa', { workbox: false }]
   ],
   /*

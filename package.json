@@ -17,7 +17,6 @@
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "dependencies": {
-    "@bazzite/nuxt-optimized-images": "^0.2.1",
     "@corollarium/babylon-boids": "^1.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
@@ -57,6 +56,7 @@
     "js-yaml": ">=3.13.1"
   },
   "devDependencies": {
+    "@aceforth/nuxt-optimized-images": "^1.3.0",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.3",
