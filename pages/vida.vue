@@ -41,22 +41,22 @@
             Golfinhos
           </a>
         </li>
-        <li class="pure-menu-item topbar-list-item" data-target="birds">
-          <a class="pure-menu-link link-menu-vida" href="#birds">
-            <img class="menu-icon" alt="Icone de um pássaros" src="~static/images/graficos/bird.svg">
-            Aves
-          </a>
-        </li>
         <li class="pure-menu-item topbar-list-item" data-target="fish">
           <a class="pure-menu-link link-menu-vida" href="#fish">
             <img class="menu-icon" alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
             Peixes
           </a>
         </li>
+        <li class="pure-menu-item topbar-list-item" data-target="birds">
+          <a class="pure-menu-link link-menu-vida" href="#birds">
+            <img class="menu-icon" alt="Icone de um pássaros" src="~static/images/graficos/bird.svg">
+            Aves
+          </a>
+        </li>
       </ul>
     </div>
 
-    <section id="intro" class="section-index section-life" bp="container" data-aos="fade-up">
+    <section id="intro" class="section-life" bp="container" data-aos="fade-up">
       <swimming-fish />
       <p class="intro text-block-b centered rellax" data-rellax-speed="-.75">
         <i18n>
@@ -372,6 +372,115 @@
       </figure>
     </section>
 
+    <section id="fish" class="section-index">
+      <section class="section-life container">
+        <h2 class="title-specimen">
+          <img alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
+          Peixes
+        </h2>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Garoupa verdadeira
+          </h3>
+          <div class="especie-info text-block">
+            <p>Espécie: Epinephelus marginatus</p>
+            <p>Estado de conservação: Vulnerável a extinção</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Garoupa verdadeira" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Garoupa verdadeira entre pedras. Foto: Nauther Andres
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              Esta espécie habita fundos marinhos rochosos e coralíneos com
+              profundidade de até 300 metros. Garoupas estão distribuídas por
+              todo o oceano atlântico nas zonas tropicais, subtropicais  e
+              temperadas, são extremamente territorialistas e grandes
+              predadores, se alimentando de outros peixes e crustáceos. Uma
+              curiosidade sobre a garoupa: essa espécie nasce fêmea e após
+              alguns anos se torna macho, caracterizando hermafroditismo!
+            </p>
+
+            <p>
+              São peixes muito apreciados pela culinária por sua carne firme e
+              branca. Por conta disso são extremamente explorados para o
+              comércio e hoje sua população está em declínio, sendo
+              categorizados como Vulnerável à extinção segundo a IUCN. No Parque
+              Estadual Marinho da Laje de Santos encontra-se um de seus últimos
+              refúgios, sendo possível encontrar exemplares com tamanho
+              considerável com peso médio entre 20 a 30 quilos.
+            </p>
+
+            <p>
+              Um comportamento que pode ser observado da espécie, durante os
+              mergulhos na laje, é de como ela disputa com outros indivíduos
+              pelo seu território, expulsando o invasor de sua toca com
+              investidas e até mesmo mordidas. É possível notar também um padrão
+              de coloração intercambiável de acordo com o substrato que ela se
+              encontra… se for rochoso, os padrões de manchas serão vivas como
+              se fossem uma camuflagem, quando em ambiente arenoso claro, seu
+              corpo empalidece na cor da areia se mimetizando com o ambiente.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Peixe-frade
+          </h3>
+          <div class="especie-info text-block">
+            <p>Espécie: Pomacanthus paru</p>
+            <p>Estado de conservação: pouco preocupante</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Tartaruga de pente" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Peixe frade
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              Paru, peixe frade ou peixe anjo: são muitos nomes para a mesma
+              espécie. Depende de qual região que você o avistou. É um dos
+              peixes mais ilustres e carismáticos.
+            </p>
+
+            <p>
+              Possui várias características únicas. Existente em toda a costa
+              brasileira, é um peixe recifal de comportamento dócil, comum de
+              ser encontrado nos mergulhos e super fotogênico… Alguns
+              especialistas dizem que eles são monogâmicos, vivendo com sua
+              parceira(o) por toda a vida. É mesmo habitual vê-los em pares.
+            </p>
+
+            <p>
+              Seus filhotes são bem diferentes quando juvenis, apresentando
+              listras amarelas contínuas em seu disco corporal que se
+              transformam em pintas amarelas quando passam para a fase adulta.
+              Esta espécie não possui interesse para a pesca, mas muito valor no
+              mercado de peixes ornamentais ou para a aquariofilia, sendo muito
+              comercializado para compor ambientes de aquários mundo afora.
+            </p>
+          </div>
+        </section>
+      </section>
+    </section>
+
     <section id="birds" class="section-index">
       <section class="section-life container">
         <h2 class="title-specimen">
@@ -381,19 +490,6 @@
 
         <p>
           29 espécies de aves já foram catalogadas na Laje.
-        </p>
-      </section>
-    </section>
-
-    <section id="fish" class="section-index">
-      <section class="section-life container">
-        <h2 class="title-specimen">
-          <img alt="Icone de uma ave" src="~static/images/graficos/fish.svg">
-          Peixes
-        </h2>
-
-        <p>
-          TODO
         </p>
       </section>
     </section>
@@ -419,12 +515,12 @@ export default {
   data () {
     return {
       imageCardume,
-      lms: null,
       rellax: null
     };
   },
 
   mounted () {
+    console.log(imageCardume);
     this.head.title = this.$gettext('Vida na Laje de Santos');
     this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
 
