@@ -444,7 +444,7 @@
         </section>
 
         <figure class="figure-text" data-aos="fade-up">
-          <img alt="Tartaruga de pente" src="http://placehold.it/300x300">
+          <img alt="Peixe frade" src="http://placehold.it/300x300">
           <figcaption>
             <p>
               Peixe frade
@@ -475,6 +475,228 @@
               Esta espécie não possui interesse para a pesca, mas muito valor no
               mercado de peixes ornamentais ou para a aquariofilia, sendo muito
               comercializado para compor ambientes de aquários mundo afora.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Peixe anjo real
+          </h3>
+          <div class="especie-info text-block">
+            <p>Espécie: Holocanthus ciliares</p>
+            <p>Estado de conservação: Pouco preocupante</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Peixe anjo real" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Peixe anjo real
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de
+              corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.
+              Em seu habitat natural alimenta-se de corais, esponjas, anêmonas, algas,
+              crustáceos e vermes.
+            </p>
+
+            <p>
+              São peixes de cores deslumbrantes e muito vivas que chegam a brilhar como neon.
+              Geralmente são encontrados aos pares e na presença de mergulhadores são um tanto
+              ariscos; se sentem ameaçados e procuram se esconder em fendas. Como o peixe
+              frade, o ciliaris não possui valor comercial, mas o mercado de peixes de aquário
+              é uma grande ameaça à espécie por ser muito capturada em seu habitat.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Sargentinho
+          </h3>
+          <div class="especie-info text-block">
+            <p>Espécie: Abudefduf saxatilis</p>
+            <p>Estado de conservação: Menor preocupação</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Sargentinho" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Sargentinho
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho
+              que cuida dos filhote. Ocorre em todos os oceanos tropicais e subtropicais,
+              conhecido aqui no Brasil pelo nome popular de sargentinho, talvez, porque ele
+              tem um comportamento muito característico de proteção dos ovos em seus ninhos
+              nas rochas. Se qualquer outro animal se aproximar ele ataca ferozmente
+              independente do tamanho da ameaça, inclusive mergulhadores curiosos que se
+              aproximam demais.
+            </p>
+
+            <p>
+              Seu estado de conservação é de menor preocupação na lista vermelha de espécies
+              ameaçadas, ocorrendo em grandes quantidades em todos os oceanos, sendo muito
+              apreciado por mergulhadores, tendo como maior ameaça o mercado de peixes
+              ornamentais para aquários.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Peixe Coió ou falso-voador
+          </h3>
+          <div class="especie-info text-block">
+            <p>
+              Espécie: Dactylopterus volitans
+            </p>
+            <p>Estado de conservação: Menor preocupação</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Peixe Coió ou falso-voador" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Coió
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              O peixe Coió ou falso-voador é um peixe incomum e com
+              características morfológicas diferentes da maioria dos peixes que
+              conhecemos. Seu crânio é retangular com cavidades oculares bem
+              avantajadas e um focinho. Mais que isso, ele possui duas
+              nadadeiras peitorais modificadas e prolongadas quase que do mesmo
+              tamanho de seu corpo e com membranas entre seus espinhos.
+            </p>
+
+            <p>
+              O interessante é que ao se deparar com ameaça de um possível
+              predador ele abre suas nadadeiras em forma de leque que se
+              assemelham a um par de asas, por isso o nome de falso voador. Este
+              comportamento de abrir as “asas” serve para enganar seu predador,
+              pois faz ele se parecer maior que realmente é.
+            </p>
+
+            <p>
+              Outra característica bem marcante fica na borda de suas nadadeiras
+              quando abertas. É uma coloração azul neon bem viva que serve como
+              um alerta, geralmente associado como perigo para o possível
+              predador. Esta espécie tem o comportamento de forragear o fundo
+              marinho, geralmente em areia, em busca de pequenos crustáceos e
+              outros organismos para se alimentar.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Pirá
+          </h3>
+          <div class="especie-info text-block">
+            <p>
+              Espécie: Malacanthus plumieri
+            </p>
+            <p>Estado de conservação: Menor preocupação</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Pirá" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Pirá
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              Pirá em tupi-guarani significa “peixe”: o mais legal é que este
+              peixe é conhecido popularmente como Pirá mesmo.
+            </p>
+
+            <p>
+              Este peixe é o arquiteto do mar. Habita de 10 até 150 metros de
+              profundidade, em fundo arenoso ou calcário, e constrói
+              cuidadosamente sua própria casa com pedaços de esqueletos de
+              corais, conchas e pedras carregando-as pela boca e empilhando umas
+              sobre as outras formando montes de até 1 metro de altura e 1,5
+              metros de circunferência. Assim vive sua vida toda se dedicando
+              aos cuidados da casa.
+            </p>
+
+            <p>
+              Quando ameaçado, nada ligeiramente para dentro de sua pilha de
+              cascalhos para se proteger e só sai novamente quando a ameaça se
+              for.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+          <h3>
+            Moreia pintada
+          </h3>
+          <div class="especie-info text-block">
+            <p>
+              Espécie: Gymnothorax moringa
+            </p>
+            <p>Estado de conservação: Menor preocupação</p>
+          </div>
+        </section>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Moreia pintada" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Moreia pintada
+            </p>
+          </figcaption>
+        </figure>
+
+        <section class="section-life " bp="grid container">
+          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+            <p>
+              É conhecida popularmente como moreia pintada, por conta de suas
+              manchas claras e escuras no corpo de padrão marmorizado. Apesar de
+              parecerem com serpentes ou enguias, as moreias são peixes com
+              formas diferentes.
+            </p>
+
+            <p>
+              Seu nado se dá de forma semelhante ao rastejar de uma serpente,
+              impulsionando o corpo para frente e para trás. Vivem associadas ao
+              fundo marinho em tocas e fendas nas rochas e recifes de corais.
+              São fortes predadoras e se alimentam de outros peixes, crustáceos
+              e moluscos. Possuem dentes bem afiados e uma mordida bem poderosa.
+            </p>
+
+            <p>
+              Ao encontrar uma moreia você perceberá sua mandíbula em constante
+              movimento de abrir e fechar. Parece assustador, mas isso significa
+              que ela está respirando, inalando água que ao passar por suas
+              brânquias faz o troca do oxigênio que necessita.
             </p>
           </div>
         </section>
