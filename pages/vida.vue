@@ -90,7 +90,7 @@
           <p>Estado de conservação: Vulnerável a extinção</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
           <figcaption>
             <p>
@@ -166,7 +166,7 @@
           </p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
           <figcaption>
             <p>
@@ -362,7 +362,7 @@
             O Golfinho pintado do Atlântico.
           </p>
         </div>
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img src="~static/images/nauther/20190626_093259.jpg">
           <figcaption>
             <p>
@@ -390,7 +390,7 @@
           <p>Estado de conservação: Vulnerável a extinção</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Garoupa verdadeira" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -444,7 +444,7 @@
           <p>Estado de conservação: pouco preocupante</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Peixe frade" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -490,7 +490,7 @@
           <p>Estado de conservação: Pouco preocupante</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Peixe anjo real" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -528,7 +528,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Sargentinho" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -570,7 +570,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Peixe Coió ou falso-voador" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -621,7 +621,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Pirá" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -667,7 +667,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Moreia pintada" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -714,7 +714,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Moreia verde" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -760,7 +760,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Moréia-banana " src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -789,7 +789,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Moréia-banana " src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -821,7 +821,7 @@
           <p>Estado de conservação: Segura ou pouco preocupante</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Barracuda" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -872,7 +872,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Salemas" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -924,7 +924,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Budião-papagaio-de-recife" src="http://placehold.it/300x300">
           <figcaption>
             <p>
@@ -974,7 +974,7 @@
           <p>Estado de conservação: Menor preocupação</p>
         </div>
 
-        <figure class="figure-text" data-aos="fade-up">
+        <figure class="figure-text">
           <img alt="Maria-da-toca-das-pedras" src="http://placehold.it/300x300">
           <figcaption>
             <p>
