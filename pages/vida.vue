@@ -56,7 +56,7 @@
       </ul>
     </div>
 
-    <section id="intro" class="section-life" bp="container" data-aos="fade-up">
+    <article id="intro" class="section-container" bp="container" data-aos="fade-up">
       <swimming-fish />
       <p class="intro text-block-b centered rellax" data-rellax-speed="-.75">
         <i18n>
@@ -71,17 +71,17 @@
           <small>Pesquisa e texto: Nauther Andres. Revisão: Bruno Barberi Gnecco.</small>
         </i18n>
       </p>
-    </section>
+    </article>
 
-    <section id="raias" class="section-index">
-      <section>
+    <article id="raias" class="article-index">
+      <div>
         <h2 class="title-specimen rellax" data-rellax-speed="-0.5">
           <img alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
           Raias
         </h2>
-      </section>
+      </div>
 
-      <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
           Raia-Manta
         </h3>
@@ -89,58 +89,59 @@
           <p>Espécie: Mobula birostris</p>
           <p>Estado de conservação: Vulnerável a extinção</p>
         </div>
-      </section>
-      <figure class="figure-text" data-aos="fade-up">
-        <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
-        <figcaption>
-          <p>
-            Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
-          </p>
-        </figcaption>
-      </figure>
 
-      <section class="section-life " bp="grid container">
-        <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
-          <p>
-            Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
-            os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
-            mil quilos, a raia manta não possui ferrão. É o peixe com o maior
-            cérebro de todos os outros peixes do mar, por isso é extremamente
-            inteligente, um animal muito dócil e curioso. Quando encontra um
-            mergulhador, permite a interação e por vezes permanece por vários
-            minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
-            mergulhadores parecem fazer cócegas em sua barriga
-          </p>
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
+          <figcaption>
+            <p>
+              Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
+            </p>
+          </figcaption>
+        </figure>
 
-          <p>
-            Podem ser
-            encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
-            Santos aparecem no período de inverno, nos meses de abril a setembro. As
-            mantas são identificadas individualmente através de fotografia das
-            manchas ventrais que formam padrões únicos. Esses dados são inserido em
-            bancos de dados brasileiro e mundial para organização, assim é possível
-            a quantificação de números populacionais.
-          </p>
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
+              os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
+              mil quilos, a raia manta não possui ferrão. É o peixe com o maior
+              cérebro de todos os outros peixes do mar, por isso é extremamente
+              inteligente, um animal muito dócil e curioso. Quando encontra um
+              mergulhador, permite a interação e por vezes permanece por vários
+              minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
+              mergulhadores parecem fazer cócegas em sua barriga
+            </p>
 
-          <p>
-            Durante as suas migrações, as jamantas efetuam mergulhos frequentes até
-            profundidades de quase dois quilômetros (entre os maiores alguma vez
-            medidos para um animal marinho), onde as temperaturas da água atingem os
-            três graus centígrados.
-          </p>
+            <p>
+              Podem ser
+              encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
+              Santos aparecem no período de inverno, nos meses de abril a setembro. As
+              mantas são identificadas individualmente através de fotografia das
+              manchas ventrais que formam padrões únicos. Esses dados são inserido em
+              bancos de dados brasileiro e mundial para organização, assim é possível
+              a quantificação de números populacionais.
+            </p>
+
+            <p>
+              Durante as suas migrações, as jamantas efetuam mergulhos frequentes até
+              profundidades de quase dois quilômetros (entre os maiores alguma vez
+              medidos para um animal marinho), onde as temperaturas da água atingem os
+              três graus centígrados.
+            </p>
+          </div>
+
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              :model="'./models/manta/scene.gltf'"
+              :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
+              :attribution="'Modelo 3D CC BY-NC por misaooo'"
+            />
+            </GLTFModel>
+          </div>
         </div>
-
-        <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
-          <GLTFModel
-            :model="'./models/manta/scene.gltf'"
-            :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
-            :attribution="'Modelo 3D CC BY-NC por misaooo'"
-          />
-          </GLTFModel>
-        </div>
       </section>
 
-      <section class="section-life with-bottom-content container">
+      <section class="section-container with-bottom-content container">
         <h3>
           Raia-chita
         </h3>
@@ -164,17 +165,18 @@
             triturar carapaças e conchas.
           </p>
         </div>
-      </section>
-      <figure class="figure-text" data-aos="fade-up">
-        <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
-        <figcaption>
-          <p>
-            Raia Chita
-          </p>
-        </figcaption>
-      </figure>
 
-      <section class="section-life container">
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
+          <figcaption>
+            <p>
+              Raia Chita
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section-container container">
         <h3>
           Raia-prego
         </h3>
@@ -210,28 +212,27 @@
             </p>
           </div>
         </div>
-        </div>
+        <figure class="figure-text">
+          <div bp="grid">
+            <div bp="12 6@md" data-aos="fade-right">
+              <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
+            </div>
+            <div bp="12 6@md" data-aos="fade-left">
+              <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
+            </div>
+          </div>
+          <figcaption>
+            <p>
+              Na Laje de Santos raias-prego aparecem em determinadas épocas do ano e
+              geralmente estão prenhas ou grávidas como na foto. A
+              gravidez das raias é perceptível pelo ventre e pelo dorso
+              deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres.
+            </p>
+          </figcaption>
+        </figure>
       </section>
-      <figure class="figure-text">
-        <div bp="grid">
-          <div bp="12 6@md" data-aos="fade-right">
-            <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
-          </div>
-          <div bp="12 6@md" data-aos="fade-left">
-            <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
-          </div>
-        </div>
-        <figcaption>
-          <p>
-            Na Laje de Santos raias-prego aparecem em determinadas épocas do ano e
-            geralmente estão prenhas ou grávidas como na foto. A
-            gravidez das raias é perceptível pelo ventre e pelo dorso
-            deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres.
-          </p>
-        </figcaption>
-      </figure>
 
-      <section class="section-life container">
+      <section class="section-container container">
         <h3>
           Raia-borboleta
         </h3>
@@ -261,33 +262,33 @@
             </p>
           </div>
         </div>
+        <figure class="figure-text">
+          <div bp="grid">
+            <div bp="12 6@md" data-aos="fade-right">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
+            </div>
+            <div bp="12 6@md" data-aos="fade-left">
+              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
+            </div>
+          </div>
+          <figcaption>
+            <p>
+              Raias-borboleta. Pode ser bem difícil diferenciar o macho da
+              fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
+              ou raias e tubarões, é que os machos possuem dois clásperes ou
+              (pênis) que é possível ser visualizado na base da cauda dos machos
+              e ausente nas fêmeas. Fotos: <a
+                href="https://www.instagram.com/marcelomigliari/"
+                target="_blank"
+              >Marcelo Migliari</a>
+            </p>
+          </figcaption>
+        </figure>
       </section>
-      <figure class="figure-text">
-        <div bp="grid">
-          <div bp="12 6@md" data-aos="fade-right">
-            <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
-          </div>
-          <div bp="12 6@md" data-aos="fade-left">
-            <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
-          </div>
-        </div>
-        <figcaption>
-          <p>
-            Raias-borboleta. Pode ser bem difícil diferenciar o macho da
-            fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
-            ou raias e tubarões, é que os machos possuem dois clásperes ou
-            (pênis) que é possível ser visualizado na base da cauda dos machos
-            e ausente nas fêmeas. Fotos: <a
-              href="https://www.instagram.com/marcelomigliari/"
-              target="_blank"
-            >Marcelo Migliari</a>
-          </p>
-        </figcaption>
-      </figure>
-    </section>
+    </article>
 
-    <section id="turtles" class="section-index">
-      <section class="section-life container">
+    <article id="turtles" class="article-index">
+      <section class="section-container container">
         <h2 class="title-specimen">
           <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
           Tartarugas
@@ -340,10 +341,10 @@
           </p>
         </figcaption>
       </figure>
-    </section>
+    </article>
 
-    <section id="dolphins" class="section-index">
-      <section class="section-life container">
+    <article id="dolphins" class="article-index">
+      <section class="section-container container">
         <h2 class="title-specimen">
           <img alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
           Golfinhos
@@ -361,33 +362,33 @@
             O Golfinho pintado do Atlântico.
           </p>
         </div>
+        <figure class="figure-text" data-aos="fade-up">
+          <img src="~static/images/nauther/20190626_093259.jpg">
+          <figcaption>
+            <p>
+              Golfinhos
+            </p>
+          </figcaption>
+        </figure>
       </section>
-      <figure class="figure-text" data-aos="fade-up">
-        <img src="~static/images/nauther/20190626_093259.jpg">
-        <figcaption>
-          <p>
-            Golfinhos
-          </p>
-        </figcaption>
-      </figure>
-    </section>
+    </article>
 
-    <section id="fish" class="section-index">
-      <section class="section-life container">
+    <article id="fish" class="article-index">
+      <div>
         <h2 class="title-specimen">
           <img alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
           Peixes
         </h2>
+      </div>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Garoupa verdadeira
-          </h3>
-          <div class="especie-info text-block">
-            <p>Espécie: Epinephelus marginatus</p>
-            <p>Estado de conservação: Vulnerável a extinção</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Garoupa verdadeira
+        </h3>
+        <div class="especie-info text-block">
+          <p>Espécie: Epinephelus marginatus</p>
+          <p>Estado de conservação: Vulnerável a extinção</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Garoupa verdadeira" src="http://placehold.it/300x300">
@@ -398,8 +399,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               Esta espécie habita fundos marinhos rochosos e coralíneos com
               profundidade de até 300 metros. Garoupas estão distribuídas por
@@ -431,17 +432,17 @@
               corpo empalidece na cor da areia se mimetizando com o ambiente.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Peixe-frade
-          </h3>
-          <div class="especie-info text-block">
-            <p>Espécie: Pomacanthus paru</p>
-            <p>Estado de conservação: pouco preocupante</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Peixe-frade
+        </h3>
+        <div class="especie-info text-block">
+          <p>Espécie: Pomacanthus paru</p>
+          <p>Estado de conservação: pouco preocupante</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Peixe frade" src="http://placehold.it/300x300">
@@ -452,8 +453,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               Paru, peixe frade ou peixe anjo: são muitos nomes para a mesma
               espécie. Depende de qual região que você o avistou. É um dos
@@ -477,17 +478,17 @@
               comercializado para compor ambientes de aquários mundo afora.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Peixe anjo real
-          </h3>
-          <div class="especie-info text-block">
-            <p>Espécie: Holocanthus ciliares</p>
-            <p>Estado de conservação: Pouco preocupante</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Peixe anjo real
+        </h3>
+        <div class="especie-info text-block">
+          <p>Espécie: Holocanthus ciliares</p>
+          <p>Estado de conservação: Pouco preocupante</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Peixe anjo real" src="http://placehold.it/300x300">
@@ -498,8 +499,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de
               corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.
@@ -515,17 +516,17 @@
               é uma grande ameaça à espécie por ser muito capturada em seu habitat.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Sargentinho
-          </h3>
-          <div class="especie-info text-block">
-            <p>Espécie: Abudefduf saxatilis</p>
-            <p>Estado de conservação: Menor preocupação</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Sargentinho
+        </h3>
+        <div class="especie-info text-block">
+          <p>Espécie: Abudefduf saxatilis</p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Sargentinho" src="http://placehold.it/300x300">
@@ -536,8 +537,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho
               que cuida dos filhote. Ocorre em todos os oceanos tropicais e subtropicais,
@@ -555,19 +556,19 @@
               ornamentais para aquários.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Peixe Coió ou falso-voador
-          </h3>
-          <div class="especie-info text-block">
-            <p>
-              Espécie: Dactylopterus volitans
-            </p>
-            <p>Estado de conservação: Menor preocupação</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Peixe Coió ou falso-voador
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Dactylopterus volitans
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Peixe Coió ou falso-voador" src="http://placehold.it/300x300">
@@ -578,8 +579,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               O peixe Coió ou falso-voador é um peixe incomum e com
               características morfológicas diferentes da maioria dos peixes que
@@ -606,19 +607,19 @@
               outros organismos para se alimentar.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Pirá
-          </h3>
-          <div class="especie-info text-block">
-            <p>
-              Espécie: Malacanthus plumieri
-            </p>
-            <p>Estado de conservação: Menor preocupação</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Pirá
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Malacanthus plumieri
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Pirá" src="http://placehold.it/300x300">
@@ -629,8 +630,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               Pirá em tupi-guarani significa “peixe”: o mais legal é que este
               peixe é conhecido popularmente como Pirá mesmo.
@@ -652,19 +653,19 @@
               for.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-life container" style="padding-bottom:0;" data-aos="fade-right">
-          <h3>
-            Moreia pintada
-          </h3>
-          <div class="especie-info text-block">
-            <p>
-              Espécie: Gymnothorax moringa
-            </p>
-            <p>Estado de conservação: Menor preocupação</p>
-          </div>
-        </section>
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Moreia pintada
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Gymnothorax moringa
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
 
         <figure class="figure-text" data-aos="fade-up">
           <img alt="Moreia pintada" src="http://placehold.it/300x300">
@@ -675,8 +676,8 @@
           </figcaption>
         </figure>
 
-        <section class="section-life " bp="grid container">
-          <div class="text-block-b" bp="12 6@md" data-aos="zoom-in">
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
             <p>
               É conhecida popularmente como moreia pintada, por conta de suas
               manchas claras e escuras no corpo de padrão marmorizado. Apesar de
@@ -699,12 +700,209 @@
               brânquias faz o troca do oxigênio que necessita.
             </p>
           </div>
-        </section>
+        </div>
       </section>
-    </section>
 
-    <section id="birds" class="section-index">
-      <section class="section-life container">
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Moreia verde
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Gymnothorax funebris
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Moreia verde" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Moreia verde
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Moréia verde, como é conhecida pelos mergulhadores, é a mais
+              popular de todas as espécies. É considerada a maior em tamanho,
+              podendo chegar a medir mais de 2 metros. Seria parte da origem das
+              lendas das serpentes marinhas gigantes?
+            </p>
+
+            <p>
+              Tem comportamento mais agressivo, extremamente predadora, fica de tocaia em sua
+              toca e sai para predar peixes, crustáceos e moluscos que são seu alimento
+              predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em
+              humanos por isso é recomendado não se aproximar muito.
+            </p>
+
+            <p>
+              Para respirar, elas abrem e fecham a boca constantemente inalando e exalando
+              água retendo o oxigênio em sua brânquias e transportando para corrente
+              sanguínea. São encontradas desde Nova Jersey, passando pelo Caribe e toda a
+              costa brasileira.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Moréia-banana
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Gymnothorax miliaris
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Moréia-banana " src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Moréia-banana
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Com comportamento semelhantes aos das outras espécies de moréias, a moréia banana é a mais rara delas. Justamente por sua coloração, ela se destaca diante dos outros animais e é facilmente vista pelos predadores. Por isso permanece boa parte do tempo em sua toca e sai apenas para caçar. Ao se deparar com uma sinta-se privilegiado, curta o momento e tire lindas fotos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Miriquitis amarela
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Myrichthys ocellatus
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Moréia-banana " src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Moréia-banana
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Conhecida no nordeste como Mututuca e no sudeste como miriquitis, a Myrichthys ocellatus se assemelha mais ainda com uma serpente marinha. Mas não é! Ela é um peixe ou uma enguia marinha, de coloração clara e manchas escuras arredondadas.
+            </p>
+            <p>
+              Possui hábito diurno e por isso não é difícil de ser encontrada durante atividades de mergulhos. Não apresenta nenhum risco aos humanos, vive associada ao fundo marinho em busca de pequenos crustáceos e vermes. Hoje sua maior ameaça é a captura para comércio de peixes ornamentais para aquários. Pode ser encontrada nas zonas tropicais e subtropicais do oceano atlântico.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Barracuda
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Sphyraena barracuda
+          </p>
+          <p>Estado de conservação: Segura ou pouco preocupante</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Barracuda" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Barracuda
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              As barracudas são peixes tão famosos que até os mergulhadores
+              menos experientes já ouviram falar e tem medo de se deparar com
+              uma diante dos olhos. Sua fama é de um peixe mal, feroz e que pode
+              lhe atacar a qualquer momento. Realmente, sua fama não é em vão
+              devido a casos de acidentes com seres humanos em quase todas as
+              partes do mundo.
+            </p>
+            <p>
+              As barracudas são peixes grandes compridos e com cabeça afunilada
+              em forma de míssil. São muito velozes na água pois são predadoras
+              vorazes com dentes pontiagudos muito afiados. O mínimo contato com
+              uma barracuda pode lhe causar ferimentos graves. Mas elas não
+              atacam assim! O importante a se fazer quando se está no mar
+              mergulhando ou praticando quaisquer atividades em seu habitat é
+              não estar com nenhum acessório brilhante como brincos, pulseiras,
+              anéis. Eles atraem a atenção delas, fazendo-as pensar que é uma
+              potencial presa e avançam com velocidade em sua direção causando
+              um baita susto nos desavisados de plantão.
+            </p>
+            <p>
+              Sua maior ameaça é a pesca esportiva e predatória, apesar de não
+              ter interesse comercial, é um peixe bastante apreciado em
+              restaurantes pelo mundo afora e aquários de grande porte.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Salemas
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Anisotremus virginicus
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Salemas" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Salemas
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Esta espécie foi descrita já por Linnaeus, em 1758. São peixes
+              recifais de mares tropicais que podem ser encontrados em todo o
+              golfo do México, Caribe e costa brasileira, com cores muito
+              vibrantes.
+            </p>
+            <p>
+              São facilmente identificadas e conhecidas popularmente com o nome de salemas.
+              Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite
+              que sejam contempladas e muito fotografadas por mergulhadores. São imagens
+              incríveis apresentando um contraste de cores espetacular compostos pelo ambiente
+              em que vivem.
+            </p>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <article id="birds" class="article-index">
+      <section class="section-container container">
         <h2 class="title-specimen">
           <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
           Aves
@@ -714,7 +912,110 @@
           29 espécies de aves já foram catalogadas na Laje.
         </p>
       </section>
-    </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Budião-papagaio-de-recife
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Sparisoma amplum
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Budião-papagaio-de-recife" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Budião-papagaio-de-recife
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              Esta espécie, conhecida popularmente como budião papagaio, é
+              endêmica do Brasil, ocorrendo somente em águas brasileiras. São
+              peixes coloridos que vivem em ambientes recifais até a faixa dos
+              30 metros de profundidade.
+            </p>
+            <p>
+              O curioso dos budiões é que são responsáveis por boa parte da
+              produção da areia do solo submarino (e portanto das praias!). Eles
+              se alimentam de corais e algas calcárias que são trituradas e
+              depositadas no fundo do mar. Alguns pesquisadores estimam que um
+              indivíduo seja capaz de produzir cerca de cem quilos de areia por
+              ano! Desta forma auxilia na manutenção dos recifes contribuindo
+              para sua preservação.
+            </p>
+            <p>
+              Outra curiosidade chama a atenção para esta espécie. De hábito
+              diurno, à noite eles precisam descansar e se proteger dos famintos
+              predadores que rondam pelos corais como os tubarões. Por isso se
+              escondem nas  fendas e frestas do recife, mas nem sempre este
+              esconderijo o protege. Então os budiões secretam um muco fedorento
+              que envolve seu corpo completamente como uma camisola
+              transparente, inibindo e confundindo seus predadores.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+        <h3>
+          Maria-da-toca-das-pedras
+        </h3>
+        <div class="especie-info text-block">
+          <p>
+            Espécie: Parablennius marmoreus
+          </p>
+          <p>Estado de conservação: Menor preocupação</p>
+        </div>
+
+        <figure class="figure-text" data-aos="fade-up">
+          <img alt="Maria-da-toca-das-pedras" src="http://placehold.it/300x300">
+          <figcaption>
+            <p>
+              Maria-da-toca-das-pedras
+            </p>
+          </figcaption>
+        </figure>
+
+        <div class="life-block" bp="grid container">
+          <div class="text-block-b" bp="12 6@md">
+            <p>
+              O peixe que anda sobre os recifes! As Marias da toca, como são
+              conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento
+              que vivem em orifícios e pequenos buracos no costão rochoso e nos
+              recifes de corais. São herbívoros, se alimentando de alga marinha
+              e matéria orgânica. São como jardineiras dos recifes.
+            </p>
+            <p>
+              Quando saem de suas tocas, em busca de alimentos na maré baixa,
+              elas se apoiam sobre suas nadadeiras peitorais e rastejam como se
+              estivessem caminhando indo de um ponto a outro, forrageando o
+              costão com as algas expostas nas rochas, e ao menor sinal de
+              perigo elas saltam para dentro d´água e se entocam novamente.
+            </p>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <article id="birds" class="article-index">
+      <section class="section-container container">
+        <h2 class="title-specimen">
+          <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
+          Aves
+        </h2>
+
+        <p>
+          29 espécies de aves já foram catalogadas na Laje.
+        </p>
+      </section>
+    </article>
   </article>
 </template>
 
@@ -772,7 +1073,7 @@ export default {
           threshold: [0.1, 0.9]
         };
         const observer = new IntersectionObserver(callback, options);
-        document.querySelectorAll('section.section-index').forEach((x) => { observer.observe(x); });
+        document.querySelectorAll('article.article-index').forEach((x) => { observer.observe(x); });
       }
     }
   }
