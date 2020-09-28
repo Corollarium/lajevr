@@ -143,9 +143,9 @@
               <i18n>linhas de código</i18n>
             </number-bullet>
           </div>
-          <div data-aos="zoom-out-down" bp="first@md">
-            <img src="~static/images/piva/about-page-2.png">
-          </div>
+        </div>
+        <div data-aos="zoom-out-down" bp="first@md">
+          <img src="~static/images/piva/about-page-2.png">
         </div>
       </section>
 
