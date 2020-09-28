@@ -105,6 +105,14 @@
   </article>
 </template>
 
+<!-- PRECISO QUE ISSO SO FUNCIONE NESSA PÁGINA...
+ <style lang="less">
+  #__layout {
+    height: 100vh;
+    overflow: hidden;
+  }
+</style> -->
+
 <script>
 import Bowser from 'bowser';
 import page from './page.vue';
