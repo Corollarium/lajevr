@@ -130,27 +130,27 @@
     }
 
     .animal-turtle {
-      max-width: 35rem;
-      width: 30vw;
+      max-width: 30rem;
+      width: 25vw;
       left: 0;
       top: 10rem;
 
       @media @responsivePortrait {
-        width: 45vw;
-        left: -15vw;
-        top: -1rem;
+        width: 30vw;
+        left: -5vw;
+        top: 3rem;
       }
     }
 
     .animal-ray {
-      width: 35vw;
-      max-width: 40rem;
+      width: 40vw;
+      max-width: 45rem;
       left: 50vw;
       margin-left: -17.5vw;
       top: 8rem;
 
       @media @responsivePortrait {
-        width: 50vw;
+        width: 45vw;
         left: 45%;
         top: 6rem;
       }
@@ -163,9 +163,19 @@
       top: 6rem;
 
       @media @responsivePortrait {
-        width: 80vw;
+        width: 70vw;
         right: -45vw;
+        top: 4rem;
+      }
+
+      @media @responsiveLandscape {
+        right: -20vw;
         top: 0;
+      }
+
+      @media @desktopBig {
+        right: -10vw;
+        top: 10rem;
       }
     }
   }
