@@ -3,7 +3,7 @@
   "short_name": "lajevr",
   "description": "Laje de Santos em Realidade Virtual",
   "icons": [],
-  "start_url": "/?standalone=true",
+  "start_url": "/lajevr/?standalone=true",
   "display": "standalone",
   "background_color": "#011d32",
   "theme_color": "#0094d7",
