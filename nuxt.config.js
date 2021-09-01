@@ -2,6 +2,10 @@
 // only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
 const routerBase = {};
 
+if (process.env.DEPLOY_ENV === 'GH_PAGES') {
+  routerBase.base = '/lajevr/';
+}
+
 export default {
   /*
    ** Headers of the page
@@ -118,5 +122,6 @@ export default {
       placeholder: true
     }
   },
-  ...routerBase
+
+  router: { ...routerBase }
 };
