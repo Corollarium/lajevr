@@ -29,7 +29,7 @@
     "bowser": "^2.9.0",
     "easygettext": "^2.13.0",
     "esm": "^3.2.25",
-    "gsap": "^3.1.1",
+    "gsap": "^3.6.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
