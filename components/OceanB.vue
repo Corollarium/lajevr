@@ -116,6 +116,9 @@ export default {
       pp.refractionEnabled = false;
     }
 
+    // eslint-disable-next-line no-unused-vars
+    const fxaaPostProcess = new BABYLON.FxaaPostProcess('fxaa', 1.0, this.camera);
+
     if (params.get('opt') !== 'false') {
       const optOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
       this.optimizer = new BABYLON.SceneOptimizer(this.scene, optOptions);

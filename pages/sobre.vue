@@ -39,7 +39,21 @@
           de ir até um lugar lindo mas distante, em algo que fosse mais aberto ao
           mundo? E se complementássemos a visita com informações e tecnologia?
           Poderíamos finalmente trazer a experiência da Corollarium para isso, com o apoio
-          do ProAC.
+          do ProAC, um projeto de apoio do Governo do Estado de São Paulo.
+        </i18n>
+      </p>
+
+      <p>
+        <i18n>
+          O projeto estava previsto para 2020, com os primeiros mergulhos agendados para
+          março. Então ocorreu a pandemia. Tivemos que pausar as atividades de mergulho e
+          focar somente no desenvolvimento da tecnologia.
+        </i18n>
+      </p>
+
+      <p>
+        <i18n>
+          Com a melhora da situação em 2021, pudemos finalmente cair na água.
         </i18n>
       </p>
     </section>
@@ -70,13 +84,13 @@
 
           <p>
             <i18n>
-              Estamos aguardando a liberação da quarentena para o início dos mergulhos.
+              O projeto está em andamento!
             </i18n>
           </p>
 
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
-              :to="0"
+              :to="4"
               :icon="['fas', 'mask']"
             >
               <i18n>mergulhos</i18n>
@@ -90,10 +104,10 @@
             </number-bullet>
 
             <number-bullet
-              :to="0"
+              :to="178"
               :icon="['fas', 'clock']"
             >
-              <i18n>horas de mergulho</i18n>
+              <i18n>minutos de mergulho</i18n>
             </number-bullet>
           </div>
         </div>
@@ -117,35 +131,35 @@
           </p>
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
-              :to="stats.images"
+              :to="stats.site.images"
               :icon="['fas', 'images']"
             >
               <i18n>imagens</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="stats.videos"
+              :to="stats.site.videos"
               :icon="['fas', 'video']"
             >
               <i18n>vídeos</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="stats.models"
+              :to="stats.site.models"
               :icon="['fas', 'cubes']"
             >
               <i18n>modelos 3D</i18n>
             </number-bullet>
             <number-bullet
-              :to="stats.locs.SUM.code"
+              :to="stats.site.locs.SUM.code"
               :icon="['fas', 'code']"
             >
               <i18n>linhas de código</i18n>
             </number-bullet>
           </div>
-          <div data-aos="zoom-out-down" bp="first@md">
-            <img src="~static/images/piva/about-page-2.png">
-          </div>
+        </div>
+        <div data-aos="zoom-out-down" bp="first@md">
+          <img src="~static/images/piva/about-page-2.png">
         </div>
       </section>
 
@@ -164,27 +178,28 @@
           </p>
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
-              :to="0"
+              :to="stats.vr.images"
               :icon="['fas', 'camera']"
             >
               <i18n>fotografias</i18n>
             </number-bullet>
             <number-bullet
-              :to="0"
+              :to="stats.vr.videos"
               :icon="['fas', 'video']"
             >
               <i18n>horas de vídeo</i18n>
             </number-bullet>
             <number-bullet
-              :to="0"
+              :to="27"
               :icon="['fas', 'hdd']"
             >
               <i18n>horas de processamento</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="0"
+              :to="(stats.vr.data/1000.0).toFixed(2)"
               :icon="['fas', 'save']"
+              :format="num => new Intl.NumberFormat().format(num.toFixed(2))"
             >
               <i18n>GB de dados</i18n>
             </number-bullet>
@@ -202,7 +217,7 @@
           </i18n>
         </h2>
         <div class="people" bp="grid 6 4@md 3@lg">
-          <li>
+          <div>
             <img src="~static/images/piva/bg.jpg">
             <h4 class="people-name">
               Bruno Barberi Gnecco
@@ -214,8 +229,8 @@
               <span class="button-is-liquid__text">Linkedin</span>
               <span class="button-is-liquid__animation" />
             </a>
-          </li>
-          <li>
+          </div>
+          <div>
             <img src="~static/images/piva/piva.jpg">
             <h4 class="people-name">
               Vinícius Rodrigues Piva de Carvalho
@@ -227,8 +242,20 @@
               <span class="button-is-liquid__text">Linkedin</span>
               <span class="button-is-liquid__animation" />
             </a>
-          </li>
-          </ul>
+          </div>
+          <div>
+            <img src="~static/images/piva/bg.jpg">
+            <h4 class="people-name">
+              Nauther Andres
+            </h4>
+            <p>
+              <i18n>Mergulhador e biólogo.</i18n>
+            </p>
+            <a href="https://www.instagram.com/nautherandres" target="_blank" title="Ver Instagram de Nauther Andres" class="button-is-liquid">
+              <span class="button-is-liquid__text">Instagram</span>
+              <span class="button-is-liquid__animation" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -346,12 +373,17 @@ export default {
     };
   },
 
+  computed: {
+    vrdata () {
+      return (this.stats.vr.data / 1000.0).toFixed(2);
+    }
+  },
+
   mounted () {
     this.headerOverlay = true;
     this.head.title = this.$gettext('Projeto Laje de Santos Virtual');
     this.head.description = this.$gettext('Sobre o projeto Laje de Santos Virtual');
   }
-
 };
 </script>
 

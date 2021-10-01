@@ -81,55 +81,54 @@
         </h2>
       </div>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Raia-Manta
-        </h3>
-        <div class="especie-info text-block">
-          <p>Espécie: Mobula birostris</p>
-          <p>Estado de conservação: Vulnerável a extinção</p>
-        </div>
+      <life-block
+        name="Raia-Manta"
+        latin="Mobula birostris"
+        conservation="Vulnerável a extinção"
+      >
+        <template v-slot:description>
+          A rainha da Laje de Santos.
+        </template>
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
+            <figcaption>
+              <p>
+                Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-        <figure class="figure-text">
-          <img alt="Tartaruga de pente" src="~static/images/nauther/1549889531894-1082715277.jpg">
-          <figcaption>
-            <p>
-              Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres
-            </p>
-          </figcaption>
-        </figure>
+        <p>
+          Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
+          os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
+          mil quilos, a raia manta não possui ferrão. É o peixe com o maior
+          cérebro de todos os outros peixes do mar, por isso é extremamente
+          inteligente, um animal muito dócil e curioso. Quando encontra um
+          mergulhador, permite a interação e por vezes permanece por vários
+          minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
+          mergulhadores parecem fazer cócegas em sua barriga
+        </p>
 
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
-              os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
-              mil quilos, a raia manta não possui ferrão. É o peixe com o maior
-              cérebro de todos os outros peixes do mar, por isso é extremamente
-              inteligente, um animal muito dócil e curioso. Quando encontra um
-              mergulhador, permite a interação e por vezes permanece por vários
-              minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
-              mergulhadores parecem fazer cócegas em sua barriga
-            </p>
+        <p>
+          Podem ser
+          encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
+          Santos aparecem no período de inverno, nos meses de abril a setembro. As
+          mantas são identificadas individualmente através de fotografia das
+          manchas ventrais que formam padrões únicos. Esses dados são inserido em
+          bancos de dados brasileiro e mundial para organização, assim é possível
+          a quantificação de números populacionais.
+        </p>
 
-            <p>
-              Podem ser
-              encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
-              Santos aparecem no período de inverno, nos meses de abril a setembro. As
-              mantas são identificadas individualmente através de fotografia das
-              manchas ventrais que formam padrões únicos. Esses dados são inserido em
-              bancos de dados brasileiro e mundial para organização, assim é possível
-              a quantificação de números populacionais.
-            </p>
+        <p>
+          Durante as suas migrações, as jamantas efetuam mergulhos frequentes até
+          profundidades de quase dois quilômetros (entre os maiores alguma vez
+          medidos para um animal marinho), onde as temperaturas da água atingem os
+          três graus centígrados.
+        </p>
 
-            <p>
-              Durante as suas migrações, as jamantas efetuam mergulhos frequentes até
-              profundidades de quase dois quilômetros (entre os maiores alguma vez
-              medidos para um animal marinho), onde as temperaturas da água atingem os
-              três graus centígrados.
-            </p>
-          </div>
-
+        <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
               :model="'./models/manta/scene.gltf'"
@@ -138,8 +137,8 @@
             />
             </GLTFModel>
           </div>
-        </div>
-      </section>
+        </template>
+      </life-block>
 
       <section class="section-container with-bottom-content container">
         <h3>
@@ -381,143 +380,129 @@
         </h2>
       </div>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Garoupa verdadeira
-        </h3>
-        <div class="especie-info text-block">
-          <p>Espécie: Epinephelus marginatus</p>
-          <p>Estado de conservação: Vulnerável a extinção</p>
-        </div>
+      <life-block
+        name="Garoupa verdadeira"
+        latin="Epinephelus marginatus"
+        conservation="Vulnerável a extinção"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Garoupa verdadeira" src="~static/images/nauther/IMG_1518.JPG">
+            <figcaption>
+              <p>
+                Garoupa verdadeira entre pedras. Foto: Nauther Andres
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-        <figure class="figure-text">
-          <img alt="Garoupa verdadeira" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Garoupa verdadeira entre pedras. Foto: Nauther Andres
-            </p>
-          </figcaption>
-        </figure>
+        <template v-slot:description>
+          <p>
+            Esta espécie habita fundos marinhos rochosos e coralíneos com
+            profundidade de até 300 metros. Garoupas estão distribuídas por
+            todo o oceano atlântico nas zonas tropicais, subtropicais  e
+            temperadas, são extremamente territorialistas e grandes
+            predadores, se alimentando de outros peixes e crustáceos. Uma
+            curiosidade sobre a garoupa: essa espécie nasce fêmea e após
+            alguns anos se torna macho, caracterizando hermafroditismo!
+          </p>
+        </template>
 
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Esta espécie habita fundos marinhos rochosos e coralíneos com
-              profundidade de até 300 metros. Garoupas estão distribuídas por
-              todo o oceano atlântico nas zonas tropicais, subtropicais  e
-              temperadas, são extremamente territorialistas e grandes
-              predadores, se alimentando de outros peixes e crustáceos. Uma
-              curiosidade sobre a garoupa: essa espécie nasce fêmea e após
-              alguns anos se torna macho, caracterizando hermafroditismo!
-            </p>
+        <p>
+          São peixes muito apreciados pela culinária por sua carne firme e
+          branca. Por conta disso são extremamente explorados para o
+          comércio e hoje sua população está em declínio, sendo
+          categorizados como Vulnerável à extinção segundo a IUCN. No Parque
+          Estadual Marinho da Laje de Santos encontra-se um de seus últimos
+          refúgios, sendo possível encontrar exemplares com tamanho
+          considerável com peso médio entre 20 a 30 quilos.
+        </p>
 
-            <p>
-              São peixes muito apreciados pela culinária por sua carne firme e
-              branca. Por conta disso são extremamente explorados para o
-              comércio e hoje sua população está em declínio, sendo
-              categorizados como Vulnerável à extinção segundo a IUCN. No Parque
-              Estadual Marinho da Laje de Santos encontra-se um de seus últimos
-              refúgios, sendo possível encontrar exemplares com tamanho
-              considerável com peso médio entre 20 a 30 quilos.
-            </p>
+        <p>
+          Um comportamento que pode ser observado da espécie, durante os
+          mergulhos na laje, é de como ela disputa com outros indivíduos
+          pelo seu território, expulsando o invasor de sua toca com
+          investidas e até mesmo mordidas. É possível notar também um padrão
+          de coloração intercambiável de acordo com o substrato que ela se
+          encontra… se for rochoso, os padrões de manchas serão vivas como
+          se fossem uma camuflagem, quando em ambiente arenoso claro, seu
+          corpo empalidece na cor da areia se mimetizando com o ambiente.
+        </p>
+      </life-block>
 
-            <p>
-              Um comportamento que pode ser observado da espécie, durante os
-              mergulhos na laje, é de como ela disputa com outros indivíduos
-              pelo seu território, expulsando o invasor de sua toca com
-              investidas e até mesmo mordidas. É possível notar também um padrão
-              de coloração intercambiável de acordo com o substrato que ela se
-              encontra… se for rochoso, os padrões de manchas serão vivas como
-              se fossem uma camuflagem, quando em ambiente arenoso claro, seu
-              corpo empalidece na cor da areia se mimetizando com o ambiente.
-            </p>
-          </div>
-        </div>
-      </section>
+      <life-block
+        name="Peixe-frade"
+        latin="Pomacanthus paru"
+        conservation="pouco preocupante"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Peixe frade" src="~static/images/nauther/IMG_1503.JPG">
+            <figcaption>
+              <p>
+                Peixe frade
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Peixe-frade
-        </h3>
-        <div class="especie-info text-block">
-          <p>Espécie: Pomacanthus paru</p>
-          <p>Estado de conservação: pouco preocupante</p>
-        </div>
+        <p>
+          Paru, peixe frade ou peixe anjo: são muitos nomes para a mesma
+          espécie. Depende de qual região que você o avistou. É um dos
+          peixes mais ilustres e carismáticos.
+        </p>
 
-        <figure class="figure-text">
-          <img alt="Peixe frade" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Peixe frade
-            </p>
-          </figcaption>
-        </figure>
+        <p>
+          Possui várias características únicas. Existente em toda a costa
+          brasileira, é um peixe recifal de comportamento dócil, comum de
+          ser encontrado nos mergulhos e super fotogênico… Alguns
+          especialistas dizem que eles são monogâmicos, vivendo com sua
+          parceira(o) por toda a vida. É mesmo habitual vê-los em pares.
+        </p>
 
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Paru, peixe frade ou peixe anjo: são muitos nomes para a mesma
-              espécie. Depende de qual região que você o avistou. É um dos
-              peixes mais ilustres e carismáticos.
-            </p>
+        <p>
+          Seus filhotes são bem diferentes quando juvenis, apresentando
+          listras amarelas contínuas em seu disco corporal que se
+          transformam em pintas amarelas quando passam para a fase adulta.
+          Esta espécie não possui interesse para a pesca, mas muito valor no
+          mercado de peixes ornamentais ou para a aquariofilia, sendo muito
+          comercializado para compor ambientes de aquários mundo afora.
+        </p>
+      </life-block>
 
-            <p>
-              Possui várias características únicas. Existente em toda a costa
-              brasileira, é um peixe recifal de comportamento dócil, comum de
-              ser encontrado nos mergulhos e super fotogênico… Alguns
-              especialistas dizem que eles são monogâmicos, vivendo com sua
-              parceira(o) por toda a vida. É mesmo habitual vê-los em pares.
-            </p>
+      <life-block
+        name="Peixe anjo real"
+        latin="Holocanthus ciliares"
+        conservation="Pouco preocupante"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Peixe anjo real" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Peixe anjo real
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-            <p>
-              Seus filhotes são bem diferentes quando juvenis, apresentando
-              listras amarelas contínuas em seu disco corporal que se
-              transformam em pintas amarelas quando passam para a fase adulta.
-              Esta espécie não possui interesse para a pesca, mas muito valor no
-              mercado de peixes ornamentais ou para a aquariofilia, sendo muito
-              comercializado para compor ambientes de aquários mundo afora.
-            </p>
-          </div>
-        </div>
-      </section>
+        <p>
+          O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de
+          corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.
+          Em seu habitat natural alimenta-se de corais, esponjas, anêmonas, algas,
+          crustáceos e vermes.
+        </p>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Peixe anjo real
-        </h3>
-        <div class="especie-info text-block">
-          <p>Espécie: Holocanthus ciliares</p>
-          <p>Estado de conservação: Pouco preocupante</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Peixe anjo real" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Peixe anjo real
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de
-              corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.
-              Em seu habitat natural alimenta-se de corais, esponjas, anêmonas, algas,
-              crustáceos e vermes.
-            </p>
-
-            <p>
-              São peixes de cores deslumbrantes e muito vivas que chegam a brilhar como neon.
-              Geralmente são encontrados aos pares e na presença de mergulhadores são um tanto
-              ariscos; se sentem ameaçados e procuram se esconder em fendas. Como o peixe
-              frade, o ciliaris não possui valor comercial, mas o mercado de peixes de aquário
-              é uma grande ameaça à espécie por ser muito capturada em seu habitat.
-            </p>
-          </div>
-        </div>
-      </section>
+        <p>
+          São peixes de cores deslumbrantes e muito vivas que chegam a brilhar como neon.
+          Geralmente são encontrados aos pares e na presença de mergulhadores são um tanto
+          ariscos; se sentem ameaçados e procuram se esconder em fendas. Como o peixe
+          frade, o ciliaris não possui valor comercial, mas o mercado de peixes de aquário
+          é uma grande ameaça à espécie por ser muito capturada em seu habitat.
+        </p>
+      </life-block>
 
       <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
@@ -873,7 +858,7 @@
         </div>
 
         <figure class="figure-text">
-          <img alt="Salemas" src="http://placehold.it/300x300">
+          <img alt="Salemas" src="">
           <figcaption>
             <p>
               Salemas
@@ -899,6 +884,7 @@
           </div>
         </div>
       </section>
+      </life-block>
     </article>
 
     <article id="birds" class="article-index">
@@ -1024,13 +1010,15 @@ import Rellax from 'rellax';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 import SwimmingFish from '~/components/SwimmingFish.vue';
+import LifeBlock from '~/components/sections/LifeBlock.vue';
 
 const imageCardume = require('~/static/images/nauther/1556498262088345578492.jpg?resize');
 
 export default {
   components: {
     GLTFModel,
-    SwimmingFish
+    SwimmingFish,
+    LifeBlock
   },
 
   extends: page,
@@ -1043,7 +1031,6 @@ export default {
   },
 
   mounted () {
-    console.log(imageCardume);
     this.head.title = this.$gettext('Vida na Laje de Santos');
     this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
 
