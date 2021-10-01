@@ -244,7 +244,7 @@
             </a>
           </div>
           <div>
-            <img src="~static/images/piva/bg.jpg">
+            <img src="~static/images/brunobg/foto-nauther.jpg">
             <h4 class="people-name">
               Nauther Andres
             </h4>
