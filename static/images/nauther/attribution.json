@@ -107,6 +107,20 @@
       "othernames": "Dactylopterus volitans",
       "description": "Costuma ficar no fundo de areia e cascalho. É também conhecido como falso voador",
       "about": ""
+    },
+    "IMG_1503.JPG": {
+      "name": "Peixe frade"
+    },
+    "IMG_1518.JPG": {
+      "name": "Garoupa verdadeira",
+      "colors": [
+        "brown",
+        "black"
+      ],
+      "size": 60,
+      "othernames": "Epinephelus marginatus",
+      "description": "",
+      "about": ""
     }
   }
 }

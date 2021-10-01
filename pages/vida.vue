@@ -504,96 +504,83 @@
         </p>
       </life-block>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Sargentinho
-        </h3>
-        <div class="especie-info text-block">
-          <p>Espécie: Abudefduf saxatilis</p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
+      <life-block
+        name="Sargentinho"
+        latin="Abudefduf saxatilis"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Sargentinho" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Sargentinho
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+        <p>
+          Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho
+          que cuida dos filhote. Ocorre em todos os oceanos tropicais e subtropicais,
+          conhecido aqui no Brasil pelo nome popular de sargentinho, talvez, porque ele
+          tem um comportamento muito característico de proteção dos ovos em seus ninhos
+          nas rochas. Se qualquer outro animal se aproximar ele ataca ferozmente
+          independente do tamanho da ameaça, inclusive mergulhadores curiosos que se
+          aproximam demais.
+        </p>
 
-        <figure class="figure-text">
-          <img alt="Sargentinho" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Sargentinho
-            </p>
-          </figcaption>
-        </figure>
+        <p>
+          Seu estado de conservação é de menor preocupação na lista vermelha de espécies
+          ameaçadas, ocorrendo em grandes quantidades em todos os oceanos, sendo muito
+          apreciado por mergulhadores, tendo como maior ameaça o mercado de peixes
+          ornamentais para aquários.
+        </p>
+      </life-block>
 
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho
-              que cuida dos filhote. Ocorre em todos os oceanos tropicais e subtropicais,
-              conhecido aqui no Brasil pelo nome popular de sargentinho, talvez, porque ele
-              tem um comportamento muito característico de proteção dos ovos em seus ninhos
-              nas rochas. Se qualquer outro animal se aproximar ele ataca ferozmente
-              independente do tamanho da ameaça, inclusive mergulhadores curiosos que se
-              aproximam demais.
-            </p>
+      <life-block
+        name="Peixe Coió ou falso-voador"
+        latin="Dactylopterus volitans"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Peixe Coió ou falso-voador" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Coió
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-            <p>
-              Seu estado de conservação é de menor preocupação na lista vermelha de espécies
-              ameaçadas, ocorrendo em grandes quantidades em todos os oceanos, sendo muito
-              apreciado por mergulhadores, tendo como maior ameaça o mercado de peixes
-              ornamentais para aquários.
-            </p>
-          </div>
-        </div>
-      </section>
+        <p>
+          O peixe Coió ou falso-voador é um peixe incomum e com
+          características morfológicas diferentes da maioria dos peixes que
+          conhecemos. Seu crânio é retangular com cavidades oculares bem
+          avantajadas e um focinho. Mais que isso, ele possui duas
+          nadadeiras peitorais modificadas e prolongadas quase que do mesmo
+          tamanho de seu corpo e com membranas entre seus espinhos.
+        </p>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Peixe Coió ou falso-voador
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Dactylopterus volitans
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
+        <p>
+          O interessante é que ao se deparar com ameaça de um possível
+          predador ele abre suas nadadeiras em forma de leque que se
+          assemelham a um par de asas, por isso o nome de falso voador. Este
+          comportamento de abrir as “asas” serve para enganar seu predador,
+          pois faz ele se parecer maior que realmente é.
+        </p>
 
-        <figure class="figure-text">
-          <img alt="Peixe Coió ou falso-voador" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Coió
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              O peixe Coió ou falso-voador é um peixe incomum e com
-              características morfológicas diferentes da maioria dos peixes que
-              conhecemos. Seu crânio é retangular com cavidades oculares bem
-              avantajadas e um focinho. Mais que isso, ele possui duas
-              nadadeiras peitorais modificadas e prolongadas quase que do mesmo
-              tamanho de seu corpo e com membranas entre seus espinhos.
-            </p>
-
-            <p>
-              O interessante é que ao se deparar com ameaça de um possível
-              predador ele abre suas nadadeiras em forma de leque que se
-              assemelham a um par de asas, por isso o nome de falso voador. Este
-              comportamento de abrir as “asas” serve para enganar seu predador,
-              pois faz ele se parecer maior que realmente é.
-            </p>
-
-            <p>
-              Outra característica bem marcante fica na borda de suas nadadeiras
-              quando abertas. É uma coloração azul neon bem viva que serve como
-              um alerta, geralmente associado como perigo para o possível
-              predador. Esta espécie tem o comportamento de forragear o fundo
-              marinho, geralmente em areia, em busca de pequenos crustáceos e
-              outros organismos para se alimentar.
-            </p>
-          </div>
-        </div>
-      </section>
+        <p>
+          Outra característica bem marcante fica na borda de suas nadadeiras
+          quando abertas. É uma coloração azul neon bem viva que serve como
+          um alerta, geralmente associado como perigo para o possível
+          predador. Esta espécie tem o comportamento de forragear o fundo
+          marinho, geralmente em areia, em busca de pequenos crustáceos e
+          outros organismos para se alimentar.
+        </p>
+      </life-block>
 
       <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>

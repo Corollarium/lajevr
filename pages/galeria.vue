@@ -22,15 +22,18 @@
       </p>
     </div>
 
-    <div bp="grid container 12 6@sm 4@md 3@lg">
+    <transition-group
+      name="fauna-list"
+      tag="div"
+      bp="grid container 12 6@sm 4@md 3@lg"
+    >
       <GalleryCard
         v-for="(a, i) in filteredGallery"
         :key="i"
-        @click.native="showModalClick(i)"
         v-bind="a"
         class="gallery-card"
       />
-    </div>
+    </transition-group>
 
     <transition name="fade-in-up">
       <div v-if="showModal" name="modal" class="modal-window">
@@ -71,12 +74,19 @@ export default {
   computed: {
     filteredGallery () {
       const r = this.filterSearch ? new RegExp(this.filterSearch, 'i') : null;
+      if (!r) {
+        return this.gallery;
+      }
+
       return this.gallery.filter((i) => {
         // texto
-        if (r && i.creator.search(r) === -1 && i.description.search(r) === -1) {
-          return false;
+        if (i.creator.search(r) !== -1 ||
+          (i.name ? i.name.search(r) !== -1 : false) ||
+          (i.description ? i.description.search(r) !== -1 : false)
+        ) {
+          return true;
         }
-        return true;
+        return false;
       }, this);
     },
     modalItem () {
@@ -85,6 +95,7 @@ export default {
   },
 
   mounted () {
+    this.filterSearch = this.$route.query.filter ? this.$route.query.filter : '';
     this.filterSearchPlaceholder = this.$gettext('buscar na galeria');
   },
 

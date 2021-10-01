@@ -47,6 +47,14 @@ const main = () => {
     }
   }
 
+  gallery.sort(
+    (a, b) => {
+      if (a.name < b.name) { return -1; }
+      if (a.name > b.name) { return 1; }
+      return 0;
+    }
+  );
+
   fs.writeFileSync(path.join(__dirname, 'components/gallery.json'), JSON.stringify(gallery));
 };
 

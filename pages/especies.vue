@@ -118,7 +118,10 @@
           <font-awesome-icon :icon="['fas', 'info-circle']" />
           {{ a.description }}
         </p>
-        <span @click="showModalClick(a)" class="open-modal"><font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></span>
+        <span class="open-modal">
+          <a href="/galeria?filter=''">
+            <font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></a></span>
+        </a>
       </div>
     </transition-group>
 
