@@ -120,8 +120,10 @@
         </p>
         <span class="open-modal">
           <a href="/galeria?filter=''">
-            <font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></a></span>
-        </a>
+            <font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></a>
+          <a :href="a.about" v-if="a.about">
+            <font-awesome-icon :icon="['fas', 'book']" /> <i18n>Mais detalhes</i18n></a>
+        </span>
       </div>
     </transition-group>
 
@@ -164,7 +166,7 @@ export default {
   data () {
     return {
       email: 'email@corollarium.com',
-      animals: animalData, // TODO: sort
+      animals: animalData,
       filterColor: '',
       filterSearch: '',
       minRange: null, // slider

@@ -140,7 +140,7 @@
         </template>
       </life-block>
 
-      <section class="section-container with-bottom-content container">
+      <section id="raia-chita" class="section-container with-bottom-content container">
         <h3>
           Raia-chita
         </h3>
@@ -431,6 +431,7 @@
       </life-block>
 
       <life-block
+        id="peixe-frade"
         name="Peixe-frade"
         latin="Pomacanthus paru"
         conservation="pouco preocupante"
@@ -472,6 +473,7 @@
       </life-block>
 
       <life-block
+        id="peixe-anjo-real"
         name="Peixe anjo real"
         latin="Holocanthus ciliares"
         conservation="Pouco preocupante"
@@ -479,7 +481,7 @@
       >
         <template v-slot:header>
           <figure class="figure-text">
-            <img alt="Peixe anjo real" src="http://placehold.it/300x300">
+            <img alt="Peixe anjo real" src="~static/images/nauther/peixe-anjo-real.jpg">
             <figcaption>
               <p>
                 Peixe anjo real
@@ -505,6 +507,7 @@
       </life-block>
 
       <life-block
+        id="sargentinho"
         name="Sargentinho"
         latin="Abudefduf saxatilis"
         conservation="Menor preocupação"
@@ -512,7 +515,7 @@
       >
         <template v-slot:header>
           <figure class="figure-text">
-            <img alt="Sargentinho" src="http://placehold.it/300x300">
+            <img alt="Sargentinho" src="~static/images/nauther/sargentinho.jpg">
             <figcaption>
               <p>
                 Sargentinho
@@ -628,7 +631,7 @@
         </div>
       </section>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+      <section id="moreia-pintada" class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
           Moreia pintada
         </h3>
@@ -675,7 +678,7 @@
         </div>
       </section>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
+      <section id="moreia-verde" class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
           Moreia verde
         </h3>

@@ -14,7 +14,7 @@
       "size": 30,
       "othernames": "Pomacanthus paru",
       "description": "O peixe-frade normalmente habita áreas recifais rasas, e nada em pares.",
-      "about": "/vida/#frade"
+      "about": "/vida/#peixe-frade"
     },
     "1545946134598879623409.jpg": {
       "name": "Raia chita"
@@ -28,7 +28,7 @@
       "size": 300,
       "othernames": "",
       "description": "",
-      "about": ""
+      "about": "/vida/#raia-chita"
     },
     "1552316930246-911010432.jpg": {
       "name": "Tartaruga de pente",
@@ -121,6 +121,57 @@
       "othernames": "Epinephelus marginatus",
       "description": "",
       "about": ""
+    },
+    "peixe-anjo-real.jpg": {
+      "name": "Peixe anjo real",
+      "colors": [
+        "yellow",
+        "blue"
+      ],
+      "size": 40,
+      "othernames": "Holocanthus ciliares",
+      "about": "peixe-anjo-real"
+    },
+    "sargentinho.jpg": {
+      "name": "Sargentinho",
+      "colors": [
+        "white",
+        "yellow",
+        "black"
+      ],
+      "size": 15,
+      "othernames": "Abudefduf saxatilis",
+      "about": "/vida/#sargentinho"
+    },
+    "moreia-pintada.jpg": {
+      "name": "Moréia Pintada",
+      "colors": [
+        "white",
+        "black"
+      ],
+      "size": 60,
+      "othernames": "Gymnothorax moringa",
+      "about": "/vida/#moreia-pintada"
+    },
+    "moreia-verde.jpg": {
+      "name": "Moréia Verde",
+      "colors": [
+        "green",
+        "yellow"
+      ],
+      "size": 100,
+      "othernames": "Gymnothorax funebris",
+      "about": "/vida/#moreia-verde"
+    },
+    "moreia-verde.jpg": {
+      "name": "Moréia Verde",
+      "colors": [
+        "green",
+        "yellow"
+      ],
+      "size": 100,
+      "othernames": "Gymnothorax funebris",
+      "about": "/vida/#moreia-verde"
     }
   }
 }

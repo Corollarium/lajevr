@@ -95,6 +95,9 @@ export default {
   },
 
   mounted () {
+    this.head.title = this.$gettext('Galeria de Fotos da Laje de Santos');
+    this.head.description = this.$gettext('Fotos tiradas no Parque Estadual Marinho da Laje de Santos');
+
     this.filterSearch = this.$route.query.filter ? this.$route.query.filter : '';
     this.filterSearchPlaceholder = this.$gettext('buscar na galeria');
   },

@@ -139,6 +139,15 @@
       </div>
     </section>
 
+    <section id="moreia" bp="container" class="section-base">
+      <h2>O naufrágio Moréia</h2>
+      <img src="~static/images/nauther/moreia-proa.jpg" alt="Naufrágio Moreia, visto da proa. Foto: Nauther Andres">
+
+      <p>
+        A 20 metros de profundidade está o naufrágio Moréia. É o primeiro naufrágio artificial do Brasil, feito para a prática de mergulho.
+      </p>
+    </section>
+
     <!-- Dive Section -->
     <section class="section-with-slideshow with-fade">
       <div class="background-slideshow">
