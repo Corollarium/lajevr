@@ -163,15 +163,36 @@
       "othernames": "Gymnothorax funebris",
       "about": "/vida/#moreia-verde"
     },
-    "moreia-verde.jpg": {
-      "name": "Moréia Verde",
+    "moreia-banana.jpg": {
+      "name": "Moréia Banana",
       "colors": [
-        "green",
+        "black",
         "yellow"
       ],
       "size": 100,
-      "othernames": "Gymnothorax funebris",
-      "about": "/vida/#moreia-verde"
+      "othernames": "Gymnothorax miliaris",
+      "about": "/vida/#moreia-banana"
+    },
+    "Miriquitis-amarela.jpg": {
+      "name": "Miriquitis Amarela",
+      "colors": [
+        "yellow",
+        "black"
+      ],
+      "size": 50,
+      "othernames": "Myrichthys ocellatus",
+      "about": "/vida/#miriquitis-amarela"
+    },
+    "salema.jpg": {
+      "name": "Salema",
+      "colors": [
+        "yellow",
+        "black",
+        "white"
+      ],
+      "size": 20,
+      "othernames": "Anisotremus virginicus",
+      "about": "/vida/#salema"
     }
   }
 }

@@ -585,309 +585,253 @@
         </p>
       </life-block>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Pirá
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Malacanthus plumieri
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Pirá" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Pirá
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Pirá em tupi-guarani significa “peixe”: o mais legal é que este
-              peixe é conhecido popularmente como Pirá mesmo.
-            </p>
-
-            <p>
-              Este peixe é o arquiteto do mar. Habita de 10 até 150 metros de
-              profundidade, em fundo arenoso ou calcário, e constrói
-              cuidadosamente sua própria casa com pedaços de esqueletos de
-              corais, conchas e pedras carregando-as pela boca e empilhando umas
-              sobre as outras formando montes de até 1 metro de altura e 1,5
-              metros de circunferência. Assim vive sua vida toda se dedicando
-              aos cuidados da casa.
-            </p>
-
-            <p>
-              Quando ameaçado, nada ligeiramente para dentro de sua pilha de
-              cascalhos para se proteger e só sai novamente quando a ameaça se
-              for.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="moreia-pintada" class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Moreia pintada
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Gymnothorax moringa
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Moreia pintada" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Moreia pintada
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              É conhecida popularmente como moreia pintada, por conta de suas
-              manchas claras e escuras no corpo de padrão marmorizado. Apesar de
-              parecerem com serpentes ou enguias, as moreias são peixes com
-              formas diferentes.
-            </p>
-
-            <p>
-              Seu nado se dá de forma semelhante ao rastejar de uma serpente,
-              impulsionando o corpo para frente e para trás. Vivem associadas ao
-              fundo marinho em tocas e fendas nas rochas e recifes de corais.
-              São fortes predadoras e se alimentam de outros peixes, crustáceos
-              e moluscos. Possuem dentes bem afiados e uma mordida bem poderosa.
-            </p>
-
-            <p>
-              Ao encontrar uma moreia você perceberá sua mandíbula em constante
-              movimento de abrir e fechar. Parece assustador, mas isso significa
-              que ela está respirando, inalando água que ao passar por suas
-              brânquias faz o troca do oxigênio que necessita.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="moreia-verde" class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Moreia verde
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Gymnothorax funebris
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Moreia verde" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Moreia verde
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Moréia verde, como é conhecida pelos mergulhadores, é a mais
-              popular de todas as espécies. É considerada a maior em tamanho,
-              podendo chegar a medir mais de 2 metros. Seria parte da origem das
-              lendas das serpentes marinhas gigantes?
-            </p>
-
-            <p>
-              Tem comportamento mais agressivo, extremamente predadora, fica de tocaia em sua
-              toca e sai para predar peixes, crustáceos e moluscos que são seu alimento
-              predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em
-              humanos por isso é recomendado não se aproximar muito.
-            </p>
-
-            <p>
-              Para respirar, elas abrem e fecham a boca constantemente inalando e exalando
-              água retendo o oxigênio em sua brânquias e transportando para corrente
-              sanguínea. São encontradas desde Nova Jersey, passando pelo Caribe e toda a
-              costa brasileira.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Moréia-banana
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Gymnothorax miliaris
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Moréia-banana " src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Moréia-banana
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Com comportamento semelhantes aos das outras espécies de moréias, a moréia banana é a mais rara delas. Justamente por sua coloração, ela se destaca diante dos outros animais e é facilmente vista pelos predadores. Por isso permanece boa parte do tempo em sua toca e sai apenas para caçar. Ao se deparar com uma sinta-se privilegiado, curta o momento e tire lindas fotos.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Miriquitis amarela
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Myrichthys ocellatus
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Moréia-banana " src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Moréia-banana
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Conhecida no nordeste como Mututuca e no sudeste como miriquitis, a Myrichthys ocellatus se assemelha mais ainda com uma serpente marinha. Mas não é! Ela é um peixe ou uma enguia marinha, de coloração clara e manchas escuras arredondadas.
-            </p>
-            <p>
-              Possui hábito diurno e por isso não é difícil de ser encontrada durante atividades de mergulhos. Não apresenta nenhum risco aos humanos, vive associada ao fundo marinho em busca de pequenos crustáceos e vermes. Hoje sua maior ameaça é a captura para comércio de peixes ornamentais para aquários. Pode ser encontrada nas zonas tropicais e subtropicais do oceano atlântico.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Barracuda
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Sphyraena barracuda
-          </p>
-          <p>Estado de conservação: Segura ou pouco preocupante</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Barracuda" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Barracuda
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              As barracudas são peixes tão famosos que até os mergulhadores
-              menos experientes já ouviram falar e tem medo de se deparar com
-              uma diante dos olhos. Sua fama é de um peixe mal, feroz e que pode
-              lhe atacar a qualquer momento. Realmente, sua fama não é em vão
-              devido a casos de acidentes com seres humanos em quase todas as
-              partes do mundo.
-            </p>
-            <p>
-              As barracudas são peixes grandes compridos e com cabeça afunilada
-              em forma de míssil. São muito velozes na água pois são predadoras
-              vorazes com dentes pontiagudos muito afiados. O mínimo contato com
-              uma barracuda pode lhe causar ferimentos graves. Mas elas não
-              atacam assim! O importante a se fazer quando se está no mar
-              mergulhando ou praticando quaisquer atividades em seu habitat é
-              não estar com nenhum acessório brilhante como brincos, pulseiras,
-              anéis. Eles atraem a atenção delas, fazendo-as pensar que é uma
-              potencial presa e avançam com velocidade em sua direção causando
-              um baita susto nos desavisados de plantão.
-            </p>
-            <p>
-              Sua maior ameaça é a pesca esportiva e predatória, apesar de não
-              ter interesse comercial, é um peixe bastante apreciado em
-              restaurantes pelo mundo afora e aquários de grande porte.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Salemas
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Anisotremus virginicus
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Salemas" src="">
-          <figcaption>
-            <p>
-              Salemas
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Esta espécie foi descrita já por Linnaeus, em 1758. São peixes
-              recifais de mares tropicais que podem ser encontrados em todo o
-              golfo do México, Caribe e costa brasileira, com cores muito
-              vibrantes.
-            </p>
-            <p>
-              São facilmente identificadas e conhecidas popularmente com o nome de salemas.
-              Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite
-              que sejam contempladas e muito fotografadas por mergulhadores. São imagens
-              incríveis apresentando um contraste de cores espetacular compostos pelo ambiente
-              em que vivem.
-            </p>
-          </div>
-        </div>
-      </section>
-      </life-block>
-    </article>
-
-    <article id="birds" class="article-index">
-      <section class="section-container container">
-        <h2 class="title-specimen">
-          <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
-          Aves
-        </h2>
+      <life-block
+        name="Pirá"
+        latin="Malacanthus plumieri"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Pirá" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Pirá
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+        <p>
+          Pirá em tupi-guarani significa “peixe”: o mais legal é que este
+          peixe é conhecido popularmente como Pirá mesmo.
+        </p>
 
         <p>
-          29 espécies de aves já foram catalogadas na Laje.
+          Este peixe é o arquiteto do mar. Habita de 10 até 150 metros de
+          profundidade, em fundo arenoso ou calcário, e constrói
+          cuidadosamente sua própria casa com pedaços de esqueletos de
+          corais, conchas e pedras carregando-as pela boca e empilhando umas
+          sobre as outras formando montes de até 1 metro de altura e 1,5
+          metros de circunferência. Assim vive sua vida toda se dedicando
+          aos cuidados da casa.
         </p>
-      </section>
+
+        <p>
+          Quando ameaçado, nada ligeiramente para dentro de sua pilha de
+          cascalhos para se proteger e só sai novamente quando a ameaça se
+          for.
+        </p>
+      </life-block>
+
+      <life-block
+        id="moreia-pintada"
+        name="Moreia pintada"
+        latin="Gymnothorax moringa"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Moreia pintada" src="~static/images/nauther/moreia-pintada.jpg">
+            <figcaption>
+              <p>
+                Moreia pintada
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          É conhecida popularmente como moreia pintada, por conta de suas
+          manchas claras e escuras no corpo de padrão marmorizado. Apesar de
+          parecerem com serpentes ou enguias, as moreias são peixes com
+          formas diferentes.
+        </p>
+
+        <p>
+          Seu nado se dá de forma semelhante ao rastejar de uma serpente,
+          impulsionando o corpo para frente e para trás. Vivem associadas ao
+          fundo marinho em tocas e fendas nas rochas e recifes de corais.
+          São fortes predadoras e se alimentam de outros peixes, crustáceos
+          e moluscos. Possuem dentes bem afiados e uma mordida bem poderosa.
+        </p>
+
+        <p>
+          Ao encontrar uma moreia você perceberá sua mandíbula em constante
+          movimento de abrir e fechar. Parece assustador, mas isso significa
+          que ela está respirando, inalando água que ao passar por suas
+          brânquias faz o troca do oxigênio que necessita.
+        </p>
+      </life-block>
+
+      <life-block
+        id="moreia-verde"
+        name="Moreia Verde"
+        latin="Gymnothorax funebris"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Moreia verde" src="~static/images/nauther/moreia-verde.jpg">
+            <figcaption>
+              <p>
+                Moreia verde
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+        <p>
+          Moréia verde, como é conhecida pelos mergulhadores, é a mais
+          popular de todas as espécies. É considerada a maior em tamanho,
+          podendo chegar a medir mais de 2 metros. Seria parte da origem das
+          lendas das serpentes marinhas gigantes?
+        </p>
+
+        <p>
+          Tem comportamento mais agressivo, extremamente predadora, fica de tocaia em sua
+          toca e sai para predar peixes, crustáceos e moluscos que são seu alimento
+          predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em
+          humanos por isso é recomendado não se aproximar muito.
+        </p>
+
+        <p>
+          Para respirar, elas abrem e fecham a boca constantemente inalando e exalando
+          água retendo o oxigênio em sua brânquias e transportando para corrente
+          sanguínea. São encontradas desde Nova Jersey, passando pelo Caribe e toda a
+          costa brasileira.
+        </p>
+      </life-block>
+
+      <life-block
+        id="moreia-banana"
+        name="Moreia Banana"
+        latin="Gymnothorax miliaris"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Moréia-banana" src="~static/images/nauther/moreia-banana.jpg">
+            <figcaption>
+              <p>
+                Moréia-banana
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          Com comportamento semelhantes aos das outras espécies de moréias, a moréia banana é a mais rara delas. Justamente por sua coloração, ela se destaca diante dos outros animais e é facilmente vista pelos predadores. Por isso permanece boa parte do tempo em sua toca e sai apenas para caçar. Ao se deparar com uma sinta-se privilegiado, curta o momento e tire lindas fotos.
+        </p>
+      </life-block>
+
+      <life-block
+        id="miriquitis-amarela"
+        name="Miriquitis amarela"
+        latin="Myrichthys ocellatus"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Miriquitis amarela" src="~static/images/nauther/Miriquitis-amarela.jpg">
+            <figcaption>
+              <p>
+                Miriquitis amarela
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          Conhecida no nordeste como Mututuca e no sudeste como miriquitis, a Myrichthys ocellatus se assemelha mais ainda com uma serpente marinha. Mas não é! Ela é um peixe ou uma enguia marinha, de coloração clara e manchas escuras arredondadas.
+        </p>
+        <p>
+          Possui hábito diurno e por isso não é difícil de ser encontrada durante atividades de mergulhos. Não apresenta nenhum risco aos humanos, vive associada ao fundo marinho em busca de pequenos crustáceos e vermes. Hoje sua maior ameaça é a captura para comércio de peixes ornamentais para aquários. Pode ser encontrada nas zonas tropicais e subtropicais do oceano atlântico.
+        </p>
+      </life-block>
+
+      <life-block
+        id="barracuda"
+        name="Barracuda"
+        latin="Sphyraena barracuda"
+        conservation="Segura ou pouco preocupante"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Barracuda" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Barracuda
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          As barracudas são peixes tão famosos que até os mergulhadores
+          menos experientes já ouviram falar e tem medo de se deparar com
+          uma diante dos olhos. Sua fama é de um peixe mal, feroz e que pode
+          lhe atacar a qualquer momento. Realmente, sua fama não é em vão
+          devido a casos de acidentes com seres humanos em quase todas as
+          partes do mundo.
+        </p>
+        <p>
+          As barracudas são peixes grandes compridos e com cabeça afunilada
+          em forma de míssil. São muito velozes na água pois são predadoras
+          vorazes com dentes pontiagudos muito afiados. O mínimo contato com
+          uma barracuda pode lhe causar ferimentos graves. Mas elas não
+          atacam assim! O importante a se fazer quando se está no mar
+          mergulhando ou praticando quaisquer atividades em seu habitat é
+          não estar com nenhum acessório brilhante como brincos, pulseiras,
+          anéis. Eles atraem a atenção delas, fazendo-as pensar que é uma
+          potencial presa e avançam com velocidade em sua direção causando
+          um baita susto nos desavisados de plantão.
+        </p>
+        <p>
+          Sua maior ameaça é a pesca esportiva e predatória, apesar de não
+          ter interesse comercial, é um peixe bastante apreciado em
+          restaurantes pelo mundo afora e aquários de grande porte.
+        </p>
+      </life-block>
+
+      <life-block
+        id="salema"
+        name="Salema"
+        latin="Anisotremus virginicus"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:description>
+          Na laje você sempre vê cardumes de salemas.
+        </template>
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Salemas" src="~static/images/nauther/salema.jpg">
+            <figcaption>
+              <p>
+                Salemas
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          Esta espécie foi descrita já por Linnaeus, em 1758. São peixes
+          recifais de mares tropicais que podem ser encontrados em todo o
+          golfo do México, Caribe e costa brasileira, com cores muito
+          vibrantes.
+        </p>
+        <p>
+          São facilmente identificadas e conhecidas popularmente com o nome de salemas.
+          Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite
+          que sejam contempladas e muito fotografadas por mergulhadores. São imagens
+          incríveis apresentando um contraste de cores espetacular compostos pelo ambiente
+          em que vivem.
+        </p>
+      </life-block>
 
       <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
         <h3>
