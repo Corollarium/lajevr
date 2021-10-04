@@ -3,7 +3,8 @@
     class="card"
   >
     <figure>
-      <img :src="absoluteurl ? absoluteurl : base + url" v-if="type == 'image'" class="gallery-image">
+      <img v-if="type == 'image' && absoluteurl" class="gallery-image">
+      <thumb-img v-if="type == 'image' && !absoluteurl" :src="suburl" class="fauna-image" />
       <video v-if="type == 'video'" class="gallery-video" controls preload="metadata">
         <source :src="absoluteurl ? absoluteurl : base + url">
       </video>
@@ -21,7 +22,10 @@
 </template>
 
 <script>
+import ThumbImg from '~/components/ThumbImg.vue';
+
 export default {
+  components: { ThumbImg },
   props: {
     name: {
       type: String,
@@ -43,6 +47,11 @@ export default {
       required: false
     },
     url: {
+      type: String,
+      required: false,
+      default: null
+    },
+    suburl: {
       type: String,
       required: false,
       default: null
