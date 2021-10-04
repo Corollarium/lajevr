@@ -60,13 +60,7 @@
                 <GalleryCard
                   v-for="(a, i) in filteredGallery"
                   :key="i"
-                  v-bind:creator="a.creator"
-                  v-bind:creatorLink="a.creatorLink"
-                  v-bind:license="a.license"
-                  v-bind:url="a.url"
-                  v-bind:absoluteurl="a.absoluteurl"
-                  v-bind:description="a.description"
-                  v-bind:type="a.type"
+                  v-bind="a"
                 />
               </div>
             </div>
@@ -152,7 +146,7 @@ export default {
             'A face norte é o local onde ocorre a maioria dos mergulhos, com profundidade de até 22m, mais abrigado das correntes e de fácil orientação.'
         },
         {
-          name: 'Moréia',
+          name: 'Naufrágio Moréia',
           lat: -24.317056,
           long: -46.182083,
           dificuldade: '⭑✩ Baixo grau de dificuldade.',
