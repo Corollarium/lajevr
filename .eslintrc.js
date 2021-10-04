@@ -28,5 +28,6 @@ module.exports = {
           ]
       }
     ],
+    "template-curly-spacing" : "off",
   }
 }

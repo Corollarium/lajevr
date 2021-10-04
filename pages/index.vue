@@ -152,7 +152,7 @@
     <section class="section-with-slideshow with-fade">
       <div class="background-slideshow">
         <video autoplay loop muted playsinline>
-          <source src="~static/images/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
+          <source src="~static/videos/deiamorales/Video 2020-03-20 at 08.58.50.mp4">
         </video>
         <p class="attribution">
           Video

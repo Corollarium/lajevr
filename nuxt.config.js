@@ -61,6 +61,7 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     ['@nuxtjs/pwa', { workbox: false }]
+    // ['@pivale/nuxt-image-loader-module', {
   ],
   /*
    ** Build configuration
@@ -118,7 +119,7 @@ export default {
     optimizeImages: true,
     optimizeImagesInDev: true,
     responsive: {
-      sizes: [ 360, 640, 1080 ],
+      sizes: [ 360 ],
       placeholder: true
     }
   },
