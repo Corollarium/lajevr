@@ -6,7 +6,7 @@
   },
   "media": {
     "1545605014265-1484188416.jpg": {
-      "name": "Peixe frade",
+      "name": "Frade",
       "colors": [
         "yellow",
         "blue"
@@ -83,7 +83,15 @@
     },
     "1556498262088345578492.jpg": {
       "name": "Enxada",
-      "description": "Cardume de enxadas"
+      "description": "Cardume de enxadas",
+      "colors": [
+        "white",
+        "grey",
+        "black"
+      ],
+      "size": 15,
+      "othernames": "Chaetodipterus faber",
+      "about": ""
     },
     "IMG_1209.JPG": {
       "name": "Bodião brasileiro",
@@ -123,14 +131,14 @@
       "about": ""
     },
     "peixe-anjo-real.jpg": {
-      "name": "Peixe anjo real",
+      "name": "Anjo real",
       "colors": [
         "yellow",
         "blue"
       ],
       "size": 40,
       "othernames": "Holocanthus ciliares",
-      "about": "peixe-anjo-real"
+      "about": "/vida/#peixe-anjo-real"
     },
     "sargentinho.jpg": {
       "name": "Sargentinho",
