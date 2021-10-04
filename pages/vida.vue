@@ -25,31 +25,31 @@
       <ul class="pure-menu-list horizontal-menu topbar-list">
         <li class="pure-menu-item topbar-list-item" data-target="raias">
           <a class="pure-menu-link link-menu-vida" href="#raias">
-            <img class="menu-icon" alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
+            <img class="menu-icon" alt="Icone de uma manta" src="~static/graficos/ray.svg">
             Raias
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="turtles">
           <a class="pure-menu-link link-menu-vida" href="#turtles">
-            <img class="menu-icon" alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
+            <img class="menu-icon" alt="Icone de uma tartaruga" src="~static/graficos/turtle.svg">
             Tartarugas
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="dolphins">
           <a class="pure-menu-link link-menu-vida" href="#dolphins">
-            <img class="menu-icon" alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
+            <img class="menu-icon" alt="Icone de um golfinho" src="~static/graficos/dolphin.svg">
             Golfinhos
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="fish">
           <a class="pure-menu-link link-menu-vida" href="#fish">
-            <img class="menu-icon" alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
+            <img class="menu-icon" alt="Icone de um peixe" src="~static/graficos/fish.svg">
             Peixes
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="birds">
           <a class="pure-menu-link link-menu-vida" href="#birds">
-            <img class="menu-icon" alt="Icone de um pássaros" src="~static/images/graficos/bird.svg">
+            <img class="menu-icon" alt="Icone de um pássaros" src="~static/graficos/bird.svg">
             Aves
           </a>
         </li>
@@ -76,7 +76,7 @@
     <article id="raias" class="article-index">
       <div>
         <h2 class="title-specimen rellax" data-rellax-speed="-0.5">
-          <img alt="Icone de uma manta" src="~static/images/graficos/ray.svg">
+          <img alt="Icone de uma manta" src="~static/graficos/ray.svg">
           Raias
         </h2>
       </div>
@@ -289,7 +289,7 @@
     <article id="turtles" class="article-index">
       <section class="section-container container">
         <h2 class="title-specimen">
-          <img alt="Icone de uma tartaruga" src="~static/images/graficos/turtle.svg">
+          <img alt="Icone de uma tartaruga" src="~static/graficos/turtle.svg">
           Tartarugas
         </h2>
 
@@ -345,7 +345,7 @@
     <article id="dolphins" class="article-index">
       <section class="section-container container">
         <h2 class="title-specimen">
-          <img alt="Icone de um golfinho" src="~static/images/graficos/dolphin.svg">
+          <img alt="Icone de um golfinho" src="~static/graficos/dolphin.svg">
           Golfinhos
         </h2>
 
@@ -375,7 +375,7 @@
     <article id="fish" class="article-index">
       <div>
         <h2 class="title-specimen">
-          <img alt="Icone de um peixe" src="~static/images/graficos/fish.svg">
+          <img alt="Icone de um peixe" src="~static/graficos/fish.svg">
           Peixes
         </h2>
       </div>
@@ -387,7 +387,7 @@
       >
         <template v-slot:header>
           <figure class="figure-text">
-            <img alt="Garoupa verdadeira" src="~static/images/nauther/IMG_1518.JPG">
+            <img alt="Garoupa verdadeira" src="~static/images/nauther/IMG_1518.jpg">
             <figcaption>
               <p>
                 Garoupa verdadeira entre pedras. Foto: Nauther Andres
@@ -439,7 +439,7 @@
       >
         <template v-slot:header>
           <figure class="figure-text">
-            <img alt="Peixe frade" src="~static/images/nauther/IMG_1503.JPG">
+            <img alt="Peixe frade" src="~static/images/nauther/IMG_1503.jpg">
             <figcaption>
               <p>
                 Peixe frade
@@ -927,7 +927,7 @@
     <article id="birds" class="article-index">
       <section class="section-container container">
         <h2 class="title-specimen">
-          <img alt="Icone de uma ave" src="~static/images/graficos/bird.svg">
+          <img alt="Icone de uma ave" src="~static/graficos/bird.svg">
           Aves
         </h2>
 

@@ -38,6 +38,7 @@ const main = () => {
           console.warn(m + ' does not have metadata.');
         }
         data.url = urlpath + '/' + m;
+        data.suburl = data.url.replace('images/', '');
         data.filename = m;
         data.type = (isImage(m) ? 'image' : (isVideo(m) ? 'video' : ''));
         gallery.push(data);

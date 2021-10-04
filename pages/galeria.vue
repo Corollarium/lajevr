@@ -28,8 +28,8 @@
       bp="grid container 12 6@sm 4@md 3@lg"
     >
       <GalleryCard
-        v-for="(a, i) in filteredGallery"
-        :key="i"
+        v-for="a in filteredGallery"
+        :key="a.base ? a.base : a.url"
         v-bind="a"
         class="gallery-card"
       />

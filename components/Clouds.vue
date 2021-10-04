@@ -1,9 +1,9 @@
 <template>
   <div class="cloud-animation">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a slow-clouds">
-    <img src="~static/images/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b slow-clouds">
+    <img src="~static/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a">
+    <img src="~static/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b">
+    <img src="~static/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-a slow-clouds">
+    <img src="~static/graficos/nuvens.png" draggable="false" alt="Nuvem" class="clouds-b slow-clouds">
   </div>
 </template>
 

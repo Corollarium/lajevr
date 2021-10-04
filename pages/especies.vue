@@ -97,7 +97,7 @@
         class="card fauna-card"
       >
         <figure>
-          <img :src="a.absoluteurl ? a.absoluteurl : base + a.url" class="fauna-image">
+          <thumb-img :src="a.suburl" class="fauna-image" />
           <figcaption v-if="a.creator" class="attribution">
             <i18n>foto por</i18n> <a :href="a.creatorLink" target="_blank">{{ a.creator }}</a> {{ a.license }}
           </figcaption>
@@ -160,8 +160,10 @@ import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 import page from './page.vue';
 import animalData from '~/components/especies.js';
+import ThumbImg from '~/components/ThumbImg.vue';
 
 export default {
+  components: { ThumbImg },
   extends: page,
   data () {
     return {
