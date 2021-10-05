@@ -11356,10 +11356,10 @@ three-text2d@^0.5.3:
   resolved "https://registry.yarnpkg.com/three-text2d/-/three-text2d-0.5.3.tgz#742363ae334a12d6fe71847392fb00f311b6676d"
   integrity sha512-y9WSyVzO2nQ/+ZUsvT4iqgeqRkjh4nhMwOdcNsUbCzgmpORhG8KQRxI4CokWoZYPesj/KwVUJlyzMtQRjo8o6g==
 
-three@^0.111.0:
-  version "0.111.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.111.0.tgz#9cedb73e79b7f6bf2440cb67a273f883faa923b6"
-  integrity sha512-AcTqyGJ3H75AIusOuADy0LsP958QKQwm/YhABHFMzd6RFXPNVay1rlSbbG6WYv7KM72G2THMMwqbjQd4dVHMkQ==
+three@^0.133.1:
+  version "0.133.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.133.1.tgz#5606f4817d67a09d9212d4ccbd6826564774f8f4"
+  integrity sha512-WydohO8ll949B0FTD6MGz59Yv2Lwj8hvObg/0Heh2r42S6+tQC1WByfCNRdmG4D7+odfGod+n8JPV1I2xrboWw==
 
 through2@^2.0.0:
   version "2.0.5"

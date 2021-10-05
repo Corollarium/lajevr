@@ -67,6 +67,7 @@ export default {
    ** Build configuration
    */
   build: {
+    transpile: ['three'],
     postcss: {
       preset: {
         features: {

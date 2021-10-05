@@ -15,11 +15,10 @@
 </template>
 
 <script>
-/* eslint-disable */
 import * as THREE from 'three';
-import { OrbitControls } from './three/OrbitControls.mjs';
-import { GLTFLoader } from './three/GLTFLoader.mjs'; // TODO: link symbolic
-/* eslint-enable */
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 export default {
   props: {
@@ -54,7 +53,7 @@ export default {
     const container = this.$el;
 
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 20000);
-    camera.position.set(0, 0, 150); // TODO: scale
+    camera.position.set(0, 0, 3); // TODO: scale
     camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
@@ -84,6 +83,12 @@ export default {
 
     // loading manager
     const loader = new GLTFLoader();
+
+    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/code/draco');
+    loader.setDRACOLoader(dracoLoader);
+
     let mixer, mesh;
     // Load a glTF resource
     loader.load(
@@ -91,21 +96,30 @@ export default {
       this.model,
       // called when the resource is loaded
       function (gltf) {
+        console.log('zzzzzzz');
         mesh = gltf.scene;
         scene.add(mesh);
+        const box = new THREE.BoxHelper(mesh, 0xFFFF00);
+        scene.add(box);
+        console.log(box);
         mixer = new THREE.AnimationMixer(mesh);
         const action = mixer.clipAction(gltf.animations[0]);
         action.play();
       },
       // called while loading is progressing
       function (xhr) {
-        // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
       },
       // called when loading has errors
       function (e) {
-        // console.log('An error happened', error);
+        console.log('An error happened', e);
       }
     );
+
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const material = new THREE.MeshBasicMaterial({ color: 0x00FF00 });
+    // const cube = new THREE.Mesh(geometry, material);
+    // scene.add(cube);
 
     //
     container.appendChild(this.renderer.domElement);
