@@ -5,6 +5,44 @@
     "license": "CC BY NC SA 4.0"
   },
   "media": {
-
+    "DSC00788.jpg": {
+      "name": ""
+    },
+    "DSC001096.jpg": {
+      "name": "Ouriço do mar",
+      "colors": [
+        "black"
+      ],
+      "size": 10,
+      "othernames": "",
+      "description": ""
+    },
+    "DSC001108.jpg":  {
+      "name": "Frade",
+      "colors": [
+        "yellow",
+        "black"
+      ],
+      "description": "",
+      "about": "/vida/#peixe-frade"
+    },
+    "DSC001117.jpg":  {
+      "name": "",
+      "colors": [
+        "white"
+      ],
+      "size": 10,
+      "othernames": "",
+      "description": ""
+    },
+    "DSC001124.jpg":  {
+      "name": "",
+      "colors": [
+        "white"
+      ],
+      "size": 10,
+      "othernames": "",
+      "description": ""
+    }
   }
 }
