@@ -2,6 +2,12 @@
   <div class="object-embed-3d">
     <div class="object-embed-icon" />
     <p
+      v-if="error"
+      class="error"
+    >
+      {{ error }}
+    </p>
+    <p
       class="attribution"
     >
       <a :href="link" v-if="link" target="_blank">
@@ -40,20 +46,26 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    scale: {
+      type: Number,
+      required: false,
+      default: 150
     }
   },
 
   data () {
     return {
-      renderer: null
+      renderer: null,
+      error: null
     };
   },
 
   mounted () {
     const container = this.$el;
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 20000);
-    camera.position.set(0, 0, 3); // TODO: scale
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, this.scale / 100, this.scale * 100);
+    camera.position.set(0, 0, this.scale);
     camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
@@ -86,7 +98,7 @@ export default {
 
     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/code/draco');
+    dracoLoader.setDecoderPath('/code/draco/');
     loader.setDRACOLoader(dracoLoader);
 
     let mixer, mesh;
@@ -96,12 +108,8 @@ export default {
       this.model,
       // called when the resource is loaded
       function (gltf) {
-        console.log('zzzzzzz');
         mesh = gltf.scene;
         scene.add(mesh);
-        const box = new THREE.BoxHelper(mesh, 0xFFFF00);
-        scene.add(box);
-        console.log(box);
         mixer = new THREE.AnimationMixer(mesh);
         const action = mixer.clipAction(gltf.animations[0]);
         action.play();
@@ -112,6 +120,7 @@ export default {
       },
       // called when loading has errors
       function (e) {
+        this.error = e.message;
         console.log('An error happened', e);
       }
     );
@@ -142,7 +151,7 @@ export default {
       }
       controls.update();
       if (mesh) {
-        camera.position.y += 0.8 * Math.sin(time / 2000);
+        // camera.position.y += 0.8 * Math.sin(time / 2000);
       }
       render();
       prevTime = time;
