@@ -47,7 +47,7 @@
     "sass-loader": "^8.0.0",
     "sqip-loader": "^1.0.0",
     "stats.js": "^0.17.0",
-    "three": "^0.111.0",
+    "three": "^0.133.1",
     "three-text2d": "^0.5.3",
     "vue-gettext": "^2.1.8",
     "webfontloader": "^1.6.28",
