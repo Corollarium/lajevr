@@ -406,14 +406,7 @@
         </p>
 
         <p>
-          Um comportamento que pode ser observado da espécie, durante os
-          mergulhos na laje, é de como ela disputa com outros indivíduos
-          pelo seu território, expulsando o invasor de sua toca com
-          investidas e até mesmo mordidas. É possível notar também um padrão
-          de coloração intercambiável de acordo com o substrato que ela se
-          encontra… se for rochoso, os padrões de manchas serão vivas como
-          se fossem uma camuflagem, quando em ambiente arenoso claro, seu
-          corpo empalidece na cor da areia se mimetizando com o ambiente.
+          Um comportamento observado na espécie,  nos mergulhos na Laje de Santos, é a disputa com outros indivíduos pelo seu território, expulsando o invasor de sua toca com investidas e até mesmo mordidas. É possível notar  um padrão de coloração intercambiável de acordo com o substrato que ela se encontra… se for rochoso, os padrões de manchas serão vivas como se fossem uma camuflagem, quando em ambiente arenoso claro, seu corpo empalidece na cor da areia se mimetizando com o ambiente.
         </p>
       </life-block>
 
@@ -436,33 +429,22 @@
         </template>
 
         <p>
-          Paru, peixe frade ou peixe anjo: são muitos nomes para a mesma
-          espécie. Depende de qual região que você o avistou. É um dos
-          peixes mais ilustres e carismáticos.
+          Paru, peixe-frade ou peixe-anjo: são muitos os nomes para a mesma espécie. Depende de qual região você o avistou. É um dos peixes mais ilustres e carismáticos.
         </p>
 
         <p>
-          Possui várias características únicas. Existente em toda a costa
-          brasileira, é um peixe recifal de comportamento dócil, comum de
-          ser encontrado nos mergulhos e super fotogênico… Alguns
-          especialistas dizem que eles são monogâmicos, vivendo com sua
-          parceira(o) por toda a vida. É mesmo habitual vê-los em pares.
+          Possui várias características únicas: Encontrado em toda a costa brasileira, é um peixe recifal de comportamento dócil, comum de serem avistados  nos mergulhos e super fotogênico Alguns especialistas sugerem que sejam monogâmicos, vivendo com sua parceira(o) por toda a vida. É comum vê-los em pares.
         </p>
 
         <p>
-          Seus filhotes são bem diferentes quando juvenis, apresentando
-          listras amarelas contínuas em seu disco corporal que se
-          transformam em pintas amarelas quando passam para a fase adulta.
-          Esta espécie não possui interesse para a pesca, mas muito valor no
-          mercado de peixes ornamentais ou para a aquariofilia, sendo muito
-          comercializado para compor ambientes de aquários mundo afora.
+          Seus filhotes são bem diferentes quando juvenis, apresentando listras amarelas contínuas em seu disco corporal que se transformam em pintas amareladas quando passam para a fase adulta. Esta espécie não possui interesse para a pesca, mas tem muito valor no mercado de peixes ornamentais ou para a aquariofilia, sendo muito comercializada para compor ambientes de aquários mundo afora.
         </p>
       </life-block>
 
       <life-block
         id="peixe-anjo-real"
         name="Peixe anjo real"
-        latin="Holocanthus ciliares"
+        latin="Holocanthus ciliaris"
         conservation="Pouco preocupante"
         data-aos="fade-right"
       >
@@ -512,8 +494,8 @@
         </template>
         <p>
           Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho
-          que cuida dos filhote. Ocorre em todos os oceanos tropicais e subtropicais,
-          conhecido aqui no Brasil pelo nome popular de sargentinho, talvez, porque ele
+          que cuida dos filhotes. Ocorre em todos os oceanos tropicais e subtropicais.
+          Conhecido aqui no Brasil pelo nome popular de sargentinho, talvez, porque ele
           tem um comportamento muito característico de proteção dos ovos em seus ninhos
           nas rochas. Se qualquer outro animal se aproximar ele ataca ferozmente
           independente do tamanho da ameaça, inclusive mergulhadores curiosos que se
@@ -555,16 +537,16 @@
         </p>
 
         <p>
-          O interessante é que ao se deparar com ameaça de um possível
+          O interessante é que ao se deparar com um possível
           predador ele abre suas nadadeiras em forma de leque que se
           assemelham a um par de asas, por isso o nome de falso voador. Este
           comportamento de abrir as “asas” serve para enganar seu predador,
-          pois faz ele se parecer maior que realmente é.
+          pois faz ele se parecer maior do que realmente é.
         </p>
 
         <p>
-          Outra característica bem marcante fica na borda de suas nadadeiras
-          quando abertas. É uma coloração azul neon bem viva que serve como
+          Outra característica bem marcante é as bordas de suas nadadeiras
+          quando abertas. Elas apresentam uma coloração azul neon bem viva que serve como
           um alerta, geralmente associado como perigo para o possível
           predador. Esta espécie tem o comportamento de forragear o fundo
           marinho, geralmente em areia, em busca de pequenos crustáceos e
@@ -594,8 +576,8 @@
         </p>
 
         <p>
-          Este peixe é o arquiteto do mar. Habita de 10 até 150 metros de
-          profundidade, em fundo arenoso ou calcário, e constrói
+          Este peixe é o arquiteto do mar. Habita de 10 até os 150 metros de
+          profundidade, em fundo arenoso ou calcário, constrói
           cuidadosamente sua própria casa com pedaços de esqueletos de
           corais, conchas e pedras carregando-as pela boca e empilhando umas
           sobre as outras formando montes de até 1 metro de altura e 1,5
@@ -605,8 +587,7 @@
 
         <p>
           Quando ameaçado, nada ligeiramente para dentro de sua pilha de
-          cascalhos para se proteger e só sai novamente quando a ameaça se
-          for.
+          cascalhos para se proteger e só sai novamente ao se sentir seguro.
         </p>
       </life-block>
 
@@ -629,25 +610,15 @@
         </template>
 
         <p>
-          É conhecida popularmente como moreia pintada, por conta de suas
-          manchas claras e escuras no corpo de padrão marmorizado. Apesar de
-          parecerem com serpentes ou enguias, as moreias são peixes com
-          formas diferentes.
+          É conhecida popularmente como moréia pintada, por conta de suas manchas claras e escuras no corpo de padrão marmorizado. Apesar de parecerem com serpentes ou enguias, as moreias  são peixes com formato anatômico  diferente.
         </p>
 
         <p>
-          Seu nado se dá de forma semelhante ao rastejar de uma serpente,
-          impulsionando o corpo para frente e para trás. Vivem associadas ao
-          fundo marinho em tocas e fendas nas rochas e recifes de corais.
-          São fortes predadoras e se alimentam de outros peixes, crustáceos
-          e moluscos. Possuem dentes bem afiados e uma mordida bem poderosa.
+          Seu nado se dá de forma semelhante ao rastejar de uma cobra, impulsionando o corpo para frente e para trás. Vivem associadas ao fundo marinho em tocas e fendas nas rochas e recifes de corais. São fortes predadoras e se alimentam de outros peixes, crustáceos e moluscos. Possuem dentes bem afiados e uma mordida  bastante poderosa.
         </p>
 
         <p>
-          Ao encontrar uma moreia você perceberá sua mandíbula em constante
-          movimento de abrir e fechar. Parece assustador, mas isso significa
-          que ela está respirando, inalando água que ao passar por suas
-          brânquias faz o troca do oxigênio que necessita.
+          Ao encontrar uma moréia você perceberá sua mandíbula em constante movimento de abrir e fechar. Parece assustador, mas isso significa que ela está respirando, inalando água que ao passar por suas brânquias faz a troca do oxigênio que necessita.
         </p>
       </life-block>
 
@@ -676,10 +647,7 @@
         </p>
 
         <p>
-          Tem comportamento mais agressivo, extremamente predadora, fica de tocaia em sua
-          toca e sai para predar peixes, crustáceos e moluscos que são seu alimento
-          predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em
-          humanos por isso é recomendado não se aproximar muito.
+          Possui comportamento mais agressivo e hábito noturno, é eximia predadora, fica de tocaia em sua toca e sai para predar peixes, crustáceos e moluscos sendo seu alimento predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em humanos, por isso é recomendado não se aproximar muito.
         </p>
 
         <p>
@@ -766,16 +734,7 @@
           partes do mundo.
         </p>
         <p>
-          As barracudas são peixes grandes compridos e com cabeça afunilada
-          em forma de míssil. São muito velozes na água pois são predadoras
-          vorazes com dentes pontiagudos muito afiados. O mínimo contato com
-          uma barracuda pode lhe causar ferimentos graves. Mas elas não
-          atacam assim! O importante a se fazer quando se está no mar
-          mergulhando ou praticando quaisquer atividades em seu habitat é
-          não estar com nenhum acessório brilhante como brincos, pulseiras,
-          anéis. Eles atraem a atenção delas, fazendo-as pensar que é uma
-          potencial presa e avançam com velocidade em sua direção causando
-          um baita susto nos desavisados de plantão.
+          As barracudas são peixes grandes de corpo alongado e com cabeça afunilada em forma de míssil. São muito velozes na água pois são predadoras vorazes com dentes pontiagudos muito afiados. O mínimo contato com uma barracuda pode lhe causar ferimentos graves. Mas elas não atacam assim! O importante a se fazer quando se está  mergulhando ou praticando quaisquer atividades em seu habitat é não estar com nenhum acessório brilhante como brincos, pulseiras ou anéis, pois estes objetos atraem sua atenção, confundindo com uma presa em potencial e avançam com velocidade em sua direção causando um baita susto nos desavisados de plantão.
         </p>
         <p>
           Sua maior ameaça é a pesca esportiva e predatória, apesar de não
@@ -814,101 +773,75 @@
         <p>
           São facilmente identificadas e conhecidas popularmente com o nome de salemas.
           Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite
-          que sejam contempladas e muito fotografadas por mergulhadores. São imagens
-          incríveis apresentando um contraste de cores espetacular compostos pelo ambiente
+          que sejam contempladas e muito fotografadas por mergulhadores, proporcionando
+          imagens incríveis com um contraste de cores espetacular compostos pelo ambiente
           em que vivem.
         </p>
       </life-block>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Budião-papagaio-de-recife
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Sparisoma amplum
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
+      <life-block
+        id="budiao-papagaio-de-recife"
+        name="Budião-papagaio-de-recife"
+        latin="Sparisoma amplum"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Budião-papagaio-de-recife" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Budião-papagaio-de-recife
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-        <figure class="figure-text">
-          <img alt="Budião-papagaio-de-recife" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Budião-papagaio-de-recife
-            </p>
-          </figcaption>
-        </figure>
+        <p>
+          Esta espécie, conhecida popularmente como budião papagaio, é
+          endêmica do Brasil, ocorrendo somente em águas brasileiras. São
+          peixes coloridos que vivem em ambientes recifais até a faixa dos
+          30 metros de profundidade.
+        </p>
+        <p>
+          O curioso dos budiões é que são responsáveis por boa parte da
+          produção da areia do solo submarino (e portanto das praias!). Eles
+          se alimentam de corais e algas calcárias que são trituradas e
+          depositadas no fundo do mar. Alguns pesquisadores estimam que um
+          indivíduo seja capaz de produzir cerca de cem quilos de areia por
+          ano! Desta forma auxilia na manutenção dos recifes contribuindo
+          para sua preservação.
+        </p>
+        <p>
+          Outra curiosidade que chama a atenção para esta espécie de hábito diurno, é que durante a noite precisam descansar e se proteger dos predadores que rondam pelos corais como os tubarões. Por isso se escondem nas  fendas e frestas do recife, mas nem sempre este esconderijo o protege, então os budiões secretam um muco fedorento que envolve seu corpo completamente como uma camisola transparente, inibindo e confundindo seus predadores.
+        </p>
+      </life-block>
 
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              Esta espécie, conhecida popularmente como budião papagaio, é
-              endêmica do Brasil, ocorrendo somente em águas brasileiras. São
-              peixes coloridos que vivem em ambientes recifais até a faixa dos
-              30 metros de profundidade.
-            </p>
-            <p>
-              O curioso dos budiões é que são responsáveis por boa parte da
-              produção da areia do solo submarino (e portanto das praias!). Eles
-              se alimentam de corais e algas calcárias que são trituradas e
-              depositadas no fundo do mar. Alguns pesquisadores estimam que um
-              indivíduo seja capaz de produzir cerca de cem quilos de areia por
-              ano! Desta forma auxilia na manutenção dos recifes contribuindo
-              para sua preservação.
-            </p>
-            <p>
-              Outra curiosidade chama a atenção para esta espécie. De hábito
-              diurno, à noite eles precisam descansar e se proteger dos famintos
-              predadores que rondam pelos corais como os tubarões. Por isso se
-              escondem nas  fendas e frestas do recife, mas nem sempre este
-              esconderijo o protege. Então os budiões secretam um muco fedorento
-              que envolve seu corpo completamente como uma camisola
-              transparente, inibindo e confundindo seus predadores.
-            </p>
-          </div>
-        </div>
-      </section>
+      <life-block
+        id="maria-da-toca-das-pedras"
+        name="Maria-da-toca-das-pedras"
+        latin="Parablennius marmoreus"
+        conservation="Menor preocupação"
+        data-aos="fade-right"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img alt="Maria-da-toca-das-pedras" src="http://placehold.it/300x300">
+            <figcaption>
+              <p>
+                Maria-da-toca-das-pedras
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-      <section class="section-container container" style="padding-bottom:0;" data-aos="fade-right">
-        <h3>
-          Maria-da-toca-das-pedras
-        </h3>
-        <div class="especie-info text-block">
-          <p>
-            Espécie: Parablennius marmoreus
-          </p>
-          <p>Estado de conservação: Menor preocupação</p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Maria-da-toca-das-pedras" src="http://placehold.it/300x300">
-          <figcaption>
-            <p>
-              Maria-da-toca-das-pedras
-            </p>
-          </figcaption>
-        </figure>
-
-        <div class="life-block" bp="grid container">
-          <div class="text-block-b" bp="12 6@md">
-            <p>
-              O peixe que anda sobre os recifes! As Marias da toca, como são
-              conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento
-              que vivem em orifícios e pequenos buracos no costão rochoso e nos
-              recifes de corais. São herbívoros, se alimentando de alga marinha
-              e matéria orgânica. São como jardineiras dos recifes.
-            </p>
-            <p>
-              Quando saem de suas tocas, em busca de alimentos na maré baixa,
-              elas se apoiam sobre suas nadadeiras peitorais e rastejam como se
-              estivessem caminhando indo de um ponto a outro, forrageando o
-              costão com as algas expostas nas rochas, e ao menor sinal de
-              perigo elas saltam para dentro d´água e se entocam novamente.
-            </p>
-          </div>
-        </div>
-      </section>
+        <p>
+          O peixe que anda sobre os recifes! As Marias da Toca,Marias-da-Toca, como são conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento que vivem em fendas fendas orifícios e pequenos orifícios orifícios buracos no costão rochoso e nos recifes de corais. São herbívoros, se alimentando de alga marinha e matéria orgânica. São como jardineiras dos recifes.
+        </p>
+        <p>
+          Quando saem de suas tocas, em busca de alimentos na maré baixa, elas se apoiam sobre suas nadadeiras peitorais e rastejam como se estivessem caminhando indo de um ponto a outro, forrageando o costão com as algas expostas nas rochas, e ao menor sinal de perigo elas saltam para dentro d'água e se entocam novamente.
+        </p>
+      </life-block>
     </article>
 
     <article id="birds" class="article-index">
@@ -919,7 +852,7 @@
         </h2>
 
         <p>
-          29 espécies de aves já foram catalogadas na Laje.
+          A laje de Santos é um local de grande interesse para a conservação da diversidade biológica na costa paulista, seja marinho, terrestre e aéreo. Cinco espécies de aves marinhas insulares nidificam  na laje: o gaivotão Larus dominicanus; três espécies de trinta-réis, Sterna hirundinacea, S. eurygnatha e S. maxima, que formam colônias no inverno, e o atobá-marrom  Sula leucogaster, que nidifica durante o ano todo.29 espécies de aves já foram catalogadas na Laje.
         </p>
       </section>
     </article>
