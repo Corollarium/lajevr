@@ -7,7 +7,7 @@
     <figure class="gallery-figure">
       <img v-if="type == 'image' && absoluteurl" class="gallery-image">
       <thumb-img v-if="type == 'image' && !absoluteurl" :src="suburl" class="fauna-image" />
-      <video ref="video" v-if="type == 'video'" :controls="focused" class="gallery-video" preload="metadata">
+      <video ref="video" v-if="type == 'video'" controls class="gallery-video" preload="metadata">
         <source :src="absoluteurl ? absoluteurl : base + url">
       </video>
       <figcaption class="gallery-name">
