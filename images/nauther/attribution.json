@@ -94,7 +94,7 @@
       "othernames": "Chaetodipterus faber",
       "about": ""
     },
-    "IMG_1209.JPG": {
+    "IMG_1209.jpg": {
       "name": "Bodião brasileiro",
       "colors": [
         "yellow",
@@ -105,7 +105,7 @@
       "description": "",
       "about": ""
     },
-    "IMG_0184.JPG": {
+    "IMG_0184.jpg": {
       "name": "Coió",
       "colors": [
         "white",
@@ -117,10 +117,10 @@
       "description": "Costuma ficar no fundo de areia e cascalho. É também conhecido como falso voador",
       "about": ""
     },
-    "IMG_1503.JPG": {
+    "IMG_1503.jpg": {
       "name": "Peixe frade"
     },
-    "IMG_1518.JPG": {
+    "IMG_1518.jpg": {
       "name": "Garoupa verdadeira",
       "colors": [
         "brown",
@@ -202,6 +202,9 @@
       "size": 20,
       "othernames": "Anisotremus virginicus",
       "about": "/vida/#salema"
+    },
+    "moreia-proa.jpg": {
+      "name": "Naufrágio Moréia"
     }
   }
 }
