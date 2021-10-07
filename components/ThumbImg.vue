@@ -1,6 +1,6 @@
 <template>
   <picture class="picture">
-    <img :src="srcImage" alt="Am image">
+    <img :src="srcImage" :alt="alt">
   </picture>
 </template>
 <script>
@@ -9,6 +9,11 @@ export default {
     src: {
       type: String,
       required: true
+    },
+    alt: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   computed: {
@@ -16,7 +21,7 @@ export default {
       if (!this.src) {
         return;
       }
-      return require(`~/static/images/${this.src}?resize`);
+      return require(`~/static/images/${this.src}?resize&size=360`);
     }
   }
 };

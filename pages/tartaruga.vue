@@ -9,8 +9,8 @@
         <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
           <GLTFModel
             :model="'./models/tartaruga/tartaruga.glb'"
-            :attribution="'Modelo'"
-            :backgroundColor="'FFFFFF'"
+            :attribution="'Modelo de tartaruga'"
+            :scale="2"
           />
           </GLTFModel>
         </div>

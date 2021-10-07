@@ -288,7 +288,7 @@
         <figure bp="4" class="image image-fish vida-top">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Moradora_da_Laje.jpg/800px-Moradora_da_Laje.jpg" alt="Ronaldo art / CC BY-SA (https://creativecommons.org/licenses/by-sa/3.0)">
           <figcaption class="attribution">
-            <i18n>Tartaruga de pente</i18n>
+            <i18n>Tartaruga verde</i18n>
           </figcaption>
         </figure>
         <div bp="12" class="vida-btn">

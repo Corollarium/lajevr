@@ -101,24 +101,15 @@
         </template>
 
         <p>
-          Reconhecida como a maior espécie de raia do mundo, podendo ultrapassar
-          os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2
-          mil quilos, a raia manta não possui ferrão. É o peixe com o maior
-          cérebro de todos os outros peixes do mar, por isso é extremamente
-          inteligente, um animal muito dócil e curioso. Quando encontra um
-          mergulhador, permite a interação e por vezes permanece por vários
-          minutos nadando ao seu redor para saber o que é. As bolhas de ar dos
-          mergulhadores parecem fazer cócegas em sua barriga
+          Reconhecida como a maior espécie de raia do mundo, podendo  ultrapassar os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2 mil quilos, a raia-manta não possui ferrão. É o peixe com o maior cérebro de todos os outros peixes do mar, por isso é extremamente inteligente, um animal muito dócil e curioso. Quando encontra um mergulhador, permite a interação e por vezes permanece por vários minutos nadando ao seu redor para saber o que é. As bolhas de ar dos mergulhadores parecem fazer cócegas em sua barriga!
         </p>
 
         <p>
-          Podem ser
-          encontradas nas zonas tropicais e subtropicais do planeta. Na laje de
-          Santos aparecem no período de inverno, nos meses de abril a setembro. As
-          mantas são identificadas individualmente através de fotografia das
-          manchas ventrais que formam padrões únicos. Esses dados são inserido em
-          bancos de dados brasileiro e mundial para organização, assim é possível
-          a quantificação de números populacionais.
+          Podem ser encontradas nas zonas tropicais e subtropicais do planeta. Na Laje de Santos aparecem no período de inverno, nos meses de abril a setembro. As mantas são identificadas (foto ID) individualmente  através das manchas ventrais que formam padrões únicos. Essas fotografias são inseridas em bancos de dados nacionais e internacionais, assim sendo possível obter uma estimativa populacional e servir como base para verificação no caso de reavistamentos.
+        </p>
+
+        <p>
+          São animais de reprodução lenta com período gestacional de 10 a 14 meses gerando apenas um filhote a cada 3 a 4 anos. Encontram-se ameaçadas de extinção devido à pesca intencional e acidental realizada no mundo todo, esta espécie não tem valor comercial para consumo humano, mas há um interesse no mercado asiático de seus subprodutos como as suas brânquias.
         </p>
 
         <p>
@@ -140,40 +131,27 @@
         </template>
       </life-block>
 
-      <section id="raia-chita" class="section-container with-bottom-content container">
-        <h3>
-          Raia-chita
-        </h3>
-
-        <div bp="grid vertical-center">
-          <div bp="12 6@md" data-aos="fade-up">
-            <div class="especie-info text-block">
-              <p>Espécie: Aetobatus narinari</p>
-              <p>Estado de conservação: Quase ameaçada</p>
-            </div>
-          </div>
-
-          <p class="text-block-b" bp="12 6@md" data-aos="fade-down">
-            Vive em quase todos os oceanos, mas na Laje pode ser vista quase o ano
-            todo, onde seus indivíduos são inclusive reconhecidos pelos
-            mergulhadores mais frequentes, graças ao padrão único de pintas nas
-            costas. Pode viver até 18 anos. Pode ser vista navegando sozinha ou em
-            cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora
-            d’água, se alimentam de pequenos crustáceos e moluscos bivalves
-            (animais de duas conchas) sua mandíbula é extremamente forte capaz de
-            triturar carapaças e conchas.
+      <life-block
+        name="Raia-chita"
+        latin="Aetobatus narinari"
+        conservation="Quase ameaçada"
+      >
+        <template v-slot:description>
+          <p>
+            Encontrada  em quase todos os oceanos, mas na Laje de Santos podem ser vistas quase o ano todo, onde seus indivíduos são inclusive reconhecidos pelos mergulhadores, graças ao padrão único de pintas em sua região dorsal. São animais de vida longa, podendo chegar até os 18 anos, sendo frequentemente avistados nadando sozinhas ou até em cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora d’água. Alimentam-se de pequenos crustáceos e moluscos bivalves (animais de duas conchas) possuindo uma mandíbula extremamente forte, capaz de triturar conchas e carapaças.
           </p>
-        </div>
-
-        <figure class="figure-text">
-          <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
-          <figcaption>
-            <p>
-              Raia Chita
-            </p>
-          </figcaption>
-        </figure>
-      </section>
+        </template>
+        <template v-slot:footer>
+          <figure class="figure-text">
+            <img alt="Raia Chita" src="~static/images/nauther/1545946134598879623409.jpg">
+            <figcaption>
+              <p>
+                Raia Chita
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+      </life-block>
 
       <section class="section-container container">
         <h3>
@@ -186,28 +164,14 @@
               <p>Espécie: Dasyatis centroura</p>
               <p>Estado de conservação: pouco preocupante</p>
               <p>
-                As raias-prego, ou raias manteiga como são conhecidas pelos
-                mergulhadores, sempre dão show quando encontradas. São animais de
-                corpo achatado associados ao substrato ou fundo de areia, pois
-                geralmente param ali e jogam a areia por cima de seu corpo para se
-                camuflarem e desta forma descansarem.
+                As raias-prego, ou raias manteiga como são conhecidas pelos mergulhadores, sempre dão show quando encontradas. São animais de corpo achatado associados ao substrato ou fundo de areia, geralmente param e depositam areia por cima de seu corpo para se camuflarem e desta forma descansarem.
               </p>
             </div>
           </div>
 
           <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
             <p>
-              Dizem que as raias e os tubarões não podem parar de nadar por que
-              podem morrer afogados, mas nem tudo é verdade. No caso de algumas
-              espécies de raias, quando estão paradas, elas abrem e fecham o
-              opérculo, órgão responsável por sua respiração, sugando a água que
-              passa por suas brânquias fazendo a troca de oxigênio. Apesar de não
-              atacarem pessoas, por causa deste comportamento de se enterrar na
-              areia e permanecer muitas vezes em águas rasas, ocorrem alguns
-              acidentes pelo mundo afora pelo seu ferrão venenoso. Foi o caso do
-              zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como
-              Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia
-              do gênero Dasyatis.
+              Dizem que as raias e os tubarões não podem parar de nadar porque podem morrer afogados, mas nem tudo é verdade. No caso de algumas espécies de raias, quando estão paradas, elas abrem e fecham o opérculo, sugando a água que passa por suas brânquias, (órgão responsável pela respiração), fazendo a troca de oxigênio. Por causa deste comportamento de se enterrar na areia e permanecer muitas vezes em águas rasas, ocorrem alguns acidentes pelo mundo afora, devido ao seu ferrão presente em sua cauda. Seu ferrão não é venenoso, mas contém muitas bactérias que podem causar infecções e agravar o ferimento. Um dos casos mais conhecido sobre ataques com essa espécies foi o caso do zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia do gênero Dasyatis.
             </p>
           </div>
         </div>
@@ -222,68 +186,69 @@
           </div>
           <figcaption>
             <p>
-              Na Laje de Santos raias-prego aparecem em determinadas épocas do ano e
-              geralmente estão prenhas ou grávidas como na foto. A
-              gravidez das raias é perceptível pelo ventre e pelo dorso
-              deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres.
+              Na Laje de Santos elas aparecem em determinadas épocas do ano e geralmente estão prenhas ou grávidas como na foto em questão. A gravidez das raias é perceptível pelo ventre e pelo dorso deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres.
             </p>
           </figcaption>
         </figure>
       </section>
 
-      <section class="section-container container">
-        <h3>
-          Raia-borboleta
-        </h3>
-        <div bp="grid vertical-center">
-          <div bp="12 6@md" data-aos="fade-down">
-            <div class="especie-info text-block">
-              <p>Espécie: Gymnura altavela</p>
-              <p>Estado de conservação: Vulnerável a extinção e decaindo</p>
+      <life-block
+        name="Raia-borboleta"
+        latin="Gymnura altavela"
+        conservation="Vulnerável a extinção e decaindo"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <div bp="grid">
+              <div bp="12 6@md" data-aos="fade-right">
+                <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
+              </div>
+              <div bp="12 6@md" data-aos="fade-left">
+                <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
+              </div>
             </div>
-          </div>
+            <figcaption>
+              <p>
+                Fotos: <a
+                  href="https://www.instagram.com/marcelomigliari/"
+                  target="_blank"
+                >Marcelo Migliari</a>
+              </p>
+            </figcaption>
+          </figure>
+        </template>
 
-          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
-            <p>
-              A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar
-              negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a
-              100 metros de profundidade, e na Laje de Santos são vistas nas
-              estações primavera e verão, utilizando a região para descanso no
-              período reprodutivo.
-            </p>
+        <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
+          <p>
+            A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a 100 metros de profundidade, e na Laje de Santos são vistas nas estações primavera e verão, utilizando a região para descanso no período reprodutivo.
+          </p>
 
-            <p>
-              Como a maioria das raias, elas também possuem o comportamento de se
-              camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina
-              camada de sedimentos para se protegerem de possíveis predadores. Todos
-              os anos as encontramos e geralmente as fêmeas estão grávidas, o que é
-              possível saber por ficarem com o dorso proeminente.
-            </p>
-          </div>
+          <p>
+            Como a maioria das raias, elas também possuem o comportamento de se camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina camada de sedimentos para se protegerem de possíveis predadores. Todos os anos as encontramos e geralmente as fêmeas estão grávidas, o que é possível saber por ficarem com o dorso proeminente.
+          </p>
         </div>
-        <figure class="figure-text">
-          <div bp="grid">
-            <div bp="12 6@md" data-aos="fade-right">
-              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
+
+        <template v-slot:footer>
+          <figure class="figure-text">
+            <div bp="grid">
+              <div bp="12 6@md" data-aos="fade-right">
+                <img alt="Raia borboleta" src="http://placehold.it/300x300">
+              </div>
+              <div bp="12 6@md" data-aos="fade-left">
+                <img alt="Raia borboleta" src="http://placehold.it/300x300">
+              </div>
             </div>
-            <div bp="12 6@md" data-aos="fade-left">
-              <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
-            </div>
-          </div>
-          <figcaption>
-            <p>
-              Raias-borboleta. Pode ser bem difícil diferenciar o macho da
-              fêmea, mas, um detalhe importante sobre os peixes cartilaginosos
-              ou raias e tubarões, é que os machos possuem dois clásperes ou
-              (pênis) que é possível ser visualizado na base da cauda dos machos
-              e ausente nas fêmeas. Fotos: <a
-                href="https://www.instagram.com/marcelomigliari/"
-                target="_blank"
-              >Marcelo Migliari</a>
-            </p>
-          </figcaption>
-        </figure>
-      </section>
+            <figcaption>
+              <p>
+                Raias-borboleta.
+                Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos.
+
+                Fotos: Nauther Andres
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+      </life-block>
     </article>
 
     <article id="turtles" class="article-index">
@@ -301,54 +266,67 @@
           />
           </GLTFModel>
         </div>
-
-        <div bp="grid vertical-center">
-          <div bp="12 6@md" data-aos="fade-down">
-            <p class="text-block">
-              Existem duas espécies de tartarugas que frequentam a Laje de Santos, a
-              Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns
-              detalhes são importantes para diferenciá-las: no caso da
-              tartaruga-de-pente, apresentam cabeça mais fina e comprida, bico como de
-              falcão, placas do casco sobrepostas ou imbricadas como telha, coloração
-              marrom amarelada, o casco geralmente bem ornamentado. Já as tartarugas
-              verdes possuem o casco mais simétrico, com placas intercaladas e
-              conectadas como um quebra-cabeça, cabeça arredondada e coloração do
-              casco predominante do verde e marrom, para amarelo claro em seu ventre.
-            </p>
-          </div>
-
-          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
-            <p>
-              Graças à beleza do casco, as tartarugas-de-pente foram extremamente
-              caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer
-              utensílios como porta-jóias e objetos como pentes, daí seu nome popular
-              "tartaruga-de-pente".
-            </p>
-            <p>
-              Como são animais de vida longa, atingindo a maturidade sexual após os 30
-              anos, as tartarugas encontradas na Laje de Santos são animais juvenis
-              utilizando a área para alimentação e abrigo.
-            </p>
-          </div>
-        </div>
       </section>
 
-      <figure class="figure-text">
-        <div bp="grid">
-          <div bp="12 6@md vertical-center" data-aos="fade-right">
+      <life-block
+        name="Tartaruga-de-pente"
+        latin="Eretmochelys imbricata"
+        conservation="Criticamente ameaçada"
+      >
+        <p>
+          Graças à beleza do casco, as tartarugas-de-pente foram extremamente
+          caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer
+          utensílios como porta-jóias e objetos como pentes, daí seu nome popular
+          "tartaruga-de-pente".
+        </p>
+        <p>
+          Como são animais de vida longa, atingindo a maturidade sexual após os 30
+          anos, as tartarugas encontradas na Laje de Santos são animais juvenis
+          utilizando a área para alimentação e abrigo.
+        </p>
+
+        <template v-slot:header>
+          <figure class="figure-text">
             <img alt="Tartaruga de pente" src="~static/images/nauther/1552316930246-911010432.jpg">
-          </div>
-          <div bp="12 6@md vertical-center" data-aos="fade-left">
+            <figcaption>
+              <p>
+                Tartaruga de pente.
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+      </life-block>
+
+      <life-block
+        name="Tartaruga-verde"
+        latin="Chelonia mydas"
+        conservation="Criticamente ameaçada"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
             <img alt="Tartaruga verde" src="~static/images/nauther/1547073690808-2036926563.jpg">
-          </div>
-        </div>
-        <figcaption>
+            <figcaption>
+              <p>
+                Tartaruga verde
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+        <template v-slot:description>
           <p>
-            Tartaruga de pente
-            e tartaruga verde.
+            Existem duas espécies de tartarugas que frequentam a Laje de Santos, a
+            Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns
+            detalhes são importantes para diferenciá-las: no caso da
+            tartaruga-de-pente, apresentam cabeça mais fina e comprida, bico como de
+            falcão, placas do casco sobrepostas ou imbricadas como telha, coloração
+            marrom amarelada, o casco geralmente bem ornamentado. Já as tartarugas
+            verdes possuem o casco mais simétrico, com placas intercaladas e
+            conectadas como um quebra-cabeça, cabeça arredondada e coloração do
+            casco predominante do verde e marrom, para amarelo claro em seu ventre.
           </p>
-        </figcaption>
-      </figure>
+        </template>
+        <p />
+      </life-block>
     </article>
 
     <article id="dolphins" class="article-index">
@@ -955,7 +933,7 @@ import GLTFModel from '~/components/GLTFModel.vue';
 import SwimmingFish from '~/components/SwimmingFish.vue';
 import LifeBlock from '~/components/sections/LifeBlock.vue';
 
-const imageCardume = require('~/static/images/nauther/1556498262088345578492.jpg?resize');
+const imageCardume = require('~/static/images/nauther/1556498262088345578492.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000');
 
 export default {
   components: {

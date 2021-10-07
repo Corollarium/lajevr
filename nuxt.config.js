@@ -120,7 +120,7 @@ export default {
     optimizeImages: true,
     optimizeImagesInDev: true,
     responsive: {
-      sizes: [ 360 ],
+      sizes: [ 360, 640, 1000 ],
       placeholder: true
     }
   },
