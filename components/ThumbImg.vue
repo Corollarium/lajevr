@@ -1,6 +1,6 @@
 <template>
   <picture class="picture">
-    <img :src="srcImage" :alt="alt">
+    <img :src="srcImage.src" :srcset="srcImage.srcSet" :alt="alt">
   </picture>
 </template>
 <script>
@@ -19,9 +19,10 @@ export default {
   computed: {
     srcImage () {
       if (!this.src) {
-        return;
+        return null;
       }
-      return require(`~/static/images/${this.src}?resize&size=360`);
+      // a small thumb plus a large number to get the original image too.
+      return require(`~/static/images/${this.src}?resize&sizes[]=360&sizes[]=10000`);
     }
   }
 };

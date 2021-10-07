@@ -74,7 +74,7 @@
             </a>
           </li>
           <li>
-            <a href="https://github.com/Corollarium" target="_blank"><i18n>
+            <a href="https://github.com/Corollarium/lajevr" target="_blank"><i18n>
               Código disponível
             </i18n></a> sob
             <a href="http://opensource.org/licenses/mit-license.php" target="_blank">Licença MIT</a>.

@@ -29,7 +29,7 @@
     >
       <GalleryCard
         v-for="a in filteredGallery"
-        :key="a.base ? a.base : a.url"
+        :key="a.absoluteurl ? a.absoluteurl : a.url"
         v-bind="a"
         class="gallery-card"
       />

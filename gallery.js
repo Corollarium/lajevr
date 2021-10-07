@@ -19,8 +19,11 @@ const isVideo = (source) => {
 
 const main = () => {
   const gallery = [];
-  const basedir = path.join(__dirname, 'static/images/');
-  const dirs = fs.readdirSync(basedir).map(name => path.join(basedir, name)).filter(isDirectory);
+  const getDirs = (basedir) => {
+    return fs.readdirSync(basedir).map(name => path.join(basedir, name)).filter(isDirectory);
+  };
+  const dirs = getDirs(path.join(__dirname, 'static/images/')).concat(getDirs(path.join(__dirname, 'static/videos/')));
+
   for (const d of dirs) {
     try {
       const urlpath = d.replace(path.join(__dirname, '/static/'), '', d);
