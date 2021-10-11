@@ -855,6 +855,71 @@
           A laje de Santos é um local de grande interesse para a conservação da diversidade biológica na costa paulista, seja marinho, terrestre e aéreo. Cinco espécies de aves marinhas insulares nidificam  na laje: o gaivotão Larus dominicanus; três espécies de trinta-réis, Sterna hirundinacea, S. eurygnatha e S. maxima, que formam colônias no inverno, e o atobá-marrom  Sula leucogaster, que nidifica durante o ano todo.29 espécies de aves já foram catalogadas na Laje.
         </p>
       </section>
+
+      <life-block
+        id=""
+        name="Atobá-marrom"
+        latin="Sula leucogaster"
+        conservation="Pouco Preocupante"
+        data-aos="fade-right"
+      >
+        <p>
+          Os Atobás são aves marinhas pertencentes à família Sulidae, com distribuição pelos mares tropicais e subtropicais. No Brasil foram registradas 5 espécies distintas. Presente em grande quantidade com uma população estimada em mais de 2 mil indivíduos, a Laje de Santos é considerada o maior ninhal de Atobás-marrom da América latina.
+        </p>
+        <p>
+          São aves que mergulham para capturar sua presa quando avistam cardumes, principalmente sardinhas e manjubas.
+        </p>
+        <p>
+          Habitat: Pantropical, encontrado nos 3 oceanos, habitam ilhas costeiras e oceânicas subtropical no Brasil até SC.
+        </p>
+      </life-block>
+
+      <life-block
+        id=""
+        name="Gaivotão ou apenas Gaivota"
+        latin="Larus dominicanus"
+        conservation="Pouco preocupante"
+        data-aos="fade-right"
+      >
+        <p>
+          Uma das aves marinhas mais comuns e conhecidas pelos frequentadores de praia e faixas litorâneas espalhadas pelo mundo. A gaivota ou gaivotão, apesar de ser uma ave marinha, é considerada uma ave sinantrópica, ou seja, aves que vivem ou compartilham ambientes comuns com os humanos. Alimentam-se de sobras e carcaças de pescados, são furtivas e estão sempre à espreita por uma oportunidade de alimento fácil.
+        </p>
+        <p>
+          Com uma população de apenas 30 indivíduos na Laje de Santos, elas compartilham o mesmo espaço com atobás-marrom, trinta-réis-de-bando, trinta-réis-real e as fragatas. Na Laje de Santos, por ser uma unidade de conservação protegida, não é permitido o desembarque a não ser em caso de emergência ou para pesquisadores. O ato de subir nos rochedos da Laje afugenta as aves das outras espécies que estão no local, e as gaivotas, por serem oportunistas e furtivas, atacam os ninhos desprotegidos para se alimentarem dos ovos e até mesmo dos filhotes recém nascidos.
+        </p>
+        <p>
+          Habitat: Ampla distribuição no hemisfério Sul nos oceanos Atlântico e Pacífico, ilhas subantárticas, Austrália, Nova Zelândia e África.
+        </p>
+      </life-block>
+
+      <life-block
+        id=""
+        name="Trinta-réis de bico-vermelho"
+        latin="Sterna hirundinacea"
+        conservation="Vulnerável a extinção"
+        data-aos="fade-right"
+      >
+        <p>
+          Ave de pequeno porte, de plumagem branca, com bico e patas vermelhas. É considerada uma ave migratória, saindo da Argentina para nidificar no Brasil de abril a setembro. São exímias pescadoras, se alimentando de pequenos peixes e crustáceos. Elas costumam pairar no ar antes de mergulhar para capturar suas presas.
+        </p>
+        <p>
+          Nidificam na Laje de Santos cerca de 500 indivíduos, gerando de um até três filhotes por ninhada, mas nem sempre todos sobrevivem. É uma espécie muito sensível à presença humana e por isso considerada vulnerável à extinção segundo a Red List de animais ameaçados. Uma curiosidade sobre essa espécie: é a associação do período de ocorrência coincidir com o mesmo período de ocorrência da raia-manta no parque marinho.
+        </p>
+      </life-block>
+
+      <life-block
+        id=""
+        name="Trinta-réis-de-bando"
+        latin="Thalasseus acuflavidus"
+        conservation="Pouco preocupante"
+        data-aos="fade-right"
+      />
+      <p>
+        Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários.
+      </p>
+      <p>
+        Se alimenta de pequenos peixes, lulas e crustáceos. É uma das aves que mergulham para capturar seu alimento. Seu nome indica seu comportamento de estarem sempre em bandos nas áreas de ocorrência da espécie.
+      </p>
     </article>
   </article>
 </template>
