@@ -68,6 +68,7 @@
         >
       </div>
     </section>
+
     <!-- About Section -->
     <section class="about-section with-fade">
       <div class="fade-in" />
@@ -80,6 +81,24 @@
           <i18n>Laje de Santos</i18n>
         </h1>
 
+        <div bp="grid" class="about-content">
+          <div bp="6 offset-6">
+            <p>
+              Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas.
+            </p>
+
+            <p>
+              Espalhadas às vezes longe demais para podemos chegar. Tão longe.
+            </p>
+
+            <p>
+              Mas a internet permite chegarmos um pouco mais perto.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div bp="container">
         <div class="section-inner make-space-top" bp="grid 12 6@md vertical-center">
           <div>
             <p class="about-description">
@@ -96,7 +115,20 @@
             </figure>
           </div>
         </div>
-        <div class="section-inner" bp="grid vertical-center">
+
+        <div class="section-inner" bp="container vertical-center">
+          <video ref="googleEarth" class="is-fullwidth" muted playsinline>
+            <source src="~static/videos/laje_earth_1280.mp4">
+          </video>
+          <div>
+            <p class="boxed-description">
+              <i18n>Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do </i18n>
+              Estado de <span class="text-is-bold">São Paulo</span>, <span class="text-is-bold">Brasil</span>.
+            </p>
+          </div>
+        </div>
+
+        <!-- <div class="section-inner" bp="grid vertical-center">
           <div bp="12 5@md">
             <p class="boxed-description">
               <i18n>Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do </i18n>
@@ -109,7 +141,7 @@
               <img :src="imageAboutMapa.src" :srcset="imageAboutMapa.srcSet" class="spaced-image" alt="Mapa-mundi com a Laje de Santos">
             </figure>
           </div>
-        </div>
+        </div> -->
 
         <div class="section-inner" bp="grid 12 6@md vertical-center">
           <div>
@@ -538,6 +570,23 @@ export default {
       }
     });
     this.isApple = this.isIos || this.isSafari;
+
+    this.observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio >= 0.3) {
+            this.$refs.googleEarth.play();
+          }
+        });
+      },
+      {
+        threshold: [0.5]
+      });
+    this.observer.observe(this.$refs.googleEarth);
+  },
+  beforeDestroy () {
+    this.observer.unobserve(this.$refs.googleEarth);
+    this.observer = null;
   }
 
 };
