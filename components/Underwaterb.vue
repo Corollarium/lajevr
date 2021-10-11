@@ -26,8 +26,8 @@ import 'babylonjs-loaders';
 // import * as Materials from 'babylonjs-materials';
 // import Boids from '@corollarium/babylon-boids';
 
-const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
+const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
 const sea_fragment = require('!!raw-loader!./sea_fragment.glsl');
 const sea2_fragment = require('!!raw-loader!./sea2_fragment.glsl');
 const sea_vertex = require('!!raw-loader!./sea_vertex.glsl');
@@ -112,8 +112,8 @@ export default {
     this.materials();
     this.composer();
 
-    // this.loadSky();
-    this.loadOcean();
+    this.loadSky();
+    // this.loadOcean();
     const promises = [];
     promises.push(this.loadTerrain());
     // promises.push(this.loadMantas());
@@ -125,7 +125,9 @@ export default {
 
     this.assetsManager.load();
     // this.sceneOptimizer();
-    this.debugUtils();
+    if (this.$route.query.debug) {
+      this.debugUtils();
+    }
 
     // Register a render loop to repeatedly render the scene
     const startTime = new Date();
@@ -212,7 +214,8 @@ export default {
         alert('Loaded!');
       };
 
-      this.engine = new BABYLON.Engine(container, true); // Generate the BABYLON 3D engine
+      // Generate the BABYLON 3D engine
+      this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
       this.scene.clearColor = BABYLON.Color3.FromHexString('#2963CF');
@@ -225,9 +228,9 @@ export default {
       );
       this.camera.applyGravity = false;
       this.camera.speed = 0.05;
+
       // Set the ellipsoid around the camera (e.g. your player's size)
       this.camera.ellipsoid = new BABYLON.Vector3(0.5, 1, 0.5);
-      window.camera = this.camera;
 
       // update keys
       this.camera.keysUp.push('w'.charCodeAt(0));
@@ -246,13 +249,18 @@ export default {
 
       // near/far
       this.camera.minZ = 0.1;
-      this.camera.maxZ = 50;
+      this.camera.maxZ = 150;
       this.camera.setTarget(new BABYLON.Vector3(-15.2, -6.36, 27.62));
       this.camera.attachControl(container, true);
 
       // Enable Collisions
       this.scene.collisionsEnabled = true;
       this.camera.checkCollisions = true;
+      this.scene.freezeActiveMeshes();
+
+      // avoid clearing the scene to optimize
+      this.scene.autoClear = false; // Color buffer
+      this.scene.autoClearDepthAndStencil = false; // Depth and stencil, obviously
 
       this.assetsManager = new BABYLON.AssetsManager(this.scene);
       this.assetsManager.onTaskErrorObservable.add(function (task) {
@@ -331,6 +339,7 @@ export default {
     },
 
     composer () {
+      // composes the actual texture with our underwater shader pass.
       BABYLON.Effect.ShadersStore.underwaterVertexShader = underwater_vertex.default;
       BABYLON.Effect.ShadersStore.underwaterFragmentShader = underwater_fragment.default;
 
@@ -387,7 +396,7 @@ export default {
     },
 
     loadSky () {
-      const skybox = BABYLON.Mesh.CreateBox('skyBox', 5000.0, this.scene);
+      const skybox = BABYLON.Mesh.CreateBox('skyBox', 500.0, this.scene);
       const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', this.scene);
       skyboxMaterial.backFaceCulling = false;
       skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('textures/TropicalSunnyday/TropicalSunnyDay', this.scene);
@@ -395,7 +404,13 @@ export default {
       skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
       skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
       skyboxMaterial.disableLighting = true;
+      skyboxMaterial.freeze();
       skybox.material = skyboxMaterial;
+      skybox.alwaysSelectAsActiveMesh = true;
+      skybox.doNotSyncBoundingInfo = true;
+      skybox.convertToUnIndexedMesh();
+      skybox.freezeNormals();
+      skybox.freezeWorldMatrix();
     },
 
     loadOcean () {
@@ -525,27 +540,71 @@ export default {
 
     loadTerrain () {
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('terrain', null, '/models/', 'island.glb').onSuccess = (task) => {
-          /* task.loadedMeshes[1].simplify(
-            [{ quality: 0.9, distance: 25 }, { quality: 0.3, distance: 50 }],
-            false,
-            BABYLON.SimplificationType.QUADRATIC,
-            function () {
-              alert('LOD finished');
-            }
-          ); */
+        this.assetsManager.addMeshTask('terrain', null, '/models/ilha/', 'ilha.glb').onSuccess = (task) => {
+          // we'll store rock data here to convert it all to an optimized version later.
+          let rock = null;
+          const positions = [];
+          const rotations = [];
+          const scalings = [];
+          const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
+
+          // for all meshes in file
           task.loadedMeshes.forEach((mesh) => {
-            if (mesh.freeze) {
-              mesh.freeze();
-              mesh.freezeWorldMatrix();
+            if (!rock && mesh.name.includes('rock')) {
+              // store the first rock model.
               mesh.convertToUnIndexedMesh();
+              mesh.freezeNormals();
+              mesh.freezeWorldMatrix();
+              rock = mesh;
+              return;
+            }
+
+            if (mesh.name.includes('rock')) {
+              // store information
+              positions.push(mesh.getAbsolutePivotPoint());
+              rotations.push(mesh.absoluteRotationQuaternion);
+              scalings.push(mesh.absoluteScaling);
+              mesh.dispose();
+              return;
+            }
+            if (mesh.freeze) {
+              mesh.doNotSyncBoundingInfo = true;
               if (mesh.material) {
                 mesh.material.freeze();
               }
+              mesh.alwaysSelectAsActiveMesh = true;
+              mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+              mesh.convertToUnIndexedMesh();
+              mesh.freezeNormals();
+              mesh.freezeWorldMatrix();
+              mesh.freeze();
             }
+            actualLoaded.push(mesh);
           });
-          const material = this.addToSceneAndCaustic(task.loadedMeshes);
+
+          const material = this.addToSceneAndCaustic(actualLoaded);
           material.backFaceCulling = false; // cause model seems inverted
+
+          // SPS version
+          const SPS = new BABYLON.SolidParticleSystem('rocks', this.scene, { updatable: false });
+          SPS.addShape(rock, positions.length,
+            { positionFunction: (particle, i) => {
+              particle.position = positions[i];
+              particle.rotationQuaternion = rotations[i];
+              particle.scaling = scalings[i];
+            } }
+          );
+          const spsMesh = SPS.buildMesh();
+
+          // instance version: much slower.
+          // const total = positions.length;
+          // for (let i = 0; i < positions.length; i++) {
+          //   const particle = rock.createInstance('rock' + i);
+          //   particle.isPickable = false;
+          //   particle.position = positions[i];
+          //   particle.rotationQuaternion = rotations[i];
+          //   particle.scaling = scalings[i];
+          // }
           resolve();
         };
       });
