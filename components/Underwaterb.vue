@@ -399,7 +399,7 @@ export default {
       const skybox = BABYLON.Mesh.CreateBox('skyBox', 500.0, this.scene);
       const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', this.scene);
       skyboxMaterial.backFaceCulling = false;
-      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('textures/TropicalSunnyday/TropicalSunnyDay', this.scene);
+      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(this.$router.options.base + 'textures/TropicalSunnyday/TropicalSunnyDay', this.scene);
       skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
       skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
       skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
@@ -540,7 +540,7 @@ export default {
 
     loadTerrain () {
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('terrain', null, '/models/ilha/', 'ilha.glb').onSuccess = (task) => {
+        this.assetsManager.addMeshTask('terrain', null, this.$router.options.base + 'models/ilha/', 'ilha.glb').onSuccess = (task) => {
           // we'll store rock data here to convert it all to an optimized version later.
           let rock = null;
           const positions = [];
