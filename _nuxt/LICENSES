@@ -60,9 +60,6 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 
-/*! nouislider - 14.1.1 - 12/15/2019 */
-
-
 /*!
   * vue-router v3.5.2
   * (c) 2021 Evan You
@@ -74,3 +71,6 @@ PERFORMANCE OF THIS SOFTWARE.
  * (c) 2014-2021 Evan You
  * Released under the MIT License.
  */
+
+
+/*! nouislider - 14.1.1 - 12/15/2019 */
