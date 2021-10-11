@@ -53,13 +53,6 @@ PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 
-/**
- * @license
- * Copyright 2010-2021 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
-
-
 /*!
   * vue-router v3.5.2
   * (c) 2021 Evan You
@@ -74,3 +67,10 @@ PERFORMANCE OF THIS SOFTWARE.
 
 
 /*! nouislider - 14.1.1 - 12/15/2019 */
+
+
+/**
+ * @license
+ * Copyright 2010-2021 Three.js Authors
+ * SPDX-License-Identifier: MIT
+ */
