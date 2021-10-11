@@ -529,25 +529,25 @@ export default {
 
   data () {
     return {
-      imageIlha,
-      imageMar,
-      introSurfaceA,
-      introSurfaceB,
-      graphicTartaruga,
-      graphicGolfinho,
-      graphicRaia,
-      imageAboutIlha,
-      imageAboutProfundidade,
-      imageAboutMapa,
-      imageLogoLaje,
-      imageIconLaje,
-      imageMergulhoBolha01,
-      imageMergulhoBolha02,
-      imageMergulhoBolha03,
-      imagePeixes,
-      imageFundoPontoMergulho,
-      imageGraficoEstrelaMar,
-      boatFigure,
+      imageIlha: Object.freeze(imageIlha),
+      imageMar: Object.freeze(imageMar),
+      introSurfaceA: Object.freeze(introSurfaceA),
+      introSurfaceB: Object.freeze(introSurfaceB),
+      graphicTartaruga: Object.freeze(graphicTartaruga),
+      graphicGolfinho: Object.freeze(graphicGolfinho),
+      graphicRaia: Object.freeze(graphicRaia),
+      imageAboutIlha: Object.freeze(imageAboutIlha),
+      imageAboutProfundidade: Object.freeze(imageAboutProfundidade),
+      imageAboutMapa: Object.freeze(imageAboutMapa),
+      imageLogoLaje: Object.freeze(imageLogoLaje),
+      imageIconLaje: Object.freeze(imageIconLaje),
+      imageMergulhoBolha01: Object.freeze(imageMergulhoBolha01),
+      imageMergulhoBolha02: Object.freeze(imageMergulhoBolha02),
+      imageMergulhoBolha03: Object.freeze(imageMergulhoBolha03),
+      imagePeixes: Object.freeze(imagePeixes),
+      imageFundoPontoMergulho: Object.freeze(imageFundoPontoMergulho),
+      imageGraficoEstrelaMar: Object.freeze(imageGraficoEstrelaMar),
+      boatFigure: Object.freeze(boatFigure),
       isApple: false,
       isSafari: false,
       isIos: false,
@@ -574,13 +574,10 @@ export default {
     this.observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.3) {
+          if (entry.intersectionRatio > 0) {
             this.$refs.googleEarth.play();
           }
         });
-      },
-      {
-        threshold: [0.5]
       });
     this.observer.observe(this.$refs.googleEarth);
   },

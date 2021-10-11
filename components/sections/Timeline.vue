@@ -96,7 +96,7 @@
       <div class="timeline-item" data-text="LAJE DE SANTOS">
         <div class="timeline__content">
           <figure class="timeline__figure">
-            <!-- <iframe
+            <iframe
               class="image"
               style="width: 560px; height: 315px; max-width: 100%;"
               width="560"
@@ -106,7 +106,7 @@
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               loading="lazy"
-            /> -->
+            />
           </figure>
           <h3 class="timeline__content-title">
             2012

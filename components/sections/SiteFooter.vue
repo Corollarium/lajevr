@@ -39,6 +39,11 @@
             </nuxt-link>
           </li>
           <li class="pure-menu-item">
+            <nuxt-link to="/moreia" class="pure-menu-link">
+              <i18n>O Moréia</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
             <nuxt-link to="/especies" class="pure-menu-link">
               <i18n>
                 Catálogo de espécies
