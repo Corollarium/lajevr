@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import LanguagePicker from './LanguagePicker.vue';
+import LanguagePicker from '../LanguagePicker.vue';
 
 export default {
   components: {

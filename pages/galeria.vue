@@ -51,7 +51,7 @@
 <script>
 import page from './page.vue';
 import galleryData from '~/components/galleryData.js';
-import GalleryCard from '~/components/GalleryCard.vue';
+import GalleryCard from '~/components/sections/GalleryCard.vue';
 
 export default {
   components: {

@@ -111,7 +111,7 @@
 import Bowser from 'bowser';
 import page from './page.vue';
 import Ilha3D from '~/components/Ilha3D.vue';
-import GalleryCard from '~/components/GalleryCard.vue';
+import GalleryCard from '~/components/sections/GalleryCard.vue';
 import galleryData from '~/components/galleryData.js';
 
 const imagePontosAppleDesk = require('~/assets/images/graficos/pontos-ios-desktop.jpg?resize');
