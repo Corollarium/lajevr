@@ -50,7 +50,7 @@ void main(void)
   // TODO: y coordinate should multiply caustic to reduce light on higher ocean depths
 
   vec2 coord = vec2(fract(vPosition.x/SCALE), fract(vPosition.z/SCALE));
-  if (vNormal.y > 0.0) {
+  if (vNormal.y > 0.0 && vPosition.y < 0.0) {
     // scale by normal to make caustic less pronounced for more vertical faces.
     gl_FragColor = clamp(caustic(coord), 0.0, 1.0) * vNormal.y;
     gl_FragColor.a = 1.0;
