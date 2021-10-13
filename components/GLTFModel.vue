@@ -98,7 +98,7 @@ export default {
 
     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/code/draco/');
+    dracoLoader.setDecoderPath(this.$router.options.base + 'code/draco/');
     loader.setDRACOLoader(dracoLoader);
 
     let mixer, mesh;
