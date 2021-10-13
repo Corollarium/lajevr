@@ -59,6 +59,7 @@ export default {
       rttMaterials: [],
 
       mantas: [],
+      turtles: [],
 
       // simulation / GUI
       ascentSpeed: 0,
@@ -71,6 +72,10 @@ export default {
   },
 
   computed: {
+    base () {
+      return this.$router.options.base;
+    },
+
     ascentSpeedColor () {
       if (this.ascentSpeed < 1.0 / 60.0) {
         return '#000';
@@ -112,11 +117,12 @@ export default {
     this.materials();
     this.composer();
 
-    this.loadSky();
+    // this.loadSky();
     // this.loadOcean();
     const promises = [];
     promises.push(this.loadTerrain());
     // promises.push(this.loadMantas());
+    // promises.push(this.loadTurtle());
     // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
     // promises.push(fish.promise);
     Promise.all(promises).then(() => {
@@ -382,11 +388,14 @@ export default {
         effect.setVector3('cameraPosition', this.camera.position);
       };
 
+      const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, this.camera);
+
       const renderLayer = new BABYLON.PostProcessRenderEffect(
         this.engine,
         'renderLayer',
-        function () { return [renderSceneBase]; }//, renderCausticPass, underwaterPass]; }
+        function () { return [renderSceneBase, fxaa]; }//, renderCausticPass, underwaterPass]; }
       );
+
       const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
       pipeline.addEffect(renderLayer);
       pipeline.samples = 4;
@@ -540,34 +549,92 @@ export default {
 
     loadTerrain () {
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('terrain', null, this.$router.options.base + 'models/ilha/', 'ilha.glb').onSuccess = (task) => {
-          // we'll store rock data here to convert it all to an optimized version later.
-          let rock = null;
-          const positions = [];
-          const rotations = [];
-          const scalings = [];
-          const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
+        // we'll store rock data here to convert it all to an optimized version later.
+        const rocks = [];
+        const positions = [];
+        const rotations = [];
+        const scalings = [];
+        let firstLoaded = false;
 
-          // for all meshes in file
+        const processRocks = () => {
+          if (!firstLoaded) {
+            firstLoaded = true;
+            return;
+          }
+
+          const box = BABYLON.BoxBuilder.CreateBox('root', { size: 1 });
+
+          // babylon has three modes to clone meshes, SPS, instance and thin instances.
+          // all three are implemented below, but they have very different performances.
+
+          // SPS version
+          // const SPS = new BABYLON.SolidParticleSystem('rocks', this.scene, { updatable: false });
+          // SPS.addShape(rocks[0], positions.length,
+          //   { positionFunction: (particle, i) => {
+          //     particle.position = positions[i];
+          //     particle.rotationQuaternion = rotations[i];
+          //     particle.scaling = scalings[i];
+          //   } }
+          // );
+          // const spsMesh = SPS.buildMesh();
+
+          // instance version: much slower.
+          // const total = positions.length;
+          // for (let i = 0; i < positions.length; i++) {
+          //   const particle = rocks[0].createInstance('rock' + i);
+          //   particle.isPickable = false;
+          //   particle.position = positions[i];
+          //   particle.rotationQuaternion = rotations[i];
+          //   particle.scaling = scalings[i];
+          // }
+
+          // thin instance version
+          const total = positions.length;
+          const bufferMatrices = new Float32Array(16 * total);
+          for (let i = 0; i < positions.length; i++) {
+            const m = BABYLON.Matrix.Compose(
+              scalings[i],
+              rotations[i],
+              positions[i]
+            );
+            m.copyToArray(bufferMatrices, i * 16);
+          }
+          rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+
+          resolve();
+        };
+
+        // load the rocks.
+        this.assetsManager.addMeshTask('rocks', null, this.base + 'models/ilha/', 'rocks.glb').onSuccess = (task) => {
           task.loadedMeshes.forEach((mesh) => {
-            if (!rock && mesh.name.includes('rock')) {
+            if (mesh.name === 'rockLow1' || mesh.name === 'rockLow1.001' || mesh.name === 'rockLow1.002') {
               // store the first rock model.
-              mesh.convertToUnIndexedMesh();
               mesh.freezeNormals();
               mesh.freezeWorldMatrix();
-              rock = mesh;
-              return;
+              if (mesh.material) {
+                mesh.material.freeze();
+              }
+              rocks.push(mesh);
             }
+          });
+          processRocks();
+        };
 
+        // load the terrain and rock positions.
+        this.assetsManager.addMeshTask('terrain', null, this.base + 'models/ilha/', 'ilha.glb').onSuccess = (task) => {
+          const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
+
+          // get the rocks, man. the rocks.
+          task.loadedMeshes.forEach((mesh) => {
             if (mesh.name.includes('rock')) {
               // store information
+              mesh.computeWorldMatrix();
               positions.push(mesh.getAbsolutePivotPoint());
-              rotations.push(mesh.absoluteRotationQuaternion);
+              rotations.push(mesh.rotationQuaternion);
               scalings.push(mesh.absoluteScaling);
               mesh.dispose();
               return;
-            }
-            if (mesh.freeze) {
+            } else if (mesh.freeze) {
               mesh.doNotSyncBoundingInfo = true;
               if (mesh.material) {
                 mesh.material.freeze();
@@ -578,34 +645,14 @@ export default {
               mesh.freezeNormals();
               mesh.freezeWorldMatrix();
               mesh.freeze();
+              mesh.bakeCurrentTransformIntoVertices();
             }
             actualLoaded.push(mesh);
           });
 
           const material = this.addToSceneAndCaustic(actualLoaded);
           material.backFaceCulling = false; // cause model seems inverted
-
-          // SPS version
-          const SPS = new BABYLON.SolidParticleSystem('rocks', this.scene, { updatable: false });
-          SPS.addShape(rock, positions.length,
-            { positionFunction: (particle, i) => {
-              particle.position = positions[i];
-              particle.rotationQuaternion = rotations[i];
-              particle.scaling = scalings[i];
-            } }
-          );
-          const spsMesh = SPS.buildMesh();
-
-          // instance version: much slower.
-          // const total = positions.length;
-          // for (let i = 0; i < positions.length; i++) {
-          //   const particle = rock.createInstance('rock' + i);
-          //   particle.isPickable = false;
-          //   particle.position = positions[i];
-          //   particle.rotationQuaternion = rotations[i];
-          //   particle.scaling = scalings[i];
-          // }
-          resolve();
+          processRocks();
         };
       });
       return p;
@@ -613,6 +660,36 @@ export default {
 
     loadBoat () {
 
+    },
+
+    loadTurtle () {
+      const p = new Promise((resolve, reject) => {
+        this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
+          for (const mesh of task.loadedMeshes) {
+            mesh.position = this.camera.position.clone();
+            mesh.position.x += 10;
+            for (const a in mesh.animationGroups) {
+              a.start(true);
+            }
+            if (mesh.material) {
+              mesh.material.freeze();
+            }
+            mesh.alwaysSelectAsActiveMesh = true;
+            mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+            mesh.convertToUnIndexedMesh();
+            mesh.freezeNormals();
+            mesh.freezeWorldMatrix();
+            this.turtles.push(mesh);
+          }
+          // freeze all active meshes disables animation, so prepare the skeleton.
+          this.scene.onBeforeRenderObservable.add(() => {
+            task.loadedSkeletons.forEach(skeleton => skeleton.prepare());
+          });
+
+          resolve();
+        };
+      });
+      return p;
     },
 
     loadFishFlock (modelpath, modelfile, total) {
@@ -701,7 +778,6 @@ export default {
                 group.play(true);
               }
             }
-            console.log('mantas loaded');
           }
         );
         resolve();
