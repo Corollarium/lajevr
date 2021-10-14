@@ -23,6 +23,7 @@
 /* eslint-disable */
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
 // import Boids from '@corollarium/babylon-boids';
 
@@ -132,6 +133,7 @@ export default {
     this.assetsManager.load();
     // this.sceneOptimizer();
     if (this.$route.query.debug) {
+      this.camera.speed = 0.5;
       this.debugUtils();
     }
 
@@ -388,20 +390,47 @@ export default {
         effect.setVector3('cameraPosition', this.camera.position);
       };
 
-      const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, this.camera);
+      const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
+
+      const pp = this.loadOceanPP();
+
+      const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
       const renderLayer = new BABYLON.PostProcessRenderEffect(
         this.engine,
         'renderLayer',
-        function () { return [renderSceneBase, fxaa]; }//, renderCausticPass, underwaterPass]; }
+        function () { return [renderSceneBase, pp, fxaa]; }//, renderCausticPass, underwaterPass]; }
       );
 
-      const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
       pipeline.addEffect(renderLayer);
       pipeline.samples = 4;
       pipeline.fxaaEnabled = true;
       this.scene.postProcessRenderPipelineManager.addPipeline(pipeline);
       this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('pipeline', this.camera);
+    },
+
+    loadOceanPP () {
+      const nearestPOT = x => 2 ** Math.ceil(Math.log(x) / Math.log(2));
+      const oceanOptions = {
+        width: nearestPOT(this.camera.getEngine().getRenderWidth()),
+        height: nearestPOT(this.camera.getEngine().getRenderHeight())
+      };
+
+      if (oceanOptions.width > 2048) {
+        oceanOptions.width = 2048;
+      }
+      if (oceanOptions.height > 2048) {
+        oceanOptions.height = 2048;
+      }
+      // const t = Math.min(oceanOptions.width, oceanOptions.height);
+      // oceanOptions.width = oceanOptions.height = t;
+      oceanOptions.isPipeline = true;
+
+      console.log(oceanOptions);
+      const pp = new OceanPostProcess('myOcean', this.camera, oceanOptions);
+      pp.reflectionEnabled = false;
+      pp.refractionEnabled = false;
+      return pp;
     },
 
     loadSky () {

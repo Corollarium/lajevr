@@ -22,7 +22,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
     super(name, './oceanPostProcess', ['time', 'resolution', 'cameraPosition', 'cameraRotation'], ['positionSampler', 'reflectionSampler', 'refractionSampler'], {
       width: options.width || camera.getEngine().getRenderWidth(),
       height: options.height || camera.getEngine().getRenderHeight()
-    }, camera, BABYLON.Texture.TRILINEAR_SAMPLINGMODE, camera.getEngine(), true);
+    }, options.isPipeline ? null : camera, BABYLON.Texture.TRILINEAR_SAMPLINGMODE, camera.getEngine(), true);
     this._time = 0;
     this._cameraRotation = BABYLON.Vector3.Zero();
     this._cameraViewMatrix = BABYLON.Matrix.Identity();
