@@ -176,7 +176,11 @@
       <img src="~static/images/nauther/moreia-proa.jpg" alt="Naufrágio Moreia, visto da proa. Foto: Nauther Andres">
 
       <p>
-        A 20 metros de profundidade está o naufrágio Moréia. É o primeiro naufrágio artificial do Brasil, feito para a prática de mergulho.
+        A 20 metros de profundidade está o
+        <nuxt-link to="moreia">
+          naufrágio Moréia.
+        </nuxt-link>
+        É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho.
       </p>
     </section>
 
