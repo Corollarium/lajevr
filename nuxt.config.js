@@ -53,6 +53,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxt/typescript-build',
     '@aceforth/nuxt-optimized-images'
   ],
   /*
@@ -118,7 +119,7 @@ export default {
 
   optimizedImages: {
     optimizeImages: true,
-    optimizeImagesInDev: true,
+    optimizeImagesInDev: false,
     responsive: {
       sizes: [ 360, 640, 1000 ],
       placeholder: true
