@@ -24,10 +24,23 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "babylonjs",
+      "babylonjs-materials"
     ]
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "overrides": [
+    {
+      "files": ["*.{ts,tsx}"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    }
+  ],
 }

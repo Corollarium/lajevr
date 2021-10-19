@@ -11,6 +11,10 @@
     {
       "language": "javascriptreact",
       "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
     }
   ],
   "eslint.autoFixOnSave": true,
@@ -19,5 +23,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "html.customData": ["./html.html-data.json"]
+  "html.customData": [
+    "./html.html-data.json"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
