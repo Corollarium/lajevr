@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-if="isApple" class="hero-apple">
+    <section v-if="!isRenderOcean" class="hero-apple">
       <Clouds />
       <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
       <img :src="imageMar.src" :srcset="imageMar.srcSet" class="ilha-mar" draggable="false" alt="Água do mar da Laje">
@@ -33,7 +33,7 @@
     </section>
 
     <!-- Seção que liga hero com conteúdo -->
-    <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isApple}">
+    <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isRenderOcean}">
       <div class="fade-out" />
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
@@ -552,6 +552,7 @@ export default {
       imageFundoPontoMergulho: Object.freeze(imageFundoPontoMergulho),
       imageGraficoEstrelaMar: Object.freeze(imageGraficoEstrelaMar),
       boatFigure: Object.freeze(boatFigure),
+      isRenderOcean: true,
       isApple: false,
       isSafari: false,
       isIos: false,
@@ -573,7 +574,8 @@ export default {
         safari: '>10.1'
       }
     });
-    this.isApple = this.isIos || this.isSafari;
+    this.isApple = true; // this.isIos || this.isSafari;
+    this.isRenderOcean = ('forceOcean' in this.$route.query) ? (this.$route.query.forceOcean === 'true') : !this.isApple;
 
     this.observer = new IntersectionObserver(
       (entries, observer) => {
