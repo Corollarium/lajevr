@@ -128,7 +128,7 @@
     </transition-group>
 
     <div>
-      <h2>Bibliografia</h2>
+      <h2><i18n>Bibliografia</i18n></h2>
       <ul>
         <li>
           <a

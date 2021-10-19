@@ -87,7 +87,9 @@
         conservation="Vulnerável a extinção"
       >
         <template v-slot:description>
-          A rainha da Laje de Santos.
+          <i18n>
+            A rainha da Laje de Santos.
+          </i18n>
         </template>
         <template v-slot:header>
           <figure class="figure-text">
@@ -913,13 +915,14 @@
         latin="Thalasseus acuflavidus"
         conservation="Pouco preocupante"
         data-aos="fade-right"
-      />
-      <p>
-        Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários.
-      </p>
-      <p>
-        Se alimenta de pequenos peixes, lulas e crustáceos. É uma das aves que mergulham para capturar seu alimento. Seu nome indica seu comportamento de estarem sempre em bandos nas áreas de ocorrência da espécie.
-      </p>
+      >
+        <p>
+          Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários.
+        </p>
+        <p>
+          Se alimenta de pequenos peixes, lulas e crustáceos. É uma das aves que mergulham para capturar seu alimento. Seu nome indica seu comportamento de estarem sempre em bandos nas áreas de ocorrência da espécie.
+        </p>
+      </life-block>
     </article>
   </article>
 </template>

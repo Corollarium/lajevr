@@ -33,7 +33,7 @@
     </section>
 
     <!-- Seção que liga hero com conteúdo -->
-    <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': !isRenderOcean}">
+    <section :class="{'surface-dive': true, 'with-fade': true, 'after-3d': isRenderOcean}">
       <div class="fade-out" />
       <div class="surface-agua">
         <img :src="introSurfaceB.src" :srcset="introSurfaceB.srcSet" class="distorted-effect delay-2s" draggable="false" alt="Imagem contendo água do mar">
@@ -574,7 +574,7 @@ export default {
         safari: '>10.1'
       }
     });
-    this.isApple = true; // this.isIos || this.isSafari;
+    this.isApple = this.isIos || this.isSafari;
     this.isRenderOcean = ('forceOcean' in this.$route.query) ? (this.$route.query.forceOcean === 'true') : !this.isApple;
 
     this.observer = new IntersectionObserver(
