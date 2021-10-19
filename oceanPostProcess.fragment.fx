@@ -214,7 +214,7 @@ void main()
   #else
 
   if (cameraPosition.y < 0.0) {
-    gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+    gl_FragColor = texture2D(textureSampler, vUV);
     return;
   }
 
