@@ -312,6 +312,46 @@
       <h3>
         Vertex Animation Textures
       </h3>
+
+      <p>
+        TODO
+      </p>
+
+      <h3>
+        Performance issues with WebGL
+      </h3>
+
+      <p>
+        We had a number of performance issues with WebGL. They are all linked to the "everything runs on the main thread"
+        problem. Since these popup many times on threads, we'll quickly go over the problems and solutions. The
+        <a href="https://doc.babylonjs.com/divingDeeper/scene/optimize_your_scene">Optimizing Your Scene</a> guide
+        is incredibly helpful.
+      </p>
+
+      <p>
+        <strong>Too many objects.</strong> Engines deal with objects separately by default, so when you add thousands
+        of rocks things get slowly pretty quickly. There are a number of ways to deal with these.
+        <a href="https://doc.babylonjs.com/divingDeeper/mesh/copies/instances">Instances</a>
+        are interesting when the objects share geometry but are largely independent.
+        <a href="https://doc.babylonjs.com/divingDeeper/mesh/copies/thinInstances">Thin instances</a> are more restricted
+        than instances, allowing you to change position/scale/rotation. Thin instances are always drawn, while instances
+        are checked individually.
+        <a href="https://doc.babylonjs.com/divingDeeper/particles/solid_particle_system/sps_intro">Solid Particle Systems</a>
+        are an alternative to thin instances that in our implementation turned out to be even faster for thousands of
+        items.
+      </p>
+
+      <p>
+        <strong>Avoid recomputing constant data</strong>. Freeze your assets whenever possible: static objects can have normals,
+        world matrix and material frozen. You can also work with culling, bakeCurrentTransformIntoVertices, doNotSyncBoundingInfo
+        and other settings of BabylonJS to avoid costly checking that is useless.
+      </p>
+
+      <p>
+        <strong>Move to shaders.</strong> Whenever possible write your code in shaders, not JS. Shaders run on the GPU.
+        In particular, bake your animations: animating with bones on the CPU is very costly. See the "Vertex Animation Textures"
+        section above.
+      </p>
     </section>
   </article>
 </template>
