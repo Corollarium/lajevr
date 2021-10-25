@@ -17,6 +17,7 @@ uniform sampler2D depthTexture;
 #define MAX_ITER 8
 #define BASE_INTEN .005
 #define FOG_DENSITY 2.8 // TODO: review
+#define SEA_BASE_COLOR vec3(0.0, 0.176, 0.333)
 
 float fogFactorExp(
   const float dist,
@@ -82,7 +83,7 @@ void main() {
   float fogFactor = clamp(1.1*fogFactorExp(depth, FOG_DENSITY), 0.0, 1.0); // normalized distance
 
   // god rays
-  vec3 skyColor = vec3(0.3, 1.0, 1.0);
+  vec3 skyColor = SEA_BASE_COLOR;
   // TODO: godRays should take camera angle into consideration
   vec3 godRays = 0.7*(godRaysCalc(vUV*2.)*mix(float(skyColor), 1.0, vUV.y*vUV.y) * vec3(0.7,1.0,1.0));
 

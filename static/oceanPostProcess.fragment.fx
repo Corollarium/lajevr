@@ -39,8 +39,8 @@ const float SEA_CHOPPY = 4.0;
 const float SEA_SPEED = 0.8;
 const float SEA_FREQ = 0.16;
 
-const vec3 SEA_BASE = vec3(0.0, 0.13, 0.25); // vec3(0.1,0.39,0.62);
-const vec3 SEA_WATER_COLOR = vec3(0.0, 0.13, 0.25);//vec3(0.1,0.2,0.8);
+const vec3 SEA_BASE = vec3(0.0, 0.13, 0.25);
+const vec3 SEA_WATER_COLOR = vec3(0.0, 0.13, 0.25);
 
 #define SEA_TIME (1.0 + time * SEA_SPEED)
 
@@ -161,20 +161,23 @@ float sea_octave(vec2 uv, float choppy) {
 }
 // bteitler: Compute the distance along Y axis of a point to the surface of the ocean
 // using a low(er) resolution ocean height composition function (less iterations).
-float map(vec3 p) {
-  return p.y;
+float map(vec3 p, vec3 ori) {
+  if (ori.y <= 0.0) {
+    // return p.y;
+  }
+
   float freq = SEA_FREQ;
   float amp = SEA_HEIGHT;
   float choppy = SEA_CHOPPY;
   vec2 uv = p.xz;
   uv.x *= 0.75;
 
-    // bteitler: Compose our wave noise generation ("sea_octave") with different frequencies
-    // and offsets to achieve a final height map that looks like an ocean.  Likely lots
-    // of black magic / trial and error here to get it to look right.  Each sea_octave has this shape:
-    // http://www.wolframalpha.com/input/?i=%7B1-%7B%7B%7BAbs%5BCos%5B0.16x%5D%5D+%2B+Abs%5BCos%5B0.16x%5D%5D+%28%281.+-+Abs%5BSin%5B0.16x%5D%5D%29+-+Abs%5BCos%5B0.16x%5D%5D%29%7D+*+%7BAbs%5BCos%5B0.16y%5D%5D+%2B+Abs%5BCos%5B0.16y%5D%5D+%28%281.+-+Abs%5BSin%5B0.16y%5D%5D%29+-+Abs%5BCos%5B0.16y%5D%5D%29%7D%7D%5E0.65%7D%7D%5E4+from+-20+to+20
-    // which should give you an idea of what is going.  You don't need to graph this function because it
-    // appears to your left :)
+  // bteitler: Compose our wave noise generation ("sea_octave") with different frequencies
+  // and offsets to achieve a final height map that looks like an ocean.  Likely lots
+  // of black magic / trial and error here to get it to look right.  Each sea_octave has this shape:
+  // http://www.wolframalpha.com/input/?i=%7B1-%7B%7B%7BAbs%5BCos%5B0.16x%5D%5D+%2B+Abs%5BCos%5B0.16x%5D%5D+%28%281.+-+Abs%5BSin%5B0.16x%5D%5D%29+-+Abs%5BCos%5B0.16x%5D%5D%29%7D+*+%7BAbs%5BCos%5B0.16y%5D%5D+%2B+Abs%5BCos%5B0.16y%5D%5D+%28%281.+-+Abs%5BSin%5B0.16y%5D%5D%29+-+Abs%5BCos%5B0.16y%5D%5D%29%7D%7D%5E0.65%7D%7D%5E4+from+-20+to+20
+  // which should give you an idea of what is going.  You don't need to graph this function because it
+  // appears to your left :)
   float d, h = 0.0;
   for(int i = 0; i < ITER_GEOMETRY; i++) {
         // bteitler: start out with our 2D symmetric wave at the current frequency
@@ -244,10 +247,22 @@ float map_detailed(vec3 p) {
 // l: light (sun) direction
 // eye: ray direction from camera position for this pixel
 // dist: distance from camera to point <p> on ocean surface
-vec3 getSeaColor(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist) {
+vec3 getSeaColor(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist, bool isUnderwater) {
+  float fresnelAngle = 0.0;
+
+  // if we're underwater we want to invert the fresnel angle, since we are now reflecting
+  // rays to under the water and they get darker, while above water they reflect to the
+  // sky and get lighter
+  if (isUnderwater) {
+    fresnelAngle = abs(dot(n, -eye));
+  }
+  else {
+    fresnelAngle = 1.0 - abs(dot(n, -eye));
+  }
+
   // bteitler: Fresnel is an exponential that gets bigger when the angle between ocean
-    // surface normal and eye ray is smaller
-  float fresnel = clamp(1.0 - abs(dot(n, -eye)), 0.0, 1.0);
+  // surface normal and eye ray is smaller
+  float fresnel = clamp(fresnelAngle, 0.0, 1.0);
   fresnel = pow(fresnel, 3.0) * 0.65;
 
 #if defined(REFLECTION_ENABLED) || defined(REFRACTION_ENABLED)
@@ -285,6 +300,69 @@ vec3 getSeaColor(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist) {
   return color;
 }
 
+// p: point on ocean surface to get color for
+// n: normal on ocean surface at <p>
+// l: light (sun) direction
+// eye: ray direction from camera position for this pixel
+// dist: distance from camera to point <p> on ocean surface
+vec3 getSeaColorUnderwater(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist, bool isUnderwater) {
+  float fresnel = clamp(abs(dot(n, -eye)), 0.0, 1.0);
+  fresnel = pow(fresnel, 3.0) * 0.65;
+
+#if defined(REFLECTION_ENABLED) || defined(REFRACTION_ENABLED)
+    // bteitler: Bounce eye ray off ocean towards sky, and get the color of the sky
+  vec2 reflectionUv = vec2(vUV.x, vUV.y + normalize(n).y);
+#endif
+
+#ifdef REFLECTION_ENABLED
+  vec3 reflected = texture2D(reflectionSampler, reflectionUv).rgb * (1.0 - fresnel);
+#else
+  vec3 eyeNormal = reflect(eye, n);
+  eyeNormal.y = max(eyeNormal.y, 0.0);
+  vec3 reflected = vec3(pow(1.0 - eyeNormal.y, 2.0), 1.0 - eyeNormal.y, 0.6 + (1.0 - eyeNormal.y) * 0.4);
+#endif
+
+  // bteitler: refraction effect based on angle between light surface normal
+#ifdef REFRACTION_ENABLED
+  vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+  refracted += (texture2D(refractionSampler, reflectionUv).rgb * fresnel);
+#else
+  vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+#endif
+
+    // bteitler: blend the refracted color with the reflected color based on our fresnel term
+  vec3 color = mix(refracted, reflected, fresnel);
+
+    // bteitler: Apply a distance based attenuation factor which is stronger
+    // at peaks
+  float atten = max(1.0 - dot(dist, dist) * 0.001, 0.0);
+  color += SEA_WATER_COLOR * (p.y - SEA_HEIGHT) * 0.18 * atten;
+
+    // bteitler: Apply specular highlight
+  color += vec3(specular(n, l, eye, 60.0));
+
+  return color;
+
+  // const float maxSnellAngleCos = 0.92;
+  // vec3 color = SEA_WATER_COLOR;
+
+  // // snell window.
+  // float angleEyeOceanCos = dot(eye, vec3(0.0, 1.0, 0.0));
+  // if (angleEyeOceanCos > maxSnellAngleCos) {
+  //   vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+  //   return mix(
+  //     baseColor,
+  //     vec3(1.0, 1.0, 1.0),
+  //     (angleEyeOceanCos - maxSnellAngleCos) / (1.0 - maxSnellAngleCos)
+  //   );
+  //   //  + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+  // }
+  // color += vec3(specular(n, l, eye, 60.0));
+
+  // return color;
+}
+
+
 // bteitler: Estimate the normal at a point <p> on the ocean surface using a slight more detailed
 // ocean mapping function (using more noise octaves).
 // Takes an argument <eps> (stands for epsilon) which is the resolution to use
@@ -321,7 +399,7 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
 
   // bteitler: At a really far away distance along the ray, what is it's height relative
   // to the ocean in ONLY the Y direction?
-  float hx = map(ori + dir * tx);
+  float hx = map(ori + dir * tx, ori);
 
   // bteitler: A positive height relative to the ocean surface (in Y direction) at a really far distance means
   // this pixel is pure sky.  Quit early and return the far distance constant.
@@ -332,8 +410,12 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
     return -tx;
   }
 
-    // bteitler: hm starts out as the height of the camera position relative to ocean.
-  float hm = map(ori + dir * tm);
+  if (ori.y < 0.0) {
+    return -ori.y / dir.y;
+  }
+
+  // bteitler: hm starts out as the height of the camera position relative to ocean.
+  float hm = map(ori + dir * tm, ori);
 
   // bteitler: This is the main ray marching logic.  This is probably the single most confusing part of the shader
   // since height mapping is not an exact distance field (tells you distance to surface if you drop a line down to ocean
@@ -355,7 +437,7 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
     tmid = mix(tm, tx, hm / (hm - hx));
     p = ori + dir * tmid;
 
-    float hmid = map(p); // bteitler: Re-evaluate height relative to ocean surface in Y axis
+    float hmid = map(p, ori); // bteitler: Re-evaluate height relative to ocean surface in Y axis
 
     if ((ori.y > 0.0 && hmid < 0.0) || (ori.y < 0.0 && hmid > 0.0)) {
       // bteitler: We went through the ocean surface if we are negative relative to surface now
@@ -374,7 +456,7 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
   }
 
   // bteitler: Return the distance, which should be really close to the height map without going under the ocean
-  return tmid * sign(ori.y);
+  return tmid; //  * sign(ori.y);
 }
 
 // Main
@@ -384,7 +466,7 @@ void main() {
   gl_FragColor = texture2D(textureSampler, vUV);
 #else
 
-  vec3 cameraPositionMod = cameraPosition;
+  bool isUnderwater = cameraPosition.y < 0.0;
 
   vec2 uv = vUV;
 
@@ -397,7 +479,7 @@ void main() {
   // This will be used to drive where the user is looking in world space.
   vec3 ang = vec3(cameraRotation.z, cameraRotation.x, cameraRotation.y);
   // bteitler: Calculate the "origin" of the camera in world space.
-  vec3 ori = vec3(cameraPositionMod.x, cameraPositionMod.y, -cameraPositionMod.z);
+  vec3 ori = vec3(cameraPosition.x, cameraPosition.y, -cameraPosition.z);
 
   // bteitler: This is the ray direction we are shooting from the camera location ("ori") that we need to light
   // for this pixel.  The numeric parameter indicates we are using a focal length equal to it.
@@ -410,17 +492,25 @@ void main() {
 
   // Tracing
   vec3 baseColor = texture2D(textureSampler, vUV).rgb;
+  float alpha = 1.0;
 
   // bteitler: ray-march to the ocean surface (which can be thought of as a randomly generated height map)
   // and store in p
   vec3 p;
 
-  float distance = heightMapTracing(ori, dir, p);
-  vec3 color = baseColor;
-  if (distance == MAXIMUM_MARCH_DISTANCE || distance == -MAXIMUM_MARCH_DISTANCE) {
-    // ray escaped
+  float distance = 0.0;
+  if (ori.y > 0.0) {
+    distance = heightMapTracing(ori, dir, p);
   }
-  else { // if (distance >= 0.0) {
+  else {
+    distance = heightMapTracing(ori * vec3(1.0, -1.0, 1.0), dir * vec3(1.0, -1.0, 1.0), p);
+    p.y = -p.y;
+  }
+  vec3 color = baseColor;
+  if (distance >= MAXIMUM_MARCH_DISTANCE || distance <= -MAXIMUM_MARCH_DISTANCE) {
+    // ray definitely escaped
+  }
+  else {
     // bteitler: distance vector to ocean surface for this pixel's ray
     vec3 dist = p - ori;
 
@@ -429,7 +519,7 @@ void main() {
     // the camera should be calculated with high resolution, and normals far from the camera should be calculated with low resolution
     // The reason to do this is that specular effects (or non linear normal based lighting effects) become fairly random at
     // far distances and low resolutions and can cause unpleasant shimmering during motion.
-    vec3 n = getNormal(p, dot(dist, dist) * EPSILON_NRM);
+    vec3 normalAtOcean = getNormal(p, dot(dist, dist) * EPSILON_NRM);
 
     // bteitler: direction of the infinitely far away directional light.  Changing this will change
     // the sunlight direction.
@@ -447,21 +537,31 @@ void main() {
       // in the distance in an exponential manner.
       color = mix(
         baseColor,
-        getSeaColor(p, n, light, dir, dist),
+        getSeaColor(p, normalAtOcean, light, dir, dist, isUnderwater),
         pow(smoothstep(0.0, -0.05, dir.y), 0.3)
       ) * seaFact;
     }
-    else if (ori.y < 0.0 && min(position.y, 0.0) > p.y) {
-      // sea seen from below
-      color = mix(baseColor, vec3(1.0, 0.0, 0.0), pow(smoothstep(0.0, -0.05, -dir.y), 0.3)) * seaFact;
+    else if (ori.y < 0.0) {
+      if (min(position.y, 0.00) > p.y) {
+        // actual water.
+        color = mix(
+          baseColor,
+          getSeaColorUnderwater(p, normalAtOcean, light * vec3(1.0, -1.0, 0.0), dir, dist, isUnderwater),
+          pow(smoothstep(0.0, -0.05, -dir.y), 0.3)
+        ) * seaFact;
+        alpha = 0.5;
+      }
     }
 
-    // color = mix(color, baseColor * SEA_BASE + diffuse(n, n, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
+    if (ori.y > 0.0) {
+      color = mix(color, baseColor * SEA_BASE + diffuse(normalAtOcean, normalAtOcean, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
+    }
   }
 
   // post
   // bteitler: Apply an overall image brightness factor as the final color for this pixel.  Can be
   // tweaked artistically.
-  gl_FragColor = vec4(pow(color, vec3(0.75)), 1.0);
+  // gl_FragColor = vec4(pow(color, vec3(0.75)), alpha);
+  gl_FragColor = vec4(color, alpha);
 #endif
 }

@@ -15,6 +15,10 @@
         <span id="underwater-hud-time-name"><i18n>Tempo</i18n></span><br>
         <span id="underwater-hud-time-value">{{ parseInt(time/60, 10) }}:{{ parseInt(time%60, 10).toString().padStart(2, '0') }}</span>
       </div>
+      <div id="underwater-hud-compass">
+        <span id="underwater-hud-compass-name"><i18n>Compasso</i18n></span><br>
+        <span id="underwater-hud-compass-value">{{ parseInt(orientationDegrees) }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +57,7 @@ export default {
       camera: null,
       assetsManager: null,
 
+      oceanPostProcess: null,
       renderTargetCaustic: null,
       causticMaterial: null,
       causticBlackMaterial: null,
@@ -68,7 +73,9 @@ export default {
       lastDepth: 0,
       time: 0,
       air: 100,
-      fps: 0
+      fps: 0,
+      /** The camera orientation as a compass */
+      orientationDegrees: 0.0
     };
   },
 
@@ -134,8 +141,10 @@ export default {
     // this.sceneOptimizer();
     if (this.$route.query.debug) {
       this.camera.speed = 0.5;
+      this.camera.maxZ = 150.0;
       this.debugUtils();
     }
+    window.ccc = this.camera;
 
     // Register a render loop to repeatedly render the scene
     const startTime = new Date();
@@ -149,6 +158,12 @@ export default {
       this.time = timeElapsed;
       this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
       this.lastDepth = this.camera.position.y;
+      this.orientationDegrees = Math.acos(
+        BABYLON.Vector3.Dot(
+          this.camera.cameraDirection,
+          new BABYLON.Vector3(1.0, 0.0, 0.0)
+        ) // TODO: + offset?
+      ) * 180.0 / Math.PI;
 
       // inspector
       const t = document.getElementById('inspector-host');
@@ -226,12 +241,13 @@ export default {
       this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
-      this.scene.clearColor = BABYLON.Color3.FromHexString('#2963CF');
+      this.scene.clearColor = new BABYLON.Color3(0, 0.13, 0.25); // FromHexString('#2963CF');
 
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
-        new BABYLON.Vector3(-16.12, 1.0, 28),
+        // new BABYLON.Vector3(-16.12, 1.0, 28),
+        new BABYLON.Vector3(-14.12, -28.2, 27.19),
         this.scene
       );
       this.camera.applyGravity = false;
@@ -257,8 +273,8 @@ export default {
 
       // near/far
       this.camera.minZ = 0.1;
-      this.camera.maxZ = 150;
-      this.camera.setTarget(new BABYLON.Vector3(-15.2, -6.36, 27.62));
+      this.camera.maxZ = 20.0;
+      this.camera.setTarget(new BABYLON.Vector3(-15.2, 0.36, 27.62));
       this.camera.attachControl(container, true);
 
       // Enable Collisions
@@ -393,6 +409,7 @@ export default {
       const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
       const pp = this.loadOceanPP();
+      this.oceanPostProcess = pp;
 
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
@@ -426,7 +443,6 @@ export default {
       // oceanOptions.width = oceanOptions.height = t;
       oceanOptions.isPipeline = true;
 
-      console.log(oceanOptions);
       const pp = new OceanPostProcess('myOcean', this.camera, oceanOptions);
       pp.reflectionEnabled = false;
       pp.refractionEnabled = false;
@@ -851,7 +867,7 @@ export default {
   left: 0;
   padding: 10px;
   width: 160px;
-  height: 150px;
+  height: 220px;
   z-index: 1000;
   border-radius: 10px;
   background: #000;
@@ -863,12 +879,14 @@ export default {
     display: inline-block;
   }
 
-  #underwater-hud-time {
+  #underwater-hud-time,
+  #underwater-hud-compass {
     margin-top: 10px;
   }
 
   #underwater-hud-depth-value,
-  #underwater-hud-time-value {
+  #underwater-hud-time-value,
+  #underwater-hud-compass-value {
     line-height: 0.9;
     font-size: 42px;
     font-family: monospace;
@@ -878,6 +896,7 @@ export default {
     writing-mode: vertical-rl;
   }
 
+  #underwater-hud-compass-name,
   #underwater-hud-depth-name,
   #underwater-hud-time-name {
     color: #4c70ff;
