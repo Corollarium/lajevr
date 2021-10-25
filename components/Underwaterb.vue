@@ -17,7 +17,7 @@
       </div>
       <div id="underwater-hud-compass">
         <span id="underwater-hud-compass-name"><i18n>Compasso</i18n></span><br>
-        <span id="underwater-hud-compass-value">{{ parseInt(orientationDegrees) }}</span>
+        <span id="underwater-hud-compass-value">{{ ((parseInt(orientationDegrees) % 360) + 360) % 360 }}</span>
       </div>
     </div>
   </div>
@@ -158,12 +158,7 @@ export default {
       this.time = timeElapsed;
       this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
       this.lastDepth = this.camera.position.y;
-      this.orientationDegrees = Math.acos(
-        BABYLON.Vector3.Dot(
-          this.camera.cameraDirection,
-          new BABYLON.Vector3(1.0, 0.0, 0.0)
-        ) // TODO: + offset?
-      ) * 180.0 / Math.PI;
+      this.orientationDegrees = this.camera.rotation.y * 180.0 / Math.PI;
 
       // inspector
       const t = document.getElementById('inspector-host');
