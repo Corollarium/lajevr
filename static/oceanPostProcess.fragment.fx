@@ -374,7 +374,7 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
   }
 
   // bteitler: Return the distance, which should be really close to the height map without going under the ocean
-  return tmid;
+  return tmid * sign(ori.y);
 }
 
 // Main
@@ -408,19 +408,6 @@ void main() {
   // if you remove the " * fromEuler(ang)" part, you will disable the camera rotation animation.
   dir = normalize(dir) * fromEuler(ang);
 
-  // if (cameraPosition.y < 0.0) {
-  //   float c =
-  //     (fract(position.x) > 0.5 ? 1.0 : 0.0) +
-  //     (fract(position.z) > 0.5 ? 1.0 : 0.0);
-  //   gl_FragColor = vec4(
-  //     1.0, // c == 1.0 ? 1.0 : 0.0,
-  //     0.0, // c == 1.0 ? 1.0 : 0.0,
-  //     c == 1.0 ? 1.0 : 0.0,
-  //     1.0
-  //   );
-  //   return;
-  // }
-
   // Tracing
   vec3 baseColor = texture2D(textureSampler, vUV).rgb;
 
@@ -428,12 +415,12 @@ void main() {
   // and store in p
   vec3 p;
 
-  float fff = heightMapTracing(ori, dir, p);
+  float distance = heightMapTracing(ori, dir, p);
   vec3 color = baseColor;
-  if (fff == MAXIMUM_MARCH_DISTANCE || fff == -MAXIMUM_MARCH_DISTANCE) {
+  if (distance == MAXIMUM_MARCH_DISTANCE || distance == -MAXIMUM_MARCH_DISTANCE) {
     // ray escaped
   }
-  else {
+  else { // if (distance >= 0.0) {
     // bteitler: distance vector to ocean surface for this pixel's ray
     vec3 dist = p - ori;
 
@@ -449,19 +436,27 @@ void main() {
     vec3 light = normalize(vec3(0.0, 1.0, 0.8));
 
     // Color
-    float seaFact = clamp(max(ori.y, 0.0), 0.0, 1.0);
+    float seaFact = 1.0; // clamp(max(ori.y, 0.0), 0.0, 1.0);
     vec3 position = texture2D(positionSampler, vUV).rgb;
 
-    if (max(position.y, 0.0) < p.y) {
+    if (ori.y > 0.0 && max(position.y, 0.0) < p.y) {
       // Sea above
 
       // bteitler: Mix (linear interpolate) a color calculated for the sky (based solely on ray direction) and a sea color
       // which contains a realistic lighting model.  This is basically doing a fog calculation: weighing more the sky color
       // in the distance in an exponential manner.
-      color = mix(baseColor, getSeaColor(p, n, light, dir, dist), pow(smoothstep(0.0, -0.05, dir.y), 0.3)) * seaFact;
+      color = mix(
+        baseColor,
+        getSeaColor(p, n, light, dir, dist),
+        pow(smoothstep(0.0, -0.05, dir.y), 0.3)
+      ) * seaFact;
+    }
+    else if (ori.y < 0.0 && min(position.y, 0.0) > p.y) {
+      // sea seen from below
+      color = mix(baseColor, vec3(1.0, 0.0, 0.0), pow(smoothstep(0.0, -0.05, -dir.y), 0.3)) * seaFact;
     }
 
-    color = mix(color, baseColor * SEA_BASE + diffuse(n, n, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
+    // color = mix(color, baseColor * SEA_BASE + diffuse(n, n, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
   }
 
   // post

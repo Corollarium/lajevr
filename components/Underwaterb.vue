@@ -231,7 +231,7 @@ export default {
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
-        new BABYLON.Vector3(-16.12, -6, 28),
+        new BABYLON.Vector3(-16.12, 1.0, 28),
         this.scene
       );
       this.camera.applyGravity = false;
