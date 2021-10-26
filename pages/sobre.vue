@@ -318,9 +318,12 @@
         <p>
           <i18n>
             Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,
-            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas. Há o
-            <a href="https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta">Projeto Mantas do Brasil</a>, que busca a
-            ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente
+            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas.
+          </i18n>
+        </p>
+        <p>
+          <a href="https://www.mantasdobrasil.org.br/o-projeto/saiba-mais-sobre-a-raia-manta">Projeto Mantas do Brasil</a> <i18n>
+            busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente
             incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio
             de “PRÓXIMA DA AMEAÇA” para o estágio mais preocupante de “VULNERÁVEL À EXTINÇÃO” na lista vermelha da IUCN.
             Suspeita-se que o Brasil tenha a menor população de raias mantas do mundo, com uma estimativa de população de apenas

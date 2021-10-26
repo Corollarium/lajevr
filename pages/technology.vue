@@ -8,9 +8,7 @@
       </div>
       <div class="vida-hero-text rellax" data-rellax-speed="2">
         <h1 class="has-text-center vida-hero-title">
-          <i18n>
-            The technology
-          </i18n>
+          <i18n>The technology</i18n>
         </h1>
       </div>
     </section>

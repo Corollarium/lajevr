@@ -13,8 +13,8 @@ LOCALES = en_US pt_BR
 # Name of the generated .po files for each available locale.
 LOCALE_FILES ?= $(patsubst %,$(OUTPUT_DIR)/locale/%/LC_MESSAGES/app.po,$(LOCALES))
 
-GETTEXT_HTML_SOURCES = $(shell find $(INPUT_DIRS) -name '*.vue' -o -name '*.html' 2> /dev/null)
-GETTEXT_JS_SOURCES = $(shell find $(INPUT_DIRS) -name '*.vue' -o -name '*.js')
+GETTEXT_HTML_SOURCES = $(shell find $(INPUT_DIRS) \( -name '*.vue' -o -name '*.html' \) -not -name 'i18n.vue' -not -name 'technology.vue' -not -name 'design-system.vue' 2> /dev/null)
+GETTEXT_JS_SOURCES = $(shell find $(INPUT_DIRS) \( -name '*.vue' -o -name '*.js' \) -not -name 'i18n.vue' -not -name 'technology.vue' -not -name 'design-system.vue')
 
 # Makefile Targets
 .PHONY: clean makemessages translations
@@ -37,12 +37,12 @@ translations: ./$(OUTPUT_DIR)/translations.json
 # Extract gettext strings from templates files and create a POT dictionary template.
 	gettext-extract --attribute v-translate --quiet --output $@ $(GETTEXT_HTML_SOURCES)
 # Extract gettext strings from JavaScript files.
-	xgettext --language=JavaScript --keyword=npgettext:1c,2,3 \
-		--from-code=utf-8 --join-existing --no-wrap \
-		--package-name=$(shell node -e "console.log(require('./package.json').name);") \
-		--package-version=$(shell node -e "console.log(require('./package.json').version);") \
-		--output $@ $(GETTEXT_JS_SOURCES)
-# Generate .po files for each available language.
+# xgettext --language=JavaScript --keyword=npgettext:1c,2,3 \
+# 	--from-code=utf-8 --join-existing --no-wrap \
+# 	--package-name=$(shell node -e "console.log(require('./package.json').name);") \
+# 	--package-version=$(shell node -e "console.log(require('./package.json').version);") \
+# 	--output $@ $(GETTEXT_JS_SOURCES)
+# # Generate .po files for each available language.
 	@for lang in $(LOCALES); do \
 		export PO_FILE=$(OUTPUT_DIR)/locale/$$lang/LC_MESSAGES/app.po; \
 		echo "msgmerge --update $$PO_FILE $@"; \

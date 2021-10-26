@@ -29,8 +29,12 @@
       </h4>
       <p>
         This is a normal paragraph <a href="#">with a link</a> and here's a text example:
-        <br>The Laje de Santos Marine State Park (Portuguese: Parque Estadual Marinho da Laje de Santos) is a state park in the state of São Paulo, Brazil.
-        <br>It protects a marine area off the coast of the state, and was the first such park to be created by São Paulo. It includes a rocky islet, tidal reefs and surrounding waters, with various areas suitable for diving, including a boat that was deliberately wrecked to form an artificial reef. The combination of warm surface waters and cold deeper waters supports a high level of biodiversity.
+      </p>
+      <p>
+        The Laje de Santos Marine State Park (Portuguese: Parque Estadual Marinho da Laje de Santos) is a state park in the state of São Paulo, Brazil.
+      </p>
+      <p>
+        It protects a marine area off the coast of the state, and was the first such park to be created by São Paulo. It includes a rocky islet, tidal reefs and surrounding waters, with various areas suitable for diving, including a boat that was deliberately wrecked to form an artificial reef. The combination of warm surface waters and cold deeper waters supports a high level of biodiversity.
       </p>
     </section>
 
