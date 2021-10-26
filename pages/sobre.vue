@@ -75,7 +75,7 @@
           <p>
             <i18n>
               Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes
-              abertas como a <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, passando
+              abertas como a Wikimedia Commons, passando
               por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram
               gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para
               tirar fotos e vídeos específicas para este projeto com mergulhadores experientes.

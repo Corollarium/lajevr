@@ -63,7 +63,8 @@
             2003
           </h3>
           <p class="timeline__content-desc">
-            <i18n>Criado o <a href="https://www.lajeviva.org.br/" target="_blank">Instituto Laje Viva</a>, para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro.</i18n>
+            <a href="https://www.lajeviva.org.br/" target="_blank">Instituto Laje Viva</a>
+            <i18n>criado para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro.</i18n>
           </p>
         </div>
       </div>

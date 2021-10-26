@@ -152,13 +152,13 @@
               <i18n>
                 A Laje oferece condições muito especiais em termos de profundidade
                 e visibilidade para mergulho. Junto com a preservação e variedade da vida,
-                isso faz da Laje um dos principais <span class="text-is-bold">pontos de mergulho</span>
-                e de <span class="text-is-bold">fotografia subaquática</span> do país.
+                isso faz da Laje um dos principais pontos de mergulho
+                e de fotografia subaquática do país.
               </i18n>
               <br>
-              <span class="text-is-bold">Profundidade média:  20m</span>
+              <span class="text-is-bold"><i18n>Profundidade média:</i18n> 20m</span>
               <br>
-              <span class="text-is-bold">Profundidade máxima no entorno:  42m</span>
+              <span class="text-is-bold"><i18n>Profundidade máxima no entorno:</i18n> 42m</span>
             </p>
           </div>
           <div class="about-profundidade">
@@ -172,15 +172,15 @@
     </section>
 
     <section id="moreia" bp="container" class="section-base">
-      <h2>O naufrágio Moréia</h2>
+      <h2><i18n>O naufrágio Moréia</i18n></h2>
       <img src="~static/images/nauther/moreia-proa.jpg" alt="Naufrágio Moreia, visto da proa. Foto: Nauther Andres">
 
       <p>
-        A 20 metros de profundidade está o
+        <i18n>A 20 metros de profundidade está o</i18n>
         <nuxt-link to="moreia">
-          naufrágio Moréia.
+          <i18n>naufrágio Moréia.</i18n>
         </nuxt-link>
-        É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho.
+        <i18n>É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho.</i18n>
       </p>
     </section>
 
@@ -397,9 +397,11 @@
         <div>
           <div>
             <div class="description">
-              No inverno <nuxt-link to="/vida#raias">
-                as raias mantas
-              </nuxt-link> passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.
+              <i18n>
+                No inverno
+              </i18n> <nuxt-link to="/vida#raias">
+                <i18n>as raias mantas</i18n>
+              </nuxt-link> <i18n>passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção.</i18n>
             </div>
           </div>
         </div>

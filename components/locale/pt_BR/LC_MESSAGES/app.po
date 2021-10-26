@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: pages/index.vue:148
+msgid "A 20 metros de profundidade está o"
+msgstr ""
+
 #: pages/sobre.vue:32
 msgid ""
 "A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
@@ -66,7 +70,7 @@ msgstr ""
 msgid "A Laje de Santos em Realidade Virtual"
 msgstr ""
 
-#: pages/index.vue:369
+#: pages/index.vue:371
 msgid "A Laje em Números"
 msgstr ""
 
@@ -74,8 +78,8 @@ msgstr ""
 msgid ""
 "A Laje oferece condições muito especiais em termos de profundidade\n"
 "                e visibilidade para mergulho. Junto com a preservação e variedade da vida,\n"
-"                isso faz da Laje um dos principais <span class=\"text-is-bold\">pontos de mergulho</span>\n"
-"                e de <span class=\"text-is-bold\">fotografia subaquática</span> do país."
+"                isso faz da Laje um dos principais pontos de mergulho\n"
+"                e de fotografia subaquática do país."
 msgstr ""
 
 #: pages/vida.vue:219
@@ -140,6 +144,10 @@ msgid ""
 "            lhe atacar a qualquer momento. Realmente, sua fama não é em vão\n"
 "            devido a casos de acidentes com seres humanos em quase todas as\n"
 "            partes do mundo."
+msgstr ""
+
+#: pages/index.vue:359
+msgid "as raias mantas"
 msgstr ""
 
 #: pages/vida.vue:164
@@ -262,12 +270,12 @@ msgstr ""
 msgid "Cor"
 msgstr ""
 
-#: components/sections/Timeline.vue:63
-msgid "Criado o <a href=\"https://www.lajeviva.org.br/\" target=\"_blank\">Instituto Laje Viva</a>, para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro."
+#: components/sections/Timeline.vue:90
+msgid "Criado o projeto Mantas do Brasil."
 msgstr ""
 
-#: components/sections/Timeline.vue:89
-msgid "Criado o projeto Mantas do Brasil."
+#: components/sections/Timeline.vue:64
+msgid "criado para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro."
 msgstr ""
 
 #: pages/sobre.vue:112
@@ -294,6 +302,10 @@ msgstr ""
 
 #: pages/vida.vue:597
 msgid "É conhecida popularmente como moréia pintada, por conta de suas manchas claras e escuras no corpo de padrão marmorizado. Apesar de parecerem com serpentes ou enguias, as moreias  são peixes com formato anatômico diferente."
+msgstr ""
+
+#: pages/index.vue:152
+msgid "É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho."
 msgstr ""
 
 #: pages/index.vue:324
@@ -326,11 +338,11 @@ msgstr ""
 msgid "Espécies da Laje de Santos"
 msgstr ""
 
-#: pages/index.vue:405
+#: pages/index.vue:407
 msgid "Espécies de aves"
 msgstr ""
 
-#: pages/index.vue:410
+#: pages/index.vue:412
 msgid "Espécies de peixes"
 msgstr ""
 
@@ -379,7 +391,7 @@ msgstr ""
 #: pages/sobre.vue:75
 msgid ""
 "Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes\n"
-"              abertas como a <a href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>, passando\n"
+"              abertas como a Wikimedia Commons, passando\n"
 "              por instituições como o Instituto Laje Viva e mergulhadores na internet que forneceram\n"
 "              gentilmente suas fotos. Mas mais do que isso, precisamos ir até a Laje de Santos para\n"
 "              tirar fotos e vídeos específicas para este projeto com mergulhadores experientes."
@@ -494,7 +506,7 @@ msgstr ""
 msgid "Habitat: Pantropical, encontrado nos 3 oceanos, habitam ilhas costeiras e oceânicas subtropical no Brasil até Santa Catarina."
 msgstr ""
 
-#: pages/index.vue:390
+#: pages/index.vue:392
 msgid "Hectares preservados"
 msgstr ""
 
@@ -609,19 +621,19 @@ msgstr ""
 msgid "mergulhos"
 msgstr ""
 
-#: pages/index.vue:380
+#: pages/index.vue:382
 msgid "Metros de altura"
 msgstr ""
 
-#: pages/index.vue:375
+#: pages/index.vue:377
 msgid "Metros de comprimento"
 msgstr ""
 
-#: pages/index.vue:385
+#: pages/index.vue:387
 msgid "Metros de largura"
 msgstr ""
 
-#: pages/index.vue:395
+#: pages/index.vue:397
 msgid "Metros de profundidade máxima"
 msgstr ""
 
@@ -669,8 +681,16 @@ msgstr ""
 msgid "Na laje você sempre vê cardumes de salemas."
 msgstr ""
 
+#: pages/index.vue:150
+msgid "naufrágio Moréia."
+msgstr ""
+
 #: pages/vida.vue:850
 msgid "Nidificam na Laje de Santos cerca de 500 indivíduos, gerando de um até três filhotes por ninhada, mas nem sempre todos sobrevivem. É uma espécie muito sensível à presença humana e por isso considerada vulnerável à extinção segundo a Red List de animais ameaçados. Uma curiosidade sobre essa espécie: é a associação do período de ocorrência coincidir com o mesmo período de ocorrência da raia-manta no parque marinho."
+msgstr ""
+
+#: pages/index.vue:356
+msgid "No inverno"
 msgstr ""
 
 #: pages/vida.vue:769
@@ -705,7 +725,7 @@ msgid ""
 "          ir ao fundo. Ele mesmo conta a história:"
 msgstr ""
 
-#: pages/moreia.vue:10
+#: pages/index.vue:144 pages/moreia.vue:10
 msgid "O naufrágio Moréia"
 msgstr ""
 
@@ -821,6 +841,10 @@ msgstr ""
 msgid "Paru, peixe-frade ou peixe-anjo: são muitos os nomes para a mesma espécie. Depende de qual região você o avistou. É um dos peixes mais ilustres e carismáticos."
 msgstr ""
 
+#: pages/index.vue:360
+msgid "passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção."
+msgstr ""
+
 #: pages/vida.vue:442 pages/vida.vue:5
 msgid "Peixe anjo real"
 msgstr ""
@@ -895,7 +919,7 @@ msgstr ""
 msgid "Primeiros mergulhos na Laje de Santos"
 msgstr ""
 
-#: components/sections/Timeline.vue:102
+#: components/sections/Timeline.vue:103
 msgid "Produzido o documentário Laje dos Sonhos."
 msgstr ""
 
@@ -903,11 +927,19 @@ msgstr ""
 msgid "Profundidade"
 msgstr ""
 
+#: pages/index.vue:130
+msgid "Profundidade máxima no entorno:"
+msgstr ""
+
+#: pages/index.vue:128
+msgid "Profundidade média:"
+msgstr ""
+
 #: components/sections/SiteFooter.vue:21
 msgid "Projeto"
 msgstr ""
 
-#: components/sections/Timeline.vue:113
+#: components/sections/Timeline.vue:114
 msgid "Projeto \"A Laje em Realidade Virtual\"."
 msgstr ""
 
@@ -923,7 +955,7 @@ msgstr ""
 msgid "Projeto Laje de Santos Virtual"
 msgstr ""
 
-#: components/sections/Timeline.vue:76
+#: components/sections/Timeline.vue:77
 msgid "Publicado o livro \"Laje de Santos, Laje dos Sonhos\"."
 msgstr ""
 
@@ -937,7 +969,7 @@ msgstr ""
 msgid "Quando saem de suas tocas, em busca de alimentos na maré baixa, elas se apoiam sobre suas nadadeiras peitorais e rastejam como se estivessem caminhando indo de um ponto a outro, forrageando o costão com as algas expostas nas rochas, e ao menor sinal de perigo elas saltam para dentro d'água e se entocam novamente."
 msgstr ""
 
-#: pages/index.vue:400
+#: pages/index.vue:402
 msgid "Quilômetros da costa"
 msgstr ""
 
