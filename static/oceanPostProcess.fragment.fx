@@ -29,7 +29,7 @@ const int NUM_STEPS = 8;
 const float PI = 3.141592;
 const float EPSILON = 1e-3;
 #define EPSILON_NRM (0.1 / resolution.x)
-const float MAXIMUM_MARCH_DISTANCE = 1000.0;
+const float MAXIMUM_MARCH_DISTANCE = 700.0;
 
 // Sea
 const int ITER_GEOMETRY = 8;
@@ -543,13 +543,24 @@ void main() {
     }
     else if (ori.y < 0.0) {
       if (min(position.y, 0.00) > p.y) {
-        // actual water.
+        vec3 normDist = normalize(dist);
+        // underwater. Mix rendered color with the outside, so sky is visible.
+        // Transparency mimics Snell's window with a fake function that looks good.
+        const float cosAngleLimit = 0.8;
+        // transparency is normalized.
+        float transparency = smoothstep(1.0, cosAngleLimit, abs(normDist.y));
+        vec3 seaColor = getSeaColorUnderwater(p, normalAtOcean, light * vec3(1.0, -1.0, 0.0), dir, dist, isUnderwater);
+        float seaColorBrightness = 1.0;
+        // make things brighter on the Snell window
+        if (transparency <= cosAngleLimit) {
+          seaColorBrightness = 1.0 + (1.0 - transparency / cosAngleLimit) * 1.3;
+        }
         color = mix(
           baseColor,
-          getSeaColorUnderwater(p, normalAtOcean, light * vec3(1.0, -1.0, 0.0), dir, dist, isUnderwater),
-          pow(smoothstep(0.0, -0.05, -dir.y), 0.3)
-        ) * seaFact;
-        alpha = 0.5;
+          seaColor * seaColorBrightness,
+          transparency
+        ) * seaFact * seaColorBrightness;
+
       }
     }
 
