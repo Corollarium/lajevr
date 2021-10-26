@@ -93,6 +93,11 @@
 
             <p>
               Mas a internet permite chegarmos um pouco mais perto.
+              <nuxt-link to="/sobre">
+                <i18n>
+                  Leia mais sobre o projeto "A Laje em Realidade Virtual".
+                </i18n>
+              </nuxt-link>
             </p>
           </div>
         </div>

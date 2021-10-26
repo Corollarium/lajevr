@@ -5,9 +5,8 @@
 <script>
 /* eslint-disable */
 import * as THREE from 'three';
-import { ColladaLoader } from './three/ColladaLoader.mjs';
-//import { TrackballControls } from './three/TrackballControls.mjs';
-import { OrbitControls } from './three/OrbitControls.mjs';
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Ocean } from './Ocean.js';
 import { SpriteText2D, textAlign } from 'three-text2d';
 /* eslint-enable */

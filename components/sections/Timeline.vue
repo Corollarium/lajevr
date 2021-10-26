@@ -124,7 +124,11 @@
             2020
           </h3>
           <p class="timeline__content-desc">
-            <i18n>Projeto "A Laje em Realidade Virtual".</i18n>
+            <nuxt-link to="/sobre">
+              <i18n>
+                Projeto "A Laje em Realidade Virtual".
+              </i18n>
+            </nuxt-link>
           </p>
         </div>
       </div>

@@ -64,6 +64,11 @@
             </nuxt-link>
           </li>
           <li class="pure-menu-item">
+            <nuxt-link to="/technology" class="pure-menu-link">
+              <i18n>Tecnologia</i18n>
+            </nuxt-link>
+          </li>
+          <li class="pure-menu-item">
             <nuxt-link to="/sobre" class="pure-menu-link">
               <i18n>Sobre</i18n>
             </nuxt-link>
