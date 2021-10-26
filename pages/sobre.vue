@@ -175,6 +175,9 @@
               foram processadas por software. Muitos itens foram modelados à mão, como os peixes e aves,
               para terem qualidade, animação mas serem leves o suficiente para a web.
             </i18n>
+            <nuxt-link to="/technology">
+              <i18n>Leia um descritivo detalhado da tecnologia que usamos neste projeto.</i18n>
+            </nuxt-link>
           </p>
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
