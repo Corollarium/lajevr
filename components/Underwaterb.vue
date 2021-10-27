@@ -141,20 +141,25 @@ export default {
     // this.sceneOptimizer();
     if (this.$route.query.debug) {
       this.camera.speed = 0.5;
-      this.camera.maxZ = 150.0;
       this.debugUtils();
     }
     window.ccc = this.camera;
 
     // Register a render loop to repeatedly render the scene
     const startTime = new Date();
+    let isUnderwater = false;
     this.engine.runRenderLoop(() => {
       const endTime = new Date();
       const timeElapsed = (endTime - startTime) / 1000.0; // in s
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
       // update UI
-      this.depth = (this.camera.position.y <= 0 ? (-this.camera.position.y).toFixed(1) : 0.0);
+      const isUnderwaterNow = this.camera.position.y <= 0;
+      if (isUnderwater !== isUnderwaterNow) {
+        isUnderwater = isUnderwaterNow;
+        // this.scene.fogMode = (isUnderwater ? BABYLON.Scene.FOGMODE_EXP : BABYLON.Scene.FOGMODE_NONE);
+      }
+      this.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
       this.time = timeElapsed;
       this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
       this.lastDepth = this.camera.position.y;
@@ -236,7 +241,10 @@ export default {
       this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
-      this.scene.clearColor = new BABYLON.Color3(0, 0.13, 0.25); // FromHexString('#2963CF');
+      this.scene.clearColor = new BABYLON.Color3(0, 0.55, 0.85); // new BABYLON.Color3(0.0, 0.0, 0.0); // FromHexString('#2963CF');
+      // // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
+      // this.scene.fogDensity = 0.5;
+      // this.scene.fogColor = new BABYLON.Color3(0, 0.55, 0.65);
 
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
@@ -268,7 +276,7 @@ export default {
 
       // near/far
       this.camera.minZ = 0.1;
-      this.camera.maxZ = 20.0;
+      this.camera.maxZ = 700.0;
       this.camera.setTarget(new BABYLON.Vector3(-15.2, 0.36, 27.62));
       this.camera.attachControl(container, true);
 
@@ -297,7 +305,7 @@ export default {
     },
 
     resize () {
-      this.engine.resize();
+      // this.engine.resize();
     },
 
     lights () {
@@ -381,14 +389,38 @@ export default {
         ],
         [
           'depthTexture',
-          'causticTexture'
+          'causticTexture',
+          'oceanDepthTexture'
         ],
         1.0,
-        this.camera,
+        null, // this.camera,
         0,
         this.engine
       );
 
+      const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
+
+      const oceanPP = this.loadOceanPP();
+      this.oceanPostProcess = oceanPP;
+      this.oceanPostProcess.autoClear = false;
+
+      let firstOceanPPCall = true;
+      let oceanDepthTexture = null;
+      oceanPP.onApplyObservable.add((effect) => {
+        if (firstOceanPPCall) {
+          firstOceanPPCall = false;
+          const rtWrapper = underwaterPass.inputTexture;
+          oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
+          oceanDepthTexture.name = 'underwaterDepthStencil';
+        }
+        this.engine.setDepthBuffer(true);
+        this.engine.setDepthWrite(true);
+        this.engine.clear(null, false, true, false);
+      });
+
+      underwaterPass.onApplyObservable.add((effect) => {
+        effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
+      });
       const startTime = new Date();
       underwaterPass.onApply = (effect) => {
         const endTime = new Date();
@@ -401,17 +433,12 @@ export default {
         effect.setVector3('cameraPosition', this.camera.position);
       };
 
-      const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
-
-      const pp = this.loadOceanPP();
-      this.oceanPostProcess = pp;
-
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
       const renderLayer = new BABYLON.PostProcessRenderEffect(
         this.engine,
         'renderLayer',
-        function () { return [renderSceneBase, pp, fxaa]; }//, renderCausticPass, underwaterPass]; }
+        function () { return [renderSceneBase, oceanPP, underwaterPass, fxaa]; }
       );
 
       pipeline.addEffect(renderLayer);
@@ -620,7 +647,7 @@ export default {
 
           // instance version: much slower.
           // const total = positions.length;
-          // for (let i = 0; i < positions.length; i++) {
+          // for (let i = 0; i < total; i++) {
           //   const particle = rocks[0].createInstance('rock' + i);
           //   particle.isPickable = false;
           //   particle.position = positions[i];
@@ -640,6 +667,8 @@ export default {
             m.copyToArray(bufferMatrices, i * 16);
           }
           rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+          const material = this.addToSceneAndCaustic([rocks[1]]);
+          material.backFaceCulling = false; // cause model seems inverted
 
           resolve();
         };

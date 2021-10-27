@@ -10,20 +10,22 @@ uniform vec3 cameraPosition;
 uniform sampler2D textureSampler;
 uniform sampler2D causticTexture;
 uniform sampler2D depthTexture;
+uniform sampler2D oceanDepthTexture;
 
 #define csb(f, con, sat, bri) mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), f*bri)), f*bri, sat), con)
 
 #define TAU 6.28318530718
 #define MAX_ITER 8
 #define BASE_INTEN .005
-#define FOG_DENSITY 2.8 // TODO: review
+#define FOG_DENSITY 2.8
+#define FOG_DISTANCE_CORRECTION 6.0 // move the far plane closer
 #define SEA_BASE_COLOR vec3(0.0, 0.176, 0.333)
 
 float fogFactorExp(
   const float dist,
   const float density
 ) {
-  return 1.0 - clamp(exp(-density * dist), 0.0, 1.0);
+  return 1.0 - clamp(exp2(-density * dist), 0.0, 1.0);
 }
 
 float causticX(float x, float power, float gtime)
@@ -63,10 +65,6 @@ float godRaysCalc(vec2 uv)
 }
 
 void main() {
-  // apply visibility loss with distance
-  vec4 depthVec = texture2D(depthTexture, vUV);
-  float depth = depthVec.r;
-
   // base texture
   vec4 base = texture2D(textureSampler, vUV);
 
@@ -77,10 +75,26 @@ void main() {
     return;
   }
 
+  // apply visibility loss with distance
+  vec4 depthVec = texture2D(depthTexture, vUV);
+  vec4 oceanDepthVec = texture2D(oceanDepthTexture, vUV);
+  float depth = depthVec.r;
+  float oceanDepth = oceanDepthVec.r;
+
+  if (oceanDepth < depth) {
+    gl_FragColor.rgb = vec3(oceanDepth, 0.4, oceanDepth); //color.rgb;
+    gl_FragColor.w = 1.0;
+    return;
+  }
+
   // actual distance from the lens in scene units
   float distance = (cameraMinMaxZ.x + (cameraMinMaxZ.y - cameraMinMaxZ.x)*depth);
   float normalizedDistance = distance / cameraMinMaxZ.y;
-  float fogFactor = clamp(1.1*fogFactorExp(depth, FOG_DENSITY), 0.0, 1.0); // normalized distance
+  float fogFactor = clamp(
+    1.4 * fogFactorExp(normalizedDistance, FOG_DENSITY * FOG_DISTANCE_CORRECTION),
+    0.0,
+    1.0
+  );
 
   // god rays
   vec3 skyColor = SEA_BASE_COLOR;
@@ -100,14 +114,18 @@ void main() {
   // color.rgb = vec3(distance / cameraMinMaxZ.y, distance / cameraMinMaxZ.y, distance / cameraMinMaxZ.y); // normalized depth
   // color.rgb = vec3(fogFactor, fogFactor, fogFactor); // pure fog
   // color.rgb = mix(base.rgb, fogColor, fogFactor); // fog + texture
-  //color.rgb = mix(base.rgb, caustic.rgb, max(depth, 0.1)); // caustics + texture
-  color.rgb = mix(mix(base.rgb, caustic.rgb, caustic.a * 0.5 * depth), fogColor, fogFactor) + godRays; // everything
+  // color.rgb = mix(base.rgb, caustic.rgb, clamp(caustic.a * 0.5 * depth, 0.2, 0.7)); // caustics + texture
+  // color.rgb = mix(
+  //   mix(base.rgb, caustic.rgb, clamp(caustic.a * 0.5 * depth, 0.2, 0.7)),
+  //   fogColor,
+  //   fogFactor
+  // ); // + godRays; // everything
 
-  // color, saturation, brightness
-  color.rgb = csb(color.rgb, 1.1, 1.05, 1.22);
+  // // color, saturation, brightness
+  // color.rgb = csb(color.rgb, 1.1, 1.05, 1.22);
 
-	// Vignette
-	color.rgb = mix(color.rgb, vec3(.0), abs(vUV.x - 0.5)*abs(vUV.y * 2.0 - 1.0));
+	// // Vignette
+	// // color.rgb = mix(color.rgb, vec3(.0), abs(vUV.x - 0.5)*abs(vUV.y * 2.0 - 1.0));
 
   gl_FragColor.rgb = color.rgb;
   gl_FragColor.w = 1.0; //base.w;

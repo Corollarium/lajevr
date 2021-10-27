@@ -39,10 +39,16 @@ const float SEA_CHOPPY = 4.0;
 const float SEA_SPEED = 0.8;
 const float SEA_FREQ = 0.16;
 
-const vec3 SEA_BASE = vec3(0.0, 0.13, 0.25);
-const vec3 SEA_WATER_COLOR = vec3(0.0, 0.13, 0.25);
+const vec3 DARK_BLUE = vec3(0.0, 0.13, 0.25);
+const vec3 LIGHT_BLUE = vec3(0, 0.55, 0.78);
+const vec3 SEA_BASE = DARK_BLUE;
+const vec3 SEA_WATER_COLOR = DARK_BLUE;
+const vec3 SEA_BASE_UNDERWATER = LIGHT_BLUE;
+const vec3 SEA_WATER_COLOR_UNDERWATER = LIGHT_BLUE;
 
 #define SEA_TIME (1.0 + time * SEA_SPEED)
+
+#define csb(f, con, sat, bri) mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), f*bri)), f*bri, sat), con)
 
 const mat2 octave_m = mat2(1.6, 1.2, -1.2, 1.6);
 
@@ -305,7 +311,14 @@ vec3 getSeaColor(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist, bool isUnderwater)
 // l: light (sun) direction
 // eye: ray direction from camera position for this pixel
 // dist: distance from camera to point <p> on ocean surface
-vec3 getSeaColorUnderwater(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist, bool isUnderwater) {
+vec3 getSeaColorUnderwater(
+  vec3 p,
+  vec3 n,
+  vec3 l,
+  vec3 eye,
+  vec3 dist,
+  bool isUnderwater
+) {
   float fresnel = clamp(abs(dot(n, -eye)), 0.0, 1.0);
   fresnel = pow(fresnel, 3.0) * 0.65;
 
@@ -324,42 +337,24 @@ vec3 getSeaColorUnderwater(vec3 p, vec3 n, vec3 l, vec3 eye, vec3 dist, bool isU
 
   // bteitler: refraction effect based on angle between light surface normal
 #ifdef REFRACTION_ENABLED
-  vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+  vec3 refracted = SEA_BASE_UNDERWATER + diffuse(n, l, 80.0) * SEA_WATER_COLOR_UNDERWATER * 0.12;
   refracted += (texture2D(refractionSampler, reflectionUv).rgb * fresnel);
 #else
-  vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
+  vec3 refracted = SEA_BASE_UNDERWATER + diffuse(n, l, 80.0) * SEA_WATER_COLOR_UNDERWATER * 0.12;
 #endif
 
-    // bteitler: blend the refracted color with the reflected color based on our fresnel term
+  // bteitler: blend the refracted color with the reflected color based on our fresnel term
   vec3 color = mix(refracted, reflected, fresnel);
 
-    // bteitler: Apply a distance based attenuation factor which is stronger
-    // at peaks
+  // bteitler: Apply a distance based attenuation factor which is stronger
+  // at peaks
   float atten = max(1.0 - dot(dist, dist) * 0.001, 0.0);
-  color += SEA_WATER_COLOR * (p.y - SEA_HEIGHT) * 0.18 * atten;
+  color += SEA_WATER_COLOR_UNDERWATER * (p.y - SEA_HEIGHT) * 0.18 * atten;
 
     // bteitler: Apply specular highlight
   color += vec3(specular(n, l, eye, 60.0));
 
   return color;
-
-  // const float maxSnellAngleCos = 0.92;
-  // vec3 color = SEA_WATER_COLOR;
-
-  // // snell window.
-  // float angleEyeOceanCos = dot(eye, vec3(0.0, 1.0, 0.0));
-  // if (angleEyeOceanCos > maxSnellAngleCos) {
-  //   vec3 refracted = SEA_BASE + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
-  //   return mix(
-  //     baseColor,
-  //     vec3(1.0, 1.0, 1.0),
-  //     (angleEyeOceanCos - maxSnellAngleCos) / (1.0 - maxSnellAngleCos)
-  //   );
-  //   //  + diffuse(n, l, 80.0) * SEA_WATER_COLOR * 0.12;
-  // }
-  // color += vec3(specular(n, l, eye, 60.0));
-
-  // return color;
 }
 
 
@@ -560,7 +555,6 @@ void main() {
           seaColor * seaColorBrightness,
           transparency
         ) * seaFact * seaColorBrightness;
-
       }
     }
 
@@ -573,6 +567,7 @@ void main() {
   // bteitler: Apply an overall image brightness factor as the final color for this pixel.  Can be
   // tweaked artistically.
   // gl_FragColor = vec4(pow(color, vec3(0.75)), alpha);
+  gl_FragDepth = clamp(distance/600.0, 0.0, 1.0);
   gl_FragColor = vec4(color, alpha);
 #endif
 }

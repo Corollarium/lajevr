@@ -17,7 +17,11 @@
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "dependencies": {
-    "@babylonjs/materials": "^4.2.0",
+    "@babylonjs/core": ">=5.0.0-alpha.58",
+    "@babylonjs/loaders": ">=5.0.0-alpha.58",
+    "@babylonjs/materials": ">=5.0.0-alpha.58",
+    "@babylonjs/serializers": ">=5.0.0-alpha.58",
+    "@babylonjs/viewer": ">=5.0.0-alpha.58",
     "@corollarium/babylon-boids": "^1.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
@@ -25,8 +29,8 @@
     "@fortawesome/vue-fontawesome": "^0.1.7",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "aos": "^2.3.4",
-    "babylonjs": "^4.2.0",
-    "babylonjs-loaders": "^4.2.0",
+    "babylonjs": ">=5.0.0-alpha.58",
+    "babylonjs-loaders": ">=5.0.0-alpha.58",
     "blueprint-css": "^3.0.0-beta.0",
     "bowser": "^2.9.0",
     "easygettext": "^2.17.0",
