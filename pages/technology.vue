@@ -80,6 +80,7 @@
         to its WebGL implementation (and there's a fallback for it), but
         on other browsers the effect was striking.
       </p>
+
       <div class="has-text-center">
         <video style="width: 800px; max-width: 100vw; height: 800px; max-height: 100vh; margin: 0 auto;" muted playsinline controls>
           <source src="~static/videos/technology/scrolllandinglaje-2021-10-20_11.52.18.mp4">
@@ -312,8 +313,39 @@
       </h3>
 
       <p>
-        TODO
+        The idea of having huge schools of fish was an absolute necessity to this project. It's common to see schools
+        with dozens of fish, particularly salemas and sargentinhos (sargeant majors). This meant we'd need not only to
+        render hundreds of fish, but animate them. Both are demanding tasks in WebGL, since the naïve way to render
+        them (unique meshes, individual animations) is CPU heavy and pretty soon your framerate is bordering zero.
       </p>
+
+      <p>
+        BabylonJS has two ways to handle many copies of the same mesh, with thin instances and particles (more about it below).
+        This was used to render thousands of rocks, but the fish animation was still slow. BabylonJS applies bones to
+        the mesh on the CPU. We can pre-bake the animation with Vertex Animation Textures. The idea is to pre-generate all
+        frames and save the transforms to a texture. Then not only you don't have to compute the animation anymore, but you
+        also can use a vertex shader to apply it on the GPU.
+      </p>
+
+      <p>
+        There was no support for VATs in BabylonJS, other than a proof of concept demonstration. We implemented it
+        (with a lot of help from the BabylonJS community -- how awesome and nice the maintainers are!) and it became
+        part of the BabylonJS package. Huge swaths of fish to everyone!
+      </p>
+
+      <figure class="figure-text">
+        <video
+          style="width: 800px; max-width: 100vw; height: 800px; max-height: 100vh; margin: 0 auto;"
+          muted
+          playsinline
+          controls
+          loop
+          autoplay
+        >
+          <source src="~static/videos/vat-fish.mp4">
+        </video>
+        <figcaption>500 fish won't even make a dent to the 60fps framerate.</figcaption>
+      </figure>
 
       <h3>
         Performance issues with WebGL

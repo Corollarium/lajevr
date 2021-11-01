@@ -96,11 +96,12 @@ export default {
       'Camera',
       isNaN(parseFloat(this.initialAlpha)) ? (Math.random() * 6) % (2 * Math.PI) : this.initialAlpha, // alpha
       Math.PI / 2, // beta
-      80, // TODO: radius
+      0.5, // TODO: radius
       new BABYLON.Vector3(0, 0, 0), // target
       this.scene
     );
-
+    this.camera.minZ = 0.0001;
+    this.camera.useFramingBehavior = true;
     this.camera.applyGravity = false;
     this.camera.speed = 0.1;
 
@@ -124,13 +125,18 @@ export default {
     let loaded = false;
     const loader = new BABYLON.AssetsManager(this.scene);
     loader.addMeshTask('box', '', path, filename);
+
     loader.onFinish = (task) => {
       loaded = true;
       let radius = 1;
+      console.log(task);
       for (const o of task[0].loadedMeshes) {
+        window.xxx = o;
         // TODO this.camera.setTarget(task[0].loadedMeshes[1].centerWorld);
+        console.log(JSON.stringify(o.getBoundingInfo().boundingBox));
         if (o) {
           const s = o.getBoundingInfo().boundingBox.extendSize;
+          o.showBoundingBox = true;
           if (radius < s.x / 2.0) {
             radius = s.x / 2.0;
           }
@@ -140,13 +146,16 @@ export default {
           if (radius < s.z / 2.0) {
             radius = s.z / 2.0;
           }
+          console.log(JSON.stringify(s), radius);
+          this.camera.setTarget(o);
         }
       }
       let aspect = this.container.width / this.container.height;
       if (aspect < 1.0) {
         aspect = 1.0 / aspect;
       }
-      this.camera.radius = radius * 2.8 * aspect;
+      // this.camera.radius = radius * 2.8 * aspect;
+      this.scene.debugLayer.show();
     };
     loader.load();
 
@@ -187,33 +196,34 @@ export default {
 .object-embed-3d {
   position: relative;
   cursor: move;
+  width: 100%;
+  height: 100vh;
 
   .object-3d {
     width: 100%;
     height: 100%;
   }
-}
 
-.object-embed-3d:hover .object-embed-icon {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.object-embed-icon {
-  background-image: url('~assets/images/icons/arrows3d.svg');
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
-
-  &:hover {
+  &:hover .object-embed-icon {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+  }
+  .object-embed-icon {
+    background-image: url('~assets/images/icons/arrows3d.svg');
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
   }
 }
 </style>
