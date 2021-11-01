@@ -68,7 +68,10 @@ export default {
    ** Build configuration
    */
   build: {
-    transpile: ['three'],
+    transpile: [
+      'three',
+      '@corollarium/babylon-boids'
+    ],
     postcss: {
       preset: {
         features: {
