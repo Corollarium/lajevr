@@ -25,6 +25,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 export default {
   props: {
@@ -46,11 +47,6 @@ export default {
       type: String,
       required: false,
       default: ''
-    },
-    scale: {
-      type: Number,
-      required: false,
-      default: 150
     }
   },
 
@@ -64,8 +60,8 @@ export default {
   mounted () {
     const container = this.$el;
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, this.scale / 100, this.scale * 100);
-    camera.position.set(0, 0, this.scale);
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1.0 / 100, 1.0 * 100);
+    camera.position.set(0, 0, 1.0);
     camera.lookAt(0, 0, 0);
 
     const scene = new THREE.Scene();
@@ -94,12 +90,15 @@ export default {
     scene.add(directionalLight);
 
     // loading manager
-    const loader = new GLTFLoader();
+    const MANAGER = new THREE.LoadingManager();
+    const loader = new GLTFLoader(MANAGER).setCrossOrigin('anonymous');
 
     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-    const dracoLoader = new DRACOLoader();
+    const dracoLoader = new DRACOLoader(MANAGER);
     dracoLoader.setDecoderPath(this.$router.options.base + 'code/draco/');
-    loader.setDRACOLoader(dracoLoader);
+    console.log(this.$router.options.base + 'code/draco/');
+    // loader.setDRACOLoader(dracoLoader);
+    loader.setMeshoptDecoder(MeshoptDecoder);
 
     let mixer, mesh;
     // Load a glTF resource
@@ -108,8 +107,29 @@ export default {
       this.model,
       // called when the resource is loaded
       function (gltf) {
-        mesh = gltf.scene;
+        mesh = gltf.scene || gltf.scenes[0];
+
         scene.add(mesh);
+
+        const box = new THREE.Box3().setFromObject(mesh);
+        const size = box.getSize(new THREE.Vector3()).length();
+        const center = box.getCenter(new THREE.Vector3());
+
+        const object = mesh;
+        object.position.x += (object.position.x - center.x);
+        object.position.y += (object.position.y - center.y);
+        object.position.z += (object.position.z - center.z);
+        controls.maxDistance = size * 10;
+        camera.near = size / 100;
+        camera.far = size * 100;
+        camera.updateProjectionMatrix();
+
+        camera.position.copy(center);
+        camera.position.x += size / 2.0;
+        camera.position.y += size / 5.0;
+        camera.position.z += size / 2.0;
+        camera.lookAt(center);
+
         mixer = new THREE.AnimationMixer(mesh);
         const action = mixer.clipAction(gltf.animations[0]);
         action.play();
@@ -188,6 +208,11 @@ export default {
     this.renderer.forceContextLoss();
     this.renderer.domElement = null;
     this.renderer = null;
+  },
+  methods: {
+    degToRad (deg) {
+      return deg / 180.0 * Math.PI;
+    }
   }
 };
 </script>
