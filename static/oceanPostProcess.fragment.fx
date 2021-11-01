@@ -17,6 +17,7 @@ uniform sampler2D refractionSampler;
 #endif
 
 uniform float time;
+uniform float fov; // in rads
 uniform vec2 resolution;
 uniform vec3 cameraRotation;
 uniform vec3 cameraPosition;
@@ -478,12 +479,12 @@ void main() {
 
   // bteitler: This is the ray direction we are shooting from the camera location ("ori") that we need to light
   // for this pixel.  The numeric parameter indicates we are using a focal length equal to it.
-  vec3 dir = normalize(vec3(uv.xy, -3.0));
+  vec3 dir = normalize(vec3(uv.xy, -2.0)); // TODO*tan(fov)));
 
   // bteitler: Renormalize the ray direction, and then rotate it based on the previously calculated
   // animation angle "ang".  "fromEuler" just calculates a rotation matrix from a vector of angles.
   // if you remove the " * fromEuler(ang)" part, you will disable the camera rotation animation.
-  dir = normalize(dir) * fromEuler(ang);
+  dir = dir * fromEuler(ang);
 
   // Tracing
   vec3 baseColor = texture2D(textureSampler, vUV).rgb;
@@ -548,7 +549,7 @@ void main() {
         float seaColorBrightness = 1.0;
         // make things brighter on the Snell window
         if (transparency <= cosAngleLimit) {
-          seaColorBrightness = 1.0 + (1.0 - transparency / cosAngleLimit) * 1.3;
+          seaColorBrightness = 1.0 + (1.0 - transparency / cosAngleLimit) * 0.6;
         }
         color = mix(
           baseColor,
@@ -567,6 +568,8 @@ void main() {
   // bteitler: Apply an overall image brightness factor as the final color for this pixel.  Can be
   // tweaked artistically.
   // gl_FragColor = vec4(pow(color, vec3(0.75)), alpha);
+
+  // TODO: /cameraMaxZ,
   gl_FragDepth = clamp(distance/600.0, 0.0, 1.0);
   gl_FragColor = vec4(color, alpha);
 #endif

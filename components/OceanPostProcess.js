@@ -19,7 +19,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
      * @param options optional object following the IOceanPostProcessOptions format used to customize reflection and refraction render targets sizes.
      */
   constructor (name, camera, options = {}) {
-    super(name, './oceanPostProcess', ['time', 'resolution', 'cameraPosition', 'cameraRotation'], ['positionSampler', 'reflectionSampler', 'refractionSampler'], {
+    super(name, './oceanPostProcess', ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation'], ['positionSampler', 'reflectionSampler', 'refractionSampler'], {
       width: options.width || camera.getEngine().getRenderWidth(),
       height: options.height || camera.getEngine().getRenderHeight()
     }, options.isPipeline ? null : camera, BABYLON.Texture.TRILINEAR_SAMPLINGMODE, camera.getEngine(), true);
@@ -57,6 +57,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
         // Rotation
         this._computeCameraRotation(camera);
         effect.setVector3('cameraRotation', this._cameraRotation);
+        effect.setFloat('fov', camera.fov);
         // Samplers
         effect.setTexture('positionSampler', this._geometryRenderer.getGBuffer().textures[2]);
         if (this._reflectionEnabled) {

@@ -29,7 +29,7 @@ import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
-// import Boids from '@corollarium/babylon-boids';
+import BoidsManager from '@corollarium/babylon-boids';
 
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
 const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
@@ -126,7 +126,6 @@ export default {
     this.composer();
 
     // this.loadSky();
-    // this.loadOcean();
     const promises = [];
     promises.push(this.loadTerrain());
     // promises.push(this.loadMantas());
@@ -178,8 +177,6 @@ export default {
       if (this.waterMaterial) {
         this.waterMaterial.setFloat('time', timeElapsed);
         this.waterMaterial.setVector3('cameraPosition', this.camera.position);
-        this.waterMesh.position.x = this.camera.x;
-        this.waterMesh.position.z = this.camera.z;
       }
       this.rttMaterials.forEach(
         (c) => {
@@ -489,39 +486,6 @@ export default {
       skybox.freezeWorldMatrix();
     },
 
-    loadOcean () {
-      const channel2 = new BABYLON.Texture('/textures/sea/channel2.jpg', this.scene);
-      const channel3 = new BABYLON.Texture('/textures/sea/channel3.jpg', this.scene);
-      const waterMaterial = new BABYLON.ShaderMaterial(
-        'water material',
-        this.scene,
-        'sea2',
-        {
-          attributes: ['position', 'normal', 'uv'],
-          uniforms: [
-            'world', 'worldView', 'worldViewProjection', 'view', 'projection',
-            'time', 'color', 'channel2', 'channel3', 'cameraPosition'
-          ]
-        }
-      );
-      waterMaterial.setColor3('waterColor', this.scene.clearColor);
-      waterMaterial.setFloat('time', 0);
-      waterMaterial.setVector3('cameraPosition', this.camera.position);
-      waterMaterial.setTexture('channel2', channel2);
-      waterMaterial.setTexture('channel3', channel3);
-      waterMaterial.backFaceCulling = false;
-      waterMaterial.freeze();
-
-      this.waterMesh = BABYLON.Mesh.CreateGround('waterMesh', 128, 128, 16, this.scene, false);
-      // this.waterMesh = BABYLON.Mesh.CreatePlane('waterMesh', { width: 32, height: 32, updatable: false, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, this.scene);
-      this.waterMesh.flipFaces();
-      this.waterMesh.material = this.waterMaterial = waterMaterial;
-
-      const c = this.getCausticBlackMaterial();
-      this.waterMesh.rttMaterial = c;
-      this.renderTargetCaustic.renderList.push(this.waterMesh);
-    },
-
     /**
      * Slow version of RTT exchange material but easier to debug
      */
@@ -761,58 +725,96 @@ export default {
       return p;
     },
 
-    loadFishFlock (modelpath, modelfile, total) {
-      /*
-      const boids = new Boids(total, new BABYLON.Vector3(0.0, 10.0, 0.0), 10.0);
-      boids.cohesion = 0.05;
-      boids.separationMinDistance = 10.0;
-      const models = [];
+    /**
+     *
+     */
+    loadFlock (modelpath, modelfile, total, initialCenterPosition, withCaustic = false) {
+      // eslint-disable-next-line no-undef
+      const boidsManager = new BoidsManager(
+        total,
+        initialCenterPosition,
+        10.0,
+        20.0
+      );
+      boidsManager.cohesion = 0.05;
+      boidsManager.separationMinDistance = 1.0;
+      boidsManager.maxSpeed = 0.2;
+
+      let mesh = null;
+      const bufferMatrices = new Float32Array(16 * total);
+
       const p = new Promise((resolve, reject) => {
-        BABYLON.SceneLoader.LoadAssetContainer(
-          modelpath, modelfile, this.scene,
-          (container) => {
-            container.addAllToScene();
-            const c = this.getCausticMaterial();
-
-            container.meshes.forEach((mesh) => {
-              mesh.position.y = 10;
-              mesh.setEnabled(false);
-              if (mesh.material) {
-                mesh.material.freeze();
-              }
-              mesh.rttMaterial = c;
-              this.renderTargetCaustic.renderList.push(mesh);
-            });
-
-            for (let i = 0; i < total; i++) {
-              const entries = container.instantiateModelsToScene(p => 'fish' + p + i);
-              for (const node of entries.rootNodes) {
-                node.position.x += (i + 1) * 10;
-              }
-              entries.bird = boids.birds[i];
-              models.push(entries);
-            }
-            resolve();
+        this.assetsManager.addMeshTask('tartaruga', null, this.base + modelpath, modelfile).onSuccess = (task) => {
+          const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
+          if (task.loadedMeshes.length !== 0) {
+            throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
           }
-        );
+
+          mesh = task.loadedMeshes[0];
+          mesh.position = initialCenterPosition;
+          for (const a in mesh.animationGroups) {
+            a.start(true);
+          }
+
+          if (causticMaterial) {
+            mesh.rttMaterial = causticMaterial;
+            this.renderTargetCaustic.renderList.push(mesh);
+          }
+          if (mesh.material) {
+            mesh.material.freeze();
+          }
+
+          mesh.alwaysSelectAsActiveMesh = true;
+          mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+          mesh.convertToUnIndexedMesh();
+          mesh.freezeNormals();
+          mesh.freezeWorldMatrix();
+
+          // thin instance version
+          const bufferMatrices = new Float32Array(16 * total);
+          for (let i = 0; i < total; i++) {
+            const m = BABYLON.Matrix.Compose(
+              new BABYLON.Vector3(1.0, 1.0, 1.0),
+              new BABYLON.Quaternion(1.0, 0, 0, 0),
+              initialCenterPosition + new BABYLON.Vector3(this.random(-1, 1), this.random(-1, 1), this.random(-1, 1))
+            );
+            m.copyToArray(bufferMatrices, i * 16);
+          }
+          // TODO: baked vat
+          mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+          // freeze all active meshes disables animation, so prepare the skeleton.
+          // this.scene.onBeforeRenderObservable.add(() => {
+          //   task.loadedSkeletons.forEach(skeleton => skeleton.prepare());
+          // });
+
+          resolve();
+        };
       });
+
       return {
-        models,
-        boids,
+        models: [mesh],
+        boidsManager,
         promise: p,
-        update: ((_boids, _models) => {
+        update: ((_boids, _models, total) => {
           return (deltaTime) => {
             _boids.update(deltaTime);
-            _models.forEach((m) => {
-              for (const node of m.rootNodes) {
-                node.position.copyFrom(m.bird.position);
-                // node.setDirection(m.bird.velocity);
-              }
-            });
+            for (let i = 0; i < total; i++) {
+              const matrix = BABYLON.Matrix.Compose(
+                boidsManager.boid.position,
+                new BABYLON.Quaternion(
+                  boidsManager.boid.velocity.x,
+                  boidsManager.boid.velocity.y,
+                  boidsManager.boid.velocity.z,
+                  0.0
+                ),
+                initialCenterPosition
+              );
+              matrix.copyToArray(bufferMatrices, i * 16);
+            }
+            mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
           };
-        })(boids, models)
+        })(boidsManager, mesh, total)
       };
-      */
     },
 
     loadMantas (total = 2) {
@@ -852,6 +854,10 @@ export default {
         resolve();
       });
       return p;
+    },
+
+    random (min, max) {
+      return Math.random() * (max - min) + min;
     },
 
     clamp (t, min, max) {
