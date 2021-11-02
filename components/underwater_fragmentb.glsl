@@ -7,10 +7,12 @@ uniform vec3 fogColor;
 uniform vec2 cameraMinMaxZ;
 uniform vec3 cameraPosition;
 
-uniform sampler2D textureSampler;
-uniform sampler2D causticTexture;
-uniform sampler2D depthTexture;
-uniform sampler2D oceanDepthTexture;
+uniform sampler2D textureSampler; // rendered buffer
+uniform sampler2D causticTexture; // multipass caustic texture
+uniform sampler2D depthTexture; // z-depth map for rendered buffer
+uniform sampler2D oceanDepthTexture; // z-depth map for ocean pass
+uniform sampler2D skyTexture; // the spherical sky texture
+
 
 #define csb(f, con, sat, bri) mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), f*bri)), f*bri, sat), con)
 
@@ -68,6 +70,9 @@ void main() {
   // base texture
   vec4 base = texture2D(textureSampler, vUV);
 
+  vec4 depthVec = texture2D(depthTexture, vUV);
+  float Zdepth = depthVec.r;
+
   // no effect above water
   if (cameraPosition.y >= 0.0) {
     gl_FragColor.rgb = base.rgb;
@@ -76,13 +81,11 @@ void main() {
   }
 
   // apply visibility loss with distance
-  vec4 depthVec = texture2D(depthTexture, vUV);
   vec4 oceanDepthVec = texture2D(oceanDepthTexture, vUV);
-  float Zdepth = depthVec.r;
   float oceanZDepth = oceanDepthVec.r;
 
   vec4 color;
-  if (oceanZDepth < Zdepth) {
+  if (oceanZDepth < Zdepth && oceanZDepth != 1.0) {
     // if we have no fog, this smoothing of the horizon is required.
 
     // const float MAX_Z_SMOOTH = 0.6;

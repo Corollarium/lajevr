@@ -238,7 +238,7 @@ export default {
       this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
-      this.scene.clearColor = new BABYLON.Color3(0, 0.55, 0.85); // new BABYLON.Color3(0.0, 0.0, 0.0); // FromHexString('#2963CF');
+      this.scene.clearColor = new BABYLON.Color3(0, 0, 0); // 0, 0.5, 0.85); // new BABYLON.Color3(0.0, 0.0, 0.0); // FromHexString('#2963CF');
       // // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
       // this.scene.fogDensity = 0.5;
       // this.scene.fogColor = new BABYLON.Color3(0, 0.55, 0.65);
@@ -247,7 +247,7 @@ export default {
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
         // new BABYLON.Vector3(-16.12, 1.0, 28),
-        new BABYLON.Vector3(-14.12, -28.2, 27.19),
+        new BABYLON.Vector3(-14.12, -5.2, 27.19),
         this.scene
       );
       this.camera.applyGravity = false;
@@ -274,7 +274,7 @@ export default {
       // near/far
       this.camera.minZ = 0.1;
       this.camera.maxZ = 700.0;
-      this.camera.setTarget(new BABYLON.Vector3(-15.2, 0.36, 27.62));
+      this.camera.setTarget(new BABYLON.Vector3(-16.12, 5.2, 27.19));
       this.camera.attachControl(container, true);
 
       // Enable Collisions
@@ -370,6 +370,8 @@ export default {
       const depthPass = this.scene.enableDepthRenderer();
 
       const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
+      renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
+      // renderSceneBase.alphaMode = BABYLON.Engine.ALPHA_COMBINE;
 
       this.renderTargetCaustic = new BABYLON.RenderTargetTexture('caustic', 1024, this.scene);
       this.scene.customRenderTargets.push(this.renderTargetCaustic);
@@ -385,6 +387,7 @@ export default {
           'time'
         ],
         [
+          'skyTexture',
           'depthTexture',
           'causticTexture',
           'oceanDepthTexture'
@@ -418,15 +421,18 @@ export default {
       underwaterPass.onApplyObservable.add((effect) => {
         effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
       });
+      const skyTexture = new BABYLON.Texture(this.base + 'textures/green-hills-over-town.jpg', this.scene);
+      oceanPP.skyTexture = skyTexture;
       const startTime = new Date();
       underwaterPass.onApply = (effect) => {
         const endTime = new Date();
         const timeDiff = (endTime - startTime) / 1000.0; // in s
-        effect.setColor3('fogColor', this.scene.clearColor);
+        effect.setColor3('fogColor', new BABYLON.Color3(0, 0.5, 0.85));
         effect.setFloat2('cameraMinMaxZ', this.camera.minZ, this.camera.maxZ);
         effect.setFloat('time', timeDiff);
         effect.setTexture('causticTexture', this.renderTargetCaustic);
         effect.setTexture('depthTexture', depthPass.getDepthMap());
+        effect.setTexture('skyTexture', skyTexture);
         effect.setVector3('cameraPosition', this.camera.position);
       };
 

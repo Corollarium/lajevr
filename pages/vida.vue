@@ -234,19 +234,17 @@
           </figure>
         </template>
 
-        <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
-          <p>
-            <i18n>
-              A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a 100 metros de profundidade, e na Laje de Santos são vistas nas estações primavera e verão, utilizando a região para descanso no período reprodutivo.
-            </i18n>
-          </p>
+        <p>
+          <i18n>
+            A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a 100 metros de profundidade, e na Laje de Santos são vistas nas estações primavera e verão, utilizando a região para descanso no período reprodutivo.
+          </i18n>
+        </p>
 
-          <p>
-            <i18n>
-              Como a maioria das raias, elas também possuem o comportamento de se camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina camada de sedimentos para se protegerem de possíveis predadores. Todos os anos as encontramos e geralmente as fêmeas estão grávidas, o que é possível saber por ficarem com o dorso proeminente.
-            </i18n>
-          </p>
-        </div>
+        <p>
+          <i18n>
+            Como a maioria das raias, elas também possuem o comportamento de se camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina camada de sedimentos para se protegerem de possíveis predadores. Todos os anos as encontramos e geralmente as fêmeas estão grávidas, o que é possível saber por ficarem com o dorso proeminente.
+          </i18n>
+        </p>
 
         <template v-slot:footer>
           <figure class="figure-text">

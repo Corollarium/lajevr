@@ -19,15 +19,26 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
      * @param options optional object following the IOceanPostProcessOptions format used to customize reflection and refraction render targets sizes.
      */
   constructor (name, camera, options = {}) {
-    super(name, './oceanPostProcess', ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation'], ['positionSampler', 'reflectionSampler', 'refractionSampler'], {
-      width: options.width || camera.getEngine().getRenderWidth(),
-      height: options.height || camera.getEngine().getRenderHeight()
-    }, options.isPipeline ? null : camera, BABYLON.Texture.TRILINEAR_SAMPLINGMODE, camera.getEngine(), true);
+    super(
+      name,
+      './oceanPostProcess',
+      ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation'],
+      ['positionSampler', 'reflectionSampler', 'refractionSampler', 'skyTexture'],
+      {
+        width: options.width || camera.getEngine().getRenderWidth(),
+        height: options.height || camera.getEngine().getRenderHeight()
+      },
+      options.isPipeline ? null : camera,
+      BABYLON.Texture.TRILINEAR_SAMPLINGMODE,
+      camera.getEngine(),
+      true
+    );
     this._time = 0;
     this._cameraRotation = BABYLON.Vector3.Zero();
     this._cameraViewMatrix = BABYLON.Matrix.Identity();
     this._reflectionEnabled = false;
     this._refractionEnabled = false;
+    this._skyTexture = null;
     // Get geometry shader
     this._geometryRenderer = camera.getScene().enableGeometryBufferRenderer(1.0);
     if (this._geometryRenderer && this._geometryRenderer.isSupported) {
@@ -65,6 +76,9 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
         }
         if (this._refractionEnabled) {
           effect.setTexture('refractionSampler', this.refractionTexture);
+        }
+        if (this._skyTexture) {
+          effect.setTexture('skyTexture', this._skyTexture);
         }
       }
     };
@@ -123,6 +137,10 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
       customRenderTargets.push(this.refractionTexture);
     }
   }
+  set skyTexture (texture) {
+    this._skyTexture = texture;
+    this.updateEffect(this._getDefines());
+  }
   /**
      * Gets wether or not the post-processes is supported by the running hardware.
      * This requires draw buffer supports.
@@ -140,6 +158,9 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
     }
     if (this._refractionEnabled) {
       defines.push('#define REFRACTION_ENABLED');
+    }
+    if (this._skyTexture) {
+      defines.push('#define SKY_ENABLED');
     }
     return defines.join('\n');
   }

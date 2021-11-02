@@ -22,7 +22,7 @@
 
     <slot name="header" />
 
-    <div class="life-block" bp="grid container">
+    <div v-if="this.$slots.default" class="life-block" bp="grid container">
       <div class="text-block-b" bp="12 6@md">
         <slot />
       </div>
