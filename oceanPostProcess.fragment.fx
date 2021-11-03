@@ -1,6 +1,9 @@
 /*
  * "Seascape" by Alexander Alekseev aka TDM - 2014
  * Babylon.js integration by luaacro https://twitter.com/Luaacro
+ * Comments by bteitler https://github.com/eshnil2000/SeascapeGPUShader
+ * Modified for underwater simulation and other changes by https://github.com/brunobg
+ *
  * License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  * Contact: tdmaav@gmail.com
  */
@@ -14,6 +17,9 @@ uniform sampler2D reflectionSampler;
 #endif
 #ifdef REFRACTION_ENABLED
 uniform sampler2D refractionSampler;
+#endif
+#ifdef SKY_ENABLED
+uniform sampler2D skyTexture; // the spherical sky texture
 #endif
 
 uniform float time;
@@ -455,6 +461,18 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
   return tmid; //  * sign(ori.y);
 }
 
+vec3 skyColor(vec3 dir) {
+#ifdef SKY_ENABLED
+  vec2 sphericalCoordinates = vec2(
+    atan(-dir.x, dir.z) / (2.0 * PI) + 0.5,
+    1.0 - acos(dir.y) / PI
+  );
+  return texture2D(skyTexture, sphericalCoordinates).rgb;
+#else
+  return vec3(0.0, 0.0, 0.0);
+#endif
+}
+
 // Main
 void main() {
 #ifdef NOT_SUPPORTED
@@ -479,7 +497,7 @@ void main() {
 
   // bteitler: This is the ray direction we are shooting from the camera location ("ori") that we need to light
   // for this pixel.  The numeric parameter indicates we are using a focal length equal to it.
-  vec3 dir = normalize(vec3(uv.xy, -2.0)); // TODO*tan(fov)));
+  vec3 dir = normalize(vec3(uv.xy, -2.5)); // TODO*tan(fov)));
 
   // bteitler: Renormalize the ray direction, and then rotate it based on the previously calculated
   // animation angle "ang".  "fromEuler" just calculates a rotation matrix from a vector of angles.
@@ -487,7 +505,7 @@ void main() {
   dir = dir * fromEuler(ang);
 
   // Tracing
-  vec3 baseColor = texture2D(textureSampler, vUV).rgb;
+  vec4 baseColor = texture2D(textureSampler, vUV);
   float alpha = 1.0;
 
   // bteitler: ray-march to the ocean surface (which can be thought of as a randomly generated height map)
@@ -502,9 +520,22 @@ void main() {
     distance = heightMapTracing(ori * vec3(1.0, -1.0, 1.0), dir * vec3(1.0, -1.0, 1.0), p);
     p.y = -p.y;
   }
-  vec3 color = baseColor;
-  if (distance >= MAXIMUM_MARCH_DISTANCE || distance <= -MAXIMUM_MARCH_DISTANCE) {
+  float normalizedDistance = clamp(distance/600.0, 0.0, 1.0);
+  vec3 color = baseColor.rgb;
+  if (distance >= MAXIMUM_MARCH_DISTANCE && !isUnderwater) {
     // ray definitely escaped
+    #ifdef SKY_ENABLED
+    if (color.r == 0.0 && color.g == 0.0 && color.b == 0.0) {
+      color = skyColor(dir);
+      normalizedDistance = 1.0;
+    } else if (baseColor.w != 1.0) {
+      color.rgb = mix(baseColor.rgb, skyColor(dir), 1.0 - baseColor.w);
+      normalizedDistance = 1.0;
+    }
+    #endif
+  }
+  else if (distance <= -MAXIMUM_MARCH_DISTANCE) {
+    // nothing
   }
   else {
     // bteitler: distance vector to ocean surface for this pixel's ray
@@ -532,7 +563,7 @@ void main() {
       // which contains a realistic lighting model.  This is basically doing a fog calculation: weighing more the sky color
       // in the distance in an exponential manner.
       color = mix(
-        baseColor,
+        baseColor.rgb,
         getSeaColor(p, normalAtOcean, light, dir, dist, isUnderwater),
         pow(smoothstep(0.0, -0.05, dir.y), 0.3)
       ) * seaFact;
@@ -542,25 +573,39 @@ void main() {
         vec3 normDist = normalize(dist);
         // underwater. Mix rendered color with the outside, so sky is visible.
         // Transparency mimics Snell's window with a fake function that looks good.
-        const float cosAngleLimit = 0.8;
+        const float cosAngleLimit = 0.67; // cos(97.0 deg / 2.0);
         // transparency is normalized.
         float transparency = smoothstep(1.0, cosAngleLimit, abs(normDist.y));
         vec3 seaColor = getSeaColorUnderwater(p, normalAtOcean, light * vec3(1.0, -1.0, 0.0), dir, dist, isUnderwater);
+
+        // handle extra brightness
         float seaColorBrightness = 1.0;
         // make things brighter on the Snell window
         if (transparency <= cosAngleLimit) {
-          seaColorBrightness = 1.0 + (1.0 - transparency / cosAngleLimit) * 0.6;
+          // seaColorBrightness = 1.0 + (transparency / cosAngleLimit) * 0.1;
+          // TODO alpha = transparency
         }
         color = mix(
-          baseColor,
+          // get the outside color (sky/terrain)
+          mix(
+            // the original color
+            color.rgb, // TODO: this should be refracted too
+            // and the sky color, refracted
+            skyColor(refract(dir, -normalAtOcean, 1.5)),
+            // proportional to the base color
+            1.0 - baseColor.w
+          ),
+          // and mix it with the seaColor
           seaColor * seaColorBrightness,
+          // proportional to a transparency factor
           transparency
+          // and apply some brightness
         ) * seaFact * seaColorBrightness;
       }
     }
 
     if (ori.y > 0.0) {
-      color = mix(color, baseColor * SEA_BASE + diffuse(normalAtOcean, normalAtOcean, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
+      color = mix(color, baseColor.rgb * SEA_BASE + diffuse(normalAtOcean, normalAtOcean, 80.0) * SEA_WATER_COLOR * 0.12, 1.0 - seaFact);
     }
   }
 
@@ -570,7 +615,7 @@ void main() {
   // gl_FragColor = vec4(pow(color, vec3(0.75)), alpha);
 
   // TODO: /cameraMaxZ,
-  gl_FragDepth = clamp(distance/600.0, 0.0, 1.0);
+  gl_FragDepth = normalizedDistance;
   gl_FragColor = vec4(color, alpha);
 #endif
 }

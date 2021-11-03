@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright 2010-2021 Three.js Authors
+ * SPDX-License-Identifier: MIT
+ */
+
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -28,14 +35,6 @@ PERFORMANCE OF THIS SOFTWARE.
 
 
 /*! nouislider - 14.1.1 - 12/15/2019 */
-
-
-/**
- * @license
- * Copyright 2010-2021 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
-
 
 THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
 REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
