@@ -128,6 +128,7 @@ export default {
     // this.loadSky();
     const promises = [];
     promises.push(this.loadTerrain());
+    promises.push(this.loadBoat());
     // promises.push(this.loadMantas());
     // promises.push(this.loadTurtle());
     // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
@@ -288,7 +289,7 @@ export default {
 
       this.assetsManager = new BABYLON.AssetsManager(this.scene);
       this.assetsManager.onTaskErrorObservable.add(function (task) {
-        console.error('task failed', task.errorObject.message, task.errorObject.exception);
+        console.error('task failed', task.name, task.errorObject.message, task.errorObject.exception);
       });
     },
 
@@ -591,15 +592,15 @@ export default {
         const positions = [];
         const rotations = [];
         const scalings = [];
-        let firstLoaded = false;
+        let bufferMatrices = null;
+        let terrainLoaded = false;
 
         const processRocks = () => {
-          if (!firstLoaded) {
-            firstLoaded = true;
+          if (!bufferMatrices || !terrainLoaded || !rocks.length) {
             return;
           }
 
-          const box = BABYLON.BoxBuilder.CreateBox('root', { size: 1 });
+          // const box = BABYLON.BoxBuilder.CreateBox('root', { size: 1 });
 
           // babylon has three modes to clone meshes, SPS, instance and thin instances.
           // all three are implemented below, but they have very different performances.
@@ -626,16 +627,18 @@ export default {
           // }
 
           // thin instance version
-          const total = positions.length;
-          const bufferMatrices = new Float32Array(16 * total);
-          for (let i = 0; i < positions.length; i++) {
-            const m = BABYLON.Matrix.Compose(
-              scalings[i],
-              rotations[i],
-              positions[i]
-            );
-            m.copyToArray(bufferMatrices, i * 16);
-          }
+          // const total = positions.length;
+          // bufferMatrices = new Float32Array(16 * total);
+          // for (let i = 0; i < positions.length; i++) {
+          //   const m = BABYLON.Matrix.Compose(
+          //     scalings[i],
+          //     rotations[i],
+          //     positions[i]
+          //   );
+          //   m.copyToArray(bufferMatrices, i * 16);
+          // }
+          // to serialize this to base64: BABYLON.EncodeArrayBufferToBase64(bufferMatrices);
+
           rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
           const material = this.addToSceneAndCaustic([rocks[1]]);
           material.backFaceCulling = false; // cause model seems inverted
@@ -643,8 +646,9 @@ export default {
           resolve();
         };
 
-        // load the rocks.
+        // load the rocks
         this.assetsManager.addMeshTask('rocks', null, this.base + 'models/ilha/', 'rocks.glb').onSuccess = (task) => {
+          console.log('rocks glb start');
           task.loadedMeshes.forEach((mesh) => {
             if (mesh.name === 'rockLow1' || mesh.name === 'rockLow1.001' || mesh.name === 'rockLow1.002') {
               // store the first rock model.
@@ -656,17 +660,24 @@ export default {
               rocks.push(mesh);
             }
           });
+          console.log('rocks glb end');
+          processRocks();
+        };
+
+        // load the rock positions
+        this.assetsManager.addTextFileTask('rocksMatrices', this.base + 'models/ilha/rocks.base64').onSuccess = (task) => {
+          bufferMatrices = new Float32Array(BABYLON.DecodeBase64ToBinary(task.text));
           processRocks();
         };
 
         // load the terrain and rock positions.
-        this.assetsManager.addMeshTask('terrain', null, this.base + 'models/ilha/', 'ilha.glb').onSuccess = (task) => {
+        this.assetsManager.addMeshTask('terrain', null, this.base + 'models/ilha/', 'ilha03.glb').onSuccess = (task) => {
           const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
 
           // get the rocks, man. the rocks.
           task.loadedMeshes.forEach((mesh) => {
             if (mesh.name.includes('rock')) {
-              // store information
+              // store information from rocks
               mesh.computeWorldMatrix();
               positions.push(mesh.getAbsolutePivotPoint());
               rotations.push(mesh.rotationQuaternion);
@@ -688,9 +699,11 @@ export default {
             }
             actualLoaded.push(mesh);
           });
+          // to generate the
 
           const material = this.addToSceneAndCaustic(actualLoaded);
           material.backFaceCulling = false; // cause model seems inverted
+          terrainLoaded = true;
           processRocks();
         };
       });
@@ -698,7 +711,25 @@ export default {
     },
 
     loadBoat () {
-
+      const p = new Promise((resolve, reject) => {
+        this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'barcoMoreia.glb').onSuccess = (task) => {
+          console.log(task);
+          for (const mesh of task.loadedMeshes) {
+            mesh.position = new BABYLON.Vector3(-14.12, -15.2, 27.19);
+            if (mesh.material) {
+              mesh.material.freeze();
+            }
+            mesh.alwaysSelectAsActiveMesh = true;
+            mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+            // mesh.convertToUnIndexedMesh();
+            mesh.freezeNormals();
+            mesh.freezeWorldMatrix();
+            this.addToSceneAndCaustic([mesh]);
+          }
+          resolve();
+        };
+      });
+      return p;
     },
 
     loadTurtle () {
