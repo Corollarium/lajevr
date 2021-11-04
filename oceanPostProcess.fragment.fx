@@ -463,10 +463,14 @@ float heightMapTracing(vec3 ori, vec3 dir, out vec3 p) {
 
 vec3 skyColor(vec3 dir) {
 #ifdef SKY_ENABLED
+  bool halfSky = true;
   vec2 sphericalCoordinates = vec2(
     atan(-dir.x, dir.z) / (2.0 * PI) + 0.5,
-    1.0 - acos(dir.y) / PI
+    acos(dir.y) / PI
   );
+  if (halfSky) {
+    sphericalCoordinates.y = abs((sphericalCoordinates.y - 0.5) * 2.0);
+  }
   return texture2D(skyTexture, sphericalCoordinates).rgb;
 #else
   return vec3(0.0, 0.0, 0.0);
