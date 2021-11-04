@@ -235,7 +235,7 @@ export default {
       this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
-      this.scene.clearColor = new BABYLON.Color3(0, 0, 0); // 0, 0.5, 0.85); // new BABYLON.Color3(0.0, 0.0, 0.0); // FromHexString('#2963CF');
+      this.scene.clearColor = new BABYLON.Color3(0, 0.5, 0.85);
       // // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
       // this.scene.fogDensity = 0.5;
       // this.scene.fogColor = new BABYLON.Color3(0, 0.55, 0.65);
@@ -432,7 +432,7 @@ export default {
         effect.setTexture('causticTexture', this.renderTargetCaustic);
         effect.setTexture('depthTexture', depthPass.getDepthMap());
         effect.setTexture('skyTexture', skyTexture);
-        effect.setVector3('cameraPosition', this.camera.position);
+        effect.setVector3('cameraPosition', this.camera.position * 5.0); // scale so water is in meters
       };
 
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);

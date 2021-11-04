@@ -27,6 +27,7 @@ uniform float fov; // in rads
 uniform vec2 resolution;
 uniform vec3 cameraRotation;
 uniform vec3 cameraPosition;
+uniform float worldScale;
 
 // Varyings
 varying vec2 vUV;
@@ -46,8 +47,8 @@ const float SEA_CHOPPY = 4.0;
 const float SEA_SPEED = 0.8;
 const float SEA_FREQ = 0.16;
 
-const vec3 DARK_BLUE = vec3(0.0, 0.13, 0.25);
-const vec3 LIGHT_BLUE = vec3(0, 0.55, 0.78);
+const vec3 DARK_BLUE = vec3(.0, 0.13, 0.25);
+const vec3 LIGHT_BLUE = vec3(0.0, 0.55, 0.78);
 const vec3 SEA_BASE = DARK_BLUE;
 const vec3 SEA_WATER_COLOR = DARK_BLUE;
 const vec3 SEA_BASE_UNDERWATER = LIGHT_BLUE;
@@ -497,7 +498,7 @@ void main() {
   // This will be used to drive where the user is looking in world space.
   vec3 ang = vec3(cameraRotation.z, cameraRotation.x, cameraRotation.y);
   // bteitler: Calculate the "origin" of the camera in world space.
-  vec3 ori = vec3(cameraPosition.x, cameraPosition.y, -cameraPosition.z);
+  vec3 ori = vec3(cameraPosition.x, cameraPosition.y, -cameraPosition.z) * worldScale;
 
   // bteitler: This is the ray direction we are shooting from the camera location ("ori") that we need to light
   // for this pixel.  The numeric parameter indicates we are using a focal length equal to it.
