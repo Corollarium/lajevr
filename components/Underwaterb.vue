@@ -33,9 +33,6 @@ import BoidsManager from '@corollarium/babylon-boids';
 
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
 const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
-const sea_fragment = require('!!raw-loader!./sea_fragment.glsl');
-const sea2_fragment = require('!!raw-loader!./sea2_fragment.glsl');
-const sea_vertex = require('!!raw-loader!./sea_vertex.glsl');
 const caustic_fragment = require('!!raw-loader!./caustic_fragmentb.glsl');
 const causticblack_fragment = require('!!raw-loader!./causticblack_fragmentb.glsl');
 const caustic_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
@@ -157,7 +154,6 @@ export default {
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
-        // this.scene.fogMode = (isUnderwater ? BABYLON.Scene.FOGMODE_EXP : BABYLON.Scene.FOGMODE_NONE);
       }
       this.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
       this.time = timeElapsed;
@@ -248,7 +244,7 @@ export default {
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
         // new BABYLON.Vector3(-16.12, 1.0, 28),
-        new BABYLON.Vector3(-14.12, -5.2, 27.19),
+        new BABYLON.Vector3(-14.12, 25.2, 27.19),
         this.scene
       );
       this.camera.applyGravity = false;
@@ -356,11 +352,6 @@ export default {
         }
       );
       this.causticBlackMaterial.freeze();
-
-      BABYLON.Effect.ShadersStore.seaVertexShader = sea_vertex.default;
-      BABYLON.Effect.ShadersStore.seaFragmentShader = sea_fragment.default;
-      BABYLON.Effect.ShadersStore.sea2VertexShader = sea_vertex.default;
-      BABYLON.Effect.ShadersStore.sea2FragmentShader = sea2_fragment.default;
     },
 
     composer () {
@@ -422,8 +413,15 @@ export default {
       underwaterPass.onApplyObservable.add((effect) => {
         effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
       });
-      const skyTexture = new BABYLON.Texture(this.base + 'textures/green-hills-over-town.jpg', this.scene);
-      oceanPP.skyTexture = skyTexture;
+      const skyTexture = new BABYLON.Texture(
+        this.base + 'textures/half_kloofendal_48d_partly_cloudy_4k.jpg',
+        this.scene,
+        false,
+        true, // invert y
+        BABYLON.Texture.NEAREST_NEAREST
+      );
+      this.oceanPostProcess.skyTexture = skyTexture;
+
       const startTime = new Date();
       underwaterPass.onApply = (effect) => {
         const endTime = new Date();
