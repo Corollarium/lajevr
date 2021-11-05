@@ -58,7 +58,6 @@ export default {
       renderTargetCaustic: null,
       causticMaterial: null,
       causticBlackMaterial: null,
-      waterMaterial: null,
       rttMaterials: [],
 
       mantas: [],
@@ -123,11 +122,13 @@ export default {
     this.composer();
 
     // this.loadSky();
-    const promises = [];
-    promises.push(this.loadTerrain());
-    promises.push(this.loadBoat());
-    // promises.push(this.loadMantas());
-    // promises.push(this.loadTurtle());
+    const promises = [
+      this.loadTerrain(),
+      this.loadMoreiaBarco(),
+      this.loadDiverBoat()
+      // this.loadMantas(),
+      // this.loadTurtle(),
+    ];
     // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
     // promises.push(fish.promise);
     Promise.all(promises).then(() => {
@@ -170,10 +171,6 @@ export default {
       // update shaders
       if (this.causticMaterial) {
         this.causticMaterial.setFloat('time', timeElapsed);
-      }
-      if (this.waterMaterial) {
-        this.waterMaterial.setFloat('time', timeElapsed);
-        this.waterMaterial.setVector3('cameraPosition', this.camera.position);
       }
       this.rttMaterials.forEach(
         (c) => {
@@ -235,10 +232,7 @@ export default {
       this.engine = new BABYLON.Engine(container, true);
       this.engine.loadingUIText = 'Mergulho na Laje de Santos';
       this.scene = new BABYLON.Scene(this.engine);
-      this.scene.clearColor = new BABYLON.Color3(0, 0.5, 0.85);
-      // // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-      // this.scene.fogDensity = 0.5;
-      // this.scene.fogColor = new BABYLON.Color3(0, 0.55, 0.65);
+      this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
@@ -395,6 +389,7 @@ export default {
       const oceanPP = this.loadOceanPP();
       this.oceanPostProcess = oceanPP;
       this.oceanPostProcess.autoClear = false;
+      this.oceanPostProcess.worldScale = 0.2;
 
       let firstOceanPPCall = true;
       let oceanDepthTexture = null;
@@ -432,7 +427,7 @@ export default {
         effect.setTexture('causticTexture', this.renderTargetCaustic);
         effect.setTexture('depthTexture', depthPass.getDepthMap());
         effect.setTexture('skyTexture', skyTexture);
-        effect.setVector3('cameraPosition', this.camera.position * 5.0); // scale so water is in meters
+        effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
       };
 
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
@@ -708,7 +703,7 @@ export default {
       return p;
     },
 
-    loadBoat () {
+    loadMoreiaBarco () {
       const p = new Promise((resolve, reject) => {
         this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'barcoMoreia.glb').onSuccess = (task) => {
           console.log(task);
@@ -724,6 +719,25 @@ export default {
             mesh.freezeWorldMatrix();
             this.addToSceneAndCaustic([mesh]);
           }
+          resolve();
+        };
+      });
+      return p;
+    },
+
+    loadDiverBoat () {
+      const p = new Promise((resolve, reject) => {
+        this.assetsManager.addMeshTask('diver_with_boat', null, this.base + 'models/', 'diver_with_boat.glb').onSuccess = (task) => {
+          for (const mesh of task.loadedMeshes) {
+            mesh.position = new BABYLON.Vector3(-14.12, 0.5, 27.19);
+            if (mesh.material) {
+              mesh.material.freeze();
+            }
+            mesh.alwaysSelectAsActiveMesh = true;
+            // mesh.convertToUnIndexedMesh();
+            // mesh.freezeNormals();
+          }
+          // TODO this.addToSceneAndCaustic([]);
           resolve();
         };
       });

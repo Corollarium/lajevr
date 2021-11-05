@@ -498,7 +498,7 @@ void main() {
   // This will be used to drive where the user is looking in world space.
   vec3 ang = vec3(cameraRotation.z, cameraRotation.x, cameraRotation.y);
   // bteitler: Calculate the "origin" of the camera in world space.
-  vec3 ori = vec3(cameraPosition.x, cameraPosition.y, -cameraPosition.z) * worldScale;
+  vec3 ori = vec3(cameraPosition.x * worldScale, cameraPosition.y, -cameraPosition.z * worldScale);
 
   // bteitler: This is the ray direction we are shooting from the camera location ("ori") that we need to light
   // for this pixel.  The numeric parameter indicates we are using a focal length equal to it.

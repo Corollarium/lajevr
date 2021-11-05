@@ -34,7 +34,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
       true
     );
     this._time = 0;
-    this._worldScale = 1.0;
+    this.worldScale = 1.0;
     this._cameraRotation = BABYLON.Vector3.Zero();
     this._cameraViewMatrix = BABYLON.Matrix.Identity();
     this._reflectionEnabled = false;
@@ -70,7 +70,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
         this._computeCameraRotation(camera);
         effect.setVector3('cameraRotation', this._cameraRotation);
         effect.setFloat('fov', camera.fov);
-        effect.setFloat('worldScale', this._worldScale);
+        effect.setFloat('worldScale', this.worldScale);
         // Samplers
         effect.setTexture('positionSampler', this._geometryRenderer.getGBuffer().textures[2]);
         if (this._reflectionEnabled) {
