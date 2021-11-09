@@ -8,7 +8,7 @@ LOCS=$(cloc *.js assets/css/ components/ layouts/ pages/ plugins/ --json)
 VR_IMAGES=$(find /home/corollarium/Pictures/laje -type f \( -iname \*.jpg -o -iname \*.png \) | wc -l)
 VR_VIDEOS=$(find /home/corollarium/Pictures/laje -type f \( -iname \*.mp4 -o -iname \*.avi \) | wc -l)
 VR_MODELS=1
-VR_DATA=$(cd /home/corollarium/Pictures/laje && du -BM --max-depth=0 | awk '{print substr($1, 1, length($1)-1);}')
+VR_DATA=$(( $(cd /home/corollarium/Pictures/laje && du -BM --max-depth=0 | awk '{print substr($1, 1, length($1)-1);}') + $(cd /home/corollarium/Documents/laje/ && du -BM --max-depth=0 | awk '{print substr($1, 1, length($1)-1);}') ))
 
 echo "{
   \"site\": { \"images\": $IMAGES, \"videos\": $VIDEOS, \"models\": $MODELS, \"locs\": $LOCS},
