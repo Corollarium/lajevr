@@ -84,15 +84,21 @@
         <div bp="grid" class="about-content">
           <div bp="6 offset-6">
             <p>
-              Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas.
+              <i18n>
+                Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas.
+              </i18n>
             </p>
 
             <p>
-              Espalhadas às vezes longe demais para podemos chegar. Tão longe.
+              <i18n>
+                Espalhadas às vezes longe demais para podemos chegar. Tão longe.
+              </i18n>
             </p>
 
             <p>
-              Mas a internet permite chegarmos um pouco mais perto.
+              <i18n>
+                Mas a internet permite chegarmos um pouco mais perto.
+              </i18n>
               <nuxt-link to="/sobre">
                 <i18n>
                   Leia mais sobre o projeto "A Laje em Realidade Virtual".

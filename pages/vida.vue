@@ -26,31 +26,31 @@
         <li class="pure-menu-item topbar-list-item" data-target="raias">
           <a class="pure-menu-link link-menu-vida" href="#raias">
             <img class="menu-icon" alt="Icone de uma manta" src="~static/graficos/ray.svg">
-            Raias
+            <i18n>Raias</i18n>
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="turtles">
           <a class="pure-menu-link link-menu-vida" href="#turtles">
             <img class="menu-icon" alt="Icone de uma tartaruga" src="~static/graficos/turtle.svg">
-            Tartarugas
+            <i18n>Tartarugas</i18n>
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="dolphins">
           <a class="pure-menu-link link-menu-vida" href="#dolphins">
             <img class="menu-icon" alt="Icone de um golfinho" src="~static/graficos/dolphin.svg">
-            Golfinhos
+            <i18n>Golfinhos</i18n>
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="fish">
           <a class="pure-menu-link link-menu-vida" href="#fish">
             <img class="menu-icon" alt="Icone de um peixe" src="~static/graficos/fish.svg">
-            Peixes
+            <i18n>Peixes</i18n>
           </a>
         </li>
         <li class="pure-menu-item topbar-list-item" data-target="birds">
           <a class="pure-menu-link link-menu-vida" href="#birds">
             <img class="menu-icon" alt="Icone de um pássaros" src="~static/graficos/bird.svg">
-            Aves
+            <i18n>Aves</i18n>
           </a>
         </li>
       </ul>
