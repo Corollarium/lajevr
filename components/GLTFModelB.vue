@@ -1,6 +1,14 @@
 <template>
   <div class="object-embed-3d">
-    <div class="object-embed-icon" touch-action="none" />
+    <div v-show="!touching" class="object-embed-icon" touch-action="none" />
+    <div class="object-scroll-hijack" touch-action="none">
+      <span v-show="scrollHijacked">
+        Zoom with the mousewheel. Click to scroll the page again.
+      </span>
+      <span v-show="!scrollHijacked">
+        Click to enable zoom with the mousewheel.
+      </span>
+    </div>
     <canvas class="object-3d" />
     <p
       class="attribution"
@@ -70,7 +78,9 @@ export default {
       engine: null,
       scene: null,
       camera: null,
-      container: null
+      container: null,
+      scrollHijacked: false,
+      touching: false
     };
   },
 
@@ -109,6 +119,38 @@ export default {
     this.camera.useFramingBehavior = true;
     this.camera.applyGravity = false;
     this.camera.speed = 0.1;
+
+    // store inputs and disable them
+    const mouseWheelInput = this.camera.inputs.attached.mousewheel;
+    const pointersInput = this.camera.inputs.attached.pointers;
+    this.camera.inputs.remove(this.camera.inputs.attached.mousewheel);
+    this.camera.inputs.remove(this.camera.inputs.attached.pointers);
+
+    // scroll hijacking
+    let pointerStartedClick = false;
+    this.container.addEventListener('pointerdown', () => {
+      this.touching = true;
+      pointerStartedClick = true;
+    });
+    this.container.addEventListener('pointermove', () => {
+      console.log('point mov');
+      pointerStartedClick = false;
+    });
+    this.container.addEventListener('pointerup', () => {
+      this.touching = false;
+
+      console.log('point up', pointersInput);
+      if (pointerStartedClick === false) {
+        return;
+      }
+      this.scrollHijacked = !this.scrollHijacked;
+      if (this.scrollHijacked === true) {
+        this.camera.inputs.add(mouseWheelInput);
+      } else {
+        this.camera.inputs.remove(mouseWheelInput);
+      }
+      pointerStartedClick = false;
+    });
 
     // update keys
     this.camera.keysUp.push('w'.charCodeAt(0));
@@ -214,6 +256,30 @@ export default {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
+
+  .object-scroll-hijack {
+    z-index: 10;
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0.25rem 0.5rem;
+    font-size: 70%;
+    opacity: 0.5;
+  }
+
+  &:hover .object-scroll-hijack {
+    opacity: 1.0;
+    background-color: rgba(0, 95, 168, 0.8);
+    transition: opacity 0.5s ease-in-out;
+  }
+
   .object-embed-icon {
     background-image: url('~assets/images/icons/arrows3d.svg');
     width: 100%;
