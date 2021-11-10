@@ -52,6 +52,11 @@ export default {
       required: false,
       default: 'random'
     },
+    initialBeta: {
+      type: [Number, String],
+      required: false,
+      default: Math.PI / 2
+    },
     inputEnabled: {
       type: Boolean,
       required: false,
@@ -95,8 +100,8 @@ export default {
     this.camera = new BABYLON.ArcRotateCamera(
       'Camera',
       isNaN(parseFloat(this.initialAlpha)) ? (Math.random() * 6) % (2 * Math.PI) : this.initialAlpha, // alpha
-      Math.PI / 2, // beta
-      0.5, // TODO: radius
+      this.initialBeta, // beta
+      0.5,
       new BABYLON.Vector3(0, 0, 0), // target
       this.scene
     );
@@ -129,14 +134,10 @@ export default {
     loader.onFinish = (task) => {
       loaded = true;
       let radius = 1;
-      console.log(task);
+      let lockedTarget = null;
       for (const o of task[0].loadedMeshes) {
-        window.xxx = o;
-        // TODO this.camera.setTarget(task[0].loadedMeshes[1].centerWorld);
-        console.log(JSON.stringify(o.getBoundingInfo().boundingBox));
         if (o) {
           const s = o.getBoundingInfo().boundingBox.extendSize;
-          o.showBoundingBox = true;
           if (radius < s.x / 2.0) {
             radius = s.x / 2.0;
           }
@@ -146,22 +147,27 @@ export default {
           if (radius < s.z / 2.0) {
             radius = s.z / 2.0;
           }
-          console.log(JSON.stringify(s), radius);
-          this.camera.setTarget(o);
+          if (!lockedTarget) {
+            lockedTarget = o;
+          }
+          // possible overlay
+          // if (o.name === 'Mesh_0') {
+          //   o.renderOverlay = true;
+          //   o.overlayColor = new BABYLON.Color3(0.8, 0.0, 0.0);
+          //   o.overlayAlpha = 0.2;
+          // }
         }
       }
+      this.camera.lockedTarget = lockedTarget;
+
       let aspect = this.container.width / this.container.height;
       if (aspect < 1.0) {
         aspect = 1.0 / aspect;
       }
-      // this.camera.radius = radius * 2.8 * aspect;
-      this.scene.debugLayer.show();
+      this.camera.radius = radius * 2.5 * aspect;
+      this.camera.lowerRadiusLimit = radius / 10.0;
     };
     loader.load();
-
-    // BABYLON.SceneLoader.Append(path, filename, this.scene, function (scene) {
-    //   loaded = true;
-    // });
 
     this.engine.runRenderLoop(() => {
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s

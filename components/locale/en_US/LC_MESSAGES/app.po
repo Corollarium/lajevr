@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lajevr 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-24 14:53-0300\n"
-"PO-Revision-Date: 2021-11-09 19:49+0000\n"
+"PO-Revision-Date: 2021-11-10 15:20+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -14,7 +14,6 @@ msgstr ""
 "X-Loco-Source-Locale: en_BR\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"\n"
 "X-Loco-Parser: loco_parse_po\n"
 
 #: pages/index.vue:159
@@ -395,6 +394,12 @@ msgstr "This species, popularly known as parrotfish, is endemic to Brazil, being
 msgid "Estado de conservação"
 msgstr "Conservation state"
 
+#: pages/moreia.vue:43
+msgid ""
+"Este modelo 3D foi reconstruído a partir de mais de 700 fotografias tiradas neste projeto. É possível ver partes do\n"
+"          porão, onde não é mais permitido penetrar."
+msgstr "This 3D model was reconstructed from over 700 photographs taken in this project. It is possible to see parts of the ship's hold, where divers can no longer penetrate."
+
 #: pages/vida.vue:563
 msgid ""
 "Este peixe é o arquiteto do mar. Habita de 10 até os 150 metros de\n"
@@ -509,7 +514,7 @@ msgid ""
 "            \"tartaruga-de-pente\"."
 msgstr "Thanks to the beauty of their shells, Hawksbill turtles were hunted to near extinction. Its shell was used to make utensils such as jewelry boxes and objects such as combs, hence its popular name in Brazil \"Comb turtle\"."
 
-#: pages/moreia.vue:31
+#: pages/moreia.vue:50
 msgid ""
 "Há muitos lugares no mundo que afundam barcos (e até mesmo tanques de guerra ou aviões) propositalmente. As estruturas são\n"
 "          limpas de seus poluentes, como óleo e materiais tóxicos, e deliberadamente naufragados. Ali, repousando no fundo do mar,\n"
@@ -527,12 +532,6 @@ msgstr "Habitat: Pantropical, found in the 3 oceans, inhabit coastal and subtrop
 #: pages/index.vue:403
 msgid "Hectares preservados"
 msgstr "Preserved hectares"
-
-#: pages/moreia.vue:52
-msgid ""
-"Hoje o Moréia está se desmantelando pela ação da água e do tempo. Não é mais permitido entrar nele, mas ele continua no fundo\n"
-"          provendo um belo espetáculo para os mergulhadores."
-msgstr "Today, the Moreia is being dismantled by the powers of water and time. People are no longer allowed to embark it, but it remains at the bottom providing a beautiful spectacle for divers."
 
 #: pages/sobre.vue:168
 msgid "horas de processamento"
@@ -651,6 +650,12 @@ msgstr "Virtual Dive"
 msgid "mergulhos"
 msgstr "dives"
 
+#: pages/moreia.vue:71
+msgid ""
+"Mesmo se desmantelando lentamente pela ação da água e do tempo, o Moreia continua no fundo\n"
+"          provendo um belo espetáculo para os mergulhadores."
+msgstr "Slowly dismantling due to the action of water and time, the Moreia remains at the bottom providing a beautiful visit for divers."
+
 #: pages/index.vue:393
 msgid "Metros de altura"
 msgstr "Meters high"
@@ -747,7 +752,7 @@ msgstr "The interesting thing is that when faced with a possible predator, it op
 msgid "O Moréia"
 msgstr "The Moreia"
 
-#: pages/moreia.vue:39
+#: pages/moreia.vue:58
 msgid ""
 "O Moréia foi naufragado em 1992, e por muito tempo quase ninguém sabia era responsável pelo naufrágio. A história só se tornou\n"
 "          pública quando foi gravado o documentário Laje dos Sonhos, onde o próprio autor, Clóvis Benno de Carvalho, conta como foi tudo.\n"
@@ -759,7 +764,7 @@ msgstr "The Moreia was wrecked in 1992, and for a long time almost nobody knew w
 msgid "O naufrágio Moréia"
 msgstr "The Moreia shipwreck"
 
-#: pages/moreia.vue:15 pages/moreia.vue:16
+#: pages/moreia.vue:17 pages/moreia.vue:18
 msgid "O Naufrágio Moréia"
 msgstr "The Moreia Shipwreck"
 
@@ -858,7 +863,7 @@ msgstr "To breathe, they open and close their mouths constantly inhaling and exh
 msgid "Parque criado pelo decreto estadual n° 37.537. Passa a ser área de preservação, sendo proibida a pesca."
 msgstr "Park created by state decree No. 37,537. Turning it into a preservation área where fishing is prohibited."
 
-#: pages/moreia.vue:59
+#: pages/moreia.vue:31
 msgid ""
 "Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também\n"
 "          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com\n"

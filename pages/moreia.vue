@@ -30,6 +30,31 @@
 
       <p>
         <i18n>
+          Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também
+          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com
+          sua idade. Ao escrevermos isso ele está para completar 30 anos afundado, o que é um tempo considerável. Mesmo
+          estando muito próximo da ilha, a Laje de Santos tem correntezas às vezes fortes, e tempestades. Os relatos é que ressacas do
+          mar já mudaram diversas vezes o naufrágio de lugar - parece que sua posição inicial nem mesmo era a atual, mas deitado.
+        </i18n>
+      </p>
+
+      <GLTFModel
+        :model="'./models/moreia-20210912.glb'"
+        :attribution="'Modelo 3D do Moréia por Bruno Barberi Gnecco'"
+        :autoRotate="false"
+        :initialAlpha="-1.509332043327642"
+        :initialBeta="0.777843693134093"
+      />
+
+      <p>
+        <i18n>
+          Este modelo 3D foi reconstruído a partir de mais de 700 fotografias tiradas neste projeto. É possível ver partes do
+          porão, onde não é mais permitido penetrar.
+        </i18n>
+      </p>
+
+      <p>
+        <i18n>
           Há muitos lugares no mundo que afundam barcos (e até mesmo tanques de guerra ou aviões) propositalmente. As estruturas são
           limpas de seus poluentes, como óleo e materiais tóxicos, e deliberadamente naufragados. Ali, repousando no fundo do mar,
           viram um recife artificial: servem de estrutura para corais, de refúgio para peixes e de atrativo para o mergulho.
@@ -60,18 +85,8 @@
 
       <p>
         <i18n>
-          Hoje o Moréia está se desmantelando pela ação da água e do tempo. Não é mais permitido entrar nele, mas ele continua no fundo
+          Mesmo se desmantelando lentamente pela ação da água e do tempo, o Moreia continua no fundo
           provendo um belo espetáculo para os mergulhadores.
-        </i18n>
-      </p>
-
-      <p>
-        <i18n>
-          Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também
-          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com
-          sua idade. Ao escrevermos isso ele está para completar 30 anos afundado, o que é um tempo considerável. Mesmo
-          estando muito próximo da ilha, a Laje de Santos tem correntezas às vezes fortes, e tempestades. Os relatos é que ressacas do
-          mar já mudaram diversas vezes o naufrágio de lugar - parece que sua posição inicial nem mesmo era a atual, mas deitado.
         </i18n>
       </p>
     </section>
@@ -80,10 +95,12 @@
 
 <script>
 import page from './page.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 
 const panorama = require('~/static/images/panorama.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000');
 
 export default {
+  components: { GLTFModel },
   extends: page,
 
   data () {

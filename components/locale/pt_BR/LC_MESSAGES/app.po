@@ -381,6 +381,12 @@ msgstr ""
 msgid "Estado de conservação"
 msgstr ""
 
+#: pages/moreia.vue:43
+msgid ""
+"Este modelo 3D foi reconstruído a partir de mais de 700 fotografias tiradas neste projeto. É possível ver partes do\n"
+"          porão, onde não é mais permitido penetrar."
+msgstr ""
+
 #: pages/vida.vue:563
 msgid ""
 "Este peixe é o arquiteto do mar. Habita de 10 até os 150 metros de\n"
@@ -495,7 +501,7 @@ msgid ""
 "            \"tartaruga-de-pente\"."
 msgstr ""
 
-#: pages/moreia.vue:31
+#: pages/moreia.vue:50
 msgid ""
 "Há muitos lugares no mundo que afundam barcos (e até mesmo tanques de guerra ou aviões) propositalmente. As estruturas são\n"
 "          limpas de seus poluentes, como óleo e materiais tóxicos, e deliberadamente naufragados. Ali, repousando no fundo do mar,\n"
@@ -512,12 +518,6 @@ msgstr ""
 
 #: pages/index.vue:403
 msgid "Hectares preservados"
-msgstr ""
-
-#: pages/moreia.vue:52
-msgid ""
-"Hoje o Moréia está se desmantelando pela ação da água e do tempo. Não é mais permitido entrar nele, mas ele continua no fundo\n"
-"          provendo um belo espetáculo para os mergulhadores."
 msgstr ""
 
 #: pages/sobre.vue:168
@@ -637,6 +637,12 @@ msgstr ""
 msgid "mergulhos"
 msgstr ""
 
+#: pages/moreia.vue:71
+msgid ""
+"Mesmo se desmantelando lentamente pela ação da água e do tempo, o Moreia continua no fundo\n"
+"          provendo um belo espetáculo para os mergulhadores."
+msgstr ""
+
 #: pages/index.vue:393
 msgid "Metros de altura"
 msgstr ""
@@ -733,7 +739,7 @@ msgstr ""
 msgid "O Moréia"
 msgstr ""
 
-#: pages/moreia.vue:39
+#: pages/moreia.vue:58
 msgid ""
 "O Moréia foi naufragado em 1992, e por muito tempo quase ninguém sabia era responsável pelo naufrágio. A história só se tornou\n"
 "          pública quando foi gravado o documentário Laje dos Sonhos, onde o próprio autor, Clóvis Benno de Carvalho, conta como foi tudo.\n"
@@ -745,7 +751,7 @@ msgstr ""
 msgid "O naufrágio Moréia"
 msgstr ""
 
-#: pages/moreia.vue:15 pages/moreia.vue:16
+#: pages/moreia.vue:17 pages/moreia.vue:18
 msgid "O Naufrágio Moréia"
 msgstr ""
 
@@ -844,7 +850,7 @@ msgstr ""
 msgid "Parque criado pelo decreto estadual n° 37.537. Passa a ser área de preservação, sendo proibida a pesca."
 msgstr ""
 
-#: pages/moreia.vue:59
+#: pages/moreia.vue:31
 msgid ""
 "Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também\n"
 "          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com\n"

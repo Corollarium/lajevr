@@ -121,7 +121,6 @@ export default {
     this.materials();
     this.composer();
 
-    // this.loadSky();
     const promises = [
       this.loadTerrain(),
       this.loadMoreiaBarco(),
@@ -386,11 +385,11 @@ export default {
 
       const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
+      // create the ocean pp
       const oceanPP = this.loadOceanPP();
       this.oceanPostProcess = oceanPP;
-      this.oceanPostProcess.autoClear = false;
-      this.oceanPostProcess.worldScale = 0.2;
 
+      // we need to update the depth texture from the ocean pass to mix it with the underwater depth
       let firstOceanPPCall = true;
       let oceanDepthTexture = null;
       oceanPP.onApplyObservable.add((effect) => {
@@ -405,6 +404,7 @@ export default {
         this.engine.clear(null, false, true, false);
       });
 
+      // bind the depth from the ocean
       underwaterPass.onApplyObservable.add((effect) => {
         effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
       });
@@ -417,6 +417,7 @@ export default {
       );
       this.oceanPostProcess.skyTexture = skyTexture;
 
+      // bind undertware stuff
       const startTime = new Date();
       underwaterPass.onApply = (effect) => {
         const endTime = new Date();
@@ -430,6 +431,7 @@ export default {
         effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
       };
 
+      // make it puuuurtier
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
       const renderLayer = new BABYLON.PostProcessRenderEffect(
@@ -465,25 +467,10 @@ export default {
       const pp = new OceanPostProcess('myOcean', this.camera, oceanOptions);
       pp.reflectionEnabled = false;
       pp.refractionEnabled = false;
-      return pp;
-    },
+      pp.autoClear = false;
+      pp.worldScale = 0.2;
 
-    loadSky () {
-      const skybox = BABYLON.Mesh.CreateBox('skyBox', 500.0, this.scene);
-      const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', this.scene);
-      skyboxMaterial.backFaceCulling = false;
-      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(this.$router.options.base + 'textures/TropicalSunnyday/TropicalSunnyDay', this.scene);
-      skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-      skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
-      skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
-      skyboxMaterial.disableLighting = true;
-      skyboxMaterial.freeze();
-      skybox.material = skyboxMaterial;
-      skybox.alwaysSelectAsActiveMesh = true;
-      skybox.doNotSyncBoundingInfo = true;
-      skybox.convertToUnIndexedMesh();
-      skybox.freezeNormals();
-      skybox.freezeWorldMatrix();
+      return pp;
     },
 
     /**
