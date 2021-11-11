@@ -177,7 +177,7 @@ export default {
 
     loader.onFinish = (task) => {
       loaded = true;
-      let radius = 1;
+      let radius = 0.01;
       let lockedTarget = null;
       for (const o of task[0].loadedMeshes) {
         if (o) {
@@ -208,7 +208,7 @@ export default {
       if (aspect < 1.0) {
         aspect = 1.0 / aspect;
       }
-      this.camera.radius = radius * 2.5 * aspect;
+      this.camera.radius = radius * 2.0 / Math.tan(this.camera.fov / 2.0) * aspect;
       this.camera.lowerRadiusLimit = radius / 10.0;
       // allow scrolling
       this.container.setAttribute('touch-action', 'pan-y');

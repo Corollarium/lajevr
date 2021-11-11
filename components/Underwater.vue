@@ -104,7 +104,7 @@ export default {
 
     this.land();
     this.loader.load(
-      './models/manta/scene.gltf',
+      './models/raiaManta.glb',
       // called when the resource is loaded
       (gltf) => {
         const { school, mixers } = this.createFishSchool(gltf, 2);

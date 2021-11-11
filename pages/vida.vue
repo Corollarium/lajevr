@@ -130,11 +130,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
-              :model="'./models/manta/scene.gltf'"
-              :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
-              :attribution="'Modelo 3D CC BY-NC por misaooo'"
+              model="./models/raiaManta.glb"
             />
-            </GLTFModel>
           </div>
         </template>
       </life-block>
@@ -284,7 +281,6 @@
             :attribution="'Modelo de tartaruga'"
             :scale="2"
           />
-          </GLTFModel>
         </div>
       </section>
 
@@ -471,6 +467,13 @@
         <p>
           <i18n>Seus filhotes são bem diferentes quando juvenis, apresentando listras amarelas contínuas em seu disco corporal que se transformam em pintas amareladas quando passam para a fase adulta. Esta espécie não possui interesse para a pesca, mas tem muito valor no mercado de peixes ornamentais ou para a aquariofilia, sendo muito comercializada para compor ambientes de aquários mundo afora.</i18n>
         </p>
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/frade.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
@@ -509,6 +512,14 @@
             é uma grande ameaça à espécie por ser muito capturada em seu habitat.
           </i18n>
         </p>
+
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/anjoReal.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
@@ -548,6 +559,13 @@
             ornamentais para aquários.
           </i18n>
         </p>
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/sargentinho.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
@@ -883,6 +901,14 @@
         <p>
           <i18n>Outra curiosidade que chama a atenção para esta espécie de hábito diurno, é que durante a noite precisam descansar e se proteger dos predadores que rondam pelos corais como os tubarões. Por isso se escondem nas  fendas e frestas do recife, mas nem sempre este esconderijo o protege, então os budiões secretam um muco fedorento que envolve seu corpo completamente como uma camisola transparente, inibindo e confundindo seus predadores.</i18n>
         </p>
+
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/budiao.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
