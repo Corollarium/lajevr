@@ -133,7 +133,7 @@ export default {
     this.container.addEventListener('wheel', (e) => {
       if (e.ctrlKey) {
         this.showZoomHelp = false;
-        this.camera.radius += e.deltaY / 12.0;
+        this.camera.radius += Math.sign(e.deltaY) * this.camera.radius * 0.1;
         e.preventDefault();
       } else {
         this.showZoomHelp = true;

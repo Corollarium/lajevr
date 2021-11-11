@@ -226,6 +226,7 @@
         have mean thousands of photos, probably tens of thousands. Perhaps some day. We used hand modelled
         rocks textured from actual underwater photos.
       </p>
+
       <p>
         <nuxt-link to="/moreia">
           Moreia, the ship wreck
@@ -234,6 +235,14 @@
         a 3D model based solely on photos. While algorithms take care of the heavy work, there's still some art
         in taking the pictures properly and making some decisions for the software. We tested several software
         packages for photogrammetry, but settled on Agisoft Metashape.
+      </p>
+
+      <p>
+        Processing hundreds of high resolution photos was not nice to our machines, though. The mesh conversion
+        kept crashing, seemingly for lack of RAM. Large amounts of swap were added, but that made the running
+        times ridiculous (one week!). We ended up running the conversion in a server with 150GB of RAM --
+        consumption peaked at a little over 100GB, resulting in a mesh with 37 million polygons, that was
+        later decimated to 500k.
       </p>
     </section>
 
@@ -379,7 +388,14 @@
       </p>
 
       <figure class="figure-text">
-        TODO
+        <div bp="grid 6">
+          <img src="~/static/images/technology/photo-underwater-before.jpg" alt="Before editing">
+          <img src="~/static/images/technology/photo-underwater-after.jpg" alt="After editing">
+        </div>
+        <figcaption>
+          Editing underwater pictures. One usually crops the best area, then corrects white balancing,
+          color curves, contrast and saturation.
+        </figcaption>
       </figure>
 
       <p>
@@ -389,16 +405,13 @@
       </p>
 
       <p>
-        Besides this blueish coloring, water has caustics.
+        Besides this blueish coloring, water has caustics. It's that nice light effect you see at the bottom of
+        pools, where light seems to dance in chaotic patterns.
       </p>
-
-      <figure class="figure-text">
-        TODO
-      </figure>
 
       <p>
         Caustics happen because light is refracted by the waves. It's a pretty effect, and you can easily see it on
-        shallow dives and sunny days. It's pretty and annoying to reproduce in 3D. It's impossible to accurately
+        shallow dives and sunny days. It's pretty, and also pretty annoying to reproduce in 3D. It's impossible to accurately
         simulate it in real time; calculating the actual light is very expensive computationally. The usual way to
         do it is using an animated texture that kinda looks like caustics. The texture can be a movie or generated
         by a noise algorithm. Rendering it on top of actual textures, however, presents a challenge: you need to
@@ -508,7 +521,7 @@
 import page from './page.vue';
 import SwimmingFish from '~/components/SwimmingFish.vue';
 import Bubbles from '~/components/Bubbles.vue';
-import GLTFModel from '~/components/GLTFModel.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 
 const moreiaPanorama = require('~/static/images/panorama.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000&sizes[]=10000');
 
