@@ -13,12 +13,6 @@
           </i18n>
         </h1>
       </div>
-      <p class="attribution">
-        <i18n>
-          Foto
-        </i18n>
-        <a target="_blank" href="https://www.instagram.com/nautherandres/">Nauther Andres</a>
-      </p>
     </section>
 
     <section bp="container">

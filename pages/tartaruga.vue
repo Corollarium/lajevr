@@ -27,7 +27,7 @@
 // import * as BabylonViewer from '@babylonjs/viewer';
 // import '@babylonjs/loaders/glTF';
 import page from './page.vue';
-import GLTFModel from '~/components/GLTFModel.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 
 export default {
   components: {

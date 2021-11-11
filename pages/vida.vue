@@ -1000,7 +1000,7 @@
 <script>
 import Rellax from 'rellax';
 import page from './page.vue';
-import GLTFModel from '~/components/GLTFModel.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 import SwimmingFish from '~/components/SwimmingFish.vue';
 import LifeBlock from '~/components/sections/LifeBlock.vue';
 

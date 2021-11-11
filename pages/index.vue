@@ -509,7 +509,7 @@ import page from './page.vue';
 import Timeline from '~/components/sections/Timeline.vue';
 import Ocean from '~/components/OceanB.vue';
 import Clouds from '~/components/Clouds.vue';
-import GLTFModel from '~/components/GLTFModel.vue';
+import GLTFModel from '~/components/GLTFModelB.vue';
 import Bubbles from '~/components/Bubbles.vue';
 
 // import Globe from '~/components/Globe.vue';
