@@ -116,8 +116,8 @@ export default {
     meta: {
       name: 'Laje de Santos em Realidade Virtual',
       theme_color: '#0094d7',
-      ogHost: 'https://corollarium.github.io/lajevr',
-      ogImage: (routerBase.base ?? '/') + 'favicon/icon-laje-512.png',
+      ogHost: 'https://corollarium.github.io/lajevr/',
+      ogImage: 'favicon/icon-laje-512.png',
       twitterCard: 'summary',
       twitterCreator: '@corollarium'
     }
