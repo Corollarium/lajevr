@@ -28,6 +28,16 @@
         </i18n>
       </p>
 
+      <div v-if="false">
+        <InnerImageZoom
+          :srcSet="panorama.srcSet"
+          :zoom-src="require('~/static/images/panorama.jpg')"
+          :hasSpacer="true"
+          :height="600"
+          src="~static/images/panorama.jpg"
+        />
+      </div>
+
       <p>
         <i18n>
           Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também
@@ -94,13 +104,17 @@
 </template>
 
 <script>
+import InnerImageZoom from 'vue-inner-image-zoom';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModelB.vue';
 
 const panorama = require('~/static/images/panorama.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000');
 
 export default {
-  components: { GLTFModel },
+  components: {
+    GLTFModel,
+    InnerImageZoom
+  },
   extends: page,
 
   data () {

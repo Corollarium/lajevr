@@ -55,6 +55,7 @@
     "three": "^0.133.1",
     "three-text2d": "^0.5.3",
     "vue-gettext": "^2.1.8",
+    "vue-inner-image-zoom": "^1.1.1",
     "webfontloader": "^1.6.28",
     "webp-loader": "^0.6.0"
   },

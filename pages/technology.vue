@@ -192,7 +192,8 @@
       </figure>
 
       <p>
-        This is a composed picture, combining four individual photos. <a href="http://hugin.sourceforge.net/">Hugin</a>
+        This is a composed picture, combining four individual photos, which we took on a day with particularly good visibility
+        to help the final view even more. <a href="http://hugin.sourceforge.net/">Hugin</a>
         was very helpful to compose these images and compensate for the wide lens distortion.
       </p>
 
@@ -207,7 +208,37 @@
     </section>
 
     <section class="section-base container" style="">
-      <h2>And in 3D!</h2>
+      <h2>
+        From reality to models: photogrammetry and modeling
+      </h2>
+
+      <p>
+        We made extensive use of photos in this project to capture data. All animals were hand modeled in
+        Blender from pictures we took. This ensured a beautiful mesh and a simple low-poly version, as well
+        as proper animations made with bones.
+      </p>
+
+      <p>
+        Other things were more complicated. The island above the water was easier to reconstruct from existing
+        height data, but underwater we only had rough depth lines from navigation maps. We used our own
+        knowledge to make a rough draft of it. It was unfeasible, given the time and money constraints of this
+        project, to photograph the entire island underwater to reconstruct it with photogrammetry. That would
+        have mean thousands of photos, probably tens of thousands. Perhaps some day. We used hand modelled
+        rocks textured from actual underwater photos.
+      </p>
+      <p>
+        <nuxt-link to="/moreia">
+          Moreia, the ship wreck
+        </nuxt-link> needed a careful reconstruction, though,
+        with realistic data. For it we used photogrammetry. Photogrammetry consists in using algorithms to reconstruct
+        a 3D model based solely on photos. While algorithms take care of the heavy work, there's still some art
+        in taking the pictures properly and making some decisions for the software. We tested several software
+        packages for photogrammetry, but settled on Agisoft Metashape.
+      </p>
+    </section>
+
+    <section class="section-base container" style="">
+      <h2>And viewing in 3D!</h2>
 
       <p>
         The basic idea of our proposal was using 3D to display information of Laje de Santos, centered
@@ -479,7 +510,7 @@ import SwimmingFish from '~/components/SwimmingFish.vue';
 import Bubbles from '~/components/Bubbles.vue';
 import GLTFModel from '~/components/GLTFModel.vue';
 
-const moreiaPanorama = require('~/static/images/panorama.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000');
+const moreiaPanorama = require('~/static/images/panorama.jpg?resize&sizes[]=360&sizes[]=640&sizes[]=1000&sizes[]=10000');
 
 export default {
   components: { SwimmingFish, Bubbles, GLTFModel },

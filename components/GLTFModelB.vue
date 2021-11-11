@@ -2,7 +2,7 @@
   <div class="object-embed-3d">
     <div v-show="!touching" class="object-embed-icon" touch-action="none" />
     <transition name="fade" touch-action="none">
-      <div v-show="showZoomHelp" class="object-scroll-message" touch-action="none">
+      <div v-show="showZoomHelp" class="object-scroll-message object-scroll-message-mouse" touch-action="none">
         <div>
           use ctrl+scroll to zoom,<br>
           drag to rotate
@@ -128,12 +128,8 @@ export default {
     this.camera.applyGravity = false;
     this.camera.speed = 0.1;
 
-    // store inputs and disable them
-    this.camera.inputs.remove(this.camera.inputs.attached.mousewheel);
-    // this.camera.inputs.remove(this.camera.inputs.attached.pointers);
-    this.engine.doNotHandleTouchAction = true;
-
     // ctrl+scroll
+    this.camera.inputs.remove(this.camera.inputs.attached.mousewheel);
     this.container.addEventListener('wheel', (e) => {
       if (e.ctrlKey) {
         this.showZoomHelp = false;
@@ -144,34 +140,19 @@ export default {
       }
     });
 
-    // scroll hijacking
-    this.container.addEventListener('pointerdown', () => {
+    // scroll hijacking on mobile
+    const pointerIds = new Set();
+    this.container.addEventListener('pointerdown', (e) => {
+      this.touching = true;
+      pointerIds.add(e.pointerId);
       this.showZoomHelp = false;
     });
-    this.container.addEventListener('pointerleave', () => {
-      this.showZoomHelp = true;
+    this.container.addEventListener('pointerleave', (e) => {
+      pointerIds.delete(e.pointerId);
+      if (pointerIds.size === 0) {
+        this.touching = false;
+      }
     });
-
-    // const pointerStartedClick = false;
-    // this.container.addEventListener('pointermove', () => {
-    //   console.log('point mov');
-    //   pointerStartedClick = false;
-    // });
-    // this.container.addEventListener('pointerup', () => {
-    //   this.touching = false;
-
-    //   console.log('point up', pointersInput);
-    //   if (pointerStartedClick === false) {
-    //     return;
-    //   }
-    //   this.scrollHijacked = !this.scrollHijacked;
-    //   if (this.scrollHijacked === true) {
-    //     this.camera.inputs.add(mouseWheelInput);
-    //   } else {
-    //     this.camera.inputs.remove(mouseWheelInput);
-    //   }
-    //   pointerStartedClick = false;
-    // });
 
     // update keys
     this.camera.keysUp.push('w'.charCodeAt(0));
@@ -229,9 +210,9 @@ export default {
       }
       this.camera.radius = radius * 2.5 * aspect;
       this.camera.lowerRadiusLimit = radius / 10.0;
-      this.container.setAttribute('touch-action', 'auto');
-      this.container.style.touchAction = 'auto';
-      console.log(this.container.style.touchAction);
+      // allow scrolling
+      this.container.setAttribute('touch-action', 'pan-y');
+      this.container.style.touchAction = 'pan-y';
     };
     loader.load();
 
@@ -302,6 +283,13 @@ export default {
     align-content: center;
     flex-direction: column;
     text-align: center;
+  }
+
+  /* smartphones, touchscreens */
+  @media (hover: none) and (pointer: coarse) {
+    .object-scroll-message-mouse {
+      display: none;
+    }
   }
 
   .object-embed-icon {

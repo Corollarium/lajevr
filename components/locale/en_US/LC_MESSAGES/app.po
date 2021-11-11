@@ -564,7 +564,7 @@ msgstr "It includes Laje de Santos, the Bandolim, Âncoras, Brilhante, do Sul, a
 
 #: components/sections/SiteFooter.vue:7 components/sections/SiteHeader.vue:22
 msgid "Início"
-msgstr "Start"
+msgstr "Home"
 
 #: pages/index.vue:50
 msgid "Laje de Santos"

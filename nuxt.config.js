@@ -37,6 +37,7 @@ export default {
     '@fortawesome/fontawesome-svg-core/styles.css',
     'blueprint-css/dist/blueprint.min.css',
     'purecss/build/pure-min.css',
+    'vue-inner-image-zoom/lib/vue-inner-image-zoom.css',
     '~assets/css/index.less'
   ],
   /*
