@@ -1,14 +1,14 @@
 <template>
   <div class="object-embed-3d">
     <div v-show="!touching" class="object-embed-icon" touch-action="none" />
-    <div class="object-scroll-hijack" touch-action="none">
-      <span v-show="scrollHijacked">
-        Zoom with the mousewheel. Click to scroll the page again.
-      </span>
-      <span v-show="!scrollHijacked">
-        Click to enable zoom with the mousewheel.
-      </span>
-    </div>
+    <transition name="fade" touch-action="none">
+      <div v-show="showZoomHelp" class="object-scroll-message" touch-action="none">
+        <div>
+          use ctrl+scroll to zoom,<br>
+          drag to rotate
+        </div>
+      </div>
+    </transition>
     <canvas class="object-3d" />
     <p
       class="attribution"
@@ -80,8 +80,16 @@ export default {
       camera: null,
       container: null,
       scrollHijacked: false,
-      touching: false
+      touching: false,
+      showZoomHelp: true,
+      showZoomTimer: 0
     };
+  },
+
+  computed: {
+    touchActionCSS () {
+      return this.scrollHijacked ? 'none !important' : 'auto !important';
+    }
   },
 
   watch: {
@@ -121,36 +129,49 @@ export default {
     this.camera.speed = 0.1;
 
     // store inputs and disable them
-    const mouseWheelInput = this.camera.inputs.attached.mousewheel;
-    const pointersInput = this.camera.inputs.attached.pointers;
     this.camera.inputs.remove(this.camera.inputs.attached.mousewheel);
-    this.camera.inputs.remove(this.camera.inputs.attached.pointers);
+    // this.camera.inputs.remove(this.camera.inputs.attached.pointers);
+    this.engine.doNotHandleTouchAction = true;
+
+    // ctrl+scroll
+    this.container.addEventListener('wheel', (e) => {
+      if (e.ctrlKey) {
+        this.showZoomHelp = false;
+        this.camera.radius += e.deltaY / 12.0;
+        e.preventDefault();
+      } else {
+        this.showZoomHelp = true;
+      }
+    });
 
     // scroll hijacking
-    let pointerStartedClick = false;
     this.container.addEventListener('pointerdown', () => {
-      this.touching = true;
-      pointerStartedClick = true;
+      this.showZoomHelp = false;
     });
-    this.container.addEventListener('pointermove', () => {
-      console.log('point mov');
-      pointerStartedClick = false;
+    this.container.addEventListener('pointerleave', () => {
+      this.showZoomHelp = true;
     });
-    this.container.addEventListener('pointerup', () => {
-      this.touching = false;
 
-      console.log('point up', pointersInput);
-      if (pointerStartedClick === false) {
-        return;
-      }
-      this.scrollHijacked = !this.scrollHijacked;
-      if (this.scrollHijacked === true) {
-        this.camera.inputs.add(mouseWheelInput);
-      } else {
-        this.camera.inputs.remove(mouseWheelInput);
-      }
-      pointerStartedClick = false;
-    });
+    // const pointerStartedClick = false;
+    // this.container.addEventListener('pointermove', () => {
+    //   console.log('point mov');
+    //   pointerStartedClick = false;
+    // });
+    // this.container.addEventListener('pointerup', () => {
+    //   this.touching = false;
+
+    //   console.log('point up', pointersInput);
+    //   if (pointerStartedClick === false) {
+    //     return;
+    //   }
+    //   this.scrollHijacked = !this.scrollHijacked;
+    //   if (this.scrollHijacked === true) {
+    //     this.camera.inputs.add(mouseWheelInput);
+    //   } else {
+    //     this.camera.inputs.remove(mouseWheelInput);
+    //   }
+    //   pointerStartedClick = false;
+    // });
 
     // update keys
     this.camera.keysUp.push('w'.charCodeAt(0));
@@ -208,6 +229,9 @@ export default {
       }
       this.camera.radius = radius * 2.5 * aspect;
       this.camera.lowerRadiusLimit = radius / 10.0;
+      this.container.setAttribute('touch-action', 'auto');
+      this.container.style.touchAction = 'auto';
+      console.log(this.container.style.touchAction);
     };
     loader.load();
 
@@ -257,27 +281,27 @@ export default {
     transition: opacity 0.5s ease-in-out;
   }
 
-  .object-scroll-hijack {
-    z-index: 10;
+  .object-scroll-message {
+    z-index: 11;
     top: 0;
     right: 0;
+    left: 0;
+    right: 0;
     position: absolute;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
     pointer-events: none;
     transition: opacity 0.5s ease-in-out;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.0);
     padding: 0.25rem 0.5rem;
-    font-size: 70%;
+    font-size: 250%;
+    line-height: 250%;
+    height: 100%;
     opacity: 0.5;
-  }
-
-  &:hover .object-scroll-hijack {
-    opacity: 1.0;
-    background-color: rgba(0, 95, 168, 0.8);
-    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .object-embed-icon {
