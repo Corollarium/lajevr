@@ -18,11 +18,12 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: process.env.npm_package_description || 'Laje de Santos em Realidade Virtual'
       }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;900&family=Raleway&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;900&family=Raleway&display=swap' },
+      { rel: 'icon', type: 'image/png', href: (routerBase.base ?? '/') + 'favicon/favicon-32x32.png' }
     ]
   },
 
@@ -115,7 +116,8 @@ export default {
     meta: {
       name: 'Laje de Santos em Realidade Virtual',
       theme_color: '#0094d7',
-      ogHost: 'https://corollarium.github.io/',
+      ogHost: 'https://corollarium.github.io/lajevr',
+      ogImage: (routerBase.base ?? '/') + 'favicon/icon-laje-512.png',
       twitterCard: 'summary',
       twitterCreator: '@corollarium'
     }
