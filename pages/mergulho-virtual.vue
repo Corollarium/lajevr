@@ -18,8 +18,6 @@ export default {
 
   extends: page,
 
-  layout: 'clean',
-
   data () {
     return {
     };

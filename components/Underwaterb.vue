@@ -4,6 +4,9 @@
     <div id="underwater-debug">
       {{ fps }} fps
     </div>
+    <button id="underwater-fullscreen" @click="fullscreen">
+      <i18n>Ficar em tela cheia</i18n>
+    </button>
     <div id="underwater-hud">
       <div id="underwater-hud-depth">
         <span id="underwater-hud-depth-name"><i18n>Profundidade</i18n></span><br>
@@ -59,6 +62,8 @@ export default {
       causticMaterial: null,
       causticBlackMaterial: null,
       rttMaterials: [],
+
+      rebuildOceanTexture: true,
 
       mantas: [],
       turtles: [],
@@ -292,7 +297,8 @@ export default {
     },
 
     resize () {
-      // this.engine.resize();
+      this.engine.resize();
+      this.rebuildOceanTexture = true;
     },
 
     lights () {
@@ -390,12 +396,14 @@ export default {
       this.oceanPostProcess = oceanPP;
 
       // we need to update the depth texture from the ocean pass to mix it with the underwater depth
-      let firstOceanPPCall = true;
       let oceanDepthTexture = null;
       oceanPP.onApplyObservable.add((effect) => {
-        if (firstOceanPPCall) {
-          firstOceanPPCall = false;
+        if (this.rebuildOceanTexture) {
+          this.rebuildOceanTexture = false;
           const rtWrapper = underwaterPass.inputTexture;
+          if (oceanDepthTexture) {
+            oceanDepthTexture.dispose();
+          }
           oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
           oceanDepthTexture.name = 'underwaterDepthStencil';
         }
@@ -692,13 +700,14 @@ export default {
 
     loadMoreiaBarco () {
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'barcoMoreia.glb').onSuccess = (task) => {
+        this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'moreia-20210912.glb').onSuccess = (task) => {
           console.log(task);
           for (const mesh of task.loadedMeshes) {
-            mesh.position = new BABYLON.Vector3(-14.12, -15.2, 27.19);
+            mesh.position = new BABYLON.Vector3(-14.12, -17.2, 27.19);
             if (mesh.material) {
               mesh.material.freeze();
             }
+            mesh.scaling = new BABYLON.Vector3(-14.12, -17.2, 27.19);
             mesh.alwaysSelectAsActiveMesh = true;
             mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
             // mesh.convertToUnIndexedMesh();
@@ -898,6 +907,10 @@ export default {
 
     clamp (t, min, max) {
       return Math.min(Math.max(t, min), max);
+    },
+
+    fullscreen () {
+      document.getElementById('underwater').requestFullscreen();
     }
   }
 };
@@ -906,7 +919,7 @@ export default {
 <style lang="less" scoped>
 #underwater {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
@@ -972,6 +985,20 @@ export default {
   #underwater-hud-time-unit {
     vertical-align: top;
   }
+}
+
+#underwater-fullscreen {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  margin: 0px;
+  z-index: 1000;
+  border-radius: 10px;
+  font-size: 42px;
+  background: #004;
+  color: #fff;
+  text-align: center;
 }
 
 </style>
