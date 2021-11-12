@@ -28,7 +28,6 @@
           A ideia e a execução
         </i18n>
       </h3>
-      <SwimmingFish />
       <p>
         <i18n>
           A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou
@@ -55,6 +54,9 @@
         <i18n>
           Com a melhora da situação em 2021, pudemos finalmente cair na água.
         </i18n>
+      </p>
+      <p>
+        <SwimmingFish />
       </p>
     </section>
 

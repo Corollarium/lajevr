@@ -13,7 +13,7 @@
             :model="'./models/tartaruga/tartaruga.glb'"
           /> -->
           <GLTFModel
-            :model="'./models/frade.glb'"
+            :model="'./models/flagLoop.glb'"
             :attribution="'Modelo de tartaruga'"
           />
           </GLTFModel>

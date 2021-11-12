@@ -36,8 +36,8 @@ export default {
       const longmin = -46.15000; const longmax = -46.2000; const longtotal = (longmin - longmax);
 
       return [
-        7000 * (latmin - lat) / lattotal - 4500,
-        7000 * (longmin - long) / longtotal - 4500
+        SCENE_SIZE * (latmin - lat) / lattotal - 4500,
+        7000 - SCENE_SIZE * (longmin - long) / longtotal - 2500
       ];
     }
 
@@ -47,6 +47,7 @@ export default {
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
 
     this.scene = new BABYLON.Scene(this.engine);
+    // this.scene.useRightHandedSystem = true;
     this.scene.clearColor = BABYLON.Color3.FromHexString('0x46BCEC');
 
     this.camera = new BABYLON.ArcRotateCamera(
@@ -76,11 +77,19 @@ export default {
     const loader = new BABYLON.AssetsManager(this.scene);
 
     // const siteMeshes = {};
-    const spriteManagerPlayer = new BABYLON.SpriteManager('playerManager', '/models/player.png', this.diveSites.length, 64, this.scene);
+    const spriteManagerPlayer = new BABYLON.SpriteManager(
+      'playerManager',
+      this.$router.options.base + 'textures/diveSitesPT.png',
+      this.diveSites.length,
+      256,
+      this.scene
+    );
+
     let buoy = null;
     const instancedBuoyBuffer = new Float32Array(this.diveSites.length * 16);
     const instancedBuoyColors = new Float32Array(this.diveSites.length * 4);
     instancedBuoyColors.fill(UNSELECTED_BUOY_COLOR);
+    const siteToVector3 = [];
     loader.addMeshTask('flag', null, this.$router.options.base + 'models/flagLoop.glb').onSuccess = (task) => {
       // convert to a single mesh so instances will work
       buoy = BABYLON.Mesh.MergeMeshes(
@@ -95,11 +104,13 @@ export default {
         false,
         true
       );
+      buoy.alwaysSelectAsActiveMesh = true;
       buoy.name = BOUY_NAME;
       let i = 0;
       for (const site of this.diveSites) {
         const pos = latlongToPixel(site.lat, site.long);
         const matrix = BABYLON.Matrix.Scaling(15.0, 15.0, 15.0);
+        siteToVector3[i] = new BABYLON.Vector3(pos[0], 20, pos[1]);
         matrix.addTranslationFromFloats(pos[0], 20, pos[1]);
         matrix.copyToArray(instancedBuoyBuffer, i * 16);
         // mesh.userData = site;
@@ -119,9 +130,12 @@ export default {
     };
 
     // collada
-    const v = loader.addMeshTask('map', null, this.$router.options.base + 'PEMLSdae/', 'PEMLS_skt.dae');
+    const v = loader.addMeshTask('map', null, this.$router.options.base + 'models/', 'PEMLS_skt.glb');
     v.onSuccess = (task) => {
-      console.log('lfl');
+      for (const m of task.loadedMeshes) {
+        console.log(m);
+        m.rotation.y = Math.PI / 2.0;
+      }
     //   land = collada.scene;
     //   land.position.set(220, 0, -100);
     //   const degrees = 80;
@@ -151,6 +165,7 @@ export default {
     water.windForce = 0;
     water.waveHeight = 3.7;
     water.bumpHeight = 0.7;
+    water.waveSpeed = 0.1;
     water.windDirection = new BABYLON.Vector2(1, 1);
     water.waterColor = new BABYLON.Color3(0, 0, 221 / 255);
     water.colorBlendFactor = 0.0;
@@ -165,6 +180,9 @@ export default {
         instancedBuoyColors[index * 4 + 1] =
         instancedBuoyColors[index * 4 + 2] =
         instancedBuoyColors[index * 4 + 3] = 1.0;
+        this.animateCamera(this.camera, siteToVector3[index]);
+      } else {
+        // this.animateCamera(this.camera, new BABYLON.Vector3(0, 0, 0));
       }
       buoy.thinInstanceSetBuffer('color', instancedBuoyColors, 4);
     };
@@ -199,6 +217,88 @@ export default {
   methods: {
     onWindowResize () {
       this.engine.resize();
+    },
+
+    animateCamera (camera, newTarget) {
+      const alpha = camera.alpha;
+      const beta = camera.beta;
+      const radius = camera.radius;
+      const target = camera.getTarget().clone();
+
+      camera.setTarget(newTarget, true);
+      camera.rebuildAnglesAndRadius();
+
+      const animCamAlpha = new BABYLON.Animation('animCam', 'alpha', 30,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+      const keysAlpha = [];
+      keysAlpha.push({
+        frame: 0,
+        value: alpha
+      });
+      keysAlpha.push({
+        frame: 100,
+        value: camera.alpha
+      });
+      const animCamBeta = new BABYLON.Animation('animCam', 'beta', 30,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+      const keysBeta = [];
+      keysBeta.push({
+        frame: 0,
+        value: beta
+      });
+      keysBeta.push({
+        frame: 100,
+        value: camera.beta
+      });
+      const animCamRadius = new BABYLON.Animation('animCam', 'radius', 30,
+        BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+      const keysRadius = [];
+      keysRadius.push({
+        frame: 0,
+        value: radius
+      });
+      keysRadius.push({
+        frame: 100,
+        value: 600 // camera.radius
+      });
+
+      const animCamTarget = new BABYLON.Animation('animTarget', '_target', 30,
+        BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+      const keysTarget = [];
+      keysTarget.push({
+        frame: 0,
+        value: target
+      });
+      keysTarget.push({
+        frame: 120,
+        value: camera.target.clone()
+      });
+      animCamAlpha.setKeys(keysAlpha);
+      animCamBeta.setKeys(keysBeta);
+      animCamRadius.setKeys(keysRadius);
+      animCamTarget.setKeys(keysTarget);
+
+      camera.animations.push(animCamAlpha);
+      camera.animations.push(animCamBeta);
+      camera.animations.push(animCamRadius);
+      camera.animations.push(animCamTarget);
+
+      camera.alpha = alpha;
+      camera.beta = beta;
+      camera.radius = radius;
+      camera.target.copyFrom(target);
+
+      this.scene.beginAnimation(camera, 0, 100, false, 2, function () {
+
+      });
     }
   }
 };
