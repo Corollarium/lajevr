@@ -26,6 +26,12 @@ export default {
     };
   },
 
+  computed: {
+    base () {
+      return this.$router.options.base;
+    }
+  },
+
   mounted () {
     const SCENE_SIZE = 7000;
     const UNSELECTED_BUOY_COLOR = 0.2;
@@ -79,7 +85,7 @@ export default {
     // const siteMeshes = {};
     const spriteManagerPlayer = new BABYLON.SpriteManager(
       'playerManager',
-      this.$router.options.base + 'textures/diveSitesPT.png',
+      this.base + 'textures/diveSitesPT.png',
       this.diveSites.length,
       256,
       this.scene
@@ -90,7 +96,7 @@ export default {
     const instancedBuoyColors = new Float32Array(this.diveSites.length * 4);
     instancedBuoyColors.fill(UNSELECTED_BUOY_COLOR);
     const siteToVector3 = [];
-    loader.addMeshTask('flag', null, this.$router.options.base + 'models/flagLoop.glb').onSuccess = (task) => {
+    loader.addMeshTask('flag', null, this.base + 'models/flagLoop.glb').onSuccess = (task) => {
       // convert to a single mesh so instances will work
       buoy = BABYLON.Mesh.MergeMeshes(
         [
@@ -130,26 +136,13 @@ export default {
     };
 
     // collada
-    const v = loader.addMeshTask('map', null, this.$router.options.base + 'models/', 'PEMLS_skt.glb');
-    v.onSuccess = (task) => {
-      for (const m of task.loadedMeshes) {
-        console.log(m);
-        m.rotation.y = Math.PI / 2.0;
-      }
-    //   land = collada.scene;
-    //   land.position.set(220, 0, -100);
-    //   const degrees = 80;
-    //   land.rotateZ((degrees / 180.0) * Math.PI);
-    };
-    v.onError = (x) => {
-      console.log(x);
-    };
+    loader.addMeshTask('map', null, this.base + 'models/', 'PEMLS_skt.glb');
 
     // Skybox
     const skybox = BABYLON.Mesh.CreateBox('skyBox', SCENE_SIZE * 1.2, this.scene);
     const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', this.scene);
     skyboxMaterial.backFaceCulling = false;
-    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('https://playground.babylonjs.com/textures/TropicalSunnyDay', this.scene);
+    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(this.base + 'textures//TropicalSunnyDay/TropicalSunnyDay', this.scene);
     skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
     skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
     skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
@@ -161,7 +154,7 @@ export default {
     const waterMesh = BABYLON.MeshBuilder.CreateGround('waterMesh', { width: SCENE_SIZE * 1.1, height: SCENE_SIZE * 1.1, subdivisions: 16 }, this.scene);
     const water = new WaterMaterial('water', this.scene, new BABYLON.Vector2(512, 512));
     water.backFaceCulling = true;
-    water.bumpTexture = new BABYLON.Texture('https://playground.babylonjs.com/textures/waterbump.png', this.scene);
+    water.bumpTexture = new BABYLON.Texture('textures/waterbump.png', this.scene);
     water.windForce = 0;
     water.waveHeight = 3.7;
     water.bumpHeight = 0.7;

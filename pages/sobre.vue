@@ -122,7 +122,7 @@
         <div data-aos="slide-right">
           <h3>
             <i18n>
-              Desenvolvimento
+              Website
             </i18n>
           </h3>
           <p>
@@ -168,7 +168,7 @@
       <section class="section-inner" bp="grid 12 6@md">
         <div data-aos="slide-left">
           <h3>
-            Realidade virtual
+            <i18n>Realidade virtual</i18n>
           </h3>
           <p>
             <i18n>

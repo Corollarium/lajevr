@@ -264,7 +264,7 @@
       </div>
 
       <p>
-        We use both ThreeJS and BabylonJS for the 3D rendering. This wasn't planned from the start:
+        We use BabylonJS for the 3D rendering. This wasn't planned from the start:
         our plan was to use solely ThreeJS, but it turned out to have a major problem with multipass
         rendering and animations with ThreeJS that seemed unsolvable. BabylonJS didn't have such a
         limitation, and we moved to it later - and even contributed with some code and documentation.

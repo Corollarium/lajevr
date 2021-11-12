@@ -155,7 +155,7 @@ msgid ""
 "            lhe atacar a qualquer momento. Realmente, sua fama não é em vão\n"
 "            devido a casos de acidentes com seres humanos em quase todas as\n"
 "            partes do mundo."
-msgstr "Barracudas are so famous that even less experienced divers have heard of it and are afraid of crossing its path. Its fame is that of an evil, ferocious fish that can attack you at any time. And in all honesty, it really does live up to its fame due to cases of accidents with human beings in almost all parts of the world."
+msgstr "The Barracuda is so famous that even less experienced divers have heard of it and are afraid of crossing its path. Its fame is that of an evil, ferocious fish that can attack you at any time. And in all honesty, it really does live up to its fame due to cases of accidents with human beings in almost all parts of the world."
 
 #: pages/index.vue:370
 msgid "as raias mantas"
