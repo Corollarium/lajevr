@@ -28,6 +28,8 @@ export default {
 
   mounted () {
     const SCENE_SIZE = 7000;
+    const UNSELECTED_BUOY_COLOR = 0.2;
+    const BOUY_NAME = 'bouy';
 
     function latlongToPixel (lat, long) {
       const latmin = -24.26333333; const latmax = -24.35333333; const lattotal = (latmin - latmax);
@@ -77,6 +79,8 @@ export default {
     const spriteManagerPlayer = new BABYLON.SpriteManager('playerManager', '/models/player.png', this.diveSites.length, 64, this.scene);
     let buoy = null;
     const instancedBuoyBuffer = new Float32Array(this.diveSites.length * 16);
+    const instancedBuoyColors = new Float32Array(this.diveSites.length * 4);
+    instancedBuoyColors.fill(UNSELECTED_BUOY_COLOR);
     loader.addMeshTask('flag', null, this.$router.options.base + 'models/flagLoop.glb').onSuccess = (task) => {
       // convert to a single mesh so instances will work
       buoy = BABYLON.Mesh.MergeMeshes(
@@ -91,6 +95,7 @@ export default {
         false,
         true
       );
+      buoy.name = BOUY_NAME;
       let i = 0;
       for (const site of this.diveSites) {
         const pos = latlongToPixel(site.lat, site.long);
@@ -108,6 +113,9 @@ export default {
         i++;
       }
       buoy.thinInstanceSetBuffer('matrix', instancedBuoyBuffer, 16);
+      buoy.thinInstanceSetBuffer('color', instancedBuoyColors, 4);
+      buoy.isPickable = true;
+      buoy.thinInstanceEnablePicking = true;
     };
 
     // collada
@@ -133,6 +141,7 @@ export default {
     skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
     skyboxMaterial.disableLighting = true;
     skybox.material = skyboxMaterial;
+    skybox.isPickable = false;
 
     // water
     const waterMesh = BABYLON.MeshBuilder.CreateGround('waterMesh', { width: SCENE_SIZE * 1.1, height: SCENE_SIZE * 1.1, subdivisions: 16 }, this.scene);
@@ -147,57 +156,38 @@ export default {
     water.colorBlendFactor = 0.0;
     water.addToRenderList(skybox);
     waterMesh.material = water;
+    waterMesh.isPickable = false;
 
-    this.scene.onPointerDown = function (evt, pickResult) {
-      if (buoy && pickResult.hit) {
-        const worldMat = buoy.thinInstanceGetWorldMatrices();
-        const thinInstanceMatrix = worldMat[pickResult.thinInstanceIndex];
+    const pickSite = (index) => {
+      instancedBuoyColors.fill(UNSELECTED_BUOY_COLOR);
+      if (index >= 0) {
+        instancedBuoyColors[index * 4] =
+        instancedBuoyColors[index * 4 + 1] =
+        instancedBuoyColors[index * 4 + 2] =
+        instancedBuoyColors[index * 4 + 3] = 1.0;
+      }
+      buoy.thinInstanceSetBuffer('color', instancedBuoyColors, 4);
+    };
 
-        console.log(pickResult.pickedPoint, pickResult.thinInstanceIndex, thinInstanceMatrix);
-
-        // for (const name in siteMeshes) {
-        //   siteMeshes[object.userData.name].material = siteSelectedMaterial;
-        //   this.$emit('pick', object.userData.name);
-        // }
+    this.scene.onPointerDown = (evt, pickResult) => {
+      if (pickResult.hit && pickResult.pickedMesh.name === BOUY_NAME) {
+        pickSite(pickResult.thinInstanceIndex);
+        this.$emit('pick', this.diveSites[pickResult.thinInstanceIndex].name);
       } else {
-        // boxSelected.setEnabled(false);
+        pickSite(-1);
       }
     };
-    // const clickEvent = (e) => {
-    //   const rect = this.renderer.domElement.getBoundingClientRect();
-    //   mouse.x = ((event.clientX - rect.left) / (rect.right - rect.left)) * 2 - 1;
-    //   mouse.y = -((event.clientY - rect.top) / (rect.bottom - rect.top)) * 2 + 1;
-
-    //   raycaster.setFromCamera(mouse, this.camera);
-
-    //   const intersects = raycaster.intersectObject(diveSiteGroup, true);
-
-    //   if (intersects.length > 0) {
-    //     const object = intersects[0].object;
-
-    //     for (const name in siteMeshes) {
-    //       siteMeshes[name].material = siteMaterial;
-    //     }
-    //     siteMeshes[object.userData.name].material = siteSelectedMaterial;
-    //     this.$emit('pick', object.userData.name);
-    //   }
-    // };
 
     this.$on('picker', (selectedIndex) => {
-    //   for (const name in siteMeshes) {
-    //     siteMeshes[name].material = siteMaterial;
-    //   }
-    //   siteMeshes[this.diveSites[selectedIndex].name].material = siteSelectedMaterial;
+      pickSite(selectedIndex);
     });
 
-    loader.load();
     this.engine.runRenderLoop(() => {
-      // TODO const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
-
       this.scene.render();
     });
 
-    // // on initialization
+    loader.load();
+    // on initialization
     window.addEventListener('resize', this.onWindowResize, false);
   },
 
