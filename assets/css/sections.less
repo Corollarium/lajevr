@@ -49,7 +49,7 @@
   max-width: @gridWidth;
   margin: 0 auto; // isso ja resolve altos problemas, se remover ja coloque outra solucao
 
-  @media only screen and (max-width: @gridWidth - 1) {
+  @media only screen and (max-width: (@gridWidth - 1)) {
     max-width: calc(100% - 40px);
   }
 }
@@ -75,7 +75,7 @@
 }
 
 .section-base {
-  .make-padding();
+  .make-padding(8, 8, 6, 5);
   &:not(last-child) {
       margin: 0 auto 2rem;
 
@@ -90,7 +90,7 @@
 }
 
 .section-inner {
-  .make-padding(4,3,2,1);
+  .make-padding(4,4,5,6);
 }
 
 .section-text {

@@ -250,7 +250,6 @@ export default {
   position: relative;
   cursor: move;
   width: 100%;
-  height: 100vh;
 
   .object-3d {
     width: 100%;

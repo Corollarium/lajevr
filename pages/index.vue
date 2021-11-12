@@ -82,7 +82,7 @@
         </h1>
 
         <div bp="grid" class="about-content">
-          <div bp="6 offset-6">
+          <div bp="12 6@md offset-6@md">
             <p>
               <i18n>
                 Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas.
@@ -127,7 +127,7 @@
           </div>
         </div>
 
-        <div class="section-inner" bp="container vertical-center">
+        <div class="section-inner" bp="vertical-center">
           <video ref="googleEarth" class="is-fullwidth" muted playsinline>
             <source src="~static/videos/laje_earth_1280.mp4">
           </video>

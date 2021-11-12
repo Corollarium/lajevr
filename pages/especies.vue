@@ -118,12 +118,12 @@
           <font-awesome-icon :icon="['fas', 'info-circle']" />
           {{ a.description }}
         </p>
-        <span class="open-modal">
+        <div class="open-modal">
           <a :href="`/galeria?filter=${a.name}`">
             <font-awesome-icon :icon="['fas', 'photo-video']" /> <i18n>Ver imagens</i18n></a>
           <a :href="a.about" v-if="a.about">
             <font-awesome-icon :icon="['fas', 'book']" /> <i18n>Mais detalhes</i18n></a>
-        </span>
+        </div>
       </div>
     </transition-group>
 

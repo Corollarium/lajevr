@@ -89,7 +89,7 @@
       </p>
 
       <figure class="figure-text">
-        <video style="width: 800px; max-width: 100vw; height: 800px; max-height: 100vh; margin: 0 auto;" muted playsinline controls>
+        <video class="figure-video" muted playsinline controls>
           <source src="~static/videos/technology/scrolllandinglaje-2021-10-20_11.52.18.mp4">
         </video>
         <figcaption>The diving scroll effect.</figcaption>
@@ -338,7 +338,7 @@
 
       <figure class="figure-text">
         <video
-          style="width: 800px; max-width: 100vw; height: 800px; max-height: 100vh; margin: 0 auto;"
+          class="figure-video"
           muted
           playsinline
           controls
@@ -388,7 +388,7 @@
       </p>
 
       <figure class="figure-text">
-        <div bp="grid 6">
+        <div bp="grid 12 6@md">
           <img src="~/static/images/technology/photo-underwater-before.jpg" alt="Before editing">
           <img src="~/static/images/technology/photo-underwater-after.jpg" alt="After editing">
         </div>
@@ -466,7 +466,7 @@
 
       <figure class="figure-text">
         <video
-          style="width: 800px; max-width: 100vw; height: 800px; max-height: 100vh; margin: 0 auto;"
+          class="figure-video"
           muted
           playsinline
           controls
