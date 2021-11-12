@@ -46,8 +46,7 @@ export default {
 
     this.scene = new BABYLON.Scene(this.engine);
     this.scene.clearColor = BABYLON.Color3.FromHexString('0x46BCEC');
-    // this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight, 1, 20000);
-    // Add a camera to the scene and attach it to the canvas
+
     this.camera = new BABYLON.ArcRotateCamera(
       'Camera',
       0.0,
@@ -66,7 +65,6 @@ export default {
     this.camera.inertialRadiusOffset = 5;
     this.camera.attachControl(this.container, false);
     this.camera.inputs.attached.mousewheel.wheelDeltaPercentage = 0.05;
-    // lights
 
     // Add lights to the scene
     this.light1 = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
@@ -75,16 +73,12 @@ export default {
     // loading manager
     const loader = new BABYLON.AssetsManager(this.scene);
 
-    const siteMaterial = new BABYLON.StandardMaterial('site', this.scene);
-    siteMaterial.diffuseColor = BABYLON.Color3.FromHexString('#0077FF');
-    const siteSelectedMaterial = new BABYLON.StandardMaterial('siteSelected', this.scene);
-    siteSelectedMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FF0000');
-
     // const siteMeshes = {};
     const spriteManagerPlayer = new BABYLON.SpriteManager('playerManager', '/models/player.png', this.diveSites.length, 64, this.scene);
     let buoy = null;
+    const instancedBuoyBuffer = new Float32Array(this.diveSites.length * 16);
     loader.addMeshTask('flag', null, this.$router.options.base + 'models/flagLoop.glb').onSuccess = (task) => {
-      console.log(task.loadedMeshes);
+      // convert to a single mesh so instances will work
       buoy = BABYLON.Mesh.MergeMeshes(
         [
           task.loadedMeshes[1],
@@ -102,17 +96,18 @@ export default {
         const pos = latlongToPixel(site.lat, site.long);
         const matrix = BABYLON.Matrix.Scaling(15.0, 15.0, 15.0);
         matrix.addTranslationFromFloats(pos[0], 20, pos[1]);
-        buoy.thinInstanceAdd(matrix);
+        matrix.copyToArray(instancedBuoyBuffer, i * 16);
         // mesh.userData = site;
         // siteMeshes[site.name] = mesh;
 
         const player = new BABYLON.Sprite('player' + i, spriteManagerPlayer);
         player.cellIndex = i;
-        i++;
         player.position = new BABYLON.Vector3(pos[0], 150, pos[1]);
         player.width = 100;
         player.height = 100;
+        i++;
       }
+      buoy.thinInstanceSetBuffer('matrix', instancedBuoyBuffer, 16);
     };
 
     // collada
@@ -139,6 +134,7 @@ export default {
     skyboxMaterial.disableLighting = true;
     skybox.material = skyboxMaterial;
 
+    // water
     const waterMesh = BABYLON.MeshBuilder.CreateGround('waterMesh', { width: SCENE_SIZE * 1.1, height: SCENE_SIZE * 1.1, subdivisions: 16 }, this.scene);
     const water = new WaterMaterial('water', this.scene, new BABYLON.Vector2(512, 512));
     water.backFaceCulling = true;
@@ -151,34 +147,6 @@ export default {
     water.colorBlendFactor = 0.0;
     water.addToRenderList(skybox);
     waterMesh.material = water;
-
-    // const gsize = 8192;
-    // const res = 1024;
-    // const gres = res / 2;
-    // const origx = -gsize / 2;
-    // const origz = -gsize / 2;
-    // const ocean = new Ocean(this.renderer, this.camera, scene,
-    //   {
-    //     USE_HALF_FLOAT: false,
-    //     INITIAL_SIZE: 2048.0,
-    //     INITIAL_WIND: [ 4.0, 4.0 ],
-    //     INITIAL_CHOPPINESS: 0.3,
-    //     CLEAR_COLOR: [ 1.0, 1.0, 1.0, 0.0 ],
-    //     GEOMETRY_ORIGIN: [ origx, origz ],
-    //     SUN_DIRECTION: [ -1.0, 1.0, 1.0 ],
-    //     OCEAN_COLOR: new THREE.Vector3(0.004, 0.016, 0.047),
-    //     SKY_COLOR: new THREE.Vector3(3.2, 9.6, 12.8),
-    //     EXPOSURE: 0.35,
-    //     GEOMETRY_RESOLUTION: gres,
-    //     GEOMETRY_SIZE: gsize,
-    //     RESOLUTION: res
-    //   });
-
-    // ocean.materialOcean.uniforms.u_projectionMatrix = { value: this.camera.projectionMatrix };
-    // ocean.materialOcean.uniforms.u_viewMatrix = { value: this.camera.matrixWorldInverse };
-    // ocean.materialOcean.uniforms.u_cameraPosition = { value: this.camera.position };
-    // ocean.oceanMesh.scale.set(2, 2, 2);
-    // scene.add(ocean.oceanMesh);
 
     this.scene.onPointerDown = function (evt, pickResult) {
       if (buoy && pickResult.hit) {
