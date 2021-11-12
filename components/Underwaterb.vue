@@ -4,7 +4,7 @@
     <div id="underwater-debug">
       {{ fps }} fps
     </div>
-    <button id="underwater-fullscreen" @click="fullscreen">
+    <button id="underwater-fullscreen" @click="fullscreen" v-show="!isFullscreen">
       <i18n>Ficar em tela cheia</i18n>
     </button>
     <div id="underwater-hud">
@@ -68,6 +68,8 @@ export default {
       mantas: [],
       turtles: [],
 
+      isFullscreen: false,
+
       // simulation / GUI
       ascentSpeed: 0,
       depth: 0,
@@ -99,7 +101,9 @@ export default {
       }
     },
     ascentSpeedGraph () {
-      if (this.ascentSpeed < 1.0 / 60.0) {
+      if (this.depth >= 0) {
+        return '';
+      } else if (this.ascentSpeed < 1.0 / 60.0) {
         return '<';
       } else if (this.ascentSpeed < 6.0 / 60.0) {
         return '<';
@@ -115,6 +119,9 @@ export default {
 
   mounted () {
     const container = document.getElementById('underwater-3d');
+    document.onfullscreenchange = (event) => {
+      this.isFullscreen = !!document.fullscreenElement;
+    };
 
     /*
      * boot renderer, scene, camera
@@ -145,7 +152,6 @@ export default {
       this.camera.speed = 0.5;
       this.debugUtils();
     }
-    window.ccc = this.camera;
 
     // Register a render loop to repeatedly render the scene
     const startTime = new Date();
@@ -210,6 +216,7 @@ export default {
 
   beforeDestroy () {
     window.removeEventListener('resize', this.resize);
+    document.onfullscreenchange = null;
     this.engine.stopRenderLoop();
     this.scene.dispose();
     this.scene = null;
@@ -241,8 +248,7 @@ export default {
       // Add a camera to the scene and attach it to the canvas
       this.camera = new BABYLON.UniversalCamera(
         'Camera',
-        // new BABYLON.Vector3(-16.12, 1.0, 28),
-        new BABYLON.Vector3(-14.12, 25.2, 27.19),
+        new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854),
         this.scene
       );
       this.camera.applyGravity = false;
@@ -269,7 +275,7 @@ export default {
       // near/far
       this.camera.minZ = 0.1;
       this.camera.maxZ = 700.0;
-      this.camera.setTarget(new BABYLON.Vector3(-16.12, 5.2, 27.19));
+      this.camera.setTarget(new BABYLON.Vector3(-12.89001753167552, 1.708562384403646, 25.710433418293825));
       this.camera.attachControl(container, true);
 
       // Enable Collisions
@@ -705,9 +711,9 @@ export default {
           for (const mesh of task.loadedMeshes) {
             mesh.position = new BABYLON.Vector3(-14.12, -17.2, 27.19);
             if (mesh.material) {
+              mesh.material.backFaceCulling = false;
               mesh.material.freeze();
             }
-            mesh.scaling = new BABYLON.Vector3(-14.12, -17.2, 27.19);
             mesh.alwaysSelectAsActiveMesh = true;
             mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
             // mesh.convertToUnIndexedMesh();
@@ -989,8 +995,8 @@ export default {
 
 #underwater-fullscreen {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 0;
   padding: 20px;
   margin: 0px;
   z-index: 1000;
