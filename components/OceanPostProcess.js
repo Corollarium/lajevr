@@ -40,15 +40,15 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
     this._reflectionEnabled = false;
     this._refractionEnabled = false;
     this._skyTexture = null;
+    this._camera = camera;
+    this._options = options;
+    this.reflectionTexture = null;
+    this.refractionTexture = null;
     // Get geometry shader
     this._geometryRenderer = camera.getScene().enableGeometryBufferRenderer(1.0);
     if (this._geometryRenderer && this._geometryRenderer.isSupported) {
       // Eanble position buffer
       this._geometryRenderer.enablePosition = true;
-      // Create mirror textures
-      this.reflectionTexture = new BABYLON.MirrorTexture('oceanPostProcessReflection', options.reflectionSize || { width: 512, height: 512 }, camera.getScene());
-      this.reflectionTexture.mirrorPlane = BABYLON.Plane.FromPositionAndNormal(BABYLON.Vector3.Zero(), new BABYLON.Vector3(0, -1, 0));
-      this.refractionTexture = new BABYLON.RenderTargetTexture('oceanPostProcessRefraction', options.refractionSize || { width: 512, height: 512 }, camera.getScene());
     } else {
       this.updateEffect('#define NOT_SUPPORTED\n');
     }
@@ -100,6 +100,16 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
       return;
     }
     this._reflectionEnabled = enabled;
+    if (enabled && !this.reflectionTexture) {
+      this.reflectionTexture = new BABYLON.MirrorTexture(
+        'oceanPostProcessReflection',
+        this._options.reflectionSize || { width: 512, height: 512 },
+        this._camera.getScene()
+      );
+      // Create mirror textures
+      this.reflectionTexture.mirrorPlane = BABYLON.Plane.FromPositionAndNormal(BABYLON.Vector3.Zero(), new BABYLON.Vector3(0, -1, 0));
+    }
+
     this.updateEffect(this._getDefines());
     // Remove or add custom render target
     const customRenderTargets = this.getCamera().getScene().customRenderTargets;
@@ -127,6 +137,14 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
       return;
     }
     this._refractionEnabled = enabled;
+    if (enabled && !this.refractionTexture) {
+      this.refractionTexture = new BABYLON.RenderTargetTexture(
+        'oceanPostProcessRefraction',
+        this._options.refractionSize || { width: 512, height: 512 },
+        this._camera.getScene()
+      );
+    }
+
     this.updateEffect(this._getDefines());
     // Remove or add custom render target
     const customRenderTargets = this.getCamera().getScene().customRenderTargets;

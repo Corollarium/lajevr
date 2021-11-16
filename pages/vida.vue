@@ -392,6 +392,7 @@
       </div>
 
       <life-block
+        id="garoupa"
         name="Garoupa verdadeira"
         latin="Epinephelus marginatus"
         conservation="Vulnerável a extinção"
@@ -436,6 +437,56 @@
         <p>
           <i18n>Um comportamento observado na espécie,  nos mergulhos na Laje de Santos, é a disputa com outros indivíduos pelo seu território, expulsando o invasor de sua toca com investidas e até mesmo mordidas. É possível notar  um padrão de coloração intercambiável de acordo com o substrato que ela se encontra… se for rochoso, os padrões de manchas serão vivas como se fossem uma camuflagem, quando em ambiente arenoso claro, seu corpo empalidece na cor da areia se mimetizando com o ambiente.</i18n>
         </p>
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/garoupa.glb"
+            />
+          </div>
+        </template>
+      </life-block>
+
+      <life-block
+        id="enxada"
+        name="Enxada"
+        latin="Chaetodipterus faber"
+        conservation="Pouco preocupante"
+      >
+        <template v-slot:header>
+          <figure class="figure-text">
+            <img :src="imageCardume.src" :srcset="imageCardume.srcSet" alt="Peixe enxada">
+            <figcaption>
+              <p>
+                <i18n>Cardume de peixe enxada. Foto: Nauther Andrés</i18n>
+              </p>
+            </figcaption>
+          </figure>
+        </template>
+
+        <p>
+          <i18n>
+            O peixe enxada também é conhecido como paru branco ou paru preto. Ele é visto em todo o Atlântico,
+            desde o norte dos Estados Unidos até o sul do Brasil.
+            É um avistamento comum na Laje, em grandes e belos cardumes que chegam a ter centenas de indivíduos.
+            É um peixe que pode viver em águas
+            salobras também, sendo presentes em manguezais e estuários.
+          </i18n>
+        </p>
+
+        <p>
+          <i18n>
+            Os peixes enxadas jovens costumam nadar na horizontal, parecendo uma folha.
+            Eles também são mais escuros, clareando com a idade.
+          </i18n>
+        </p>
+
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/enxada.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
@@ -859,6 +910,13 @@
             em que vivem.
           </i18n>
         </p>
+        <template v-slot:side-text>
+          <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
+            <GLTFModel
+              model="./models/salema.glb"
+            />
+          </div>
+        </template>
       </life-block>
 
       <life-block
