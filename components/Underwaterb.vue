@@ -215,7 +215,7 @@ export default {
         d++;
       });
 
-      // fish.update(deltaTime);
+      fish.update(deltaTime);
 
       this.scene.render();
     });
@@ -821,36 +821,6 @@ export default {
       return p;
     },
 
-    loadTurtle () {
-      const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
-          for (const mesh of task.loadedMeshes) {
-            mesh.position = this.camera.position.clone();
-            mesh.position.x += 10;
-            for (const a in mesh.animationGroups) {
-              a.start(true);
-            }
-            if (mesh.material) {
-              mesh.material.freeze();
-            }
-            mesh.alwaysSelectAsActiveMesh = true;
-            mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-            mesh.convertToUnIndexedMesh();
-            mesh.freezeNormals();
-            mesh.freezeWorldMatrix();
-            this.turtles.push(mesh);
-          }
-          // freeze all active meshes disables animation, so prepare the skeleton.
-          this.scene.onBeforeRenderObservable.add(() => {
-            task.loadedSkeletons.forEach(skeleton => skeleton.prepare());
-          });
-
-          resolve();
-        };
-      });
-      return p;
-    },
-
     loadFlock (modelpath, modelfile, total, initialCenterPosition, withCaustic = false) {
       // eslint-disable-next-line no-undef
       const boidsManager = new BoidsManager(
@@ -864,7 +834,9 @@ export default {
       boidsManager.maxSpeed = 0.2;
 
       let mainMesh = null;
+      const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
       const bufferMatrices = new Float32Array(16 * total);
+      const animParameters = new Float32Array(4 * total);
 
       const p = new Promise((resolve, reject) => {
         this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
@@ -876,14 +848,13 @@ export default {
             mesh.position = initialCenterPosition;
             mesh.scaling = new BABYLON.Vector3(10, 10, 10);
             if (mesh.material) {
-              mesh.material.backFaceCulling = false;
               mesh.material.freeze();
             }
             mesh.alwaysSelectAsActiveMesh = true;
             // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
             // mesh.convertToUnIndexedMesh();
-            mesh.freezeNormals();
-            mesh.freezeWorldMatrix();
+            // mesh.freezeNormals();
+            // mesh.freezeWorldMatrix();
           }
           mainMesh = task.loadedMeshes[1];
 
@@ -893,20 +864,31 @@ export default {
           }
 
           // thin instance version
-          const bufferMatrices = new Float32Array(16 * total);
           for (let i = 0; i < total; i++) {
             const matrix = BABYLON.Matrix.Translation(
-              this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
+              this.random(-1, 1), 0, 0
             );
             bufferMatrices.set(matrix.toArray(), i * 16);
           }
-
-          // // TODO: baked vat
           mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          // freeze all active meshes disables animation, so prepare the skeleton.
-          // this.scene.onBeforeRenderObservable.add(() => {
-          //   task.loadedSkeletons.forEach(skeleton => skeleton.prepare());
-          // });
+
+          const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
+          baker.bakeVertexData([{ from: 1, to: 30, name: 'swim' }]).then((vertexData) => {
+            const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+            bakedVertexAnimationManager.texture = vertexTexture;
+            mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+
+            for (let i = 0; i < total; i++) {
+              const matrix = BABYLON.Matrix.Translation(
+                this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
+              );
+              bufferMatrices.set(matrix.toArray(), i * 16);
+              const anim = new BABYLON.Vector4(1, 30, 0, 30);
+              animParameters.set(anim.asArray(), i * 4);
+            }
+            mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+            mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
+          });
 
           resolve();
         };
@@ -917,64 +899,32 @@ export default {
         boidsManager,
         promise: p,
         update: ((_boids, _models, total) => {
-          // return (deltaTime) => {
-          //   _boids.update(deltaTime);
-          //   for (let i = 0; i < total; i++) {
-          //     const matrix = BABYLON.Matrix.Compose(
-          //       boidsManager.boid.position,
-          //       new BABYLON.Quaternion(
-          //         boidsManager.boid.velocity.x,
-          //         boidsManager.boid.velocity.y,
-          //         boidsManager.boid.velocity.z,
-          //         0.0
-          //       ),
-          //       initialCenterPosition
-          //     );
-          //     matrix.copyToArray(bufferMatrices, i * 16);
-          //   }
-          //   mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          // };
+          return (deltaTime) => {
+            if (mainMesh && mainMesh.bakedVertexAnimationManager) {
+              mainMesh.bakedVertexAnimationManager.time += deltaTime;
+              //   _boids.update(deltaTime);
+              // for (let i = 0; i < total; i++) {
+              //   const matrix = BABYLON.Matrix.Translation(
+              //     this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
+              //   );
+
+              //   // const matrix = BABYLON.Matrix.Compose(
+              //   //   boidsManager.boid.position,
+              //   //   new BABYLON.Quaternion(
+              //   //     boidsManager.boid.velocity.x,
+              //   //     boidsManager.boid.velocity.y,
+              //   //     boidsManager.boid.velocity.z,
+              //   //     0.0
+              //   //   ),
+              //   //   initialCenterPosition
+              //   // );
+              //   bufferMatrices.set(matrix.toArray(), i * 16);
+              // }
+              // mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+            }
+          };
         })(boidsManager, mainMesh, total)
       };
-    },
-
-    loadMantas (total = 2) {
-      const p = new Promise((resolve, reject) => {
-        BABYLON.SceneLoader.LoadAssetContainer(
-          '/models/manta/', 'scene.gltf', this.scene,
-          (container) => {
-            container.addAllToScene();
-            const c = this.getCausticMaterial();
-
-            container.meshes.forEach((mesh) => {
-              mesh.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02); // TODO
-              mesh.position.y = 10;
-              mesh.setEnabled(false);
-              if (mesh.material) {
-                mesh.material.freeze();
-              }
-              mesh.rttMaterial = c;
-              this.renderTargetCaustic.renderList.push(mesh);
-            });
-
-            for (let i = 0; i < total; i++) {
-              const entries = container.instantiateModelsToScene(p => 'manta' + p + i);
-              for (const node of entries.rootNodes) {
-                node.position.x += (i + 1) * 10;
-                this.mantas.push(entries);
-                this.renderTargetCaustic.renderList.push(node);
-                this.renderTargetCaustic.renderList = this.renderTargetCaustic.renderList.concat(node.getChildMeshes());
-              }
-              for (const group of entries.animationGroups) {
-                group.speedRatio = 1.0 - 0.1 * i;
-                group.play(true);
-              }
-            }
-          }
-        );
-        resolve();
-      });
-      return p;
     },
 
     random (min, max) {
