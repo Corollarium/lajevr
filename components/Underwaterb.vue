@@ -1,5 +1,8 @@
 <template>
   <div id="underwater">
+    <button id="underwater-out" @click="fullscreen" v-show="!isFullscreen">
+      <i18n>Ficar em tela cheia</i18n>
+    </button>
     <canvas id="underwater-3d" touch-action="none" />
     <div id="underwater-debug">
       {{ fps }} fps
@@ -131,17 +134,21 @@ export default {
     this.bootScene(container);
     this.lights();
     this.materials();
-    this.composer();
+    // this.composer();
 
     const promises = [
-      this.loadTerrain(),
-      this.loadMoreiaBarco(),
+      this.loadTerrain(), // 38 draw calls
+      this.loadMoreiaBarco(), // 4 draw calls
       this.loadDiverBoat()
       // this.loadMantas(),
       // this.loadTurtle(),
     ];
-    // const fish = this.loadFishFlock('/models/fish/', 'scene.gltf', 3);
-    // promises.push(fish.promise);
+    const fish = this.loadFlock(
+      this.base + 'models/', 'salema.glb',
+      50,
+      new BABYLON.Vector3(-12.12, -13.2, 27.19)
+    );
+    promises.push(fish.promise);
     Promise.all(promises).then(() => {
       console.log('all loaded');
     });
@@ -152,6 +159,7 @@ export default {
       this.camera.speed = 0.5;
       this.debugUtils();
     }
+    // this.instrumentation();
 
     // Register a render loop to repeatedly render the scene
     const startTime = new Date();
@@ -167,15 +175,18 @@ export default {
         isUnderwater = isUnderwaterNow;
       }
       this.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
-      this.time = timeElapsed;
-      this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
-      this.lastDepth = this.camera.position.y;
-      this.orientationDegrees = this.camera.rotation.y * 180.0 / Math.PI;
+      // this.time = timeElapsed;
+      // this.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
+      // this.lastDepth = this.camera.position.y;
+      // this.orientationDegrees = this.camera.rotation.y * 180.0 / Math.PI;
+      this.fps = this.engine.getFps().toFixed();
 
+      if (this.$route.query.debug) {
       // inspector
-      const t = document.getElementById('inspector-host');
-      if (t) {
-        t.style.position = 'absolute';
+        const t = document.getElementById('inspector-host');
+        if (t) {
+          t.style.position = 'absolute';
+        }
       }
 
       // update shaders
@@ -206,7 +217,6 @@ export default {
 
       // fish.update(deltaTime);
 
-      this.fps = this.engine.getFps().toFixed();
       this.scene.render();
     });
 
@@ -246,11 +256,24 @@ export default {
       this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
       // Add a camera to the scene and attach it to the canvas
-      this.camera = new BABYLON.UniversalCamera(
-        'Camera',
-        new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854),
-        this.scene
-      );
+      const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854);
+      if (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0)) {
+      /* browser with either Touch Events of Pointer Events
+         running on touch-capable device */
+        this.camera = new BABYLON.VirtualJoysticksCamera(
+          'Camera',
+          cameraInitPoint,
+          this.scene
+        );
+      } else {
+        this.camera = new BABYLON.UniversalCamera(
+          'Camera',
+          cameraInitPoint,
+          this.scene
+        );
+      }
       this.camera.applyGravity = false;
       this.camera.speed = 0.05;
 
@@ -277,6 +300,9 @@ export default {
       this.camera.maxZ = 700.0;
       this.camera.setTarget(new BABYLON.Vector3(-12.89001753167552, 1.708562384403646, 25.710433418293825));
       this.camera.attachControl(container, true);
+      if (this.camera.inputs.attached.virtualJoystick) {
+        this.camera.inputs.attached.virtualJoystick._rightjoystick.setJoystickSensibility(0.01);
+      }
 
       // Enable Collisions
       this.scene.collisionsEnabled = true;
@@ -294,12 +320,37 @@ export default {
     },
 
     sceneOptimizer () {
-      const optimizer = BABYLON.SceneOptimizer.OptimizeAsync(this.scene);
-      return optimizer;
+      const options = BABYLON.SceneOptimizerOptions.HighDegradationAllowed();
+      options.optimizations = options.optimizations.filter(e => !e.getDescription().includes('Merging similar meshes'));
+      const optimizer = BABYLON.SceneOptimizer.OptimizeAsync(
+        this.scene,
+        options
+      );
     },
 
     debugUtils () {
       this.scene.debugLayer.show();
+    },
+
+    instrumentation () {
+      // for this to work you need to enable EXT_disjoint_timer_query_webgl2
+      const instrumentation = new BABYLON.EngineInstrumentation(this.engine);
+      instrumentation.captureGPUFrameTime = true;
+      instrumentation.captureShaderCompilationTime = true;
+
+      let i = 0;
+      this.scene.registerBeforeRender(() => {
+        if (i % 30 === 0) {
+          console.log(
+            'current frame time (GPU): ' + (instrumentation.gpuFrameTimeCounter.current * 0.000001).toFixed(2) + 'ms\n' +
+            'average frame time (GPU): ' + (instrumentation.gpuFrameTimeCounter.average * 0.000001).toFixed(2) + 'ms\n' +
+            'total shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.total).toFixed(2) + 'ms\n' +
+            'average shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.average).toFixed(2) + 'ms\n' +
+            'compiler shaders count: ' + instrumentation.shaderCompilationTimeCounter.count
+          );
+        }
+        i++;
+      });
     },
 
     resize () {
@@ -311,10 +362,10 @@ export default {
       // Add lights to the scene
       const ambientLight = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
       ambientLight.diffuse = BABYLON.Color3.FromHexString('#CCCCCC');
-      ambientLight.intensity = 0.4;
+      ambientLight.intensity = 0.2;
       const sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(0.2, -1, 0), this.scene);
       sunLight.diffuse = BABYLON.Color3.FromHexString('#FFFFFF');
-      ambientLight.intensity = 0.8;
+      sunLight.intensity = 0.8;
     },
 
     getCausticMaterial () {
@@ -397,6 +448,14 @@ export default {
 
       const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
+      const skyTexture = new BABYLON.Texture(
+        this.base + 'textures/waterbump.png', // half_kloofendal_48d_partly_cloudy_4k.jpg',
+        this.scene,
+        false,
+        true, // invert y
+        BABYLON.Texture.NEAREST_NEAREST
+      );
+
       // create the ocean pp
       const oceanPP = this.loadOceanPP();
       this.oceanPostProcess = oceanPP;
@@ -422,13 +481,7 @@ export default {
       underwaterPass.onApplyObservable.add((effect) => {
         effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
       });
-      const skyTexture = new BABYLON.Texture(
-        this.base + 'textures/half_kloofendal_48d_partly_cloudy_4k.jpg',
-        this.scene,
-        false,
-        true, // invert y
-        BABYLON.Texture.NEAREST_NEAREST
-      );
+
       this.oceanPostProcess.skyTexture = skyTexture;
 
       // bind undertware stuff
@@ -448,15 +501,16 @@ export default {
       // make it puuuurtier
       const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
+      const effects = [renderSceneBase, oceanPP, underwaterPass];
       const renderLayer = new BABYLON.PostProcessRenderEffect(
         this.engine,
         'renderLayer',
-        function () { return [renderSceneBase, oceanPP, underwaterPass, fxaa]; }
+        () => { return effects; }
       );
 
       pipeline.addEffect(renderLayer);
-      pipeline.samples = 4;
-      pipeline.fxaaEnabled = true;
+      // pipeline.samples = 4;
+      // pipeline.fxaaEnabled = true;
       this.scene.postProcessRenderPipelineManager.addPipeline(pipeline);
       this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('pipeline', this.camera);
     },
@@ -635,7 +689,7 @@ export default {
 
           rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
           const material = this.addToSceneAndCaustic([rocks[1]]);
-          material.backFaceCulling = false; // cause model seems inverted
+          // material.backFaceCulling = false; // cause model seems inverted
 
           resolve();
         };
@@ -649,7 +703,7 @@ export default {
               mesh.freezeNormals();
               mesh.freezeWorldMatrix();
               if (mesh.material) {
-                mesh.material.freeze();
+                // mesh.material.freeze();
               }
               rocks.push(mesh);
             }
@@ -677,7 +731,6 @@ export default {
               rotations.push(mesh.rotationQuaternion);
               scalings.push(mesh.absoluteScaling);
               mesh.dispose();
-              return;
             } else if (mesh.freeze) {
               mesh.doNotSyncBoundingInfo = true;
               if (mesh.material) {
@@ -690,13 +743,21 @@ export default {
               mesh.freezeWorldMatrix();
               mesh.freeze();
               mesh.bakeCurrentTransformIntoVertices();
+              actualLoaded.push(mesh);
             }
-            actualLoaded.push(mesh);
           });
-          // to generate the
-
           const material = this.addToSceneAndCaustic(actualLoaded);
-          material.backFaceCulling = false; // cause model seems inverted
+
+          // merge everything so we have fewer draw calls
+          const terrain = BABYLON.Mesh.MergeMeshes(
+            actualLoaded,
+            true,
+            true,
+            undefined,
+            false,
+            true
+          );
+
           terrainLoaded = true;
           processRocks();
         };
@@ -707,20 +768,34 @@ export default {
     loadMoreiaBarco () {
       const p = new Promise((resolve, reject) => {
         this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'moreia-20210912.glb').onSuccess = (task) => {
-          console.log(task);
+          const meshesWithMaterials = [];
+
           for (const mesh of task.loadedMeshes) {
             mesh.position = new BABYLON.Vector3(-14.12, -17.2, 27.19);
             if (mesh.material) {
               mesh.material.backFaceCulling = false;
               mesh.material.freeze();
+              meshesWithMaterials.push(mesh);
             }
             mesh.alwaysSelectAsActiveMesh = true;
             mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
             // mesh.convertToUnIndexedMesh();
             mesh.freezeNormals();
             mesh.freezeWorldMatrix();
-            this.addToSceneAndCaustic([mesh]);
           }
+          this.addToSceneAndCaustic(meshesWithMaterials);
+
+          // merge everything so we have fewer draw calls
+          // TODO
+          // const terrain = BABYLON.Mesh.MergeMeshes(
+          //   task.loadedMeshes,
+          //   true,
+          //   true,
+          //   undefined,
+          //   false,
+          //   true
+          // );
+
           resolve();
         };
       });
@@ -776,9 +851,6 @@ export default {
       return p;
     },
 
-    /**
-     *
-     */
     loadFlock (modelpath, modelfile, total, initialCenterPosition, withCaustic = false) {
       // eslint-disable-next-line no-undef
       const boidsManager = new BoidsManager(
@@ -791,48 +863,46 @@ export default {
       boidsManager.separationMinDistance = 1.0;
       boidsManager.maxSpeed = 0.2;
 
-      let mesh = null;
+      let mainMesh = null;
       const bufferMatrices = new Float32Array(16 * total);
 
       const p = new Promise((resolve, reject) => {
-        this.assetsManager.addMeshTask('tartaruga', null, this.base + modelpath, modelfile).onSuccess = (task) => {
+        this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
           const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
-          if (task.loadedMeshes.length !== 0) {
-            throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
+          // if (task.loadedMeshes.length !== 1) {
+          //   throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
+          // }
+          for (const mesh of task.loadedMeshes) {
+            mesh.position = initialCenterPosition;
+            mesh.scaling = new BABYLON.Vector3(10, 10, 10);
+            if (mesh.material) {
+              mesh.material.backFaceCulling = false;
+              mesh.material.freeze();
+            }
+            mesh.alwaysSelectAsActiveMesh = true;
+            // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+            // mesh.convertToUnIndexedMesh();
+            mesh.freezeNormals();
+            mesh.freezeWorldMatrix();
           }
-
-          mesh = task.loadedMeshes[0];
-          mesh.position = initialCenterPosition;
-          for (const a in mesh.animationGroups) {
-            a.start(true);
-          }
+          mainMesh = task.loadedMeshes[1];
 
           if (causticMaterial) {
-            mesh.rttMaterial = causticMaterial;
-            this.renderTargetCaustic.renderList.push(mesh);
+            mainMesh.rttMaterial = causticMaterial;
+            this.renderTargetCaustic.renderList.push(mainMesh);
           }
-          if (mesh.material) {
-            mesh.material.freeze();
-          }
-
-          mesh.alwaysSelectAsActiveMesh = true;
-          mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-          mesh.convertToUnIndexedMesh();
-          mesh.freezeNormals();
-          mesh.freezeWorldMatrix();
 
           // thin instance version
           const bufferMatrices = new Float32Array(16 * total);
           for (let i = 0; i < total; i++) {
-            const m = BABYLON.Matrix.Compose(
-              new BABYLON.Vector3(1.0, 1.0, 1.0),
-              new BABYLON.Quaternion(1.0, 0, 0, 0),
-              initialCenterPosition + new BABYLON.Vector3(this.random(-1, 1), this.random(-1, 1), this.random(-1, 1))
+            const matrix = BABYLON.Matrix.Translation(
+              this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
             );
-            m.copyToArray(bufferMatrices, i * 16);
+            bufferMatrices.set(matrix.toArray(), i * 16);
           }
-          // TODO: baked vat
-          mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+
+          // // TODO: baked vat
+          mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
           // freeze all active meshes disables animation, so prepare the skeleton.
           // this.scene.onBeforeRenderObservable.add(() => {
           //   task.loadedSkeletons.forEach(skeleton => skeleton.prepare());
@@ -843,28 +913,28 @@ export default {
       });
 
       return {
-        models: [mesh],
+        models: [mainMesh],
         boidsManager,
         promise: p,
         update: ((_boids, _models, total) => {
-          return (deltaTime) => {
-            _boids.update(deltaTime);
-            for (let i = 0; i < total; i++) {
-              const matrix = BABYLON.Matrix.Compose(
-                boidsManager.boid.position,
-                new BABYLON.Quaternion(
-                  boidsManager.boid.velocity.x,
-                  boidsManager.boid.velocity.y,
-                  boidsManager.boid.velocity.z,
-                  0.0
-                ),
-                initialCenterPosition
-              );
-              matrix.copyToArray(bufferMatrices, i * 16);
-            }
-            mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          };
-        })(boidsManager, mesh, total)
+          // return (deltaTime) => {
+          //   _boids.update(deltaTime);
+          //   for (let i = 0; i < total; i++) {
+          //     const matrix = BABYLON.Matrix.Compose(
+          //       boidsManager.boid.position,
+          //       new BABYLON.Quaternion(
+          //         boidsManager.boid.velocity.x,
+          //         boidsManager.boid.velocity.y,
+          //         boidsManager.boid.velocity.z,
+          //         0.0
+          //       ),
+          //       initialCenterPosition
+          //     );
+          //     matrix.copyToArray(bufferMatrices, i * 16);
+          //   }
+          //   mesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+          // };
+        })(boidsManager, mainMesh, total)
       };
     },
 
@@ -995,11 +1065,13 @@ export default {
 
 #underwater-fullscreen {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 0;
   padding: 20px;
   margin: 0px;
   z-index: 1000;
+  max-width: 80%;
+  line-height: 1.2em;
   border-radius: 10px;
   font-size: 42px;
   background: #004;
