@@ -823,15 +823,34 @@ export default {
 
     loadFlock (modelpath, modelfile, total, initialCenterPosition, withCaustic = false) {
       // eslint-disable-next-line no-undef
+      const zero = new BABYLON.Vector3(0, 0, 0);
       const boidsManager = new BoidsManager(
         total,
-        initialCenterPosition,
-        10.0,
-        20.0
+        zero,
+        1.0,
+        30.0
       );
-      boidsManager.cohesion = 0.05;
-      boidsManager.separationMinDistance = 1.0;
-      boidsManager.maxSpeed = 0.2;
+      boidsManager.cohesion = 0.01;
+      boidsManager.alignment = 0.3;
+      boidsManager.separationMinDistance = 0.1;
+      boidsManager.maxSpeed = 1.0;
+      // keep them around the center
+      boidsManager.addForce(
+        (_manager, boid) => {
+          return zero.subtract(boid.position).scale(5.4);
+        }
+      );
+      // TODO away from diver
+      boidsManager.addForce(
+        (_manager, boid) => {
+          const MIN_DISTANCE = 3.0;
+          const d = this.camera.position.subtract(boid.position);
+          if (d.lengthSquared < MIN_DISTANCE * MIN_DISTANCE) {
+            return new BABYLON.Vector3(MIN_DISTANCE, MIN_DISTANCE, MIN_DISTANCE).subtract(d).scale(100.0);
+          }
+          return zero;
+        }
+      );
 
       let mainMesh = null;
       const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
@@ -902,25 +921,26 @@ export default {
           return (deltaTime) => {
             if (mainMesh && mainMesh.bakedVertexAnimationManager) {
               mainMesh.bakedVertexAnimationManager.time += deltaTime;
-              //   _boids.update(deltaTime);
-              // for (let i = 0; i < total; i++) {
-              //   const matrix = BABYLON.Matrix.Translation(
-              //     this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
-              //   );
+              _boids.update(deltaTime);
+              for (let i = 0; i < total; i++) {
+                const boid = _boids.boids[i];
+                // const matrix = BABYLON.Matrix.Translation(
+                //   boid.position.x, boid.position.y, boid.position.z
+                // );
 
-              //   // const matrix = BABYLON.Matrix.Compose(
-              //   //   boidsManager.boid.position,
-              //   //   new BABYLON.Quaternion(
-              //   //     boidsManager.boid.velocity.x,
-              //   //     boidsManager.boid.velocity.y,
-              //   //     boidsManager.boid.velocity.z,
-              //   //     0.0
-              //   //   ),
-              //   //   initialCenterPosition
-              //   // );
-              //   bufferMatrices.set(matrix.toArray(), i * 16);
-              // }
-              // mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+                const matrix = BABYLON.Matrix.Compose(
+                  new BABYLON.Vector3(1, 1, 1),
+                  new BABYLON.Quaternion(
+                    boid.velocity.x,
+                    boid.velocity.y,
+                    boid.velocity.z,
+                    0.0
+                  ),
+                  boid.position
+                );
+                bufferMatrices.set(matrix.toArray(), i * 16);
+              }
+              mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
             }
           };
         })(boidsManager, mainMesh, total)
