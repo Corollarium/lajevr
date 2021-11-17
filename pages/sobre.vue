@@ -352,6 +352,8 @@
           <li>Governo do Estado de São Paulo, pelo projeto ProAC</li>
           <li><a href="https://www.instagram.com/deia_morales/" target="_blank">Andréa Pontes</a> pelas suas fotos e vídeos</li>
           <li>José Edmilson Júnior, gestor do Parque Estadual Marinho da Laje de Santos, por acreditar e apoiar o projeto imediatamente</li>
+          <li><a href="https://freesound.org/s/156011/">Som de mergulho usado sob licença CC-NC 3.0</a></li>
+          <li><a href="https://freesound.org/people/davidgtr1/sounds/581487/">Som de oceano usado sob licença CC-NC 3.0</a></li>
         </ul>
       </section>
     </section>
