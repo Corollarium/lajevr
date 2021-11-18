@@ -52,8 +52,21 @@ const causticblack_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
 /* eslint-disable no-console */
 
 class Underwater {
-  rttMaterials = [];
   lastDepth = 0;
+
+  // babylon basis
+  engine = null;
+  scene = null;
+  camera = null;
+  assetsManager = null;
+
+  oceanPostProcess = null;
+  renderTargetCaustic = null;
+  causticMaterial = null;
+  causticBlackMaterial = null;
+  rttMaterials = [];
+
+  rebuildOceanTexture = true;
 
   constructor (vueComponent) {
     const container = document.getElementById('underwater-3d');
