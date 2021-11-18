@@ -27,6 +27,7 @@ uniform float fov; // in rads
 uniform vec2 resolution;
 uniform vec3 cameraRotation;
 uniform vec3 cameraPosition;
+uniform vec3 lightDirection;
 uniform float worldScale;
 
 // Varyings
@@ -555,7 +556,7 @@ void main() {
 
     // bteitler: direction of the infinitely far away directional light.  Changing this will change
     // the sunlight direction.
-    vec3 light = normalize(vec3(0.0, 1.0, 0.8));
+    vec3 light = normalize(vec3(lightDirection.x, lightDirection.y, lightDirection.z));
 
     // Color
     float seaFact = 1.0; // clamp(max(ori.y, 0.0), 0.0, 1.0);
