@@ -52,13 +52,14 @@ const causticblack_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
 /* eslint-disable no-console */
 
 class Underwater {
-  lastDepth = 0;
+  base = ''; // base url
 
   // babylon basis
   engine = null;
   scene = null;
   camera = null;
   assetsManager = null;
+  sunLight = null;
 
   oceanPostProcess = null;
   renderTargetCaustic = null;
@@ -68,10 +69,13 @@ class Underwater {
 
   rebuildOceanTexture = true;
 
+  audioDiver = null;
+  audioOcean = null;
+
   constructor (vueComponent) {
     const container = document.getElementById('underwater-3d');
     document.onfullscreenchange = (event) => {
-      this.isFullscreen = !!document.fullscreenElement;
+      vueComponent.isFullscreen = !!document.fullscreenElement;
     };
     this.base = vueComponent.base;
 
@@ -209,6 +213,14 @@ class Underwater {
     window.removeEventListener('resize', this.resize.bind(this));
     document.onfullscreenchange = null;
     this.engine.stopRenderLoop();
+    if (this.audioDiver) {
+      this.audioDiver.stop();
+      this.audioDiver = null;
+    }
+    if (this.audioOcean) {
+      this.audioOcean.stop();
+      this.audioOcean = null;
+    }
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
@@ -346,9 +358,9 @@ class Underwater {
     const ambientLight = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
     ambientLight.diffuse = BABYLON.Color3.FromHexString('#CCCCCC');
     ambientLight.intensity = 0.2;
-    const sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(0.2, -1, 0), this.scene);
-    sunLight.diffuse = BABYLON.Color3.FromHexString('#FFFFFF');
-    sunLight.intensity = 0.8;
+    this.sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(-0.5, 1.0, 0.6).normalize(), this.scene);
+    this.sunLight.diffuse = BABYLON.Color3.FromHexString('#FFFFFF');
+    this.sunLight.intensity = 0.8;
   }
 
   getCausticMaterial () {
@@ -502,7 +514,8 @@ class Underwater {
     const nearestPOT = x => 2 ** Math.ceil(Math.log(x) / Math.log(2));
     const oceanOptions = {
       width: nearestPOT(this.camera.getEngine().getRenderWidth()),
-      height: nearestPOT(this.camera.getEngine().getRenderHeight())
+      height: nearestPOT(this.camera.getEngine().getRenderHeight()),
+      light: this.sunLight
     };
 
     if (oceanOptions.width > 2048) {

@@ -22,7 +22,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
     super(
       name,
       './oceanPostProcess',
-      ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation', 'worldScale'],
+      ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation', 'worldScale', 'lightDirection'],
       ['positionSampler', 'reflectionSampler', 'refractionSampler', 'skyTexture'],
       {
         width: options.width || camera.getEngine().getRenderWidth(),
@@ -46,6 +46,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
     this.refractionTexture = null;
     // Get geometry shader
     this._geometryRenderer = camera.getScene().enableGeometryBufferRenderer(1.0);
+    this.light = ('light' in options ? options.light : null);
     if (this._geometryRenderer && this._geometryRenderer.isSupported) {
       // Eanble position buffer
       this._geometryRenderer.enablePosition = true;
@@ -69,6 +70,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
         // Rotation
         this._computeCameraRotation(camera);
         effect.setVector3('cameraRotation', this._cameraRotation);
+        effect.setVector3('lightDirection', this.light ? this.light.direction : new BABYLON.Vector3(0.2, -1.0, 0.0));
         effect.setFloat('fov', camera.fov);
         effect.setFloat('worldScale', this.worldScale);
         // Samplers
