@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 import { library, config } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import i18n from '~/components/i18n.vue';
@@ -17,5 +17,6 @@ library.add(fab);
 
 // Register the component globally
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-layers', FontAwesomeLayers);
 Vue.component('i18n', i18n);
 Vue.component('number-bullet', NumberBullet);

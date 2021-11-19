@@ -28,6 +28,10 @@
     </div>
     <div id="underwater-settings">
       <font-awesome-icon :icon="['fas', 'camera']" @click="snapshotRequested = true" size="2x" />
+      <font-awesome-layers @click="toggleVolume" class="fa-2x">
+        <font-awesome-icon :icon="['fas', 'volume-up']" transform="shrink-6" />
+        <font-awesome-icon v-show="mute" icon="ban" style="color:Tomato" />
+      </font-awesome-layers>
     </div>
   </div>
 </template>
@@ -312,6 +316,9 @@ class Underwater {
     this.assetsManager.onTaskErrorObservable.add(function (task) {
       console.error('task failed', task.name, task.errorObject.message, task.errorObject.exception);
     });
+    this.assetsManager.onProgress = (remainingCount, totalCount, lastFinishedTask) => {
+      this.engine.loadingUIText = 'We are loading the scene. ' + remainingCount + ' out of ' + totalCount + ' items still need to be loaded.';
+    };
   }
 
   sceneOptimizer () {
@@ -897,60 +904,60 @@ class Underwater {
     const bufferMatrices = new Float32Array(16 * total);
     const animParameters = new Float32Array(4 * total);
 
-    const p = new Promise((resolve, reject) => {
-      this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
-        const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
-        // if (task.loadedMeshes.length !== 1) {
-        //   throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
-        // }
-        for (const mesh of task.loadedMeshes) {
-          mesh.position = initialCenterPosition;
-          mesh.scaling = new BABYLON.Vector3(10, 10, 10);
-          if (mesh.material) {
-            mesh.material.freeze();
-          }
-          mesh.alwaysSelectAsActiveMesh = true;
-          // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-          // mesh.convertToUnIndexedMesh();
-          // mesh.freezeNormals();
-          // mesh.freezeWorldMatrix();
-        }
-        mainMesh = task.loadedMeshes[1];
+    const p = BABYLON.SceneLoader.LoadAssetContainerAsync(modelpath, modelfile, this.scene, (container) => {
+      const loadedMeshes = container.meshes;
+      // this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
+      // const loadedMeshes = task.loadedMeshes;
 
-        if (causticMaterial) {
-          mainMesh.rttMaterial = causticMaterial;
-          this.renderTargetCaustic.renderList.push(mainMesh);
+      const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
+      // if (loadedMeshes.length !== 1) {
+      //   throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
+      // }
+      for (const mesh of loadedMeshes) {
+        mesh.position = initialCenterPosition;
+        mesh.scaling = new BABYLON.Vector3(10, 10, 10);
+        if (mesh.material) {
+          mesh.material.freeze();
         }
+        mesh.alwaysSelectAsActiveMesh = true;
+        // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+        // mesh.convertToUnIndexedMesh();
+        // mesh.freezeNormals();
+        // mesh.freezeWorldMatrix();
+      }
+      mainMesh = loadedMeshes[1];
 
-        // thin instance version
+      if (causticMaterial) {
+        mainMesh.rttMaterial = causticMaterial;
+        this.renderTargetCaustic.renderList.push(mainMesh);
+      }
+
+      // thin instance version
+      for (let i = 0; i < total; i++) {
+        const matrix = BABYLON.Matrix.Translation(
+          this.random(-1, 1), 0, 0
+        );
+        bufferMatrices.set(matrix.toArray(), i * 16);
+      }
+      mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+
+      const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
+      baker.bakeVertexData([{ from: 1, to: 30, name: 'swim' }]).then((vertexData) => {
+        const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+        bakedVertexAnimationManager.texture = vertexTexture;
+        mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+
         for (let i = 0; i < total; i++) {
           const matrix = BABYLON.Matrix.Translation(
-            this.random(-1, 1), 0, 0
+            this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
           );
           bufferMatrices.set(matrix.toArray(), i * 16);
+          const anim = new BABYLON.Vector4(1, 30, 0, 30);
+          animParameters.set(anim.asArray(), i * 4);
         }
         mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-
-        const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
-        baker.bakeVertexData([{ from: 1, to: 30, name: 'swim' }]).then((vertexData) => {
-          const vertexTexture = baker.textureFromBakedVertexData(vertexData);
-          bakedVertexAnimationManager.texture = vertexTexture;
-          mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-
-          for (let i = 0; i < total; i++) {
-            const matrix = BABYLON.Matrix.Translation(
-              this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
-            );
-            bufferMatrices.set(matrix.toArray(), i * 16);
-            const anim = new BABYLON.Vector4(1, 30, 0, 30);
-            animParameters.set(anim.asArray(), i * 4);
-          }
-          mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-        });
-
-        resolve();
-      };
+        mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
+      });
     });
 
     return {
@@ -1011,6 +1018,8 @@ export default {
       time: 0,
       air: 100,
       fps: 0,
+      volume: 0,
+      mute: false,
       /** The camera orientation as a compass */
       orientationDegrees: 0.0
     };
@@ -1058,6 +1067,15 @@ export default {
   methods: {
     fullscreen () {
       document.getElementById('underwater').requestFullscreen();
+    },
+    toggleVolume () {
+      this.mute = !this.mute;
+      if (this.mute) {
+        this.volume = BABYLON.Engine.audioEngine.getGlobalVolume();
+        BABYLON.Engine.audioEngine.setGlobalVolume(0);
+      } else {
+        BABYLON.Engine.audioEngine.setGlobalVolume(this.volume);
+      }
     }
   }
 };
