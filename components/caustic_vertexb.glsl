@@ -16,6 +16,7 @@ varying vec3 vPosition;
 
 #include<bonesDeclaration>
 #include<instancesDeclaration>
+#include<bakedVertexAnimationDeclaration>
 
 /*
  * Vertex shader for caustic and babylonjs.
@@ -26,6 +27,7 @@ void main() {
     // include shaders to calculate instances and bones
     #include<instancesVertex>
     #include<bonesVertex>
+    #include<bakedVertexAnimation>
 
     // return normal, uv and position
     vec4 worldPos = finalWorld * vec4(positionUpdated, 1.0);

@@ -425,7 +425,6 @@ class Underwater {
 
     const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
     renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
-    // renderSceneBase.alphaMode = BABYLON.Engine.ALPHA_COMBINE;
 
     this.renderTargetCaustic = new BABYLON.RenderTargetTexture('caustic', 1024, this.scene);
     this.scene.customRenderTargets.push(this.renderTargetCaustic);
@@ -629,8 +628,8 @@ class Underwater {
   }
 
   /**
- * @return the caustic material
- */
+   * @return the caustic material
+   */
   addToSceneAndCaustic (meshes) {
     const c = this.getCausticMaterial();
     meshes.forEach((mesh) => {
@@ -728,7 +727,7 @@ class Underwater {
         const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
 
         // get the rocks, man. the rocks.
-        task.loadedMeshes.forEach((mesh) => {
+        for (const mesh of task.loadedMeshes) {
           if (mesh.name.includes('rock')) {
             // store information from rocks
             mesh.computeWorldMatrix();
@@ -751,7 +750,7 @@ class Underwater {
             actualLoaded.push(mesh);
             this.sunLight.includedOnlyMeshes.push(mesh);
           }
-        });
+        }
         const material = this.addToSceneAndCaustic(actualLoaded);
 
         // merge everything so we have fewer draw calls
@@ -832,7 +831,7 @@ class Underwater {
           });
       };
       this.assetsManager.addBinaryFileTask(
-        'sound_diver',
+        'sound_ocean',
         this.base + 'audio/435668__byjoshberry__ocean-waves-hitting-bow-of-moving-boat.mp3'
       ).onSuccess = (task) => {
         end();
@@ -1137,7 +1136,7 @@ export default {
   padding: 10px;
   width: 160px;
   height: 220px;
-  z-index: 1000;
+  z-index: 10;
   border-radius: 10px;
   background: #000;
   font-family: monospace;
