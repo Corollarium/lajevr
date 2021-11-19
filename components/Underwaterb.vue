@@ -104,7 +104,8 @@ class Underwater {
     const fish = this.loadFlock(
       this.base + 'models/', 'salema.glb',
       50,
-      new BABYLON.Vector3(-12.12, -13.2, 27.19)
+      new BABYLON.Vector3(-12.12, -13.2, 27.19),
+      [{ from: 1, to: 92, name: 'swim' }]
     );
     promises.push(fish.promise);
     Promise.all(promises).then(() => {
@@ -117,6 +118,7 @@ class Underwater {
     if (vueComponent.$route.query.debug) {
       this.camera.speed = 0.5;
       this.debugUtils();
+      BABYLON.Engine.audioEngine.setGlobalVolume(0);
     }
     // this.instrumentation();
 
@@ -306,7 +308,6 @@ class Underwater {
     // Enable Collisions
     this.scene.collisionsEnabled = true;
     this.camera.checkCollisions = true;
-    this.scene.freezeActiveMeshes();
 
     // avoid clearing the scene to optimize
     this.scene.autoClear = false; // Color buffer
@@ -315,6 +316,9 @@ class Underwater {
     this.assetsManager = new BABYLON.AssetsManager(this.scene);
     this.assetsManager.onTaskErrorObservable.add(function (task) {
       console.error('task failed', task.name, task.errorObject.message, task.errorObject.exception);
+    });
+    this.assetsManager.onTaskSuccessObservable.add(function (task) {
+      console.log('task successful', task.name);
     });
     this.assetsManager.onProgress = (remainingCount, totalCount, lastFinishedTask) => {
       this.engine.loadingUIText = 'We are loading the scene. ' + remainingCount + ' out of ' + totalCount + ' items still need to be loaded.';
@@ -362,10 +366,10 @@ class Underwater {
 
   lights () {
     // Add lights to the scene
-    const ambientLight = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), this.scene);
+    const ambientLight = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this.scene);
     ambientLight.diffuse = BABYLON.Color3.FromHexString('#CCCCCC');
-    ambientLight.intensity = 0.2;
-    this.sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(-0.5, 1.0, 0.6).normalize(), this.scene);
+    ambientLight.intensity = 0.4;
+    this.sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(-0.5, -1.0, 0.6).normalize(), this.scene);
     this.sunLight.diffuse = BABYLON.Color3.FromHexString('#FFFFFF');
     this.sunLight.intensity = 0.8;
   }
@@ -699,7 +703,6 @@ class Underwater {
 
       // load the rocks
       this.assetsManager.addMeshTask('rocks', null, this.base + 'models/ilha/', 'rocks.glb').onSuccess = (task) => {
-        console.log('rocks glb start');
         task.loadedMeshes.forEach((mesh) => {
           if (mesh.name === 'rockLow1' || mesh.name === 'rockLow1.001' || mesh.name === 'rockLow1.002') {
             // store the first rock model.
@@ -711,7 +714,6 @@ class Underwater {
             rocks.push(mesh);
           }
         });
-        console.log('rocks glb end');
         processRocks();
       };
 
@@ -747,6 +749,7 @@ class Underwater {
             mesh.freeze();
             mesh.bakeCurrentTransformIntoVertices();
             actualLoaded.push(mesh);
+            this.sunLight.includedOnlyMeshes.push(mesh);
           }
         });
         const material = this.addToSceneAndCaustic(actualLoaded);
@@ -868,7 +871,7 @@ class Underwater {
     return p;
   }
 
-  loadFlock (modelpath, modelfile, total, initialCenterPosition, withCaustic = false) {
+  loadFlock (modelpath, modelfile, total, initialCenterPosition, animationRanges, withCaustic = false) {
     // eslint-disable-next-line no-undef
     const zero = new BABYLON.Vector3(0, 0, 0);
     const boidsManager = new BoidsManager(
@@ -900,11 +903,19 @@ class Underwater {
     );
 
     let mainMesh = null;
-    const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
     const bufferMatrices = new Float32Array(16 * total);
     const animParameters = new Float32Array(4 * total);
 
-    const p = BABYLON.SceneLoader.LoadAssetContainerAsync(modelpath, modelfile, this.scene, (container) => {
+    // const p = BABYLON.SceneLoader.LoadAssetContainerAsync(modelpath, modelfile, this.scene)
+    const p = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      modelpath,
+      modelfile,
+      this.scene,
+      undefined
+    );
+
+    p.then((container) => {
       const loadedMeshes = container.meshes;
       // this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
       // const loadedMeshes = task.loadedMeshes;
@@ -917,12 +928,12 @@ class Underwater {
         mesh.position = initialCenterPosition;
         mesh.scaling = new BABYLON.Vector3(10, 10, 10);
         if (mesh.material) {
-          mesh.material.freeze();
+          // mesh.material.freeze();
         }
         mesh.alwaysSelectAsActiveMesh = true;
         // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
         // mesh.convertToUnIndexedMesh();
-        // mesh.freezeNormals();
+        mesh.freezeNormals();
         // mesh.freezeWorldMatrix();
       }
       mainMesh = loadedMeshes[1];
@@ -942,9 +953,17 @@ class Underwater {
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
 
       const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
-      baker.bakeVertexData([{ from: 1, to: 30, name: 'swim' }]).then((vertexData) => {
+      baker.bakeVertexData(animationRanges).then((vertexData) => {
         const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+        const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
         bakedVertexAnimationManager.texture = vertexTexture;
+        // bakedVertexAnimationManager.animationParameters = new BABYLON.Vector4(
+        //   animationRanges[0].from,
+        //   animationRanges[0].to,
+        //   0,
+        //   24
+        // );
+
         mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
 
         for (let i = 0; i < total; i++) {
@@ -952,13 +971,18 @@ class Underwater {
             this.random(-1, 1), this.random(-1, 1), this.random(-1, 1)
           );
           bufferMatrices.set(matrix.toArray(), i * 16);
-          const anim = new BABYLON.Vector4(1, 30, 0, 30);
+          const anim = new BABYLON.Vector4(
+            animationRanges[0].from,
+            animationRanges[0].to,
+            Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
+            30
+          );
           animParameters.set(anim.asArray(), i * 4);
         }
         mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
         mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
       });
-    });
+    }).catch((e) => { console.error(e); });
 
     return {
       models: [mainMesh],
@@ -987,7 +1011,7 @@ class Underwater {
               );
               bufferMatrices.set(matrix.toArray(), i * 16);
             }
-            mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+            // mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
           }
         };
       })(boidsManager, mainMesh, total)
@@ -1062,6 +1086,7 @@ export default {
 
   mounted () {
     this.underwater = new Underwater(this);
+    window.underwater = this.underwater;
   },
 
   methods: {
@@ -1158,7 +1183,7 @@ export default {
   left: 0;
   padding: 20px;
   margin: 0px;
-  z-index: 1000;
+  z-index: 1;
   max-width: 80%;
   line-height: 1.2em;
   border-radius: 10px;
