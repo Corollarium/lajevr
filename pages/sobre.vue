@@ -55,9 +55,8 @@
           Com a melhora da situação em 2021, pudemos finalmente cair na água.
         </i18n>
       </p>
-      <p>
-        <SwimmingFish />
-      </p>
+
+      <SwimmingFish />
     </section>
 
     <section class="section-base container">
