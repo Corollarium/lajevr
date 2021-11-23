@@ -91,21 +91,21 @@
 
           <div class="number-wrapper about-numbers" bp="grid 6 4@md 3@lg">
             <number-bullet
-              :to="8"
+              :to="4 + 4 + 6"
               :icon="['fas', 'mask']"
             >
               <i18n>mergulhos</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="2"
+              :to="3"
               :icon="['fas', 'users']"
             >
               <i18n>mergulhadores</i18n>
             </number-bullet>
 
             <number-bullet
-              :to="178 + 42*2 + 48*2"
+              :to="178 + 42*2 + 48*2 + 62*3 + 46*3"
               :icon="['fas', 'clock']"
             >
               <i18n>minutos de mergulho</i18n>

@@ -1,37 +1,37 @@
 {
-  "site": { "images": 165, "videos": 7, "models": 14, "locs": 
+  "site": { "images": 172, "videos": 7, "models": 18, "locs": 
 {"header" : {
   "cloc_url"           : "github.com/AlDanial/cloc",
   "cloc_version"       : "1.84",
-  "elapsed_seconds"    : 0.0909209251403809,
-  "n_files"            : 88,
-  "n_lines"            : 16107,
-  "files_per_second"   : 967.874005506752,
-  "lines_per_second"   : 177153.938712469},
+  "elapsed_seconds"    : 0.0778157711029053,
+  "n_files"            : 91,
+  "n_lines"            : 17331,
+  "files_per_second"   : 1169.4287508847,
+  "lines_per_second"   : 222718.34814926},
 "Vuejs Component" :{
-  "nFiles": 37,
-  "blank": 761,
-  "comment": 549,
-  "code": 7114},
+  "nFiles": 39,
+  "blank": 889,
+  "comment": 766,
+  "code": 7949},
 "LESS" :{
   "nFiles": 23,
-  "blank": 481,
+  "blank": 483,
   "comment": 371,
-  "code": 2214},
+  "code": 2218},
 "PO File" :{
   "nFiles": 2,
   "blank": 492,
   "comment": 502,
   "code": 1475},
 "JavaScript" :{
-  "nFiles": 11,
-  "blank": 273,
+  "nFiles": 12,
+  "blank": 277,
   "comment": 173,
-  "code": 1210},
+  "code": 1242},
 "GLSL" :{
   "nFiles": 9,
   "blank": 80,
-  "comment": 62,
+  "comment": 64,
   "code": 276},
 "JSON" :{
   "nFiles": 3,
@@ -44,9 +44,9 @@
   "comment": 0,
   "code": 12},
 "SUM": {
-  "blank": 2095,
-  "comment": 1657,
-  "code": 12355,
-  "nFiles": 88} }},
-  "vr": { "images": 1587, "videos": 21, "models": 1, "data": 61344}
+  "blank": 2229,
+  "comment": 1876,
+  "code": 13226,
+  "nFiles": 91} }},
+  "vr": { "images": 2140, "videos": 60, "models": 1, "data": 81002}
 } 
