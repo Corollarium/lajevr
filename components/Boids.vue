@@ -47,7 +47,7 @@ class BoidsTest {
       this.base + 'models/', 'raiaManta.glb',
       50,
       new BABYLON.Vector3(-12.12, -13.2, 27.19),
-      [{ from: 1, to: 92, name: 'swim' }]
+      [{ from: 1, to: 30, name: 'swim' }]
     );
     promises.push(fish.promise);
     Promise.all(promises).then(() => {
@@ -90,14 +90,6 @@ class BoidsTest {
     window.removeEventListener('resize', this.resize.bind(this));
     document.onfullscreenchange = null;
     this.engine.stopRenderLoop();
-    if (this.audioDiver) {
-      this.audioDiver.stop();
-      this.audioDiver = null;
-    }
-    if (this.audioOcean) {
-      this.audioOcean.stop();
-      this.audioOcean = null;
-    }
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
@@ -173,14 +165,6 @@ class BoidsTest {
       this.camera.inputs.attached.virtualJoystick._rightjoystick.setJoystickSensibility(0.01);
     }
 
-    // Enable Collisions
-    this.scene.collisionsEnabled = true;
-    this.camera.checkCollisions = true;
-
-    // avoid clearing the scene to optimize
-    this.scene.autoClear = false; // Color buffer
-    this.scene.autoClearDepthAndStencil = false; // Depth and stencil, obviously
-
     this.assetsManager = new BABYLON.AssetsManager(this.scene);
     this.assetsManager.onTaskErrorObservable.add(function (task) {
       console.error('task failed', task.name, task.errorObject.message, task.errorObject.exception);
@@ -191,15 +175,6 @@ class BoidsTest {
     this.assetsManager.onProgress = (remainingCount, totalCount, lastFinishedTask) => {
       this.engine.loadingUIText = 'We are loading the scene. ' + remainingCount + ' out of ' + totalCount + ' items still need to be loaded.';
     };
-  }
-
-  sceneOptimizer () {
-    const options = BABYLON.SceneOptimizerOptions.HighDegradationAllowed();
-    options.optimizations = options.optimizations.filter(e => !e.getDescription().includes('Merging similar meshes'));
-    const optimizer = BABYLON.SceneOptimizer.OptimizeAsync(
-      this.scene,
-      options
-    );
   }
 
   debugUtils () {
@@ -217,10 +192,10 @@ class BoidsTest {
       if (i % 30 === 0) {
         console.log(
           'current frame time (GPU): ' + (instrumentation.gpuFrameTimeCounter.current * 0.000001).toFixed(2) + 'ms\n' +
-      'average frame time (GPU): ' + (instrumentation.gpuFrameTimeCounter.average * 0.000001).toFixed(2) + 'ms\n' +
-      'total shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.total).toFixed(2) + 'ms\n' +
-      'average shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.average).toFixed(2) + 'ms\n' +
-      'compiler shaders count: ' + instrumentation.shaderCompilationTimeCounter.count
+          'average frame time (GPU): ' + (instrumentation.gpuFrameTimeCounter.average * 0.000001).toFixed(2) + 'ms\n' +
+          'total shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.total).toFixed(2) + 'ms\n' +
+          'average shader compilation time: ' + (instrumentation.shaderCompilationTimeCounter.average).toFixed(2) + 'ms\n' +
+          'compiler shaders count: ' + instrumentation.shaderCompilationTimeCounter.count
         );
       }
       i++;
@@ -239,136 +214,6 @@ class BoidsTest {
     this.sunLight = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(-0.5, -1.0, 0.6).normalize(), this.scene);
     this.sunLight.diffuse = BABYLON.Color3.FromHexString('#FFFFFF');
     this.sunLight.intensity = 0.8;
-  }
-  loadTerrain () {
-    const p = new Promise((resolve, reject) => {
-      // we'll store rock data here to convert it all to an optimized version later.
-      const rocks = [];
-      const positions = [];
-      const rotations = [];
-      const scalings = [];
-      let bufferMatrices = null;
-      let terrainLoaded = false;
-
-      const processRocks = () => {
-        if (!bufferMatrices || !terrainLoaded || !rocks.length) {
-          return;
-        }
-
-        // const box = BABYLON.BoxBuilder.CreateBox('root', { size: 1 });
-
-        // babylon has three modes to clone meshes, SPS, instance and thin instances.
-        // all three are implemented below, but they have very different performances.
-
-        // SPS version
-        // const SPS = new BABYLON.SolidParticleSystem('rocks', this.scene, { updatable: false });
-        // SPS.addShape(rocks[0], positions.length,
-        //   { positionFunction: (particle, i) => {
-        //     particle.position = positions[i];
-        //     particle.rotationQuaternion = rotations[i];
-        //     particle.scaling = scalings[i];
-        //   } }
-        // );
-        // const spsMesh = SPS.buildMesh();
-
-        // instance version: much slower.
-        // const total = positions.length;
-        // for (let i = 0; i < total; i++) {
-        //   const particle = rocks[0].createInstance('rock' + i);
-        //   particle.isPickable = false;
-        //   particle.position = positions[i];
-        //   particle.rotationQuaternion = rotations[i];
-        //   particle.scaling = scalings[i];
-        // }
-
-        // thin instance version
-        // const total = positions.length;
-        // bufferMatrices = new Float32Array(16 * total);
-        // for (let i = 0; i < positions.length; i++) {
-        //   const m = BABYLON.Matrix.Compose(
-        //     scalings[i],
-        //     rotations[i],
-        //     positions[i]
-        //   );
-        //   m.copyToArray(bufferMatrices, i * 16);
-        // }
-        // to serialize this to base64: BABYLON.EncodeArrayBufferToBase64(bufferMatrices);
-
-        rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-        const material = this.addToSceneAndCaustic([rocks[1]]);
-        // material.backFaceCulling = false; // cause model seems inverted
-
-        resolve();
-      };
-
-      // load the rocks
-      this.assetsManager.addMeshTask('rocks', null, this.base + 'models/ilha/', 'rocks.glb').onSuccess = (task) => {
-        task.loadedMeshes.forEach((mesh) => {
-          if (mesh.name === 'rockLow1' || mesh.name === 'rockLow1.001' || mesh.name === 'rockLow1.002') {
-            // store the first rock model.
-            mesh.freezeNormals();
-            mesh.freezeWorldMatrix();
-            if (mesh.material) {
-              // mesh.material.freeze();
-            }
-            rocks.push(mesh);
-          }
-        });
-        processRocks();
-      };
-
-      // load the rock positions
-      this.assetsManager.addTextFileTask('rocksMatrices', this.base + 'models/ilha/rocks.base64').onSuccess = (task) => {
-        bufferMatrices = new Float32Array(BABYLON.DecodeBase64ToBinary(task.text));
-        processRocks();
-      };
-
-      // load the terrain and rock positions.
-      this.assetsManager.addMeshTask('terrain', null, this.base + 'models/ilha/', 'ilha03.glb').onSuccess = (task) => {
-        const actualLoaded = []; // these are the meshes actually loaded that will have a shader.
-
-        // get the rocks, man. the rocks.
-        for (const mesh of task.loadedMeshes) {
-          if (mesh.name.includes('rock')) {
-            // store information from rocks
-            mesh.computeWorldMatrix();
-            positions.push(mesh.getAbsolutePivotPoint());
-            rotations.push(mesh.rotationQuaternion);
-            scalings.push(mesh.absoluteScaling);
-            mesh.dispose();
-          } else if (mesh.freeze) {
-            mesh.doNotSyncBoundingInfo = true;
-            if (mesh.material) {
-              mesh.material.freeze();
-            }
-            mesh.alwaysSelectAsActiveMesh = true;
-            mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-            mesh.convertToUnIndexedMesh();
-            mesh.freezeNormals();
-            mesh.freezeWorldMatrix();
-            mesh.freeze();
-            mesh.bakeCurrentTransformIntoVertices();
-            actualLoaded.push(mesh);
-            this.sunLight.includedOnlyMeshes.push(mesh);
-          }
-        }
-        const material = this.addToSceneAndCaustic(actualLoaded);
-
-        // merge everything so we have fewer draw calls
-        const terrain = BABYLON.Mesh.MergeMeshes(
-          actualLoaded,
-          true,
-          true,
-          undefined,
-          false,
-          true
-        );
-
-        terrainLoaded = true;
-        processRocks();
-      };
-    });
-    return p;
   }
 
   /**
@@ -453,8 +298,8 @@ class BoidsTest {
         }
         mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
         mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-        this.scene.stopAnimation(mainMesh);
-        container.animationGroups.map(g => g.pause());
+        // this.scene.stopAnimation(mainMesh);
+        // container.animationGroups.map(g => g.pause());
 
         return {
           container,
@@ -466,6 +311,54 @@ class BoidsTest {
   }
 
   loadBoids (modelpath, modelfile, total, initialCenterPosition, animationRanges, withCaustic = false) {
+    // BABYLON.SceneLoader.ImportMeshAsync(
+    //   '',
+    //   modelpath,
+    //   modelfile,
+    //   this.scene,
+    //   undefined
+    // ).then((importResult) => {
+    //   const setAnimationParameters = (vec) => {
+    //     const anim = animationRanges[Math.floor(Math.random() * animationRanges.length)];
+    //     const ofst = Math.floor(Math.random() * (anim.to - anim.from + 1));
+    //     vec.set(anim.from, anim.to, ofst, Math.random() * 50 + 30);
+    //   };
+
+    //   const mesh = importResult.meshes[1];
+    //   const baker = new BABYLON.VertexAnimationBaker(this.scene, mesh);
+
+    //   mesh.registerInstancedBuffer('bakedVertexAnimationSettingsInstanced', 4);
+    //   mesh.instancedBuffers.bakedVertexAnimationSettingsInstanced = new BABYLON.Vector4(0, 0, 0, 0);
+
+    //   setAnimationParameters(mesh.instancedBuffers.bakedVertexAnimationSettingsInstanced);
+
+    //   baker.bakeVertexData([{ from: 0, to: animationRanges[animationRanges.length - 1].to, name: 'My animation' }]).then((vertexData) => {
+    //     const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+
+    //     const manager = new BABYLON.BakedVertexAnimationManager(this.scene);
+
+    //     manager.texture = vertexTexture;
+
+    //     mesh.bakedVertexAnimationManager = manager;
+
+    //     const numInstances = 500;
+    //     for (let i = 0; i < numInstances; i++) {
+    //       const instance = mesh.createInstance('instance' + i);
+    //       instance.instancedBuffers.bakedVertexAnimationSettingsInstanced = new BABYLON.Vector4(0, 0, 0, 0);
+    //       setAnimationParameters(instance.instancedBuffers.bakedVertexAnimationSettingsInstanced);
+    //       instance.position.x += Math.random() * 100 - 50;
+    //       instance.position.z += Math.random() * 100 - 50;
+    //     }
+
+    //     this.scene.registerBeforeRender(() => {
+    //       manager.time += this.engine.getDeltaTime() / 1000.0;
+    //     });
+    //   });
+    // });
+    // if (this.scene) {
+    //   return Promise.resolve();
+    // }
+
     // eslint-disable-next-line no-undef
     const zero = new BABYLON.Vector3(0, 0, 0);
     const boidsManager = new BoidsManager(
@@ -565,8 +458,7 @@ class BoidsTest {
         // );
 
         mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-        console.log(mainMesh, mainMesh.bakedVertexAnimationManager);
-        this.scene.stopAnimation(mainMesh);
+        //        this.scene.stopAnimation(mainMesh);
 
         for (let i = 0; i < total; i++) {
           const anim = new BABYLON.Vector4(
@@ -578,7 +470,7 @@ class BoidsTest {
           animParameters.set(anim.asArray(), i * 4);
         }
         mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-        container.animationGroups.map(g => g.pause());
+        // container.animationGroups.map(g => g.pause());
       });
     }).catch((e) => { console.error(e); });
 
@@ -651,15 +543,6 @@ export default {
   methods: {
     fullscreen () {
       document.getElementById('underwater').requestFullscreen();
-    },
-    toggleVolume () {
-      this.mute = !this.mute;
-      if (this.mute) {
-        this.volume = BABYLON.Engine.audioEngine.getGlobalVolume();
-        BABYLON.Engine.audioEngine.setGlobalVolume(0);
-      } else {
-        BABYLON.Engine.audioEngine.setGlobalVolume(this.volume);
-      }
     }
   }
 };
