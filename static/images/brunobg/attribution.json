@@ -8,7 +8,7 @@
     "DSC00788.jpg": {
       "name": ""
     },
-    "DSC001096.jpg": {
+    "DSC01096.jpg": {
       "name": "Ouriço do mar",
       "colors": [
         "black"
@@ -17,7 +17,7 @@
       "othernames": "",
       "description": ""
     },
-    "DSC001108.jpg":  {
+    "DSC01108.jpg":  {
       "name": "Frade",
       "colors": [
         "yellow",
@@ -26,7 +26,7 @@
       "description": "",
       "about": "/vida/#peixe-frade"
     },
-    "DSC001117.jpg":  {
+    "DSC01117.jpg":  {
       "name": "",
       "colors": [
         "white"
@@ -35,7 +35,7 @@
       "othernames": "",
       "description": ""
     },
-    "DSC001124.jpg":  {
+    "DSC01124.jpg":  {
       "name": "",
       "colors": [
         "white"
@@ -43,6 +43,16 @@
       "size": 10,
       "othernames": "",
       "description": ""
+    },
+    "DSC01631.jpg":  {
+      "name": "Lagosta verde",
+      "colors": [
+        "brown",
+        "red"
+      ],
+      "size": 30,
+      "othernames": "Panulirus laevicauda",
+      "description": "Lagostas se escondem em tocas e costumam sair para caçar à noite"
     }
   }
 }

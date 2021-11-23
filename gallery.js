@@ -59,6 +59,7 @@ const main = () => {
     }
   );
 
+  console.log(gallery.map(a => a.name));
   fs.writeFileSync(path.join(__dirname, 'components/gallery.json'), JSON.stringify(gallery));
 };
 
