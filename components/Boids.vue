@@ -44,7 +44,7 @@ class BoidsTest {
       // this.loadTerrain() // 38 draw calls
     ];
     const fish = this.loadBoids(
-      this.base + 'models/', 'raiaManta.glb',
+      this.base + 'models/', 'salema.glb',
       50,
       new BABYLON.Vector3(-12.12, -13.2, 27.19),
       [{ from: 1, to: 30, name: 'swim' }]
@@ -494,6 +494,8 @@ class BoidsTest {
               q.x = boid.velocity.x;
               q.y = boid.velocity.y;
               q.z = boid.velocity.z;
+              q.w = Math.PI;
+              q.normalize();
 
               BABYLON.Matrix.ComposeToRef(
                 one,
