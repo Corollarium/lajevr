@@ -91,6 +91,30 @@
       bp="grid 12 6@sm 4@md 3@lg"
       class="section-article"
     >
+      <GalleryCard
+        v-for="a in filteredAnimals"
+        :key="a.absoluteurl ? a.absoluteurl : a.url"
+        v-bind="a"
+        class="gallery-card fauna-card"
+      >
+        <div class="fauna-info">
+          <span class="fauna-other-names">
+            {{ a.othernames }}
+          </span>
+          <p class="fauna-size">
+            <font-awesome-icon :icon="['fas', 'ruler']" />
+            {{ a.size }} cm
+          </p>
+        </div>
+        <p v-if="a.description" class="fauna-description">
+          <font-awesome-icon :icon="['fas', 'info-circle']" />
+          {{ a.description }}
+        </p>
+        <p class="gallery-creator">
+          <i18n>foto por</i18n> <a :href="a.creatorLink" target="_blank">{{ a.creator }}</a> {{ a.license }}
+        </p>
+      </GalleryCard>
+      <!--
       <div
         v-for="a in filteredAnimals"
         :key="a.name"
@@ -124,7 +148,7 @@
           <a :href="a.about" v-if="a.about">
             <font-awesome-icon :icon="['fas', 'book']" /> <i18n>Mais detalhes</i18n></a>
         </div>
-      </div>
+      </div> -->
     </transition-group>
 
     <div>
@@ -160,10 +184,14 @@ import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 import page from './page.vue';
 import animalData from '~/components/especies.js';
-import ThumbImg from '~/components/ThumbImg.vue';
+// import ThumbImg from '~/components/ThumbImg.vue';
+import GalleryCard from '~/components/sections/GalleryCard.vue';
 
 export default {
-  components: { ThumbImg },
+  components: {
+    GalleryCard
+    // ThumbImg
+  },
   extends: page,
   data () {
     return {

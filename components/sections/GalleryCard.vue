@@ -14,12 +14,16 @@
         {{ name }}
       </figcaption>
     </figure>
-    <p class="gallery-creator">
-      <i18n>foto por</i18n> <a :href="creatorLink" target="_blank">{{ creator }}</a> {{ license }}
-    </p>
-    <p class="gallery-description">
-      {{ description }}
-    </p>
+    <div>
+      <slot>
+        <p class="gallery-creator">
+          <i18n>foto por</i18n> <a :href="creatorLink" target="_blank">{{ creator }}</a> {{ license }}
+        </p>
+        <p class="gallery-description">
+          {{ description }}
+        </p>
+      </slot>
+    </div>
   </section>
 </template>
 
@@ -102,7 +106,7 @@ export default {
 </script>
 <style lang="less">
 .gallery-card {
-  display: inline-grid;
+  // display: inline-grid;
   vertical-align: top;
 
   .gallery-name {
