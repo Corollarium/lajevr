@@ -96,7 +96,7 @@ export default {
     const instancedBuoyColors = new Float32Array(this.diveSites.length * 4);
     instancedBuoyColors.fill(UNSELECTED_BUOY_COLOR);
     const siteToVector3 = [];
-    loader.addMeshTask('flag', null, this.base + 'models/flagLoop.glb').onSuccess = (task) => {
+    loader.addMeshTask('flag', null, this.base + 'models/licensed/flagLoop.glb').onSuccess = (task) => {
       // convert to a single mesh so instances will work
       buoy = BABYLON.Mesh.MergeMeshes(
         [
@@ -135,8 +135,14 @@ export default {
       buoy.thinInstanceEnablePicking = true;
     };
 
+    this.scene.debugLayer.show();
+
     // collada
-    loader.addMeshTask('map', null, this.base + 'models/', 'PEMLS_skt.glb');
+    loader.addMeshTask('map', null, this.base + 'models/licensed/', 'PEMLS_skt.glb').onSuccess = (task) => {
+      for (const mesh of task.loadedMeshes) {
+        mesh.position.y += 25.0;
+      }
+    };
 
     // Skybox
     const skybox = BABYLON.Mesh.CreateBox('skyBox', SCENE_SIZE * 1.2, this.scene);
@@ -150,7 +156,7 @@ export default {
     skybox.material = skyboxMaterial;
     skybox.isPickable = false;
 
-    // water
+    // // water
     const waterMesh = BABYLON.MeshBuilder.CreateGround('waterMesh', { width: SCENE_SIZE * 1.1, height: SCENE_SIZE * 1.1, subdivisions: 16 }, this.scene);
     const water = new WaterMaterial('water', this.scene, new BABYLON.Vector2(512, 512));
     water.backFaceCulling = true;
