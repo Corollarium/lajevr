@@ -56,7 +56,7 @@
       </ul>
     </div>
 
-    <article id="intro" class="section-container" bp="container" data-xxx-aos="fade-up">
+    <article id="intro" class="section-container" bp="container" data-aos="fade-up">
       <swimming-fish />
       <p class="intro text-block-b centered rellax" data-rellax-speed="-.75">
         <i18n>
@@ -167,7 +167,7 @@
         </h3>
 
         <div bp="grid vertical-center">
-          <div bp="12 6@md" data-xxx-aos="fade-down">
+          <div bp="12 6@md" data-aos="fade-down">
             <div class="especie-info text-block">
               <p>Espécie: Dasyatis centroura</p>
               <p>Estado de conservação: pouco preocupante</p>
@@ -179,7 +179,7 @@
             </div>
           </div>
 
-          <div class="text-block-b" bp="12 6@md" data-xxx-aos="fade-up">
+          <div class="text-block-b" bp="12 6@md" data-aos="fade-up">
             <p>
               <i18n>
                 Dizem que as raias e os tubarões não podem parar de nadar porque podem morrer afogados, mas nem tudo é verdade. No caso de algumas espécies de raias, quando estão paradas, elas abrem e fecham o opérculo, sugando a água que passa por suas brânquias, (órgão responsável pela respiração), fazendo a troca de oxigênio. Por causa deste comportamento de se enterrar na areia e permanecer muitas vezes em águas rasas, ocorrem alguns acidentes pelo mundo afora, devido ao seu ferrão presente em sua cauda. Seu ferrão não é venenoso, mas contém muitas bactérias que podem causar infecções e agravar o ferimento. Um dos casos mais conhecido sobre ataques com essa espécies foi o caso do zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia do gênero Dasyatis.
@@ -189,10 +189,10 @@
         </div>
         <figure class="figure-text">
           <div bp="grid">
-            <div bp="12 6@md" data-xxx-aos="fade-right">
+            <div bp="12 6@md" data-aos="fade-right">
               <img alt="Raia prego" src="~static/images/nauther/1549752089536-353729687.jpg">
             </div>
-            <div bp="12 6@md" data-xxx-aos="fade-left">
+            <div bp="12 6@md" data-aos="fade-left">
               <img alt="Raia prego" src="~static/images/nauther/1562034454874570542648.jpg">
             </div>
           </div>
@@ -214,10 +214,10 @@
         <template v-slot:header>
           <figure class="figure-text">
             <div bp="grid">
-              <div bp="12 6@md" data-xxx-aos="fade-right">
+              <div bp="12 6@md" data-aos="fade-right">
                 <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.43.jpeg">
               </div>
-              <div bp="12 6@md" data-xxx-aos="fade-left">
+              <div bp="12 6@md" data-aos="fade-left">
                 <img alt="Raia borboleta" src="~static/images/marcelomigliari/Image 2020-04-16 at 20.05.44.jpeg">
               </div>
             </div>
@@ -247,10 +247,10 @@
         <template v-slot:footer>
           <figure class="figure-text">
             <div bp="grid">
-              <div bp="12 6@md" data-xxx-aos="fade-right">
+              <div bp="12 6@md" data-aos="fade-right">
                 <img alt="Raia borboleta" src="http://placehold.it/300x300">
               </div>
-              <div bp="12 6@md" data-xxx-aos="fade-left">
+              <div bp="12 6@md" data-aos="fade-left">
                 <img alt="Raia borboleta" src="http://placehold.it/300x300">
               </div>
             </div>
@@ -359,7 +359,7 @@
           <i18n>Golfinhos</i18n>
         </h2>
 
-        <div class="text-block centered" data-xxx-aos="zoom-in">
+        <div class="text-block centered" data-aos="zoom-in">
           <p>
             <i18n>
               Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que
@@ -495,7 +495,7 @@
         name="Peixe-frade"
         latin="Pomacanthus paru"
         conservation="pouco preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -533,7 +533,7 @@
         name="Peixe anjo real"
         latin="Holocanthus ciliaris"
         conservation="Pouco preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -579,7 +579,7 @@
         name="Sargentinho"
         latin="Abudefduf saxatilis"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -624,7 +624,7 @@
         name="Peixe Coió ou falso-voador"
         latin="Dactylopterus volitans"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -674,7 +674,7 @@
         name="Pirá"
         latin="Malacanthus plumieri"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -718,7 +718,7 @@
         name="Moreia pintada"
         latin="Gymnothorax moringa"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -749,7 +749,7 @@
         name="Moreia Verde"
         latin="Gymnothorax funebris"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -789,7 +789,7 @@
         name="Moreia Banana"
         latin="Gymnothorax miliaris"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -812,7 +812,7 @@
         name="Miriquitis amarela"
         latin="Myrichthys ocellatus"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -838,7 +838,7 @@
         name="Barracuda"
         latin="Sphyraena barracuda"
         conservation="Segura ou pouco preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -878,7 +878,7 @@
         name="Salema"
         latin="Anisotremus virginicus"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:description>
           <i18n>Na laje você sempre vê cardumes de salemas.</i18n>
@@ -925,7 +925,7 @@
         name="Budião-papagaio-de-recife"
         latin="Sparisoma amplum"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -975,7 +975,7 @@
         name="Maria-da-toca-das-pedras"
         latin="Parablennius marmoreus"
         conservation="Menor preocupação"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <template v-slot:header>
           <figure class="figure-text">
@@ -1018,7 +1018,7 @@
         name="Atobá-marrom"
         latin="Sula leucogaster"
         conservation="Pouco Preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <p>
           <i18n>Os Atobás são aves marinhas pertencentes à família Sulidae, com distribuição pelos mares tropicais e subtropicais. No Brasil foram registradas 5 espécies distintas. Presente em grande quantidade com uma população estimada em mais de 2 mil indivíduos, a Laje de Santos é considerada o maior ninhal de Atobás-marrom da América Latina.</i18n>
@@ -1036,7 +1036,7 @@
         name="Gaivotão ou apenas Gaivota"
         latin="Larus dominicanus"
         conservation="Pouco preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <p>
           <i18n>Uma das aves marinhas mais comuns e conhecidas pelos frequentadores de praia e faixas litorâneas espalhadas pelo mundo. A gaivota ou gaivotão, apesar de ser uma ave marinha, é considerada uma ave sinantrópica, ou seja, aves que vivem ou compartilham ambientes comuns com os humanos. Alimentam-se de sobras e carcaças de pescados, são furtivas e estão sempre à espreita por uma oportunidade de alimento fácil.</i18n>
@@ -1054,7 +1054,7 @@
         name="Trinta-réis de bico-vermelho"
         latin="Sterna hirundinacea"
         conservation="Vulnerável a extinção"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <p>
           <i18n>Ave de pequeno porte, de plumagem branca, com bico e patas vermelhas. É considerada uma ave migratória, saindo da Argentina para nidificar no Brasil de abril a setembro. São exímias pescadoras, se alimentando de pequenos peixes e crustáceos. Elas costumam pairar no ar antes de mergulhar para capturar suas presas.</i18n>
@@ -1069,7 +1069,7 @@
         name="Trinta-réis-de-bando"
         latin="Thalasseus acuflavidus"
         conservation="Pouco preocupante"
-        data-xxx-aos="fade-right"
+        data-aos="fade-right"
       >
         <p>
           <i18n>Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários.</i18n>
