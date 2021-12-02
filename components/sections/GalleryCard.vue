@@ -100,6 +100,10 @@ export default {
         }
       }
     }
+  },
+
+  destroyed () {
+    document.body.style.overflow = 'auto';
   }
 
 };
