@@ -1,11 +1,18 @@
 <template>
   <div class="object-embed-3d">
+    <button @click="requestFullscreen()" class="object-fullscreen" touch-action="none">
+      <i18n>Ver 3D em tela cheia</i18n>
+    </button>
     <div v-show="!touching" class="object-embed-icon" touch-action="none" />
     <transition name="fade" touch-action="none">
-      <div v-show="showZoomHelp" class="object-scroll-message object-scroll-message-mouse" touch-action="none">
-        <div>
-          use ctrl+scroll to zoom,<br>
-          drag to rotate
+      <div v-show="showZoomHelp" touch-action="none">
+        <div class="object-scroll-message object-scroll-message-mouse">
+          <i18n>use ctrl+scroll para zoom,</i18n><br>
+          <i18n>arraste para girar</i18n>
+        </div>
+        <div class="object-scroll-message object-scroll-message-touch" touch-action="none">
+          <i18n>apertar com dedos para zoom,</i18n><br>
+          <i18n>arraste para girar</i18n>
         </div>
       </div>
     </transition>
@@ -79,19 +86,19 @@ export default {
       scene: null,
       camera: null,
       container: null,
-      scrollHijacked: false,
-      touching: false,
+      //
+      pointerIds: new Set(),
+      // if true, shows the help text overlay
       showZoomHelp: true,
-      showZoomTimer: 0
+      showTouchHelp: true
     };
   },
 
   computed: {
-    touchActionCSS () {
-      return this.scrollHijacked ? 'none !important' : 'auto !important';
+    touching () {
+      return this.pointerIds.size !== 0;
     }
   },
-
   watch: {
     inputEnabled (newV) {
       if (newV) {
@@ -103,6 +110,11 @@ export default {
   },
 
   mounted () {
+    // this.hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches ? 'got mouse' : 'no mouse';
+    // if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
+    //   this.jsDetect = 'touch';
+    // }
+
     this.container = this.$el.querySelector('.object-3d');
 
     this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
@@ -141,18 +153,17 @@ export default {
     });
 
     // scroll hijacking on mobile
-    const pointerIds = new Set();
     this.container.addEventListener('pointerdown', (e) => {
-      this.touching = true;
-      pointerIds.add(e.pointerId);
+      this.pointerIds.add(e.pointerId);
       this.showZoomHelp = false;
     });
     this.container.addEventListener('pointerleave', (e) => {
-      pointerIds.delete(e.pointerId);
-      if (pointerIds.size === 0) {
-        this.touching = false;
-      }
+      this.pointerIds.delete(e.pointerId);
     });
+    // Pointers
+    if (this.camera.inputs.attached.pointers) {
+      this.camera.inputs.attached.pointers.pinchPrecision = 1000;
+    }
 
     // update keys
     this.camera.keysUp.push('w'.charCodeAt(0));
@@ -210,9 +221,7 @@ export default {
       }
       this.camera.radius = radius * 2.0 / Math.tan(this.camera.fov / 2.0) * aspect;
       this.camera.lowerRadiusLimit = radius / 10.0;
-      // allow scrolling
-      this.container.setAttribute('touch-action', 'pan-y');
-      this.container.style.touchAction = 'pan-y';
+      this.setScrollHijacking(false);
     };
     loader.load();
 
@@ -227,11 +236,14 @@ export default {
     });
 
     // Watch for browser/canvas resize events
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', this.resize.bind(this));
+    this.container.onfullscreenchange = (event) => {
+      // TODO this.setScrollHijacking(!!document.fullscreenElement);
+    };
   },
 
   beforeDestroy () {
-    window.removeEventListener('resize', this.resize);
+    window.removeEventListener('resize', this.resize.bind(this));
     this.engine.stopRenderLoop();
     this.scene.dispose();
     this.scene = null;
@@ -241,6 +253,20 @@ export default {
   methods: {
     resize () {
       this.engine.resize();
+    },
+    requestFullscreen () {
+      this.engine.enterFullscreen();
+    },
+    setScrollHijacking (b) {
+      if (b) {
+        // if true, hijack and allow rotations on y
+        this.container.setAttribute('touch-action', 'initial');
+        this.container.style.touchAction = 'initial';
+      } else {
+        // block y events and allow scrolling
+        this.container.setAttribute('touch-action', 'pan-y');
+        this.container.style.touchAction = 'pan-y';
+      }
     }
   }
 };
@@ -285,10 +311,30 @@ export default {
   }
 
   /* smartphones, touchscreens */
-  @media (hover: none) and (pointer: coarse) {
+  @media (hover: none), (hover: hover) and (pointer: coarse), (hover: hover) and (pointer: none) {
     .object-scroll-message-mouse {
-      display: none;
+      display: none !important;
     }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .object-scroll-message-touch {
+      display: none !important;
+    }
+  }
+
+  .object-fullscreen {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    padding: 10px;
+    margin: 0px;
+    z-index: 1;
+    max-width: 80%;
+    line-height: 1.2em;
+    border-radius: 10px;
+    background: #004;
+    color: #fff;
+    text-align: center;
   }
 
   .object-embed-icon {
