@@ -13,10 +13,19 @@
             :model="'./models/tartaruga/tartaruga.glb'"
           /> -->
           <GLTFModel
-            :model="'./models/flagLoop.glb'"
+            id="x1111"
+            v-if="engine"
+            :model="'./models/tartaruga/tartaruga.glb'"
             :attribution="'Modelo de tartaruga'"
+            :babylonEngine="engine"
           />
-          </GLTFModel>
+          <GLTFModel
+            id="x22222"
+            v-if="engine"
+            :model="'./models/frade.glb'"
+            :attribution="'Modelo de tartaruga'"
+            :babylonEngine="engine"
+          />
         </div>
       </section>
     </article>
@@ -24,8 +33,7 @@
 </template>
 
 <script>
-// import * as BabylonViewer from '@babylonjs/viewer';
-// import '@babylonjs/loaders/glTF';
+import { Engine } from 'babylonjs';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModelB.vue';
 
@@ -38,11 +46,25 @@ export default {
 
   data () {
     return {
-      rellax: null
+      rellax: null,
+      engine: null
     };
   },
 
   mounted () {
+    const canvas = document.createElement('canvas');
+    this.engine = new Engine(canvas, true);
+    this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+    this.engine.sceneList = {};
+    this.engine.runRenderLoop(() => {
+      for (const i in this.engine.sceneList) {
+        const s = this.engine.sceneList[i];
+        if (this.engine.activeView && this.engine.activeView.target === s.container) {
+          s.renderScene();
+        }
+      }
+    });
+
     this.head.title = this.$gettext('Vida na Laje de Santos');
     this.head.description = this.$gettext('Sobre seres vivos na Laje de Santos');
     // BabylonViewer.InitTags('babylon');

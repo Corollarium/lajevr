@@ -130,7 +130,10 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               :initialBeta="Math.PI/3"
+              background-color="#000000"
               model="./models/raiaManta.glb"
             />
           </div>
@@ -278,6 +281,8 @@
 
         <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
           <GLTFModel
+            v-if="engine"
+            :babylonEngine="engine"
             :model="'./models/tartaruga/tartaruga.glb'"
             :attribution="'Modelo de tartaruga'"
             :scale="2"
@@ -441,6 +446,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/garoupa.glb"
             />
           </div>
@@ -484,6 +491,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/enxada.glb"
             />
           </div>
@@ -522,6 +531,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/frade.glb"
             />
           </div>
@@ -568,6 +579,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/anjoReal.glb"
             />
           </div>
@@ -614,6 +627,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/sargentinho.glb"
             />
           </div>
@@ -914,6 +929,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/salema.glb"
             />
           </div>
@@ -964,6 +981,8 @@
         <template v-slot:side-text>
           <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
             <GLTFModel
+              v-if="engine"
+              :babylonEngine="engine"
               model="./models/budiao.glb"
             />
           </div>
@@ -1084,6 +1103,7 @@
 
 <script>
 // import Rellax from 'rellax';
+import { Engine } from 'babylonjs';
 import page from './page.vue';
 import GLTFModel from '~/components/GLTFModelB.vue';
 import SwimmingFish from '~/components/SwimmingFish.vue';
@@ -1103,7 +1123,8 @@ export default {
   data () {
     return {
       imageCardume,
-      rellax: null
+      rellax: null,
+      engine: null
     };
   },
 
@@ -1113,10 +1134,27 @@ export default {
 
     // this.rellax = new Rellax('.rellax');
 
+    console.log('xxxxxxxxxxxxxxxxxxxxxx');
+    this.initBabylon();
     this.asideMenu();
   },
 
   methods: {
+    initBabylon () {
+      const canvas = document.createElement('canvas');
+      this.engine = new Engine(canvas, true);
+      this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+      this.engine.sceneList = {};
+      this.engine.runRenderLoop(() => {
+        for (const i in this.engine.sceneList) {
+          const s = this.engine.sceneList[i];
+          if (this.engine.activeView && this.engine.activeView.target === s.container) {
+            s.renderScene();
+          }
+        }
+      });
+    },
+
     asideMenu () {
       if (
         'IntersectionObserver' in window &&

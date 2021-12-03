@@ -18,6 +18,7 @@
     </transition>
     <canvas class="object-3d" />
     <p
+      v-if="attribution"
       class="attribution"
     >
       <a :href="link" v-if="link" target="_blank">
@@ -38,6 +39,10 @@ import 'babylonjs-loaders';
 
 export default {
   props: {
+    babylonEngine: {
+      type: Object,
+      default: null
+    },
     model: {
       type: String,
       required: true
@@ -114,16 +119,25 @@ export default {
     // if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
     //   this.jsDetect = 'touch';
     // }
-
     this.container = this.$el.querySelector('.object-3d');
 
-    this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
-    this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+    // setting height: 100% somehow grows the div every frame. So just wait a bit for all the redraws
+    // and resize it properly.
+    setTimeout(() => {
+      this.container.style.height = this.container.parentElement.offsetHeight + 'px';
+    }, 500);
+
+    if (!this.babylonEngine) {
+      this.engine = new BABYLON.Engine(this.container, true); // Generate the BABYLON 3D engine
+      this.engine.loadingUIText = 'Mergulho na Laje de Santos';
+    } else {
+      this.engine = this.babylonEngine;
+    }
 
     this.scene = new BABYLON.Scene(this.engine);
 
     this.scene.clearColor = (this.backgroundColor === 'transparent'
-      ? new BABYLON.Color4(0, 0, 0, 0.1)
+      ? new BABYLON.Color4(0, 0.0, 0, 0.1)
       : BABYLON.Color3.FromHexString(this.backgroundColor));
 
     // Add a camera to the scene and attach it to the canvas
@@ -139,6 +153,11 @@ export default {
     this.camera.useFramingBehavior = true;
     this.camera.applyGravity = false;
     this.camera.speed = 0.1;
+
+    let view = null;
+    if (this.babylonEngine) {
+      view = this.engine.registerView(this.container, this.camera);
+    }
 
     // ctrl+scroll
     this.camera.inputs.remove(this.camera.inputs.attached.mousewheel);
@@ -164,10 +183,6 @@ export default {
     if (this.camera.inputs.attached.pointers) {
       this.camera.inputs.attached.pointers.pinchPrecision = 1000;
     }
-
-    // update keys
-    this.camera.keysUp.push('w'.charCodeAt(0));
-    this.camera.keysUp.push('W'.charCodeAt(0));
 
     if (this.inputEnabled) {
       this.camera.attachControl(this.container, false);
@@ -225,7 +240,29 @@ export default {
     };
     loader.load();
 
-    this.engine.runRenderLoop(() => {
+    // don't render when not visible
+    let shouldRender = true;
+    this.observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          shouldRender = (entry.intersectionRatio >= 0.05);
+          view.enabled = shouldRender;
+
+          if (shouldRender) {
+            this.scene.detachControl();
+            this.engine.inputElement = this.container;
+            this.scene.attachControl();
+          }
+        });
+      },
+      {
+        threshold: [0, 0.05]
+      });
+    this.observer.observe(this.container);
+    const renderScene = () => {
+      if (!shouldRender) {
+        return;
+      }
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
       if (loaded && this.autoRotate) {
@@ -233,7 +270,12 @@ export default {
       }
 
       this.scene.render();
-    });
+    };
+    if (!this.babylonEngine) {
+      this.engine.runRenderLoop(renderScene);
+    } else {
+      this.babylonEngine.sceneList[this.model] = { container: this.container, renderScene };
+    }
 
     // Watch for browser/canvas resize events
     window.addEventListener('resize', this.resize.bind(this));
@@ -244,7 +286,12 @@ export default {
 
   beforeDestroy () {
     window.removeEventListener('resize', this.resize.bind(this));
-    this.engine.stopRenderLoop();
+    if (!this.babylonEngine) {
+      this.engine.stopRenderLoop();
+    } else {
+      this.engine.unRegisterView(this.container);
+      delete this.babylonEngine.sceneList[this.model];
+    }
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
@@ -255,7 +302,7 @@ export default {
       this.engine.resize();
     },
     requestFullscreen () {
-      this.engine.enterFullscreen();
+      this.container.requestFullscreen();
     },
     setScrollHijacking (b) {
       if (b) {
@@ -279,7 +326,6 @@ export default {
 
   .object-3d {
     width: 100%;
-    height: 100%;
   }
 
   &:hover .object-embed-icon {
