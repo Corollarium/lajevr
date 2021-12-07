@@ -135,8 +135,6 @@ export default {
       buoy.thinInstanceEnablePicking = true;
     };
 
-    this.scene.debugLayer.show();
-
     // collada
     loader.addMeshTask('map', null, this.base + 'models/licensed/', 'PEMLS_skt.glb').onSuccess = (task) => {
       for (const mesh of task.loadedMeshes) {
