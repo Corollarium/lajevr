@@ -156,7 +156,7 @@ export default {
 
     let view = null;
     if (this.babylonEngine) {
-      view = this.engine.registerView(this.container, this.camera);
+      view = this.engine.registerView(this.container, this.camera, true);
     }
 
     // ctrl+scroll
