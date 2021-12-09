@@ -3,7 +3,8 @@
 const routerBase = {};
 
 if (process.env.DEPLOY_ENV === 'GH_PAGES') {
-  routerBase.base = '/lajevr/';
+  // TODO: this is only for the old corollarium.github.io/lajevr url
+  // routerBase.base = '/lajevr/';
 }
 
 export default {
