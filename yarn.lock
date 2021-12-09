@@ -1020,6 +1020,21 @@
   dependencies:
     tslib "^2.3.1"
 
+"@babylonjs/core@5.0.0-alpha.63":
+  version "5.0.0-alpha.63"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-5.0.0-alpha.63.tgz#59b4743a3657782c29319846ac0c3b2a2a5b53b7"
+  integrity sha512-gFKSRUQtP8T4NzpAK4rAOK4LJ1pkUs1cz99ZhTBHe/EbBBvTe04ghA1If8gxd3Rjsdth89Frzl2mzXvqLURIrQ==
+  dependencies:
+    tslib "^2.3.1"
+
+"@babylonjs/gui@>=5.0.0-alpha.61":
+  version "5.0.0-alpha.63"
+  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-5.0.0-alpha.63.tgz#6e50f1fe3f5a1b15e0a3a3a31c3e82d64db19cab"
+  integrity sha512-G9dIqF/HO2PocjrPQDoztebCIsl956LN+7ud71crSM4PiReyNSzZZDdZQUBV8HJBxROMmHOTvUFfzInRdlCnag==
+  dependencies:
+    "@babylonjs/core" "5.0.0-alpha.63"
+    tslib "^2.3.1"
+
 "@babylonjs/loaders@5.0.0-alpha.61", "@babylonjs/loaders@>=5.0.0-alpha.61":
   version "5.0.0-alpha.61"
   resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-5.0.0-alpha.61.tgz#cd1acfd2438de21ad982633662a1dd2fa65c7793"
@@ -3055,6 +3070,13 @@ babylonjs-gltf2interface@5.0.0-alpha.61:
   resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-5.0.0-alpha.61.tgz#650a9a5e232e0f74f95f6e8c6e5eb296ea88a090"
   integrity sha512-5uN2/ORzhEyXovliWUTs+Fjx85MBD2w150KLEVbJFL8q6Yc8/inPomTrG3N+j+/msZ3Z92qjid3EFT3qLILoIg==
 
+babylonjs-gui@>=5.0.0-alpha.61:
+  version "5.0.0-alpha.63"
+  resolved "https://registry.yarnpkg.com/babylonjs-gui/-/babylonjs-gui-5.0.0-alpha.63.tgz#91ebb2e72fd1189e7cf2ddf93aca6c992273a5e2"
+  integrity sha512-h28tc5lzyDGVGROwWwWa04m9uewvBmpYQjFYJk6n8r/OuENPwwxsX6UoaOKvrRFAAnYIQioLC+TU/CnOvMn9jg==
+  dependencies:
+    babylonjs "5.0.0-alpha.63"
+
 babylonjs-loaders@>=5.0.0-alpha.61:
   version "5.0.0-alpha.61"
   resolved "https://registry.yarnpkg.com/babylonjs-loaders/-/babylonjs-loaders-5.0.0-alpha.61.tgz#1f436402d6e4051bb68b29e77976c3a7efc2d7a7"
@@ -3079,6 +3101,11 @@ babylonjs@5.0.0-alpha.61, babylonjs@>=5.0.0-alpha.61:
   version "5.0.0-alpha.61"
   resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.61.tgz#61dd9a8cd9b32d07dccd2d86fd2f319a7e7ad984"
   integrity sha512-Yx6CnaMDrTLErXduR8MEiXNtNv2DC9Trse6UDqyfP/Q/q1iQbkisruDpUJ6A72rElDtmtSeXqhdPDzaf1fWZ2Q==
+
+babylonjs@5.0.0-alpha.63:
+  version "5.0.0-alpha.63"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.63.tgz#ea397316c5992700a3488b2e4d61d02dbd1923b3"
+  integrity sha512-riQd+jZ7NjOYVsi8p7IH99I2oeyxjSAAsgD7uIWK/sjYy5TCn4jhJZOdgW1yb1IPcKNxEXt3WhJ1zuswwy8c+Q==
 
 balanced-match@^1.0.0:
   version "1.0.2"

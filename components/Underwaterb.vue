@@ -1,15 +1,25 @@
 <template>
   <div id="underwater">
-    <!-- <button id="underwater-out" @click="fullscreen" v-show="!isFullscreen">
-      <i18n>Ficar em tela cheia</i18n>
-    </button> -->
     <canvas id="underwater-3d" touch-action="none" />
     <div id="underwater-debug">
       {{ fps }} fps
     </div>
-    <button id="underwater-fullscreen" @click="fullscreen" v-show="!isFullscreen">
+    <button id="underwater-fullscreen" @click="fullscreen" v-show="!isFullscreen && started" class="button-giant">
       <i18n>Ficar em tela cheia</i18n>
     </button>
+    <div id="underwater-instructions" v-show="!started">
+      <p>
+        <i18n v-if="!isTouch">
+          Use a tecla 'Q' para nadar para frente e clique e arraste o mouse para girar a direção.
+        </i18n>
+        <i18n v-else>
+          Use os joysticks azul e vermelho para girar e nadar.
+        </i18n>
+      </p>
+      <button id="underwater-start" @click="start" class="button-giant">
+        <i18n>Iniciar</i18n>
+      </button>
+    </div>
     <div id="underwater-hud">
       <div id="underwater-hud-depth">
         <span id="underwater-hud-depth-name"><i18n>Profundidade</i18n></span><br>
@@ -40,6 +50,7 @@
 /* eslint-disable */
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import * as GUI from 'babylonjs-gui';
 import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
 import BoidsManager from '@corollarium/babylon-boids';
@@ -77,6 +88,7 @@ class Underwater {
   audioOcean = null;
 
   constructor (vueComponent) {
+    BABYLON.GUI = GUI;
     const container = document.getElementById('underwater-3d');
     document.onfullscreenchange = (event) => {
       vueComponent.isFullscreen = !!document.fullscreenElement;
@@ -88,7 +100,7 @@ class Underwater {
           */
 
     // Create the scene space
-    this.bootScene(container);
+    this.bootScene(container, vueComponent);
     this.lights();
     this.materials();
     this.composer();
@@ -102,13 +114,13 @@ class Underwater {
       // this.loadTurtle(),
       this.loadAudio()
     ];
-    const fish = this.loadFlock(
-      this.base + 'models/', 'salema.glb',
-      50,
-      new BABYLON.Vector3(-12.12, -13.2, 27.19),
-      [{ from: 1, to: 92, name: 'swim' }]
-    );
-    promises.push(fish.promise);
+    // const fish = this.loadFlock(
+    //   this.base + 'models/', 'salema.glb',
+    //   50,
+    //   new BABYLON.Vector3(-12.12, -13.2, 27.19),
+    //   [{ from: 1, to: 92, name: 'swim' }]
+    // );
+    // promises.push(fish.promise);
     Promise.all(promises).then(() => {
       console.log('all loaded');
     });
@@ -135,11 +147,18 @@ class Underwater {
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
-        this.audioDiver.pause();
-        this.audioOcean.pause();
-        (isUnderwater
-          ? this.audioDiver
-          : this.audioOcean).play();
+        if (this.audioDiver) {
+          this.audioDiver.pause();
+          if (isUnderwater) {
+            this.audioDiver.play();
+          }
+        }
+        if (this.audioOcean) {
+          this.audioOcean.pause();
+          if (!isUnderwater) {
+            this.audioOcean.play();
+          }
+        }
       }
       if (uiUpdateCounter++ % 8) {
         // update UI. Only every 8 frames to avoid wasting time with Vue
@@ -185,7 +204,7 @@ class Underwater {
       //   d++;
       // });
 
-      fish.update(deltaTime);
+      // fish.update(deltaTime);
 
       this.scene.render();
 
@@ -213,11 +232,11 @@ class Underwater {
     });
 
     // Watch for browser/canvas resize events
-    window.addEventListener('resize', this.resize.bind(this));
+    window.addEventListener('resize', () => this.resize());
   }
 
   beforeDestroy () {
-    window.removeEventListener('resize', this.resize.bind(this));
+    // TODO window.removeEventListener('resize', this.resize.bind(this));
     document.onfullscreenchange = null;
     this.engine.stopRenderLoop();
     if (this.audioDiver) {
@@ -233,7 +252,11 @@ class Underwater {
     this.engine = null;
   }
 
-  bootScene (container) {
+  bootScene (container, vueComponent) {
+    vueComponent.isTouch = ('ontouchstart' in window) ||
+      (navigator.maxTouchPoints > 0) ||
+      (navigator.msMaxTouchPoints > 0);
+
     // TODO https://doc.babylonjs.com/how_to/creating_a_custom_loading_screen
     // https://playground.babylonjs.com/#P3XLK9
     // https://forum.babylonjs.com/t/get-progression-of-loading-screen/6820/2
@@ -256,22 +279,18 @@ class Underwater {
 
     // Add a camera to the scene and attach it to the canvas
     const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854);
-    if (('ontouchstart' in window) ||
-  (navigator.maxTouchPoints > 0) ||
-  (navigator.msMaxTouchPoints > 0)) {
-      /* browser with either Touch Events of Pointer Events
-    running on touch-capable device */
-      this.camera = new BABYLON.VirtualJoysticksCamera(
-        'Camera',
-        cameraInitPoint,
-        this.scene
-      );
+    this.camera = new BABYLON.UniversalCamera(
+      'Camera',
+      cameraInitPoint,
+      this.scene
+    );
+
+    if (vueComponent.isTouch) {
+      /* browser with either Touch Events of Pointer Events  running on touch-capable device */
+      // doesn't work well this.camera = new BABYLON.VirtualJoysticksCamera(
+      this.joystick();
     } else {
-      this.camera = new BABYLON.UniversalCamera(
-        'Camera',
-        cameraInitPoint,
-        this.scene
-      );
+      // DEBUG this.joystick();
     }
     this.camera.applyGravity = false;
     this.camera.speed = 0.05;
@@ -302,9 +321,6 @@ class Underwater {
     this.camera.maxZ = 700.0;
     this.camera.setTarget(new BABYLON.Vector3(-12.89001753167552, 1.708562384403646, 25.710433418293825));
     this.camera.attachControl(container, true);
-    if (this.camera.inputs.attached.virtualJoystick) {
-      this.camera.inputs.attached.virtualJoystick._rightjoystick.setJoystickSensibility(0.01);
-    }
 
     // Enable Collisions
     this.scene.collisionsEnabled = true;
@@ -358,6 +374,176 @@ class Underwater {
       }
       i++;
     });
+  }
+
+  joystick () {
+    const bgCamera = new BABYLON.ArcRotateCamera(
+      'BGCamera',
+      Math.PI / 2 + Math.PI / 7,
+      Math.PI / 2, 100,
+      new BABYLON.Vector3(0, 20, 0),
+      this.scene
+    );
+    this.scene.activeCameras = [this.camera, bgCamera];
+    bgCamera.layerMask = 0x10000000;
+
+    const adt = GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', true, this.scene);
+    adt.layer.layerMask = 0x10000000;
+
+    let xAddPos = 0;
+    let yAddPos = 0;
+    let xAddRot = 0;
+    let yAddRot = 0;
+    const sideJoystickOffset = 5;
+    const bottomJoystickOffset = -5;
+    let translateTransform;
+
+    const leftThumbContainer = makeThumbArea('leftThumb', 2, 'blue', null);
+    leftThumbContainer.height = '200px';
+    leftThumbContainer.width = '200px';
+    leftThumbContainer.isPointerBlocker = true;
+    leftThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+    leftThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
+    leftThumbContainer.alpha = 0.4;
+    leftThumbContainer.left = sideJoystickOffset;
+    leftThumbContainer.top = bottomJoystickOffset;
+
+    const leftInnerThumbContainer = makeThumbArea('leftInnerThumb', 4, 'blue', null);
+    leftInnerThumbContainer.height = '80px';
+    leftInnerThumbContainer.width = '80px';
+    leftInnerThumbContainer.isPointerBlocker = true;
+    leftInnerThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    leftInnerThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+
+    const leftPuck = makeThumbArea('leftPuck', 0, 'blue', 'blue');
+    leftPuck.height = '60px';
+    leftPuck.width = '60px';
+    leftPuck.isPointerBlocker = true;
+    leftPuck.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    leftPuck.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+
+    leftThumbContainer.onPointerDownObservable.add(function (coordinates) {
+      leftPuck.isVisible = true;
+      leftPuck.floatLeft = coordinates.x - (leftThumbContainer._currentMeasure.width * 0.5) - sideJoystickOffset;
+      leftPuck.left = leftPuck.floatLeft;
+      leftPuck.floatTop = adt._canvas.height - coordinates.y - (leftThumbContainer._currentMeasure.height * 0.5) + bottomJoystickOffset;
+      leftPuck.top = leftPuck.floatTop * -1;
+      leftPuck.isDown = true;
+      leftThumbContainer.alpha = 0.9;
+    });
+
+    leftThumbContainer.onPointerUpObservable.add(function (coordinates) {
+      xAddPos = 0;
+      yAddPos = 0;
+      leftPuck.isDown = false;
+      leftPuck.isVisible = false;
+      leftThumbContainer.alpha = 0.4;
+    });
+
+    leftThumbContainer.onPointerMoveObservable.add(function (coordinates) {
+      if (leftPuck.isDown) {
+        xAddPos = coordinates.x - (leftThumbContainer._currentMeasure.width * 0.5) - sideJoystickOffset;
+        yAddPos = adt._canvas.height - coordinates.y - (leftThumbContainer._currentMeasure.height * 0.5) + bottomJoystickOffset;
+        leftPuck.floatLeft = xAddPos;
+        leftPuck.floatTop = yAddPos * -1;
+        leftPuck.left = leftPuck.floatLeft;
+        leftPuck.top = leftPuck.floatTop;
+      }
+    });
+
+    adt.addControl(leftThumbContainer);
+    leftThumbContainer.addControl(leftInnerThumbContainer);
+    leftThumbContainer.addControl(leftPuck);
+    leftPuck.isVisible = false;
+
+    const rightThumbContainer = makeThumbArea('rightThumb', 2, 'red', null);
+    rightThumbContainer.height = '200px';
+    rightThumbContainer.width = '200px';
+    rightThumbContainer.isPointerBlocker = true;
+    rightThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+    rightThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
+    rightThumbContainer.alpha = 0.4;
+    rightThumbContainer.left = -sideJoystickOffset;
+    rightThumbContainer.top = bottomJoystickOffset;
+
+    const rightInnerThumbContainer = makeThumbArea('rightInnerThumb', 4, 'red', null);
+    rightInnerThumbContainer.height = '80px';
+    rightInnerThumbContainer.width = '80px';
+    rightInnerThumbContainer.isPointerBlocker = true;
+    rightInnerThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    rightInnerThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+
+    const rightPuck = makeThumbArea('rightPuck', 0, 'red', 'red');
+    rightPuck.height = '60px';
+    rightPuck.width = '60px';
+    rightPuck.isPointerBlocker = true;
+    rightPuck.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    rightPuck.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+
+    rightThumbContainer.onPointerDownObservable.add(function (coordinates) {
+      rightPuck.isVisible = true;
+      rightPuck.floatLeft = adt._canvas.width - coordinates.x - (rightThumbContainer._currentMeasure.width * 0.5) - sideJoystickOffset;
+      rightPuck.left = rightPuck.floatLeft * -1;
+      rightPuck.floatTop = adt._canvas.height - coordinates.y - (rightThumbContainer._currentMeasure.height * 0.5) + bottomJoystickOffset;
+      rightPuck.top = rightPuck.floatTop * -1;
+      rightPuck.isDown = true;
+      rightThumbContainer.alpha = 0.9;
+    });
+
+    rightThumbContainer.onPointerUpObservable.add(function (coordinates) {
+      xAddRot = 0;
+      yAddRot = 0;
+      rightPuck.isDown = false;
+      rightPuck.isVisible = false;
+      rightThumbContainer.alpha = 0.4;
+    });
+
+    rightThumbContainer.onPointerMoveObservable.add(function (coordinates) {
+      if (rightPuck.isDown) {
+        xAddRot = adt._canvas.width - coordinates.x - (rightThumbContainer._currentMeasure.width * 0.5) - sideJoystickOffset;
+        yAddRot = adt._canvas.height - coordinates.y - (rightThumbContainer._currentMeasure.height * 0.5) + bottomJoystickOffset;
+        rightPuck.floatLeft = xAddRot * -1;
+        rightPuck.floatTop = yAddRot * -1;
+        rightPuck.left = rightPuck.floatLeft;
+        rightPuck.top = rightPuck.floatTop;
+      }
+    });
+
+    // leftThumbContainer.left = 50;
+    adt.addControl(rightThumbContainer);
+    rightThumbContainer.addControl(rightInnerThumbContainer);
+    rightThumbContainer.addControl(rightPuck);
+    rightPuck.isVisible = false;
+
+    // this.camera.attachControl(canvas, true);
+
+    this.scene.registerBeforeRender(() => {
+      // translateTransform = BABYLON.Vector3.TransformCoordinates(
+      //   new BABYLON.Vector3(xAddPos / 3000, 0, yAddPos / 3000),
+      //   BABYLON.Matrix.RotationY(this.camera.rotation.y)
+      // );
+      // translateTransform = this.camera.cameraDirection.scale(xAddPos / 10.0);
+      // this.camera.cameraDirection.addInPlace(translateTransform);
+      if (xAddPos >= 0.0) {
+        this.camera.position.addInPlace(this.camera.getDirection(BABYLON.Vector3.Forward()).scale(xAddPos / 1000.0));
+      }
+      this.camera.cameraRotation.y += xAddRot / 25000 * -1;
+      this.camera.cameraRotation.x += yAddRot / 25000 * -1;
+    });
+
+    function makeThumbArea (name, thickness, color, background, curves) {
+      const rect = new BABYLON.GUI.Ellipse();
+      rect.name = name;
+      rect.thickness = thickness;
+      rect.color = color;
+      rect.background = background;
+      rect.paddingLeft = '0px';
+      rect.paddingRight = '0px';
+      rect.paddingTop = '0px';
+      rect.paddingBottom = '0px';
+
+      return rect;
+    }
   }
 
   resize () {
@@ -1248,6 +1434,8 @@ export default {
   data () {
     return {
       isFullscreen: false,
+      isTouch: false,
+      started: false,
       snapshotRequested: false,
 
       // simulation / GUI
@@ -1311,6 +1499,11 @@ export default {
     fullscreen () {
       document.getElementById('underwater').requestFullscreen();
     },
+    start () {
+      this.started = true;
+      this.fullscreen();
+      // this.audioOcean.play();
+    },
     toggleVolume () {
       this.mute = !this.mute;
       if (this.mute) {
@@ -1339,7 +1532,7 @@ export default {
 #underwater-debug {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   padding: 10px;
   z-index: 1000;
   border-radius: 10px;
@@ -1350,8 +1543,8 @@ export default {
 
 #underwater-hud {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  right: 0;
   padding: 10px;
   width: 160px;
   height: 220px;
@@ -1361,6 +1554,11 @@ export default {
   font-family: monospace;
   color: #fff;
   text-align: right;
+
+  @media (max-width: 640px) {
+    width: 120px;
+    height: 160px;
+  }
 
   span {
     display: inline-block;
@@ -1377,6 +1575,9 @@ export default {
     line-height: 0.9;
     font-size: 42px;
     font-family: monospace;
+    @media (max-width: 640px) {
+      font-size: 24px;
+    }
   }
 
   #underwater-hud-depth-ascent {
@@ -1395,20 +1596,44 @@ export default {
   }
 }
 
+.button-giant {
+  line-height: 1.2em;
+  border-radius: 10px;
+  font-size: 32px;
+  background: #004;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+}
+
 #underwater-fullscreen {
   position: absolute;
   top: 20px;
   left: 0;
-  padding: 20px;
   margin: 0px;
   z-index: 1;
   max-width: 80%;
-  line-height: 1.2em;
-  border-radius: 10px;
-  font-size: 42px;
-  background: #004;
+}
+
+#underwater-instructions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
   color: #fff;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0.0, 0.0, 0.0, 0.4);
+  flex-direction: column;
+  text-align: right;
+  padding: 20px;
+
+  p {
+    font-size: 200%;
+  }
 }
 
 #underwater-settings {
