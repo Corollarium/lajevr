@@ -66,6 +66,8 @@ const causticblack_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 
+const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
+
 class Underwater {
   base = ''; // base url
 
@@ -86,6 +88,8 @@ class Underwater {
 
   audioDiver = null;
   audioOcean = null;
+
+  turtles = [];
 
   constructor (vueComponent) {
     BABYLON.GUI = GUI;
@@ -111,7 +115,7 @@ class Underwater {
       this.loadDiverBoat(),
       this.loadDiverBoatBig(),
       // this.loadMantas(),
-      // this.loadTurtle(),
+      this.loadTurtle(),
       this.loadAudio()
     ];
     // const fish = this.loadFlock(
@@ -188,51 +192,44 @@ class Underwater {
         }
       );
 
-      // // animate objects
-      // let d = 0;
-      // const mantaT = endTime / 10000.0;
-      // const mantaDirection = new BABYLON.Vector3(Math.sin(mantaT + Math.PI / 2), 0, Math.cos(mantaT + Math.PI / 2));
-      // const xdelta = 10 * Math.sin(mantaT);
-      // const zdelta = 10 * Math.cos(mantaT);
-      // this.mantas.forEach((manta) => {
-      //   for (const node of manta.rootNodes) {
-      //     node.position.x = xdelta + d * 2;
-      //     node.position.y = 10 - d * 1.5;
-      //     node.position.z = zdelta + d * 2;
-      //     node.setDirection(mantaDirection);
-      //   }
-      //   d++;
-      // });
-
       // fish.update(deltaTime);
 
       this.scene.render();
 
       if (vueComponent.snapshotRequested) {
         vueComponent.snapshotRequested = false;
-        const imageData = document.getElementById('underwater-3d').toDataURL();
-        const shareData = {
-          title: 'Laje de Santos',
-          url: imageData
-        };
-
-        const download = () => {
-          const a = document.createElement('a');
-          const date = new Date().toJSON().slice(0, 19).replaceAll(':', '-');
-          a.setAttribute('download', 'LajeDeSantos-' + date + '.png');
-          a.setAttribute('href', imageData.replace('image/png', 'application/octet-stream'));
-          a.click();
-        };
-        if ('share' in navigator) {
-          navigator.share(shareData).catch(download);
-        } else {
-          download();
-        }
       }
     });
 
     // Watch for browser/canvas resize events
     window.addEventListener('resize', () => this.resize());
+  }
+
+  async share () {
+    const imageData = document.getElementById('underwater-3d').toDataURL();
+    const download = () => {
+      const a = document.createElement('a');
+      const date = new Date().toJSON().slice(0, 19).replaceAll(':', '-');
+      a.setAttribute('download', 'LajeDeSantos-' + date + '.png');
+      a.setAttribute('href', imageData.replace('image/png', 'application/octet-stream'));
+      a.click();
+    };
+    if (navigator.canShare) {
+      const blob = await (await fetch(imageData)).blob();
+      const file = new File([blob], 'lajedesantos.png', { type: blob.type });
+      const shareData = {
+        title: 'Laje de Santos',
+        url: 'https://lajedesantos.net',
+        files: [file]
+      };
+      try {
+        await navigator.share(shareData);
+      } catch (e) {
+        download();
+      }
+    } else {
+      download();
+    }
   }
 
   beforeDestroy () {
@@ -250,6 +247,41 @@ class Underwater {
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
+  }
+
+  createPathForAnimation (mesh, curve, frameRate = 60) {
+    // Transform the curves into a proper Path3D object and get its orientation information
+    const path3d = new BABYLON.Path3D(curve.getPoints());
+    const tangents = path3d.getTangents();
+    const normals = path3d.getNormals();
+    const binormals = path3d.getBinormals();
+    const curvePath = path3d.getCurve();
+
+    // Define the position and orientation animations that will be populated
+    // according to the Path3D properties
+    const posAnim = new BABYLON.Animation('cameraPos', 'position', frameRate, BABYLON.Animation.ANIMATIONTYPE_VECTOR3);
+    const posKeys = [];
+    const rotAnim = new BABYLON.Animation('cameraRot', 'rotationQuaternion', frameRate, BABYLON.Animation.ANIMATIONTYPE_QUATERNION);
+    const rotKeys = [];
+
+    for (let i = 0; i < curvePath.length; i++) {
+      const position = curvePath[i];
+      const tangent = tangents[i];
+      const binormal = binormals[i];
+
+      const rotation = BABYLON.Quaternion.FromLookDirectionRH(tangent, binormal);
+
+      posKeys.push({ frame: i * frameRate, value: position });
+      rotKeys.push({ frame: i * frameRate, value: rotation });
+    }
+
+    posAnim.setKeys(posKeys);
+    rotAnim.setKeys(rotKeys);
+
+    mesh.animations.push(posAnim);
+    mesh.animations.push(rotAnim);
+    this.scene.beginAnimation(mesh, 0, frameRate * curvePath.length, true);
+    console.log(curvePath, posAnim, rotAnim, mesh);
   }
 
   bootScene (container, vueComponent) {
@@ -547,7 +579,9 @@ class Underwater {
   }
 
   resize () {
-    this.engine.resize();
+    if (this.engine) {
+      this.engine.resize();
+    }
     this.rebuildOceanTexture = true;
   }
 
@@ -987,6 +1021,58 @@ class Underwater {
         //   false,
         //   true
         // );
+
+        resolve();
+      };
+    });
+    return p;
+  }
+
+  loadTurtle () {
+    const p = new Promise((resolve, reject) => {
+      let curve = BABYLON.Curve3.CreateCubicBezier(
+        v3(-22, -10, 27),
+        v3(-20, -12, 31),
+        v3(-18, -11, 33),
+        v3(-14, -10, 35),
+        100
+      );
+      curve = curve.continue(
+        BABYLON.Curve3.CreateCubicBezier(
+          v3(-14, -10, 35),
+          v3(-12, -11, 33),
+          v3(-10, -12, 31),
+          v3(-6, -10, 27),
+          100
+        )
+      );
+      curve = curve.continue(
+        BABYLON.Curve3.CreateCubicBezier(
+          v3(-22, -10, 27),
+          v3(-20, -12, 31),
+          v3(-18, -11, 33),
+          v3(-14, -10, 35),
+          100
+        )
+      );
+
+      this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
+        const meshesWithMaterials = [];
+
+        for (const mesh of task.loadedMeshes) {
+          mesh.position = new BABYLON.Vector3(-14.12, -12.2, 36.19);
+          if (mesh.material) {
+            mesh.material.backFaceCulling = false;
+            mesh.material.freeze();
+            meshesWithMaterials.push(mesh);
+          } else {
+            // this.turtles.push(mesh);
+            this.createPathForAnimation(mesh, curve, 30);
+          }
+          // mesh.alwaysSelectAsActiveMesh = true;
+          // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+        }
+        this.addToSceneAndCaustic(meshesWithMaterials);
 
         resolve();
       };
