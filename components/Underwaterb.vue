@@ -10,7 +10,7 @@
     <div id="underwater-instructions" v-show="!started">
       <p>
         <i18n v-if="!isTouch">
-          Use a tecla 'Q' para nadar para frente e clique e arraste o mouse para girar a direção.
+          Use a tecla 'W' para nadar para frente e clique e arraste o mouse para girar a direção.
         </i18n>
         <i18n v-else>
           Use os joysticks azul e vermelho para girar e nadar.
@@ -76,7 +76,6 @@ class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
   constructor (material) {
     // last parameter is a priority, which lets you define the order multiple plugins are run.
     super(material, 'Caustic', 200, { 'CAUSTIC': true, 'NORMAL': true });
-
     // we need to mark the material
     this.markAllAsDirty = material._dirtyCallbacks[BABYLON.Constants.MATERIAL_AllDirtyFlag];
   }
@@ -98,7 +97,7 @@ class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
 
   prepareDefines (defines, scene, mesh) {
     defines.CAUSTIC = this._isEnabled;
-    defines.NORMAL = true;
+    defines.NORMAL |= this._isEnabled;
   }
 
   getClassName () {
@@ -126,7 +125,6 @@ class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
   getCustomCode (shaderType) {
     if (shaderType === 'fragment') {
       // we're adding this specific code at the end of the main() function
-      console.log(causticPluginFragmentMainEnd);
       return {
         'CUSTOM_FRAGMENT_DEFINITIONS': causticPluginFragmentDefinitions.default,
         'CUSTOM_FRAGMENT_MAIN_END': causticPluginFragmentMainEnd.default
@@ -179,12 +177,12 @@ class Underwater {
     // this.composer();
 
     const promises = [
-      this.loadTerrain() // 38 draw calls
-      // this.loadMoreiaBarco(), // 4 draw calls
-      // this.loadDiverBoat(),
+      this.loadTerrain(), // 38 draw calls
+      this.loadMoreiaBarco(), // 4 draw calls
+      this.loadDiverBoat(),
       // this.loadDiverBoatBig(),
       // this.loadMantas(),
-      // this.loadTurtle()
+      this.loadTurtle()
       // this.loadAudio()
     ];
     // const fish = this.loadFlock(

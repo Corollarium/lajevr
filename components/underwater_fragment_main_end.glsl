@@ -6,7 +6,7 @@
     // scale by normal to make caustic less pronounced for more vertical faces.
     vec4 caustic = clamp(caustic(causticCoord), 0.0, 1.0) * vNormalW.y;
 
-    float Zdepth = 10.0; // TODO vViewPos.z;
+    float Zdepth = 10.0; // TODOvViewPos.z;
 
     vec4 causticFinalColor = gl_FragColor;
     causticFinalColor.rgb = mix(causticFinalColor.rgb, caustic.rgb, clamp(caustic.a * 0.5 * Zdepth, 0.2, 0.7)); // caustics + texture
