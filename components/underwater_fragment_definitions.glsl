@@ -4,8 +4,17 @@
 #define MAX_ITER 5
 #define SPEED 0.3
 #define SCALE 30.0
+#define FOG_DENSITY 2.2
+#define FOG_DISTANCE_CORRECTION 2.5 // move the far plane closer
 
 #define csb(f, con, sat, bri) mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), f*bri)), f*bri, sat), con)
+
+float fogFactorExp(
+  const float dist,
+  const float density
+) {
+  return 1.0 - clamp(exp2(-density * dist), 0.0, 1.0);
+}
 
 vec4 caustic(vec2 uv) {
   vec2 p = mod(uv*TAU, TAU)-250.0;
