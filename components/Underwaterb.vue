@@ -174,7 +174,7 @@ class Underwater {
     this.bootScene(container, vueComponent);
     this.lights();
     this.materials();
-    // this.composer();
+    this.composer();
 
     const promises = [
       this.loadTerrain(), // 38 draw calls
@@ -662,34 +662,34 @@ class Underwater {
 
   composer () {
     // composes the actual texture with our underwater shader pass.
-    BABYLON.Effect.ShadersStore.underwaterVertexShader = underwater_vertex.default;
-    BABYLON.Effect.ShadersStore.underwaterFragmentShader = underwater_fragment.default;
+    // BABYLON.Effect.ShadersStore.underwaterVertexShader = underwater_vertex.default;
+    // BABYLON.Effect.ShadersStore.underwaterFragmentShader = underwater_fragment.default;
 
     const depthPass = this.scene.enableDepthRenderer();
 
-    const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
-    renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
+    // const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
+    // renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
 
-    const underwaterPass = new BABYLON.PostProcess(
-      'Underwater pass',
-      'underwater',
-      [
-        'fogColor',
-        'cameraMinMaxZ',
-        'cameraPosition',
-        'time'
-      ],
-      [
-        'skyTexture',
-        'depthTexture',
-        'causticTexture',
-        'oceanDepthTexture'
-      ],
-      1.0,
-      null, // this.camera,
-      0,
-      this.engine
-    );
+    // const underwaterPass = new BABYLON.PostProcess(
+    //   'Underwater pass',
+    //   'underwater',
+    //   [
+    //     'fogColor',
+    //     'cameraMinMaxZ',
+    //     'cameraPosition',
+    //     'time'
+    //   ],
+    //   [
+    //     'skyTexture',
+    //     'depthTexture',
+    //     'causticTexture',
+    //     'oceanDepthTexture'
+    //   ],
+    //   1.0,
+    //   null, // this.camera,
+    //   0,
+    //   this.engine
+    // );
 
     const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
@@ -702,21 +702,21 @@ class Underwater {
     );
 
     // // create the ocean pp
-    // const oceanPP = this.loadOceanPP();
-    // this.oceanPostProcess = oceanPP;
+    const oceanPP = this.loadOceanPP();
+    this.oceanPostProcess = oceanPP;
 
     // // we need to update the depth texture from the ocean pass to mix it with the underwater depth
-    // let oceanDepthTexture = null;
+    // const oceanDepthTexture = null;
     // oceanPP.onApplyObservable.add((effect) => {
-    //   if (this.rebuildOceanTexture) {
-    //     this.rebuildOceanTexture = false;
-    //     const rtWrapper = underwaterPass.inputTexture;
-    //     if (oceanDepthTexture) {
-    //       oceanDepthTexture.dispose();
-    //     }
-    //     oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
-    //     oceanDepthTexture.name = 'underwaterDepthStencil';
-    //   }
+    //   // if (this.rebuildOceanTexture) {
+    //   //   this.rebuildOceanTexture = false;
+    //   //   const rtWrapper = underwaterPass.inputTexture;
+    //   //   if (oceanDepthTexture) {
+    //   //     oceanDepthTexture.dispose();
+    //   //   }
+    //   //   oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
+    //   //   oceanDepthTexture.name = 'underwaterDepthStencil';
+    //   // }
     //   this.engine.setDepthBuffer(true);
     //   this.engine.setDepthWrite(true);
     //   this.engine.clear(null, false, true, false);
@@ -730,22 +730,22 @@ class Underwater {
     this.oceanPostProcess.skyTexture = skyTexture;
 
     // bind undertware stuff
-    const startTime = new Date();
-    underwaterPass.onApply = (effect) => {
-      const endTime = new Date();
-      const timeDiff = (endTime - startTime) / 1000.0; // in s
-      effect.setColor3('fogColor', new BABYLON.Color3(0, 0.5, 0.85));
-      effect.setFloat2('cameraMinMaxZ', this.camera.minZ, this.camera.maxZ);
-      effect.setFloat('time', timeDiff);
-      effect.setTexture('depthTexture', depthPass.getDepthMap());
-      effect.setTexture('skyTexture', skyTexture);
-      effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
-    };
+    // const startTime = new Date();
+    // underwaterPass.onApply = (effect) => {
+    //   const endTime = new Date();
+    //   const timeDiff = (endTime - startTime) / 1000.0; // in s
+    //   effect.setColor3('fogColor', new BABYLON.Color3(0, 0.5, 0.85));
+    //   effect.setFloat2('cameraMinMaxZ', this.camera.minZ, this.camera.maxZ);
+    //   effect.setFloat('time', timeDiff);
+    //   effect.setTexture('depthTexture', depthPass.getDepthMap());
+    //   effect.setTexture('skyTexture', skyTexture);
+    //   effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
+    // };
 
     // make it puuuurtier
     const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
-    const effects = [renderSceneBase, fxaa];
+    const effects = [this.oceanPostProcess, fxaa];
     const renderLayer = new BABYLON.PostProcessRenderEffect(
       this.engine,
       'renderLayer',
@@ -780,7 +780,7 @@ class Underwater {
     const pp = new OceanPostProcess('myOcean', this.camera, oceanOptions);
     pp.reflectionEnabled = false;
     pp.refractionEnabled = false;
-    pp.autoClear = false;
+    // pp.autoClear = false;
     pp.worldScale = 0.2;
 
     return pp;
