@@ -310,56 +310,7 @@ class BoidsTest {
       }).catch((e) => { console.error(e); });
   }
 
-  loadBoids (modelpath, modelfile, total, initialCenterPosition, animationRanges, withCaustic = false) {
-    // BABYLON.SceneLoader.ImportMeshAsync(
-    //   '',
-    //   modelpath,
-    //   modelfile,
-    //   this.scene,
-    //   undefined
-    // ).then((importResult) => {
-    //   const setAnimationParameters = (vec) => {
-    //     const anim = animationRanges[Math.floor(Math.random() * animationRanges.length)];
-    //     const ofst = Math.floor(Math.random() * (anim.to - anim.from + 1));
-    //     vec.set(anim.from, anim.to, ofst, Math.random() * 50 + 30);
-    //   };
-
-    //   const mesh = importResult.meshes[1];
-    //   const baker = new BABYLON.VertexAnimationBaker(this.scene, mesh);
-
-    //   mesh.registerInstancedBuffer('bakedVertexAnimationSettingsInstanced', 4);
-    //   mesh.instancedBuffers.bakedVertexAnimationSettingsInstanced = new BABYLON.Vector4(0, 0, 0, 0);
-
-    //   setAnimationParameters(mesh.instancedBuffers.bakedVertexAnimationSettingsInstanced);
-
-    //   baker.bakeVertexData([{ from: 0, to: animationRanges[animationRanges.length - 1].to, name: 'My animation' }]).then((vertexData) => {
-    //     const vertexTexture = baker.textureFromBakedVertexData(vertexData);
-
-    //     const manager = new BABYLON.BakedVertexAnimationManager(this.scene);
-
-    //     manager.texture = vertexTexture;
-
-    //     mesh.bakedVertexAnimationManager = manager;
-
-    //     const numInstances = 500;
-    //     for (let i = 0; i < numInstances; i++) {
-    //       const instance = mesh.createInstance('instance' + i);
-    //       instance.instancedBuffers.bakedVertexAnimationSettingsInstanced = new BABYLON.Vector4(0, 0, 0, 0);
-    //       setAnimationParameters(instance.instancedBuffers.bakedVertexAnimationSettingsInstanced);
-    //       instance.position.x += Math.random() * 100 - 50;
-    //       instance.position.z += Math.random() * 100 - 50;
-    //     }
-
-    //     this.scene.registerBeforeRender(() => {
-    //       manager.time += this.engine.getDeltaTime() / 1000.0;
-    //     });
-    //   });
-    // });
-    // if (this.scene) {
-    //   return Promise.resolve();
-    // }
-
-    // eslint-disable-next-line no-undef
+  loadBoids (modelpath, modelfile, total, initialCenterPosition, animationRanges, withCaustic = false, fpsDelta = 6) {
     const zero = new BABYLON.Vector3(0, 0, 0);
     const boidsManager = new BoidsManager(
       total,
@@ -406,17 +357,9 @@ class BoidsTest {
       modelfile,
       this.scene,
       undefined
-    );
-
-    p.then((container) => {
+    ).then((container) => {
       const loadedMeshes = container.meshes;
-      // this.assetsManager.addMeshTask('mesh' + modelfile, null, modelpath, modelfile).onSuccess = (task) => {
-      // const loadedMeshes = task.loadedMeshes;
-
       const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
-      // if (loadedMeshes.length !== 1) {
-      //   throw new Error('Invalid number of meshes for loadFlock: ' + modelfile);
-      // }
       // for (const mesh of loadedMeshes) {
       //   // mesh.position = initialCenterPosition;
       //   //  mesh.scaling = new BABYLON.Vector3(10, 10, 10);
@@ -429,43 +372,29 @@ class BoidsTest {
       //   //  mesh.freezeNormals();
       //   // mesh.freezeWorldMatrix();
       // }
-      mainMesh = loadedMeshes[1];
+      mainMesh = loadedMeshes[1]; // assumes __root__ is zero
 
       if (causticMaterial) {
         mainMesh.rttMaterial = causticMaterial;
         this.renderTargetCaustic.renderList.push(mainMesh);
       }
 
-      // thin instance version
-      for (let i = 0; i < total; i++) {
-        const matrix = BABYLON.Matrix.Translation(
-          this.random(-1, 1), 0, 0
-        );
-        bufferMatrices.set(matrix.toArray(), i * 16);
-      }
-      // mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-
       const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
       baker.bakeVertexData(animationRanges).then((vertexData) => {
         const vertexTexture = baker.textureFromBakedVertexData(vertexData);
         const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
         bakedVertexAnimationManager.texture = vertexTexture;
-        // bakedVertexAnimationManager.animationParameters = new BABYLON.Vector4(
-        //   animationRanges[0].from,
-        //   animationRanges[0].to,
-        //   0,
-        //   24
-        // );
 
         mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
         //        this.scene.stopAnimation(mainMesh);
 
+        // set animation parameters
         for (let i = 0; i < total; i++) {
           const anim = new BABYLON.Vector4(
             animationRanges[0].from,
             animationRanges[0].to,
             Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
-            30
+            30 + (Math.random() - 0.5) * fpsDelta
           );
           animParameters.set(anim.asArray(), i * 4);
         }
@@ -484,7 +413,6 @@ class BoidsTest {
         const q = BABYLON.Quaternion.Identity();
 
         return (deltaTime) => {
-          // console.log(mainMesh);
           if (mainMesh && mainMesh.bakedVertexAnimationManager) {
             mainMesh.bakedVertexAnimationManager.time += deltaTime;
             _boids.update(deltaTime);
