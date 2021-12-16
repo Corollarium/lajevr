@@ -57,16 +57,85 @@ import BoidsManager from '@corollarium/babylon-boids';
 
 const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
 const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
-const caustic_fragment = require('!!raw-loader!./caustic_fragmentb.glsl');
-const causticblack_fragment = require('!!raw-loader!./causticblack_fragmentb.glsl');
-const caustic_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
-const causticblack_vertex = require('!!raw-loader!./caustic_vertexb.glsl');
+
+const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
+const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
 /* eslint-enable */
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
+
+/**
+ * Extend from MaterialPluginBase to create your plugin.
+ */
+class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
+  static time = 0.0;
+
+  constructor (material) {
+    // last parameter is a priority, which lets you define the order multiple plugins are run.
+    super(material, 'Caustic', 200, { 'CAUSTIC': true, 'NORMAL': true });
+
+    // we need to mark the material
+    this.markAllAsDirty = material._dirtyCallbacks[BABYLON.Constants.MATERIAL_AllDirtyFlag];
+  }
+
+  get isEnabled () {
+    return this._isEnabled;
+  }
+
+  set isEnabled (enabled) {
+    if (this._isEnabled === enabled) {
+      return;
+    }
+    this._isEnabled = enabled;
+    this.markAllAsDirty();
+    this._enable(this._isEnabled);
+  }
+
+  _isEnabled = false;
+
+  prepareDefines (defines, scene, mesh) {
+    defines.CAUSTIC = this._isEnabled;
+    defines.NORMAL = true;
+  }
+
+  getClassName () {
+    return 'CausticPluginMaterial';
+  }
+
+  getUniforms () {
+    return {
+      'ubo': [
+        { name: 'time', size: 1, type: 'float' }
+      ],
+      'fragment':
+        `#ifdef CAUSTIC
+            uniform float time;
+        #endif`
+    };
+  }
+
+  bindForSubMesh (uniformBuffer, scene, engine, subMesh) {
+    if (this._isEnabled) {
+      uniformBuffer.updateFloat('time', CausticPluginMaterial.time);
+    }
+  }
+
+  getCustomCode (shaderType) {
+    if (shaderType === 'fragment') {
+      // we're adding this specific code at the end of the main() function
+      console.log(causticPluginFragmentMainEnd);
+      return {
+        'CUSTOM_FRAGMENT_DEFINITIONS': causticPluginFragmentDefinitions.default,
+        'CUSTOM_FRAGMENT_MAIN_END': causticPluginFragmentMainEnd.default
+      };
+    }
+    // for other shader types we're not doing anything, return null
+    return null;
+  }
+}
 
 class Underwater {
   base = ''; // base url
@@ -107,16 +176,16 @@ class Underwater {
     this.bootScene(container, vueComponent);
     this.lights();
     this.materials();
-    this.composer();
+    // this.composer();
 
     const promises = [
-      this.loadTerrain(), // 38 draw calls
-      this.loadMoreiaBarco(), // 4 draw calls
-      this.loadDiverBoat(),
-      this.loadDiverBoatBig(),
+      this.loadTerrain() // 38 draw calls
+      // this.loadMoreiaBarco(), // 4 draw calls
+      // this.loadDiverBoat(),
+      // this.loadDiverBoatBig(),
       // this.loadMantas(),
-      this.loadTurtle(),
-      this.loadAudio()
+      // this.loadTurtle()
+      // this.loadAudio()
     ];
     // const fish = this.loadFlock(
     //   this.base + 'models/', 'salema.glb',
@@ -151,18 +220,18 @@ class Underwater {
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
-        if (this.audioDiver) {
-          this.audioDiver.pause();
-          if (isUnderwater) {
-            this.audioDiver.play();
-          }
-        }
-        if (this.audioOcean) {
-          this.audioOcean.pause();
-          if (!isUnderwater) {
-            this.audioOcean.play();
-          }
-        }
+      //   if (this.audioDiver) {
+      //     this.audioDiver.pause();
+      //     if (isUnderwater) {
+      //       this.audioDiver.play();
+      //     }
+      //   }
+      //   if (this.audioOcean) {
+      //     this.audioOcean.pause();
+      //     if (!isUnderwater) {
+      //       this.audioOcean.play();
+      //     }
+      //   }
       }
       if (uiUpdateCounter++ % 8) {
         // update UI. Only every 8 frames to avoid wasting time with Vue
@@ -181,16 +250,7 @@ class Underwater {
           t.style.position = 'absolute';
         }
       }
-
-      // update shaders
-      if (this.causticMaterial) {
-        this.causticMaterial.setFloat('time', timeElapsed);
-      }
-      this.rttMaterials.forEach(
-        (c) => {
-          c.setFloat('time', timeElapsed);
-        }
-      );
+      CausticPluginMaterial.time = timeElapsed;
 
       // fish.update(deltaTime);
 
@@ -595,46 +655,11 @@ class Underwater {
     this.sunLight.intensity = 0.8;
   }
 
-  getCausticMaterial () {
-    const c = this.causticMaterial.clone();
-    c.freeze(); // freeze because we'll only update uniforms
-    this.rttMaterials.push(c);
-    return c;
-  }
-
-  getCausticBlackMaterial () {
-    const c = this.causticBlackMaterial.clone();
-    c.freeze(); // freeze because we'll only update uniforms
-    this.rttMaterials.push(c);
-    return c;
-  }
-
   materials () {
-    BABYLON.Effect.ShadersStore.causticVertexShader = caustic_vertex.default;
-    BABYLON.Effect.ShadersStore.causticFragmentShader = caustic_fragment.default;
-    BABYLON.Effect.ShadersStore.causticblackVertexShader = causticblack_vertex.default;
-    BABYLON.Effect.ShadersStore.causticblackFragmentShader = causticblack_fragment.default;
-    this.causticMaterial = new BABYLON.ShaderMaterial(
-      'caustic material',
-      this.scene,
-      'caustic',
-      {
-        attributes: ['position', 'normal', 'uv'],
-        uniforms: ['world', 'worldView', 'worldViewProjection', 'view', 'projection', 'time', 'direction']
-      }
-    );
-    this.causticMaterial.freeze();
-
-    this.causticBlackMaterial = new BABYLON.ShaderMaterial(
-      'caustic black material',
-      this.scene,
-      'causticblack',
-      {
-        attributes: ['position', 'normal', 'uv'],
-        uniforms: ['world', 'worldView', 'worldViewProjection', 'view', 'projection', 'time', 'direction']
-      }
-    );
-    this.causticBlackMaterial.freeze();
+    BABYLON.RegisterMaterialPlugin('Caustic', (material) => {
+      material.caustic = new CausticPluginMaterial(material);
+      return material.caustic;
+    });
   }
 
   composer () {
@@ -646,10 +671,6 @@ class Underwater {
 
     const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
     renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
-
-    this.renderTargetCaustic = new BABYLON.RenderTargetTexture('caustic', 1024, this.scene);
-    this.scene.customRenderTargets.push(this.renderTargetCaustic);
-    this.setRTTMaterials();
 
     const underwaterPass = new BABYLON.PostProcess(
       'Underwater pass',
@@ -682,31 +703,31 @@ class Underwater {
       BABYLON.Texture.NEAREST_NEAREST
     );
 
-    // create the ocean pp
-    const oceanPP = this.loadOceanPP();
-    this.oceanPostProcess = oceanPP;
+    // // create the ocean pp
+    // const oceanPP = this.loadOceanPP();
+    // this.oceanPostProcess = oceanPP;
 
-    // we need to update the depth texture from the ocean pass to mix it with the underwater depth
-    let oceanDepthTexture = null;
-    oceanPP.onApplyObservable.add((effect) => {
-      if (this.rebuildOceanTexture) {
-        this.rebuildOceanTexture = false;
-        const rtWrapper = underwaterPass.inputTexture;
-        if (oceanDepthTexture) {
-          oceanDepthTexture.dispose();
-        }
-        oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
-        oceanDepthTexture.name = 'underwaterDepthStencil';
-      }
-      this.engine.setDepthBuffer(true);
-      this.engine.setDepthWrite(true);
-      this.engine.clear(null, false, true, false);
-    });
+    // // we need to update the depth texture from the ocean pass to mix it with the underwater depth
+    // let oceanDepthTexture = null;
+    // oceanPP.onApplyObservable.add((effect) => {
+    //   if (this.rebuildOceanTexture) {
+    //     this.rebuildOceanTexture = false;
+    //     const rtWrapper = underwaterPass.inputTexture;
+    //     if (oceanDepthTexture) {
+    //       oceanDepthTexture.dispose();
+    //     }
+    //     oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
+    //     oceanDepthTexture.name = 'underwaterDepthStencil';
+    //   }
+    //   this.engine.setDepthBuffer(true);
+    //   this.engine.setDepthWrite(true);
+    //   this.engine.clear(null, false, true, false);
+    // });
 
     // bind the depth from the ocean
-    underwaterPass.onApplyObservable.add((effect) => {
-      effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
-    });
+    // underwaterPass.onApplyObservable.add((effect) => {
+    //   effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
+    // });
 
     this.oceanPostProcess.skyTexture = skyTexture;
 
@@ -718,7 +739,6 @@ class Underwater {
       effect.setColor3('fogColor', new BABYLON.Color3(0, 0.5, 0.85));
       effect.setFloat2('cameraMinMaxZ', this.camera.minZ, this.camera.maxZ);
       effect.setFloat('time', timeDiff);
-      effect.setTexture('causticTexture', this.renderTargetCaustic);
       effect.setTexture('depthTexture', depthPass.getDepthMap());
       effect.setTexture('skyTexture', skyTexture);
       effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
@@ -727,7 +747,7 @@ class Underwater {
     // make it puuuurtier
     const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
 
-    const effects = [renderSceneBase, oceanPP, underwaterPass, fxaa];
+    const effects = [renderSceneBase, fxaa];
     const renderLayer = new BABYLON.PostProcessRenderEffect(
       this.engine,
       'renderLayer',
@@ -769,95 +789,12 @@ class Underwater {
   }
 
   /**
- * Slow version of RTT exchange material but easier to debug
- */
-  setRTTMaterialsSlow () {
-    this.renderTargetCaustic.onBeforeRender = () => {
-      // Apply the shader on all meshes
-      for (const i in this.renderTargetCaustic.renderList) {
-        // this.renderTargetCaustic.renderList[i].overrideMaterialSideOrientation = true;
-        this.renderTargetCaustic.renderList[i]._saved = this.renderTargetCaustic.renderList[i].material;
-        this.renderTargetCaustic.renderList[i].material = this.renderTargetCaustic.renderList[i].rttMaterial;
-      }
-    };
-    this.renderTargetCaustic.onAfterRender = () => {
-      // Apply the shader on all meshes
-      for (const i in this.renderTargetCaustic.renderList) {
-        this.renderTargetCaustic.renderList[i].material = this.renderTargetCaustic.renderList[i]._saved;
-      }
-    };
-  }
-
-  setRTTMaterials () {
-    // before we render the target, swap materials.
-    this.renderTargetCaustic.onBeforeRender = (e) => {
-      // Apply the shader on all meshes
-      this.renderTargetCaustic.renderList.forEach((mesh) => {
-        if (mesh.getClassName() === 'InstancedMesh') {
-          return;
-        }
-        // the PBR material takes some time to be loaded, it's possible that in the first few frames mesh.material is null...
-        if (mesh.material && !mesh.isFrozen && ('isReady' in mesh) && mesh.isReady(true)) {
-          // backup effects
-          const _origSubMeshEffects = [];
-          mesh.subMeshes.forEach((submesh) => {
-            _origSubMeshEffects.push([submesh.effect, submesh._materialDefines]);
-          });
-          mesh.isFrozen = true;
-          mesh.material.freeze(); // freeze material so it won't be recomputed onAfter
-          // store old material/effects
-          mesh._saved_orig_material = mesh.material;
-          mesh._origSubMeshEffects = _origSubMeshEffects;
-        }
-        if (!mesh._origSubMeshEffects) {
-          return;
-        }
-        // swap the material
-        mesh.material = mesh.rttMaterial;
-        // and swap the effects
-        if (mesh._rtt_subMeshEffects) {
-          for (let s = 0; s < mesh.subMeshes.length; ++s) {
-            mesh.subMeshes[s].setEffect(...mesh._rtt_subMeshEffects[s]);
-          }
-        }
-      });
-    };
-    this.renderTargetCaustic.onAfterRender = () => {
-      // Set the original shader on all meshes
-      this.renderTargetCaustic.renderList.forEach((mesh) => {
-        if (mesh.getClassName() === 'InstancedMesh') {
-          return;
-        }
-        // nothing to do, early bail
-        if (!mesh._origSubMeshEffects) {
-          return;
-        }
-        // backup sub effects on the rtt shader
-        if (!mesh._rtt_subMeshEffects) {
-          mesh._rtt_subMeshEffects = [];
-          mesh.subMeshes.forEach((submesh) => {
-            mesh._rtt_subMeshEffects.push([submesh.effect, submesh._materialDefines]);
-          });
-        }
-        // swap back to original material
-        mesh.material = mesh._saved_orig_material;
-        for (let s = 0; s < mesh.subMeshes.length; ++s) {
-          mesh.subMeshes[s].setEffect(...mesh._origSubMeshEffects[s]);
-        }
-      });
-    };
-  }
-
-  /**
    * @return the caustic material
    */
   addToSceneAndCaustic (meshes) {
-    const c = this.getCausticMaterial();
     meshes.forEach((mesh) => {
-      mesh.rttMaterial = c;
-      this.renderTargetCaustic.renderList.push(mesh);
+      mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
     });
-    return c;
   }
 
   loadTerrain () {
@@ -956,7 +893,7 @@ class Underwater {
             rotations.push(mesh.rotationQuaternion);
             scalings.push(mesh.absoluteScaling);
             mesh.dispose();
-          } else if (mesh.freeze) {
+          } else if (mesh.freezeWorldNormals) {
             mesh.doNotSyncBoundingInfo = true;
             if (mesh.material) {
               mesh.material.freeze();
@@ -966,13 +903,14 @@ class Underwater {
             mesh.convertToUnIndexedMesh();
             mesh.freezeNormals();
             mesh.freezeWorldMatrix();
-            mesh.freeze();
-            mesh.bakeCurrentTransformIntoVertices();
+            console.log(mesh.name);
             actualLoaded.push(mesh);
             this.sunLight.includedOnlyMeshes.push(mesh);
+          } else if (mesh.material) {
+            actualLoaded.push(mesh);
           }
         }
-        const material = this.addToSceneAndCaustic(actualLoaded);
+        this.addToSceneAndCaustic(actualLoaded);
 
         // merge everything so we have fewer draw calls
         const terrain = BABYLON.Mesh.MergeMeshes(
@@ -1113,7 +1051,7 @@ class Underwater {
           task.data,
           this.scene,
           () => {
-            this.audioOcean.play();
+            // this.audioOcean.play();
           },
           {
             autoplay: false,
@@ -1221,6 +1159,25 @@ class Underwater {
       baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
       return baker.bakeVertexData(animationRanges);
     }).then((vertexData) => {
+      const boneCount = this._mesh.skeleton.bones.length;
+      const totalRows = 0;
+      const totalCols = 0;
+      let lastNewOne = 0;
+      const lines = [];
+      for (let i = 1; i < totalRows; i++) {
+        for (let j = 0; j < totalCols; j++) {
+          if (vertexData[lastNewOne * totalCols + j] !== vertexData[i * totalCols + j]) {
+            lines.push(i);
+            lastNewOne = i;
+            break;
+          }
+        }
+      }
+      const actualVertexData = new Float32Array((boneCount + 1) * 4 * 4 * lines.length);
+      for (const i of lines) {
+        // copy
+      }
+
       const vertexTexture = baker.textureFromBakedVertexData(vertexData);
       const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
       bakedVertexAnimationManager.texture = vertexTexture;
