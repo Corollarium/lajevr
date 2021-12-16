@@ -60,6 +60,8 @@ const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
 
 const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
 const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
+const causticPluginVertexDefinitions = require('!!raw-loader!./underwater_vertex_definitions.glsl');
+const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_main_end.glsl');
 /* eslint-enable */
 
 /* eslint-disable no-unused-vars */
@@ -129,6 +131,12 @@ class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
         'CUSTOM_FRAGMENT_DEFINITIONS': causticPluginFragmentDefinitions.default,
         'CUSTOM_FRAGMENT_MAIN_END': causticPluginFragmentMainEnd.default
       };
+    } else if (shaderType === 'vertex') {
+      // we're adding this specific code at the end of the main() function
+      return {
+        'CUSTOM_VERTEX_DEFINITIONS': causticPluginVertexDefinitions.default,
+        'CUSTOM_VERTEX_MAIN_END': causticPluginVertexMainEnd.default
+      };
     }
     // for other shader types we're not doing anything, return null
     return null;
@@ -178,7 +186,7 @@ class Underwater {
 
     const promises = [
       this.loadTerrain(), // 38 draw calls
-      this.loadMoreiaBarco(), // 4 draw calls
+      // this.loadMoreiaBarco(), // 4 draw calls
       this.loadDiverBoat(),
       // this.loadDiverBoatBig(),
       // this.loadMantas(),
