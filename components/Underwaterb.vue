@@ -10,7 +10,6 @@
     <div id="underwater-instructions" v-show="!started">
       <p>
         <i18n v-if="!isTouch">
-          <!-- Use a tecla 'W' para nadar para frente e clique e arraste o mouse para girar a direção. -->
           Torne-se um mergulhador e explore a Laje de Santos.<br>
           Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor.<br>
           Aperte 'W' para nadar.<br>
@@ -226,9 +225,9 @@ class Underwater {
       const timeElapsed = (endTime - startTime) / 1000.0; // in s
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
+      // Keep the Camera limited to near the water level. Does not fly.
       if (this.camera.position.y > 0.6) {
         this.camera.position.y = 0.6;
-        console.log('cam out of bounds');
       }
 
       const isUnderwaterNow = this.camera.position.y <= 0;
