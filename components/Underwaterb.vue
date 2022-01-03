@@ -10,7 +10,10 @@
     <div id="underwater-instructions" v-show="!started">
       <p>
         <i18n v-if="!isTouch">
-          Use a tecla 'W' para nadar para frente e clique e arraste o mouse para girar a direção.
+          <!-- Use a tecla 'W' para nadar para frente e clique e arraste o mouse para girar a direção. -->
+          Torne-se um mergulhador e explore a Laje de Santos.<br>
+          Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor.<br>
+          Aperte 'W' para nadar.<br>
         </i18n>
         <i18n v-else>
           Use os joysticks azul e vermelho para girar e nadar.
@@ -223,6 +226,11 @@ class Underwater {
       const timeElapsed = (endTime - startTime) / 1000.0; // in s
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
+      if (this.camera.position.y > 0.6) {
+        this.camera.position.y = 0.6;
+        console.log('cam out of bounds');
+      }
+
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
@@ -376,7 +384,7 @@ class Underwater {
     this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
     // Add a camera to the scene and attach it to the canvas
-    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854);
+    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 0.8, 29.13296827068854);
     this.camera = new BABYLON.UniversalCamera(
       'Camera',
       cameraInitPoint,
@@ -451,6 +459,8 @@ class Underwater {
 
   debugUtils () {
     this.scene.debugLayer.show();
+    // set an object to be inspected in the console
+    Window.underw = this;
   }
 
   instrumentation () {
@@ -1677,7 +1687,7 @@ export default {
   align-items: center;
   background-color: rgba(0.0, 0.0, 0.0, 0.4);
   flex-direction: column;
-  text-align: right;
+  text-align: center;
   padding: 20px;
 
   p {
