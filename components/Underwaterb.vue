@@ -8,13 +8,21 @@
       <i18n>Ficar em tela cheia</i18n>
     </button>
     <div id="underwater-instructions" v-show="!started">
-      <p>
-        <i18n v-if="!isTouch">
-          Torne-se um mergulhador e explore a Laje de Santos.<br>
-          Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor.<br>
-          Aperte 'W' para nadar.<br>
+      <p v-if="!isTouch">
+        <i18n>
+          Torne-se um mergulhador e explore a Laje de Santos.
         </i18n>
-        <i18n v-else>
+        <br>
+        <i18n>
+          Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor.
+        </i18n>
+        <br>
+        <i18n>
+          Aperte 'W' para nadar.
+        </i18n>
+      </p>
+      <p v-else>
+        <i18n>
           Use os joysticks azul e vermelho para girar e nadar.
         </i18n>
       </p>
@@ -70,6 +78,8 @@ const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_mai
 /* eslint-disable no-console */
 
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
+
+const maxY = 0.6;
 
 /**
  * Extend from MaterialPluginBase to create your plugin.
@@ -226,8 +236,8 @@ class Underwater {
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
       // Keep the Camera limited to near the water level. Does not fly.
-      if (this.camera.position.y > 0.6) {
-        this.camera.position.y = 0.6;
+      if (this.camera.position.y > maxY) {
+        this.camera.position.y = maxY;
       }
 
       const isUnderwaterNow = this.camera.position.y <= 0;
@@ -383,7 +393,7 @@ class Underwater {
     this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
     // Add a camera to the scene and attach it to the canvas
-    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 0.8, 29.13296827068854);
+    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, maxY, 29.13296827068854);
     this.camera = new BABYLON.UniversalCamera(
       'Camera',
       cameraInitPoint,
