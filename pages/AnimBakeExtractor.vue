@@ -29,8 +29,8 @@
             :model="'./models/tartaruga/tartaruga.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
-            :animationFrames="60"
-            :fpsDelta="50"
+            :animationInitFrame="1"
+            :animationEndFrame="90"
           />
           <EBA
             id="x22222"
@@ -38,8 +38,8 @@
             :model="'./models/frade.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
-            :animationFrames="90"
-            :fpsDelta="50"
+            :animationInitFrame="1"
+            :animationEndFrame="90"
           />
         </div>
       </section>
