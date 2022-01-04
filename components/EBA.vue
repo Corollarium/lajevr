@@ -52,15 +52,15 @@ export default {
       required: false,
       default: ''
     },
-    animationFrames: {
+    animationInitFrame: {
       type: Number,
       require: false,
-      default: null
+      default: 0
     },
-    fpsDelta: {
+    animationEndFrame: {
       type: Number,
       require: false,
-      default: 1
+      default: 0
     },
     link: {
       type: String,
@@ -212,7 +212,7 @@ export default {
     // const bufferMatrices = new Float32Array(16);
     const animParameters = new Float32Array(4);
 
-    const animationRanges = [{ from: 0, to: this.animationFrames, name: filename.replace(/\.[^/.]+$/, '_Animation') }];
+    const animationRanges = [{ from: this.animationInitFrame, to: this.animationEndFrame, name: filename.replace(/\.[^/.]+$/, '_Animation') }];
 
     // console.log(animationRanges);
 
@@ -256,10 +256,10 @@ export default {
 
           // set animation parameters
           const anim = new BABYLON.Vector4(
-            animationRanges[0].from,
-            animationRanges[0].to,
-            Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
-            30 + (Math.random() - 0.5) * this.fpsDelta
+            animationRanges[0].from, // Init
+            animationRanges[0].to, // End
+            0, // Offset
+            30 // FPS
           );
           animParameters.set(anim.asArray());
           this.mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
@@ -286,10 +286,10 @@ export default {
 
       // set animation parameters
       const anim = new BABYLON.Vector4(
-        animationRanges[0].from,
-        animationRanges[0].to,
-        Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
-        30 + (Math.random() - 0.5) * this.fpsDelta
+        animationRanges[0].from, // Init
+        animationRanges[0].to, // End
+        0, // Offset
+        30 // FPS
       );
       animParameters.set(anim.asArray());
       this.mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
@@ -298,52 +298,6 @@ export default {
         this.mainMesh.bakedVertexAnimationManager.time += this.engine.getDeltaTime() / 1000.0;
       });
     }).catch((e) => { console.error(e); });
-
-    // loader
-    /*
-    let loaded = false;
-    const loader = new BABYLON.AssetsManager(this.scene);
-    loader.addMeshTask('box', '', path, filename);
-
-    loader.onFinish = (task) => {
-      loaded = true;
-      let radius = 0.01;
-      let lockedTarget = null;
-      for (const o of task[0].loadedMeshes) {
-        if (o) {
-          const s = o.getBoundingInfo().boundingBox.extendSize;
-          if (radius < s.x / 2.0) {
-            radius = s.x / 2.0;
-          }
-          if (radius < s.y / 2.0) {
-            radius = s.y / 2.0;
-          }
-          if (radius < s.z / 2.0) {
-            radius = s.z / 2.0;
-          }
-          if (!lockedTarget) {
-            lockedTarget = o;
-          }
-          // possible overlay
-          // if (o.name === 'Mesh_0') {
-          //   o.renderOverlay = true;
-          //   o.overlayColor = new BABYLON.Color3(0.8, 0.0, 0.0);
-          //   o.overlayAlpha = 0.2;
-          // }
-        }
-      }
-      this.camera.lockedTarget = lockedTarget;
-
-      let aspect = this.container.width / this.container.height;
-      if (aspect < 1.0) {
-        aspect = 1.0 / aspect;
-      }
-      this.camera.radius = radius * 2.0 / Math.tan(this.camera.fov / 2.0) * aspect;
-      this.camera.lowerRadiusLimit = radius / 10.0;
-      this.setScrollHijacking(false);
-    };
-    loader.load();
-    */
 
     // don't render when not visible
     let shouldRender = true;
