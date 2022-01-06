@@ -49,7 +49,9 @@ const float SEA_SPEED = 0.8;
 const float SEA_FREQ = 0.16;
 
 const vec3 DARK_BLUE = vec3(.0, 0.13, 0.25);
-const vec3 LIGHT_BLUE = vec3(0.0, 0.55, 0.78);
+const vec3 LIGHT_BLUE =  vec3(0.0, 0.5, 0.85); // vec3(0.0, 0.55, 0.78);
+const vec3 COLOR_INFINITE = vec3(0.0, 0.5, 0.85);
+
 const vec3 SEA_BASE = DARK_BLUE;
 const vec3 SEA_WATER_COLOR = DARK_BLUE;
 const vec3 SEA_BASE_UNDERWATER = LIGHT_BLUE;
@@ -531,17 +533,14 @@ void main() {
   if (distance >= MAXIMUM_MARCH_DISTANCE && !isUnderwater) {
     // ray definitely escaped
     #ifdef SKY_ENABLED
-    if (color.r == 0.0 && color.g == 0.0 && color.b == 0.0) {
-      color = skyColor(dir);
-      normalizedDistance = 1.0;
-    } else if (baseColor.w != 1.0) {
-      color.rgb = mix(baseColor.rgb, skyColor(dir), 1.0 - baseColor.w);
-      normalizedDistance = 1.0;
-    }
+    color.rgb = mix(baseColor.rgb, skyColor(dir), 1.0 - baseColor.w);
+    normalizedDistance = 1.0;
     #endif
   }
-  else if (distance <= -MAXIMUM_MARCH_DISTANCE) {
-    // nothing
+  else if ((distance <= -MAXIMUM_MARCH_DISTANCE || distance >= MAXIMUM_MARCH_DISTANCE) && isUnderwater) {
+    // escaped, but underwater
+    color.rgb = mix(baseColor.rgb, COLOR_INFINITE, 1.0 - baseColor.w);
+    normalizedDistance = 1.0;
   }
   else {
     // bteitler: distance vector to ocean surface for this pixel's ray

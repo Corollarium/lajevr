@@ -6,6 +6,7 @@
 #define SCALE 30.0
 #define FOG_DENSITY 2.2
 #define FOG_DISTANCE_CORRECTION 2.5 // move the far plane closer
+const vec3 COLOR_INFINITE = vec3(0.0, 0.5, 0.85);
 
 #define csb(f, con, sat, bri) mix(vec3(.5), mix(vec3(dot(vec3(.2125, .7154, .0721), f*bri)), f*bri, sat), con)
 
