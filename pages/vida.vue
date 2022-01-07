@@ -53,6 +53,12 @@
             <i18n>Aves</i18n>
           </a>
         </li>
+        <li class="pure-menu-item topbar-list-item" data-target="corals">
+          <a class="pure-menu-link link-menu-vida" href="#corals">
+            <img class="menu-icon" alt="Ícone de coral" src="~static/graficos/bird.svg">
+            <i18n>Corals</i18n>
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -1098,6 +1104,58 @@
         </p>
       </life-block>
     </article>
+
+    <article id="corals" class="article-index">
+      <section class="section-container container">
+        <h2 class="title-specimen">
+          <img alt="Icone de um coral" src="~static/graficos/bird.svg">
+          <i18n>Corais</i18n>
+        </h2>
+
+        <p>
+          <i18n>A Laje de Santos é um local muito especial, pois abriga uma riquíssima fauna marinha bentônica (espécies que vivem associadas ao fundo ou substrato). Isso inclui os corais, que são animais invertebrados.</i18n>
+        </p>
+      </section>
+
+      <life-block
+        id="coral-baba-de-boi"
+        name="Coral-baba-de-boi"
+        latin="Palythoa caribaeorum"
+        conservation="Pouco Preocupante"
+        data-aos="fade-right"
+      >
+        <p>
+          <i18n>A Palythoa é um gênero de coral mole. Possui esse nome por que não produz um esqueleto de carbonato de cálcio, ou seja, os indivíduos são moles e não geram a formação de recifes.</i18n>
+        </p>
+        <p>
+          <i18n>O formato desse animal se assemelha ao das anêmonas, no entanto a Palythoa forma colônias: associações entre seres da mesma espécie que se unem e se beneficiam desse agrupamento, pois assim conseguem mais proteção e alimentos. Estas colônias crescem tanto que acabam formando extensos “tapetes” no fundo do mar que as vezes podem recobrir por inteiro uma rocha.</i18n>
+        </p>
+        <p>
+          <i18n>Colônias de Palythoa Caribaeorum são fáceis de identificar. Possuem uma coloração que vai do amarelo alaranjado até o marrom, e durante a maré baixa elas podem ficar expostas fora da água. Quando isso ocorre, elas secretam uma grande quantidade de muco, para evitar a desidratação e por isso são conhecidas popularmente por muitos como “baba-de-boi”.</i18n>
+        </p>
+        <p>
+          <i18n>Podem ser encontrados em boa parte da costa da América do Sul, Caribe e Golfo do México. Essa espécie encontra-se em locais com diferentes graus de hidro dinamismo, pode estar entre 2 e 7 metros de profundidade. É um animal que costuma prosperar em águas rasas e claras, com alta penetração de luz.</i18n>
+        </p>
+        <p>
+          <i18n>Este coral é conhecido por conter e secretar uma toxina que devemos ter muito cuidado ao tocar ou encostar mesmo que acidentalmente, a palitoxina. Esta toxina pode entrar no sangue através de cortes nas mãos, braços, arranhões, pela respiração do vapor através da boca ou nariz, e mesmo por olhos ou ouvido.</i18n>
+        </p>
+        <p>
+          <i18n>A palitoxina é considerada uma das substâncias mais venenosas que se conhece até hoje. Esta toxina é estudada em bioquímica devido sua grande versatilidade.</i18n>
+        </p>
+      </life-block>
+
+      <life-block
+        id="coral-cerebro"
+        name="Coral-Cérebro"
+        latin="Mussismilia hispida"
+        conservation="Pouco Preocupante"
+        data-aos="fade-right"
+      >
+        <p>
+          <i18n>O coral-cérebro, Mussismilia hispida é outra espécie de coral, sendo exclusivamente brasileira. Ela tem um importante papel na construção de ambientes recifais, fornecendo abrigo e alimentos para outras espécies. Tem esse nome, pois seu formato lembra um cérebro humano. Um outro dado interessante sobre os corais, é que eles têm praticamente as mesmas funções que as árvores das florestas, produzir oxigênio e abrigo a outras espécies. Possuem um esqueleto de policarbonato de cálcio que formam estruturas diversas formando habitats para vertebrados e invertebrados. .</i18n>
+        </p>
+      </life-block>
+    </article>
   </article>
 </template>
 
@@ -1134,7 +1192,6 @@ export default {
 
     // this.rellax = new Rellax('.rellax');
 
-    console.log('xxxxxxxxxxxxxxxxxxxxxx');
     this.initBabylon();
     this.asideMenu();
   },
