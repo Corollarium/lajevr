@@ -167,7 +167,7 @@ class Underwater {
 
   audioDiver = null;
   audioOcean = null;
-
+  debugState = false;
   turtles = [];
 
   constructor (vueComponent) {
@@ -212,6 +212,7 @@ class Underwater {
 
     // this.sceneOptimizer();
     if (vueComponent.$route.query.debug) {
+      this.debugState = true;
       this.camera.speed = 0.5;
       this.debugUtils();
       BABYLON.Engine.audioEngine.setGlobalVolume(0);
@@ -1427,7 +1428,7 @@ class Underwater {
       )
     );
 
-    if (vueComponent.$route.query.debug) {
+    if (this.debugState) {
       const sp0 = BABYLON.Mesh.CreateSphere('cPoint0', 16, 0.01, this.scene); // B
       sp0.position = v3(-14.000991821289062, 0.6574481725692749, 32.9548454284668);
       const sp0Material = new BABYLON.StandardMaterial('sp0Material', this.scene);
