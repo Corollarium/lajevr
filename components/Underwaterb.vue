@@ -182,6 +182,8 @@ class Underwater {
   debugState = false;
   turtles = [];
 
+  animTour = null;
+
   constructor (vueComponent) {
     BABYLON.GUI = GUI;
     const container = document.getElementById('underwater-3d');
@@ -1603,12 +1605,18 @@ class Underwater {
     return curve;
   }
 
+  /**
+   * Start the guided tour.
+   */
   guidedTour () {
     const tourCurve = this.buildTourCurve();
     this.camera.updateUpVectorFromRotation = true;
     this.animTour = this.createPathForAnimation(this.camera, tourCurve, 60);
   }
 
+  /**
+   * Toggle pause/unpause the tour if the animation started.
+   */
   pauseTour () {
     if (this.animTour) {
       if (!this.animTour._paused) {
@@ -1619,6 +1627,9 @@ class Underwater {
     }
   }
 
+  /**
+   * Stop the tour, reset the camera position and remove the animation reference.
+   */
   quitTour () {
     this.animTour.stop();
     this.animTour.goToFrame(0);
