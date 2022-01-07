@@ -1,5 +1,5 @@
 <template>
-  <div id="underwater" v-on:keyup.32="toggleGuidedTour">
+  <div id="underwater" v-on:keyup.space="toggleGuidedTour">
     <canvas id="underwater-3d" touch-action="none" />
     <div id="underwater-debug">
       {{ fps }} fps
