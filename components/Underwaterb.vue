@@ -1122,297 +1122,534 @@ class Underwater {
   }
 
   buildTourCurve () {
-    let curve = BABYLON.Curve3.CreateCubicBezier(
-      v3(-14.000991821289062, 0.6453587412834167, 32.9548454284668),
-      v3(-13.996827125549316, 0.6453587412834167, 32.94095993041992),
-      v3(-14.024413108825684, 0.6463698744773865, 32.55100631713867),
-      v3(-14.265217781066895, 0.6528319716453552, 32.1165657043457),
-      4 // Quanto mais segmentos na seção da curva, mais devagar a câmera vai! Podemos pensar nisso como um slow factor! Includive para subidas
+    let curve = BABYLON.Curve3.CreateCubicBezier( // B
+      v3(-14.000991821289062, 0.6574481725692749, 32.9548454284668),
+      v3(-13.996825218200684, 0.6574481725692749, 32.940956115722656),
+      v3(-14.024413108825684, 0.6509860754013062, 32.55100631713867),
+      v3(-14.265217781066895, 0.6574481725692749, 32.1165657043457),
+      2
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-14.265217781066895, 0.6528319716453552, 32.1165657043457),
-        v3(-14.617867469787598, 0.6622954607009888, 31.480342864990234),
-        v3(-14.765084266662598, 0.6118729710578918, 31.246652603149414),
-        v3(-15.396888732910156, 0.5504350662231445, 31.071901321411133),
-        4
+        v3(-14.265217781066895, 0.6574481725692749, 32.1165657043457),
+        v3(-14.617867469787598, 0.6669116616249084, 31.480342864990234),
+        v3(-14.76079273223877, 0.6602444648742676, 31.185121536254883),
+        v3(-15.39233112335205, 0.6574481725692749, 30.998979568481445),
+        2
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-15.396888732910156, 0.5504350662231445, 31.071901321411133),
-        v3(-16.004499435424805, 0.4913497865200043, 30.903841018676758),
-        v3(-16.786575317382812, 0.5353935956954956, 30.909061431884766),
-        v3(-17.072134017944336, 0.5112030506134033, 30.874895095825195),
-        4
+        v3(-15.39233112335205, 0.6574481725692749, 30.998979568481445),
+        v3(-16.32655906677246, 0.6533116698265076, 30.723621368408203),
+        v3(-15.986363410949707, 0.6559959650039673, 30.843740463256836),
+        v3(-17.039472579956055, 0.6574481725692749, 30.793241500854492),
+        2
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-17.072134017944336, 0.5112030506134033, 30.874895095825195),
-        v3(-17.640342712402344, 0.4630683660507202, 30.806909561157227),
-        v3(-20.581701278686523, -0.36765825748443604, 31.248517990112305),
-        v3(-20.732559204101562, -0.40358734130859375, 31.30042266845703),
-        4
+        v3(-17.039472579956055, 0.6574481725692749, 30.793241500854492),
+        v3(-17.613088607788086, 0.6582391858100891, 30.765735626220703),
+        v3(-18.787918090820312, 0.7090924382209778, 31.120275497436523),
+        v3(-19.45874786376953, 0.6574481725692749, 31.953659057617188),
+        2
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // B
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-20.732559204101562, -0.40358734130859375, 31.30042266845703),
-        v3(-23.112300872802734, -0.970358669757843, 32.119205474853516),
-        v3(-24.61052703857422, -4.0646443367004395, 31.9935359954834),
-        v3(-25.339210510253906, -4.999363899230957, 32.78083801269531),
-        4
+        v3(-19.45874786376953, 0.6574481725692749, 31.953659057617188),
+        v3(-20.582807540893555, 0.570911705493927, 33.35009765625),
+        v3(-20.595529556274414, 0.5830461978912354, 33.503726959228516),
+        v3(-20.97544288635254, 0.5849096775054932, 34.53799819946289),
+        2
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-25.339210510253906, -4.999363899230957, 32.78083801269531),
-        v3(-25.860973358154297, -5.668655872344971, 33.344573974609375),
-        v3(-24.575355529785156, -6.108067035675049, 35.16100311279297),
-        v3(-24.41375160217285, -8.274001121520996, 35.58077621459961),
-        6
+        v3(-20.97544288635254, 0.5849096775054932, 34.53799819946289),
+        v3(-21.649211883544922, 0.5882145166397095, 36.37226104736328),
+        v3(-23.628690719604492, -6.161035537719727, 36.41096115112305),
+        v3(-24.54960060119629, -8.274001121520996, 36.62228775024414),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-24.41375160217285, -8.274001121520996, 35.58077621459961),
-        v3(-24.252147674560547, -10.439936637878418, 36.00054931640625),
-        v3(-25.726940155029297, -14.756924629211426, 36.709232330322266),
-        v3(-26.364717483520508, -15.673060417175293, 37.3773193359375),
-        6
+        v3(-24.54960060119629, -8.274001121520996, 36.62228775024414),
+        v3(-25.451812744140625, -10.344067573547363, 36.829322814941406),
+        v3(-27.573389053344727, -14.756925582885742, 37.26560592651367),
+        v3(-28.528148651123047, -15.673060417175293, 37.828033447265625),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-26.364717483520508, -15.673060417175293, 37.3773193359375),
-        v3(-27.2867431640625, -16.99750518798828, 38.343162536621094),
-        v3(-32.11470413208008, -25.681474685668945, 40.03419876098633),
-        v3(-32.840545654296875, -25.81487464904785, 43.99205780029297),
-        8
+        v3(-28.528148651123047, -15.673060417175293, 37.828033447265625),
+        v3(-29.777053833007812, -16.871440887451172, 38.56373596191406),
+        v3(-32.11470413208008, -25.681499481201172, 40.03419876098633),
+        v3(-32.840545654296875, -25.814899444580078, 43.99205780029297),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // B
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-32.840545654296875, -25.81487464904785, 43.99205780029297),
-        v3(-33.69413375854492, -25.971752166748047, 48.64649963378906),
-        v3(-25.505264282226562, -28.817989349365234, 45.23334884643555),
-        v3(-24.048566818237305, -28.723888397216797, 47.562076568603516),
-        8
+        v3(-32.840545654296875, -25.814899444580078, 43.99205780029297),
+        v3(-33.69413375854492, -25.971776962280273, 48.64649963378906),
+        v3(-29.723957061767578, -25.909000396728516, 49.77655792236328),
+        v3(-25.54133415222168, -25.814899444580078, 50.288002014160156),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-24.048566818237305, -28.723888397216797, 47.562076568603516),
-        v3(-22.541715621948242, -28.62654685974121, 49.97098159790039),
-        v3(-19.124666213989258, -28.628828048706055, 49.72084045410156),
-        v3(-15.405399322509766, -28.868043899536133, 51.464935302734375),
-        10
+        v3(-25.54133415222168, -25.814899444580078, 50.288002014160156),
+        v3(-22.720020294189453, -25.75142478942871, 50.63298797607422),
+        v3(-19.669851303100586, -28.618223190307617, 51.122745513916016),
+        v3(-15.405399322509766, -28.663742065429688, 51.464935302734375),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-15.405399322509766, -28.868043899536133, 51.464935302734375),
-        v3(-12.045440673828125, -29.084150314331055, 53.0405387878418),
-        v3(4.215830326080322, -27.14112663269043, 53.838706970214844),
-        v3(9.77834415435791, -27.14112663269043, 53.75956344604492),
-        10
+        v3(-15.405399322509766, -28.663742065429688, 51.464935302734375),
+        v3(-11.700185775756836, -28.703290939331055, 51.76224899291992),
+        v3(4.163280963897705, -29.118030548095703, 53.839454650878906),
+        v3(9.77834415435791, -29.24734115600586, 53.75956344604492),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(9.77834415435791, -27.14112663269043, 53.75956344604492),
-        v3(12.347976684570312, -27.14112663269043, 53.72300338745117),
-        v3(30.79064178466797, -28.774911880493164, 53.15131759643555),
-        v3(31.68185043334961, -28.626670837402344, 52.570987701416016),
-        15
+        v3(9.77834415435791, -29.24734115600586, 53.75956344604492),
+        v3(12.323244094848633, -29.30594825744629, 53.72335433959961),
+        v3(34.324214935302734, -28.774940490722656, 53.16682434082031),
+        v3(35.215423583984375, -28.626699447631836, 52.58649444580078),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // B
       BABYLON.Curve3.CreateCubicBezier(
-        v3(31.68185043334961, -28.626670837402344, 52.570987701416016),
-        v3(34.28955841064453, -28.192913055419922, 50.8729248046875),
-        v3(29.658910751342773, -26.974706649780273, 48.50830841064453),
-        v3(29.137771606445312, -26.5289363861084, 48.273380279541016),
-        15
+        v3(35.215423583984375, -28.626699447631836, 52.58649444580078),
+        v3(37.8231315612793, -28.192941665649414, 50.888427734375),
+        v3(34.632076263427734, -28.973989486694336, 46.408447265625),
+        v3(32.67134475708008, -28.374826431274414, 46.34030532836914),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(29.137771606445312, -26.5289363861084, 48.273380279541016),
-        v3(28.745380401611328, -26.193294525146484, 48.096492767333984),
-        v3(28.064945220947266, -25.306177139282227, 47.872650146484375),
-        v3(27.440235137939453, -24.779478073120117, 47.675201416015625),
-        10
+        v3(32.67134475708008, -28.374826431274414, 46.34030532836914),
+        v3(30.87272071838379, -27.8252010345459, 46.27779769897461),
+        v3(27.019895553588867, -22.143463134765625, 46.30116653442383),
+        v3(25.767629623413086, -22.49676513671875, 46.324798583984375),
+        35
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(27.440235137939453, -24.779478073120117, 47.675201416015625),
-        v3(26.54833984375, -24.02751350402832, 47.393306732177734),
-        v3(26.44908905029297, -22.66607666015625, 46.15645980834961),
-        v3(26.104351043701172, -22.66607666015625, 46.3248291015625),
-        10
+        v3(25.767629623413086, -22.49676513671875, 46.324798583984375),
+        v3(24.794647216796875, -22.771272659301758, 46.34315872192383),
+        v3(25.13022804260254, -22.687040328979492, 46.32514953613281),
+        v3(24.48270606994629, -22.862226486206055, 46.324798583984375),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(26.104351043701172, -22.66607666015625, 46.3248291015625),
-        v3(26.066211700439453, -22.66607666015625, 46.34345626831055),
-        v3(25.283355712890625, -22.67770767211914, 46.29490661621094),
-        v3(25.114757537841797, -22.66607666015625, 46.28840255737305),
-        20
+        v3(24.48270606994629, -22.862226486206055, 46.324798583984375),
+        v3(23.835824966430664, -23.03723907470703, 46.32444763183594),
+        v3(23.696212768554688, -23.09801483154297, 46.29490661621094),
+        v3(23.530864715576172, -23.132951736450195, 46.28840255737305),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // B
       BABYLON.Curve3.CreateCubicBezier(
-        v3(25.114757537841797, -22.66607666015625, 46.28840255737305),
-        v3(24.792388916015625, -22.643836975097656, 46.27596664428711),
-        v3(23.872879028320312, -22.228286743164062, 46.019039154052734),
-        v3(23.721302032470703, -22.15073585510254, 45.969688415527344),
-        20
+        v3(23.530864715576172, -23.132951736450195, 46.28840255737305),
+        v3(23.214710235595703, -23.199752807617188, 46.27596664428711),
+        v3(22.34830093383789, -23.454551696777344, 46.02439498901367),
+        v3(22.190568923950195, -23.514163970947266, 45.969688415527344),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(23.721302032470703, -22.15073585510254, 45.969688415527344),
-        v3(22.95633888244629, -21.75935935974121, 45.72063064575195),
-        v3(22.93798065185547, -22.115009307861328, 44.16796875),
-        v3(22.168357849121094, -20.28685188293457, 43.035552978515625),
-        15
+        v3(22.190568923950195, -23.514163970947266, 45.969688415527344),
+        v3(21.83151626586914, -23.64986228942871, 45.845157623291016),
+        v3(21.54167938232422, -23.722084045410156, 45.64944076538086),
+        v3(21.29722023010254, -23.768253326416016, 45.215946197509766),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(22.168357849121094, -20.28685188293457, 43.035552978515625),
-        v3(21.9759521484375, -19.82981300354004, 42.75244903564453),
-        v3(20.305618286132812, -20.480005264282227, 37.246124267578125),
-        v3(18.85028076171875, -19.58658790588379, 37.20133590698242),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(18.85028076171875, -19.58658790588379, 37.20133590698242),
-        v3(16.757570266723633, -18.30189323425293, 37.136932373046875),
-        v3(20.364774703979492, -17.114723205566406, 49.18492126464844),
-        v3(17.739166259765625, -16.1865177154541, 48.94398498535156),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(17.739166259765625, -16.1865177154541, 48.94398498535156),
-        v3(17.131275177001953, -15.9716157913208, 48.88820266723633),
-        v3(14.02699089050293, -18.021066665649414, 48.070560455322266),
-        v3(13.422525405883789, -19.70728302001953, 49.17836380004883),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(13.422525405883789, -19.70728302001953, 49.17836380004883),
-        v3(13.120292663574219, -20.550390243530273, 49.73226547241211),
-        v3(10.701026916503906, -21.753780364990234, 49.46256637573242),
-        v3(8.721243858337402, -22.338668823242188, 49.76333236694336),
-        15
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(8.721243858337402, -22.338668823242188, 49.76333236694336),
-        v3(7.731352806091309, -22.631113052368164, 49.91371536254883),
-        v3(1.3360390663146973, -21.31017303466797, 44.07411193847656),
-        v3(0.5718628168106079, -20.27959632873535, 42.86423873901367),
-        15
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(0.5718628168106079, -20.27959632873535, 42.86423873901367),
-        v3(0.18977373838424683, -19.764307022094727, 42.259300231933594),
-        v3(-0.4998084306716919, -18.97073745727539, 40.472694396972656),
-        v3(-1.0938702821731567, -18.305986404418945, 38.83732223510742),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(-1.0938702821731567, -18.305986404418945, 38.83732223510742),
-        v3(-1.3909004926681519, -17.97361183166504, 38.01963806152344),
-        v3(-2.141352891921997, -15.85184383392334, 34.22507095336914),
-        v3(-2.4543118476867676, -15.389281272888184, 33.27366638183594),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(-2.4543118476867676, -15.389281272888184, 33.27366638183594),
-        v3(-2.6107919216156006, -15.157999038696289, 32.7979621887207),
-        v3(-1.5071595907211304, -13.962703704833984, 32.594871520996094),
-        v3(-2.6148290634155273, -13.925714492797852, 31.36355972290039),
-        20
-      )
-    );
-    curve = curve.continue(
-      BABYLON.Curve3.CreateCubicBezier(
-        v3(-2.6148290634155273, -13.925714492797852, 31.36355972290039),
-        v3(-3.063199043273926, -13.910741806030273, 30.865140914916992),
-        v3(-5.7725300788879395, -13.00989818572998, 33.10860061645508),
-        v3(-6.204699516296387, -11.971428871154785, 33.90509033203125),
+        v3(21.29722023010254, -23.768253326416016, 45.215946197509766),
+        v3(20.75515365600586, -23.870630264282227, 44.25471115112305),
+        v3(21.91973876953125, -20.524686813354492, 44.111183166503906),
+        v3(21.654382705688477, -20.24751091003418, 43.035552978515625),
         25
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-6.204699516296387, -11.971428871154785, 33.90509033203125),
-        v3(-6.6162428855896, -10.982522964477539, 34.66356658935547),
-        v3(-5.901260852813721, -11.199590682983398, 34.75407028198242),
-        v3(-7.255730628967285, -10.3027982711792, 35.564422607421875),
+        v3(21.654382705688477, -20.24751091003418, 43.035552978515625),
+        v3(21.36979866027832, -19.95025062561035, 41.881980895996094),
+        v3(22.322702407836914, -19.624767303466797, 37.42827224731445),
+        v3(19.967266082763672, -19.586599349975586, 36.990013122558594),
+        12
+      )
+    );
+    curve = curve.continue( // B
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(19.967266082763672, -19.586599349975586, 36.990013122558594),
+        v3(19.719722747802734, -19.58258819580078, 36.94395446777344),
+        v3(19.028305053710938, -19.57369613647461, 37.37499237060547),
+        v3(18.84793472290039, -19.586599349975586, 37.765037536621094),
+        12
+      )
+    );
+    curve = curve.continue( // A
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(18.84793472290039, -19.586599349975586, 37.765037536621094),
+        v3(18.205028533935547, -19.632591247558594, 39.155303955078125),
+        v3(18.392507553100586, -16.224327087402344, 45.301544189453125),
+        v3(18.567825317382812, -16.186500549316406, 47.885353088378906),
         20
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // R
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-7.255730628967285, -10.3027982711792, 35.564422607421875),
-        v3(-7.761164665222168, -9.968151092529297, 35.86681365966797),
-        v3(-8.197510719299316, -8.158544540405273, 38.52354049682617),
-        v3(-8.921348571777344, -6.794588088989258, 41.258697509765625),
-        15
+        v3(18.567825317382812, -16.186500549316406, 47.885353088378906),
+        v3(18.62300682067871, -16.17459487915039, 48.6986083984375),
+        v3(18.189916610717773, -16.184980392456055, 49.76185607910156),
+        v3(17.739166259765625, -16.186500549316406, 49.763301849365234),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // G
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-8.921348571777344, -6.794588088989258, 41.258697509765625),
-        v3(-9.2832670211792, -6.112610816955566, 42.62627410888672),
-        v3(-11.077244758605957, -5.859180927276611, 43.483768463134766),
-        v3(-12.78091049194336, -5.773738384246826, 44.00212478637695),
-        20
+        v3(17.739166259765625, -16.186500549316406, 49.763301849365234),
+        v3(16.58254051208496, -16.190401077270508, 49.76701354980469),
+        v3(16.68396759033203, -16.162899017333984, 49.7675895690918),
+        v3(15.579561233520508, -16.186500549316406, 49.763301849365234),
+        12
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // B
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-12.78091049194336, -5.773738384246826, 44.00212478637695),
-        v3(-13.632743835449219, -5.731017112731934, 44.26130294799805),
-        v3(-13.939895629882812, -4.123109817504883, 41.509971618652344),
-        v3(-14.034211158752441, -2.52601957321167, 38.691986083984375),
-        20
+        v3(15.579561233520508, -16.186500549316406, 49.763301849365234),
+        v3(14.60368537902832, -16.207355499267578, 49.75951385498047),
+        v3(13.634191513061523, -18.864173889160156, 50.1530647277832),
+        v3(13.331958770751953, -19.70728302001953, 50.16179275512695),
+        13
       )
     );
-    curve = curve.continue(
+    curve = curve.continue( // A
       BABYLON.Curve3.CreateCubicBezier(
-        v3(-14.034211158752441, -2.52601957321167, 38.691986083984375),
-        v3(-14.12852668762207, -0.928929328918457, 35.874000549316406),
-        v3(-14.010005950927734, 0.6573438048362732, 32.9893684387207),
+        v3(13.331958770751953, -19.70728302001953, 50.16179275512695),
+        v3(13.154287338256836, -20.20291519165039, 50.16692352294922),
+        v3(12.666264533996582, -22.241924285888672, 49.71502685546875),
+        v3(11.681337356567383, -22.338699340820312, 49.763301849365234),
+        12
+      )
+    );
+    curve = curve.continue( // R
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(11.681337356567383, -22.338699340820312, 49.763301849365234),
+        v3(10.767630577087402, -22.428476333618164, 49.80808639526367),
+        v3(9.729004859924316, -22.32814598083496, 49.88066101074219),
+        v3(8.721243858337402, -22.338699340820312, 49.763301849365234),
+        13
+      )
+    );
+    curve = curve.continue( // G
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(8.721243858337402, -22.338699340820312, 49.763301849365234),
+        v3(7.489250183105469, -22.351600646972656, 49.61983108520508),
+        v3(6.379996299743652, -22.440385818481445, 48.41621398925781),
+        v3(4.561910629272461, -22.338699340820312, 46.823883056640625),
+        13
+      )
+    );
+    curve = curve.continue( // B
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(4.561910629272461, -22.338699340820312, 46.823883056640625),
+        v3(3.639897346496582, -22.28713035583496, 46.016357421875),
+        v3(-5.716817855834961, -21.53879737854004, 44.55055236816406),
+        v3(-9.495468139648438, -21.54129981994629, 44.76640319824219),
+        10
+      )
+    );
+    curve = curve.continue( // A
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(-9.495468139648438, -21.54129981994629, 44.76640319824219),
+        v3(-10.935624122619629, -21.542253494262695, 44.848670959472656),
+        v3(-11.790102005004883, -21.538429260253906, 44.75456237792969),
+        v3(-12.089763641357422, -21.54129981994629, 44.4488525390625),
+        12
+      )
+    );
+    curve = curve.continue( // R
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(-12.089763641357422, -21.54129981994629, 44.4488525390625),
+        v3(-12.822487831115723, -21.54831886291504, 43.70133972167969),
+        v3(-12.75212574005127, -21.536161422729492, 43.70689010620117),
+        v3(-12.931273460388184, -21.54129981994629, 42.8768310546875),
+        12
+      )
+    );
+    curve = curve.continue( // G
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(-12.931273460388184, -21.54129981994629, 42.8768310546875),
+        v3(-13.29143238067627, -21.5516300201416, 41.20808029174805),
+        v3(-13.18460750579834, -21.19868278503418, 40.63042068481445),
+        v3(-13.255661964416504, -20.70451545715332, 39.73333740234375),
+        12
+      )
+    );
+    curve = curve.continue( // B
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(-13.255661964416504, -20.70451545715332, 39.73333740234375),
+        v3(-13.45671272277832, -19.30625343322754, 37.195011138916016),
+        v3(-13.46361255645752, -5.522163391113281, 36.02259826660156),
+        v3(-13.783821105957031, -0.4981536865234375, 35.190345764160156),
+        45
+      )
+    );
+    curve = curve.continue( // A
+      BABYLON.Curve3.CreateCubicBezier(
+        v3(-13.783821105957031, -0.4981536865234375, 35.190345764160156),
+        v3(-13.845514297485352, 0.469801664352417, 35.029998779296875),
+        v3(-14.010433197021484, 0.5489193797111511, 33.86442565917969),
         v3(-14.010494232177734, 0.6567957401275635, 32.98194885253906),
-        20
+        10
       )
     );
+    const sp0 = BABYLON.Mesh.CreateSphere('cPoint0', 16, 0.01, this.scene); // B
+    sp0.position = v3(-14.000991821289062, 0.6574481725692749, 32.9548454284668);
+    const sp0Material = new BABYLON.StandardMaterial('sp0Material', this.scene);
+    sp0Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp0Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp0.material = sp0Material;
+    const sp00 = BABYLON.Mesh.CreateSphere('cPoint00', 16, 0.01, this.scene); // B
+    sp00.position = v3(-14.265217781066895, 0.6574481725692749, 32.1165657043457);
+    const sp00Material = new BABYLON.StandardMaterial('sp00Material', this.scene);
+    sp00Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp00Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp00.material = sp0Material;
+    const sp1 = BABYLON.Mesh.CreateSphere('cPoint1', 16, 0.01, this.scene); // A
+    sp1.position = v3(-15.39233112335205, 0.6574481725692749, 30.998979568481445);
+    const sp1Material = new BABYLON.StandardMaterial('sp1Material', this.scene);
+    sp1Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp1Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp1.material = sp1Material;
+    const sp2 = BABYLON.Mesh.CreateSphere('cPoint2', 16, 0.01, this.scene); // R
+    sp2.position = v3(-17.039472579956055, 0.6574481725692749, 30.793241500854492);
+    const sp2Material = new BABYLON.StandardMaterial('sp2Material', this.scene);
+    sp2Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp2Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp2.material = sp2Material;
+    const sp3 = BABYLON.Mesh.CreateSphere('cPoint3', 16, 0.01, this.scene); // G
+    sp3.position = v3(-19.45874786376953, 0.6574481725692749, 31.953659057617188);
+    const sp3Material = new BABYLON.StandardMaterial('sp3Material', this.scene);
+    sp3Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp3Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp3.material = sp3Material;
+    const sp4 = BABYLON.Mesh.CreateSphere('cPoint4', 16, 0.01, this.scene); // B
+    sp4.position = v3(-20.97544288635254, 0.5849096775054932, 34.53799819946289);
+    const sp4Material = new BABYLON.StandardMaterial('sp4Material', this.scene);
+    sp4Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp4Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp4.material = sp4Material;
+    const sp5 = BABYLON.Mesh.CreateSphere('cPoint5', 16, 0.01, this.scene); // A
+    sp5.position = v3(-24.54960060119629, -8.274001121520996, 36.62228775024414);
+    const sp5Material = new BABYLON.StandardMaterial('sp5Material', this.scene);
+    sp5Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp5Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp5.material = sp5Material;
+    const sp6 = BABYLON.Mesh.CreateSphere('cPoint6', 16, 0.01, this.scene); // R
+    sp6.position = v3(-28.528148651123047, -15.673060417175293, 37.828033447265625);
+    const sp6Material = new BABYLON.StandardMaterial('sp6Material', this.scene);
+    sp6Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp6Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp6.material = sp6Material;
+    const sp7 = BABYLON.Mesh.CreateSphere('cPoint7', 16, 0.01, this.scene); // G
+    sp7.position = v3(-32.840545654296875, -25.814899444580078, 43.99205780029297);
+    const sp7Material = new BABYLON.StandardMaterial('sp7Material', this.scene);
+    sp7Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp7Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp7.material = sp7Material;
+    const sp8 = BABYLON.Mesh.CreateSphere('cPoint8', 16, 0.01, this.scene); // B
+    sp8.position = v3(-25.54133415222168, -25.814899444580078, 50.288002014160156);
+    const sp8Material = new BABYLON.StandardMaterial('sp8Material', this.scene);
+    sp8Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp8Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp8.material = sp8Material;
+    const sp9 = BABYLON.Mesh.CreateSphere('cPoint9', 16, 0.01, this.scene); // A
+    sp9.position = v3(-15.405399322509766, -28.663742065429688, 51.464935302734375);
+    const sp9Material = new BABYLON.StandardMaterial('sp9Material', this.scene);
+    sp9Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp9Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp9.material = sp9Material;
+    const sp10 = BABYLON.Mesh.CreateSphere('cPoint10', 16, 0.01, this.scene); // R
+    sp10.position = v3(9.77834415435791, -29.24734115600586, 53.75956344604492);
+    const sp10Material = new BABYLON.StandardMaterial('sp10Material', this.scene);
+    sp10Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp10Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp10.material = sp10Material;
+    const sp11 = BABYLON.Mesh.CreateSphere('cPoint11', 16, 0.01, this.scene); // G
+    sp11.position = v3(35.215423583984375, -28.626699447631836, 52.58649444580078);
+    const sp11Material = new BABYLON.StandardMaterial('sp11Material', this.scene);
+    sp11Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp11Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp11.material = sp11Material;
+    const sp12 = BABYLON.Mesh.CreateSphere('cPoint12', 16, 0.01, this.scene); // B
+    sp12.position = v3(32.67134475708008, -28.374826431274414, 46.34030532836914);
+    const sp12Material = new BABYLON.StandardMaterial('sp12Material', this.scene);
+    sp12Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp12Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp12.material = sp12Material;
+    const sp13 = BABYLON.Mesh.CreateSphere('cPoint13', 16, 0.01, this.scene); // A
+    sp13.position = v3(25.767629623413086, -22.49676513671875, 46.324798583984375);
+    const sp13Material = new BABYLON.StandardMaterial('sp13Material', this.scene);
+    sp13Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp13Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp13.material = sp13Material;
+    const sp14 = BABYLON.Mesh.CreateSphere('cPoint14', 16, 0.01, this.scene); // R
+    sp14.position = v3(24.48270606994629, -22.862226486206055, 46.324798583984375);
+    const sp14Material = new BABYLON.StandardMaterial('sp14Material', this.scene);
+    sp14Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp14Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp14.material = sp14Material;
+    const sp15 = BABYLON.Mesh.CreateSphere('cPoint15', 16, 0.01, this.scene); // G
+    sp15.position = v3(23.530864715576172, -23.132951736450195, 46.28840255737305);
+    const sp15Material = new BABYLON.StandardMaterial('sp15Material', this.scene);
+    sp15Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp15Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp15.material = sp15Material;
+    const sp16 = BABYLON.Mesh.CreateSphere('cPoint16', 16, 0.01, this.scene); // B
+    sp16.position = v3(22.190568923950195, -23.514163970947266, 45.969688415527344);
+    const sp16Material = new BABYLON.StandardMaterial('sp16Material', this.scene);
+    sp16Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp16Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp16.material = sp16Material;
+    const sp17 = BABYLON.Mesh.CreateSphere('cPoint17', 16, 0.01, this.scene); // A
+    sp17.position = v3(21.29722023010254, -23.768253326416016, 45.215946197509766);
+    const sp17Material = new BABYLON.StandardMaterial('sp17Material', this.scene);
+    sp17Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp17Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp17.material = sp17Material;
+    const sp18 = BABYLON.Mesh.CreateSphere('cPoint18', 16, 0.01, this.scene); // R
+    sp18.position = v3(21.654382705688477, -20.24751091003418, 43.035552978515625);
+    const sp18Material = new BABYLON.StandardMaterial('sp18Material', this.scene);
+    sp18Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp18Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp18.material = sp18Material;
+    const sp19 = BABYLON.Mesh.CreateSphere('cPoint19', 16, 0.01, this.scene); // G
+    sp19.position = v3(19.967266082763672, -19.586599349975586, 36.990013122558594);
+    const sp19Material = new BABYLON.StandardMaterial('sp19Material', this.scene);
+    sp19Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp19Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp19.material = sp19Material;
+    const sp20 = BABYLON.Mesh.CreateSphere('cPoint20', 16, 0.01, this.scene); // B
+    sp20.position = v3(18.84793472290039, -19.586599349975586, 37.765037536621094);
+    const sp20Material = new BABYLON.StandardMaterial('sp20Material', this.scene);
+    sp20Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp20Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp20.material = sp20Material;
+    const sp21 = BABYLON.Mesh.CreateSphere('cPoint21', 16, 0.01, this.scene); // A
+    sp21.position = v3(18.567825317382812, -16.186500549316406, 47.885353088378906);
+    const sp21Material = new BABYLON.StandardMaterial('sp21Material', this.scene);
+    sp21Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp21Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp21.material = sp21Material;
+    const sp22 = BABYLON.Mesh.CreateSphere('cPoint22', 16, 0.01, this.scene); // R
+    sp22.position = v3(17.739166259765625, -16.186500549316406, 49.763301849365234);
+    const sp22Material = new BABYLON.StandardMaterial('sp22Material', this.scene);
+    sp22Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp22Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp22.material = sp22Material;
+    const sp23 = BABYLON.Mesh.CreateSphere('cPoint23', 16, 0.01, this.scene); // G
+    sp23.position = v3(15.579561233520508, -16.186500549316406, 49.763301849365234);
+    const sp23Material = new BABYLON.StandardMaterial('sp23Material', this.scene);
+    sp23Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp23Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp23.material = sp23Material;
+    const sp24 = BABYLON.Mesh.CreateSphere('cPoint24', 16, 0.01, this.scene); // B
+    sp24.position = v3(13.331958770751953, -19.70728302001953, 50.16179275512695);
+    const sp24Material = new BABYLON.StandardMaterial('sp24Material', this.scene);
+    sp24Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp24Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp24.material = sp24Material;
+    const sp25 = BABYLON.Mesh.CreateSphere('cPoint25', 16, 0.01, this.scene); // A
+    sp25.position = v3(11.681337356567383, -22.338699340820312, 49.763301849365234);
+    const sp25Material = new BABYLON.StandardMaterial('sp25Material', this.scene);
+    sp25Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp25Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp25.material = sp25Material;
+    const sp26 = BABYLON.Mesh.CreateSphere('cPoint26', 16, 0.01, this.scene); // R
+    sp26.position = v3(8.721243858337402, -22.338699340820312, 49.763301849365234);
+    const sp26Material = new BABYLON.StandardMaterial('sp26Material', this.scene);
+    sp26Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp26Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp26.material = sp26Material;
+    const sp27 = BABYLON.Mesh.CreateSphere('cPoint27', 16, 0.01, this.scene); // G
+    sp27.position = v3(4.561910629272461, -22.338699340820312, 46.823883056640625);
+    const sp27Material = new BABYLON.StandardMaterial('sp27Material', this.scene);
+    sp27Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp27Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp27.material = sp27Material;
+    const sp28 = BABYLON.Mesh.CreateSphere('cPoint28', 16, 0.01, this.scene); // B
+    sp28.position = v3(-9.495468139648438, -21.54129981994629, 44.76640319824219);
+    const sp28Material = new BABYLON.StandardMaterial('sp28Material', this.scene);
+    sp28Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp28Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp28.material = sp28Material;
+    const sp29 = BABYLON.Mesh.CreateSphere('cPoint29', 16, 0.01, this.scene); // A
+    sp29.position = v3(-12.089763641357422, -21.54129981994629, 44.4488525390625);
+    const sp29Material = new BABYLON.StandardMaterial('sp29Material', this.scene);
+    sp29Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp29Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp29.material = sp29Material;
+    const sp30 = BABYLON.Mesh.CreateSphere('cPoint30', 16, 0.01, this.scene); // R
+    sp30.position = v3(-12.931273460388184, -21.54129981994629, 42.8768310546875);
+    const sp30Material = new BABYLON.StandardMaterial('sp30Material', this.scene);
+    sp30Material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    sp30Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp30.material = sp30Material;
+    const sp31 = BABYLON.Mesh.CreateSphere('cPoint31', 16, 0.01, this.scene); // G
+    sp31.position = v3(-13.255661964416504, -20.70451545715332, 39.73333740234375);
+    const sp31Material = new BABYLON.StandardMaterial('sp31Material', this.scene);
+    sp31Material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+    sp31Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp31.material = sp31Material;
+    const sp32 = BABYLON.Mesh.CreateSphere('cPoint32', 16, 0.01, this.scene); // B
+    sp32.position = v3(-13.783821105957031, -0.4981536865234375, 35.190345764160156);
+    const sp32Material = new BABYLON.StandardMaterial('sp32Material', this.scene);
+    sp32Material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+    sp32Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp32.material = sp32Material;
+    const sp33 = BABYLON.Mesh.CreateSphere('cPoint33', 16, 0.01, this.scene); // A
+    sp33.position = v3(-14.010494232177734, 0.6567957401275635, 32.98194885253906);
+    const sp33Material = new BABYLON.StandardMaterial('sp33Material', this.scene);
+    sp33Material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+    sp33Material.specularColor = new BABYLON.Color3(0, 0, 0);
+    sp33.material = sp33Material;
+
+    const curveMesh = BABYLON.Mesh.CreateLines(
+      'bezier', curve.getPoints(), this.scene, false
+    );
+
+    curveMesh.color.r = 1;
+    curveMesh.color.g = 1;
+
     return curve;
   }
 
   guidedTour () {
     const tourCurve = this.buildTourCurve();
+    this.camera.updateUpVectorFromRotation = true;
     this.animTour = this.createPathForAnimation(this.camera, tourCurve, 60);
   }
 
