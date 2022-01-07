@@ -21,7 +21,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
   constructor (name, camera, options = {}) {
     super(
       name,
-      './oceanPostProcess',
+      '/oceanPostProcess',
       ['time', 'fov', 'resolution', 'cameraPosition', 'cameraRotation', 'worldScale', 'lightDirection'],
       ['positionSampler', 'reflectionSampler', 'refractionSampler', 'skyTexture'],
       {
