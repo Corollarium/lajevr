@@ -391,6 +391,9 @@ class Underwater {
       this.scene
     );
 
+    this.guidedTour();
+    this.animTour.pause();
+
     if (vueComponent.isTouch) {
       /* browser with either Touch Events of Pointer Events  running on touch-capable device */
       // doesn't work well this.camera = new BABYLON.VirtualJoysticksCamera(
@@ -2061,7 +2064,7 @@ export default {
       fps: 0,
       volume: 0,
       mute: false,
-      playing: false,
+      // playing: false,
       /** The camera orientation as a compass */
       orientationDegrees: 0.0
     };
@@ -2099,6 +2102,11 @@ export default {
       } else {
         return '<<<<';
       }
+    },
+    playing () {
+      if (!this.underwater) { return false; }
+      if (!this.underwater.animTour) { return false; }
+      return !this.underwater.animTour._paused;
     }
   },
 
