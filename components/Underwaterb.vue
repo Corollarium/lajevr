@@ -8,11 +8,21 @@
       <i18n>Ficar em tela cheia</i18n>
     </button>
     <div id="underwater-instructions" v-show="!started">
-      <p>
-        <i18n v-if="!isTouch">
-          Use a tecla 'W' para nadar para frente e clique e arraste o mouse para girar a direção.
+      <p v-if="!isTouch">
+        <i18n>
+          Torne-se um mergulhador e explore a Laje de Santos.
         </i18n>
-        <i18n v-else>
+        <br>
+        <i18n>
+          Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor.
+        </i18n>
+        <br>
+        <i18n>
+          Aperte 'W' para nadar.
+        </i18n>
+      </p>
+      <p v-else>
+        <i18n>
           Use os joysticks azul e vermelho para girar e nadar.
         </i18n>
       </p>
@@ -72,6 +82,8 @@ const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_mai
 /* eslint-disable no-console */
 
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
+
+const maxY = 0.6;
 
 /**
  * Extend from MaterialPluginBase to create your plugin.
@@ -230,6 +242,11 @@ class Underwater {
       const timeElapsed = (endTime - startTime) / 1000.0; // in s
       const deltaTime = this.engine.getDeltaTime() / 1000.0; // in s
 
+      // Keep the Camera limited to near the water level. Does not fly.
+      if (this.camera.position.y > maxY) {
+        this.camera.position.y = maxY;
+      }
+
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
@@ -381,10 +398,10 @@ class Underwater {
     this.engine = new BABYLON.Engine(container, true);
     this.engine.loadingUIText = 'Mergulho na Laje de Santos';
     this.scene = new BABYLON.Scene(this.engine);
-    this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
+    this.scene.clearColor = new BABYLON.Color4(0.0, 0.5, 0.85, 0.0);
 
     // Add a camera to the scene and attach it to the canvas
-    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, 1.3786253122458585, 29.13296827068854);
+    const cameraInitPoint = new BABYLON.Vector3(-15.51978616737642, maxY, 29.13296827068854);
     this.camera = new BABYLON.UniversalCamera(
       'Camera',
       cameraInitPoint,
@@ -462,6 +479,8 @@ class Underwater {
 
   debugUtils () {
     this.scene.debugLayer.show();
+    // set an object to be inspected in the console
+    Window.underw = this;
   }
 
   instrumentation () {
@@ -681,34 +700,7 @@ class Underwater {
 
   composer () {
     // composes the actual texture with our underwater shader pass.
-    // BABYLON.Effect.ShadersStore.underwaterVertexShader = underwater_vertex.default;
-    // BABYLON.Effect.ShadersStore.underwaterFragmentShader = underwater_fragment.default;
-
     const depthPass = this.scene.enableDepthRenderer();
-
-    // const renderSceneBase = new BABYLON.PassPostProcess('imagePass', 1.0, null, BABYLON.Texture.NEAREST_SAMPLINGMODE, this.engine);
-    // renderSceneBase.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 0.0);
-
-    // const underwaterPass = new BABYLON.PostProcess(
-    //   'Underwater pass',
-    //   'underwater',
-    //   [
-    //     'fogColor',
-    //     'cameraMinMaxZ',
-    //     'cameraPosition',
-    //     'time'
-    //   ],
-    //   [
-    //     'skyTexture',
-    //     'depthTexture',
-    //     'causticTexture',
-    //     'oceanDepthTexture'
-    //   ],
-    //   1.0,
-    //   null, // this.camera,
-    //   0,
-    //   this.engine
-    // );
 
     const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
@@ -723,43 +715,7 @@ class Underwater {
     // // create the ocean pp
     const oceanPP = this.loadOceanPP();
     this.oceanPostProcess = oceanPP;
-
-    // // we need to update the depth texture from the ocean pass to mix it with the underwater depth
-    // const oceanDepthTexture = null;
-    // oceanPP.onApplyObservable.add((effect) => {
-    //   // if (this.rebuildOceanTexture) {
-    //   //   this.rebuildOceanTexture = false;
-    //   //   const rtWrapper = underwaterPass.inputTexture;
-    //   //   if (oceanDepthTexture) {
-    //   //     oceanDepthTexture.dispose();
-    //   //   }
-    //   //   oceanDepthTexture = rtWrapper.createDepthStencilTexture(undefined, undefined, this.engine.isStencilEnable);
-    //   //   oceanDepthTexture.name = 'underwaterDepthStencil';
-    //   // }
-    //   this.engine.setDepthBuffer(true);
-    //   this.engine.setDepthWrite(true);
-    //   this.engine.clear(null, false, true, false);
-    // });
-
-    // bind the depth from the ocean
-    // underwaterPass.onApplyObservable.add((effect) => {
-    //   effect._bindTexture('oceanDepthTexture', oceanDepthTexture);
-    // });
-
     this.oceanPostProcess.skyTexture = skyTexture;
-
-    // bind undertware stuff
-    // const startTime = new Date();
-    // underwaterPass.onApply = (effect) => {
-    //   const endTime = new Date();
-    //   const timeDiff = (endTime - startTime) / 1000.0; // in s
-    //   effect.setColor3('fogColor', new BABYLON.Color3(0, 0.5, 0.85));
-    //   effect.setFloat2('cameraMinMaxZ', this.camera.minZ, this.camera.maxZ);
-    //   effect.setFloat('time', timeDiff);
-    //   effect.setTexture('depthTexture', depthPass.getDepthMap());
-    //   effect.setTexture('skyTexture', skyTexture);
-    //   effect.setVector3('cameraPosition', this.camera.position); // scale so water is in meters
-    // };
 
     // make it puuuurtier
     const fxaa = new BABYLON.FxaaPostProcess('fxaa', 1.0, null, null, this.engine);
@@ -920,7 +876,6 @@ class Underwater {
             mesh.convertToUnIndexedMesh();
             mesh.freezeNormals();
             mesh.freezeWorldMatrix();
-            console.log(mesh.name);
             actualLoaded.push(mesh);
             this.sunLight.includedOnlyMeshes.push(mesh);
           } else if (mesh.material) {
@@ -1119,7 +1074,6 @@ class Underwater {
           false,
           true
         );
-        console.log(terrain);
 
         resolve();
       };
@@ -2064,7 +2018,6 @@ export default {
       fps: 0,
       volume: 0,
       mute: false,
-      // playing: false,
       /** The camera orientation as a compass */
       orientationDegrees: 0.0
     };
@@ -2274,7 +2227,7 @@ export default {
   align-items: center;
   background-color: rgba(0.0, 0.0, 0.0, 0.4);
   flex-direction: column;
-  text-align: right;
+  text-align: center;
   padding: 20px;
 
   p {

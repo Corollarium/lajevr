@@ -21,16 +21,15 @@
       0.0,
       1.0
     );
-    vec3 fogColor = vec3(0.0, 0.5, 0.85); // TODO uniform
     causticFinalColor.rgb = mix(
       causticFinalColor.rgb,
-      fogColor,
+      COLOR_INFINITE,
       fogFactor
     );
 #endif
     // color, saturation, brightness
-    gl_FragColor.rgb = csb(causticFinalColor.rgb, 1.1, 1.05, 1.22);
+    gl_FragColor.rgb = causticFinalColor.rgb;
+    // gl_FragColor.rgb = csb(causticFinalColor.rgb, 1.1, 1.05, 1.22);
 
-    gl_FragColor.a = 1.0;
   }
 #endif
