@@ -44,10 +44,10 @@ class BoidsTest {
       // this.loadTerrain() // 38 draw calls
     ];
     const fish = this.loadBoids(
-      this.base + 'models/', 'salema.glb',
+      this.base + 'models/', 'frade.glb',
       50,
       new BABYLON.Vector3(-12.12, -13.2, 27.19),
-      [{ from: 1, to: 30, name: 'swim' }]
+      [{ from: 1, to: 90, name: 'swim' }]
     );
     promises.push(fish.promise);
     Promise.all(promises).then(() => {
@@ -379,28 +379,69 @@ class BoidsTest {
         this.renderTargetCaustic.renderList.push(mainMesh);
       }
 
+      // Carregando o JSon do Baking
+      const fileToFetch = '/bakedAnim/' + modelfile.replace(/\.[^/.]+$/, '.json');
+      console.log('Fetching: ' + fileToFetch);
+      return fetch(fileToFetch);
+    }).then((response) => {
+      if (!response.ok) {
+        // Constroi o Baking porque não existe
+        const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
+        baker.bakeVertexData(animationRanges).then((vertexData) => {
+          console.log('Serializando Baking');
+          const vertexDataJSON = baker.serializeBakedVertexDataToJSON(vertexData);
+          window.createdJsonFile = vertexDataJSON;
+          const a = document.createElement('a');
+
+          a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(vertexDataJSON));
+          a.setAttribute('download', modelfile.replace(/\.[^/.]+$/, '.json'));
+          a.click();
+
+          const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+          const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
+          bakedVertexAnimationManager.texture = vertexTexture;
+
+          mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+          //        this.scene.stopAnimation(mainMesh);
+
+          // set animation parameters
+          for (let i = 0; i < total; i++) {
+            const anim = new BABYLON.Vector4(
+              animationRanges[0].from,
+              animationRanges[0].to,
+              Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
+              30 + (Math.random() - 0.5) * fpsDelta
+            );
+            animParameters.set(anim.asArray(), i * 4);
+          }
+          mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
+          // container.animationGroups.map(g => g.pause());
+        });
+        throw new Error('Error loading JSon');
+      }
+      return response.text();
+    }).then((json) => {
+      window.loadedJsonFile = json;
       const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
-      baker.bakeVertexData(animationRanges).then((vertexData) => {
-        const vertexTexture = baker.textureFromBakedVertexData(vertexData);
-        const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
-        bakedVertexAnimationManager.texture = vertexTexture;
+      const vertexData = baker.loadBakedVertexDataFromJSON(json);
+      const vertexTexture = baker.textureFromBakedVertexData(vertexData);
+      const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
+      bakedVertexAnimationManager.texture = vertexTexture;
 
-        mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-        //        this.scene.stopAnimation(mainMesh);
+      mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+      //        this.scene.stopAnimation(mainMesh);
 
-        // set animation parameters
-        for (let i = 0; i < total; i++) {
-          const anim = new BABYLON.Vector4(
-            animationRanges[0].from,
-            animationRanges[0].to,
-            Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
-            30 + (Math.random() - 0.5) * fpsDelta
-          );
-          animParameters.set(anim.asArray(), i * 4);
-        }
-        mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-        // container.animationGroups.map(g => g.pause());
-      });
+      // set animation parameters
+      for (let i = 0; i < total; i++) {
+        const anim = new BABYLON.Vector4(
+          animationRanges[0].from,
+          animationRanges[0].to,
+          Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
+          30 + (Math.random() - 0.5) * fpsDelta
+        );
+        animParameters.set(anim.asArray(), i * 4);
+      }
+      mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
 
     return {
