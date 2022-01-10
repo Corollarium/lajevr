@@ -480,7 +480,7 @@ class Underwater {
   debugUtils () {
     this.scene.debugLayer.show();
     // set an object to be inspected in the console
-    Window.underw = this;
+    // Window.underw = this;
   }
 
   instrumentation () {
@@ -2065,7 +2065,7 @@ export default {
 
   mounted () {
     this.underwater = new Underwater(this);
-    Window.underw = this.underwater;
+    // Window.underw = this.underwater;
   },
 
   beforeDestroy () {
