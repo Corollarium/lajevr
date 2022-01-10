@@ -1017,48 +1017,8 @@ class Underwater {
       return fetch(fileToFetch);
     }).then((response) => {
       if (!response.ok) {
-        // Constroi o Baking porque não existe
-        const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
-        baker.bakeVertexData(animationRanges).then((vertexData) => {
-          console.log('Serializando Baking');
-          const vertexDataJSON = baker.serializeBakedVertexDataToJSON(vertexData);
-          const a = document.createElement('a');
-
-          a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(vertexDataJSON));
-          a.setAttribute('download', 'tartaruga.json');
-          a.click();
-
-          const vertexTexture = baker.textureFromBakedVertexData(vertexData);
-          const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
-          bakedVertexAnimationManager.texture = vertexTexture;
-
-          bakedVertexAnimationManager.setAnimationParameters(
-            animationRanges[0].from,
-            animationRanges[0].to,
-            0,
-            30
-          );
-
-          const anim = new BABYLON.Vector4(
-            animationRanges[0].from,
-            animationRanges[0].to,
-            0,
-            30
-          );
-
-          mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-          //        this.scene.stopAnimation(mainMesh);
-
-          // set animation parameters
-
-          animParameters.set(anim.asArray(), 0);
-          mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-          // container.animationGroups.map(g => g.pause());
-          //          this.scene.registerBeforeRender(() => {
-          //            mainMesh.bakedVertexAnimationManager.time += this.engine.getDeltaTime() / 1000.0;
-          //          });
-        });
-        throw new Error('Error loading JSon');
+        console.error('Error loading serialized VAT');
+        throw new Error('Error loading VAT JSon');
       }
       return response.text();
     }).then((json) => {
@@ -1395,38 +1355,8 @@ class Underwater {
       return fetch(fileToFetch);
     }).then((response) => {
       if (!response.ok) {
-        // Constroi o Baking porque não existe
-        const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
-        baker.bakeVertexData(animationRanges).then((vertexData) => {
-          console.log('Serializando Baking');
-          const vertexDataJSON = baker.serializeBakedVertexDataToJSON(vertexData);
-          const a = document.createElement('a');
-
-          a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(vertexDataJSON));
-          a.setAttribute('download', modelfile.replace(/\.[^/.]+$/, '.json'));
-          a.click();
-
-          const vertexTexture = baker.textureFromBakedVertexData(vertexData);
-          const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
-          bakedVertexAnimationManager.texture = vertexTexture;
-
-          mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-          //        this.scene.stopAnimation(mainMesh);
-
-          // set animation parameters
-          for (let i = 0; i < total; i++) {
-            const anim = new BABYLON.Vector4(
-              animationRanges[0].from,
-              animationRanges[0].to,
-              Math.floor(Math.random() * (animationRanges[0].from - animationRanges[0].to)),
-              30 + (Math.random() - 0.5) * fpsDelta
-            );
-            animParameters.set(anim.asArray(), i * 4);
-          }
-          mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-          // container.animationGroups.map(g => g.pause());
-        });
-        throw new Error('Error loading JSon');
+        console.error('Error loading serialized VAT');
+        throw new Error('Error loading VAT JSon');
       }
       return response.text();
     }).then((json) => {
