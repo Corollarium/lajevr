@@ -176,7 +176,32 @@ class Underwater {
   audioDiver = null;
   audioOcean = null;
 
+  diver = null;
+
+  diverAnims = {
+    standing: {
+      init: 0,
+      end: 0.03
+    },
+    swimming: {
+      init: 0.09,
+      end: 2.03
+    },
+    inPlace: {
+      init: 2.09,
+      end: 4.03
+    },
+    sitting: {
+      init: 4.09,
+      end: 6.80
+    }
+  }
+
   turtles = [];
+
+  diverInitPos = null;
+  diverAnim = null;
+  diverFollow = false;
 
   constructor (vueComponent) {
     BABYLON.GUI = GUI;
@@ -214,6 +239,14 @@ class Underwater {
     // promises.push(fish.promise);
     Promise.all(promises).then(() => {
       console.log('all loaded');
+      // retrieve the diver
+      this.diver = this.scene.getMeshByName('wet_suit');
+      this.diver.parent = this.camera;
+      // Set the initial position to place the diver again when above the threshold for diver to follow
+      this.diverInitPos = this.diver.position;
+      this.diverAnim = this.scene.getAnimationGroupByName('Take 001.002');
+      // start the sitting animation
+      this.diverAnim.start(true, 1, this.diverAnims.sitting.init, this.diverAnims.sitting.end, false);
     });
 
     this.assetsManager.load();
@@ -243,19 +276,36 @@ class Underwater {
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
-      //   if (this.audioDiver) {
-      //     this.audioDiver.pause();
-      //     if (isUnderwater) {
-      //       this.audioDiver.play();
-      //     }
-      //   }
-      //   if (this.audioOcean) {
-      //     this.audioOcean.pause();
-      //     if (!isUnderwater) {
-      //       this.audioOcean.play();
-      //     }
-      //   }
+        //   if (this.audioDiver) {
+        //     this.audioDiver.pause();
+        //     if (isUnderwater) {
+        //       this.audioDiver.play();
+        //     }
+        //   }
+        //   if (this.audioOcean) {
+        //     this.audioOcean.pause();
+        //     if (!isUnderwater) {
+        //       this.audioOcean.play();
+        //     }
+        //   }
+        console.log('UnderwaterToggle: ' + isUnderwater);
+        if (this.camera.position.y <= 6) {
+        // set the diver to follow the camera
+          console.log('Following');
+          this.diverFollow = true;
+          this.diverAnim.stop();
+
+          this.diverAnim.start(true, 1, this.diverAnims.swimming.init, this.diverAnims.swimming.end, false);
+        }
+        if (!isUnderwater) {
+          console.log('Unfollowing');
+          this.diverFollow = false;
+          this.diverAnim.stop();
+          this.diver.position = this.diverInitPos;
+          this.diverAnim.start(true, 1, this.diverAnims.sitting.init, this.diverAnims.sitting.end, false);
+        }
       }
+
       if (uiUpdateCounter++ % 8) {
         // update UI. Only every 8 frames to avoid wasting time with Vue
         vueComponent.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
