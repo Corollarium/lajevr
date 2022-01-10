@@ -355,7 +355,7 @@ class Underwater {
         this.base + 'models/', fishes[currShoal].nome + '.glb',
         30,
         fishes[currShoal].position,
-        [{ from: fishes[currShoal].initFrame, to: fishes[currShoal].endFrame, name: fishes[currShoal].nome + 'swim' }],
+        [{ from: fishes[currShoal].initFrame, to: fishes[currShoal].endFrame, name: fishes[currShoal].nome + '_' + currShoal + 'swim' }],
         fishes[currShoal].shoalMoveVolume
       );
       this.loadedFishes.push(shoal);
