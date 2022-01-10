@@ -340,10 +340,10 @@ class Underwater {
     // Quadro final da animação do peixe do cardume
     // Raio de movimentação do cardume em cada eixo
     const fishes = [
-      { nome: 'frade', position: v3(-36.96, -21.60, 38.64), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(5, 2, 4) },
-      { nome: 'frade', position: v3(48.23, -26.51, 50.41), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(4, 2, 3) },
-      { nome: 'salema', position: v3(-15.29, -25.51, 42.16), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(3, 3, 5) },
-      { nome: 'salema', position: v3(5.38, -11.96, 14.92), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(5, 3, 2) },
+      { nome: 'frade', position: v3(-36.96, -21.60, 38.64), qtd: 6, initFrame: 1, endFrame: 102.8, shoalVolume: v3(5, 2, 4) },
+      { nome: 'frade', position: v3(48.23, -26.51, 50.41), qtd: 8, initFrame: 1, endFrame: 102.8, shoalVolume: v3(4, 2, 3) },
+      { nome: 'sargentinho', position: v3(-15.29, -25.51, 42.16), qtd: 75, initFrame: 1, endFrame: 100, shoalVolume: v3(3, 3, 5) },
+      { nome: 'sargentinho', position: v3(5.38, -11.96, 14.92), qtd: 80, initFrame: 1, endFrame: 100, shoalVolume: v3(5, 3, 2) },
       { nome: 'enxada', position: v3(1.97, -12.46, 63.85), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(2, 3, 4) },
       { nome: 'enxada', position: v3(-8.54, -11.72, 26.03), qtd: 30, initFrame: 1, endFrame: 102.8, shoalVolume: v3(4, 3, 2) },
       { nome: 'anjoReal', position: v3(-5.56, -25.28, 44.23), qtd: 30, initFrame: 1, endFrame: 66, shoalVolume: v3(4, 6, 2) }];
