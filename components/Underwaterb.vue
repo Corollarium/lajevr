@@ -1029,16 +1029,6 @@ class Underwater {
       const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
       bakedVertexAnimationManager.texture = vertexTexture;
 
-      bakedVertexAnimationManager.setAnimationParameters(
-        animationRanges[0].from,
-        animationRanges[0].to,
-        0,
-        30
-      );
-
-      mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-      //        this.scene.stopAnimation(mainMesh);
-
       // set animation parameters
       const anim = new BABYLON.Vector4(
         animationRanges[0].from,
@@ -1047,6 +1037,16 @@ class Underwater {
         30
       );
       animParameters.set(anim.asArray(), 0);
+
+      bakedVertexAnimationManager.setAnimationParameters(
+        anim.x,
+        anim.y,
+        anim.z,
+        anim.w
+      );
+
+      mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+      //        this.scene.stopAnimation(mainMesh);
 
       mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
