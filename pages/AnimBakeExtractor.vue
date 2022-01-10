@@ -26,20 +26,12 @@
           <EBA
             id="x1111"
             v-if="engine"
-            :model="'./models/tartaruga/tartaruga.glb'"
+            :model="'./models/salema.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
             :animationInitFrame="1"
-            :animationEndFrame="90"
-          />
-          <EBA
-            id="x22222"
-            v-if="engine"
-            :model="'./models/frade.glb'"
-            :attribution="'Modelo de tartaruga'"
-            :babylonEngine="engine"
-            :animationInitFrame="1"
-            :animationEndFrame="90"
+            :animationEndFrame="94"
+            :autoRotate="false"
           />
         </div>
       </section>
