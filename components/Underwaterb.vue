@@ -240,9 +240,11 @@ class Underwater {
     Promise.all(promises).then(() => {
       console.log('all loaded');
       // retrieve the diver
-      this.diver = this.scene.getMeshByName('wet_suit');
+      this.diver = this.scene.getNodeByName('global_movement');
       this.diver.parent = this.camera;
       // Set the initial position to place the diver again when above the threshold for diver to follow
+      // This Y position places the diver properly sitting on the boat
+      this.diver.position.y = -0.28;
       this.diverInitPos = this.diver.position;
       this.diverAnim = this.scene.getAnimationGroupByName('Take 001.002');
       // start the sitting animation
@@ -294,7 +296,7 @@ class Underwater {
           console.log('Following');
           this.diverFollow = true;
           this.diverAnim.stop();
-
+          this.diver.position = this.camera.position;
           this.diverAnim.start(true, 1, this.diverAnims.swimming.init, this.diverAnims.swimming.end, false);
         }
         if (!isUnderwater) {
