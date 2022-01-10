@@ -1324,7 +1324,6 @@ class Underwater {
       undefined
     ).then((container) => {
       const loadedMeshes = container.meshes;
-      const causticMaterial = withCaustic ? this.getCausticMaterial() : null;
 
       /*
       for (const mesh of loadedMeshes) {
@@ -1343,11 +1342,6 @@ class Underwater {
 
       mainMesh = loadedMeshes[1]; // assumes __root__ is zero
       // mainMesh.position = initialCenterPosition;
-
-      if (causticMaterial) {
-        mainMesh.rttMaterial = causticMaterial;
-        this.renderTargetCaustic.renderList.push(mainMesh);
-      }
 
       // Carregando o JSon do Baking
       const fileToFetch = '/bakedAnim/' + modelfile.replace(/\.[^/.]+$/, '.json');
