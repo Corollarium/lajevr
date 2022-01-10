@@ -500,7 +500,7 @@ class Underwater {
   debugUtils () {
     this.scene.debugLayer.show();
     // set an object to be inspected in the console
-    Window.underw = this;
+    // Window.underw = this;
   }
 
   instrumentation () {
@@ -1022,7 +1022,6 @@ class Underwater {
         baker.bakeVertexData(animationRanges).then((vertexData) => {
           console.log('Serializando Baking');
           const vertexDataJSON = baker.serializeBakedVertexDataToJSON(vertexData);
-          window.createdJsonFile = vertexDataJSON;
           const a = document.createElement('a');
 
           a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(vertexDataJSON));
@@ -1064,7 +1063,6 @@ class Underwater {
       return response.text();
     }).then((json) => {
       // console.log('Json Loaded!<<<<<<<<<<<<<<<<<<<');
-      window.loadedJsonFile = json;
       const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
       const vertexData = baker.loadBakedVertexDataFromJSON(json);
       const vertexTexture = baker.textureFromBakedVertexData(vertexData);
@@ -1402,7 +1400,6 @@ class Underwater {
         baker.bakeVertexData(animationRanges).then((vertexData) => {
           console.log('Serializando Baking');
           const vertexDataJSON = baker.serializeBakedVertexDataToJSON(vertexData);
-          window.createdJsonFile = vertexDataJSON;
           const a = document.createElement('a');
 
           a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(vertexDataJSON));
@@ -1434,7 +1431,6 @@ class Underwater {
       return response.text();
     }).then((json) => {
       // console.log('Json Loaded!<<<<<<<<<<<<<<<<<<<');
-      window.loadedJsonFile = json;
       const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
       const vertexData = baker.loadBakedVertexDataFromJSON(json);
       const vertexTexture = baker.textureFromBakedVertexData(vertexData);
@@ -1719,7 +1715,6 @@ export default {
 
   mounted () {
     this.underwater = new Underwater(this);
-    Window.underw = this.underwater;
   },
 
   beforeDestroy () {
