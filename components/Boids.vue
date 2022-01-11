@@ -450,6 +450,7 @@ class BoidsTest {
       promise: p,
       update: ((_boids, _models, total) => {
         const one = new BABYLON.Vector3(1, 1, 1);
+        const up = new BABYLON.Vector3(0, 1, 0);
         const m = BABYLON.Matrix.Identity();
         const q = BABYLON.Quaternion.Identity();
 
@@ -460,15 +461,18 @@ class BoidsTest {
             for (let i = 0; i < total; i++) {
               const boid = _boids.boids[i];
 
-              q.x = boid.velocity.x;
-              q.y = boid.velocity.y;
-              q.z = boid.velocity.z;
-              q.w = Math.PI;
-              q.normalize();
+              // q.x = boid.velocity.x;
+              // q.y = boid.velocity.y;
+              // q.z = boid.velocity.z;
+              // q.w = 0; // Math.PI;
+              // q.normalize();
+
+              const axis3 = BABYLON.Vector3.Cross(up, boid.velocity);
+              const axis2 = BABYLON.Vector3.Cross(axis3, boid.velocity);
 
               BABYLON.Matrix.ComposeToRef(
                 one,
-                q,
+                new BABYLON.Quaternion.RotationQuaternionFromAxis(axis2, axis3, boid.velocity),
                 boid.position,
                 m
               );
