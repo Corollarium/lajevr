@@ -80,6 +80,7 @@ const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_mai
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
 
 const maxY = 0.6;
+const diverFollowDeepThreshold = -6;
 
 /**
  * Extend from MaterialPluginBase to create your plugin.
@@ -240,15 +241,7 @@ class Underwater {
     Promise.all(promises).then(() => {
       console.log('all loaded');
       // retrieve the diver
-      this.diver = this.scene.getNodeByName('global_movement');
-      this.diver.parent = this.camera;
-      // Set the initial position to place the diver again when above the threshold for diver to follow
-      // This Y position places the diver properly sitting on the boat
-      this.diver.position.y = -0.28;
-      this.diverInitPos = this.diver.position;
-      this.diverAnim = this.scene.getAnimationGroupByName('Take 001.002');
-      // start the sitting animation
-      this.diverAnim.start(true, 1, this.diverAnims.sitting.init, this.diverAnims.sitting.end, false);
+      this.setupDiver();
     });
 
     this.assetsManager.load();
@@ -291,13 +284,15 @@ class Underwater {
         //     }
         //   }
         console.log('UnderwaterToggle: ' + isUnderwater);
-        if (this.camera.position.y <= 6) {
+        if (this.camera.position.y <= diverFollowDeepThreshold) {
         // set the diver to follow the camera
           console.log('Following');
-          this.diverFollow = true;
+          /* TODO: Need Fix
+           this.diverFollow = true;
           this.diverAnim.stop();
           this.diver.position = this.camera.position;
           this.diverAnim.start(true, 1, this.diverAnims.swimming.init, this.diverAnims.swimming.end, false);
+         */
         }
         if (!isUnderwater) {
           console.log('Unfollowing');
@@ -382,6 +377,18 @@ class Underwater {
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
+  }
+
+  setupDiver () {
+    this.diver = this.scene.getNodeByName('global_movement');
+    this.diver.parent = this.camera;
+    // Set the initial position to place the diver again when above the threshold for diver to follow
+    // This Y position places the diver properly sitting on the boat
+    this.diver.position.y = -0.28;
+    this.diverInitPos = this.diver.position;
+    this.diverAnim = this.scene.getAnimationGroupByName('Take 001.002');
+    // start the sitting animation
+    this.diverAnim.start(true, 1, this.diverAnims.sitting.init, this.diverAnims.sitting.end, false);
   }
 
   createPathForAnimation (mesh, curve, frameRate = 60) {
