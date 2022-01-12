@@ -1288,7 +1288,7 @@ class Underwater {
     boidsManager.cohesion = 0.01;
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 1.0;
+    boidsManager.maxSpeed = 0.5;
     // boidsManager.showDebug(this.scene);
 
     // keep them around the center
@@ -1383,27 +1383,39 @@ class Underwater {
       update: ((_boids, _models, total) => {
         const one = new BABYLON.Vector3(1, 1, 1);
         const m = BABYLON.Matrix.Identity();
-        const q = BABYLON.Quaternion.Identity();
+        const up = new BABYLON.Vector3(0, -1, 0);
+        // const q = BABYLON.Quaternion.Identity();
 
         return (deltaTime) => {
           if (mainMesh && mainMesh.bakedVertexAnimationManager) {
-            mainMesh.bakedVertexAnimationManager.time += deltaTime;
+            mainMesh.bakedVertexAnimationManager.time += 2 * deltaTime;
             _boids.update(deltaTime);
             for (let i = 0; i < total; i++) {
               const boid = _boids.boids[i];
 
-              q.x = boid.velocity.x;
-              q.y = boid.velocity.y;
-              q.z = boid.velocity.z;
-              q.w = Math.PI;
-              q.normalize();
+              // q.x = boid.velocity.x;
+              // q.y = boid.velocity.y;
+              // q.z = boid.velocity.z;
+              // q.w = Math.PI;
+              // q.normalize();
+
+              // BABYLON.Matrix.ComposeToRef(
+              //   one,
+              //   q,
+              //   boid.position,
+              //   m
+              // );
+
+              const axis3 = BABYLON.Vector3.Cross(up, boid.velocity);
+              const axis2 = BABYLON.Vector3.Cross(axis3, boid.velocity);
 
               BABYLON.Matrix.ComposeToRef(
                 one,
-                q,
+                new BABYLON.Quaternion.RotationQuaternionFromAxis(axis2, axis3, boid.velocity),
                 boid.position,
                 m
               );
+
               m.copyToArray(bufferMatrices, i * 16);
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);

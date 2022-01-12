@@ -15,6 +15,8 @@ import BoidsManager from '@corollarium/babylon-boids';
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
 class BoidsTest {
   base = ''; // base url
 
@@ -450,10 +452,9 @@ class BoidsTest {
       promise: p,
       update: ((_boids, _models, total) => {
         const one = new BABYLON.Vector3(1, 1, 1);
-        const up = new BABYLON.Vector3(0, 1, 0);
+        const up = new BABYLON.Vector3(-1, 0, 0);
         const m = BABYLON.Matrix.Identity();
         const q = BABYLON.Quaternion.Identity();
-
         return (deltaTime) => {
           if (mainMesh && mainMesh.bakedVertexAnimationManager) {
             mainMesh.bakedVertexAnimationManager.time += deltaTime;
@@ -470,12 +471,15 @@ class BoidsTest {
               const axis3 = BABYLON.Vector3.Cross(up, boid.velocity);
               const axis2 = BABYLON.Vector3.Cross(axis3, boid.velocity);
 
+              const quat = new BABYLON.Quaternion.RotationQuaternionFromAxis(axis2, axis3, boid.velocity);
+
               BABYLON.Matrix.ComposeToRef(
                 one,
-                new BABYLON.Quaternion.RotationQuaternionFromAxis(axis2, axis3, boid.velocity),
+                quat,
                 boid.position,
                 m
               );
+
               m.copyToArray(bufferMatrices, i * 16);
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
