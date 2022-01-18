@@ -251,6 +251,13 @@ export default {
           const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
           bakedVertexAnimationManager.texture = vertexTexture;
 
+          bakedVertexAnimationManager.setAnimationParameters(
+            animationRanges[0].from,
+            animationRanges[0].to,
+            0,
+            30
+          );
+
           this.mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
           //        this.scene.stopAnimation(mainMesh);
 
@@ -281,9 +288,6 @@ export default {
       const bakedVertexAnimationManager = new BABYLON.BakedVertexAnimationManager(this.scene);
       bakedVertexAnimationManager.texture = vertexTexture;
 
-      this.mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
-      //        this.scene.stopAnimation(mainMesh);
-
       // set animation parameters
       const anim = new BABYLON.Vector4(
         animationRanges[0].from, // Init
@@ -291,6 +295,17 @@ export default {
         0, // Offset
         30 // FPS
       );
+
+      bakedVertexAnimationManager.setAnimationParameters(
+        animationRanges[0].from,
+        animationRanges[0].to,
+        0,
+        30
+      );
+
+      this.mainMesh.bakedVertexAnimationManager = bakedVertexAnimationManager;
+      //        this.scene.stopAnimation(mainMesh);
+
       animParameters.set(anim.asArray());
       this.mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
       loaded = true;
