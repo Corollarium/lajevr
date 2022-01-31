@@ -1,8 +1,10 @@
 .main-header {
-  background-color: @darkColor1;
+  background-color: fade(@darkColor1, 70%);
   display: inline-block;
   width: 100%;
   z-index: 10;
+  position: sticky;
+  top: 0;
 
   @media @desktop {
     height: 4.75rem;
@@ -160,14 +162,13 @@
 
   /** transparent mode **/
   &.header-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: .5rem;
     padding: 0;
-    height: 0;
 
     @media @desktop {
-      background-color: transparent;
+     // background-color: transparent;
     }
 
     @media @responsiveDevices {
@@ -181,16 +182,9 @@
       }
     }
 
-
-    .logo-main {
-      display: none; //NA INDEX O LOGO APARECE GRANDÃO NO CANTO SUPERIOR ESQUERDO DO HERO
-    }
-
     width: 100%;
 
     .main-menu .main-nav .pure-menu-link {
-      color: darken(@primaryColor,10);
-      text-shadow: 1px 1px 1px #fff;
       &:hover {
         font-weight: @bold;
       }

@@ -9,7 +9,12 @@
     <section v-else class="sticky-hero">
       <div class="sticky-hero-content">
         <Ocean />
-        <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" class="ilha-logo" alt="Laje de Santos - logo">
+        <div class="ilha-logo">
+          <img :src="imageLogoLaje" :srcset="imageLogoLaje.srcSet" alt="Laje de Santos - logo">
+          <div class="ilha-logo-text">
+            ⇩
+          </div>
+        </div>
         <div class="sticky-hero-attribution">
           <p class="attribution">
             Photo
