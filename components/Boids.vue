@@ -60,7 +60,7 @@ class BoidsTest {
     ];
     const fish = this.loadBoidsModel(
       this.base + 'models/', 'salema.glb',
-      3,
+      30,
       sp0.position,
       sp1.position,
       [{ from: 1, to: 30, name: 'swim' }]
