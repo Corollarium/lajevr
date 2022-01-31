@@ -31,7 +31,7 @@ export default class OceanPostProcess extends BABYLON.PostProcess {
       options.isPipeline ? null : camera,
       BABYLON.Texture.TRILINEAR_SAMPLINGMODE,
       camera.getEngine(),
-      true
+      false
     );
     this._time = 0;
     this.worldScale = 1.0;
