@@ -59,7 +59,7 @@ class BoidsTest {
       // this.loadTerrain() // 38 draw calls
     ];
     const fish = this.loadBoidsModel(
-      this.base + 'models/', 'salema.glb',
+      this.base + 'models/', 'sargentinho.glb',
       30,
       sp0.position,
       sp1.position,
@@ -161,6 +161,11 @@ class BoidsTest {
     this.camera.keysUp.push('w'.charCodeAt(0));
     this.camera.keysUp.push('W'.charCodeAt(0));
 
+    const params = (new URL(document.location)).searchParams;
+    if (params.has('debug')) {
+      this.scene.debugLayer.show();
+    }
+
     this.scene.onKeyboardObservable.add((kbInfo) => {
       switch (kbInfo.type) {
       case BABYLON.KeyboardEventTypes.KEYDOWN:
@@ -175,7 +180,7 @@ class BoidsTest {
     // near/far
     this.camera.minZ = 0.1;
     this.camera.maxZ = 700.0;
-    this.camera.setTarget(new BABYLON.Vector3(-12.89001753167552, 1.708562384403646, 25.710433418293825));
+    this.camera.setTarget(new BABYLON.Vector3(12.89001753167552, 1.708562384403646, 25.710433418293825));
     this.camera.attachControl(container, true);
     if (this.camera.inputs.attached.virtualJoystick) {
       this.camera.inputs.attached.virtualJoystick._rightjoystick.setJoystickSensibility(0.01);
@@ -302,10 +307,18 @@ class BoidsTest {
       mainMesh = loadedMeshes[1];
       console.log(mainMesh.name);
 
+      // reset weird scaling
       baseMesh.scaling.z = 1;
       baseMesh.scaling.y = 1;
       baseMesh.scaling.x = 1;
       baseMesh.rotationQuaternion.y = 0;
+
+      // reset base quaternion
+      mainMesh.parent.rotationQuaternion.x = 1.0;
+      mainMesh.parent.rotationQuaternion.y = 0.0;
+      mainMesh.parent.rotationQuaternion.z = 0.0;
+      mainMesh.parent.rotationQuaternion.w = 0.0;
+      mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
 
@@ -339,100 +352,12 @@ class BoidsTest {
       boidsManager,
       promise: p,
       update: ((_boids, _models, total) => {
+        // pre declare variables to avoid GC
         const one = new BABYLON.Vector3(1, 1, 1);
+        const direction = new BABYLON.Vector3(1, 1, 1);
         const m = BABYLON.Matrix.Identity();
-        const q = BABYLON.Quaternion.Zero();
-
-        return (deltaTime) => {
-          if (mainMesh) {
-            // mainMesh.bakedVertexAnimationManager.time += deltaTime;
-            _boids.update(deltaTime);
-            for (let i = 0; i < total; i++) {
-              const boid = _boids.boids[i];
-              q.x = -boid.velocity.y;
-              q.y = boid.velocity.z;
-              q.z = boid.velocity.x;
-              q.w = Math.PI;
-              q.normalize();
-
-              BABYLON.Matrix.ComposeToRef(
-                one,
-                q,
-                boid.position,
-                m
-              );
-              m.copyToArray(bufferMatrices, i * 16);
-            }
-            mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          }
-        };
-      })(boidsManager, mainMesh, total)
-    };
-  }
-
-  loadBoids (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, withCaustic = false, fpsDelta = 6) {
-    const zero = new BABYLON.Vector3(0, 0, 0);
-    const boidsManager = new BoidsManager(
-      total,
-      boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
-      1.0,
-      30.0
-    );
-    boidsManager.boundsMin = boundsMin;
-    boidsManager.boundsMax = boundsMax;
-    boidsManager.cohesion = 0.001;
-    boidsManager.alignment = 0.03;
-    boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 1.0;
-    boidsManager.showDebug(this.scene);
-
-    // keep them around the center
-    // boidsManager.addForce(
-    //   (_manager, boid) => {
-    //     return initialCenterPosition.subtract(boid.position).scale(-5000.4);
-    //   }
-    // );
-    // // TODO away from diver
-    // boidsManager.addForce(
-    //   (_manager, boid) => {
-    //     const MIN_DISTANCE = 3.0;
-    //     const d = this.camera.position.subtract(boid.position);
-    //     if (d.lengthSquared < MIN_DISTANCE * MIN_DISTANCE) {
-    //       const f = new BABYLON.Vector3(MIN_DISTANCE, MIN_DISTANCE, MIN_DISTANCE).subtract(d).scale(100.0);
-    //       console.log(f);
-    //       return f;
-    //     }
-    //     return zero;
-    //   }
-    // );
-
-    let mainMesh = null;
-    const bufferMatrices = new Float32Array(16 * total);
-    const animParameters = new Float32Array(4 * total);
-    mainMesh = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 });//  loadedMeshes[1]; // assumes __root__ is zero
-
-    mainMesh.material = new BABYLON.StandardMaterial('material');
-    mainMesh.material.disableLighting = true;
-    mainMesh.material.emissiveColor = BABYLON.Color3.White();
-    mainMesh.material.wireframe = true;
-    mainMesh.scaling.z = 1;
-    mainMesh.scaling.y = 1;
-    mainMesh.scaling.x = 1;
-    for (let i = 0; i < total; i++) {
-      const m = BABYLON.Matrix.Identity();
-      m.copyToArray(bufferMatrices, i * 16);
-    }
-    mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-    mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
-
-    return {
-      models: [mainMesh],
-      boidsManager,
-      promise: Promise.resolve(),
-      update: ((_boids, _models, total) => {
-        const one = new BABYLON.Vector3(1, 1, 1);
-        const m = BABYLON.Matrix.Identity();
-        const q = BABYLON.Quaternion.Zero();
+        const orientation = BABYLON.Quaternion.Zero();
+        const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
 
         return (deltaTime) => {
           if (mainMesh) {
@@ -441,15 +366,17 @@ class BoidsTest {
             for (let i = 0; i < total; i++) {
               const boid = _boids.boids[i];
 
-              // q.x = boid.velocity.x;
-              // q.y = boid.velocity.y;
-              // q.z = boid.velocity.z;
-              // q.w = Math.PI;
-              // q.normalize();
+              // compute our quaternion from the direction to point to it
+              boid.velocity.normalizeToRef(direction);
+              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
+              lastDirection[i].copyFrom(direction);
+              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
+              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
 
+              // update position and orientation
               BABYLON.Matrix.ComposeToRef(
                 one,
-                q,
+                orientation,
                 boid.position,
                 m
               );
