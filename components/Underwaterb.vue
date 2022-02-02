@@ -280,7 +280,7 @@ class Underwater {
       }
       CausticPluginMaterial.time = timeElapsed;
 
-      // fish.update(deltaTime);
+      fish.update(deltaTime);
 
       this.scene.render();
 
@@ -1650,7 +1650,7 @@ class Underwater {
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
     boidsManager.maxSpeed = 1.0;
-    boidsManager.showDebug(this.scene);
+    // boidsManager.showDebug(this.scene);
 
     // keep them around the center
     // boidsManager.addForce(
@@ -1704,6 +1704,7 @@ class Underwater {
       const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
+      this.scene.stopAnimation(mainMesh);
       console.log(mainMesh.name);
 
       baseMesh.scaling.z = 1;

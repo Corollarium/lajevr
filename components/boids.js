@@ -101,7 +101,7 @@ class BoidsManager {
         boid.velocity = boid.velocity.normalize().scale(this.maxSpeed);
       }
 
-      boid.position.addInPlace(boid.velocity.scale(deltaTime));
+      // boid.position.addInPlace(boid.velocity.scale(deltaTime));
     });
     this._updateDebug();
   }
@@ -243,10 +243,11 @@ class BoidsManager {
     const wireframeMaterial = new BABYLON.StandardMaterial('debug_wireframe', scene);
     wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
     wireframeMaterial.wireframe = true;
+    let i = 0;
     for (const boid of this.boids) {
       boid.debug = {};
       boid.debug.force = BABYLON.MeshBuilder.CreateTube(
-        `boid_arrow_${boid.uniqueId}`,
+        `boid_arrow_${i}`,
         {
           path: [boid.position.add(boid.velocity), boid.position.clone()],
           radius: 0.01,
@@ -254,7 +255,7 @@ class BoidsManager {
         }, scene
       );
       boid.debug.influence = BABYLON.MeshBuilder.CreateSphere(
-        `boid_influence_${boid.uniqueId}`,
+        `boid_influence_${i}`,
         {
           diameter: 1.0,
           segments: 8
@@ -262,6 +263,7 @@ class BoidsManager {
       );
       boid.debug.influence.scaling.setAll(this.separationMinDistance);
       boid.debug.influence.material = wireframeMaterial;
+      i++;
     }
     this.debug.show = true;
     this._updateDebug();
@@ -293,7 +295,7 @@ class BoidsManager {
     }
     this.debug.center.position.copyFrom(this.center);
     for (const boid of this.boids) {
-      const path = [boid.position.add(boid.force.scale(20.0)), boid.position.clone()];
+      const path = [boid.position.add(boid.velocity.scale(10.0)), boid.position.clone()];
       boid.debug.force = BABYLON.MeshBuilder.CreateTube(boid.debug.force.name, { path, radius: 0.01, instance: boid.debug.force });
       boid.debug.influence.position.copyFrom(boid.position);
     }
