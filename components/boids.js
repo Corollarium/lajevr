@@ -101,7 +101,7 @@ class BoidsManager {
         boid.velocity = boid.velocity.normalize().scale(this.maxSpeed);
       }
 
-      // boid.position.addInPlace(boid.velocity.scale(deltaTime));
+      boid.position.addInPlace(boid.velocity.scale(deltaTime));
     });
     this._updateDebug();
   }

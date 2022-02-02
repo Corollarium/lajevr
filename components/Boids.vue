@@ -369,6 +369,8 @@ class BoidsTest {
               // compute our quaternion from the direction to point to it
               boid.velocity.normalizeToRef(direction);
               const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
+              // make them always point up
+              fin.y = -Math.abs(fin.y);
               lastDirection[i].copyFrom(direction);
               const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
               BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
