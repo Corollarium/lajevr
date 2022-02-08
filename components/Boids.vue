@@ -246,6 +246,7 @@ class BoidsTest {
     );
     boidsManager.boundsMin = boundsMin;
     boidsManager.boundsMax = boundsMax;
+    boidsManager.calculateBounds();
     boidsManager.cohesion = 0.001;
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
