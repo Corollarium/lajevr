@@ -237,8 +237,7 @@ class BoidsTest {
     this.sunLight.intensity = 0.8;
   }
 
-  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, withCaustic = false, fpsDelta = 6) {
-    const zero = new BABYLON.Vector3(0, 0, 0);
+  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
     const boidsManager = new BoidsManager(
       total,
       boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
@@ -290,18 +289,14 @@ class BoidsTest {
       undefined
     ).then((container) => {
       const loadedMeshes = container.meshes;
-      // for (const mesh of loadedMeshes) {
-      //   // mesh.position = initialCenterPosition;
-      //   //  mesh.scaling = new BABYLON.Vector3(10, 10, 10);
-      //   if (mesh.material) {
-      //     // mesh.material.freeze();
-      //   }
-      //   mesh.alwaysSelectAsActiveMesh = true;
-      //   // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-      //   // mesh.convertToUnIndexedMesh();
-      //   //  mesh.freezeNormals();
-      //   // mesh.freezeWorldMatrix();
-      // }
+      for (const mesh of loadedMeshes) {
+        if (mesh.material) {
+          mesh.material.freeze();
+        }
+        // mesh.alwaysSelectAsActiveMesh = true;
+        // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+        // mesh.convertToUnIndexedMesh();
+      }
       const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
@@ -369,7 +364,7 @@ class BoidsTest {
               // compute our quaternion from the direction to point to it
               boid.velocity.normalizeToRef(direction);
               const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
-              // make them always point up
+              // should never be upside down.
               fin.y = -Math.abs(fin.y);
               lastDirection[i].copyFrom(direction);
               const side = BABYLON.Vector3.Cross(lastDirection[i], fin);

@@ -97,8 +97,13 @@ class BoidsManager {
       boid.velocity.addInPlace(f.scale(deltaTime));
 
       // clamp velocity
+      const normalized = boid.velocity.normalize();
       if (boid.velocity.lengthSquared() > maxSpeedSquared) {
-        boid.velocity = boid.velocity.normalize().scale(this.maxSpeed);
+        boid.velocity = normalized.scale(this.maxSpeed);
+      }
+      // clamp y velocity
+      if (Math.abs(normalized.y) > 0.7) {
+        boid.velocity.y *= Math.abs(normalized.y) / 0.7;
       }
 
       boid.position.addInPlace(boid.velocity.scale(deltaTime));
