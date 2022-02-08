@@ -30,6 +30,7 @@ class BoidsManager {
     this.boundsMax = new BABYLON.Vector3(
       center.x + boundRadiusScale, center.y + boundRadiusScale, center.z + boundRadiusScale
     );
+    this.calculateBounds();
 
     this.otherForces = []; // other force callbacks
     this.boids = []; // list of boids
@@ -49,7 +50,7 @@ class BoidsManager {
 
   reset (total, initialRadius, initialVelocity = null) {
     if (!initialVelocity) {
-      initialVelocity = new BABYLON.Vector3(0.3, 0.1, 0.3);
+      initialVelocity = new BABYLON.Vector3(0.3, 0.0, 0.3);
     }
     this.boids = [];
     const initialSpeed = initialVelocity.length();
@@ -71,6 +72,14 @@ class BoidsManager {
     }
   }
 
+  calculateBounds () {
+    this.sizeVector = new BABYLON.Vector3(
+      Math.abs(this.boundsMax.x - this.boundsMin.x),
+      Math.abs(this.boundsMax.y - this.boundsMin.y),
+      Math.abs(this.boundsMax.z - this.boundsMin.z)
+    );
+  }
+
   /**
      * Updates the boids.
      *
@@ -78,7 +87,8 @@ class BoidsManager {
      */
   update (deltaTime) {
     this._updateCenter();
-    const maxSpeedSquared = this.maxSpeed * this.maxSpeed;
+    // const maxSpeedSquared = this.maxSpeed * this.maxSpeed;
+    // const normalized = new BABYLON.Vector3();
     this.boids.forEach((boid) => {
       const f1 = this._forceCentreMass(boid);
       const f2 = this._forceSeparation(boid);
@@ -96,15 +106,15 @@ class BoidsManager {
       boid.force.copyFrom(f);
       boid.velocity.addInPlace(f.scale(deltaTime));
 
-      // clamp velocity
-      const normalized = boid.velocity.normalize();
-      if (boid.velocity.lengthSquared() > maxSpeedSquared) {
-        boid.velocity = normalized.scale(this.maxSpeed);
-      }
-      // clamp y velocity
-      if (Math.abs(normalized.y) > 0.7) {
-        boid.velocity.y *= Math.abs(normalized.y) / 0.7;
-      }
+      // // clamp velocity
+      // boid.velocity.normalizeToRef(normalized);
+      // if (boid.velocity.lengthSquared() > maxSpeedSquared) {
+      //   boid.velocity = normalized.scale(this.maxSpeed);
+      // }
+      // // clamp y velocity
+      // if (Math.abs(normalized.y) > 0.7) {
+      //   boid.velocity.y *= 0.7 / Math.abs(normalized.y);
+      // }
 
       boid.position.addInPlace(boid.velocity.scale(deltaTime));
     });
@@ -178,21 +188,21 @@ class BoidsManager {
      */
   _forceBoundaries (boid) {
     const f = new BABYLON.Vector3(0, 0, 0);
-    const amount = 0.2;
+    const amount = 0.04;
     // clamp to area
-    if (boid.position.x < this.boundsMin.x * 0.9) {
+    if (boid.position.x < this.boundsMin.x + this.sizeVector.x * 0.1) {
       f.x = amount;
-    } else if (boid.position.x > this.boundsMax.x * 0.9) {
+    } else if (boid.position.x > this.boundsMax.x - this.sizeVector.x * 0.1) {
       f.x = -amount;
     }
-    if (boid.position.y < this.boundsMin.y * 0.9) {
+    if (boid.position.y < this.boundsMin.y + this.sizeVector.y * 0.1) {
       f.y = amount;
-    } else if (boid.position.y > this.boundsMax.y * 0.9) {
+    } else if (boid.position.y > this.boundsMax.y - this.sizeVector.y * 0.1) {
       f.y = -amount;
     }
-    if (boid.position.z < this.boundsMin.z * 0.9) {
+    if (boid.position.z < this.boundsMin.z + this.sizeVector.z * 0.1) {
       f.z = amount;
-    } else if (boid.position.z > this.boundsMax.z * 0.9) {
+    } else if (boid.position.z > this.boundsMax.z - this.sizeVector.z * 0.1) {
       f.z = -amount;
     }
     return f;

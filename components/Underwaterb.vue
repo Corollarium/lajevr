@@ -67,10 +67,7 @@ import 'babylonjs-loaders';
 import * as GUI from 'babylonjs-gui';
 import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
-import BoidsManager from '@corollarium/babylon-boids';
-
-const underwater_vertex = require('!!raw-loader!./underwater_vertexb.glsl');
-const underwater_fragment = require('!!raw-loader!./underwater_fragmentb.glsl');
+import BoidsManager from './boids';
 
 const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
 const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
@@ -211,8 +208,8 @@ class Underwater {
     const fish = this.loadBoidsModel(
       this.base + 'models/', 'sargentinho.glb',
       30,
-      new BABYLON.Vector3(-2.12, -7.2, 12.19),
-      new BABYLON.Vector3(-3.12, -13.2, 42.19),
+      new BABYLON.Vector3(-33.12, -17.2, 12.19),
+      new BABYLON.Vector3(-2.12, -7.2, 42.19),
       [{ from: 1, to: 30, name: 'swim' }]
     );
     promises.push(fish.promise);
@@ -369,7 +366,6 @@ class Underwater {
     mesh.animations.push(posAnim);
     mesh.animations.push(rotAnim);
     const animReturn = this.scene.beginAnimation(mesh, 0, frameRate * curvePath.length, true);
-    console.log(curvePath, posAnim, rotAnim, mesh);
     return animReturn;
   }
 
@@ -760,6 +756,12 @@ class Underwater {
     return pp;
   }
 
+  addToSceneAndCaustic (meshes) {
+    meshes.forEach((mesh) => {
+      mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
+    });
+  }
+
   loadTerrain () {
     const p = new Promise((resolve, reject) => {
       // we'll store rock data here to convert it all to an optimized version later.
@@ -873,7 +875,6 @@ class Underwater {
           }
         }
         this.addToSceneAndCaustic(actualLoaded);
-        console.log(actualLoaded);
 
         // merge everything so we have fewer draw calls
         const terrain = BABYLON.Mesh.MergeMeshes(
@@ -1638,11 +1639,12 @@ class Underwater {
     );
     boidsManager.boundsMin = boundsMin;
     boidsManager.boundsMax = boundsMax;
+    boidsManager.calculateBounds();
+    boidsManager.reset(30.0, 1.0);
     boidsManager.cohesion = 0.001;
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 0.5;
-    // boidsManager.showDebug(this.scene);
+    boidsManager.maxSpeed = 1.0;
 
     // keep them around the center
     // boidsManager.addForce(
@@ -1693,7 +1695,6 @@ class Underwater {
       const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
-      console.log(mainMesh.name);
 
       // reset weird scaling
       baseMesh.scaling.z = 1;
@@ -1709,6 +1710,7 @@ class Underwater {
       mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+      this.addToSceneAndCaustic(loadedMeshes);
 
       // const baker = new BABYLON.VertexAnimationBaker(this.scene, mainMesh);
       // baker.bakeVertexData(animationRanges).then((vertexData) => {
