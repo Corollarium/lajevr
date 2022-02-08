@@ -107,7 +107,7 @@ class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
       return;
     }
     this._isEnabled = enabled;
-    this.markAllAsDirty();
+    // this.markAllAsDirty();
     this._enable(this._isEnabled);
   }
 
@@ -209,13 +209,13 @@ class Underwater {
     ];
 
     const fish = this.loadBoidsModel(
-      this.base + 'models/', 'salema.glb',
+      this.base + 'models/', 'sargentinho.glb',
       30,
-      new BABYLON.Vector3(-12.12, -13.2, 27.19),
-      new BABYLON.Vector3(-10.12, -9.2, 32.19),
+      new BABYLON.Vector3(-2.12, -7.2, 12.19),
+      new BABYLON.Vector3(-3.12, -13.2, 42.19),
       [{ from: 1, to: 30, name: 'swim' }]
     );
-    // promises.push(fish.promise);
+    promises.push(fish.promise);
     Promise.all(promises).then(() => {
       console.log('all loaded');
     });
@@ -692,13 +692,14 @@ class Underwater {
   materials () {
     BABYLON.RegisterMaterialPlugin('Caustic', (material) => {
       material.caustic = new CausticPluginMaterial(material);
+      material.caustic.isEnabled = true;
       return material.caustic;
     });
   }
 
   composer () {
     // composes the actual texture with our underwater shader pass.
-    const depthPass = this.scene.enableDepthRenderer();
+    // const depthPass = this.scene.enableDepthRenderer();
 
     const pipeline = new BABYLON.PostProcessRenderPipeline(this.engine, 'pipeline');
 
@@ -757,15 +758,6 @@ class Underwater {
     pp.worldScale = 0.2;
 
     return pp;
-  }
-
-  /**
-   * @return the caustic material
-   */
-  addToSceneAndCaustic (meshes) {
-    meshes.forEach((mesh) => {
-      mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
-    });
   }
 
   loadTerrain () {
@@ -1637,7 +1629,7 @@ class Underwater {
     this.animTour.goToFrame(0);
   }
 
-  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, withCaustic = false, fpsDelta = 6) {
+  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
     const boidsManager = new BoidsManager(
       total,
       boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
@@ -1649,7 +1641,7 @@ class Underwater {
     boidsManager.cohesion = 0.001;
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 1.0;
+    boidsManager.maxSpeed = 0.5;
     // boidsManager.showDebug(this.scene);
 
     // keep them around the center
@@ -1689,28 +1681,32 @@ class Underwater {
       undefined
     ).then((container) => {
       const loadedMeshes = container.meshes;
-      // for (const mesh of loadedMeshes) {
-      //   // mesh.position = initialCenterPosition;
-      //   //  mesh.scaling = new BABYLON.Vector3(10, 10, 10);
-      //   if (mesh.material) {
-      //     // mesh.material.freeze();
-      //   }
-      //   mesh.alwaysSelectAsActiveMesh = true;
-      //   // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-      //   // mesh.convertToUnIndexedMesh();
-      //   //  mesh.freezeNormals();
-      //   // mesh.freezeWorldMatrix();
-      // }
+      for (const mesh of loadedMeshes) {
+        if (mesh.material) {
+          mesh.material.freeze();
+          mesh.material.caustic.isEnabled = false;
+        }
+        // mesh.alwaysSelectAsActiveMesh = true;
+        // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
+        // mesh.convertToUnIndexedMesh();
+      }
       const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
-      this.scene.stopAnimation(mainMesh);
       console.log(mainMesh.name);
 
+      // reset weird scaling
       baseMesh.scaling.z = 1;
       baseMesh.scaling.y = 1;
       baseMesh.scaling.x = 1;
       baseMesh.rotationQuaternion.y = 0;
+
+      // reset base quaternion
+      mainMesh.parent.rotationQuaternion.x = 1.0;
+      mainMesh.parent.rotationQuaternion.y = 0.0;
+      mainMesh.parent.rotationQuaternion.z = 0.0;
+      mainMesh.parent.rotationQuaternion.w = 0.0;
+      mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
 
@@ -1744,9 +1740,12 @@ class Underwater {
       boidsManager,
       promise: p,
       update: ((_boids, _models, total) => {
+        // pre declare variables to avoid GC
         const one = new BABYLON.Vector3(1, 1, 1);
+        const direction = new BABYLON.Vector3(1, 1, 1);
         const m = BABYLON.Matrix.Identity();
-        const q = BABYLON.Quaternion.Zero();
+        const orientation = BABYLON.Quaternion.Zero();
+        const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
 
         return (deltaTime) => {
           if (mainMesh) {
@@ -1754,15 +1753,20 @@ class Underwater {
             _boids.update(deltaTime);
             for (let i = 0; i < total; i++) {
               const boid = _boids.boids[i];
-              q.x = -boid.velocity.y;
-              q.y = boid.velocity.z;
-              q.z = boid.velocity.x;
-              q.w = Math.PI;
-              q.normalize();
 
+              // compute our quaternion from the direction to point to it
+              boid.velocity.normalizeToRef(direction);
+              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
+              // should never be upside down.
+              fin.y = -Math.abs(fin.y);
+              lastDirection[i].copyFrom(direction);
+              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
+              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
+
+              // update position and orientation
               BABYLON.Matrix.ComposeToRef(
                 one,
-                q,
+                orientation,
                 boid.position,
                 m
               );
