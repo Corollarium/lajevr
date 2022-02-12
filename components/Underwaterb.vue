@@ -758,7 +758,9 @@ class Underwater {
 
   addToSceneAndCaustic (meshes) {
     meshes.forEach((mesh) => {
-      mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
+      if (mesh.material && mesh.material.pluginManager.getPlugin('Caustic')) {
+        mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
+      }
     });
   }
 
@@ -817,8 +819,7 @@ class Underwater {
         // to serialize this to base64: BABYLON.EncodeArrayBufferToBase64(bufferMatrices);
 
         rocks[1].thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-        const material = this.addToSceneAndCaustic([rocks[1]]);
-        // material.backFaceCulling = false; // cause model seems inverted
+        this.addToSceneAndCaustic([rocks[1]]);
 
         resolve();
       };
@@ -828,7 +829,6 @@ class Underwater {
         task.loadedMeshes.forEach((mesh) => {
           if (mesh.name === 'rockLow1' || mesh.name === 'rockLow1.001' || mesh.name === 'rockLow1.002') {
             // store the first rock model.
-            mesh.freezeNormals();
             mesh.freezeWorldMatrix();
             if (mesh.material) {
               // mesh.material.freeze();
@@ -1646,26 +1646,6 @@ class Underwater {
     boidsManager.separationMinDistance = 0.5;
     boidsManager.maxSpeed = 1.0;
 
-    // keep them around the center
-    // boidsManager.addForce(
-    //   (_manager, boid) => {
-    //     return initialCenterPosition.subtract(boid.position).scale(-5000.4);
-    //   }
-    // );
-    // // TODO away from diver
-    // boidsManager.addForce(
-    //   (_manager, boid) => {
-    //     const MIN_DISTANCE = 3.0;
-    //     const d = this.camera.position.subtract(boid.position);
-    //     if (d.lengthSquared < MIN_DISTANCE * MIN_DISTANCE) {
-    //       const f = new BABYLON.Vector3(MIN_DISTANCE, MIN_DISTANCE, MIN_DISTANCE).subtract(d).scale(100.0);
-    //       console.log(f);
-    //       return f;
-    //     }
-    //     return zero;
-    //   }
-    // );
-
     let mainMesh = null;
     const bufferMatrices = new Float32Array(16 * total);
     const m = BABYLON.Matrix.Identity();
@@ -1686,13 +1666,9 @@ class Underwater {
       for (const mesh of loadedMeshes) {
         if (mesh.material) {
           mesh.material.freeze();
-          mesh.material.caustic.isEnabled = false;
         }
-        // mesh.alwaysSelectAsActiveMesh = true;
-        // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
-        // mesh.convertToUnIndexedMesh();
+        mesh.freezeWorldMatrix();
       }
-      const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
 
@@ -1737,17 +1713,25 @@ class Underwater {
       // mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
 
+    // uncomment to get the direction axes for debugging
+    // const debugAxes = boidsManager.boids.map(
+    //   i => new BABYLON.AxesViewer(this.scene, 1.0)
+    // );
     return {
       models: [mainMesh],
       boidsManager,
       promise: p,
       update: ((_boids, _models, total) => {
-        // pre declare variables to avoid GC
+        // these are fixed
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
+        const yDirection = new BABYLON.Vector3(0, -1, 0);
+
+        // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
         const orientation = BABYLON.Quaternion.Zero();
-        const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
+        const topDirection = new BABYLON.Vector3(1, 1, 1);
+        const sideDirection = new BABYLON.Vector3(1, 1, 1);
 
         return (deltaTime) => {
           if (mainMesh) {
@@ -1757,13 +1741,18 @@ class Underwater {
               const boid = _boids.boids[i];
 
               // compute our quaternion from the direction to point to it
+
+              // where we are going to
               boid.velocity.normalizeToRef(direction);
-              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
-              // should never be upside down.
-              fin.y = -Math.abs(fin.y);
-              lastDirection[i].copyFrom(direction);
-              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
-              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
+              // cross the direction with a fixed "up" vector and we get the side direction.
+              BABYLON.Vector3.CrossToRef(direction, yDirection, sideDirection);
+              // and cross it again to get the actual up direction
+              BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
+              // build the quaternion
+              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
+
+              // debug axes
+              // debugAxes[i].update(boid.position, sideDirection, direction, topDirection);
 
               // update position and orientation
               BABYLON.Matrix.ComposeToRef(
