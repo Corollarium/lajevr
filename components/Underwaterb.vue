@@ -68,11 +68,6 @@ import * as GUI from 'babylonjs-gui';
 import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
 import BoidsManager from './boids';
-
-const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
-const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
-const causticPluginVertexDefinitions = require('!!raw-loader!./underwater_vertex_definitions.glsl');
-const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_main_end.glsl');
 /* eslint-enable */
 
 /* eslint-disable no-unused-vars */
@@ -81,80 +76,6 @@ const causticPluginVertexMainEnd = require('!!raw-loader!./underwater_vertex_mai
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
 
 const maxY = 0.6;
-
-/**
- * Extend from MaterialPluginBase to create your plugin.
- */
-class CausticPluginMaterial extends BABYLON.MaterialPluginBase {
-  static time = 0.0;
-
-  constructor (material) {
-    // last parameter is a priority, which lets you define the order multiple plugins are run.
-    super(material, 'Caustic', 200, { 'CAUSTIC': true, 'NORMAL': true });
-    // we need to mark the material
-    this.markAllAsDirty = material._dirtyCallbacks[BABYLON.Constants.MATERIAL_AllDirtyFlag];
-  }
-
-  get isEnabled () {
-    return this._isEnabled;
-  }
-
-  set isEnabled (enabled) {
-    if (this._isEnabled === enabled) {
-      return;
-    }
-    this._isEnabled = enabled;
-    // this.markAllAsDirty();
-    this._enable(this._isEnabled);
-  }
-
-  _isEnabled = false;
-
-  prepareDefines (defines, scene, mesh) {
-    defines.CAUSTIC = this._isEnabled;
-    defines.NORMAL |= this._isEnabled;
-  }
-
-  getClassName () {
-    return 'CausticPluginMaterial';
-  }
-
-  getUniforms () {
-    return {
-      'ubo': [
-        { name: 'time', size: 1, type: 'float' }
-      ],
-      'fragment':
-        `#ifdef CAUSTIC
-            uniform float time;
-        #endif`
-    };
-  }
-
-  bindForSubMesh (uniformBuffer, scene, engine, subMesh) {
-    if (this._isEnabled) {
-      uniformBuffer.updateFloat('time', CausticPluginMaterial.time);
-    }
-  }
-
-  getCustomCode (shaderType) {
-    if (shaderType === 'fragment') {
-      // we're adding this specific code at the end of the main() function
-      return {
-        'CUSTOM_FRAGMENT_DEFINITIONS': causticPluginFragmentDefinitions.default,
-        'CUSTOM_FRAGMENT_MAIN_END': causticPluginFragmentMainEnd.default
-      };
-    } else if (shaderType === 'vertex') {
-      // we're adding this specific code at the end of the main() function
-      return {
-        'CUSTOM_VERTEX_DEFINITIONS': causticPluginVertexDefinitions.default,
-        'CUSTOM_VERTEX_MAIN_END': causticPluginVertexMainEnd.default
-      };
-    }
-    // for other shader types we're not doing anything, return null
-    return null;
-  }
-}
 
 class Underwater {
   base = ''; // base url
@@ -192,7 +113,6 @@ class Underwater {
     // Create the scene space
     this.bootScene(container, vueComponent);
     this.lights();
-    this.materials();
     // this.composer();
 
     const geometryRenderer = this.camera.getScene().enableGeometryBufferRenderer(1.0);
@@ -278,7 +198,6 @@ class Underwater {
           t.style.position = 'absolute';
         }
       }
-      CausticPluginMaterial.time = timeElapsed;
 
       fish.update(deltaTime);
 
@@ -450,20 +369,12 @@ class Underwater {
     this.sunLight.intensity = 0.8;
   }
 
-  materials () {
-    BABYLON.RegisterMaterialPlugin('Caustic', (material) => {
-      material.caustic = new CausticPluginMaterial(material);
-      material.caustic.isEnabled = true;
-      return material.caustic;
-    });
-  }
-
   addToSceneAndCaustic (meshes) {
-    meshes.forEach((mesh) => {
-      if (mesh.material && mesh.material.pluginManager.getPlugin('Caustic')) {
-        mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
-      }
-    });
+    // meshes.forEach((mesh) => {
+    //   if (mesh.material && mesh.material.pluginManager.getPlugin('Caustic')) {
+    //     mesh.material.pluginManager.getPlugin('Caustic').isEnabled = true;
+    //   }
+    // });
   }
 
   loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
