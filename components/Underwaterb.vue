@@ -289,13 +289,6 @@ class Underwater {
       this.scene
     );
 
-    if (vueComponent.isTouch) {
-      /* browser with either Touch Events of Pointer Events  running on touch-capable device */
-      // doesn't work well this.camera = new BABYLON.VirtualJoysticksCamera(
-      this.joystick();
-    } else {
-      // DEBUG this.joystick();
-    }
     this.camera.applyGravity = false;
     this.camera.speed = 0.05;
 
