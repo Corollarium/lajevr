@@ -350,6 +350,8 @@ class Underwater {
     const rotAnim = new BABYLON.Animation('cameraRot', 'rotationQuaternion', frameRate, BABYLON.Animation.ANIMATIONTYPE_QUATERNION);
     const rotKeys = [];
 
+    /* uncomment to debug paths
+
     // visualisation
     const pathGroup = new BABYLON.Mesh('pathGroup');
     const curveMesh = BABYLON.Mesh.CreateLines(
@@ -383,6 +385,7 @@ class Underwater {
       bi.color = BABYLON.Color3.Green();
       bi.parent = pathGroup;
     }
+    */
 
     for (let i = 0; i < curvePath.length; i++) {
       const position = curvePath[i];
@@ -1006,6 +1009,24 @@ class Underwater {
     return p;
   }
 
+  _fixLoadedModelsOrientation (loadedMeshes) {
+    const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
+    const mainMesh = loadedMeshes[1];
+
+    // reset weird scaling
+    baseMesh.scaling.z = 1;
+    baseMesh.scaling.y = 1;
+    baseMesh.scaling.x = 1;
+    baseMesh.rotationQuaternion.y = 0;
+
+    // reset base quaternion
+    mainMesh.parent.rotationQuaternion.x = 1.0;
+    mainMesh.parent.rotationQuaternion.y = 0.0;
+    mainMesh.parent.rotationQuaternion.z = 0.0;
+    mainMesh.parent.rotationQuaternion.w = 0.0;
+    mainMesh.parent.rotationQuaternion.normalize();
+  }
+
   loadTurtle () {
     const p = new Promise((resolve, reject) => {
       const points = [
@@ -1021,6 +1042,7 @@ class Underwater {
 
       this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
         const meshesWithMaterials = [];
+        this._fixLoadedModelsOrientation(task.loadedMeshes);
 
         for (const mesh of task.loadedMeshes) {
           mesh.position = new BABYLON.Vector3(-14.12, -12.2, 36.19);
@@ -1029,11 +1051,8 @@ class Underwater {
             mesh.material.freeze();
             meshesWithMaterials.push(mesh);
           } else {
-            // this.turtles.push(mesh);
             this.createPathForAnimation(mesh, curve, 30);
           }
-          // mesh.alwaysSelectAsActiveMesh = true;
-          // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
         }
         this.addToSceneAndCaustic(meshesWithMaterials);
 
@@ -1134,21 +1153,8 @@ class Underwater {
     return p;
   }
 
-  buildTourCurveDecent (points) {
-    const interpolatedPoints = 10;
-    const totalPoints = points.length;
+  buildTourCurveDecent (points, interpolatedPoints = 10) {
     const curve = BABYLON.Curve3.CreateCatmullRomSpline(points, interpolatedPoints, true);
-    // let curve = BABYLON.Curve3.CreateCubicBezier(points[0], points[1], points[2], points[3], interpolatedPoints);
-    // for (let i = 1; i < totalPoints; i++) {
-    //   const curveCont = BABYLON.Curve3.CreateCubicBezier(
-    //     points[i],
-    //     points[(i + 1) % totalPoints],
-    //     points[(i + 2) % totalPoints],
-    //     points[(i + 3) % totalPoints],
-    //     interpolatedPoints
-    //   );
-    //   curve = curve.continue(curveCont);
-    // }
     return curve;
   }
 
@@ -1174,13 +1180,11 @@ class Underwater {
   /**
    * Toggle pause/unpause the tour if the animation started.
    */
-  pauseTour () {
-    if (this.animTour) {
-      if (!this.animTour._paused) {
-        this.animTour.pause();
-      } else {
-        this.animTour.restart();
-      }
+  togglePauseTour () {
+    if (!this.animTour._paused) {
+      this.animTour.pause();
+    } else {
+      this.animTour.restart();
     }
   }
 
@@ -1231,21 +1235,9 @@ class Underwater {
         }
         // mesh.freezeWorldMatrix();
       }
-      const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
+
+      this._fixLoadedModelsOrientation(loadedMeshes);
       mainMesh = loadedMeshes[1];
-
-      // reset weird scaling
-      baseMesh.scaling.z = 1;
-      baseMesh.scaling.y = 1;
-      baseMesh.scaling.x = 1;
-      baseMesh.rotationQuaternion.y = 0;
-
-      // reset base quaternion
-      mainMesh.parent.rotationQuaternion.x = 1.0;
-      mainMesh.parent.rotationQuaternion.y = 0.0;
-      mainMesh.parent.rotationQuaternion.z = 0.0;
-      mainMesh.parent.rotationQuaternion.w = 0.0;
-      mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
       this.addToSceneAndCaustic(loadedMeshes);
@@ -1437,20 +1429,7 @@ export default {
     },
     toggleGuidedTour () {
       this.playing = !this.playing;
-      if (!this.underwater.animTour) {
-        this.playing = true;
-      }
-      if (this.playing) {
-        console.log('Guided Tour Requested');
-        if (!this.underwater.animTour) {
-          this.underwater.guidedTour();
-        } else {
-          this.underwater.pauseTour();
-        }
-      } else {
-        console.log('Guided Tour Paused');
-        this.underwater.pauseTour();
-      }
+      this.underwater.togglePauseTour();
     },
     stopGuidedTour () {
       this.playing = false;
