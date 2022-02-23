@@ -1217,7 +1217,7 @@ class Underwater {
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
     boidsManager.maxSpeed = 1.0;
-    boidsManager.showDebug(this.scene);
+    // boidsManager.showDebug(this.scene);
 
     let mainMesh = null;
     const bufferMatrices = new Float32Array(16 * total);
