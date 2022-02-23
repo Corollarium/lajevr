@@ -1229,7 +1229,7 @@ class Underwater {
         if (mesh.material) {
           mesh.material.freeze();
         }
-        mesh.freezeWorldMatrix();
+        // mesh.freezeWorldMatrix();
       }
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
