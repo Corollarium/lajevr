@@ -283,6 +283,7 @@ class Underwater {
 
       if (vueComponent.snapshotRequested) {
         vueComponent.snapshotRequested = false;
+        this.share();
       }
     });
 
@@ -336,7 +337,7 @@ class Underwater {
 
   createPathForAnimation (mesh, curve, frameRate = 60) {
     // Transform the curves into a proper Path3D object and get its orientation information
-    const path3d = new BABYLON.Path3D(curve.getPoints());
+    const path3d = new BABYLON.Path3D(curve.getPoints(), v3(0, -1.0, 0.0), false, true);
     const tangents = path3d.getTangents();
     const normals = path3d.getNormals();
     const binormals = path3d.getBinormals();
@@ -362,7 +363,13 @@ class Underwater {
     pointMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
 
     for (let p = 0; p < curvePath.length; p++) {
-      const sp = BABYLON.Mesh.CreateSphere('cPoint' + p, 16, 0.05, this.scene);
+      binormals[p].y = 0;
+      binormals[p].normalize();
+      BABYLON.Vector3.CrossToRef(tangents[p], binormals[p], normals[p]);
+      normals[p].y = Math.abs(normals[p].y);
+      BABYLON.Vector3.CrossToRef(normals[p], tangents[p], binormals[p]);
+
+      const sp = BABYLON.Mesh.CreateSphere('cPoint' + p, 16, 0.02, this.scene);
       sp.material = pointMaterial;
       sp.position = curvePath[p];
       sp.parent = pathGroup;
@@ -382,7 +389,14 @@ class Underwater {
       const tangent = tangents[i];
       const binormal = binormals[i];
 
-      const rotation = BABYLON.Quaternion.FromLookDirectionRH(tangent, binormal);
+      const rotation = BABYLON.Quaternion.FromLookDirectionRH(tangent, normals[i]);
+
+      // // cross the direction with a fixed "up" vector and we get the side direction.
+      // BABYLON.Vector3.CrossToRef(tangent, yDirection, sideDirection);
+      // // and cross it again to get the actual up direction
+      // BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
+      // // build the quaternion
+      // BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
 
       posKeys.push({ frame: i * frameRate, value: position });
       rotKeys.push({ frame: i * frameRate, value: rotation });
