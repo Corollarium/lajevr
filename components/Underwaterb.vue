@@ -1,5 +1,5 @@
 <template>
-  <div id="underwater" v-on:keyup.space="toggleGuidedTour">
+  <div id="underwater">
     <canvas id="underwater-3d" touch-action="none" />
     <div id="underwater-debug">
       {{ fps }} fps
@@ -160,6 +160,7 @@ class Underwater {
   base = ''; // base url
 
   // babylon basis
+  vueComponent = null;
   engine = null;
   scene = null;
   camera = null;
@@ -183,6 +184,7 @@ class Underwater {
     document.onfullscreenchange = (event) => {
       vueComponent.isFullscreen = !!document.fullscreenElement;
     };
+    this.vueComponent = vueComponent;
     this.base = vueComponent.base;
 
     /*
@@ -474,6 +476,9 @@ class Underwater {
       switch (kbInfo.type) {
       case BABYLON.KeyboardEventTypes.KEYDOWN:
         console.log('KEY DOWN: ', kbInfo.event.key);
+        if (kbInfo.event.key === ' ') {
+          this.togglePauseTour();
+        }
         if (kbInfo.event.key === 'p') {
           console.log(JSON.stringify({
             rotationQuaternion: this.camera.rotationQuaternion,
@@ -1186,6 +1191,7 @@ class Underwater {
     } else {
       this.animTour.restart();
     }
+    this.vueComponent.playing = !this.animTour._paused;
   }
 
   /**
@@ -1324,6 +1330,19 @@ class Underwater {
     };
   }
 
+  /*
+  setupDiver () {
+    this.diver = this.scene.getNodeByName('global_movement');
+    this.diver.parent = this.camera;
+    // Set the initial position to place the diver again when above the threshold for diver to follow
+    // This Y position places the diver properly sitting on the boat
+    this.diver.position.y = -0.28;
+    this.diverInitPos = this.diver.position;
+    this.diverAnim = this.scene.getAnimationGroupByName('Take 001.002');
+    // start the sitting animation
+    this.diverAnim.start(true, 1, this.diverAnims.sitting.init, this.diverAnims.sitting.end, false);
+  } */
+
   random (min, max) {
     return Math.random() * (max - min) + min;
   }
@@ -1353,7 +1372,8 @@ export default {
       volume: 0,
       mute: false,
       /** The camera orientation as a compass */
-      orientationDegrees: 0.0
+      orientationDegrees: 0.0,
+      playing: false
     };
   },
 
@@ -1389,11 +1409,6 @@ export default {
       } else {
         return '<<<<';
       }
-    },
-    playing () {
-      if (!this.underwater) { return false; }
-      if (!this.underwater.animTour) { return false; }
-      return !this.underwater.animTour._paused;
     }
   },
 
@@ -1428,11 +1443,9 @@ export default {
       }
     },
     toggleGuidedTour () {
-      this.playing = !this.playing;
       this.underwater.togglePauseTour();
     },
     stopGuidedTour () {
-      this.playing = false;
       this.underwater.quitTour();
     }
   }
