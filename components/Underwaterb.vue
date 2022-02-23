@@ -203,8 +203,8 @@ class Underwater {
       this.loadDiverBoat(),
       // this.loadDiverBoatBig(),
       // this.loadMantas(),
-      this.loadTurtle()
-      // this.loadAudio()
+      this.loadTurtle(),
+      this.loadAudio()
     ];
 
     const fish = this.loadBoidsModel(
@@ -226,7 +226,7 @@ class Underwater {
       this.debugState = true;
       this.camera.speed = 0.5;
       this.debugUtils();
-      BABYLON.Engine.audioEngine.setGlobalVolume(0);
+      vueComponent.toggleVolume();
     }
     // this.instrumentation();
 
@@ -247,18 +247,18 @@ class Underwater {
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
         isUnderwater = isUnderwaterNow;
-      //   if (this.audioDiver) {
-      //     this.audioDiver.pause();
-      //     if (isUnderwater) {
-      //       this.audioDiver.play();
-      //     }
-      //   }
-      //   if (this.audioOcean) {
-      //     this.audioOcean.pause();
-      //     if (!isUnderwater) {
-      //       this.audioOcean.play();
-      //     }
-      //   }
+        if (this.audioDiver) {
+          this.audioDiver.pause();
+          if (isUnderwater) {
+            this.audioDiver.play();
+          }
+        }
+        if (this.audioOcean) {
+          this.audioOcean.pause();
+          if (!isUnderwater) {
+            this.audioOcean.play();
+          }
+        }
       }
       if (uiUpdateCounter++ % 8) {
         // update UI. Only every 8 frames to avoid wasting time with Vue
@@ -1100,7 +1100,7 @@ class Underwater {
           task.data,
           this.scene,
           () => {
-            // this.audioOcean.play();
+            this.audioOcean.play();
           },
           {
             autoplay: false,
@@ -1217,6 +1217,7 @@ class Underwater {
     boidsManager.alignment = 0.03;
     boidsManager.separationMinDistance = 0.5;
     boidsManager.maxSpeed = 1.0;
+    boidsManager.showDebug(this.scene);
 
     let mainMesh = null;
     const bufferMatrices = new Float32Array(16 * total);
@@ -1243,7 +1244,10 @@ class Underwater {
       }
 
       this._fixLoadedModelsOrientation(loadedMeshes);
+
+      const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
+
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
       this.addToSceneAndCaustic(loadedMeshes);
@@ -1431,7 +1435,7 @@ export default {
     start () {
       this.started = true;
       this.fullscreen();
-      // this.audioOcean.play();
+      this.underwater.audioOcean.play();
     },
     toggleVolume () {
       this.mute = !this.mute;
