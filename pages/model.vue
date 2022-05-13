@@ -2,7 +2,7 @@
   <article>
     <section>
       <GLTFModel
-        :model="'./models/manta/scene.gltf'"
+        :model="'./models/raiaManta.glb'"
         :attribution="'xxxxx'"
       />
       </GLTFModel>

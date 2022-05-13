@@ -174,7 +174,6 @@ class Underwater {
   audioDiver = null;
   audioOcean = null;
   debugState = false;
-  turtles = [];
 
   animTour = null;
 
@@ -188,8 +187,8 @@ class Underwater {
     this.base = vueComponent.base;
 
     /*
-      * boot renderer, scene, camera
-          */
+     * boot renderer, scene, camera
+     */
 
     // Create the scene space
     this.bootScene(container, vueComponent);
@@ -202,7 +201,7 @@ class Underwater {
       this.loadMoreiaBarco(), // 4 draw calls
       this.loadDiverBoat(),
       // this.loadDiverBoatBig(),
-      // this.loadMantas(),
+      this.loadMantas(),
       this.loadTurtle(),
       this.loadAudio()
     ];
@@ -246,6 +245,7 @@ class Underwater {
 
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
+        console.log('toggle', this.audioDiver, this.audioOcean);
         isUnderwater = isUnderwaterNow;
         if (this.audioDiver) {
           this.audioDiver.pause();
@@ -355,7 +355,7 @@ class Underwater {
     /* uncomment to debug paths
 
     // visualisation
-    const pathGroup = new BABYLON.Mesh('pathGroup');
+    const pathGroup = new BABYLON.Mesh('pathGroup' + mesh.name);
     const curveMesh = BABYLON.Mesh.CreateLines(
       'bezier', curve.getPoints(), this.scene, false
     );
@@ -1067,6 +1067,42 @@ class Underwater {
     return p;
   }
 
+  loadMantas () {
+    const p = new Promise((resolve, reject) => {
+      const points = [
+        v3(-4, -19, 23),
+        v3(8, -17, 30),
+        v3(22, -14, 39),
+        v3(32, -13, 43),
+        v3(28, -15, 50),
+        v3(16, -18, 44),
+        v3(2, -19, 32),
+        v3(-9, -21, 28)
+      ];
+      const curve = this.buildTourCurveDecent(points, 40);
+
+      this.assetsManager.addMeshTask('manta', null, this.base + 'models/', 'raiaManta.glb').onSuccess = (task) => {
+        const meshesWithMaterials = [];
+        this._fixLoadedModelsOrientation(task.loadedMeshes);
+
+        for (const mesh of task.loadedMeshes) {
+          mesh.position = new BABYLON.Vector3(-19.12, -12.2, 46);
+          if (mesh.material) {
+            mesh.material.backFaceCulling = false;
+            mesh.material.freeze();
+            meshesWithMaterials.push(mesh);
+          } else {
+            this.createPathForAnimation(mesh, curve, 10);
+          }
+        }
+        this.addToSceneAndCaustic(meshesWithMaterials);
+
+        resolve();
+      };
+    });
+    return p;
+  }
+
   loadAudio () {
     const p = new Promise((resolve, reject) => {
       const end = () => {
@@ -1078,7 +1114,6 @@ class Underwater {
         'sound_diver',
         this.base + 'audio/156011__hdvideoguy__scubadiving-01.mp3'
       ).onSuccess = (task) => {
-        end();
         this.audioDiver = new BABYLON.Sound(
           'sound_diver',
           task.data,
@@ -1089,12 +1124,12 @@ class Underwater {
             autoplay: false,
             loop: true
           });
+        end();
       };
       this.assetsManager.addBinaryFileTask(
         'sound_ocean',
         this.base + 'audio/435668__byjoshberry__ocean-waves-hitting-bow-of-moving-boat.mp3'
       ).onSuccess = (task) => {
-        end();
         this.audioOcean = new BABYLON.Sound(
           'sound_ocean',
           task.data,
@@ -1106,6 +1141,7 @@ class Underwater {
             autoplay: false,
             loop: true
           });
+        end();
       };
     });
     return p;
