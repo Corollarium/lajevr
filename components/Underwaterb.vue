@@ -245,7 +245,6 @@ class Underwater {
 
       const isUnderwaterNow = this.camera.position.y <= 0;
       if (isUnderwater !== isUnderwaterNow) {
-        console.log('toggle', this.audioDiver, this.audioOcean);
         isUnderwater = isUnderwaterNow;
         if (this.audioDiver) {
           this.audioDiver.pause();
@@ -323,7 +322,6 @@ class Underwater {
   beforeDestroy () {
     // TODO window.removeEventListener('resize', this.resize.bind(this));
     document.onfullscreenchange = null;
-    this.engine.stopRenderLoop();
     if (this.audioDiver) {
       this.audioDiver.pause();
       this.audioDiver = null;
@@ -332,6 +330,7 @@ class Underwater {
       this.audioOcean.pause();
       this.audioOcean = null;
     }
+    this.engine.stopRenderLoop();
     this.scene.dispose();
     this.scene = null;
     this.engine = null;
@@ -1458,6 +1457,7 @@ export default {
   },
 
   beforeDestroy () {
+    console.log('before destroy', this.underwater);
     if (this.underwater) {
       this.underwater.beforeDestroy();
     }
@@ -1471,7 +1471,6 @@ export default {
     start () {
       this.started = true;
       this.fullscreen();
-      this.underwater.audioOcean.play();
     },
     toggleVolume () {
       this.mute = !this.mute;
