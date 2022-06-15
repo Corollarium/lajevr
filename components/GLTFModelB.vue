@@ -246,7 +246,9 @@ export default {
       (entries, observer) => {
         entries.forEach((entry) => {
           shouldRender = (entry.intersectionRatio >= 0.05);
-          view.enabled = shouldRender;
+          if (view) {
+            view.enabled = shouldRender;
+          }
 
           if (shouldRender) {
             this.scene.detachControl();
@@ -299,7 +301,9 @@ export default {
 
   methods: {
     resize () {
-      this.engine.resize();
+      if (this.engine) {
+        this.engine.resize();
+      }
     },
     requestFullscreen () {
       this.container.requestFullscreen();
