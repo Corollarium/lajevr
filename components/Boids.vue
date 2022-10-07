@@ -252,6 +252,7 @@ class BoidsTest {
         );
       } else {
         boids = e.data.boids;
+        debugData.center.position.copyFrom(e.data.center);
       }
     };
 
@@ -323,7 +324,6 @@ class BoidsTest {
       const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
-      console.log(mainMesh.name);
 
       // reset weird scaling
       baseMesh.scaling.z = 1;
@@ -479,7 +479,7 @@ class BoidsTest {
           segments: 8
         }
       );
-      debug.influence.scaling.setAll(debug.separationMinDistance);
+      debug.influence.scaling.setAll(0.5); // TODO
       debug.influence.material = wireframeMaterial;
       i++;
       debugData.boids.push(debug);
