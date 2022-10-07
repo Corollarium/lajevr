@@ -93,7 +93,7 @@ class BoidsTest {
         }
       }
 
-      // TODO fish.update(deltaTime);
+      fish.update(deltaTime);
 
       this.scene.render();
     });
@@ -350,51 +350,55 @@ class BoidsTest {
       // mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
 
+    let boids = [];
     boidsWorkerThread.onmessage = (e) => {
-      // console.log('ogt', e.data);
+      boids = e.data.boids;
     };
 
     return {
       models: [mainMesh],
       boidsWorkerThread,
       promise: p,
-      update: ((_boids, _models, total) => {
-        // // pre declare variables to avoid GC
-        // const one = new BABYLON.Vector3(1, 1, 1);
-        // const direction = new BABYLON.Vector3(1, 1, 1);
-        // const m = BABYLON.Matrix.Identity();
-        // const orientation = BABYLON.Quaternion.Zero();
-        // const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
+      update: ((_models, total) => {
+        // pre declare variables to avoid GC
+        const one = new BABYLON.Vector3(1, 1, 1);
+        const direction = new BABYLON.Vector3(1, 1, 1);
+        const m = BABYLON.Matrix.Identity();
+        const orientation = BABYLON.Quaternion.Zero();
+        const lastDirection = Array.from({ length: total }, (_, i) => new BABYLON.Vector3(0, 0, 0));
+        const boidPosition = new BABYLON.Vector3(1, 1, 1);
+        const boidVelocity = new BABYLON.Vector3(1, 1, 1);
 
-        // return (deltaTime) => {
-        //   if (mainMesh) {
-        //     // mainMesh.bakedVertexAnimationManager.time += deltaTime;
-        //     _boids.update(deltaTime);
-        //     for (let i = 0; i < total; i++) {
-        //       const boid = _boids.boids[i];
+        return (deltaTime) => {
+          if (mainMesh) {
+            // mainMesh.bakedVertexAnimationManager.time += deltaTime;
+            for (let i = 0; i < boids.length; i++) {
+              const boid = boids[i];
+              boidPosition.copyFrom(boid.position);
+              boidVelocity.copyFrom(boid.velocity);
 
-        //       // compute our quaternion from the direction to point to it
-        //       boid.velocity.normalizeToRef(direction);
-        //       const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
-        //       // should never be upside down.
-        //       fin.y = -Math.abs(fin.y);
-        //       lastDirection[i].copyFrom(direction);
-        //       const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
-        //       BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
+              // compute our quaternion from the direction to point to it
+              boidVelocity.normalizeToRef(direction);
+              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
+              // should never be upside down.
+              fin.y = -Math.abs(fin.y);
+              lastDirection[i].copyFrom(direction);
+              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
+              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
 
-        //       // update position and orientation
-        //       BABYLON.Matrix.ComposeToRef(
-        //         one,
-        //         orientation,
-        //         boid.position,
-        //         m
-        //       );
-        //       m.copyToArray(bufferMatrices, i * 16);
-        //     }
-        //     mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-        //   }
-        // };
-      })(boidsWorkerThread, mainMesh, total)
+              // update position and orientation
+              BABYLON.Matrix.ComposeToRef(
+                one,
+                orientation,
+                boidPosition,
+                m
+              );
+              m.copyToArray(bufferMatrices, i * 16);
+            }
+            mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+          }
+        };
+      })(mainMesh, total)
     };
   }
 

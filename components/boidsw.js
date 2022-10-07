@@ -1,6 +1,9 @@
 import { Vector3 } from '@babylonjs/core';
 import BoidsManager from './boids';
 
+/**
+ * @type {BoidsManager}
+ */
 let boidsManager = null;
 
 function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, initialVelocity = null) {
@@ -11,6 +14,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
   const boundsMax = new Vector3(
     center.x + boundRadiusScale, center.y + boundRadiusScale, center.z + boundRadiusScale
   );
+  console.log(center, boundsMin, boundsMax);
 
   boidsManager = new BoidsManager(
     total,
@@ -58,7 +62,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
 function processCommand (data) {
   if (data.command === 'start') {
     start(
-      data.center,
+      new Vector3().copyFrom(data.center),
       data.total,
       data.initialRadius || 1.0,
       data.boundRadiusScale || 100.0
