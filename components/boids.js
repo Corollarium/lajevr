@@ -82,10 +82,8 @@ class BoidsManager {
 
   /**
      * Updates the boids.
-     *
-     * @param {Number} deltaTime The time since last frame in seconds
      */
-  update (deltaTime) {
+  updateForces () {
     this._updateCenter();
     // const maxSpeedSquared = this.maxSpeed * this.maxSpeed;
     // const normalized = new BABYLON.Vector3();
@@ -104,7 +102,20 @@ class BoidsManager {
 
       // force = mass * acceleration
       boid.force.copyFrom(f);
-      boid.velocity.addInPlace(f.scale(deltaTime));
+    });
+  }
+
+  /**
+     * Updates the boids positions from the pre-calculated forces.
+     *
+     * @param {Number} deltaTime The time since last frame in seconds
+     */
+  updatePositions (deltaTime) {
+    this._updateCenter();
+    // const maxSpeedSquared = this.maxSpeed * this.maxSpeed;
+    // const normalized = new BABYLON.Vector3();
+    this.boids.forEach((boid) => {
+      boid.velocity.addInPlace(boid.force.scale(deltaTime));
 
       // // clamp velocity
       // boid.velocity.normalizeToRef(normalized);
@@ -118,6 +129,17 @@ class BoidsManager {
 
       boid.position.addInPlace(boid.velocity.scale(deltaTime));
     });
+  }
+
+  /**
+     * Updates the boids.
+     *
+     * @param {Number} deltaTime The time since last frame in seconds
+     */
+  update (deltaTime) {
+    this._updateCenter();
+    this.updateForces();
+    this.updatePositions();
     this._updateDebug();
   }
 

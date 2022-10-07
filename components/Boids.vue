@@ -9,7 +9,7 @@
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 // import * as Materials from 'babylonjs-materials';
-import BoidsManager from './boids';
+import BoidsWorker from 'worker-loader!./boidsw';
 /* eslint-enable */
 
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
@@ -93,7 +93,7 @@ class BoidsTest {
         }
       }
 
-      fish.update(deltaTime);
+      // TODO fish.update(deltaTime);
 
       this.scene.render();
     });
@@ -238,20 +238,27 @@ class BoidsTest {
   }
 
   loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
-    const boidsManager = new BoidsManager(
-      total,
-      boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
-      1.0,
-      30.0
-    );
-    boidsManager.boundsMin = boundsMin;
-    boidsManager.boundsMax = boundsMax;
-    boidsManager.calculateBounds();
-    boidsManager.cohesion = 0.001;
-    boidsManager.alignment = 0.03;
-    boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 1.0;
-    boidsManager.showDebug(this.scene);
+    const boidsWorkerThread = new BoidsWorker();
+    boidsWorkerThread.postMessage(
+      { command: 'bundle',
+        list: [
+          {
+            command: 'start',
+            total,
+            center: boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
+            initialRadius: 1.0,
+            boundRadiusScale: 30.0
+          },
+          { command: 'set', name: 'boundsMin', value: boundsMin },
+          { command: 'set', name: 'boundsMax', value: boundsMax },
+          { command: 'calculateBounds' },
+          { command: 'set', name: 'cohesion', value: 0.001 },
+          { command: 'set', name: 'alignment', value: 0.03 },
+          { command: 'set', name: 'separationMinDistance', value: 0.5 },
+          { command: 'set', name: 'maxSpeed', value: 1.0 }
+          // { command: 'set', name: '.showDebug(this.scene);
+        ]
+      });
 
     // keep them around the center
     // boidsManager.addForce(
@@ -343,47 +350,51 @@ class BoidsTest {
       // mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
 
+    boidsWorkerThread.onmessage = (e) => {
+      // console.log('ogt', e.data);
+    };
+
     return {
       models: [mainMesh],
-      boidsManager,
+      boidsWorkerThread,
       promise: p,
       update: ((_boids, _models, total) => {
-        // pre declare variables to avoid GC
-        const one = new BABYLON.Vector3(1, 1, 1);
-        const direction = new BABYLON.Vector3(1, 1, 1);
-        const m = BABYLON.Matrix.Identity();
-        const orientation = BABYLON.Quaternion.Zero();
-        const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
+        // // pre declare variables to avoid GC
+        // const one = new BABYLON.Vector3(1, 1, 1);
+        // const direction = new BABYLON.Vector3(1, 1, 1);
+        // const m = BABYLON.Matrix.Identity();
+        // const orientation = BABYLON.Quaternion.Zero();
+        // const lastDirection = _boids.boids.map(i => new BABYLON.Vector3(0, 0, 0));
 
-        return (deltaTime) => {
-          if (mainMesh) {
-            // mainMesh.bakedVertexAnimationManager.time += deltaTime;
-            _boids.update(deltaTime);
-            for (let i = 0; i < total; i++) {
-              const boid = _boids.boids[i];
+        // return (deltaTime) => {
+        //   if (mainMesh) {
+        //     // mainMesh.bakedVertexAnimationManager.time += deltaTime;
+        //     _boids.update(deltaTime);
+        //     for (let i = 0; i < total; i++) {
+        //       const boid = _boids.boids[i];
 
-              // compute our quaternion from the direction to point to it
-              boid.velocity.normalizeToRef(direction);
-              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
-              // should never be upside down.
-              fin.y = -Math.abs(fin.y);
-              lastDirection[i].copyFrom(direction);
-              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
-              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
+        //       // compute our quaternion from the direction to point to it
+        //       boid.velocity.normalizeToRef(direction);
+        //       const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
+        //       // should never be upside down.
+        //       fin.y = -Math.abs(fin.y);
+        //       lastDirection[i].copyFrom(direction);
+        //       const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
+        //       BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
 
-              // update position and orientation
-              BABYLON.Matrix.ComposeToRef(
-                one,
-                orientation,
-                boid.position,
-                m
-              );
-              m.copyToArray(bufferMatrices, i * 16);
-            }
-            mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
-          }
-        };
-      })(boidsManager, mainMesh, total)
+        //       // update position and orientation
+        //       BABYLON.Matrix.ComposeToRef(
+        //         one,
+        //         orientation,
+        //         boid.position,
+        //         m
+        //       );
+        //       m.copyToArray(bufferMatrices, i * 16);
+        //     }
+        //     mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+        //   }
+        // };
+      })(boidsWorkerThread, mainMesh, total)
     };
   }
 
