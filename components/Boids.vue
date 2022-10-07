@@ -60,7 +60,7 @@ class BoidsTest {
     ];
     const fish = this.loadBoidsModel(
       this.base + 'models/', 'sargentinho.glb',
-      30,
+      1000, // TODO: less on mobile?
       sp0.position,
       sp1.position,
       [{ from: 1, to: 30, name: 'swim' }]
@@ -241,9 +241,11 @@ class BoidsTest {
     let boids = [];
     let debugData = {};
 
+    // run the boid simulation in a separate thread
     const boidsWorkerThread = new BoidsWorker();
     boidsWorkerThread.onmessage = (e) => {
       if (e.data.command === 'started') {
+        // IF DEBUG
         debugData = this.showBoidsDebug(
           this.scene,
           e.data.boids,
@@ -252,10 +254,13 @@ class BoidsTest {
         );
       } else {
         boids = e.data.boids;
+
+        // IF DEBUG
         debugData.center.position.copyFrom(e.data.center);
       }
     };
 
+    // start the simulation and set parameters
     boidsWorkerThread.postMessage(
       { command: 'bundle',
         list: [
@@ -317,6 +322,7 @@ class BoidsTest {
         if (mesh.material) {
           mesh.material.freeze();
         }
+        this.scene.stopAnimation(mesh);
         // mesh.alwaysSelectAsActiveMesh = true;
         // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
         // mesh.convertToUnIndexedMesh();
@@ -391,8 +397,14 @@ class BoidsTest {
               if (debugData.boids) {
                 const debug = debugData.boids[i];
                 const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
-                debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
-                debug.influence.position.copyFrom(boidPosition);
+                // debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
+
+                BABYLON.Matrix.Translation(
+                  boidPosition.x,
+                  boidPosition.y,
+                  boidPosition.z
+                ).copyToArray(debugData.influenceMatrices, 16 * i);
+                // old  debug.influence.position.copyFrom(boidPosition);
               }
 
               // compute our quaternion from the direction to point to it
@@ -402,7 +414,7 @@ class BoidsTest {
               fin.y = -Math.abs(fin.y);
               lastDirection[i].copyFrom(direction);
               const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
-              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
+              // BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
 
               // update position and orientation
               BABYLON.Matrix.ComposeToRef(
@@ -414,6 +426,9 @@ class BoidsTest {
               m.copyToArray(bufferMatrices, i * 16);
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+            if (debugData.influenceMesh) {
+              debugData.influenceMesh.thinInstanceSetBuffer('matrix', debugData.influenceMatrices, 16);
+            }
           }
         };
       })(mainMesh, total)
@@ -425,6 +440,7 @@ class BoidsTest {
      * @param {BABYLON.Scene} scene
      */
   showBoidsDebug (scene, boids, boundsMin, boundsMax) {
+    const name = 'xxx';
     const debugData = {
       boids: []
     };
@@ -462,28 +478,35 @@ class BoidsTest {
     wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
     wireframeMaterial.wireframe = true;
     let i = 0;
-    for (const boid of boids) {
-      const debug = {};
-      debug.force = BABYLON.MeshBuilder.CreateTube(
-        `boid_arrow_${i}`,
-        {
-          path: [new BABYLON.Vector3().copyFrom(boid.position).add(new BABYLON.Vector3().copyFrom(boid.velocity)), new BABYLON.Vector3().copyFrom(boid.position)],
-          radius: 0.01,
-          updatable: true
-        }, scene
-      );
-      debug.influence = BABYLON.MeshBuilder.CreateSphere(
-        `boid_influence_${i}`,
+
+    debugData.influenceMesh = BABYLON.MeshBuilder.CreateSphere(
+        `boid_influence_${name}`,
         {
           diameter: 1.0,
           segments: 8
         }
-      );
-      debug.influence.scaling.setAll(0.5); // TODO
-      debug.influence.material = wireframeMaterial;
+    );
+    debugData.influenceMesh.scaling.setAll(0.5); // TODO, should be separationMinDistance
+    debugData.influenceMesh.material = wireframeMaterial;
+
+    debugData.influenceMatrices = new Float32Array(16 * boids.length);
+
+    for (const boid of boids) {
+      const debug = {};
+      // TODO thin instances
+      // debug.force = BABYLON.MeshBuilder.CreateTube(
+      //   `boid_arrow_${i}`,
+      //   {
+      //     path: [new BABYLON.Vector3().copyFrom(boid.position).add(new BABYLON.Vector3().copyFrom(boid.velocity)), new BABYLON.Vector3().copyFrom(boid.position)],
+      //     radius: 0.01,
+      //     updatable: true
+      //   }, scene
+      // );
+      BABYLON.Matrix.IdentityReadOnly.copyToArray(debugData.influenceMatrices, 16 * i);
       i++;
       debugData.boids.push(debug);
     }
+    debugData.influenceMesh.thinInstanceSetBuffer('matrix', debugData.influenceMatrices, 16);
     return debugData;
   }
 
