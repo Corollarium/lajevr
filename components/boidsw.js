@@ -31,7 +31,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
   boidsManager.stopThread = false;
 
   // start by calculating a single ideal frame
-  boidsManager.updateForces(1 / 60);
+  boidsManager.updateForces(1.0 / 60);
 
   let lastTickPosition = performance.now();
 
@@ -64,7 +64,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
   const updateForces = () => {
     boidsManager.updateForces();
     if (!boidsManager.stopThread) {
-      setTimeout(updateForces, 1);
+      setTimeout(updateForces, 30);
     }
   };
   updateForces();
@@ -81,7 +81,11 @@ function processCommand (data) {
   } else if (data.command === 'stop') {
     boidsManager.stopThread = true;
   } else if (data.command === 'set') {
-    boidsManager[data.name] = data.value;
+    if (data.name === 'boundsMax' || data.name === 'boundsMin') {
+      boidsManager[data.name] = new Vector3().copyFrom(data.value);
+    } else {
+      boidsManager[data.name] = data.value;
+    }
   } else if (data.command === 'calculateBounds') {
     boidsManager.calculateBounds();
   } else if (data.command === 'bundle') {
