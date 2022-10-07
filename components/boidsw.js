@@ -14,7 +14,6 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
   const boundsMax = new Vector3(
     center.x + boundRadiusScale, center.y + boundRadiusScale, center.z + boundRadiusScale
   );
-  console.log(center, boundsMin, boundsMax);
 
   boidsManager = new BoidsManager(
     total,
@@ -41,14 +40,17 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
     const now = performance.now();
     const deltaTime = now - lastTickPosition;
     lastTickPosition = now;
-    boidsManager.updatePositions(deltaTime);
-    postMessage({ command: 'boids', boids: boidsManager.boids });
+    boidsManager.updatePositions(deltaTime / 1000.00);
+
+    postMessage({
+      command: 'boids',
+      boids: boidsManager.boids,
+      center: boidsManager.center
+    });
     if (!boidsManager.stopThread) {
       requestAnimationFrame(updatePositions);
     }
   };
-  updatePositions();
-  console.log('starte');
   postMessage({
     command: 'started',
     boids: boidsManager.boids,
@@ -56,6 +58,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
     boundsMax: boidsManager.boundsMax,
     separationMinDistance: boidsManager.separationMinDistance
   });
+  updatePositions();
 
   // this is slower and will update in its own rhythm
   const updateForces = () => {
