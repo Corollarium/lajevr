@@ -238,7 +238,23 @@ class BoidsTest {
   }
 
   loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
+    let boids = [];
+    let debugData = {};
+
     const boidsWorkerThread = new BoidsWorker();
+    boidsWorkerThread.onmessage = (e) => {
+      if (e.data.command === 'started') {
+        debugData = this.showBoidsDebug(
+          this.scene,
+          e.data.boids,
+          new BABYLON.Vector3().copyFrom(e.data.boundsMin),
+          new BABYLON.Vector3().copyFrom(e.data.boundsMax)
+        );
+      } else {
+        boids = e.data.boids;
+      }
+    };
+
     boidsWorkerThread.postMessage(
       { command: 'bundle',
         list: [
@@ -256,7 +272,6 @@ class BoidsTest {
           { command: 'set', name: 'alignment', value: 0.03 },
           { command: 'set', name: 'separationMinDistance', value: 0.5 },
           { command: 'set', name: 'maxSpeed', value: 1.0 }
-          // { command: 'set', name: '.showDebug(this.scene);
         ]
       });
 
@@ -350,11 +365,6 @@ class BoidsTest {
       // mainMesh.thinInstanceSetBuffer('bakedVertexAnimationSettingsInstanced', animParameters, 4);
     }).catch((e) => { console.error(e); });
 
-    let boids = [];
-    boidsWorkerThread.onmessage = (e) => {
-      boids = e.data.boids;
-    };
-
     return {
       models: [mainMesh],
       boidsWorkerThread,
@@ -376,6 +386,14 @@ class BoidsTest {
               const boid = boids[i];
               boidPosition.copyFrom(boid.position);
               boidVelocity.copyFrom(boid.velocity);
+
+              // visual debug
+              if (debugData.boids) {
+                const debug = debugData.boids[i];
+                const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
+                debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
+                debug.influence.position.copyFrom(boidPosition);
+              }
 
               // compute our quaternion from the direction to point to it
               boidVelocity.normalizeToRef(direction);
@@ -400,6 +418,73 @@ class BoidsTest {
         };
       })(mainMesh, total)
     };
+  }
+
+  /**
+     * Turns on debug menu and helpers.
+     * @param {BABYLON.Scene} scene
+     */
+  showBoidsDebug (scene, boids, boundsMin, boundsMax) {
+    const debugData = {
+      boids: []
+    };
+
+    // build a material
+    const centerMaterial = new BABYLON.StandardMaterial('debug_center', scene);
+    centerMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FF00FF');
+    debugData.center = BABYLON.MeshBuilder.CreateSphere(
+      'center',
+      {
+        diameter: 0.1,
+        segments: 8
+      }
+    );
+    debugData.center.material = centerMaterial;
+
+    // build bbox
+    const bboxMaterial = new BABYLON.StandardMaterial('debug_bbox', scene);
+    bboxMaterial.emissiveColor = BABYLON.Color3.FromHexString('#00FF00');
+    bboxMaterial.disableLighting = true;
+    bboxMaterial.wireframe = true;
+
+    debugData.bbox = BABYLON.MeshBuilder.CreateBox(
+      'boids_bbox',
+      {},
+      scene
+    );
+    debugData.bbox.scaling.x = Math.abs(boundsMax.x - boundsMin.x);
+    debugData.bbox.scaling.y = Math.abs(boundsMax.y - boundsMin.y);
+    debugData.bbox.scaling.z = Math.abs(boundsMax.z - boundsMin.z);
+    debugData.bbox.position = boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5));
+    debugData.bbox.material = bboxMaterial;
+
+    const wireframeMaterial = new BABYLON.StandardMaterial('debug_wireframe', scene);
+    wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
+    wireframeMaterial.wireframe = true;
+    let i = 0;
+    for (const boid of boids) {
+      const debug = {};
+      debug.force = BABYLON.MeshBuilder.CreateTube(
+        `boid_arrow_${i}`,
+        {
+          path: [new BABYLON.Vector3().copyFrom(boid.position).add(new BABYLON.Vector3().copyFrom(boid.velocity)), new BABYLON.Vector3().copyFrom(boid.position)],
+          radius: 0.01,
+          updatable: true
+        }, scene
+      );
+      debug.influence = BABYLON.MeshBuilder.CreateSphere(
+        `boid_influence_${i}`,
+        {
+          diameter: 1.0,
+          segments: 8
+        }
+      );
+      debug.influence.scaling.setAll(debug.separationMinDistance);
+      debug.influence.material = wireframeMaterial;
+      i++;
+      debugData.boids.push(debug);
+    }
+    return debugData;
   }
 
   random (min, max) {

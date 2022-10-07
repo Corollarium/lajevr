@@ -48,6 +48,14 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
     }
   };
   updatePositions();
+  console.log('starte');
+  postMessage({
+    command: 'started',
+    boids: boidsManager.boids,
+    boundsMin: boidsManager.boundsMin,
+    boundsMax: boidsManager.boundsMax,
+    separationMinDistance: boidsManager.separationMinDistance
+  });
 
   // this is slower and will update in its own rhythm
   const updateForces = () => {
