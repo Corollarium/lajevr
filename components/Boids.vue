@@ -66,6 +66,17 @@ class BoidsTest {
       [{ from: 1, to: 30, name: 'swim' }]
     );
     promises.push(fish.promise);
+
+    this.scene.onKeyboardObservable.add((kbInfo) => {
+      switch (kbInfo.type) {
+      case BABYLON.KeyboardEventTypes.KEYUP:
+        if (kbInfo.event.key === 'x') {
+          fish.boidsWorkerThread.postMessage({ command: 'dump' });
+        }
+        break;
+      }
+    });
+
     // Promise.all(promises).then(() => {
     //   console.log('all loaded');
     // });
@@ -240,6 +251,11 @@ class BoidsTest {
   loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
     let boids = [];
     let debugData = {};
+    const cohesion = 0.001;
+    const alignment = 0.03;
+    const separation = 0.2;
+    const separationMinDistance = 0.5;
+    const maxSpeed = 1.0;
 
     // run the boid simulation in a separate thread
     const boidsWorkerThread = new BoidsWorker();
@@ -250,7 +266,8 @@ class BoidsTest {
           this.scene,
           e.data.boids,
           new BABYLON.Vector3().copyFrom(e.data.boundsMin),
-          new BABYLON.Vector3().copyFrom(e.data.boundsMax)
+          new BABYLON.Vector3().copyFrom(e.data.boundsMax),
+          separationMinDistance
         );
       } else {
         boids = e.data.boids;
@@ -265,7 +282,7 @@ class BoidsTest {
       { command: 'bundle',
         list: [
           {
-            command: 'start',
+            command: 'construct',
             total,
             center: boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
             initialRadius: 1.0,
@@ -274,10 +291,12 @@ class BoidsTest {
           { command: 'set', name: 'boundsMin', value: boundsMin },
           { command: 'set', name: 'boundsMax', value: boundsMax },
           { command: 'calculateBounds' },
-          { command: 'set', name: 'cohesion', value: 0.001 },
-          { command: 'set', name: 'alignment', value: 0.03 },
-          { command: 'set', name: 'separationMinDistance', value: 0.5 },
-          { command: 'set', name: 'maxSpeed', value: 1.0 }
+          { command: 'set', name: 'cohesion', value: cohesion },
+          { command: 'set', name: 'alignment', value: alignment },
+          { command: 'set', name: 'separation', value: separation },
+          { command: 'set', name: 'separationMinDistance', value: separationMinDistance },
+          { command: 'set', name: 'maxSpeed', value: maxSpeed },
+          { command: 'start' }
         ]
       });
 
@@ -439,7 +458,7 @@ class BoidsTest {
      * Turns on debug menu and helpers.
      * @param {BABYLON.Scene} scene
      */
-  showBoidsDebug (scene, boids, boundsMin, boundsMax) {
+  showBoidsDebug (scene, boids, boundsMin, boundsMax, separationMinDistance) {
     const name = 'xxx';
     const debugData = {
       boids: []
@@ -477,20 +496,19 @@ class BoidsTest {
     const wireframeMaterial = new BABYLON.StandardMaterial('debug_wireframe', scene);
     wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
     wireframeMaterial.wireframe = true;
-    let i = 0;
 
     debugData.influenceMesh = BABYLON.MeshBuilder.CreateSphere(
         `boid_influence_${name}`,
         {
-          diameter: 1.0,
+          diameter: separationMinDistance,
           segments: 8
         }
     );
-    debugData.influenceMesh.scaling.setAll(0.5); // TODO, should be separationMinDistance
     debugData.influenceMesh.material = wireframeMaterial;
 
     debugData.influenceMatrices = new Float32Array(16 * boids.length);
 
+    let i = 0;
     for (const boid of boids) {
       const debug = {};
       // TODO thin instances
