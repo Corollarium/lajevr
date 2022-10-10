@@ -398,7 +398,8 @@ class BoidsTest {
         // these are fixed
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
-        const yDirection = new BABYLON.Vector3(0, -1, 0);
+        const yDirection = new BABYLON.Vector3(0, 1, 0);
+        const fixDirection = new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(0, 0, 1), Math.PI);
 
         // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
@@ -426,9 +427,7 @@ class BoidsTest {
               BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
               // build the quaternion
               BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
-
-              // debug axes
-              // debugAxes[i].update(boid.position, sideDirection, direction, topDirection);
+              orientation.multiplyInPlace(fixDirection);
 
               // update position and orientation
               BABYLON.Matrix.ComposeToRef(
@@ -441,17 +440,10 @@ class BoidsTest {
 
               // visual debug
               if (debugData.boids) {
-                const debug = debugData.boids[i];
-                const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
+                // const debug = debugData.boids[i];
+                // const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
                 // debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
-
-                // BABYLON.Matrix.Translation(
-                //   boidPosition.x,
-                //   boidPosition.y,
-                //   boidPosition.z
-                // ).copyToArray(debugData.influenceMatrices, 16 * i);
                 m.copyToArray(debugData.influenceMatrices, 16 * i);
-                // old  debug.influence.position.copyFrom(boidPosition);
               }
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
