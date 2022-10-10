@@ -357,11 +357,11 @@ class BoidsTest {
       baseMesh.rotationQuaternion.y = 0;
 
       // reset base quaternion
-      mainMesh.parent.rotationQuaternion.x = 1.0;
-      mainMesh.parent.rotationQuaternion.y = 0.0;
-      mainMesh.parent.rotationQuaternion.z = 0.0;
-      mainMesh.parent.rotationQuaternion.w = 0.0;
-      mainMesh.parent.rotationQuaternion.normalize();
+      // mainMesh.parent.rotationQuaternion.x = 1.0;
+      // mainMesh.parent.rotationQuaternion.y = 0.0;
+      // mainMesh.parent.rotationQuaternion.z = 0.0;
+      // mainMesh.parent.rotationQuaternion.w = 0.0;
+      // mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
 
@@ -395,12 +395,16 @@ class BoidsTest {
       boidsWorkerThread,
       promise: p,
       update: ((_models, total) => {
-        // pre declare variables to avoid GC
+        // these are fixed
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
+        const yDirection = new BABYLON.Vector3(0, -1, 0);
+
+        // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
         const orientation = BABYLON.Quaternion.Zero();
-        const lastDirection = Array.from({ length: total }, (_, i) => new BABYLON.Vector3(0, 0, 0));
+        const topDirection = new BABYLON.Vector3(1, 1, 1);
+        const sideDirection = new BABYLON.Vector3(1, 1, 1);
         const boidPosition = new BABYLON.Vector3(1, 1, 1);
         const boidVelocity = new BABYLON.Vector3(1, 1, 1);
 
@@ -412,37 +416,43 @@ class BoidsTest {
               boidPosition.copyFrom(boid.position);
               boidVelocity.copyFrom(boid.velocity);
 
+              // compute our quaternion from the direction to point to it
+
+              // where we are going to
+              boidVelocity.normalizeToRef(direction);
+              // cross the direction with a fixed "up" vector and we get the side direction.
+              BABYLON.Vector3.CrossToRef(direction, yDirection, sideDirection);
+              // and cross it again to get the actual up direction
+              BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
+              // build the quaternion
+              BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
+
+              // debug axes
+              // debugAxes[i].update(boid.position, sideDirection, direction, topDirection);
+
+              // update position and orientation
+              BABYLON.Matrix.ComposeToRef(
+                one,
+                orientation,
+                boid.position,
+                m
+              );
+              m.copyToArray(bufferMatrices, i * 16);
+
               // visual debug
               if (debugData.boids) {
                 const debug = debugData.boids[i];
                 const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
                 // debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
 
-                BABYLON.Matrix.Translation(
-                  boidPosition.x,
-                  boidPosition.y,
-                  boidPosition.z
-                ).copyToArray(debugData.influenceMatrices, 16 * i);
+                // BABYLON.Matrix.Translation(
+                //   boidPosition.x,
+                //   boidPosition.y,
+                //   boidPosition.z
+                // ).copyToArray(debugData.influenceMatrices, 16 * i);
+                m.copyToArray(debugData.influenceMatrices, 16 * i);
                 // old  debug.influence.position.copyFrom(boidPosition);
               }
-
-              // compute our quaternion from the direction to point to it
-              boidVelocity.normalizeToRef(direction);
-              const fin = BABYLON.Vector3.Cross(lastDirection[i], direction);
-              // should never be upside down.
-              fin.y = -Math.abs(fin.y);
-              lastDirection[i].copyFrom(direction);
-              const side = BABYLON.Vector3.Cross(lastDirection[i], fin);
-              // BABYLON.Quaternion.RotationQuaternionFromAxisToRef(side, lastDirection[i], fin, orientation);
-
-              // update position and orientation
-              BABYLON.Matrix.ComposeToRef(
-                one,
-                orientation,
-                boidPosition,
-                m
-              );
-              m.copyToArray(bufferMatrices, i * 16);
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
             if (debugData.influenceMesh) {
