@@ -2,6 +2,12 @@
 import * as BABYLON from 'babylonjs';
 
 class Boid {
+  /**
+   *
+   * @param {string} id
+   * @param {BABYLON.Vector3} position
+   * @param {BABYLON.Vector3} velocity
+   */
   constructor (id, position, velocity) {
     this.id = id;
     this.position = position;
@@ -9,12 +15,23 @@ class Boid {
     this.force = new BABYLON.Vector3(0, 0, 0);
   }
 
+  /**
+   * @return {BABYLON.Vector3}
+   */
   get orientation () {
     return this.velocity.normalize();
   }
 }
 
 class BoidsManager {
+  /**
+   *
+   * @param {Number} total Total number of boids
+   * @param {BABYLON.Vector3} center Center for the bounding volume
+   * @param {Number} initialRadius Radius for initial distribution of models
+   * @param {Number} boundRadiusScale Radius to keep models bound inside
+   * @param {BABYLON.Vector3} initialVelocity Initial average velocity
+   */
   constructor (total, center, initialRadius = 1.0, boundRadiusScale = 100.0, initialVelocity = null) {
     // control factors
     this.cohesion = 0.3;
@@ -48,9 +65,15 @@ class BoidsManager {
     this.reset(total, initialRadius, initialVelocity);
   }
 
+  /**
+   *
+   * @param {Number} total
+   * @param {Number} initialRadius Radius for initial distribution of models
+   * @param {BABYLON.Vector3} initialVelocity Initial average velocity
+   */
   reset (total, initialRadius, initialVelocity = null) {
     if (!initialVelocity) {
-      initialVelocity = new BABYLON.Vector3(0.3, 0.0, 0.3);
+      initialVelocity = new BABYLON.Vector3(initialRadius / 5.0, 0.0, initialRadius / 5.0);
     }
     this.boids = [];
     const initialSpeed = initialVelocity.length();
@@ -111,7 +134,6 @@ class BoidsManager {
      * @param {Number} deltaTime The time since last frame in seconds
      */
   updatePositions (deltaTime) {
-    this._updateCenter();
     // const maxSpeedSquared = this.maxSpeed * this.maxSpeed;
     // const normalized = new BABYLON.Vector3();
     this.boids.forEach((boid) => {
@@ -137,7 +159,6 @@ class BoidsManager {
      * @param {Number} deltaTime The time since last frame in seconds
      */
   update (deltaTime) {
-    this._updateCenter();
     this.updateForces();
     this.updatePositions();
     this._updateDebug();
@@ -167,7 +188,7 @@ class BoidsManager {
 
   /**
      * Boids try to fly towards the centre of mass of neighbouring boids.
-     * @param {Bird} boid
+     * @param {Boid} boid
      */
   _forceCentreMass (boid) {
     // TODO: we could remove the boid position from the average
@@ -176,7 +197,7 @@ class BoidsManager {
 
   /**
      * Boids try to keep a small distance away from other objects (including other boids).
-     * @param {Bird} boid
+     * @param {Boid} boid
      */
   _forceSeparation (boid) {
     const f = new BABYLON.Vector3(0, 0, 0);
@@ -197,7 +218,7 @@ class BoidsManager {
 
   /**
      * Boids try to match velocity with near boids.
-     * @param {Bird} boid
+     * @param {Boid} boid
      */
   _forceMatchVelocity (boid) {
     // TODO: we could remove the boid position from the average
@@ -206,7 +227,7 @@ class BoidsManager {
 
   /**
      * Boids want to get away from boundaries
-     * @param {Bird} boid
+     * @param {Boid} boid
      */
   _forceBoundaries (boid) {
     const f = new BABYLON.Vector3(0, 0, 0);
@@ -231,7 +252,7 @@ class BoidsManager {
   }
 
   /**
-     * Adds a new force to the callback list. The callback receives a {Bird} as argument.
+     * Adds a new force to the callback list. The callback receives a {Boid} as argument.
      *
      * @param {callback} boid
      */
@@ -294,11 +315,10 @@ class BoidsManager {
       boid.debug.influence = BABYLON.MeshBuilder.CreateSphere(
         `boid_influence_${i}`,
         {
-          diameter: 1.0,
+          diameter: this.separationMinDistance,
           segments: 8
         }
       );
-      boid.debug.influence.scaling.setAll(this.separationMinDistance);
       boid.debug.influence.material = wireframeMaterial;
       i++;
     }

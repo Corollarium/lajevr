@@ -6,7 +6,7 @@ import BoidsManager from './boids';
  */
 let boidsManager = null;
 
-function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, initialVelocity = null) {
+function construct (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, initialVelocity = null) {
   // set bounds
   const boundsMin = new Vector3(
     center.x - boundRadiusScale, center.y - boundRadiusScale, center.z - boundRadiusScale
@@ -18,8 +18,9 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
   boidsManager = new BoidsManager(
     total,
     boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
-    1.0,
-    30.0
+    initialRadius,
+    boundRadiusScale,
+    initialVelocity
   );
   boidsManager.boundsMin = boundsMin;
   boidsManager.boundsMax = boundsMax;
@@ -32,7 +33,9 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
 
   // start by calculating a single ideal frame
   boidsManager.updateForces(1.0 / 60);
+}
 
+function start () {
   let lastTickPosition = performance.now();
 
   // we want to updatePositions as often as possible
@@ -40,6 +43,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
     const now = performance.now();
     const deltaTime = now - lastTickPosition;
     lastTickPosition = now;
+    boidsManager._updateCenter();
     boidsManager.updatePositions(deltaTime / 1000.00);
 
     postMessage({
@@ -56,6 +60,7 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
     boids: boidsManager.boids,
     boundsMin: boidsManager.boundsMin,
     boundsMax: boidsManager.boundsMax,
+    center: boidsManager.center,
     separationMinDistance: boidsManager.separationMinDistance
   });
   updatePositions();
@@ -71,13 +76,15 @@ function start (center, total, initialRadius = 1.0, boundRadiusScale = 100.0, in
 }
 
 function processCommand (data) {
-  if (data.command === 'start') {
-    start(
+  if (data.command === 'construct') {
+    construct(
       new Vector3().copyFrom(data.center),
       data.total,
       data.initialRadius || 1.0,
       data.boundRadiusScale || 100.0
     );
+  } else if (data.command === 'start') {
+    start();
   } else if (data.command === 'stop') {
     boidsManager.stopThread = true;
   } else if (data.command === 'set') {
@@ -92,6 +99,10 @@ function processCommand (data) {
     for (const c of data.list) {
       processCommand(c);
     }
+  } else if (data.command === 'dump') {
+    console.info(
+      boidsManager
+    );
   }
 }
 
