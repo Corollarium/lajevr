@@ -10,6 +10,7 @@ import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 // import * as Materials from 'babylonjs-materials';
 import BoidsWorker from 'worker-loader!./boidsw';
+import { showBoidsDebug } from './boids';
 /* eslint-enable */
 
 const v3 = (x, y, z) => new BABYLON.Vector3(x, y, z);
@@ -262,7 +263,8 @@ class BoidsTest {
     boidsWorkerThread.onmessage = (e) => {
       if (e.data.command === 'started') {
         // IF DEBUG
-        debugData = this.showBoidsDebug(
+        debugData = showBoidsDebug(
+          modelfile,
           this.scene,
           e.data.boids,
           new BABYLON.Vector3().copyFrom(e.data.boundsMin),
@@ -454,80 +456,6 @@ class BoidsTest {
         };
       })(mainMesh, total)
     };
-  }
-
-  /**
-     * Turns on debug menu and helpers.
-     * @param {BABYLON.Scene} scene
-     */
-  showBoidsDebug (scene, boids, boundsMin, boundsMax, separationMinDistance) {
-    const name = 'xxx';
-    const debugData = {
-      boids: []
-    };
-
-    // build a material
-    const centerMaterial = new BABYLON.StandardMaterial('debug_center', scene);
-    centerMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FF00FF');
-    debugData.center = BABYLON.MeshBuilder.CreateSphere(
-      'center',
-      {
-        diameter: 0.1,
-        segments: 8
-      }
-    );
-    debugData.center.material = centerMaterial;
-
-    // build bbox
-    const bboxMaterial = new BABYLON.StandardMaterial('debug_bbox', scene);
-    bboxMaterial.emissiveColor = BABYLON.Color3.FromHexString('#00FF00');
-    bboxMaterial.disableLighting = true;
-    bboxMaterial.wireframe = true;
-
-    debugData.bbox = BABYLON.MeshBuilder.CreateBox(
-      'boids_bbox',
-      {},
-      scene
-    );
-    debugData.bbox.scaling.x = Math.abs(boundsMax.x - boundsMin.x);
-    debugData.bbox.scaling.y = Math.abs(boundsMax.y - boundsMin.y);
-    debugData.bbox.scaling.z = Math.abs(boundsMax.z - boundsMin.z);
-    debugData.bbox.position = boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5));
-    debugData.bbox.material = bboxMaterial;
-
-    const wireframeMaterial = new BABYLON.StandardMaterial('debug_wireframe', scene);
-    wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
-    wireframeMaterial.wireframe = true;
-
-    debugData.influenceMesh = BABYLON.MeshBuilder.CreateSphere(
-        `boid_influence_${name}`,
-        {
-          diameter: separationMinDistance,
-          segments: 8
-        }
-    );
-    debugData.influenceMesh.material = wireframeMaterial;
-
-    debugData.influenceMatrices = new Float32Array(16 * boids.length);
-
-    let i = 0;
-    for (const boid of boids) {
-      const debug = {};
-      // TODO thin instances
-      // debug.force = BABYLON.MeshBuilder.CreateTube(
-      //   `boid_arrow_${i}`,
-      //   {
-      //     path: [new BABYLON.Vector3().copyFrom(boid.position).add(new BABYLON.Vector3().copyFrom(boid.velocity)), new BABYLON.Vector3().copyFrom(boid.position)],
-      //     radius: 0.01,
-      //     updatable: true
-      //   }, scene
-      // );
-      BABYLON.Matrix.IdentityReadOnly.copyToArray(debugData.influenceMatrices, 16 * i);
-      i++;
-      debugData.boids.push(debug);
-    }
-    debugData.influenceMesh.thinInstanceSetBuffer('matrix', debugData.influenceMatrices, 16);
-    return debugData;
   }
 
   random (min, max) {
