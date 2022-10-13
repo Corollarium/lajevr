@@ -1,5 +1,5 @@
 import { Vector3 } from '@babylonjs/core';
-import BoidsManager from './boids';
+import { BoidsManager } from './boids';
 
 /**
  * @type {BoidsManager}
@@ -39,6 +39,8 @@ function start () {
   let lastTickPosition = performance.now();
 
   // we want to updatePositions as often as possible
+  const fpsLog = 3 * 60;
+  let fpsCounter = 0; let fpsLastNow = performance.now();
   const updatePositions = () => {
     const now = performance.now();
     const deltaTime = now - lastTickPosition;
@@ -53,6 +55,12 @@ function start () {
     });
     if (!boidsManager.stopThread) {
       requestAnimationFrame(updatePositions);
+    }
+    fpsCounter++;
+    if (fpsCounter % fpsLog === 0) {
+      console.log('fpspos', fpsLog / ((now - fpsLastNow) / 1000.0)
+      );
+      fpsLastNow = now;
     }
   };
   postMessage({
@@ -69,40 +77,55 @@ function start () {
   const updateForces = () => {
     boidsManager.updateForces();
     if (!boidsManager.stopThread) {
-      setTimeout(updateForces, 30);
+      setTimeout(updateForces, 3000);
     }
   };
   updateForces();
 }
 
 function processCommand (data) {
-  if (data.command === 'construct') {
+  switch (data.command) {
+  case 'construct':
     construct(
       new Vector3().copyFrom(data.center),
       data.total,
       data.initialRadius || 1.0,
       data.boundRadiusScale || 100.0
     );
-  } else if (data.command === 'start') {
+    break;
+  case 'start':
     start();
-  } else if (data.command === 'stop') {
+    break;
+  case 'stop':
     boidsManager.stopThread = true;
-  } else if (data.command === 'set') {
+    break;
+  case 'set':
     if (data.name === 'boundsMax' || data.name === 'boundsMin') {
       boidsManager[data.name] = new Vector3().copyFrom(data.value);
     } else {
       boidsManager[data.name] = data.value;
     }
-  } else if (data.command === 'calculateBounds') {
+    break;
+  case 'calculateBounds':
     boidsManager.calculateBounds();
-  } else if (data.command === 'bundle') {
+    break;
+  case 'reset':
+    boidsManager.reset(
+      data.total,
+      data.initialRadius,
+      data.initialVelocity ? new Vector3().copyFrom(data.initialVelocity) : null
+    );
+    break;
+  case 'bundle':
     for (const c of data.list) {
       processCommand(c);
     }
-  } else if (data.command === 'dump') {
+    break;
+  case 'dump':
     console.info(
       boidsManager
     );
+    break;
   }
 }
 

@@ -67,8 +67,10 @@ import 'babylonjs-loaders';
 import * as GUI from 'babylonjs-gui';
 import OceanPostProcess from './OceanPostProcess';
 // import * as Materials from 'babylonjs-materials';
-import BoidsManager from './boids';
+import { showBoidsDebug } from './boids';
+import BoidsWorker from 'worker-loader!./boidsw';
 
+const debugBoids = false;
 const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
 const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
 const causticPluginVertexDefinitions = require('!!raw-loader!./underwater_vertex_definitions.glsl');
@@ -206,14 +208,24 @@ class Underwater {
       this.loadAudio()
     ];
 
-    const fish = this.loadBoidsModel(
+    const sargentinho = this.loadBoidsModel(
       this.base + 'models/', 'sargentinho.glb',
-      30,
+      300,
       new BABYLON.Vector3(-33.12, -17.2, 12.19),
       new BABYLON.Vector3(-2.12, -7.2, 42.19),
       [{ from: 1, to: 30, name: 'swim' }]
     );
-    promises.push(fish.promise);
+    promises.push(sargentinho.promise);
+
+    const salema = this.loadBoidsModel(
+      this.base + 'models/', 'salema.glb',
+      1000,
+      new BABYLON.Vector3(-12.12, -23.2, 22.19),
+      new BABYLON.Vector3(22.12, -10.2, 52.19),
+      [{ from: 1, to: 30, name: 'swim' }]
+    );
+    promises.push(salema.promise);
+
     Promise.all(promises).then(() => {
       console.log('all loaded');
     });
@@ -226,6 +238,7 @@ class Underwater {
       this.camera.speed = 0.5;
       this.debugUtils();
       vueComponent.toggleVolume();
+      BABYLON.Engine.audioEngine.setGlobalVolume(0);
     }
     // this.instrumentation();
 
@@ -278,7 +291,8 @@ class Underwater {
       }
       CausticPluginMaterial.time = timeElapsed;
 
-      fish.update(deltaTime);
+      sargentinho.update(deltaTime);
+      salema.update(deltaTime);
 
       this.scene.render();
 
@@ -1013,7 +1027,7 @@ class Underwater {
     return p;
   }
 
-  _fixLoadedModelsOrientation (loadedMeshes) {
+  _fixLoadedModelsOrientation (loadedMeshes, resetQuaternion = true) {
     const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
     const mainMesh = loadedMeshes[1];
 
@@ -1024,11 +1038,13 @@ class Underwater {
     baseMesh.rotationQuaternion.y = 0;
 
     // reset base quaternion
-    mainMesh.parent.rotationQuaternion.x = 1.0;
-    mainMesh.parent.rotationQuaternion.y = 0.0;
-    mainMesh.parent.rotationQuaternion.z = 0.0;
-    mainMesh.parent.rotationQuaternion.w = 0.0;
-    mainMesh.parent.rotationQuaternion.normalize();
+    if (resetQuaternion) {
+      mainMesh.parent.rotationQuaternion.x = 1.0;
+      mainMesh.parent.rotationQuaternion.y = 0.0;
+      mainMesh.parent.rotationQuaternion.z = 0.0;
+      mainMesh.parent.rotationQuaternion.w = 0.0;
+      mainMesh.parent.rotationQuaternion.normalize();
+    }
   }
 
   loadTurtle () {
@@ -1237,22 +1253,78 @@ class Underwater {
     this.animTour.goToFrame(0);
   }
 
+  /**
+   *
+   * @param {string} modelpath
+   * @param {string} modelfile
+   * @param {int} total
+   * @param {BABYLON.Vector3} boundsMin
+   * @param {BABYLON.Vector3} boundsMax
+   *
+   */
   loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
-    const boidsManager = new BoidsManager(
-      total,
-      boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
-      1.0,
-      30.0
-    );
-    boidsManager.boundsMin = boundsMin;
-    boidsManager.boundsMax = boundsMax;
-    boidsManager.calculateBounds();
-    boidsManager.reset(30.0, 1.0);
-    boidsManager.cohesion = 0.001;
-    boidsManager.alignment = 0.03;
-    boidsManager.separationMinDistance = 0.5;
-    boidsManager.maxSpeed = 1.0;
-    // boidsManager.showDebug(this.scene);
+    let boids = [];
+    let debugData = {};
+    const cohesion = 0.001;
+    const alignment = 0.03;
+    const separation = 0.2;
+    const separationMinDistance = 0.5;
+    const maxSpeed = 0.2;
+    const initialRadius = Math.min(
+      Math.abs(boundsMax.x - boundsMin.x),
+      Math.abs(boundsMax.y - boundsMin.y),
+      Math.abs(boundsMax.z - boundsMin.z)
+    ) / 2.0;
+
+    // run the boid simulation in a separate thread
+    const boidsWorkerThread = new BoidsWorker();
+    boidsWorkerThread.onmessage = (e) => {
+      const now = performance.now();
+      if (e.data.command === 'started') {
+        // IF DEBUG
+        if (debugBoids) {
+          debugData = showBoidsDebug(
+            modelfile,
+            this.scene,
+            e.data.boids,
+            new BABYLON.Vector3().copyFrom(e.data.boundsMin),
+            new BABYLON.Vector3().copyFrom(e.data.boundsMax),
+            separationMinDistance
+          );
+        }
+      } else {
+        boids = e.data.boids;
+
+        // IF DEBUG
+        if (debugBoids) {
+          debugData.center.position.copyFrom(e.data.center);
+        }
+      }
+    };
+
+    // start the simulation and set parameters
+    boidsWorkerThread.postMessage(
+      { command: 'bundle',
+        list: [
+          {
+            command: 'construct',
+            total,
+            center: boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5)),
+            initialRadius,
+            boundRadiusScale: 30.0
+          },
+          { command: 'set', name: 'boundsMin', value: boundsMin },
+          { command: 'set', name: 'boundsMax', value: boundsMax },
+          { command: 'calculateBounds' },
+          { command: 'set', name: 'cohesion', value: cohesion },
+          { command: 'set', name: 'alignment', value: alignment },
+          { command: 'set', name: 'separation', value: separation },
+          { command: 'set', name: 'separationMinDistance', value: separationMinDistance },
+          { command: 'set', name: 'maxSpeed', value: maxSpeed },
+          { command: 'reset', total, initialRadius },
+          { command: 'start' }
+        ]
+      });
 
     let mainMesh = null;
     const bufferMatrices = new Float32Array(16 * total);
@@ -1276,9 +1348,10 @@ class Underwater {
           mesh.material.freeze();
         }
         // mesh.freezeWorldMatrix();
+        this.scene.stopAnimation(mesh);
       }
 
-      this._fixLoadedModelsOrientation(loadedMeshes);
+      this._fixLoadedModelsOrientation(loadedMeshes, false);
 
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
@@ -1316,56 +1389,74 @@ class Underwater {
     // const debugAxes = boidsManager.boids.map(
     //   i => new BABYLON.AxesViewer(this.scene, 1.0)
     // );
+
     return {
       models: [mainMesh],
-      boidsManager,
+      boidsWorkerThread,
       promise: p,
       update: ((_boids, _models, total) => {
         // these are fixed
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
         const yDirection = new BABYLON.Vector3(0, -1, 0);
+        const fixDirection = new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(0, 0, 1), Math.PI);
 
         // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
         const orientation = BABYLON.Quaternion.Zero();
         const topDirection = new BABYLON.Vector3(1, 1, 1);
         const sideDirection = new BABYLON.Vector3(1, 1, 1);
+        const boidPosition = new BABYLON.Vector3(1, 1, 1);
+        const boidVelocity = new BABYLON.Vector3(1, 1, 1);
 
         return (deltaTime) => {
+          const now = performance.now();
           if (mainMesh) {
             // mainMesh.bakedVertexAnimationManager.time += deltaTime;
-            _boids.update(deltaTime);
-            for (let i = 0; i < total; i++) {
-              const boid = _boids.boids[i];
+            for (let i = 0; i < boids.length; i++) {
+              const boid = boids[i];
+              boidPosition.copyFrom(boid.position);
+              boidVelocity.copyFrom(boid.velocity);
 
               // compute our quaternion from the direction to point to it
 
               // where we are going to
-              boid.velocity.normalizeToRef(direction);
+              boidVelocity.normalizeToRef(direction);
               // cross the direction with a fixed "up" vector and we get the side direction.
               BABYLON.Vector3.CrossToRef(direction, yDirection, sideDirection);
               // and cross it again to get the actual up direction
               BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
               // build the quaternion
               BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
+              orientation.multiplyInPlace(fixDirection);
 
               // debug axes
-              // debugAxes[i].update(boid.position, sideDirection, direction, topDirection);
+              // debugAxes[i].update(boidPosition, sideDirection, direction, topDirection);
 
               // update position and orientation
               BABYLON.Matrix.ComposeToRef(
                 one,
                 orientation,
-                boid.position,
+                boidPosition,
                 m
               );
               m.copyToArray(bufferMatrices, i * 16);
+
+              // visual debug
+              if (debugData.boids) {
+                // const debug = debugData.boids[i];
+                // const path = [boidPosition.add(boidVelocity.scale(10.0)), boidPosition.clone()];
+                // debug.force = BABYLON.MeshBuilder.CreateTube(debug.force.name, { path, radius: 0.01, instance: debug.force });
+                m.copyToArray(debugData.influenceMatrices, 16 * i);
+              }
             }
             mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
+            if (debugData.influenceMesh) {
+              debugData.influenceMesh.thinInstanceSetBuffer('matrix', debugData.influenceMatrices, 16);
+            }
           }
         };
-      })(boidsManager, mainMesh, total)
+      })(mainMesh, total)
     };
   }
 

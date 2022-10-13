@@ -39,6 +39,7 @@ class BoidsManager {
     this.alignment = 1.0;
     this.separationMinDistance = 3.0;
     this.maxSpeed = 1.0; // in units per second
+    this.boundaryForce = 0.4;
 
     // set bounds
     this.boundsMin = new BABYLON.Vector3(
@@ -67,13 +68,13 @@ class BoidsManager {
 
   /**
    *
-   * @param {Number} total
+   * @param {Number} total Number of boids
    * @param {Number} initialRadius Radius for initial distribution of models
    * @param {BABYLON.Vector3} initialVelocity Initial average velocity
    */
   reset (total, initialRadius, initialVelocity = null) {
     if (!initialVelocity) {
-      initialVelocity = new BABYLON.Vector3(initialRadius / 5.0, 0.0, initialRadius / 5.0);
+      initialVelocity = new BABYLON.Vector3(this.maxSpeed / 3.0, 0.0, this.maxSpeed / 3.0);
     }
     this.boids = [];
     const initialSpeed = initialVelocity.length();
@@ -86,10 +87,15 @@ class BoidsManager {
         )
       );
       const velocity = new BABYLON.Vector3(
-        initialVelocity.x + (Math.random() - 0.5) / 10.0 * initialSpeed,
-        initialVelocity.y + (Math.random() - 0.5) / 10.0 * initialSpeed,
-        initialVelocity.z + (Math.random() - 0.5) / 10.0 * initialSpeed
+        initialVelocity.x + (Math.random() - 0.5) / 50.0 * initialSpeed,
+        initialVelocity.y + (Math.random() - 0.5) / 50.0 * initialSpeed,
+        initialVelocity.z + (Math.random() - 0.5) / 50.0 * initialSpeed
       );
+      // clamp if too high
+      const speed = velocity.length();
+      if (speed > this.maxSpeed) {
+        velocity.divideInPlace(speed / this.maxSpeed);
+      }
       const boid = new Boid(i, position, velocity);
       this.boids.push(boid);
     }
@@ -231,22 +237,22 @@ class BoidsManager {
      */
   _forceBoundaries (boid) {
     const f = new BABYLON.Vector3(0, 0, 0);
-    const amount = 0.04;
+
     // clamp to area
     if (boid.position.x < this.boundsMin.x + this.sizeVector.x * 0.1) {
-      f.x = amount;
+      f.x = this.boundaryForce;
     } else if (boid.position.x > this.boundsMax.x - this.sizeVector.x * 0.1) {
-      f.x = -amount;
+      f.x = -this.boundaryForce;
     }
     if (boid.position.y < this.boundsMin.y + this.sizeVector.y * 0.1) {
-      f.y = amount;
+      f.y = this.boundaryForce;
     } else if (boid.position.y > this.boundsMax.y - this.sizeVector.y * 0.1) {
-      f.y = -amount;
+      f.y = -this.boundaryForce;
     }
     if (boid.position.z < this.boundsMin.z + this.sizeVector.z * 0.1) {
-      f.z = amount;
+      f.z = this.boundaryForce;
     } else if (boid.position.z > this.boundsMax.z - this.sizeVector.z * 0.1) {
-      f.z = -amount;
+      f.z = -this.boundaryForce;
     }
     return f;
   }
@@ -427,4 +433,76 @@ class BoidsManager {
   }
 }
 
-export default BoidsManager;
+/**
+ * Turns on debug menu and helpers.
+ * @param {BABYLON.Scene} scene
+ */
+function showBoidsDebug (name, scene, boids, boundsMin, boundsMax, separationMinDistance) {
+  const debugData = {
+    boids: []
+  };
+
+  // build a material
+  const centerMaterial = new BABYLON.StandardMaterial('debug_center', scene);
+  centerMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FF00FF');
+  debugData.center = BABYLON.MeshBuilder.CreateSphere(
+    'center',
+    {
+      diameter: 0.1,
+      segments: 8
+    }
+  );
+  debugData.center.material = centerMaterial;
+
+  // build bbox
+  const bboxMaterial = new BABYLON.StandardMaterial('debug_bbox', scene);
+  bboxMaterial.emissiveColor = BABYLON.Color3.FromHexString('#00FF00');
+  bboxMaterial.disableLighting = true;
+  bboxMaterial.wireframe = true;
+
+  debugData.bbox = BABYLON.MeshBuilder.CreateBox(
+    'boids_bbox',
+    {},
+    scene
+  );
+  debugData.bbox.scaling.x = Math.abs(boundsMax.x - boundsMin.x);
+  debugData.bbox.scaling.y = Math.abs(boundsMax.y - boundsMin.y);
+  debugData.bbox.scaling.z = Math.abs(boundsMax.z - boundsMin.z);
+  debugData.bbox.position = boundsMin.add(boundsMax.subtract(boundsMin).scale(0.5));
+  debugData.bbox.material = bboxMaterial;
+
+  const wireframeMaterial = new BABYLON.StandardMaterial('debug_wireframe', scene);
+  wireframeMaterial.diffuseColor = BABYLON.Color3.FromHexString('#FFFFFF');
+  wireframeMaterial.wireframe = true;
+
+  debugData.influenceMesh = BABYLON.MeshBuilder.CreateSphere(
+        `boid_influence_${name}`,
+        {
+          diameter: separationMinDistance,
+          segments: 8
+        }
+  );
+  debugData.influenceMesh.material = wireframeMaterial;
+
+  debugData.influenceMatrices = new Float32Array(16 * boids.length);
+
+  for (let i = 0; i < boids.length; i++) {
+    const debug = {};
+    // TODO thin instances
+    // debug.force = BABYLON.MeshBuilder.CreateTube(
+    //   `boid_arrow_${i}`,
+    //   {
+    //     path: [new BABYLON.Vector3().copyFrom(boid.position).add(new BABYLON.Vector3().copyFrom(boid.velocity)), new BABYLON.Vector3().copyFrom(boid.position)],
+    //     radius: 0.01,
+    //     updatable: true
+    //   }, scene
+    // );
+    BABYLON.Matrix.IdentityReadOnly.copyToArray(debugData.influenceMatrices, 16 * i);
+    i++;
+    debugData.boids.push(debug);
+  }
+  debugData.influenceMesh.thinInstanceSetBuffer('matrix', debugData.influenceMatrices, 16);
+  return debugData;
+}
+
+export { BoidsManager, showBoidsDebug };
