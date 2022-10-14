@@ -534,7 +534,7 @@ export default {
   bottom: 0;
   left: 0;
   padding: 10px;
-  width: 160px;
+  width: 190px;
   height: 220px;
   z-index: 10;
   border-radius: 10px;
@@ -562,6 +562,7 @@ export default {
 
   #underwater-hud-depth-ascent {
     writing-mode: vertical-rl;
+    font-size: 13px;
   }
 
   #underwater-hud-compass-name,

@@ -1654,6 +1654,7 @@ export default {
 
   #underwater-hud-depth-ascent {
     writing-mode: vertical-rl;
+    font-size: 13px;
   }
 
   #underwater-hud-compass-name,
