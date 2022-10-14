@@ -1,9 +1,20 @@
 <template>
   <div id="underwater">
     <canvas id="underwater-3d" touch-action="none" />
-    <div id="underwater-debug">
-      {{ fps }} fps
+    <div id="underwater-settings">
+      <font-awesome-icon :icon="['fas', 'camera']" @click="snapshotRequested = true" size="2x" />
+      <font-awesome-layers @click="toggleVolume" class="fa-2x">
+        <font-awesome-icon :icon="['fas', 'volume-up']" transform="shrink-6" />
+        <font-awesome-icon v-show="mute" icon="ban" style="color:Tomato" />
+      </font-awesome-layers>
+      <font-awesome-layers @click="toggleGuidedTour" class="fa-2x">
+        <font-awesome-icon v-show="!playing" :icon="['fas', 'play']" transform="shrink-6" />
+        <font-awesome-icon v-show="playing" :icon="['fas', 'pause']" transform="shrink-6" />
+      </font-awesome-layers>
     </div>
+    <!-- <div id="underwater-debug">
+      {{ fps }} fps
+    </div> -->
     <button id="underwater-fullscreen" @click="fullscreen" v-show="!isFullscreen && started" class="button-giant">
       <i18n>Ficar em tela cheia</i18n>
     </button>
@@ -45,17 +56,6 @@
         <span id="underwater-hud-compass-name"><i18n>Compasso</i18n></span><br>
         <span id="underwater-hud-compass-value">{{ ((parseInt(orientationDegrees) % 360) + 360) % 360 }}</span>
       </div>
-    </div>
-    <div id="underwater-settings">
-      <font-awesome-icon :icon="['fas', 'camera']" @click="snapshotRequested = true" size="2x" />
-      <font-awesome-layers @click="toggleVolume" class="fa-2x">
-        <font-awesome-icon :icon="['fas', 'volume-up']" transform="shrink-6" />
-        <font-awesome-icon v-show="mute" icon="ban" style="color:Tomato" />
-      </font-awesome-layers>
-      <font-awesome-layers @click="toggleGuidedTour" class="fa-2x">
-        <font-awesome-icon v-show="!playing" :icon="['fas', 'play']" transform="shrink-6" />
-        <font-awesome-icon v-show="playing" :icon="['fas', 'pause']" transform="shrink-6" />
-      </font-awesome-layers>
     </div>
   </div>
 </template>
@@ -616,7 +616,7 @@ class Underwater {
     let xAddRot = 0;
     let yAddRot = 0;
     const sideJoystickOffset = 5;
-    const bottomJoystickOffset = -5;
+    const bottomJoystickOffset = -50;
     let translateTransform;
 
     const leftThumbContainer = makeThumbArea('leftThumb', 2, 'blue', null);
@@ -745,11 +745,11 @@ class Underwater {
       // );
       // translateTransform = this.camera.cameraDirection.scale(xAddPos / 10.0);
       // this.camera.cameraDirection.addInPlace(translateTransform);
-      if (xAddPos >= 0.0) {
-        this.camera.position.addInPlace(this.camera.getDirection(BABYLON.Vector3.Forward()).scale(xAddPos / 1000.0));
+      if (yAddPos >= 0.0) {
+        this.camera.position.addInPlace(this.camera.getDirection(BABYLON.Vector3.Forward()).scale(yAddPos / 1000.0));
       }
-      this.camera.cameraRotation.y += xAddRot / 25000 * -1;
-      this.camera.cameraRotation.x += yAddRot / 25000 * -1;
+      this.camera.cameraRotation.y += xAddRot / 50000 * -1;
+      this.camera.cameraRotation.x += yAddRot / 50000 * -1;
     });
 
     function makeThumbArea (name, thickness, color, background, curves) {
@@ -1603,7 +1603,7 @@ export default {
 
 #underwater-debug {
   position: absolute;
-  top: 0;
+  top: 30px;
   left: 0;
   padding: 10px;
   z-index: 1000;
@@ -1711,12 +1711,12 @@ export default {
 
 #underwater-settings {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 0;
   padding: 10px;
   z-index: 1000;
   color: #fff;
-  text-align: right;
+  text-align: left;
 
   svg {
     cursor: pointer
