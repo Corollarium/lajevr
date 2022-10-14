@@ -275,10 +275,16 @@ export default {
     },
 
     selectedSiteData () {
-      if (this.selectedSite === -1) {
-        return {};
+      if (this.selectedSite in this.diveSites) {
+        return this.diveSites[this.selectedSite];
       }
-      return this.diveSites[this.selectedSite];
+      return {
+        name: '',
+        lat: '',
+        long: '',
+        dificuldade: '⭑',
+        description: ''
+      };
     }
   },
 
@@ -305,14 +311,14 @@ export default {
       if (this.$refs.ilha3d) {
         this.$refs.ilha3d.$emit('picker', diveSiteIndex);
       }
-      this.pick(this.diveSites[diveSiteIndex]);
+      this.pick(this.diveSites[diveSiteIndex].name);
     },
 
     // callback for select/ 3d pick, apply transition properly
-    pick (diveSite) {
+    pick (diveSiteName) {
       this.swapping = !this.swapping;
       for (let i = 0; i < this.diveSites.length; i++) {
-        if (this.diveSites[i].name === diveSite) {
+        if (this.diveSites[i].name === diveSiteName) {
           this.$nextTick(() => {
             this.selectedSite = i;
             this.swapping = true;
