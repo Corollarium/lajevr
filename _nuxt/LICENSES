@@ -1,34 +1,60 @@
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
+/*! 
+  * portal-vue © Thorsten Lünborg, 2019 
+  * 
+  * Version: 2.1.7
+  * 
+  * LICENCE: MIT 
+  * 
+  * https://github.com/linusborg/portal-vue
+  * 
+ */
 
 
 /*! nouislider - 14.1.1 - 12/15/2019 */
 
 
 /*!
-  * vue-router v3.5.2
-  * (c) 2021 Evan You
-  * @license MIT
-  */
+ * GSAP 3.6.0
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2021, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
 /*!
- * Vue.js v2.6.14
- * (c) 2014-2021 Evan You
+ * vue-client-only v0.0.0-semantic-release
+ * (c) 2021-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
  */
 
+/*!
+ * vue-no-ssr v1.1.1
+ * (c) 2018-present egoist <0x142857@gmail.com>
+ * Released under the MIT License.
+ */
+
+/**
+ * vue-gettext v2.1.12
+ * (c) 2020 Polyconseil
+ * @license MIT
+ */
+
+
+/*! ../../../2D/advancedDynamicTexture */
+
+/*! ../../../2D/controls/control */
+
+/*! ../../../2D/controls/grid */
+
+/*! ../../../2D/controls/image */
+
+/*! ../../../2D/controls/rectangle */
+
+/*! ../../../2D/controls/stackPanel */
+
+/*! ../../../2D/controls/textBlock */
 
 /*! ../../2D/advancedDynamicTexture */
 
@@ -39,6 +65,14 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! ../../2D/controls/stackPanel */
 
 /*! ../../2D/controls/textBlock */
+
+/*! ../../materials/mrdl/mrdlBackglowMaterial */
+
+/*! ../../materials/mrdl/mrdlBackplateMaterial */
+
+/*! ../../materials/mrdl/mrdlFrontplateMaterial */
+
+/*! ../../materials/mrdl/mrdlInnerquadMaterial */
 
 /*! ../../measure */
 
@@ -86,6 +120,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ../sliders/scrollBar */
 
+/*! ../touchButton3D */
+
 /*! ../valueAndUnit */
 
 /*! ../vector3WithInfo */
@@ -93,6 +129,8 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! ./2D/index */
 
 /*! ./3D/index */
+
+/*! ./MRTK3/touchHolographicButton */
 
 /*! ./abstractButton3D */
 
@@ -176,6 +214,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ./inputText */
 
+/*! ./inputTextArea */
+
 /*! ./line */
 
 /*! ./materials/index */
@@ -230,9 +270,21 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ./shaders/handle.vertex */
 
+/*! ./shaders/mrdlBackglow.fragment */
+
+/*! ./shaders/mrdlBackglow.vertex */
+
 /*! ./shaders/mrdlBackplate.fragment */
 
 /*! ./shaders/mrdlBackplate.vertex */
+
+/*! ./shaders/mrdlFrontplate.fragment */
+
+/*! ./shaders/mrdlFrontplate.vertex */
+
+/*! ./shaders/mrdlInnerquad.fragment */
+
+/*! ./shaders/mrdlInnerquad.vertex */
 
 /*! ./shaders/mrdlSliderBar.fragment */
 
@@ -295,6 +347,8 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! core/Behaviors/Meshes/handConstraintBehavior */
 
 /*! core/Behaviors/Meshes/surfaceMagnetismBehavior */
+
+/*! core/Buffers/buffer */
 
 /*! core/Engines/constants */
 
@@ -561,6 +615,10 @@ PERFORMANCE OF THIS SOFTWARE.
   \**********************************************************/
 
 /*!**********************************************************!*\
+  !*** ../../../lts/gui/dist/2D/controls/inputTextArea.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
   !*** ../../../lts/gui/dist/3D/controls/cylinderPanel.js ***!
   \**********************************************************/
 
@@ -668,13 +726,29 @@ PERFORMANCE OF THIS SOFTWARE.
   !*** ../../../lts/gui/dist/2D/controls/scrollViewers/scrollViewer.js ***!
   \***********************************************************************/
 
+/*!***********************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/mrdlBackglowMaterial.js ***!
+  \***********************************************************************/
+
 /*!************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/mrdlBackplateMaterial.js ***!
   \************************************************************************/
 
 /*!************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/mrdlInnerquadMaterial.js ***!
+  \************************************************************************/
+
+/*!************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/mrdlSliderBarMaterial.js ***!
   \************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/controls/MRTK3/touchHolographicButton.js ***!
+  \*************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/mrdlFrontplateMaterial.js ***!
+  \*************************************************************************/
 
 /*!**************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/fluent/shaders/fluent.vertex.js ***!
@@ -700,6 +774,10 @@ PERFORMANCE OF THIS SOFTWARE.
   !*** ../../../lts/gui/dist/2D/controls/scrollViewers/scrollViewerWindow.js ***!
   \*****************************************************************************/
 
+/*!******************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlBackglow.vertex.js ***!
+  \******************************************************************************/
+
 /*!*******************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/fluentButton/fluentButtonMaterial.js ***!
   \*******************************************************************************/
@@ -709,11 +787,27 @@ PERFORMANCE OF THIS SOFTWARE.
   \*******************************************************************************/
 
 /*!*******************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlInnerquad.vertex.js ***!
+  \*******************************************************************************/
+
+/*!*******************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlSliderBar.vertex.js ***!
   \*******************************************************************************/
 
+/*!********************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlBackglow.fragment.js ***!
+  \********************************************************************************/
+
+/*!********************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlFrontplate.vertex.js ***!
+  \********************************************************************************/
+
 /*!*********************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlBackplate.fragment.js ***!
+  \*********************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlInnerquad.fragment.js ***!
   \*********************************************************************************/
 
 /*!*********************************************************************************!*\
@@ -723,6 +817,10 @@ PERFORMANCE OF THIS SOFTWARE.
 /*!*********************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlSliderThumb.vertex.js ***!
   \*********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlFrontplate.fragment.js ***!
+  \**********************************************************************************/
 
 /*!***********************************************************************************!*\
   !*** ../../../lts/gui/dist/3D/materials/mrdl/shaders/mrdlSliderThumb.fragment.js ***!
@@ -751,35 +849,6 @@ PERFORMANCE OF THIS SOFTWARE.
 /*!****************************************************************************************************!*\
   !*** external {"root":"BABYLON","commonjs":"babylonjs","commonjs2":"babylonjs","amd":"babylonjs"} ***!
   \****************************************************************************************************/
-
-
-/*!
- * GSAP 3.6.0
- * https://greensock.com
- *
- * @license Copyright 2008-2021, GreenSock. All rights reserved.
- * Subject to the terms at https://greensock.com/standard-license or for
- * Club GreenSock members, the agreement issued with that membership.
- * @author: Jack Doyle, jack@greensock.com
-*/
-
-/*!
- * vue-client-only v0.0.0-semantic-release
- * (c) 2021-present egoist <0x142857@gmail.com>
- * Released under the MIT License.
- */
-
-/*!
- * vue-no-ssr v1.1.1
- * (c) 2018-present egoist <0x142857@gmail.com>
- * Released under the MIT License.
- */
-
-/**
- * vue-gettext v2.1.12
- * (c) 2020 Polyconseil
- * @license MIT
- */
 
 
 /*! ./cell.fragment */
@@ -1164,11 +1233,6 @@ PERFORMANCE OF THIS SOFTWARE.
   !*** ../../../lts/materials/dist/shadowOnly/shadowOnly.fragment.js ***!
   \*********************************************************************/
 
-/*!****************************************************************************************************!*\
-  !*** external {"root":"BABYLON","commonjs":"babylonjs","commonjs2":"babylonjs","amd":"babylonjs"} ***!
-  \****************************************************************************************************/
-
-
 /*! ../OBJ/index */
 
 /*! ../STL/index */
@@ -1189,6 +1253,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ../glTFLoader */
 
+/*! ../glTFLoaderAnimation */
+
 /*! ./1.0/index */
 
 /*! ./2.0/index */
@@ -1204,6 +1270,10 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! ./Extensions/index */
 
 /*! ./ExtrasAsMetadata */
+
+/*! ./KHR_animation_pointer */
+
+/*! ./KHR_animation_pointer.data */
 
 /*! ./KHR_draco_mesh_compression */
 
@@ -1261,6 +1331,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ./glTFLoader */
 
+/*! ./glTFLoaderAnimation */
+
 /*! ./glTFLoaderExtension */
 
 /*! ./glTFLoaderInterfaces */
@@ -1293,6 +1365,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! core/Audio/weightedsound */
 
+/*! core/Culling/boundingInfo */
+
 /*! core/Lights/light */
 
 /*! core/Lights/spotLight */
@@ -1314,8 +1388,6 @@ PERFORMANCE OF THIS SOFTWARE.
 /*! core/Misc/deferred */
 
 /*! core/Misc/error */
-
-/*! core/Misc/stringTools */
 
 /*! core/Misc/tools */
 
@@ -1424,6 +1496,10 @@ PERFORMANCE OF THIS SOFTWARE.
   \*****************************************************************/
 
 /*!*****************************************************************!*\
+  !*** ../../../lts/loaders/dist/glTF/2.0/glTFLoaderAnimation.js ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
   !*** ../../../lts/loaders/dist/glTF/2.0/glTFLoaderExtension.js ***!
   \*****************************************************************/
 
@@ -1488,6 +1564,10 @@ PERFORMANCE OF THIS SOFTWARE.
   \*****************************************************************************/
 
 /*!******************************************************************************!*\
+  !*** ../../../lts/loaders/dist/glTF/2.0/Extensions/KHR_animation_pointer.js ***!
+  \******************************************************************************/
+
+/*!******************************************************************************!*\
   !*** ../../../lts/loaders/dist/glTF/2.0/Extensions/KHR_mesh_quantization.js ***!
   \******************************************************************************/
 
@@ -1524,6 +1604,10 @@ PERFORMANCE OF THIS SOFTWARE.
   \**********************************************************************************/
 
 /*!***********************************************************************************!*\
+  !*** ../../../lts/loaders/dist/glTF/2.0/Extensions/KHR_animation_pointer.data.js ***!
+  \***********************************************************************************/
+
+/*!***********************************************************************************!*\
   !*** ../../../lts/loaders/dist/glTF/2.0/Extensions/KHR_draco_mesh_compression.js ***!
   \***********************************************************************************/
 
@@ -1542,3 +1626,20 @@ PERFORMANCE OF THIS SOFTWARE.
 /*!********************************************************************************************!*\
   !*** ../../../lts/loaders/dist/glTF/2.0/Extensions/KHR_materials_pbrSpecularGlossiness.js ***!
   \********************************************************************************************/
+
+/*!****************************************************************************************************!*\
+  !*** external {"root":"BABYLON","commonjs":"babylonjs","commonjs2":"babylonjs","amd":"babylonjs"} ***!
+  \****************************************************************************************************/
+
+
+/*!
+  * vue-router v3.5.2
+  * (c) 2021 Evan You
+  * @license MIT
+  */
+
+/*!
+ * Vue.js v2.6.14
+ * (c) 2014-2021 Evan You
+ * Released under the MIT License.
+ */
