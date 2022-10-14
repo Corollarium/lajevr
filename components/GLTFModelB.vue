@@ -180,9 +180,9 @@ export default {
       this.pointerIds.delete(e.pointerId);
     });
     // Pointers
-    if (this.camera.inputs.attached.pointers) {
-      this.camera.inputs.attached.pointers.pinchPrecision = 1000;
-    }
+    // if (this.camera.inputs.attached.pointers) {
+    //   this.camera.inputs.attached.pointers.pinchPrecision = 1000;
+    // }
 
     if (this.inputEnabled) {
       this.camera.attachControl(this.container, false);
@@ -282,7 +282,7 @@ export default {
     // Watch for browser/canvas resize events
     window.addEventListener('resize', this.resize.bind(this));
     this.container.onfullscreenchange = (event) => {
-      // TODO this.setScrollHijacking(!!document.fullscreenElement);
+      // this.setScrollHijacking(this.isFullscreen);
     };
   },
 
@@ -309,15 +309,16 @@ export default {
       this.container.requestFullscreen();
     },
     setScrollHijacking (b) {
-      if (b) {
-        // if true, hijack and allow rotations on y
-        this.container.setAttribute('touch-action', 'initial');
-        this.container.style.touchAction = 'initial';
-      } else {
-        // block y events and allow scrolling
-        this.container.setAttribute('touch-action', 'pan-y');
-        this.container.style.touchAction = 'pan-y';
-      }
+      console.log('scroll h', b);
+      // if (b) {
+      //   // if true, hijack and allow rotations on y
+      //   this.container.setAttribute('touch-action', 'initial');
+      //   this.container.style.touchAction = 'initial';
+      // } else {
+      //   // block y events and allow scrolling
+      //   this.container.setAttribute('touch-action', 'pan-y');
+      //   this.container.style.touchAction = 'pan-y';
+      // }
     }
   }
 };
@@ -350,10 +351,13 @@ export default {
     background-color: rgba(0, 0, 0, 0.0);
     padding: 0.25rem 0.5rem;
     font-size: 250%;
-    line-height: 250%;
+    line-height: 120%;
     height: 100%;
     opacity: 0.5;
+  }
+  .object-scroll-message-mouse {
     display: flex;
+    line-height: 250%;
     justify-content: center;
     align-content: center;
     flex-direction: column;
