@@ -256,7 +256,12 @@ class BoidsTest {
     const alignment = 0.03;
     const separation = 0.2;
     const separationMinDistance = 0.5;
-    const maxSpeed = 1.0;
+    const maxSpeed = 0.2;
+    const initialRadius = Math.min(
+      Math.abs(boundsMax.x - boundsMin.x),
+      Math.abs(boundsMax.y - boundsMin.y),
+      Math.abs(boundsMax.z - boundsMin.z)
+    ) / 2.0;
 
     // run the boid simulation in a separate thread
     const boidsWorkerThread = new BoidsWorker();
@@ -298,6 +303,7 @@ class BoidsTest {
           { command: 'set', name: 'separation', value: separation },
           { command: 'set', name: 'separationMinDistance', value: separationMinDistance },
           { command: 'set', name: 'maxSpeed', value: maxSpeed },
+          { command: 'reset', total, initialRadius },
           { command: 'start' }
         ]
       });
@@ -348,7 +354,6 @@ class BoidsTest {
         // mesh.cullingStrategy = BABYLON.AbstractMesh.CULLINGSTRATEGY_OPTIMISTIC_INCLUSION;
         // mesh.convertToUnIndexedMesh();
       }
-      const box = BABYLON.BoxBuilder.CreateBox('rooxxt', { size: 1 }, this.scene);
       const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
       mainMesh = loadedMeshes[1];
 
@@ -356,14 +361,18 @@ class BoidsTest {
       baseMesh.scaling.z = 1;
       baseMesh.scaling.y = 1;
       baseMesh.scaling.x = 1;
+      // baseMesh.rotationQuaternion.x = 0;
       baseMesh.rotationQuaternion.y = 0;
+      baseMesh.rotationQuaternion.z = 0;
+      baseMesh.rotationQuaternion.w = 1;
+      baseMesh.computeWorldMatrix();
 
       // reset base quaternion
-      // mainMesh.parent.rotationQuaternion.x = 1.0;
-      // mainMesh.parent.rotationQuaternion.y = 0.0;
-      // mainMesh.parent.rotationQuaternion.z = 0.0;
-      // mainMesh.parent.rotationQuaternion.w = 0.0;
-      // mainMesh.parent.rotationQuaternion.normalize();
+      mainMesh.parent.rotationQuaternion.x = 0.0;
+      mainMesh.parent.rotationQuaternion.y = 0.0;
+      mainMesh.parent.rotationQuaternion.z = 0.0;
+      mainMesh.parent.rotationQuaternion.w = 1.0;
+      mainMesh.parent.rotationQuaternion.normalize();
       mainMesh.computeWorldMatrix();
       mainMesh.thinInstanceSetBuffer('matrix', bufferMatrices, 16);
 
@@ -429,13 +438,13 @@ class BoidsTest {
               BABYLON.Vector3.CrossToRef(sideDirection, direction, topDirection);
               // build the quaternion
               BABYLON.Quaternion.RotationQuaternionFromAxisToRef(sideDirection, direction, topDirection, orientation);
-              orientation.multiplyInPlace(fixDirection);
+              // orientation.multiplyInPlace(fixDirection);
 
               // update position and orientation
               BABYLON.Matrix.ComposeToRef(
                 one,
                 orientation,
-                boid.position,
+                boidPosition,
                 m
               );
               m.copyToArray(bufferMatrices, i * 16);

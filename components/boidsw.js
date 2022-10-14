@@ -39,8 +39,6 @@ function start () {
   let lastTickPosition = performance.now();
 
   // we want to updatePositions as often as possible
-  const fpsLog = 3 * 60;
-  let fpsCounter = 0; let fpsLastNow = performance.now();
   const updatePositions = () => {
     const now = performance.now();
     const deltaTime = now - lastTickPosition;
@@ -55,12 +53,6 @@ function start () {
     });
     if (!boidsManager.stopThread) {
       requestAnimationFrame(updatePositions);
-    }
-    fpsCounter++;
-    if (fpsCounter % fpsLog === 0) {
-      console.log('fpspos', fpsLog / ((now - fpsLastNow) / 1000.0)
-      );
-      fpsLastNow = now;
     }
   };
   postMessage({

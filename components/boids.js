@@ -39,7 +39,7 @@ class BoidsManager {
     this.alignment = 1.0;
     this.separationMinDistance = 3.0;
     this.maxSpeed = 1.0; // in units per second
-    this.boundaryForce = 0.4;
+    this.boundaryForce = 0.1;
 
     // set bounds
     this.boundsMin = new BABYLON.Vector3(
@@ -74,16 +74,29 @@ class BoidsManager {
    */
   reset (total, initialRadius, initialVelocity = null) {
     if (!initialVelocity) {
-      initialVelocity = new BABYLON.Vector3(this.maxSpeed / 3.0, 0.0, this.maxSpeed / 3.0);
+      initialVelocity = new BABYLON.Vector3(this.maxSpeed / 4.0, 0.0, this.maxSpeed / 4.0);
     }
     this.boids = [];
     const initialSpeed = initialVelocity.length();
     for (let i = 0; i < total; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = u * 2.0 * Math.PI;
+      const phi = Math.acos(2.0 * v - 1.0);
+      const r = Math.cbrt(Math.random());
+      const sinTheta = Math.sin(theta);
+      const cosTheta = Math.cos(theta);
+      const sinPhi = Math.sin(phi);
+      const cosPhi = Math.cos(phi);
+      const x = r * sinPhi * cosTheta;
+      const y = r * sinPhi * sinTheta;
+      const z = r * cosPhi;
+
       const position = this.center.add(
         new BABYLON.Vector3(
-          (Math.random() - 0.5) * initialRadius,
-          (Math.random() - 0.5) * initialRadius,
-          (Math.random() - 0.5) * initialRadius
+          x * initialRadius,
+          y * initialRadius,
+          z * initialRadius
         )
       );
       const velocity = new BABYLON.Vector3(

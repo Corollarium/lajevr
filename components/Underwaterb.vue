@@ -211,8 +211,9 @@ class Underwater {
     const sargentinho = this.loadBoidsModel(
       this.base + 'models/', 'sargentinho.glb',
       300,
-      new BABYLON.Vector3(-33.12, -17.2, 12.19),
-      new BABYLON.Vector3(-2.12, -7.2, 42.19),
+      new BABYLON.Vector3(-33.12, -21.2, 12.19),
+      new BABYLON.Vector3(-2.12, -11.2, 42.19),
+      new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(1, 0, 0), Math.PI),
       [{ from: 1, to: 30, name: 'swim' }]
     );
     promises.push(sargentinho.promise);
@@ -220,8 +221,9 @@ class Underwater {
     const salema = this.loadBoidsModel(
       this.base + 'models/', 'salema.glb',
       1000,
-      new BABYLON.Vector3(-12.12, -23.2, 22.19),
-      new BABYLON.Vector3(22.12, -10.2, 52.19),
+      new BABYLON.Vector3(-2.12, -23.2, 32.19),
+      new BABYLON.Vector3(32.12, -10.2, 62.19),
+      new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(-1, 0, 0), Math.PI / 2),
       [{ from: 1, to: 30, name: 'swim' }]
     );
     promises.push(salema.promise);
@@ -1259,12 +1261,13 @@ class Underwater {
    * @param {int} total
    * @param {BABYLON.Vector3} boundsMin
    * @param {BABYLON.Vector3} boundsMax
+   * @param {BABYLON.Quaternion} fixDirection
    *
    */
-  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, animationRanges, fpsDelta = 6) {
+  loadBoidsModel (modelpath, modelfile, total, boundsMin, boundsMax, fixDirection, animationRanges, fpsDelta = 6) {
     let boids = [];
     let debugData = {};
-    const cohesion = 0.001;
+    const cohesion = 0.0005;
     const alignment = 0.03;
     const separation = 0.2;
     const separationMinDistance = 0.5;
@@ -1273,7 +1276,7 @@ class Underwater {
       Math.abs(boundsMax.x - boundsMin.x),
       Math.abs(boundsMax.y - boundsMin.y),
       Math.abs(boundsMax.z - boundsMin.z)
-    ) / 2.0;
+    ) / 2.8;
 
     // run the boid simulation in a separate thread
     const boidsWorkerThread = new BoidsWorker();
@@ -1404,7 +1407,6 @@ class Underwater {
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
         const yDirection = new BABYLON.Vector3(0, -1, 0);
-        const fixDirection = new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(1, 0, 0), Math.PI);
 
         // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
