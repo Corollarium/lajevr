@@ -247,28 +247,11 @@
           </i18n>
         </p>
 
-        <template v-slot:footer>
-          <figure class="figure-text">
-            <div bp="grid">
-              <div bp="12 6@md" data-aos="fade-right">
-                <img alt="Raia borboleta" src="http://placehold.it/300x300">
-              </div>
-              <div bp="12 6@md" data-aos="fade-left">
-                <img alt="Raia borboleta" src="http://placehold.it/300x300">
-              </div>
-            </div>
-            <figcaption>
-              <p>
-                <i18n>
-                  Raias-borboleta.
-                  Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos.
-
-                  Fotos: Nauther Andres
-                </i18n>
-              </p>
-            </figcaption>
-          </figure>
-        </template>
+        <p>
+          <i18n>
+            Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos.
+          </i18n>
+        </p>
       </life-block>
     </article>
 
@@ -1134,7 +1117,6 @@ export default {
 
     // this.rellax = new Rellax('.rellax');
 
-    console.log('xxxxxxxxxxxxxxxxxxxxxx');
     this.initBabylon();
     this.asideMenu();
   },
