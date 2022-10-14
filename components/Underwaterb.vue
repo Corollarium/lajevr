@@ -1043,7 +1043,6 @@ class Underwater {
       mainMesh.parent.rotationQuaternion.y = 0.0;
       mainMesh.parent.rotationQuaternion.z = 0.0;
       mainMesh.parent.rotationQuaternion.w = 0.0;
-      mainMesh.parent.rotationQuaternion.normalize();
     }
   }
 
@@ -1351,9 +1350,15 @@ class Underwater {
         this.scene.stopAnimation(mesh);
       }
 
+      const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
+
+      const matrix = BABYLON.Matrix.Identity();
+      baseMesh.rotationQuaternion.toRotationMatrix(matrix);
+      baseMesh.bakeTransformIntoVertices(matrix);
+
       this._fixLoadedModelsOrientation(loadedMeshes, false);
 
-      const baseMesh = loadedMeshes[0]; // assumes __root__ is zero
+      baseMesh.name += modelfile;
       mainMesh = loadedMeshes[1];
 
       mainMesh.computeWorldMatrix();
@@ -1399,7 +1404,7 @@ class Underwater {
         const one = new BABYLON.Vector3(1, 1, 1);
         const direction = new BABYLON.Vector3(1, 1, 1);
         const yDirection = new BABYLON.Vector3(0, -1, 0);
-        const fixDirection = new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(0, 0, 1), Math.PI);
+        const fixDirection = new BABYLON.Quaternion.RotationAxis(new BABYLON.Vector3(1, 0, 0), Math.PI);
 
         // pre declare variables to avoid GC
         const m = BABYLON.Matrix.Identity();
