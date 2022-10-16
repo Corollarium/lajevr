@@ -134,7 +134,7 @@
               :babylonEngine="engine"
               :initialBeta="Math.PI/3"
               background-color="#000000"
-              model="./models/raiaManta.glb"
+              model="/models/raiaManta.glb"
             />
           </div>
         </template>
@@ -266,7 +266,7 @@
           <GLTFModel
             v-if="engine"
             :babylonEngine="engine"
-            :model="'./models/tartaruga/tartaruga.glb'"
+            :model="'/models/tartaruga/tartaruga.glb'"
             :attribution="'Modelo de tartaruga'"
             :scale="2"
           />
@@ -431,7 +431,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/garoupa.glb"
+              model="/models/garoupa.glb"
             />
           </div>
         </template>
@@ -476,7 +476,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/enxada.glb"
+              model="/models/enxada.glb"
             />
           </div>
         </template>
@@ -516,7 +516,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/frade.glb"
+              model="/models/frade.glb"
             />
           </div>
         </template>
@@ -564,7 +564,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/anjoReal.glb"
+              model="/models/anjoReal.glb"
             />
           </div>
         </template>
@@ -612,7 +612,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/sargentinho.glb"
+              model="/models/sargentinho.glb"
             />
           </div>
         </template>
@@ -914,7 +914,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/salema.glb"
+              model="/models/salema.glb"
             />
           </div>
         </template>
@@ -966,7 +966,7 @@
             <GLTFModel
               v-if="engine"
               :babylonEngine="engine"
-              model="./models/budiao.glb"
+              model="/models/budiao.glb"
             />
           </div>
         </template>

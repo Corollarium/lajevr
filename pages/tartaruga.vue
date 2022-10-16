@@ -9,20 +9,20 @@
         <div class="model-container" style="min-height: 70vh;" bp="12 6@md">
           <!-- <babylon
             id="model-babylon"
-            :model="'./models/anjoReal.glb'"
-            :model="'./models/tartaruga/tartaruga.glb'"
+            :model="'/models/anjoReal.glb'"
+            :model="'/models/tartaruga/tartaruga.glb'"
           /> -->
           <GLTFModel
             id="x1111"
             v-if="engine"
-            :model="'./models/tartaruga/tartaruga.glb'"
+            :model="'/models/tartaruga/tartaruga.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
           />
           <GLTFModel
             id="x22222"
             v-if="engine"
-            :model="'./models/frade.glb'"
+            :model="'/models/frade.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
           />

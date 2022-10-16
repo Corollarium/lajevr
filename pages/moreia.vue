@@ -43,7 +43,7 @@
       </p>
 
       <GLTFModel
-        :model="'./models/moreia-20210912.glb'"
+        :model="'/models/moreia-20210912.glb'"
         :attribution="'Modelo 3D do Moréia por Bruno Barberi Gnecco'"
         :autoRotate="false"
         :initialAlpha="-1.509332043327642"
