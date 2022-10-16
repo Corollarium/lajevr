@@ -404,11 +404,11 @@
       <div bp="grid container 12 6@md vertical-center">
         <div class="model-container">
           <GLTFModel
-            model="./models/raiaManta.glb"
+            model="/models/raiaManta.glb"
             attribution="Raia manta"
           />
           <!-- <GLTFModel
-            :model="'./models/manta/scene.gltf'"
+            :model="'/models/manta/scene.gltf'"
             :link="'https://sketchfab.com/3d-models/manta-cdc4752c492c43559caa4cfb528000d8'"
             :attribution="'Modelo 3D CC BY-NC por misaooo'"
           />
