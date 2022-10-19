@@ -71,6 +71,7 @@ import { showBoidsDebug } from './boids';
 import BoidsWorker from 'worker-loader!./boidsw';
 
 const debugBoids = false;
+const debugPaths = false;
 const causticPluginFragmentDefinitions = require('!!raw-loader!./underwater_fragment_definitions.glsl');
 const causticPluginFragmentMainEnd = require('!!raw-loader!./underwater_fragment_main_end.glsl');
 const causticPluginVertexDefinitions = require('!!raw-loader!./underwater_vertex_definitions.glsl');
@@ -367,42 +368,41 @@ class Underwater {
     const rotAnim = new BABYLON.Animation('cameraRot', 'rotationQuaternion', frameRate, BABYLON.Animation.ANIMATIONTYPE_QUATERNION);
     const rotKeys = [];
 
-    /* uncomment to debug paths
+    if (debugPaths) {
+      // visualisation
+      const pathGroup = new BABYLON.Mesh('pathGroup' + mesh.name);
+      const curveMesh = BABYLON.Mesh.CreateLines(
+        'bezier', curve.getPoints(), this.scene, false
+      );
+      curveMesh.color = new BABYLON.Color3(1, 1, 0.5);
+      curveMesh.parent = pathGroup;
 
-    // visualisation
-    const pathGroup = new BABYLON.Mesh('pathGroup' + mesh.name);
-    const curveMesh = BABYLON.Mesh.CreateLines(
-      'bezier', curve.getPoints(), this.scene, false
-    );
-    curveMesh.color = new BABYLON.Color3(1, 1, 0.5);
-    curveMesh.parent = pathGroup;
+      const pointMaterial = new BABYLON.StandardMaterial('pointMaterial', this.scene);
+      pointMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
+      pointMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
 
-    const pointMaterial = new BABYLON.StandardMaterial('pointMaterial', this.scene);
-    pointMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
-    pointMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+      for (let p = 0; p < curvePath.length; p++) {
+        binormals[p].y = 0;
+        binormals[p].normalize();
+        BABYLON.Vector3.CrossToRef(tangents[p], binormals[p], normals[p]);
+        normals[p].y = Math.abs(normals[p].y);
+        BABYLON.Vector3.CrossToRef(normals[p], tangents[p], binormals[p]);
 
-    for (let p = 0; p < curvePath.length; p++) {
-      binormals[p].y = 0;
-      binormals[p].normalize();
-      BABYLON.Vector3.CrossToRef(tangents[p], binormals[p], normals[p]);
-      normals[p].y = Math.abs(normals[p].y);
-      BABYLON.Vector3.CrossToRef(normals[p], tangents[p], binormals[p]);
-
-      const sp = BABYLON.Mesh.CreateSphere('cPoint' + p, 16, 0.02, this.scene);
-      sp.material = pointMaterial;
-      sp.position = curvePath[p];
-      sp.parent = pathGroup;
-      const tg = BABYLON.Mesh.CreateLines('tg', [ curvePath[p], curvePath[p].add(tangents[p]) ], this.scene, false);
-      tg.color = BABYLON.Color3.Red();
-      tg.parent = pathGroup;
-      const no = BABYLON.Mesh.CreateLines('no', [ curvePath[p], curvePath[p].add(normals[p]) ], this.scene, false);
-      no.color = BABYLON.Color3.Blue();
-      no.parent = pathGroup;
-      const bi = BABYLON.Mesh.CreateLines('bi', [ curvePath[p], curvePath[p].add(binormals[p]) ], this.scene, false);
-      bi.color = BABYLON.Color3.Green();
-      bi.parent = pathGroup;
+        const sp = BABYLON.Mesh.CreateSphere('cPoint' + p, 16, 0.02, this.scene);
+        sp.material = pointMaterial;
+        sp.position = curvePath[p];
+        sp.parent = pathGroup;
+        const tg = BABYLON.Mesh.CreateLines('tg', [ curvePath[p], curvePath[p].add(tangents[p]) ], this.scene, false);
+        tg.color = BABYLON.Color3.Red();
+        tg.parent = pathGroup;
+        const no = BABYLON.Mesh.CreateLines('no', [ curvePath[p], curvePath[p].add(normals[p]) ], this.scene, false);
+        no.color = BABYLON.Color3.Blue();
+        no.parent = pathGroup;
+        const bi = BABYLON.Mesh.CreateLines('bi', [ curvePath[p], curvePath[p].add(binormals[p]) ], this.scene, false);
+        bi.color = BABYLON.Color3.Green();
+        bi.parent = pathGroup;
+      }
     }
-    */
 
     for (let i = 0; i < curvePath.length; i++) {
       const position = curvePath[i];
@@ -995,6 +995,7 @@ class Underwater {
   loadMoreiaBarco () {
     const p = new Promise((resolve, reject) => {
       this.assetsManager.addMeshTask('barcoMoreia', null, this.base + 'models/', 'moreia-20210912.glb').onSuccess = (task) => {
+        task.loadedMeshes[0].name += 'barcoMoreia';
         const meshesWithMaterials = [];
 
         for (const mesh of task.loadedMeshes) {
@@ -1059,14 +1060,13 @@ class Underwater {
         v3(-10, -12, 31),
         v3(-6, -10, 27)
       ];
-      const curve = this.buildTourCurveDecent(points, 100);
+      const curve = this.buildTourCurveDecent(points, 30);
 
       this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
+        task.loadedMeshes[0].name += 'tartaruga';
         const meshesWithMaterials = [];
-        this._fixLoadedModelsOrientation(task.loadedMeshes);
 
         for (const mesh of task.loadedMeshes) {
-          mesh.position = new BABYLON.Vector3(-14.12, -12.2, 36.19);
           if (mesh.material) {
             mesh.material.backFaceCulling = false;
             mesh.material.freeze();
@@ -1099,10 +1099,9 @@ class Underwater {
 
       this.assetsManager.addMeshTask('manta', null, this.base + 'models/', 'raiaManta.glb').onSuccess = (task) => {
         const meshesWithMaterials = [];
-        this._fixLoadedModelsOrientation(task.loadedMeshes);
+        task.loadedMeshes[0].name += 'raiaManta';
 
         for (const mesh of task.loadedMeshes) {
-          mesh.position = new BABYLON.Vector3(-19.12, -12.2, 46);
           if (mesh.material) {
             mesh.material.backFaceCulling = false;
             mesh.material.freeze();
@@ -1166,6 +1165,7 @@ class Underwater {
   loadDiverBoat () {
     const p = new Promise((resolve, reject) => {
       this.assetsManager.addMeshTask('diver_with_boat', null, this.base + 'models/licensed/', 'diver_with_boat.glb').onSuccess = (task) => {
+        task.loadedMeshes[0].name += 'diver_with_boat';
         for (const mesh of task.loadedMeshes) {
           mesh.position = new BABYLON.Vector3(-14.12, 0.5, 27.19);
           if (mesh.material) {
@@ -1184,6 +1184,7 @@ class Underwater {
   loadDiverBoatBig () {
     const p = new Promise((resolve, reject) => {
       this.assetsManager.addMeshTask('diver_boatBig', null, this.base + 'models/licensed/', 'dive_boat.glb').onSuccess = (task) => {
+        task.loadedMeshes[0].name += 'diver_boatBig';
         const meshes = [];
         for (const mesh of task.loadedMeshes) {
           mesh.position = new BABYLON.Vector3(-12.12, 0.5, 27.19);
