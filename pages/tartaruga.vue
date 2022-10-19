@@ -22,7 +22,7 @@
           <GLTFModel
             id="x22222"
             v-if="engine"
-            :model="'/models/frade.glb'"
+            :model="'/models/raiaManta.glb'"
             :attribution="'Modelo de tartaruga'"
             :babylonEngine="engine"
           />
