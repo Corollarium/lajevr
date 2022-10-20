@@ -13,7 +13,7 @@
       </font-awesome-layers>
     </div>
     <!-- <div id="underwater-debug">
-      {{ fps }} fps
+      <span id="underwater-debug-fps">{{ fps }}</span> fps
     </div> -->
     <button id="underwater-fullscreen" @click="fullscreen" v-show="!isFullscreen && started" class="button-giant">
       <i18n>Ficar em tela cheia</i18n>
@@ -41,7 +41,7 @@
         <i18n>Iniciar</i18n>
       </button>
     </div>
-    <div id="underwater-hud">
+    <!-- <div id="underwater-hud">
       <div id="underwater-hud-depth">
         <span id="underwater-hud-depth-name"><i18n>Profundidade</i18n></span><br>
         <span id="underwater-hud-depth-ascent" :style="{color: ascentSpeedColor}">{{ ascentSpeedGraph }}</span>
@@ -55,6 +55,22 @@
       <div id="underwater-hud-compass">
         <span id="underwater-hud-compass-name"><i18n>Compasso</i18n></span><br>
         <span id="underwater-hud-compass-value">{{ ((parseInt(orientationDegrees) % 360) + 360) % 360 }}</span>
+      </div>
+    </div> -->
+    <div id="underwater-hud">
+      <div id="underwater-hud-depth">
+        <span id="underwater-hud-depth-name"><i18n>Profundidade</i18n></span><br>
+        <span id="underwater-hud-depth-ascent" style="color: #fff" />
+        <span id="underwater-hud-depth-value">0.0</span>
+        <span id="underwater-hud-depth-unit">m</span>
+      </div>
+      <div id="underwater-hud-time">
+        <span id="underwater-hud-time-name"><i18n>Tempo</i18n></span><br>
+        <span id="underwater-hud-time-value" />
+      </div>
+      <div id="underwater-hud-compass">
+        <span id="underwater-hud-compass-name"><i18n>Compasso</i18n></span><br>
+        <span id="underwater-hud-compass-value" />
       </div>
     </div>
   </div>
@@ -189,6 +205,12 @@ class Underwater {
     this.vueComponent = vueComponent;
     this.base = vueComponent.base;
 
+    const depthEl = document.getElementById('underwater-hud-depth-value');
+    const timeEl = document.getElementById('underwater-hud-time-value');
+    const ascentSpeedEl = document.getElementById('underwater-hud-depth-ascent');
+    const orientationDegreesEl = document.getElementById('underwater-hud-compass-value');
+    // const fpsEl = document.getElementById('underwater-debug-fps');
+
     /*
      * boot renderer, scene, camera
      */
@@ -276,12 +298,18 @@ class Underwater {
         }
       }
       if (uiUpdateCounter++ % 8) {
-        // update UI. Only every 8 frames to avoid wasting time with Vue
-        vueComponent.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
-        vueComponent.time = timeElapsed;
-        vueComponent.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
-        vueComponent.orientationDegrees = this.camera.rotation.y * 180.0 / Math.PI;
-        vueComponent.fps = this.engine.getFps().toFixed();
+        // // update UI. Only every 8 frames to avoid wasting time with Vue
+        // vueComponent.depth = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
+        // vueComponent.time = timeElapsed;
+        // vueComponent.ascentSpeed = (this.camera.position.y - this.lastDepth) / deltaTime;
+        // vueComponent.orientationDegrees = this.camera.rotation.y * 180.0 / Math.PI;
+        // vueComponent.fps = this.engine.getFps().toFixed();
+
+        depthEl.textContent = (isUnderwater ? (-this.camera.position.y).toFixed(1) : 0.0);
+        timeEl.textContent = parseInt(timeElapsed / 60, 10) + ':' + parseInt(timeElapsed % 60, 10).toString().padStart(2, '0');
+        ascentSpeedEl.textContent = this.ascentSpeedGraph(this.lastDepth, (this.camera.position.y - this.lastDepth) / deltaTime);
+        orientationDegreesEl.textContent = Math.round((((this.camera.rotation.y * 180.0 / Math.PI) % 360) + 360) % 360);
+        // fpsEl.textContent = this.engine.getFps()
       }
       this.lastDepth = this.camera.position.y;
 
@@ -307,6 +335,36 @@ class Underwater {
 
     // Watch for browser/canvas resize events
     window.addEventListener('resize', () => this.resize());
+  }
+
+  ascentSpeedColor (ascentSpeed) {
+    if (ascentSpeed < 1.0 / 60.0) {
+      return '#000';
+    } else if (ascentSpeed < 6.0 / 60.0) {
+      return '#0f0';
+    } else if (ascentSpeed < 12.0 / 60.0) {
+      return '#0f0';
+    } else if (ascentSpeed < 18.0 / 60.0) {
+      return '#ff0';
+    } else {
+      return '#f00';
+    }
+  }
+
+  ascentSpeedGraph (depth, ascentSpeed) {
+    if (depth >= 0 || ascentSpeed < 0) {
+      return '';
+    } else if (ascentSpeed < 1.0 / 60.0) {
+      return '<';
+    } else if (ascentSpeed < 6.0 / 60.0) {
+      return '<';
+    } else if (ascentSpeed < 12.0 / 60.0) {
+      return '<<';
+    } else if (ascentSpeed < 18.0 / 60.0) {
+      return '<<<';
+    } else {
+      return '<<<<';
+    }
   }
 
   async share () {
@@ -1064,6 +1122,8 @@ class Underwater {
 
       this.assetsManager.addMeshTask('tartaruga', null, this.base + 'models/tartaruga/', 'tartaruga.glb').onSuccess = (task) => {
         task.loadedMeshes[0].name += 'tartaruga';
+        task.loadedMeshes[0].scaling.y = -1.0;
+        task.loadedMeshes[0].scaling.z = -1.0;
         const meshesWithMaterials = [];
 
         for (const mesh of task.loadedMeshes) {
@@ -1100,6 +1160,8 @@ class Underwater {
       this.assetsManager.addMeshTask('manta', null, this.base + 'models/', 'raiaManta.glb').onSuccess = (task) => {
         const meshesWithMaterials = [];
         task.loadedMeshes[0].name += 'raiaManta';
+        task.loadedMeshes[0].scaling.y = -1.0;
+        task.loadedMeshes[0].scaling.z = -1.0;
 
         for (const mesh of task.loadedMeshes) {
           if (mesh.material) {
@@ -1281,8 +1343,14 @@ class Underwater {
 
     // run the boid simulation in a separate thread
     const boidsWorkerThread = new BoidsWorker();
-    boidsWorkerThread.onmessage = (e) => {
-      const now = performance.now();
+    let eventStore = null;
+    let lastEventStoreFrame = -1;
+
+    function processWebWorkerEvent (e) {
+      if (!e || e.data.frame === lastEventStoreFrame) {
+        return;
+      }
+      lastEventStoreFrame = e.data.frame;
       if (e.data.command === 'started') {
         // IF DEBUG
         if (debugBoids) {
@@ -1298,11 +1366,15 @@ class Underwater {
       } else {
         boids = e.data.boids;
 
-        // IF DEBUG
-        if (debugBoids) {
-          debugData.center.position.copyFrom(e.data.center);
-        }
+        // // IF DEBUG
+        // if (debugBoids) {
+        //   debugData.center.position.copyFrom(e.data.center);
+        // }
       }
+    }
+
+    boidsWorkerThread.onmessage = (e) => {
+      eventStore = e;
     };
 
     // start the simulation and set parameters
@@ -1420,6 +1492,8 @@ class Underwater {
         return (deltaTime) => {
           const now = performance.now();
           if (mainMesh) {
+            processWebWorkerEvent(eventStore);
+
             // mainMesh.bakedVertexAnimationManager.time += deltaTime;
             for (let i = 0; i < boids.length; i++) {
               const boid = boids[i];
