@@ -632,7 +632,7 @@ class Underwater {
     const leftInnerThumbContainer = makeThumbArea('leftInnerThumb', 4, 'blue', null);
     leftInnerThumbContainer.height = '80px';
     leftInnerThumbContainer.width = '80px';
-    leftInnerThumbContainer.isPointerBlocker = true;
+    leftInnerThumbContainer.isPointerBlocker = false;
     leftInnerThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
     leftInnerThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
 
@@ -690,7 +690,7 @@ class Underwater {
     const rightInnerThumbContainer = makeThumbArea('rightInnerThumb', 4, 'red', null);
     rightInnerThumbContainer.height = '80px';
     rightInnerThumbContainer.width = '80px';
-    rightInnerThumbContainer.isPointerBlocker = true;
+    rightInnerThumbContainer.isPointerBlocker = false;
     rightInnerThumbContainer.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
     rightInnerThumbContainer.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
 
