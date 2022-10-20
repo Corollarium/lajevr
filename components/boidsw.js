@@ -36,6 +36,7 @@ function construct (center, total, initialRadius = 1.0, boundRadiusScale = 100.0
 }
 
 function start () {
+  let frame = 0;
   let lastTickPosition = performance.now();
 
   // we want to updatePositions as often as possible
@@ -48,6 +49,7 @@ function start () {
 
     postMessage({
       command: 'boids',
+      frame: frame++,
       boids: boidsManager.boids,
       center: boidsManager.center
     });
@@ -57,6 +59,7 @@ function start () {
   };
   postMessage({
     command: 'started',
+    frame: frame++,
     boids: boidsManager.boids,
     boundsMin: boidsManager.boundsMin,
     boundsMax: boidsManager.boundsMax,
@@ -69,7 +72,7 @@ function start () {
   const updateForces = () => {
     boidsManager.updateForces();
     if (!boidsManager.stopThread) {
-      setTimeout(updateForces, 3000);
+      setTimeout(updateForces, 200);
     }
   };
   updateForces();
