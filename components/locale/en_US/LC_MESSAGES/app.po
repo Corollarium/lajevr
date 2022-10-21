@@ -16,11 +16,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Loco-Parser: loco_parse_po\n"
 
-#: pages/index.vue:159
+#: pages/index.vue:164
 msgid "A 20 metros de profundidade está o"
 msgstr "At 20 meters deep you will find the"
 
-#: pages/sobre.vue:32
+#: pages/sobre.vue:42
 msgid ""
 "A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
 "          com visualização e realidade virtual.\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "A embarcação Moreia é naufragada. É o primeiro naufrágio feito para prática de mergulho no Brasil."
 msgstr "The Moreia is a shipwrecked vessel. It is the first induced shipwreck made for diving in Brazil."
 
-#: pages/sobre.vue:26
+#: pages/sobre.vue:37
 msgid "A ideia e a execução"
 msgstr "Idea and execution"
 
@@ -53,7 +53,7 @@ msgstr ""
 "Laje de Santos is full of life. So far, 196 species of fish and 29 species of birds have been catalogued.\n"
 "It is also inhabited by corals, algae, and other life forms. There are many areas with brown and red algae."
 
-#: pages/index.vue:276
+#: pages/index.vue:281
 msgid ""
 "A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas. É habitada\n"
 "            por corais, golfinhos, tartarugas, algas, raias-manta."
@@ -61,7 +61,7 @@ msgstr ""
 "Laje de Santos is full of life. So far, 196 species of fish and 29 species of birds have been catalogued.\n"
 "It is inhabited by corals, dolphins, turtles, algae, and manta rays."
 
-#: pages/vida.vue:815
+#: pages/vida.vue:864
 msgid "A laje de Santos é um local de grande interesse para a conservação da diversidade biológica na costa paulista, seja marinho, terrestre e aéreo. Cinco espécies de aves marinhas insulares nidificam  na laje: o gaivotão Larus dominicanus; três espécies de trinta-réis, Sterna hirundinacea, S. eurygnatha e S. maxima, que formam colônias no inverno, e o atobá-marrom  Sula leucogaster, que nidifica durante o ano todo.29 espécies de aves já foram catalogadas na Laje."
 msgstr "Laje de Santos is a place on the coast of São Paulo of great interest for the conservation of biological diversity, be it marine, terrestrial, or aerial. Five species of island seabirds nest at Laje: the Kelp gull, Larus dominicanus; three species of Terns, Sterna hirundinacea, S. eurygnatha, and S. maxima, which form colonies during the winter, and the Brown booby, Sula leucogaster, which nests year-round. Twenty-nine bird species have already been cataloged in Laje."
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "A Laje de Santos em Realidade Virtual"
 msgstr "Laje de Santos in Virtual Reality"
 
-#: pages/index.vue:382
+#: pages/index.vue:392
 msgid "A Laje em Números"
 msgstr "Laje in Numbers"
 
-#: pages/index.vue:132
+#: pages/index.vue:137
 msgid ""
 "A Laje oferece condições muito especiais em termos de profundidade\n"
 "                e visibilidade para mergulho. Junto com a preservação e variedade da vida,\n"
@@ -90,7 +90,7 @@ msgid ""
 "                e de fotografia subaquática do país."
 msgstr "Laje offers very special conditions in terms of diving depth and visibility. Along with the preservation and variety of life, this makes Laje one of the country's main spots for diving and underwater photography."
 
-#: pages/vida.vue:218
+#: pages/vida.vue:217
 msgid "A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a 100 metros de profundidade, e na Laje de Santos são vistas nas estações primavera e verão, utilizando a região para descanso no período reprodutivo."
 msgstr "Butterfly rays can be found throughout the Atlantic Ocean, Black Sea, and Madeira and Canary Islands. They can be seen from 5 to 100 meters deep and, at Laje de Santos, they are seen during the spring and summer, using the region to rest during their reproductive period."
 
@@ -98,7 +98,7 @@ msgstr "Butterfly rays can be found throughout the Atlantic Ocean, Black Sea, an
 msgid "A rainha da Laje de Santos."
 msgstr "The queen of Laje de Santos."
 
-#: pages/sobre.vue:150
+#: pages/sobre.vue:162
 msgid ""
 "A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.\n"
 "              Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que\n"
@@ -109,7 +109,7 @@ msgstr ""
 "For Laje's models, both above and underwater, we use software-processed reference photos. \n"
 "Many items were modeled by hand, such as fish and birds, so they could present quality and animation but still be light enough for the web."
 
-#: pages/index.vue:273
+#: pages/index.vue:278
 msgid "A vida na Laje"
 msgstr "Life at Laje"
 
@@ -117,19 +117,23 @@ msgstr "Life at Laje"
 msgid "A vida na Laje de Santos"
 msgstr "Life at Laje de Santos"
 
-#: pages/sobre.vue:70
+#: pages/sobre.vue:82
 msgid "Adquirindo dados"
 msgstr "Fetching data"
 
-#: pages/sobre.vue:310
+#: pages/sobre.vue:322
 msgid "Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto."
 msgstr "We thank the following people and institutions for their invaluable help in this project."
 
-#: pages/sobre.vue:305
+#: pages/sobre.vue:317
 msgid "Agradecimentos"
 msgstr "Acknowledgments"
 
-#: pages/sobre.vue:287
+#: pages/AnimBakeExtractor.vue:11
+msgid "Ajuste o modelo, a quantidade de quadros e um delta de quadros por segundo."
+msgstr ""
+
+#: pages/sobre.vue:299
 msgid ""
 "Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,\n"
 "            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas."
@@ -139,15 +143,28 @@ msgstr "In addition to the previously mentioned points, the PELMS is known to be
 msgid "Amarelo"
 msgstr "Yellow"
 
-#: pages/vida.vue:603
+#: pages/vida.vue:641
 msgid "Ao encontrar uma moréia você perceberá sua mandíbula em constante movimento de abrir e fechar. Parece assustador, mas isso significa que ela está respirando, inalando água que ao passar por suas brânquias faz a troca do oxigênio que necessita."
 msgstr "When you encounter a Moray eel, you will notice its jaw in a constant opening and closing movement. It can look pretty scary, but it only means it's breathing, inhaling water that passes through it gills, exchanging the oxygen it needs."
 
-#: pages/vida.vue:701
+#: components/EBA.vue:13 components/GLTFModelB.vue:13
+msgid "apertar com dedos para zoom,"
+msgstr "pinch to zoom"
+
+#: components/Underwaterb.vue:30
+msgid "Aperte 'W' para nadar."
+msgstr "Press 'W' to swim."
+
+#: components/EBA.vue:10 components/EBA.vue:14 components/GLTFModelB.vue:10
+#: components/GLTFModelB.vue:14
+msgid "arraste para girar"
+msgstr "drag to turn"
+
+#: pages/vida.vue:739
 msgid "As barracudas são peixes grandes de corpo alongado e com cabeça afunilada em forma de míssil. São muito velozes na água pois são predadoras vorazes com dentes pontiagudos muito afiados. O mínimo contato com uma barracuda pode lhe causar ferimentos graves. Mas elas não atacam assim! O importante a se fazer quando se está  mergulhando ou praticando quaisquer atividades em seu habitat é não estar com nenhum acessório brilhante como brincos, pulseiras ou anéis, pois estes objetos atraem sua atenção, confundindo com uma presa em potencial e avançam com velocidade em sua direção causando um baita susto nos desavisados de plantão."
 msgstr "Barracudas are large fish with an elongated body and a tapered missile-shaped head. They are very fast in the water as they are voracious predators with very sharp pointed teeth. The slightest contact with a barracuda can cause you serious injury. But they don't attack just like that! The important thing to do when diving or doing any activities in their habitat is not to bear any shiny accessories such as earrings, bracelets, or rings, as these objects attract their attention, confusing them into thinking that you are a potential prey, and thus speeding towards you, causing a heck of a scare in the unsuspecting diver."
 
-#: pages/vida.vue:691
+#: pages/vida.vue:729
 msgid ""
 "As barracudas são peixes tão famosos que até os mergulhadores\n"
 "            menos experientes já ouviram falar e tem medo de se deparar com\n"
@@ -157,19 +174,19 @@ msgid ""
 "            partes do mundo."
 msgstr "The Barracuda is so famous that even less experienced divers have heard of it and are afraid of crossing its path. Its fame is that of an evil, ferocious fish that can attack you at any time. And in all honesty, it really does live up to its fame due to cases of accidents with human beings in almost all parts of the world."
 
-#: pages/index.vue:370
+#: pages/index.vue:380
 msgid "as raias mantas"
 msgstr "the Manta rays"
 
-#: pages/vida.vue:164
+#: pages/vida.vue:163
 msgid "As raias-prego, ou raias manteiga como são conhecidas pelos mergulhadores, sempre dão show quando encontradas. São animais de corpo achatado associados ao substrato ou fundo de areia, geralmente param e depositam areia por cima de seu corpo para se camuflarem e desta forma descansarem."
 msgstr "The Stingrays or Butterfly rays, as they are known to divers, always draw a crowd when found. They are flat-bodied animals associated with the substrate or sand bottom; they usually stop and deposit sand on top of their body to camouflage themselves so they can rest."
 
-#: pages/vida.vue:845
+#: pages/vida.vue:894
 msgid "Ave de pequeno porte, de plumagem branca, com bico e patas vermelhas. É considerada uma ave migratória, saindo da Argentina para nidificar no Brasil de abril a setembro. São exímias pescadoras, se alimentando de pequenos peixes e crustáceos. Elas costumam pairar no ar antes de mergulhar para capturar suas presas."
 msgstr "Small bird, white plumage, with red beak and legs. It is considered a migratory bird, hailing from Argentina to nest in Brazil from April to September. They are excellent fishermen, feeding on small fish and crustaceans. They often hover in the air before diving to capture their prey."
 
-#: pages/vida.vue:52 pages/vida.vue:811
+#: pages/vida.vue:52 pages/vida.vue:860
 msgid "Aves"
 msgstr "Birds"
 
@@ -177,23 +194,31 @@ msgstr "Birds"
 msgid "Azul"
 msgstr "Blue"
 
-#: pages/vida.vue:684 pages/vida.vue:5
+#: pages/mergulho-virtual.vue:13
+msgid "Baixo desempenho, devagar"
+msgstr "Low performance, slow"
+
+#: pages/vida.vue:722 pages/vida.vue:5
 msgid "Barracuda"
 msgstr "Barracuda"
 
-#: pages/especies.vue:118
+#: pages/especies.vue:141
 msgid "Bibliografia"
 msgstr "Bibliography"
+
+#: pages/boids.vue:19
+msgid "Boids"
+msgstr "Boids"
 
 #: pages/especies.vue:53
 msgid "Branco"
 msgstr "White"
 
-#: pages/vida.vue:752 pages/vida.vue:5
+#: pages/vida.vue:795 pages/vida.vue:5
 msgid "Budião-papagaio-de-recife"
 msgstr "Reef parrotfish"
 
-#: pages/sobre.vue:293
+#: pages/sobre.vue:305
 msgid ""
 "busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente\n"
 "            incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio\n"
@@ -212,6 +237,11 @@ msgstr "Search"
 msgid "buscar na galeria"
 msgstr "search in gallery"
 
+#: pages/vida.vue:401 pages/vida.vue:5
+#, fuzzy
+msgid "Cardume de peixe enxada. Foto: Nauther Andrés"
+msgstr "Actual Grouper between stones. Photo by: Nauther Andres"
+
 #: components/sections/SiteFooter.vue:47
 msgid "Catálogo de espécies"
 msgstr "Species catalog"
@@ -219,6 +249,10 @@ msgstr "Species catalog"
 #: pages/especies.vue:56
 msgid "Cinza"
 msgstr "Grey"
+
+#: components/Underwaterb.vue:26
+msgid "Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor."
+msgstr "Click with the left button and drag to turn around."
 
 #: pages/pontos-de-mergulho.vue:15
 msgid "Clique em um ponto de mergulho para ter mais informações."
@@ -228,46 +262,46 @@ msgstr "Click on a dive spot for more information."
 msgid "Código disponível"
 msgstr "Code available"
 
-#: pages/index.vue:310
+#: pages/index.vue:315
 msgid "Coió"
 msgstr "Flying Gurnard"
 
-#: pages/sobre.vue:54
+#: pages/sobre.vue:64
 msgid "Com a melhora da situação em 2021, pudemos finalmente cair na água."
 msgstr "With a more favorable situation in 2021, we were finally able to get ourselves wet."
 
-#: pages/vida.vue:654
+#: pages/vida.vue:692
 msgid "Com comportamento semelhantes aos das outras espécies de moréias, a moréia banana é a mais rara delas. Justamente por sua coloração, ela se destaca diante dos outros animais e é facilmente vista pelos predadores. Por isso permanece boa parte do tempo em sua toca e sai apenas para caçar. Ao se deparar com uma sinta-se privilegiado, curta o momento e tire lindas fotos."
 msgstr "With a behavior similar to that of other species of Moray eels, the Golden Banana Moray is the rarest of them. Precisely because of its color, it stands out from other animals and is easily seen by predators. That's why it remains for a prolonged period in its lair and ventures out only to hunt. Whenever coming across one of them, you should feel privileged, savor the moment and take beautiful pictures."
 
-#: pages/vida.vue:836
+#: pages/vida.vue:885
 msgid "Com uma população de apenas 30 indivíduos na Laje de Santos, elas compartilham o mesmo espaço com atobás-marrom, trinta-réis-de-bando, trinta-réis-real e as fragatas. Na Laje de Santos, por ser uma unidade de conservação protegida, não é permitido o desembarque a não ser em caso de emergência ou para pesquisadores. O ato de subir nos rochedos da Laje afugenta as aves das outras espécies que estão no local, e as gaivotas, por serem oportunistas e furtivas, atacam os ninhos desprotegidos para se alimentarem dos ovos e até mesmo dos filhotes recém nascidos."
 msgstr "With a population of just 30 individuals in Laje de Santos, they share the same space with brown boobies, band terns, royal terns, and frigate birds. Laje de Santos, as it is a protected conservation unit, disembarkation is not allowed unless in an emergency or for researchers. Climbing the rocks of Laje scares away birds of other species that reside there, and the seagulls, as they are opportunistic and stealthy, attack the unprotected nests to feed on the eggs and even newborn chicks."
 
-#: pages/vida.vue:224
+#: pages/vida.vue:223
 msgid "Como a maioria das raias, elas também possuem o comportamento de se camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina camada de sedimentos para se protegerem de possíveis predadores. Todos os anos as encontramos e geralmente as fêmeas estão grávidas, o que é possível saber por ficarem com o dorso proeminente."
 msgstr "Like most rays, they also have the behavior of camouflaging themselves on the sand bottom, covering their entire body with a thin layer of sediment to protect themselves from possible predators. Every year we spot them, and generally, the females are pregnant, which you can tell from their prominent back."
 
-#: pages/vida.vue:277
+#: pages/vida.vue:258
 msgid ""
 "Como são animais de vida longa, atingindo a maturidade sexual após os 30\n"
 "            anos, as tartarugas encontradas na Laje de Santos são animais juvenis\n"
 "            utilizando a área para alimentação e abrigo."
 msgstr "As they are long-lived animals, reaching sexual maturity after 30 years of age, the turtles found in Laje de Santos are juvenile animals using the area for food and shelter."
 
-#: pages/index.vue:331
+#: pages/index.vue:336
 msgid "Como visitar a Laje"
 msgstr "How to visit Laje"
 
-#: components/Underwaterb.vue:18
+#: components/Underwaterb.vue:13 components/Underwaterb.vue:71
 msgid "Compasso"
 msgstr "Compass"
 
-#: pages/sobre.vue:207
+#: pages/sobre.vue:219
 msgid "Comunicólogo, designer de experiência do projeto."
 msgstr "Communicator, project experience designer."
 
-#: pages/vida.vue:671
+#: pages/vida.vue:709
 msgid "Conhecida no nordeste como Mututuca e no sudeste como miriquitis, a Myrichthys ocellatus se assemelha mais ainda com uma serpente marinha. Mas não é! Ela é um peixe ou uma enguia marinha, de coloração clara e manchas escuras arredondadas."
 msgstr "Known in the northeast as \"Mututuca\" and in the southeast as \"Miriquitis\", the Myrichthys ocellatus \"Goldspotted eel\" is even more similar to the sea serpent. But it is not! It is a fish or sea eel, with a light coloration and rounded dark spots."
 
@@ -275,7 +309,7 @@ msgstr "Known in the northeast as \"Mututuca\" and in the southeast as \"Miriqui
 msgid "Conteúdo do site sob"
 msgstr "Website content under the"
 
-#: pages/sobre.vue:194
+#: pages/sobre.vue:206
 msgid "Coordenador do projeto, é engenheiro elétrico e mergulhador."
 msgstr "Project coordinator, an electrical engineer and diver."
 
@@ -291,15 +325,11 @@ msgstr "The Mantas do Brasil \"Mantas of Brazil\" project was created."
 msgid "criado para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro."
 msgstr "created to help preserve marine species on the São Paulo and Brazilian coast."
 
-#: pages/sobre.vue:112
-msgid "Desenvolvimento"
-msgstr "Development"
-
-#: pages/vida.vue:173
+#: pages/vida.vue:172
 msgid "Dizem que as raias e os tubarões não podem parar de nadar porque podem morrer afogados, mas nem tudo é verdade. No caso de algumas espécies de raias, quando estão paradas, elas abrem e fecham o opérculo, sugando a água que passa por suas brânquias, (órgão responsável pela respiração), fazendo a troca de oxigênio. Por causa deste comportamento de se enterrar na areia e permanecer muitas vezes em águas rasas, ocorrem alguns acidentes pelo mundo afora, devido ao seu ferrão presente em sua cauda. Seu ferrão não é venenoso, mas contém muitas bactérias que podem causar infecções e agravar o ferimento. Um dos casos mais conhecido sobre ataques com essa espécies foi o caso do zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia do gênero Dasyatis."
 msgstr "They say that rays and sharks can't stop swimming because they could drown, but not everything that you hear is true. In the case of some species of rays, when they are stationary, they open and close the operculum, sucking the water that passes through their gills (organ responsible for breathing), exchanging oxygen. Because of this behavior of burying itself in the sand and often remaining in shallow waters, some accidents with the sting in its tail are reported around the world. Its stinger is not poisonous, but it does contain many bacteria that can cause infections and aggravate the wound. One of the best known cases of attacks with this species was the case of zoologist and TV presenter Steve Irwin, known worldwide as the Crocodile Hunter, who died from an accidental sting of a ray of the Dasyatis genus."
 
-#: pages/vida.vue:335
+#: pages/vida.vue:316
 msgid ""
 "Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que\n"
 "              aparecem, acompanham o barco por alguns minutos e de novo somem em mar aberto, parecendo nos recepcionar."
@@ -313,29 +343,29 @@ msgid ""
 "            três graus centígrados."
 msgstr "During their migrations, giant oceanic Manta rays frequently dive to depths of almost two kilometers (among the greatest ever measured for a marine animal), where water temperatures reach three degrees centigrade."
 
-#: pages/vida.vue:595
+#: pages/vida.vue:633
 msgid "É conhecida popularmente como moréia pintada, por conta de suas manchas claras e escuras no corpo de padrão marmorizado. Apesar de parecerem com serpentes ou enguias, as moreias  são peixes com formato anatômico diferente."
 msgstr "It is popularly known as painted moray due to the light and dark spots on their body with a marbled pattern. Despite looking like snakes or eels, morays are fish with a different anatomical shape."
 
-#: pages/index.vue:163
+#: pages/index.vue:168
 msgid "É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho."
 msgstr "It is the first induced shipwreck made for diving in Brazil."
 
-#: pages/index.vue:335
+#: pages/index.vue:340
 msgid ""
 "É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.\n"
 "              Outra opção para visitar a Laje, é através das operadoras de turismo e mergulho credenciadas. Contate também seu dive center."
 msgstr "Visits with private vessels are permitted, following the navigation rules and with an accredited Master Pilot. Another option to visit the Laje is through an accredited tour and diving operators. Be sure to contact your dive center."
 
-#: pages/vida.vue:136 pages/vida.vue:2
+#: pages/vida.vue:135 pages/vida.vue:2
 msgid "Encontrada  em quase todos os oceanos, mas na Laje de Santos podem ser vistas quase o ano todo, onde seus indivíduos são inclusive reconhecidos pelos mergulhadores, graças ao padrão único de pintas em sua região dorsal. São animais de vida longa, podendo chegar até os 18 anos, sendo frequentemente avistados nadando sozinhas ou até em cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora d’água. Alimentam-se de pequenos crustáceos e moluscos bivalves (animais de duas conchas) possuindo uma mandíbula extremamente forte, capaz de triturar conchas e carapaças."
 msgstr "Found in almost all oceans, but at Laje de Santos they can be seen almost all year round, where its kind are even recognized by divers, thanks to the unique pattern of spots on its dorsal region. They are long-lived animals, reaching up to 18 years of age, and are often seen swimming alone or even in schools of more than 20, and often jumping out of the water. They feed on small crustaceans and bivalve molluscs (two-shell animals) having an extremely strong jaw, capable of crushing shells and carapaces."
 
-#: pages/sobre.vue:183
+#: pages/sobre.vue:195
 msgid "Equipe"
 msgstr "Team"
 
-#: pages/index.vue:62
+#: pages/index.vue:67
 msgid "Espalhadas às vezes longe demais para podemos chegar. Tão longe."
 msgstr "Spread, sometimes, too far to let us visit them. So far."
 
@@ -347,23 +377,23 @@ msgstr "Species"
 msgid "Espécies"
 msgstr "Species"
 
-#: pages/especies.vue:62
+#: pages/especies.vue:66
 msgid "Espécies aviáticas e aquáticas da Laje de Santos"
 msgstr "Aerial and aquatic species of Laje de Santos"
 
-#: pages/especies.vue:61
+#: pages/especies.vue:65
 msgid "Espécies da Laje de Santos"
 msgstr "Laje de Santos' Species"
 
-#: pages/index.vue:418
+#: pages/index.vue:428
 msgid "Espécies de aves"
 msgstr "Bird species"
 
-#: pages/index.vue:423
+#: pages/index.vue:433
 msgid "Espécies de peixes"
 msgstr "Fish species"
 
-#: pages/vida.vue:728
+#: pages/vida.vue:766
 msgid ""
 "Esta espécie foi descrita já por Linnaeus, em 1758. São peixes\n"
 "            recifais de mares tropicais que podem ser encontrados em todo o\n"
@@ -371,7 +401,7 @@ msgid ""
 "            vibrantes."
 msgstr "This species was already described by Linnaeus, in 1758. They are reef fishes from tropical seas that can be found throughout the Gulf of Mexico, the Caribbean, and the Brazilian coast, with very vibrant colors."
 
-#: pages/vida.vue:380 pages/vida.vue:2
+#: pages/vida.vue:361 pages/vida.vue:2
 msgid ""
 "Esta espécie habita fundos marinhos rochosos e coralíneos com\n"
 "              profundidade de até 300 metros. Garoupas estão distribuídas por\n"
@@ -382,7 +412,7 @@ msgid ""
 "              alguns anos se torna macho, caracterizando hermafroditismo!"
 msgstr "This species inhabits rocky and coralline seabeds with a depth of up to 300 meters. Groupers are distributed throughout the Atlantic Ocean in tropical, subtropical, and temperate zones, are extremely territorial and large predators, feeding on other fish and crustaceans. A fun fact about the grouper: this species is born female and after a few years becomes male, presenting hermaphroditism!"
 
-#: pages/vida.vue:759
+#: pages/vida.vue:802
 msgid ""
 "Esta espécie, conhecida popularmente como budião papagaio, é\n"
 "            endêmica do Brasil, ocorrendo somente em águas brasileiras. São\n"
@@ -394,13 +424,13 @@ msgstr "This species, popularly known as parrotfish, is endemic to Brazil, being
 msgid "Estado de conservação"
 msgstr "Conservation state"
 
-#: pages/moreia.vue:43
+#: pages/moreia.vue:41
 msgid ""
 "Este modelo 3D foi reconstruído a partir de mais de 700 fotografias tiradas neste projeto. É possível ver partes do\n"
 "          porão, onde não é mais permitido penetrar."
 msgstr "This 3D model was reconstructed from over 700 photographs taken in this project. It is possible to see parts of the ship's hold, where divers can no longer penetrate."
 
-#: pages/vida.vue:563
+#: pages/vida.vue:601
 msgid ""
 "Este peixe é o arquiteto do mar. Habita de 10 até os 150 metros de\n"
 "            profundidade, em fundo arenoso ou calcário, constrói\n"
@@ -411,7 +441,7 @@ msgid ""
 "            aos cuidados da casa."
 msgstr "This fish is the architect of the sea. It lives at a depth that varies from 10 to 150 meters deep, on a sandy or limestone bottom, carefully builds its own house with pieces of coral skeletons, shells, and stones, carrying them on its mouth and piling one on top of the other, forming mounds up to 1 meter high and 1.5 meters wide. And so, he lives his whole life dedicating himself to the care of the house."
 
-#: pages/sobre.vue:75
+#: pages/sobre.vue:87
 msgid ""
 "Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes\n"
 "              abertas como a Wikimedia Commons, passando\n"
@@ -430,7 +460,7 @@ msgid ""
 "          marinho."
 msgstr "This project uses virtual reality to generate a 3D model of the Parque Estadual Marinho da Laje de Santos \"Laje de Santos Marine State Park\", including submerged parts, allowing people from all over Brazil and the world to visit the park virtually, make simulated virtual dives, learn about the fauna that inhabits or migrates through the park and over the marine environment."
 
-#: pages/sobre.vue:117
+#: pages/sobre.vue:129
 msgid ""
 "Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.\n"
 "              Desde um celular até telas gigantes."
@@ -440,7 +470,7 @@ msgstr "This site uses the latest internet technologies to be interactive, immer
 msgid "exceto quando explicitamente referenciado"
 msgstr "except when explicitly referenced"
 
-#: pages/vida.vue:309 pages/vida.vue:2
+#: pages/vida.vue:290 pages/vida.vue:2
 msgid ""
 "Existem duas espécies de tartarugas que frequentam a Laje de Santos, a\n"
 "              Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns\n"
@@ -452,6 +482,21 @@ msgid ""
 "              conectadas como um quebra-cabeça, cabeça arredondada e coloração do\n"
 "              casco predominante do verde e marrom, para amarelo claro em seu ventre."
 msgstr "There are two species of turtles that inhabit Laje de Santos, the Green Turtle and the Hawksbill Turtle. They are similar, but some details are important to differentiate them: in the case of the Hawksbill turtle, they have a thinner and longer head, a falcon-like beak, roof-tile like overlapping or imbricated shell plates, yellowish brown color, and a well ornate shell. Green turtles, on the other hand, have the most symmetrical shell, with plates interspersed and connected like a puzzle, rounded head and predominant shell coloration from green and brown to light yellow on their belly."
+
+#: pages/mergulho-virtual.vue:5
+msgid ""
+"Experimente um mergulho virtual na Laje de Santos e veja o naufrágio Moreia e a vida.\n"
+"          É preciso que seu aparelho tenha suporte a 3D para executar este ambiente com bom\n"
+"          desempenho. Expectativa de desempenho:"
+msgstr ""
+
+#: pages/AnimBakeExtractor.vue:9
+msgid "Extrai o baking da Textura de Animação de Vértices para um arquivo JSOn, caso ele não exista."
+msgstr ""
+
+#: components/Underwaterb.vue:18
+msgid "Ficar em tela cheia"
+msgstr "Fullscreen"
 
 #: pages/especies.vue:17
 msgid "Filtrar pelo nome"
@@ -465,15 +510,16 @@ msgstr "Information sources:"
 msgid "Foram já identificadas 196 espécies de peixes na Laje de Santos."
 msgstr "One hundred ninety-six species of fish have already been identified in Laje de Santos."
 
-#: pages/moreia.vue:16 pages/vida.vue:16
+#: pages/vida.vue:16
 msgid "Foto"
 msgstr "Photo"
 
-#: components/sections/GalleryCard.vue:13 pages/especies.vue:89
+#: components/sections/GalleryCard.vue:15 pages/especies.vue:100
+#: pages/especies.vue:8
 msgid "foto por"
 msgstr "photo by"
 
-#: pages/sobre.vue:162
+#: pages/sobre.vue:174
 msgid "fotografias"
 msgstr "photographs"
 
@@ -490,23 +536,23 @@ msgstr "Gallery"
 msgid "Galeria de Fotos da Laje de Santos"
 msgstr "Laje de Santos Photo Gallery"
 
-#: pages/vida.vue:372 pages/vida.vue:5
+#: pages/vida.vue:353 pages/vida.vue:5
 msgid "Garoupa verdadeira entre pedras. Foto: Nauther Andres"
 msgstr "Actual Grouper between stones. Photo by: Nauther Andres"
 
-#: pages/sobre.vue:172
+#: pages/sobre.vue:184
 msgid "GB de dados"
 msgstr "GB of data"
 
-#: pages/index.vue:322
+#: pages/index.vue:327
 msgid "Golfinho"
 msgstr "Dolphin"
 
-#: pages/vida.vue:40 pages/vida.vue:330 pages/vida.vue:351
+#: pages/vida.vue:40 pages/vida.vue:311 pages/vida.vue:332
 msgid "Golfinhos"
 msgstr "Dolphins"
 
-#: pages/vida.vue:269
+#: pages/vida.vue:250
 msgid ""
 "Graças à beleza do casco, as tartarugas-de-pente foram extremamente\n"
 "            caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer\n"
@@ -514,42 +560,46 @@ msgid ""
 "            \"tartaruga-de-pente\"."
 msgstr "Thanks to the beauty of their shells, Hawksbill turtles were hunted to near extinction. Its shell was used to make utensils such as jewelry boxes and objects such as combs, hence its popular name in Brazil \"Comb turtle\"."
 
-#: pages/moreia.vue:50
+#: pages/moreia.vue:48
 msgid ""
 "Há muitos lugares no mundo que afundam barcos (e até mesmo tanques de guerra ou aviões) propositalmente. As estruturas são\n"
 "          limpas de seus poluentes, como óleo e materiais tóxicos, e deliberadamente naufragados. Ali, repousando no fundo do mar,\n"
 "          viram um recife artificial: servem de estrutura para corais, de refúgio para peixes e de atrativo para o mergulho."
 msgstr "There are many places in the world that purposely sink ships (and even war tanks or planes). The structures are cleaned of their pollutants, such as oil and toxic materials, and deliberately sunk. There, resting on the seabed, they become an artificial reef: they serve as a structure for corals, a refuge for fish, and as a diving attraction."
 
-#: pages/vida.vue:839
+#: pages/vida.vue:888
 msgid "Habitat: Ampla distribuição no hemisfério Sul nos oceanos Atlântico e Pacífico, ilhas subantárticas, Austrália, Nova Zelândia e África."
 msgstr "Habitat: Ample distribution in the southern hemisphere in the Atlantic and Pacific oceans, Sub-Antarctic islands, Australia, New Zealand, and Africa."
 
-#: pages/vida.vue:827
+#: pages/vida.vue:876
 msgid "Habitat: Pantropical, encontrado nos 3 oceanos, habitam ilhas costeiras e oceânicas subtropical no Brasil até Santa Catarina."
 msgstr "Habitat: Pantropical, found in the 3 oceans, inhabit coastal and subtropical oceanic islands in Brazil up to Santa Catarina."
 
-#: pages/index.vue:403
+#: pages/index.vue:413
 msgid "Hectares preservados"
 msgstr "Preserved hectares"
 
-#: pages/sobre.vue:168
+#: pages/sobre.vue:180
 msgid "horas de processamento"
 msgstr "hours spent processing"
 
-#: pages/sobre.vue:165
+#: pages/sobre.vue:177
 msgid "horas de vídeo"
 msgstr "hours of video"
 
-#: pages/sobre.vue:124
+#: pages/sobre.vue:136
 msgid "imagens"
 msgstr "images"
 
-#: pages/sobre.vue:281
+#: pages/sobre.vue:293
 msgid "Importância"
 msgstr "Importance"
 
-#: pages/sobre.vue:267
+#: pages/AnimBakeExtractor.vue:15
+msgid "Improvisações: Animação não rodando nessa página. Aplicar deslocamento de animação, para animação composta."
+msgstr ""
+
+#: pages/sobre.vue:279
 msgid ""
 "Inclui a Laje de Santos, os parcéis do Bandolim, das Âncoras, Brilhante, do Sul e Novo e os Rochedos\n"
 "            conhecidos como Calhaus, totalizando 5.000 hectares de área preservada com formato de retângulo (10.000 por 5.000 m).\n"
@@ -562,11 +612,15 @@ msgid ""
 "            como as baleias-de-Bryde, as raias-manta já citadas, tartarugas marinhas e outras."
 msgstr "It includes Laje de Santos, the Bandolim, Âncoras, Brilhante, do Sul, and Novo parcels, and the Rocks known as Calhaus, totaling 5,000 hectares of preserved area in the shape of a rectangle (10,000 by 5,000 m). Laje de Santos has a shape that resembles a whale, 550 m long, 33 m high and 185 m wide. The Brazilian Navy beacon is located at its highest point. It has practically no vegetation and is home to a large number of seabirds, which use the site as a breeding and resting area. Several species that inhabit the PEMLS are on the list of Brazilian fauna threatened with extinction. The Park is part of the route of several migratory species such as whales, dolphins, and seabirds. It is an important feeding area for several species, many of which are protected by international conventions, such as Bryde's whales, the aforementioned manta rays, sea turtles and others."
 
+#: components/Underwaterb.vue:40
+msgid "Iniciar"
+msgstr "Start"
+
 #: components/sections/SiteFooter.vue:7 components/sections/SiteHeader.vue:22
 msgid "Início"
 msgstr "Home"
 
-#: pages/index.vue:50
+#: pages/index.vue:55
 msgid "Laje de Santos"
 msgstr "Laje de Santos"
 
@@ -578,11 +632,11 @@ msgstr "Laje de Santos in Virtual Reality"
 msgid "Laranja"
 msgstr "Orange"
 
-#: pages/index.vue:72
+#: pages/index.vue:77
 msgid "Leia mais sobre o projeto \"A Laje em Realidade Virtual\"."
 msgstr "Read more about the \"Laje in Virtual Reality\" project."
 
-#: pages/sobre.vue:157
+#: pages/sobre.vue:169
 msgid "Leia um descritivo detalhado da tecnologia que usamos neste projeto."
 msgstr "Read a detailed write up of the technology used in the project."
 
@@ -590,23 +644,23 @@ msgstr "Read a detailed write up of the technology used in the project."
 msgid "Linha do Tempo"
 msgstr "Timeline"
 
-#: pages/sobre.vue:135
+#: pages/sobre.vue:147
 msgid "linhas de código"
 msgstr "lines of code"
 
-#: pages/especies.vue:112
+#: pages/especies.vue:38
 msgid "Mais detalhes"
 msgstr "More details"
 
-#: pages/index.vue:303
+#: pages/index.vue:308
 msgid "Mais sobre a vida"
 msgstr "More about life"
 
-#: pages/index.vue:316
+#: pages/index.vue:321
 msgid "Manta"
 msgstr "Manta Ray"
 
-#: pages/vida.vue:788 pages/vida.vue:5
+#: pages/vida.vue:837 pages/vida.vue:5
 msgid "Maria-da-toca-das-pedras"
 msgstr "Molly Miller fish"
 
@@ -614,85 +668,90 @@ msgstr "Molly Miller fish"
 msgid "Marrom"
 msgstr "Brown"
 
-#: pages/index.vue:68
+#: pages/index.vue:73
 msgid "Mas a internet permite chegarmos um pouco mais perto."
 msgstr "But the internet allows us to get a bit closer."
 
-#: pages/sobre.vue:220
+#: pages/mergulho-virtual.vue:14
+msgid "Médio desempenho"
+msgstr "Medium performance"
+
+#: pages/sobre.vue:232
 msgid "Mergulhador e biólogo."
 msgstr "Diver and biologist."
 
-#: pages/sobre.vue:96
+#: pages/sobre.vue:108
 msgid "mergulhadores"
 msgstr "divers"
 
-#: pages/index.vue:195
+#: pages/index.vue:200
 msgid "Mergulhe agora"
 msgstr "Dive now"
 
-#: pages/index.vue:217
+#: pages/index.vue:222
 msgid "Mergulhe virtualmente entre cardumes e recifes de corais."
 msgstr "Virtually dive between schools and coral reefs."
 
-#: pages/mergulho-virtual.vue:21
+#: pages/mergulho-virtual.vue:28
 msgid "Mergulho em realidade virtual na Laje de Santos"
 msgstr "Virtual reality dive at Laje de Santos"
 
-#: components/sections/SiteFooter.vue:28 pages/mergulho-virtual.vue:20
+#: components/sections/SiteFooter.vue:28 pages/boids.vue:18
+#: pages/mergulho-virtual.vue:3 pages/mergulho-virtual.vue:27
 msgid "Mergulho virtual"
 msgstr "Virtual Dive"
 
-#: components/sections/SiteHeader.vue:27 pages/index.vue:183
+#: components/sections/SiteHeader.vue:27 pages/index.vue:188
 msgid "Mergulho Virtual"
 msgstr "Virtual Dive"
 
-#: pages/sobre.vue:92
+#: pages/sobre.vue:104
 msgid "mergulhos"
 msgstr "dives"
 
-#: pages/moreia.vue:71
+#: pages/moreia.vue:69
 msgid ""
 "Mesmo se desmantelando lentamente pela ação da água e do tempo, o Moreia continua no fundo\n"
 "          provendo um belo espetáculo para os mergulhadores."
 msgstr "Slowly dismantling due to the action of water and time, the Moreia remains at the bottom providing a beautiful visit for divers."
 
-#: pages/index.vue:393
+#: pages/index.vue:403
 msgid "Metros de altura"
 msgstr "Meters high"
 
-#: pages/index.vue:388
+#: pages/index.vue:398
 msgid "Metros de comprimento"
 msgstr "Meters long"
 
-#: pages/index.vue:398
+#: pages/index.vue:408
 msgid "Metros de largura"
 msgstr "Meters wide"
 
-#: pages/index.vue:408
+#: pages/index.vue:418
 msgid "Metros de profundidade máxima"
 msgstr "Maximum depth meters"
 
-#: pages/sobre.vue:100
+#: pages/sobre.vue:112
 msgid "minutos de mergulho"
 msgstr "minutes diving"
 
-#: pages/vida.vue:664 pages/vida.vue:5
+#: pages/vida.vue:702 pages/vida.vue:5
 msgid "Miriquitis amarela"
 msgstr "Yellow Goldspotted eel"
 
-#: pages/sobre.vue:132
+#: pages/sobre.vue:144
 msgid "modelos 3D"
 msgstr "3D models"
 
-#: pages/vida.vue:588 pages/vida.vue:5
+#: pages/vida.vue:626 pages/vida.vue:5
 msgid "Moreia pintada"
 msgstr "Painted moray"
 
-#: pages/vida.vue:613 pages/vida.vue:5
+#: pages/vida.vue:651 pages/vida.vue:5
 msgid "Moreia verde"
 msgstr "Green moray"
 
-#: pages/vida.vue:619
+#: pages/vida.vue:657
 msgid ""
 "Moréia verde, como é conhecida pelos mergulhadores, é a mais\n"
 "            popular de todas as espécies. É considerada a maior em tamanho,\n"
@@ -700,35 +759,39 @@ msgid ""
 "            lendas das serpentes marinhas gigantes?"
 msgstr "The green moray, as it is known to divers, is the most popular of all species. It is considered the largest in size, measuring more than 2 meters. Could it be part of the origin of the giant sea serpent legends?"
 
-#: pages/vida.vue:647 pages/vida.vue:5
+#: pages/vida.vue:685 pages/vida.vue:5
 msgid "Moréia-banana"
 msgstr "Golden Banana Moray"
 
-#: pages/index.vue:225
+#: pages/index.vue:230
 msgid "Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil."
 msgstr "Moreia, The first induced shipwreck for diving in Brazil."
 
-#: pages/vida.vue:190
+#: pages/mergulho-virtual.vue:12
+msgid "Muito baixo desempenho, muito devagar ou não funcionará"
+msgstr "Very low performance, slow or won't render"
+
+#: pages/vida.vue:189
 msgid "Na Laje de Santos elas aparecem em determinadas épocas do ano e geralmente estão prenhas ou grávidas como na foto em questão. A gravidez das raias é perceptível pelo ventre e pelo dorso deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres."
 msgstr "At Laje de Santos they appear at certain times of the year and are usually pregnant, as displayed in the photo. Rays' pregnancy is noticeable through the belly and back, leaving them bulging on both sides. Photos by: Nauther Andres."
 
-#: pages/vida.vue:714 pages/vida.vue:1
+#: pages/vida.vue:752 pages/vida.vue:1
 msgid "Na laje você sempre vê cardumes de salemas."
 msgstr "At Laje, you always see schools of salemas."
 
-#: pages/index.vue:161
+#: pages/index.vue:166
 msgid "naufrágio Moréia."
 msgstr "Moreia shipwreck."
 
-#: pages/vida.vue:848
+#: pages/vida.vue:897
 msgid "Nidificam na Laje de Santos cerca de 500 indivíduos, gerando de um até três filhotes por ninhada, mas nem sempre todos sobrevivem. É uma espécie muito sensível à presença humana e por isso considerada vulnerável à extinção segundo a Red List de animais ameaçados. Uma curiosidade sobre essa espécie: é a associação do período de ocorrência coincidir com o mesmo período de ocorrência da raia-manta no parque marinho."
 msgstr "About 500 types nest in Laje de Santos, generating from one to three fingerlings per spawn, but not all of them always survive. It is a species that is very sensitive to human presence and therefore considered vulnerable to extinction according to the Threatened Animals Red List. A curiosity about this species: the association between the period of this occurrence coincides with the same period of occurrence of manta rays in the marine park."
 
-#: pages/index.vue:367
+#: pages/index.vue:377
 msgid "No inverno"
 msgstr "In the winter"
 
-#: pages/vida.vue:767
+#: pages/vida.vue:810
 msgid ""
 "O curioso dos budiões é que são responsáveis por boa parte da\n"
 "            produção da areia do solo submarino (e portanto das praias!). Eles\n"
@@ -739,7 +802,7 @@ msgid ""
 "            para sua preservação."
 msgstr "The curious thing about the parrotfish is that they are responsible for a good part of the production of sand from the underwater soil (and therefore from the beaches!). They feed on corals and calcareous algae that are crushed and deposited on the sea floor. Some researchers estimate that one fish is capable of producing about a hundred kilos of sand per year! In this way, it helps to maintain the reefs, contributing to their preservation."
 
-#: pages/vida.vue:523
+#: pages/vida.vue:561
 msgid ""
 "O interessante é que ao se deparar com um possível\n"
 "            predador ele abre suas nadadeiras em forma de leque que se\n"
@@ -752,7 +815,7 @@ msgstr "The interesting thing is that when faced with a possible predator, it op
 msgid "O Moréia"
 msgstr "The Moreia"
 
-#: pages/moreia.vue:58
+#: pages/moreia.vue:56
 msgid ""
 "O Moréia foi naufragado em 1992, e por muito tempo quase ninguém sabia era responsável pelo naufrágio. A história só se tornou\n"
 "          pública quando foi gravado o documentário Laje dos Sonhos, onde o próprio autor, Clóvis Benno de Carvalho, conta como foi tudo.\n"
@@ -760,19 +823,19 @@ msgid ""
 "          ir ao fundo. Ele mesmo conta a história:"
 msgstr "The Moreia was wrecked in 1992, and for a long time almost nobody knew who was responsible for the wreck. The story only became public when the documentary Laje dos Sonhos was recorded, in which the author, Clóvis Benno de Carvalho, describes how it all happened. He found a boat hull and towed it to the island. He thought the plunge would be almost immediate, but it took hours for the boat to sink. He narrates the story himself:"
 
-#: pages/index.vue:155 pages/moreia.vue:10
+#: pages/index.vue:160 pages/moreia.vue:10
 msgid "O naufrágio Moréia"
 msgstr "The Moreia shipwreck"
 
-#: pages/moreia.vue:17 pages/moreia.vue:18
+#: pages/moreia.vue:21 pages/moreia.vue:22
 msgid "O Naufrágio Moréia"
 msgstr "The Moreia Shipwreck"
 
-#: pages/sobre.vue:232
+#: pages/sobre.vue:244
 msgid "O Parque Estadual Marinho da Laje de Santos"
 msgstr "The Parque Estadual Marinho da Laje de Santos \"Laje de Santos Marine State Park\""
 
-#: pages/sobre.vue:237
+#: pages/sobre.vue:249
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos (PEMLS) é o primeiro Parque\n"
 "            Marinho dentre as Unidades de Conservação do Estado de São Paulo, criado\n"
@@ -782,14 +845,14 @@ msgid ""
 "            40km da costa da cidade de Santos."
 msgstr "The Parque Estadual Marinho da Laje de Santos (PEMLS) \"Laje de Santos Marine State Park\" is the first Marine Park among the Conservation Units of the State of São Paulo, created on September 27, 1993, through State Decree No. 37.537. Its objective is to protect marine biodiversity and conserve biological diversity on the coast of the State of São Paulo. It is about 40km from the coast of the city of Santos."
 
-#: pages/index.vue:85
+#: pages/index.vue:90
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.\n"
 "                É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício\n"
 "                à concentração de peixes de passagem e recifais com grande diversidade biológica."
 msgstr "The Laje de Santos Marine State Park is a protected area for marine and avian biodiversity. It is the only marine park in the state of São Paulo, and provides an environment conducive to the concentration of passing fish and reefs with great biological diversity."
 
-#: pages/sobre.vue:256
+#: pages/sobre.vue:268
 msgid ""
 "O Parque pode ser visitado por meio de barcos, mas não é permitido\n"
 "            aportar na ilha. Está distante cerca de 22 milhas náuticas da barra de São Vicente (40km).\n"
@@ -800,7 +863,7 @@ msgid ""
 "            enorme beleza e diversidade de fauna."
 msgstr "The Park can be visited by boat, but docking on the island is not allowed. It is about 22 nautical miles from Barra de São Vicente (40km). The navigation is long, about 1:30-2:00 hours in speedboats or 6:00-8:00 hours in slow boats, which makes the visit difficult and costly, being basically restricted to accredited scuba divers. With that, few people have access to a place of enormous beauty and fauna diversity."
 
-#: pages/vida.vue:447
+#: pages/vida.vue:474
 msgid ""
 "O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de\n"
 "            corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.\n"
@@ -808,7 +871,7 @@ msgid ""
 "            crustáceos e vermes."
 msgstr "The queen angelfish, or ciliaris, can be commonly found in coral reefs, slabs, and rocky bottoms in warm waters of the western portion of the Atlantic. In its natural habitat it feeds on corals, sponges, anemones, algae, crustaceans, and worms."
 
-#: pages/vida.vue:512
+#: pages/vida.vue:550
 msgid ""
 "O peixe Coió ou falso-voador é um peixe incomum e com\n"
 "            características morfológicas diferentes da maioria dos peixes que\n"
@@ -818,26 +881,45 @@ msgid ""
 "            tamanho de seu corpo e com membranas entre seus espinhos."
 msgstr "The Flying Gurnard or \"False Flyer\" fish is an unusual fish with morphological characteristics different from most fish we know. Its skull is rectangular with large eye sockets and a muzzle. More than that, he has two modified and extended pectoral fins almost the same size as his body and with webs between his spines."
 
-#: pages/vida.vue:795
+#: pages/vida.vue:408
+msgid ""
+"O peixe enxada também é conhecido como paru branco ou paru preto. Ele é visto em todo o Atlântico,\n"
+"            desde o norte dos Estados Unidos até o sul do Brasil.\n"
+"            É um avistamento comum na Laje, em grandes e belos cardumes que chegam a ter centenas de indivíduos.\n"
+"            É um peixe que pode viver em águas\n"
+"            salobras também, sendo presentes em manguezais e estuários."
+msgstr ""
+
+#: pages/vida.vue:844
 msgid "O peixe que anda sobre os recifes! As Marias da Toca, Marias-da-Toca, como são conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento que vivem em fendas fendas orifícios e pequenos orifícios orifícios buracos no costão rochoso e nos recifes de corais. São herbívoros, se alimentando de alga marinha e matéria orgânica. São como jardineiras dos recifes."
 msgstr "The fish that walks on the reefs! The Molly Miller fish, as they are known, are small fish up to 8.5 cm in length that live in crevices and tiny crevices holes in the rocky shore and coral reefs. They are herbivores, feeding on seaweed and organic matter. They are like reef gardners."
 
-#: pages/sobre.vue:85
+#: pages/sobre.vue:97
 msgid "O projeto está em andamento!"
 msgstr "The project is underway!"
 
-#: pages/sobre.vue:46
+#: pages/sobre.vue:56
 msgid ""
 "O projeto estava previsto para 2020, com os primeiros mergulhos agendados para\n"
 "          março. Então ocorreu a pandemia. Tivemos que pausar as atividades de mergulho e\n"
 "          focar somente no desenvolvimento da tecnologia."
 msgstr "The project was scheduled for 2020, with the first dives scheduled for March. Then the pandemic occurred. We had to pause diving activities and focus solely on technology development."
 
-#: pages/vida.vue:821
+#: pages/vida.vue:870
 msgid "Os Atobás são aves marinhas pertencentes à família Sulidae, com distribuição pelos mares tropicais e subtropicais. No Brasil foram registradas 5 espécies distintas. Presente em grande quantidade com uma população estimada em mais de 2 mil indivíduos, a Laje de Santos é considerada o maior ninhal de Atobás-marrom da América Latina."
 msgstr "The boobies are marine birds belonging to the Sulidae family, distributed in tropical and subtropical seas. In Brazil, 5 different species were registered. Present in large quantities with an estimated population of more than 2,000 birds, Laje de Santos is considered to be the largest nest of Brown boobies in Latin America."
 
-#: pages/vida.vue:533
+#: pages/vida.vue:418
+msgid ""
+"Os peixes enxadas jovens costumam nadar na horizontal, parecendo uma folha.\n"
+"            Eles também são mais escuros, clareando com a idade."
+msgstr ""
+
+#: pages/mergulho-virtual.vue:15
+msgid "Ótimo desempenho"
+msgstr "Great performance"
+
+#: pages/vida.vue:571
 msgid ""
 "Outra característica bem marcante é as bordas de suas nadadeiras\n"
 "            quando abertas. Elas apresentam uma coloração azul neon bem viva que serve como\n"
@@ -847,11 +929,11 @@ msgid ""
 "            outros organismos para se alimentar."
 msgstr "Another very striking feature is the edges of their fins when open. They have a bright neon blue color that serves as a warning, often associated as a sign of danger to possible predators. This species has the behavior of foraging on the seabed, usually in sand, looking for small crustaceans and other organisms to feed on."
 
-#: pages/vida.vue:778
+#: pages/vida.vue:821
 msgid "Outra curiosidade que chama a atenção para esta espécie de hábito diurno, é que durante a noite precisam descansar e se proteger dos predadores que rondam pelos corais como os tubarões. Por isso se escondem nas  fendas e frestas do recife, mas nem sempre este esconderijo o protege, então os budiões secretam um muco fedorento que envolve seu corpo completamente como uma camisola transparente, inibindo e confundindo seus predadores."
 msgstr "Another curiosity that draws attention to this kind of daytime habit is that during the night they need to rest and protect themselves from predators that roam around corals such as sharks. That's why they hide in the reefs' crevices and openings, but this hiding place doesn't always protect them, so the parrotfish secrete a smelly mucus that completely envelops their body like a transparent nightgown, inhibiting and confusing their predators."
 
-#: pages/vida.vue:632
+#: pages/vida.vue:670
 msgid ""
 "Para respirar, elas abrem e fecham a boca constantemente inalando e exalando\n"
 "            água retendo o oxigênio em sua brânquias e transportando para corrente\n"
@@ -863,7 +945,7 @@ msgstr "To breathe, they open and close their mouths constantly inhaling and exh
 msgid "Parque criado pelo decreto estadual n° 37.537. Passa a ser área de preservação, sendo proibida a pesca."
 msgstr "Park created by state decree No. 37,537. Turning it into a preservation área where fishing is prohibited."
 
-#: pages/moreia.vue:31
+#: pages/moreia.vue:29
 msgid ""
 "Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também\n"
 "          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com\n"
@@ -872,31 +954,31 @@ msgid ""
 "          mar já mudaram diversas vezes o naufrágio de lugar - parece que sua posição inicial nem mesmo era a atual, mas deitado."
 msgstr "Part of this site's project is to recreate Moreia in 3D so that everyone, divers or not, can see a little more of it. And also to preserve it. It's a small, simple boat that has become part of the history of Brazilian diving, and who's been beaten up by age. As we write this, the Moreia is about to complete 30 years underwater, which is a considerable amount of time. Even though it is very close to the island, Laje de Santos sometimes presents strong currents and storms. Reports are that storm surges have already moved the shipwreck several times - it seems that its initial position was not even its current one, but lying down."
 
-#: pages/vida.vue:422
+#: pages/vida.vue:444
 msgid "Paru, peixe-frade ou peixe-anjo: são muitos os nomes para a mesma espécie. Depende de qual região você o avistou. É um dos peixes mais ilustres e carismáticos."
 msgstr "Paru, angelfish, or french angelfish: there are many names for the same species. It depends on which region you spotted it. It is one of the most distinguished and charismatic fish."
 
-#: pages/index.vue:371
+#: pages/index.vue:381
 msgid "passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção."
 msgstr "pass through the Laje. They reach up to 8 meters in wingspan and 2 tons in weight. They are vulnerable to extinction."
 
-#: pages/vida.vue:440 pages/vida.vue:5
+#: pages/vida.vue:467 pages/vida.vue:5
 msgid "Peixe anjo real"
 msgstr "Queen angelfish"
 
-#: pages/vida.vue:505 pages/vida.vue:5
+#: pages/vida.vue:543 pages/vida.vue:5
 msgid "Peixe Coió ou falso-voador"
 msgstr "The Flying Gurnard or \"False Flyer\" fish"
 
-#: pages/index.vue:286 pages/vida.vue:415 pages/vida.vue:5
+#: pages/index.vue:291 pages/vida.vue:437 pages/vida.vue:5
 msgid "Peixe frade"
 msgstr "French angelfish"
 
-#: pages/index.vue:292
+#: pages/index.vue:297
 msgid "Peixe lua"
 msgstr "Ocean sunfish"
 
-#: pages/vida.vue:46 pages/vida.vue:362
+#: pages/vida.vue:46 pages/vida.vue:343
 msgid "Peixes"
 msgstr "Fish"
 
@@ -904,11 +986,16 @@ msgstr "Fish"
 msgid "Pesquisa e texto: Nauther Andres. Revisão: Bruno Barberi Gnecco."
 msgstr "Research and content: Nauther Andres. Reviewed by: Bruno Barberi Gnecco."
 
-#: pages/vida.vue:556
+#: pages/vida.vue:594
 msgid ""
 "Pirá em tupi-guarani significa “peixe”: o mais legal é que este\n"
 "            peixe é conhecido popularmente como Pirá mesmo."
 msgstr "Pirá \"sand tilefish\" in the Tupi-Guarani language means “fish”: the coolest thing is that this fish is actually popularly known as Pirá."
+
+#: pages/vida.vue:229
+#, fuzzy
+msgid "Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos."
+msgstr "Butterfly rays. It can be quite difficult to differentiate the male from the female, but an important detail about cartilaginous fish, or rays and sharks, is that males have two claspers (or penises) which can be seen at the base of the tail in males and are absent in females, as you can see in the photos. Photos by: Nauther Andres"
 
 #: pages/vida.vue:105
 msgid "Podem ser encontradas nas zonas tropicais e subtropicais do planeta. Na Laje de Santos aparecem no período de inverno, nos meses de abril a setembro. As mantas são identificadas (foto ID) individualmente  através das manchas ventrais que formam padrões únicos. Essas fotografias são inseridas em bancos de dados nacionais e internacionais, assim sendo possível obter uma estimativa populacional e servir como base para verificação no caso de reavistamentos."
@@ -918,7 +1005,7 @@ msgstr "They can be found in tropical and subtropical areas of the planet. At La
 msgid "Pontos de mergulho"
 msgstr "Diving spots"
 
-#: components/sections/SiteHeader.vue:42 pages/index.vue:253
+#: components/sections/SiteHeader.vue:42 pages/index.vue:258
 msgid "Pontos de Mergulho"
 msgstr "Diving Spots"
 
@@ -926,7 +1013,7 @@ msgstr "Diving Spots"
 msgid "Pontos de Mergulho na Laje de Santos"
 msgstr "Diving Spots at Laje de Santos"
 
-#: pages/sobre.vue:247
+#: pages/sobre.vue:259
 msgid ""
 "Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
 "            grande concentração de peixes de passagem e recifais, sendo um dos\n"
@@ -934,15 +1021,15 @@ msgid ""
 "            também possui um barco naufragado."
 msgstr "As there are no other nearby rock formations or islands, it has a large concentration of reefs and fish passing through, making it one of the main diving and underwater photography spots in the country. The Park also has a wrecked boat."
 
-#: pages/vida.vue:628
+#: pages/vida.vue:666
 msgid "Possui comportamento mais agressivo e hábito noturno, é eximia predadora, fica de tocaia em sua toca e sai para predar peixes, crustáceos e moluscos sendo seu alimento predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em humanos, por isso é recomendado não se aproximar muito."
 msgstr "It has a more aggressive behavior and nocturnal habits, it is an outstanding predator, it ambushes its prey by remaining in its lair and pops out to feed on fish, crustaceans, and molluscs, its favorite food. With very sharp teeth, its bite can cause serious injury to humans, so it is recommended not to get too close."
 
-#: pages/vida.vue:674
+#: pages/vida.vue:712
 msgid "Possui hábito diurno e por isso não é difícil de ser encontrada durante atividades de mergulhos. Não apresenta nenhum risco aos humanos, vive associada ao fundo marinho em busca de pequenos crustáceos e vermes. Hoje sua maior ameaça é a captura para comércio de peixes ornamentais para aquários. Pode ser encontrada nas zonas tropicais e subtropicais do oceano atlântico."
 msgstr "It has a daytime habit and therefore it is not difficult to be found during diving activities. It does not pose any risk to humans and is commonly found on the seabed in search of small crustaceans and worms. Today, its biggest threat is its capture for the aquarium ornamental fish market. It is found in tropical and subtropical areas of the Atlantic Ocean."
 
-#: pages/vida.vue:426
+#: pages/vida.vue:448
 msgid "Possui várias características únicas: Encontrado em toda a costa brasileira, é um peixe recifal de comportamento dócil, comum de serem avistados  nos mergulhos e super fotogênico Alguns especialistas sugerem que sejam monogâmicos, vivendo com sua parceira(o) por toda a vida. É comum vê-los em pares."
 msgstr "It possesses several unique characteristics: Found all over the Brazilian coast, it is a reef fish with a docile behavior, commonly seen during dives and are tremendously photogenic. Some experts suggest that they are monogamous, mating for life. It's common to see them in pairs."
 
@@ -958,15 +1045,15 @@ msgstr "First dives in Laje de Santos"
 msgid "Produzido o documentário Laje dos Sonhos."
 msgstr "The documentary Laje dos Sonhos was produced."
 
-#: components/Underwaterb.vue:8
+#: components/Underwaterb.vue:4 components/Underwaterb.vue:61
 msgid "Profundidade"
 msgstr "Depth"
 
-#: pages/index.vue:141
+#: pages/index.vue:146
 msgid "Profundidade máxima no entorno:"
 msgstr "Maximum surrounding depth:"
 
-#: pages/index.vue:139
+#: pages/index.vue:144
 msgid "Profundidade média:"
 msgstr "Average depth:"
 
@@ -986,7 +1073,7 @@ msgstr "Project for mapping Laje de Santos in virtual reality"
 msgid "Projeto e execução"
 msgstr "Project and execution"
 
-#: pages/pontos-de-mergulho.vue:176 pages/sobre.vue:31
+#: pages/pontos-de-mergulho.vue:182 pages/sobre.vue:31
 msgid "Projeto Laje de Santos Virtual"
 msgstr "Virtual Laje de Santos Project"
 
@@ -994,25 +1081,25 @@ msgstr "Virtual Laje de Santos Project"
 msgid "Publicado o livro \"Laje de Santos, Laje dos Sonhos\"."
 msgstr "The book \"Laje de Santos, Laje dos Sonhos\" was published."
 
-#: pages/vida.vue:575
+#: pages/vida.vue:613
 msgid ""
 "Quando ameaçado, nada ligeiramente para dentro de sua pilha de\n"
 "            cascalhos para se proteger e só sai novamente ao se sentir seguro."
 msgstr "When threatened, it quickly swims into its gravel pile to protect itself and only comes out again when it feels safe."
 
-#: pages/vida.vue:800
+#: pages/vida.vue:849
 msgid "Quando saem de suas tocas, em busca de alimentos na maré baixa, elas se apoiam sobre suas nadadeiras peitorais e rastejam como se estivessem caminhando indo de um ponto a outro, forrageando o costão com as algas expostas nas rochas, e ao menor sinal de perigo elas saltam para dentro d'água e se entocam novamente."
 msgstr "When they leave their burrows in search of food during low tide, they lean on their pectoral fins and crawl as if they were walking from one point to another, foraging the shore along the exposed algae on the rocks, and at the slightest sign of danger they jump into the water and burrow in again."
 
-#: pages/index.vue:413
+#: pages/index.vue:423
 msgid "Quilômetros da costa"
 msgstr "Kilometers from the coast"
 
-#: pages/vida.vue:146 pages/vida.vue:5
+#: pages/vida.vue:145 pages/vida.vue:5
 msgid "Raia Chita"
 msgstr "Spotted Eagle Ray"
 
-#: pages/vida.vue:155
+#: pages/vida.vue:154
 msgid "Raia-prego"
 msgstr "Roughtail Stingray"
 
@@ -1020,13 +1107,10 @@ msgstr "Roughtail Stingray"
 msgid "Raias"
 msgstr "Rays"
 
-#: pages/vida.vue:241 pages/vida.vue:12
-msgid ""
-"Raias-borboleta.\n"
-"                  Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos.\n"
-"\n"
-"                  Fotos: Nauther Andres"
-msgstr "Butterfly rays. It can be quite difficult to differentiate the male from the female, but an important detail about cartilaginous fish, or rays and sharks, is that males have two claspers (or penises) which can be seen at the base of the tail in males and are absent in females, as you can see in the photos. Photos by: Nauther Andres"
+#: pages/sobre.vue:159
+#, fuzzy
+msgid "Realidade virtual"
+msgstr "Laje de Santos in Virtual Reality"
 
 #: pages/vida.vue:99
 msgid "Reconhecida como a maior espécie de raia do mundo, podendo  ultrapassar os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2 mil quilos, a raia-manta não possui ferrão. É o peixe com o maior cérebro de todos os outros peixes do mar, por isso é extremamente inteligente, um animal muito dócil e curioso. Quando encontra um mergulhador, permite a interação e por vezes permanece por vários minutos nadando ao seu redor para saber o que é. As bolhas de ar dos mergulhadores parecem fazer cócegas em sua barriga!"
@@ -1036,11 +1120,11 @@ msgstr "Recognized as the largest ray species in the world, which can exceed 8 m
 msgid "São animais de reprodução lenta com período gestacional de 10 a 14 meses gerando apenas um filhote a cada 3 a 4 anos. Encontram-se ameaçadas de extinção devido à pesca intencional e acidental realizada no mundo todo, esta espécie não tem valor comercial para consumo humano, mas há um interesse no mercado asiático de seus subprodutos como as suas brânquias."
 msgstr "They are slow-breeding animals with a gestational period of 10 to 14 months, generating only one offspring every 3 to 4 years. They are threatened with extinction due to intentional and accidental fishing carried out all over the world, this species has no commercial value for human consumption, but there is an interest in the Asian market for its by-products such as its gills."
 
-#: pages/vida.vue:824
+#: pages/vida.vue:873
 msgid "São aves que mergulham para capturar sua presa quando avistam cardumes, principalmente sardinhas e manjubas."
 msgstr "They are birds that dive to capture their prey when they see shoals, mainly sardines and anchovies."
 
-#: pages/vida.vue:736
+#: pages/vida.vue:774
 msgid ""
 "São facilmente identificadas e conhecidas popularmente com o nome de salemas.\n"
 "            Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite\n"
@@ -1049,7 +1133,7 @@ msgid ""
 "            em que vivem."
 msgstr "They are easily identified and popularly known as salemas. Their behavior of always being in schools and not showing fear allows them to be contemplated and photographed a lot by divers, providing incredible images with a spectacular color contrast composed by the environment in which they live."
 
-#: pages/vida.vue:456
+#: pages/vida.vue:483
 msgid ""
 "São peixes de cores deslumbrantes e muito vivas que chegam a brilhar como neon.\n"
 "            Geralmente são encontrados aos pares e na presença de mergulhadores são um tanto\n"
@@ -1058,7 +1142,7 @@ msgid ""
 "            é uma grande ameaça à espécie por ser muito capturada em seu habitat."
 msgstr "They are fish with very dazzling and vivid colors that glow similar to neon. They are usually found in pairs, and in the presence of divers they are somewhat skittish; they feel threatened and seek to hide in crevices. Like the angelfish, the ciliaris has no commercial value, except fot the aquarium fish market, presenting a great threat to the species as it is heavily caught in its habitat."
 
-#: pages/vida.vue:393
+#: pages/vida.vue:374
 msgid ""
 "São peixes muito apreciados pela culinária por sua carne firme e\n"
 "            branca. Por conta disso são extremamente explorados para o\n"
@@ -1069,11 +1153,11 @@ msgid ""
 "            considerável com peso médio entre 20 a 30 quilos."
 msgstr "These fish are very sought out for cuisine due to their firm and white meat. Because of this, they are extremely exploited for trade; today, their population is declining, being categorized as Vulnerable to extinction according to the IUCN. The Laje de Santos Marine State Park is one of its last refuges, where you can find specimens of considerable size with an average weight between 20 to 30 kilos."
 
-#: pages/vida.vue:472 pages/vida.vue:5
+#: pages/vida.vue:505 pages/vida.vue:5
 msgid "Sargentinho"
 msgstr "Sergeant major"
 
-#: pages/vida.vue:857
+#: pages/vida.vue:906
 msgid "Se alimenta de pequenos peixes, lulas e crustáceos. É uma das aves que mergulham para capturar seu alimento. Seu nome indica seu comportamento de estarem sempre em bandos nas áreas de ocorrência da espécie."
 msgstr "It feeds on small fish, squid, and crustaceans. It is one of the birds that dive to capture its food. Its name indicates their behavior of always being in flocks in the areas where the species occurs."
 
@@ -1081,7 +1165,11 @@ msgstr "It feeds on small fish, squid, and crustaceans. It is one of the birds t
 msgid "Se estiver procurando espécies, veja a lista completa."
 msgstr "If you're searching for species, see the full list."
 
-#: pages/vida.vue:490
+#: pages/AnimBakeExtractor.vue:13
+msgid "Se o arquivo não baixar, significa que ele já existe no servidor."
+msgstr ""
+
+#: pages/vida.vue:523
 msgid ""
 "Seu estado de conservação é de menor preocupação na lista vermelha de espécies\n"
 "            ameaçadas, ocorrendo em grandes quantidades em todos os oceanos, sendo muito\n"
@@ -1089,11 +1177,11 @@ msgid ""
 "            ornamentais para aquários."
 msgstr "Its population status is of lesser concern on the Threatened Species Red List, being found in large quantities in all oceans, highly appreciated by divers, with the biggest threat being the aquariums' ornamental fish market."
 
-#: pages/vida.vue:599
+#: pages/vida.vue:637
 msgid "Seu nado se dá de forma semelhante ao rastejar de uma cobra, impulsionando o corpo para frente e para trás. Vivem associadas ao fundo marinho em tocas e fendas nas rochas e recifes de corais. São fortes predadoras e se alimentam de outros peixes, crustáceos e moluscos. Possuem dentes bem afiados e uma mordida bastante poderosa."
 msgstr "Its swimming fashion is smilar to a snake's crawl, propelling its body back and forth. They are commonly found on the seabed, in burrows and crevices, in rocks and coral reefs. They are strong predators and feed on other fish, crustaceans, and molluscs. They have very sharp teeth and a very powerful bite."
 
-#: pages/vida.vue:478
+#: pages/vida.vue:511
 msgid ""
 "Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho\n"
 "            que cuida dos filhotes. Ocorre em todos os oceanos tropicais e subtropicais.\n"
@@ -1104,11 +1192,11 @@ msgid ""
 "            aproximam demais."
 msgstr "Its name is of Arabic origin - Abu means father or leader of the reefs. It is the male who takes care of the fingerlings. They are found in all tropical and subtropical oceans. Known here in Brazil by the popular name of sargentinho \"tiny sergeant\", perhaps for presenting a very characteristic behavior of protecting its eggs in the rocks. If any other animal gets close it will attack fiercely regardless of the size of the threat, including curious divers who get too close."
 
-#: pages/vida.vue:430
+#: pages/vida.vue:452
 msgid "Seus filhotes são bem diferentes quando juvenis, apresentando listras amarelas contínuas em seu disco corporal que se transformam em pintas amareladas quando passam para a fase adulta. Esta espécie não possui interesse para a pesca, mas tem muito valor no mercado de peixes ornamentais ou para a aquariofilia, sendo muito comercializada para compor ambientes de aquários mundo afora."
 msgstr "Their offspring are very different when they are juveniles, showing continuous yellow stripes on their body disk that turn into yellowish spots when they move into adulthood. This species is not of interest for fishing, but it has great value in the ornamental fish market or for aquarium enthusiasts, being widely commercialized to compose aquarium environments around the world."
 
-#: pages/index.vue:347
+#: pages/index.vue:352
 msgid "site da Diretoria do Parque Estadual Marinho da Laje de Santos"
 msgstr "website of the Board of Directors of the Laje de Santos Marine State Park "
 
@@ -1116,15 +1204,15 @@ msgstr "website of the Board of Directors of the Laje de Santos Marine State Par
 msgid "Sobre"
 msgstr "About"
 
-#: pages/pontos-de-mergulho.vue:177 pages/sobre.vue:32
+#: pages/pontos-de-mergulho.vue:183 pages/sobre.vue:32
 msgid "Sobre o projeto Laje de Santos Virtual"
 msgstr "About the Virtual Laje de Santos project"
 
-#: pages/tartaruga.vue:21 pages/vida.vue:27
+#: pages/AnimBakeExtractor.vue:34 pages/tartaruga.vue:34 pages/vida.vue:29
 msgid "Sobre seres vivos na Laje de Santos"
 msgstr "About living beings at Laje de Santos"
 
-#: pages/vida.vue:704
+#: pages/vida.vue:742
 msgid ""
 "Sua maior ameaça é a pesca esportiva e predatória, apesar de não\n"
 "            ter interesse comercial, é um peixe bastante apreciado em\n"
@@ -1135,40 +1223,53 @@ msgstr "Its biggest threat is sport and predatory fishing, despite not presentin
 msgid "Tamanho (em cm)"
 msgstr "Size (in cm)"
 
-#: pages/vida.vue:289 pages/vida.vue:5
+#: pages/vida.vue:270 pages/vida.vue:5
 msgid "Tartaruga de pente."
 msgstr "Hawksbill Turtle"
 
-#: pages/index.vue:298 pages/vida.vue:302 pages/vida.vue:5
+#: pages/index.vue:303 pages/vida.vue:283 pages/vida.vue:5
 msgid "Tartaruga verde"
 msgstr "Green Turtle"
 
-#: pages/vida.vue:34 pages/vida.vue:258
+#: pages/vida.vue:34 pages/vida.vue:240
 msgid "Tartarugas"
 msgstr "Turtles"
 
 #: components/sections/SiteFooter.vue:61 components/sections/SiteHeader.vue:57
-#: pages/sobre.vue:62
+#: pages/sobre.vue:74
 msgid "Tecnologia"
 msgstr "Technology"
 
-#: components/Underwaterb.vue:14
+#: components/Underwaterb.vue:9 components/Underwaterb.vue:67
 msgid "Tempo"
 msgstr "Time"
+
+#: pages/mergulho-virtual.vue:10
+msgid "Testando desempenho..."
+msgstr "Testing performance..."
 
 #: pages/especies.vue:35
 msgid "Todas as cores"
 msgstr "All colors"
 
-#: pages/vida.vue:854
+#: components/Underwaterb.vue:22
+#, fuzzy
+msgid "Torne-se um mergulhador e explore a Laje de Santos."
+msgstr "Diving Spots at Laje de Santos"
+
+#: pages/vida.vue:903
 msgid "Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários."
 msgstr "The Band tern is a small bird, it has a white coat, black tuft and legs, and a yellow beak. Its nests can be seen from Espírito Santo to Santa Catarina. In São Paulo, it can be found at the Archipelago de Alcatrazes, Laje de Santos, beaches, and estuaries."
 
-#: pages/vida.vue:405
+#: pages/sobre.vue:27
+msgid "Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:"
+msgstr "A paper about the development and technology in this project was published:"
+
+#: pages/vida.vue:386
 msgid "Um comportamento observado na espécie,  nos mergulhos na Laje de Santos, é a disputa com outros indivíduos pelo seu território, expulsando o invasor de sua toca com investidas e até mesmo mordidas. É possível notar  um padrão de coloração intercambiável de acordo com o substrato que ela se encontra… se for rochoso, os padrões de manchas serão vivas como se fossem uma camuflagem, quando em ambiente arenoso claro, seu corpo empalidece na cor da areia se mimetizando com o ambiente."
 msgstr "A behavior observed in the species, while diving in Laje de Santos, is the dispute with other types for its territory, expelling the invader from its burrow with attacks and even bites. It is possible to notice an interchangeable color pattern according to the substrate it is on... if it is rocky, the spot patterns will be vivid as if they were a camouflage, when in a light, sandy environment, its body pales to the color of sand, mimicking itself with the environment."
 
-#: pages/index.vue:256
+#: pages/index.vue:261
 msgid "Um mapa interativo para conhecer os pontos de mergulhos presentes na laje"
 msgstr "An interactive map to discover the diving spots available at Laje"
 
@@ -1176,37 +1277,49 @@ msgstr "An interactive map to discover the diving spots available at Laje"
 msgid "Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres"
 msgstr "A diver photographs two manta rays at Laje de Santos. Photo by: Nauther Andres"
 
-#: pages/index.vue:129
+#: pages/index.vue:134
 msgid "Um paraíso do mergulho"
 msgstr "A diver's paradise"
 
-#: pages/vida.vue:833
+#: pages/vida.vue:882
 msgid "Uma das aves marinhas mais comuns e conhecidas pelos frequentadores de praia e faixas litorâneas espalhadas pelo mundo. A gaivota ou gaivotão, apesar de ser uma ave marinha, é considerada uma ave sinantrópica, ou seja, aves que vivem ou compartilham ambientes comuns com os humanos. Alimentam-se de sobras e carcaças de pescados, são furtivas e estão sempre à espreita por uma oportunidade de alimento fácil."
 msgstr "One of the most common seabirds, well-known to beachgoers and coastal strips around the world. The gull or seagull, despite being a seabird, is considered a synanthropic bird, that is, birds that live or share common environments with humans. They feed on fish leftovers and carcasses, are furtive and are always on the lookout for an opportunity for easy food."
 
-#: pages/moreia.vue:25
+#: pages/moreia.vue:19
 msgid "Uma das práticas que o mergulho permite é visitar naufrágios. Enquanto muitos são tragédias, não é o caso do Moréia, o nosso querido naufrágio da Laje de Santos."
 msgstr "One common diving practice is visiting shipwrecks. While many are tragedies, this is not the case of the Moreia, our beloved shipwreck at Laje de Santos."
 
-#: pages/index.vue:105 pages/index.vue:4
+#: pages/index.vue:110 pages/index.vue:4
 msgid "Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do"
 msgstr "A whale-shaped island that appears in the open sea, 40km off the coast of"
 
-#: pages/index.vue:209
+#: components/EBA.vue:9 components/GLTFModelB.vue:9
+msgid "use ctrl+scroll para zoom,"
+msgstr "use ctrl+scroll to zoom,"
+
+#: components/Underwaterb.vue:35
+msgid "Use os joysticks azul e vermelho para girar e nadar."
+msgstr "Use the blue and red joysticks to turn and swim."
+
+#: pages/index.vue:214
 msgid "Veja espécies presentes na laje como tartarugas, mantas e golfinhos."
 msgstr "Check out the species present at Laje such as turtles, manta rays, and dolphins."
 
-#: pages/index.vue:188
+#: pages/index.vue:193
 msgid ""
 "Veja no seu computador cardumes de peixes, o naufrágio Moreia e animais fantásticos como se estivesse lá.\n"
 "              Experimente como é mergulhar na Laje de Santos agora mesmo."
 msgstr "Check out schools of fish, the Moreia shipwreck, and fantastic animals on your computer, just as if you were there. Experience what it's like to dive at Laje de Santos right now."
 
-#: pages/especies.vue:110
+#: components/EBA.vue:3 components/GLTFModelB.vue:3
+msgid "Ver 3D em tela cheia"
+msgstr "See 3D in fullscreen"
+
+#: pages/especies.vue:34
 msgid "Ver imagens"
 msgstr "See images"
 
-#: pages/index.vue:260
+#: pages/index.vue:265
 msgid "Ver pontos"
 msgstr "See photos"
 
@@ -1218,19 +1331,19 @@ msgstr "Red"
 msgid "Vida"
 msgstr "Life"
 
-#: pages/tartaruga.vue:20 pages/vida.vue:26
+#: pages/AnimBakeExtractor.vue:33 pages/tartaruga.vue:33 pages/vida.vue:28
 msgid "Vida na Laje de Santos"
 msgstr "Life at Laje de Santos"
 
-#: pages/sobre.vue:128
+#: pages/sobre.vue:140
 msgid "vídeos"
 msgstr "videos"
 
-#: pages/index.vue:56
+#: pages/index.vue:61
 msgid "Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas."
 msgstr "We live in a plant of natural wonders. Giant forests, beautiful waterfalls, remote islands."
 
-#: pages/index.vue:342
+#: pages/index.vue:347
 msgid ""
 "Você pode encontrar mais informações sobre visitação e compra de ingressos,\n"
 "              visitando o"
@@ -1239,3 +1352,7 @@ msgstr "You can get more information about visits and purchasing tickets by goin
 #: pages/especies.vue:9 pages/galeria.vue:20
 msgid "Você tem imagens da Laje de Santos? Mande para nosso projeto:"
 msgstr "Do you have images of Laje de Santos? Send it to our project:"
+
+#: pages/sobre.vue:124
+msgid "Website"
+msgstr "Website"
