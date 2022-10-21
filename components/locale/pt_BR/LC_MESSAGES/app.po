@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pages/index.vue:159
+#: pages/index.vue:164
 msgid "A 20 metros de profundidade está o"
 msgstr ""
 
-#: pages/sobre.vue:32
+#: pages/sobre.vue:42
 msgid ""
 "A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
 "          com visualização e realidade virtual.\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "A embarcação Moreia é naufragada. É o primeiro naufrágio feito para prática de mergulho no Brasil."
 msgstr ""
 
-#: pages/sobre.vue:26
+#: pages/sobre.vue:37
 msgid "A ideia e a execução"
 msgstr ""
 
@@ -49,13 +49,13 @@ msgid ""
 "          É também habitada por corais, algas e outras formas de vida. Há muitas áreas com algas marrons e vermelhas."
 msgstr ""
 
-#: pages/index.vue:276
+#: pages/index.vue:281
 msgid ""
 "A Laje de Santos é rica em vida. 196 espécies de peixes e 29 espécies de aves já foram catalogadas. É habitada\n"
 "            por corais, golfinhos, tartarugas, algas, raias-manta."
 msgstr ""
 
-#: pages/vida.vue:815
+#: pages/vida.vue:864
 msgid "A laje de Santos é um local de grande interesse para a conservação da diversidade biológica na costa paulista, seja marinho, terrestre e aéreo. Cinco espécies de aves marinhas insulares nidificam  na laje: o gaivotão Larus dominicanus; três espécies de trinta-réis, Sterna hirundinacea, S. eurygnatha e S. maxima, que formam colônias no inverno, e o atobá-marrom  Sula leucogaster, que nidifica durante o ano todo.29 espécies de aves já foram catalogadas na Laje."
 msgstr ""
 
@@ -70,11 +70,11 @@ msgstr ""
 msgid "A Laje de Santos em Realidade Virtual"
 msgstr ""
 
-#: pages/index.vue:382
+#: pages/index.vue:392
 msgid "A Laje em Números"
 msgstr ""
 
-#: pages/index.vue:132
+#: pages/index.vue:137
 msgid ""
 "A Laje oferece condições muito especiais em termos de profundidade\n"
 "                e visibilidade para mergulho. Junto com a preservação e variedade da vida,\n"
@@ -82,7 +82,7 @@ msgid ""
 "                e de fotografia subaquática do país."
 msgstr ""
 
-#: pages/vida.vue:218
+#: pages/vida.vue:217
 msgid "A raia-borboleta pode ser encontrada em todo o oceano atlântico, mar negro e nas Ilhas da Madeira e Ilhas Canárias. Podem ser vistas de 5 a 100 metros de profundidade, e na Laje de Santos são vistas nas estações primavera e verão, utilizando a região para descanso no período reprodutivo."
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "A rainha da Laje de Santos."
 msgstr ""
 
-#: pages/sobre.vue:150
+#: pages/sobre.vue:162
 msgid ""
 "A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.\n"
 "              Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que\n"
@@ -98,7 +98,7 @@ msgid ""
 "              para terem qualidade, animação mas serem leves o suficiente para a web."
 msgstr ""
 
-#: pages/index.vue:273
+#: pages/index.vue:278
 msgid "A vida na Laje"
 msgstr ""
 
@@ -106,19 +106,23 @@ msgstr ""
 msgid "A vida na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:70
+#: pages/sobre.vue:82
 msgid "Adquirindo dados"
 msgstr ""
 
-#: pages/sobre.vue:310
+#: pages/sobre.vue:322
 msgid "Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto."
 msgstr ""
 
-#: pages/sobre.vue:305
+#: pages/sobre.vue:317
 msgid "Agradecimentos"
 msgstr ""
 
-#: pages/sobre.vue:287
+#: pages/AnimBakeExtractor.vue:11
+msgid "Ajuste o modelo, a quantidade de quadros e um delta de quadros por segundo."
+msgstr ""
+
+#: pages/sobre.vue:299
 msgid ""
 "Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,\n"
 "            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas."
@@ -128,15 +132,28 @@ msgstr ""
 msgid "Amarelo"
 msgstr ""
 
-#: pages/vida.vue:603
+#: pages/vida.vue:641
 msgid "Ao encontrar uma moréia você perceberá sua mandíbula em constante movimento de abrir e fechar. Parece assustador, mas isso significa que ela está respirando, inalando água que ao passar por suas brânquias faz a troca do oxigênio que necessita."
 msgstr ""
 
-#: pages/vida.vue:701
+#: components/EBA.vue:13 components/GLTFModelB.vue:13
+msgid "apertar com dedos para zoom,"
+msgstr ""
+
+#: components/Underwaterb.vue:30
+msgid "Aperte 'W' para nadar."
+msgstr ""
+
+#: components/EBA.vue:10 components/EBA.vue:14 components/GLTFModelB.vue:10
+#: components/GLTFModelB.vue:14
+msgid "arraste para girar"
+msgstr ""
+
+#: pages/vida.vue:739
 msgid "As barracudas são peixes grandes de corpo alongado e com cabeça afunilada em forma de míssil. São muito velozes na água pois são predadoras vorazes com dentes pontiagudos muito afiados. O mínimo contato com uma barracuda pode lhe causar ferimentos graves. Mas elas não atacam assim! O importante a se fazer quando se está  mergulhando ou praticando quaisquer atividades em seu habitat é não estar com nenhum acessório brilhante como brincos, pulseiras ou anéis, pois estes objetos atraem sua atenção, confundindo com uma presa em potencial e avançam com velocidade em sua direção causando um baita susto nos desavisados de plantão."
 msgstr ""
 
-#: pages/vida.vue:691
+#: pages/vida.vue:729
 msgid ""
 "As barracudas são peixes tão famosos que até os mergulhadores\n"
 "            menos experientes já ouviram falar e tem medo de se deparar com\n"
@@ -146,19 +163,19 @@ msgid ""
 "            partes do mundo."
 msgstr ""
 
-#: pages/index.vue:370
+#: pages/index.vue:380
 msgid "as raias mantas"
 msgstr ""
 
-#: pages/vida.vue:164
+#: pages/vida.vue:163
 msgid "As raias-prego, ou raias manteiga como são conhecidas pelos mergulhadores, sempre dão show quando encontradas. São animais de corpo achatado associados ao substrato ou fundo de areia, geralmente param e depositam areia por cima de seu corpo para se camuflarem e desta forma descansarem."
 msgstr ""
 
-#: pages/vida.vue:845
+#: pages/vida.vue:894
 msgid "Ave de pequeno porte, de plumagem branca, com bico e patas vermelhas. É considerada uma ave migratória, saindo da Argentina para nidificar no Brasil de abril a setembro. São exímias pescadoras, se alimentando de pequenos peixes e crustáceos. Elas costumam pairar no ar antes de mergulhar para capturar suas presas."
 msgstr ""
 
-#: pages/vida.vue:52 pages/vida.vue:811
+#: pages/vida.vue:52 pages/vida.vue:860
 msgid "Aves"
 msgstr ""
 
@@ -166,23 +183,31 @@ msgstr ""
 msgid "Azul"
 msgstr ""
 
-#: pages/vida.vue:684 pages/vida.vue:5
+#: pages/mergulho-virtual.vue:13
+msgid "Baixo desempenho, devagar"
+msgstr ""
+
+#: pages/vida.vue:722 pages/vida.vue:5
 msgid "Barracuda"
 msgstr ""
 
-#: pages/especies.vue:118
+#: pages/especies.vue:141
 msgid "Bibliografia"
+msgstr ""
+
+#: pages/boids.vue:19
+msgid "Boids"
 msgstr ""
 
 #: pages/especies.vue:53
 msgid "Branco"
 msgstr ""
 
-#: pages/vida.vue:752 pages/vida.vue:5
+#: pages/vida.vue:795 pages/vida.vue:5
 msgid "Budião-papagaio-de-recife"
 msgstr ""
 
-#: pages/sobre.vue:293
+#: pages/sobre.vue:305
 msgid ""
 "busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente\n"
 "            incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio\n"
@@ -199,12 +224,20 @@ msgstr ""
 msgid "buscar na galeria"
 msgstr ""
 
+#: pages/vida.vue:401 pages/vida.vue:5
+msgid "Cardume de peixe enxada. Foto: Nauther Andrés"
+msgstr ""
+
 #: components/sections/SiteFooter.vue:47
 msgid "Catálogo de espécies"
 msgstr ""
 
 #: pages/especies.vue:56
 msgid "Cinza"
+msgstr ""
+
+#: components/Underwaterb.vue:26
+msgid "Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor."
 msgstr ""
 
 #: pages/pontos-de-mergulho.vue:15
@@ -215,46 +248,46 @@ msgstr ""
 msgid "Código disponível"
 msgstr ""
 
-#: pages/index.vue:310
+#: pages/index.vue:315
 msgid "Coió"
 msgstr ""
 
-#: pages/sobre.vue:54
+#: pages/sobre.vue:64
 msgid "Com a melhora da situação em 2021, pudemos finalmente cair na água."
 msgstr ""
 
-#: pages/vida.vue:654
+#: pages/vida.vue:692
 msgid "Com comportamento semelhantes aos das outras espécies de moréias, a moréia banana é a mais rara delas. Justamente por sua coloração, ela se destaca diante dos outros animais e é facilmente vista pelos predadores. Por isso permanece boa parte do tempo em sua toca e sai apenas para caçar. Ao se deparar com uma sinta-se privilegiado, curta o momento e tire lindas fotos."
 msgstr ""
 
-#: pages/vida.vue:836
+#: pages/vida.vue:885
 msgid "Com uma população de apenas 30 indivíduos na Laje de Santos, elas compartilham o mesmo espaço com atobás-marrom, trinta-réis-de-bando, trinta-réis-real e as fragatas. Na Laje de Santos, por ser uma unidade de conservação protegida, não é permitido o desembarque a não ser em caso de emergência ou para pesquisadores. O ato de subir nos rochedos da Laje afugenta as aves das outras espécies que estão no local, e as gaivotas, por serem oportunistas e furtivas, atacam os ninhos desprotegidos para se alimentarem dos ovos e até mesmo dos filhotes recém nascidos."
 msgstr ""
 
-#: pages/vida.vue:224
+#: pages/vida.vue:223
 msgid "Como a maioria das raias, elas também possuem o comportamento de se camuflarem no fundo de areia, cobrindo todo seu corpo com uma fina camada de sedimentos para se protegerem de possíveis predadores. Todos os anos as encontramos e geralmente as fêmeas estão grávidas, o que é possível saber por ficarem com o dorso proeminente."
 msgstr ""
 
-#: pages/vida.vue:277
+#: pages/vida.vue:258
 msgid ""
 "Como são animais de vida longa, atingindo a maturidade sexual após os 30\n"
 "            anos, as tartarugas encontradas na Laje de Santos são animais juvenis\n"
 "            utilizando a área para alimentação e abrigo."
 msgstr ""
 
-#: pages/index.vue:331
+#: pages/index.vue:336
 msgid "Como visitar a Laje"
 msgstr ""
 
-#: components/Underwaterb.vue:18
+#: components/Underwaterb.vue:13 components/Underwaterb.vue:71
 msgid "Compasso"
 msgstr ""
 
-#: pages/sobre.vue:207
+#: pages/sobre.vue:219
 msgid "Comunicólogo, designer de experiência do projeto."
 msgstr ""
 
-#: pages/vida.vue:671
+#: pages/vida.vue:709
 msgid "Conhecida no nordeste como Mututuca e no sudeste como miriquitis, a Myrichthys ocellatus se assemelha mais ainda com uma serpente marinha. Mas não é! Ela é um peixe ou uma enguia marinha, de coloração clara e manchas escuras arredondadas."
 msgstr ""
 
@@ -262,7 +295,7 @@ msgstr ""
 msgid "Conteúdo do site sob"
 msgstr ""
 
-#: pages/sobre.vue:194
+#: pages/sobre.vue:206
 msgid "Coordenador do projeto, é engenheiro elétrico e mergulhador."
 msgstr ""
 
@@ -278,15 +311,11 @@ msgstr ""
 msgid "criado para ajudar na preservação das espécies marinhas do litoral paulista e brasileiro."
 msgstr ""
 
-#: pages/sobre.vue:112
-msgid "Desenvolvimento"
-msgstr ""
-
-#: pages/vida.vue:173
+#: pages/vida.vue:172
 msgid "Dizem que as raias e os tubarões não podem parar de nadar porque podem morrer afogados, mas nem tudo é verdade. No caso de algumas espécies de raias, quando estão paradas, elas abrem e fecham o opérculo, sugando a água que passa por suas brânquias, (órgão responsável pela respiração), fazendo a troca de oxigênio. Por causa deste comportamento de se enterrar na areia e permanecer muitas vezes em águas rasas, ocorrem alguns acidentes pelo mundo afora, devido ao seu ferrão presente em sua cauda. Seu ferrão não é venenoso, mas contém muitas bactérias que podem causar infecções e agravar o ferimento. Um dos casos mais conhecido sobre ataques com essa espécies foi o caso do zoólogo e apresentador de TV Steve Irwin, conhecido mundialmente como Caçador de Crocodilos, que faleceu por uma ferroada acidental de raia do gênero Dasyatis."
 msgstr ""
 
-#: pages/vida.vue:335
+#: pages/vida.vue:316
 msgid ""
 "Duas espécies de golfinhos habitam a Laje de Santos. É comum vê-los durante a travessia de barco, em pequenos grupos que\n"
 "              aparecem, acompanham o barco por alguns minutos e de novo somem em mar aberto, parecendo nos recepcionar."
@@ -300,29 +329,29 @@ msgid ""
 "            três graus centígrados."
 msgstr ""
 
-#: pages/vida.vue:595
+#: pages/vida.vue:633
 msgid "É conhecida popularmente como moréia pintada, por conta de suas manchas claras e escuras no corpo de padrão marmorizado. Apesar de parecerem com serpentes ou enguias, as moreias  são peixes com formato anatômico diferente."
 msgstr ""
 
-#: pages/index.vue:163
+#: pages/index.vue:168
 msgid "É o primeiro naufrágio artificial do Brasil feito para a prática de mergulho."
 msgstr ""
 
-#: pages/index.vue:335
+#: pages/index.vue:340
 msgid ""
 "É permitido visitar com embarcações particulares, seguindo as regras de navegação e com piloto Mestre credenciado.\n"
 "              Outra opção para visitar a Laje, é através das operadoras de turismo e mergulho credenciadas. Contate também seu dive center."
 msgstr ""
 
-#: pages/vida.vue:136 pages/vida.vue:2
+#: pages/vida.vue:135 pages/vida.vue:2
 msgid "Encontrada  em quase todos os oceanos, mas na Laje de Santos podem ser vistas quase o ano todo, onde seus indivíduos são inclusive reconhecidos pelos mergulhadores, graças ao padrão único de pintas em sua região dorsal. São animais de vida longa, podendo chegar até os 18 anos, sendo frequentemente avistados nadando sozinhas ou até em cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora d’água. Alimentam-se de pequenos crustáceos e moluscos bivalves (animais de duas conchas) possuindo uma mandíbula extremamente forte, capaz de triturar conchas e carapaças."
 msgstr ""
 
-#: pages/sobre.vue:183
+#: pages/sobre.vue:195
 msgid "Equipe"
 msgstr ""
 
-#: pages/index.vue:62
+#: pages/index.vue:67
 msgid "Espalhadas às vezes longe demais para podemos chegar. Tão longe."
 msgstr ""
 
@@ -334,23 +363,23 @@ msgstr ""
 msgid "Espécies"
 msgstr ""
 
-#: pages/especies.vue:62
+#: pages/especies.vue:66
 msgid "Espécies aviáticas e aquáticas da Laje de Santos"
 msgstr ""
 
-#: pages/especies.vue:61
+#: pages/especies.vue:65
 msgid "Espécies da Laje de Santos"
 msgstr ""
 
-#: pages/index.vue:418
+#: pages/index.vue:428
 msgid "Espécies de aves"
 msgstr ""
 
-#: pages/index.vue:423
+#: pages/index.vue:433
 msgid "Espécies de peixes"
 msgstr ""
 
-#: pages/vida.vue:728
+#: pages/vida.vue:766
 msgid ""
 "Esta espécie foi descrita já por Linnaeus, em 1758. São peixes\n"
 "            recifais de mares tropicais que podem ser encontrados em todo o\n"
@@ -358,7 +387,7 @@ msgid ""
 "            vibrantes."
 msgstr ""
 
-#: pages/vida.vue:380 pages/vida.vue:2
+#: pages/vida.vue:361 pages/vida.vue:2
 msgid ""
 "Esta espécie habita fundos marinhos rochosos e coralíneos com\n"
 "              profundidade de até 300 metros. Garoupas estão distribuídas por\n"
@@ -369,7 +398,7 @@ msgid ""
 "              alguns anos se torna macho, caracterizando hermafroditismo!"
 msgstr ""
 
-#: pages/vida.vue:759
+#: pages/vida.vue:802
 msgid ""
 "Esta espécie, conhecida popularmente como budião papagaio, é\n"
 "            endêmica do Brasil, ocorrendo somente em águas brasileiras. São\n"
@@ -381,13 +410,13 @@ msgstr ""
 msgid "Estado de conservação"
 msgstr ""
 
-#: pages/moreia.vue:43
+#: pages/moreia.vue:41
 msgid ""
 "Este modelo 3D foi reconstruído a partir de mais de 700 fotografias tiradas neste projeto. É possível ver partes do\n"
 "          porão, onde não é mais permitido penetrar."
 msgstr ""
 
-#: pages/vida.vue:563
+#: pages/vida.vue:601
 msgid ""
 "Este peixe é o arquiteto do mar. Habita de 10 até os 150 metros de\n"
 "            profundidade, em fundo arenoso ou calcário, constrói\n"
@@ -398,7 +427,7 @@ msgid ""
 "            aos cuidados da casa."
 msgstr ""
 
-#: pages/sobre.vue:75
+#: pages/sobre.vue:87
 msgid ""
 "Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes\n"
 "              abertas como a Wikimedia Commons, passando\n"
@@ -417,7 +446,7 @@ msgid ""
 "          marinho."
 msgstr ""
 
-#: pages/sobre.vue:117
+#: pages/sobre.vue:129
 msgid ""
 "Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.\n"
 "              Desde um celular até telas gigantes."
@@ -427,7 +456,7 @@ msgstr ""
 msgid "exceto quando explicitamente referenciado"
 msgstr ""
 
-#: pages/vida.vue:309 pages/vida.vue:2
+#: pages/vida.vue:290 pages/vida.vue:2
 msgid ""
 "Existem duas espécies de tartarugas que frequentam a Laje de Santos, a\n"
 "              Tartaruga-verde e a tartaruga-de-pente. São parecidas, mas alguns\n"
@@ -438,6 +467,21 @@ msgid ""
 "              verdes possuem o casco mais simétrico, com placas intercaladas e\n"
 "              conectadas como um quebra-cabeça, cabeça arredondada e coloração do\n"
 "              casco predominante do verde e marrom, para amarelo claro em seu ventre."
+msgstr ""
+
+#: pages/mergulho-virtual.vue:5
+msgid ""
+"Experimente um mergulho virtual na Laje de Santos e veja o naufrágio Moreia e a vida.\n"
+"          É preciso que seu aparelho tenha suporte a 3D para executar este ambiente com bom\n"
+"          desempenho. Expectativa de desempenho:"
+msgstr ""
+
+#: pages/AnimBakeExtractor.vue:9
+msgid "Extrai o baking da Textura de Animação de Vértices para um arquivo JSOn, caso ele não exista."
+msgstr ""
+
+#: components/Underwaterb.vue:18
+msgid "Ficar em tela cheia"
 msgstr ""
 
 #: pages/especies.vue:17
@@ -452,15 +496,16 @@ msgstr ""
 msgid "Foram já identificadas 196 espécies de peixes na Laje de Santos."
 msgstr ""
 
-#: pages/moreia.vue:16 pages/vida.vue:16
+#: pages/vida.vue:16
 msgid "Foto"
 msgstr ""
 
-#: components/sections/GalleryCard.vue:13 pages/especies.vue:89
+#: components/sections/GalleryCard.vue:15 pages/especies.vue:100
+#: pages/especies.vue:8
 msgid "foto por"
 msgstr ""
 
-#: pages/sobre.vue:162
+#: pages/sobre.vue:174
 msgid "fotografias"
 msgstr ""
 
@@ -477,23 +522,23 @@ msgstr ""
 msgid "Galeria de Fotos da Laje de Santos"
 msgstr ""
 
-#: pages/vida.vue:372 pages/vida.vue:5
+#: pages/vida.vue:353 pages/vida.vue:5
 msgid "Garoupa verdadeira entre pedras. Foto: Nauther Andres"
 msgstr ""
 
-#: pages/sobre.vue:172
+#: pages/sobre.vue:184
 msgid "GB de dados"
 msgstr ""
 
-#: pages/index.vue:322
+#: pages/index.vue:327
 msgid "Golfinho"
 msgstr ""
 
-#: pages/vida.vue:40 pages/vida.vue:330 pages/vida.vue:351
+#: pages/vida.vue:40 pages/vida.vue:311 pages/vida.vue:332
 msgid "Golfinhos"
 msgstr ""
 
-#: pages/vida.vue:269
+#: pages/vida.vue:250
 msgid ""
 "Graças à beleza do casco, as tartarugas-de-pente foram extremamente\n"
 "            caçadas e quase chegaram à extinção. Seu casco era utilizados para fazer\n"
@@ -501,42 +546,46 @@ msgid ""
 "            \"tartaruga-de-pente\"."
 msgstr ""
 
-#: pages/moreia.vue:50
+#: pages/moreia.vue:48
 msgid ""
 "Há muitos lugares no mundo que afundam barcos (e até mesmo tanques de guerra ou aviões) propositalmente. As estruturas são\n"
 "          limpas de seus poluentes, como óleo e materiais tóxicos, e deliberadamente naufragados. Ali, repousando no fundo do mar,\n"
 "          viram um recife artificial: servem de estrutura para corais, de refúgio para peixes e de atrativo para o mergulho."
 msgstr ""
 
-#: pages/vida.vue:839
+#: pages/vida.vue:888
 msgid "Habitat: Ampla distribuição no hemisfério Sul nos oceanos Atlântico e Pacífico, ilhas subantárticas, Austrália, Nova Zelândia e África."
 msgstr ""
 
-#: pages/vida.vue:827
+#: pages/vida.vue:876
 msgid "Habitat: Pantropical, encontrado nos 3 oceanos, habitam ilhas costeiras e oceânicas subtropical no Brasil até Santa Catarina."
 msgstr ""
 
-#: pages/index.vue:403
+#: pages/index.vue:413
 msgid "Hectares preservados"
 msgstr ""
 
-#: pages/sobre.vue:168
+#: pages/sobre.vue:180
 msgid "horas de processamento"
 msgstr ""
 
-#: pages/sobre.vue:165
+#: pages/sobre.vue:177
 msgid "horas de vídeo"
 msgstr ""
 
-#: pages/sobre.vue:124
+#: pages/sobre.vue:136
 msgid "imagens"
 msgstr ""
 
-#: pages/sobre.vue:281
+#: pages/sobre.vue:293
 msgid "Importância"
 msgstr ""
 
-#: pages/sobre.vue:267
+#: pages/AnimBakeExtractor.vue:15
+msgid "Improvisações: Animação não rodando nessa página. Aplicar deslocamento de animação, para animação composta."
+msgstr ""
+
+#: pages/sobre.vue:279
 msgid ""
 "Inclui a Laje de Santos, os parcéis do Bandolim, das Âncoras, Brilhante, do Sul e Novo e os Rochedos\n"
 "            conhecidos como Calhaus, totalizando 5.000 hectares de área preservada com formato de retângulo (10.000 por 5.000 m).\n"
@@ -549,11 +598,15 @@ msgid ""
 "            como as baleias-de-Bryde, as raias-manta já citadas, tartarugas marinhas e outras."
 msgstr ""
 
+#: components/Underwaterb.vue:40
+msgid "Iniciar"
+msgstr ""
+
 #: components/sections/SiteFooter.vue:7 components/sections/SiteHeader.vue:22
 msgid "Início"
 msgstr ""
 
-#: pages/index.vue:50
+#: pages/index.vue:55
 msgid "Laje de Santos"
 msgstr ""
 
@@ -565,11 +618,11 @@ msgstr ""
 msgid "Laranja"
 msgstr ""
 
-#: pages/index.vue:72
+#: pages/index.vue:77
 msgid "Leia mais sobre o projeto \"A Laje em Realidade Virtual\"."
 msgstr ""
 
-#: pages/sobre.vue:157
+#: pages/sobre.vue:169
 msgid "Leia um descritivo detalhado da tecnologia que usamos neste projeto."
 msgstr ""
 
@@ -577,23 +630,23 @@ msgstr ""
 msgid "Linha do Tempo"
 msgstr ""
 
-#: pages/sobre.vue:135
+#: pages/sobre.vue:147
 msgid "linhas de código"
 msgstr ""
 
-#: pages/especies.vue:112
+#: pages/especies.vue:38
 msgid "Mais detalhes"
 msgstr ""
 
-#: pages/index.vue:303
+#: pages/index.vue:308
 msgid "Mais sobre a vida"
 msgstr ""
 
-#: pages/index.vue:316
+#: pages/index.vue:321
 msgid "Manta"
 msgstr ""
 
-#: pages/vida.vue:788 pages/vida.vue:5
+#: pages/vida.vue:837 pages/vida.vue:5
 msgid "Maria-da-toca-das-pedras"
 msgstr ""
 
@@ -601,85 +654,90 @@ msgstr ""
 msgid "Marrom"
 msgstr ""
 
-#: pages/index.vue:68
+#: pages/index.vue:73
 msgid "Mas a internet permite chegarmos um pouco mais perto."
 msgstr ""
 
-#: pages/sobre.vue:220
+#: pages/mergulho-virtual.vue:14
+msgid "Médio desempenho"
+msgstr ""
+
+#: pages/sobre.vue:232
 msgid "Mergulhador e biólogo."
 msgstr ""
 
-#: pages/sobre.vue:96
+#: pages/sobre.vue:108
 msgid "mergulhadores"
 msgstr ""
 
-#: pages/index.vue:195
+#: pages/index.vue:200
 msgid "Mergulhe agora"
 msgstr ""
 
-#: pages/index.vue:217
+#: pages/index.vue:222
 msgid "Mergulhe virtualmente entre cardumes e recifes de corais."
 msgstr ""
 
-#: pages/mergulho-virtual.vue:21
+#: pages/mergulho-virtual.vue:28
 msgid "Mergulho em realidade virtual na Laje de Santos"
 msgstr ""
 
-#: components/sections/SiteFooter.vue:28 pages/mergulho-virtual.vue:20
+#: components/sections/SiteFooter.vue:28 pages/boids.vue:18
+#: pages/mergulho-virtual.vue:3 pages/mergulho-virtual.vue:27
 msgid "Mergulho virtual"
 msgstr ""
 
-#: components/sections/SiteHeader.vue:27 pages/index.vue:183
+#: components/sections/SiteHeader.vue:27 pages/index.vue:188
 msgid "Mergulho Virtual"
 msgstr ""
 
-#: pages/sobre.vue:92
+#: pages/sobre.vue:104
 msgid "mergulhos"
 msgstr ""
 
-#: pages/moreia.vue:71
+#: pages/moreia.vue:69
 msgid ""
 "Mesmo se desmantelando lentamente pela ação da água e do tempo, o Moreia continua no fundo\n"
 "          provendo um belo espetáculo para os mergulhadores."
 msgstr ""
 
-#: pages/index.vue:393
+#: pages/index.vue:403
 msgid "Metros de altura"
 msgstr ""
 
-#: pages/index.vue:388
+#: pages/index.vue:398
 msgid "Metros de comprimento"
 msgstr ""
 
-#: pages/index.vue:398
+#: pages/index.vue:408
 msgid "Metros de largura"
 msgstr ""
 
-#: pages/index.vue:408
+#: pages/index.vue:418
 msgid "Metros de profundidade máxima"
 msgstr ""
 
-#: pages/sobre.vue:100
+#: pages/sobre.vue:112
 msgid "minutos de mergulho"
 msgstr ""
 
-#: pages/vida.vue:664 pages/vida.vue:5
+#: pages/vida.vue:702 pages/vida.vue:5
 msgid "Miriquitis amarela"
 msgstr ""
 
-#: pages/sobre.vue:132
+#: pages/sobre.vue:144
 msgid "modelos 3D"
 msgstr ""
 
-#: pages/vida.vue:588 pages/vida.vue:5
+#: pages/vida.vue:626 pages/vida.vue:5
 msgid "Moreia pintada"
 msgstr ""
 
-#: pages/vida.vue:613 pages/vida.vue:5
+#: pages/vida.vue:651 pages/vida.vue:5
 msgid "Moreia verde"
 msgstr ""
 
-#: pages/vida.vue:619
+#: pages/vida.vue:657
 msgid ""
 "Moréia verde, como é conhecida pelos mergulhadores, é a mais\n"
 "            popular de todas as espécies. É considerada a maior em tamanho,\n"
@@ -687,35 +745,39 @@ msgid ""
 "            lendas das serpentes marinhas gigantes?"
 msgstr ""
 
-#: pages/vida.vue:647 pages/vida.vue:5
+#: pages/vida.vue:685 pages/vida.vue:5
 msgid "Moréia-banana"
 msgstr ""
 
-#: pages/index.vue:225
+#: pages/index.vue:230
 msgid "Moréia, O primeiro naufrágio induzido para prática de mergulho no Brasil."
 msgstr ""
 
-#: pages/vida.vue:190
+#: pages/mergulho-virtual.vue:12
+msgid "Muito baixo desempenho, muito devagar ou não funcionará"
+msgstr ""
+
+#: pages/vida.vue:189
 msgid "Na Laje de Santos elas aparecem em determinadas épocas do ano e geralmente estão prenhas ou grávidas como na foto em questão. A gravidez das raias é perceptível pelo ventre e pelo dorso deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres."
 msgstr ""
 
-#: pages/vida.vue:714 pages/vida.vue:1
+#: pages/vida.vue:752 pages/vida.vue:1
 msgid "Na laje você sempre vê cardumes de salemas."
 msgstr ""
 
-#: pages/index.vue:161
+#: pages/index.vue:166
 msgid "naufrágio Moréia."
 msgstr ""
 
-#: pages/vida.vue:848
+#: pages/vida.vue:897
 msgid "Nidificam na Laje de Santos cerca de 500 indivíduos, gerando de um até três filhotes por ninhada, mas nem sempre todos sobrevivem. É uma espécie muito sensível à presença humana e por isso considerada vulnerável à extinção segundo a Red List de animais ameaçados. Uma curiosidade sobre essa espécie: é a associação do período de ocorrência coincidir com o mesmo período de ocorrência da raia-manta no parque marinho."
 msgstr ""
 
-#: pages/index.vue:367
+#: pages/index.vue:377
 msgid "No inverno"
 msgstr ""
 
-#: pages/vida.vue:767
+#: pages/vida.vue:810
 msgid ""
 "O curioso dos budiões é que são responsáveis por boa parte da\n"
 "            produção da areia do solo submarino (e portanto das praias!). Eles\n"
@@ -726,7 +788,7 @@ msgid ""
 "            para sua preservação."
 msgstr ""
 
-#: pages/vida.vue:523
+#: pages/vida.vue:561
 msgid ""
 "O interessante é que ao se deparar com um possível\n"
 "            predador ele abre suas nadadeiras em forma de leque que se\n"
@@ -739,7 +801,7 @@ msgstr ""
 msgid "O Moréia"
 msgstr ""
 
-#: pages/moreia.vue:58
+#: pages/moreia.vue:56
 msgid ""
 "O Moréia foi naufragado em 1992, e por muito tempo quase ninguém sabia era responsável pelo naufrágio. A história só se tornou\n"
 "          pública quando foi gravado o documentário Laje dos Sonhos, onde o próprio autor, Clóvis Benno de Carvalho, conta como foi tudo.\n"
@@ -747,19 +809,19 @@ msgid ""
 "          ir ao fundo. Ele mesmo conta a história:"
 msgstr ""
 
-#: pages/index.vue:155 pages/moreia.vue:10
+#: pages/index.vue:160 pages/moreia.vue:10
 msgid "O naufrágio Moréia"
 msgstr ""
 
-#: pages/moreia.vue:17 pages/moreia.vue:18
+#: pages/moreia.vue:21 pages/moreia.vue:22
 msgid "O Naufrágio Moréia"
 msgstr ""
 
-#: pages/sobre.vue:232
+#: pages/sobre.vue:244
 msgid "O Parque Estadual Marinho da Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:237
+#: pages/sobre.vue:249
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos (PEMLS) é o primeiro Parque\n"
 "            Marinho dentre as Unidades de Conservação do Estado de São Paulo, criado\n"
@@ -769,14 +831,14 @@ msgid ""
 "            40km da costa da cidade de Santos."
 msgstr ""
 
-#: pages/index.vue:85
+#: pages/index.vue:90
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos é uma área de proteção da biodiversidade marinha e aviária.\n"
 "                É o único parque marinho do estado de São Paulo, e proporciona um ambiente propício\n"
 "                à concentração de peixes de passagem e recifais com grande diversidade biológica."
 msgstr ""
 
-#: pages/sobre.vue:256
+#: pages/sobre.vue:268
 msgid ""
 "O Parque pode ser visitado por meio de barcos, mas não é permitido\n"
 "            aportar na ilha. Está distante cerca de 22 milhas náuticas da barra de São Vicente (40km).\n"
@@ -787,7 +849,7 @@ msgid ""
 "            enorme beleza e diversidade de fauna."
 msgstr ""
 
-#: pages/vida.vue:447
+#: pages/vida.vue:474
 msgid ""
 "O peixe anjo real, ou ciliaris, pode ser comumente encontrado em recifes de\n"
 "            corais, lajes e fundos rochosos, em águas quentes na porção oeste do Atlântico.\n"
@@ -795,7 +857,7 @@ msgid ""
 "            crustáceos e vermes."
 msgstr ""
 
-#: pages/vida.vue:512
+#: pages/vida.vue:550
 msgid ""
 "O peixe Coió ou falso-voador é um peixe incomum e com\n"
 "            características morfológicas diferentes da maioria dos peixes que\n"
@@ -805,26 +867,45 @@ msgid ""
 "            tamanho de seu corpo e com membranas entre seus espinhos."
 msgstr ""
 
-#: pages/vida.vue:795
+#: pages/vida.vue:408
+msgid ""
+"O peixe enxada também é conhecido como paru branco ou paru preto. Ele é visto em todo o Atlântico,\n"
+"            desde o norte dos Estados Unidos até o sul do Brasil.\n"
+"            É um avistamento comum na Laje, em grandes e belos cardumes que chegam a ter centenas de indivíduos.\n"
+"            É um peixe que pode viver em águas\n"
+"            salobras também, sendo presentes em manguezais e estuários."
+msgstr ""
+
+#: pages/vida.vue:844
 msgid "O peixe que anda sobre os recifes! As Marias da Toca, Marias-da-Toca, como são conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento que vivem em fendas fendas orifícios e pequenos orifícios orifícios buracos no costão rochoso e nos recifes de corais. São herbívoros, se alimentando de alga marinha e matéria orgânica. São como jardineiras dos recifes."
 msgstr ""
 
-#: pages/sobre.vue:85
+#: pages/sobre.vue:97
 msgid "O projeto está em andamento!"
 msgstr ""
 
-#: pages/sobre.vue:46
+#: pages/sobre.vue:56
 msgid ""
 "O projeto estava previsto para 2020, com os primeiros mergulhos agendados para\n"
 "          março. Então ocorreu a pandemia. Tivemos que pausar as atividades de mergulho e\n"
 "          focar somente no desenvolvimento da tecnologia."
 msgstr ""
 
-#: pages/vida.vue:821
+#: pages/vida.vue:870
 msgid "Os Atobás são aves marinhas pertencentes à família Sulidae, com distribuição pelos mares tropicais e subtropicais. No Brasil foram registradas 5 espécies distintas. Presente em grande quantidade com uma população estimada em mais de 2 mil indivíduos, a Laje de Santos é considerada o maior ninhal de Atobás-marrom da América Latina."
 msgstr ""
 
-#: pages/vida.vue:533
+#: pages/vida.vue:418
+msgid ""
+"Os peixes enxadas jovens costumam nadar na horizontal, parecendo uma folha.\n"
+"            Eles também são mais escuros, clareando com a idade."
+msgstr ""
+
+#: pages/mergulho-virtual.vue:15
+msgid "Ótimo desempenho"
+msgstr ""
+
+#: pages/vida.vue:571
 msgid ""
 "Outra característica bem marcante é as bordas de suas nadadeiras\n"
 "            quando abertas. Elas apresentam uma coloração azul neon bem viva que serve como\n"
@@ -834,11 +915,11 @@ msgid ""
 "            outros organismos para se alimentar."
 msgstr ""
 
-#: pages/vida.vue:778
+#: pages/vida.vue:821
 msgid "Outra curiosidade que chama a atenção para esta espécie de hábito diurno, é que durante a noite precisam descansar e se proteger dos predadores que rondam pelos corais como os tubarões. Por isso se escondem nas  fendas e frestas do recife, mas nem sempre este esconderijo o protege, então os budiões secretam um muco fedorento que envolve seu corpo completamente como uma camisola transparente, inibindo e confundindo seus predadores."
 msgstr ""
 
-#: pages/vida.vue:632
+#: pages/vida.vue:670
 msgid ""
 "Para respirar, elas abrem e fecham a boca constantemente inalando e exalando\n"
 "            água retendo o oxigênio em sua brânquias e transportando para corrente\n"
@@ -850,7 +931,7 @@ msgstr ""
 msgid "Parque criado pelo decreto estadual n° 37.537. Passa a ser área de preservação, sendo proibida a pesca."
 msgstr ""
 
-#: pages/moreia.vue:31
+#: pages/moreia.vue:29
 msgid ""
 "Parte do projeto deste site é recriar o Moreia em 3D para que todos, mergulhadores ou não, possuam ver um pouco mais dele. E também\n"
 "          para preservá-lo. É um pequeno barco, simples, mas que virou parte da história do mergulho brasileiro. E que está sofrendo com\n"
@@ -859,31 +940,31 @@ msgid ""
 "          mar já mudaram diversas vezes o naufrágio de lugar - parece que sua posição inicial nem mesmo era a atual, mas deitado."
 msgstr ""
 
-#: pages/vida.vue:422
+#: pages/vida.vue:444
 msgid "Paru, peixe-frade ou peixe-anjo: são muitos os nomes para a mesma espécie. Depende de qual região você o avistou. É um dos peixes mais ilustres e carismáticos."
 msgstr ""
 
-#: pages/index.vue:371
+#: pages/index.vue:381
 msgid "passam pela Laje. Chegam a 8 metros de envergadura e 2 toneladas. Estão vulneráveis à extinção."
 msgstr ""
 
-#: pages/vida.vue:440 pages/vida.vue:5
+#: pages/vida.vue:467 pages/vida.vue:5
 msgid "Peixe anjo real"
 msgstr ""
 
-#: pages/vida.vue:505 pages/vida.vue:5
+#: pages/vida.vue:543 pages/vida.vue:5
 msgid "Peixe Coió ou falso-voador"
 msgstr ""
 
-#: pages/index.vue:286 pages/vida.vue:415 pages/vida.vue:5
+#: pages/index.vue:291 pages/vida.vue:437 pages/vida.vue:5
 msgid "Peixe frade"
 msgstr ""
 
-#: pages/index.vue:292
+#: pages/index.vue:297
 msgid "Peixe lua"
 msgstr ""
 
-#: pages/vida.vue:46 pages/vida.vue:362
+#: pages/vida.vue:46 pages/vida.vue:343
 msgid "Peixes"
 msgstr ""
 
@@ -891,10 +972,14 @@ msgstr ""
 msgid "Pesquisa e texto: Nauther Andres. Revisão: Bruno Barberi Gnecco."
 msgstr ""
 
-#: pages/vida.vue:556
+#: pages/vida.vue:594
 msgid ""
 "Pirá em tupi-guarani significa “peixe”: o mais legal é que este\n"
 "            peixe é conhecido popularmente como Pirá mesmo."
+msgstr ""
+
+#: pages/vida.vue:229
+msgid "Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos."
 msgstr ""
 
 #: pages/vida.vue:105
@@ -905,7 +990,7 @@ msgstr ""
 msgid "Pontos de mergulho"
 msgstr ""
 
-#: components/sections/SiteHeader.vue:42 pages/index.vue:253
+#: components/sections/SiteHeader.vue:42 pages/index.vue:258
 msgid "Pontos de Mergulho"
 msgstr ""
 
@@ -913,7 +998,7 @@ msgstr ""
 msgid "Pontos de Mergulho na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:247
+#: pages/sobre.vue:259
 msgid ""
 "Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
 "            grande concentração de peixes de passagem e recifais, sendo um dos\n"
@@ -921,15 +1006,15 @@ msgid ""
 "            também possui um barco naufragado."
 msgstr ""
 
-#: pages/vida.vue:628
+#: pages/vida.vue:666
 msgid "Possui comportamento mais agressivo e hábito noturno, é eximia predadora, fica de tocaia em sua toca e sai para predar peixes, crustáceos e moluscos sendo seu alimento predileto. Com dentes bem afiados, sua mordida pode causar ferimentos graves em humanos, por isso é recomendado não se aproximar muito."
 msgstr ""
 
-#: pages/vida.vue:674
+#: pages/vida.vue:712
 msgid "Possui hábito diurno e por isso não é difícil de ser encontrada durante atividades de mergulhos. Não apresenta nenhum risco aos humanos, vive associada ao fundo marinho em busca de pequenos crustáceos e vermes. Hoje sua maior ameaça é a captura para comércio de peixes ornamentais para aquários. Pode ser encontrada nas zonas tropicais e subtropicais do oceano atlântico."
 msgstr ""
 
-#: pages/vida.vue:426
+#: pages/vida.vue:448
 msgid "Possui várias características únicas: Encontrado em toda a costa brasileira, é um peixe recifal de comportamento dócil, comum de serem avistados  nos mergulhos e super fotogênico Alguns especialistas sugerem que sejam monogâmicos, vivendo com sua parceira(o) por toda a vida. É comum vê-los em pares."
 msgstr ""
 
@@ -945,15 +1030,15 @@ msgstr ""
 msgid "Produzido o documentário Laje dos Sonhos."
 msgstr ""
 
-#: components/Underwaterb.vue:8
+#: components/Underwaterb.vue:4 components/Underwaterb.vue:61
 msgid "Profundidade"
 msgstr ""
 
-#: pages/index.vue:141
+#: pages/index.vue:146
 msgid "Profundidade máxima no entorno:"
 msgstr ""
 
-#: pages/index.vue:139
+#: pages/index.vue:144
 msgid "Profundidade média:"
 msgstr ""
 
@@ -973,7 +1058,7 @@ msgstr ""
 msgid "Projeto e execução"
 msgstr ""
 
-#: pages/pontos-de-mergulho.vue:176 pages/sobre.vue:31
+#: pages/pontos-de-mergulho.vue:182 pages/sobre.vue:31
 msgid "Projeto Laje de Santos Virtual"
 msgstr ""
 
@@ -981,25 +1066,25 @@ msgstr ""
 msgid "Publicado o livro \"Laje de Santos, Laje dos Sonhos\"."
 msgstr ""
 
-#: pages/vida.vue:575
+#: pages/vida.vue:613
 msgid ""
 "Quando ameaçado, nada ligeiramente para dentro de sua pilha de\n"
 "            cascalhos para se proteger e só sai novamente ao se sentir seguro."
 msgstr ""
 
-#: pages/vida.vue:800
+#: pages/vida.vue:849
 msgid "Quando saem de suas tocas, em busca de alimentos na maré baixa, elas se apoiam sobre suas nadadeiras peitorais e rastejam como se estivessem caminhando indo de um ponto a outro, forrageando o costão com as algas expostas nas rochas, e ao menor sinal de perigo elas saltam para dentro d'água e se entocam novamente."
 msgstr ""
 
-#: pages/index.vue:413
+#: pages/index.vue:423
 msgid "Quilômetros da costa"
 msgstr ""
 
-#: pages/vida.vue:146 pages/vida.vue:5
+#: pages/vida.vue:145 pages/vida.vue:5
 msgid "Raia Chita"
 msgstr ""
 
-#: pages/vida.vue:155
+#: pages/vida.vue:154
 msgid "Raia-prego"
 msgstr ""
 
@@ -1007,12 +1092,8 @@ msgstr ""
 msgid "Raias"
 msgstr ""
 
-#: pages/vida.vue:241 pages/vida.vue:12
-msgid ""
-"Raias-borboleta.\n"
-"                  Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos.\n"
-"\n"
-"                  Fotos: Nauther Andres"
+#: pages/sobre.vue:159
+msgid "Realidade virtual"
 msgstr ""
 
 #: pages/vida.vue:99
@@ -1023,11 +1104,11 @@ msgstr ""
 msgid "São animais de reprodução lenta com período gestacional de 10 a 14 meses gerando apenas um filhote a cada 3 a 4 anos. Encontram-se ameaçadas de extinção devido à pesca intencional e acidental realizada no mundo todo, esta espécie não tem valor comercial para consumo humano, mas há um interesse no mercado asiático de seus subprodutos como as suas brânquias."
 msgstr ""
 
-#: pages/vida.vue:824
+#: pages/vida.vue:873
 msgid "São aves que mergulham para capturar sua presa quando avistam cardumes, principalmente sardinhas e manjubas."
 msgstr ""
 
-#: pages/vida.vue:736
+#: pages/vida.vue:774
 msgid ""
 "São facilmente identificadas e conhecidas popularmente com o nome de salemas.\n"
 "            Seu comportamento de estarem sempre em cardumes e não apresentarem medo permite\n"
@@ -1036,7 +1117,7 @@ msgid ""
 "            em que vivem."
 msgstr ""
 
-#: pages/vida.vue:456
+#: pages/vida.vue:483
 msgid ""
 "São peixes de cores deslumbrantes e muito vivas que chegam a brilhar como neon.\n"
 "            Geralmente são encontrados aos pares e na presença de mergulhadores são um tanto\n"
@@ -1045,7 +1126,7 @@ msgid ""
 "            é uma grande ameaça à espécie por ser muito capturada em seu habitat."
 msgstr ""
 
-#: pages/vida.vue:393
+#: pages/vida.vue:374
 msgid ""
 "São peixes muito apreciados pela culinária por sua carne firme e\n"
 "            branca. Por conta disso são extremamente explorados para o\n"
@@ -1056,11 +1137,11 @@ msgid ""
 "            considerável com peso médio entre 20 a 30 quilos."
 msgstr ""
 
-#: pages/vida.vue:472 pages/vida.vue:5
+#: pages/vida.vue:505 pages/vida.vue:5
 msgid "Sargentinho"
 msgstr ""
 
-#: pages/vida.vue:857
+#: pages/vida.vue:906
 msgid "Se alimenta de pequenos peixes, lulas e crustáceos. É uma das aves que mergulham para capturar seu alimento. Seu nome indica seu comportamento de estarem sempre em bandos nas áreas de ocorrência da espécie."
 msgstr ""
 
@@ -1068,7 +1149,11 @@ msgstr ""
 msgid "Se estiver procurando espécies, veja a lista completa."
 msgstr ""
 
-#: pages/vida.vue:490
+#: pages/AnimBakeExtractor.vue:13
+msgid "Se o arquivo não baixar, significa que ele já existe no servidor."
+msgstr ""
+
+#: pages/vida.vue:523
 msgid ""
 "Seu estado de conservação é de menor preocupação na lista vermelha de espécies\n"
 "            ameaçadas, ocorrendo em grandes quantidades em todos os oceanos, sendo muito\n"
@@ -1076,11 +1161,11 @@ msgid ""
 "            ornamentais para aquários."
 msgstr ""
 
-#: pages/vida.vue:599
+#: pages/vida.vue:637
 msgid "Seu nado se dá de forma semelhante ao rastejar de uma cobra, impulsionando o corpo para frente e para trás. Vivem associadas ao fundo marinho em tocas e fendas nas rochas e recifes de corais. São fortes predadoras e se alimentam de outros peixes, crustáceos e moluscos. Possuem dentes bem afiados e uma mordida bastante poderosa."
 msgstr ""
 
-#: pages/vida.vue:478
+#: pages/vida.vue:511
 msgid ""
 "Seu nome é de origem Árabe - Abu significa pai ou o líder dos recifes. É o macho\n"
 "            que cuida dos filhotes. Ocorre em todos os oceanos tropicais e subtropicais.\n"
@@ -1091,11 +1176,11 @@ msgid ""
 "            aproximam demais."
 msgstr ""
 
-#: pages/vida.vue:430
+#: pages/vida.vue:452
 msgid "Seus filhotes são bem diferentes quando juvenis, apresentando listras amarelas contínuas em seu disco corporal que se transformam em pintas amareladas quando passam para a fase adulta. Esta espécie não possui interesse para a pesca, mas tem muito valor no mercado de peixes ornamentais ou para a aquariofilia, sendo muito comercializada para compor ambientes de aquários mundo afora."
 msgstr ""
 
-#: pages/index.vue:347
+#: pages/index.vue:352
 msgid "site da Diretoria do Parque Estadual Marinho da Laje de Santos"
 msgstr ""
 
@@ -1103,15 +1188,15 @@ msgstr ""
 msgid "Sobre"
 msgstr ""
 
-#: pages/pontos-de-mergulho.vue:177 pages/sobre.vue:32
+#: pages/pontos-de-mergulho.vue:183 pages/sobre.vue:32
 msgid "Sobre o projeto Laje de Santos Virtual"
 msgstr ""
 
-#: pages/tartaruga.vue:21 pages/vida.vue:27
+#: pages/AnimBakeExtractor.vue:34 pages/tartaruga.vue:34 pages/vida.vue:29
 msgid "Sobre seres vivos na Laje de Santos"
 msgstr ""
 
-#: pages/vida.vue:704
+#: pages/vida.vue:742
 msgid ""
 "Sua maior ameaça é a pesca esportiva e predatória, apesar de não\n"
 "            ter interesse comercial, é um peixe bastante apreciado em\n"
@@ -1122,40 +1207,52 @@ msgstr ""
 msgid "Tamanho (em cm)"
 msgstr ""
 
-#: pages/vida.vue:289 pages/vida.vue:5
+#: pages/vida.vue:270 pages/vida.vue:5
 msgid "Tartaruga de pente."
 msgstr ""
 
-#: pages/index.vue:298 pages/vida.vue:302 pages/vida.vue:5
+#: pages/index.vue:303 pages/vida.vue:283 pages/vida.vue:5
 msgid "Tartaruga verde"
 msgstr ""
 
-#: pages/vida.vue:34 pages/vida.vue:258
+#: pages/vida.vue:34 pages/vida.vue:240
 msgid "Tartarugas"
 msgstr ""
 
 #: components/sections/SiteFooter.vue:61 components/sections/SiteHeader.vue:57
-#: pages/sobre.vue:62
+#: pages/sobre.vue:74
 msgid "Tecnologia"
 msgstr ""
 
-#: components/Underwaterb.vue:14
+#: components/Underwaterb.vue:9 components/Underwaterb.vue:67
 msgid "Tempo"
+msgstr ""
+
+#: pages/mergulho-virtual.vue:10
+msgid "Testando desempenho..."
 msgstr ""
 
 #: pages/especies.vue:35
 msgid "Todas as cores"
 msgstr ""
 
-#: pages/vida.vue:854
+#: components/Underwaterb.vue:22
+msgid "Torne-se um mergulhador e explore a Laje de Santos."
+msgstr ""
+
+#: pages/vida.vue:903
 msgid "Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários."
 msgstr ""
 
-#: pages/vida.vue:405
+#: pages/sobre.vue:27
+msgid "Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:"
+msgstr ""
+
+#: pages/vida.vue:386
 msgid "Um comportamento observado na espécie,  nos mergulhos na Laje de Santos, é a disputa com outros indivíduos pelo seu território, expulsando o invasor de sua toca com investidas e até mesmo mordidas. É possível notar  um padrão de coloração intercambiável de acordo com o substrato que ela se encontra… se for rochoso, os padrões de manchas serão vivas como se fossem uma camuflagem, quando em ambiente arenoso claro, seu corpo empalidece na cor da areia se mimetizando com o ambiente."
 msgstr ""
 
-#: pages/index.vue:256
+#: pages/index.vue:261
 msgid "Um mapa interativo para conhecer os pontos de mergulhos presentes na laje"
 msgstr ""
 
@@ -1163,37 +1260,49 @@ msgstr ""
 msgid "Um mergulhador fotografa duas raias mantas na Laje de Santos. Foto: Nauther Andres"
 msgstr ""
 
-#: pages/index.vue:129
+#: pages/index.vue:134
 msgid "Um paraíso do mergulho"
 msgstr ""
 
-#: pages/vida.vue:833
+#: pages/vida.vue:882
 msgid "Uma das aves marinhas mais comuns e conhecidas pelos frequentadores de praia e faixas litorâneas espalhadas pelo mundo. A gaivota ou gaivotão, apesar de ser uma ave marinha, é considerada uma ave sinantrópica, ou seja, aves que vivem ou compartilham ambientes comuns com os humanos. Alimentam-se de sobras e carcaças de pescados, são furtivas e estão sempre à espreita por uma oportunidade de alimento fácil."
 msgstr ""
 
-#: pages/moreia.vue:25
+#: pages/moreia.vue:19
 msgid "Uma das práticas que o mergulho permite é visitar naufrágios. Enquanto muitos são tragédias, não é o caso do Moréia, o nosso querido naufrágio da Laje de Santos."
 msgstr ""
 
-#: pages/index.vue:105 pages/index.vue:4
+#: pages/index.vue:110 pages/index.vue:4
 msgid "Uma ilha na forma de baleia que surge no mar aberto, a 40km da costa do"
 msgstr ""
 
-#: pages/index.vue:209
+#: components/EBA.vue:9 components/GLTFModelB.vue:9
+msgid "use ctrl+scroll para zoom,"
+msgstr ""
+
+#: components/Underwaterb.vue:35
+msgid "Use os joysticks azul e vermelho para girar e nadar."
+msgstr ""
+
+#: pages/index.vue:214
 msgid "Veja espécies presentes na laje como tartarugas, mantas e golfinhos."
 msgstr ""
 
-#: pages/index.vue:188
+#: pages/index.vue:193
 msgid ""
 "Veja no seu computador cardumes de peixes, o naufrágio Moreia e animais fantásticos como se estivesse lá.\n"
 "              Experimente como é mergulhar na Laje de Santos agora mesmo."
 msgstr ""
 
-#: pages/especies.vue:110
+#: components/EBA.vue:3 components/GLTFModelB.vue:3
+msgid "Ver 3D em tela cheia"
+msgstr ""
+
+#: pages/especies.vue:34
 msgid "Ver imagens"
 msgstr ""
 
-#: pages/index.vue:260
+#: pages/index.vue:265
 msgid "Ver pontos"
 msgstr ""
 
@@ -1205,19 +1314,19 @@ msgstr ""
 msgid "Vida"
 msgstr ""
 
-#: pages/tartaruga.vue:20 pages/vida.vue:26
+#: pages/AnimBakeExtractor.vue:33 pages/tartaruga.vue:33 pages/vida.vue:28
 msgid "Vida na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:128
+#: pages/sobre.vue:140
 msgid "vídeos"
 msgstr ""
 
-#: pages/index.vue:56
+#: pages/index.vue:61
 msgid "Vivemos em um planeta de pequenas maravilhas naturais. Florestas gigantescas, cachoeiras idílicas, ilhas remotas."
 msgstr ""
 
-#: pages/index.vue:342
+#: pages/index.vue:347
 msgid ""
 "Você pode encontrar mais informações sobre visitação e compra de ingressos,\n"
 "              visitando o"
@@ -1225,4 +1334,8 @@ msgstr ""
 
 #: pages/especies.vue:9 pages/galeria.vue:20
 msgid "Você tem imagens da Laje de Santos? Mande para nosso projeto:"
+msgstr ""
+
+#: pages/sobre.vue:124
+msgid "Website"
 msgstr ""

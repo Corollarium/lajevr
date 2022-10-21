@@ -23,6 +23,17 @@
           marinho.
         </i18n>
       </p>
+
+      <p>
+        <i18n>
+          Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:
+        </i18n>
+        <a href="/laje-de-santos-svr-2022.pdf">
+          Bruno Barberi Gnecco and Marcelo de Paiva Guimarães. Laje de Santos: a dive site recreated in virtual reality.
+          In <i>Symposium on Virtual and Augmented Reality</i>, 2022, Natal, Brazil.
+        </a>
+      </p>
+
       <h3>
         <i18n>
           A ideia e a execução
