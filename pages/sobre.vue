@@ -26,7 +26,8 @@
 
       <p>
         <i18n>
-          Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:
+          Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado e ganhou
+          o prêmio de melhor artigo de implementação da conferência:
         </i18n>
         <a href="/laje-de-santos-svr-2022.pdf">
           Bruno Barberi Gnecco and Marcelo de Paiva Guimarães. Laje de Santos: a dive site recreated in virtual reality.
