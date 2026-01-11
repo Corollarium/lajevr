@@ -1,5 +1,5 @@
 # Portuguese translations for lajevr package
-# Tradu��es em portugu�s brasileiro para o pacote lajevr.
+# Tradu��es em portugu�s brasileiro para o pacote lajevr.
 # Copyright (C) 2020 THE lajevr'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lajevr package.
 # Automatically generated, 2020.
@@ -22,7 +22,7 @@ msgstr ""
 msgid "A 20 metros de profundidade está o"
 msgstr ""
 
-#: pages/sobre.vue:42
+#: pages/sobre.vue:43
 msgid ""
 "A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
 "          com visualização e realidade virtual.\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "A embarcação Moreia é naufragada. É o primeiro naufrágio feito para prática de mergulho no Brasil."
 msgstr ""
 
-#: pages/sobre.vue:37
+#: pages/sobre.vue:38
 msgid "A ideia e a execução"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "A rainha da Laje de Santos."
 msgstr ""
 
-#: pages/sobre.vue:162
+#: pages/sobre.vue:163
 msgid ""
 "A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.\n"
 "              Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que\n"
@@ -106,15 +106,15 @@ msgstr ""
 msgid "A vida na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:82
+#: pages/sobre.vue:83
 msgid "Adquirindo dados"
 msgstr ""
 
-#: pages/sobre.vue:322
+#: pages/sobre.vue:323
 msgid "Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto."
 msgstr ""
 
-#: pages/sobre.vue:317
+#: pages/sobre.vue:318
 msgid "Agradecimentos"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Ajuste o modelo, a quantidade de quadros e um delta de quadros por segundo."
 msgstr ""
 
-#: pages/sobre.vue:299
+#: pages/sobre.vue:300
 msgid ""
 "Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,\n"
 "            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas."
@@ -207,7 +207,7 @@ msgstr ""
 msgid "Budião-papagaio-de-recife"
 msgstr ""
 
-#: pages/sobre.vue:305
+#: pages/sobre.vue:306
 msgid ""
 "busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente\n"
 "            incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio\n"
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Coió"
 msgstr ""
 
-#: pages/sobre.vue:64
+#: pages/sobre.vue:65
 msgid "Com a melhora da situação em 2021, pudemos finalmente cair na água."
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "Compasso"
 msgstr ""
 
-#: pages/sobre.vue:219
+#: pages/sobre.vue:220
 msgid "Comunicólogo, designer de experiência do projeto."
 msgstr ""
 
@@ -295,7 +295,7 @@ msgstr ""
 msgid "Conteúdo do site sob"
 msgstr ""
 
-#: pages/sobre.vue:206
+#: pages/sobre.vue:207
 msgid "Coordenador do projeto, é engenheiro elétrico e mergulhador."
 msgstr ""
 
@@ -347,7 +347,7 @@ msgstr ""
 msgid "Encontrada  em quase todos os oceanos, mas na Laje de Santos podem ser vistas quase o ano todo, onde seus indivíduos são inclusive reconhecidos pelos mergulhadores, graças ao padrão único de pintas em sua região dorsal. São animais de vida longa, podendo chegar até os 18 anos, sendo frequentemente avistados nadando sozinhas ou até em cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora d’água. Alimentam-se de pequenos crustáceos e moluscos bivalves (animais de duas conchas) possuindo uma mandíbula extremamente forte, capaz de triturar conchas e carapaças."
 msgstr ""
 
-#: pages/sobre.vue:195
+#: pages/sobre.vue:196
 msgid "Equipe"
 msgstr ""
 
@@ -427,7 +427,7 @@ msgid ""
 "            aos cuidados da casa."
 msgstr ""
 
-#: pages/sobre.vue:87
+#: pages/sobre.vue:88
 msgid ""
 "Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes\n"
 "              abertas como a Wikimedia Commons, passando\n"
@@ -446,7 +446,7 @@ msgid ""
 "          marinho."
 msgstr ""
 
-#: pages/sobre.vue:129
+#: pages/sobre.vue:130
 msgid ""
 "Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.\n"
 "              Desde um celular até telas gigantes."
@@ -505,7 +505,7 @@ msgstr ""
 msgid "foto por"
 msgstr ""
 
-#: pages/sobre.vue:174
+#: pages/sobre.vue:175
 msgid "fotografias"
 msgstr ""
 
@@ -526,7 +526,7 @@ msgstr ""
 msgid "Garoupa verdadeira entre pedras. Foto: Nauther Andres"
 msgstr ""
 
-#: pages/sobre.vue:184
+#: pages/sobre.vue:185
 msgid "GB de dados"
 msgstr ""
 
@@ -565,19 +565,19 @@ msgstr ""
 msgid "Hectares preservados"
 msgstr ""
 
-#: pages/sobre.vue:180
+#: pages/sobre.vue:181
 msgid "horas de processamento"
 msgstr ""
 
-#: pages/sobre.vue:177
+#: pages/sobre.vue:178
 msgid "horas de vídeo"
 msgstr ""
 
-#: pages/sobre.vue:136
+#: pages/sobre.vue:137
 msgid "imagens"
 msgstr ""
 
-#: pages/sobre.vue:293
+#: pages/sobre.vue:294
 msgid "Importância"
 msgstr ""
 
@@ -585,7 +585,7 @@ msgstr ""
 msgid "Improvisações: Animação não rodando nessa página. Aplicar deslocamento de animação, para animação composta."
 msgstr ""
 
-#: pages/sobre.vue:279
+#: pages/sobre.vue:280
 msgid ""
 "Inclui a Laje de Santos, os parcéis do Bandolim, das Âncoras, Brilhante, do Sul e Novo e os Rochedos\n"
 "            conhecidos como Calhaus, totalizando 5.000 hectares de área preservada com formato de retângulo (10.000 por 5.000 m).\n"
@@ -622,7 +622,7 @@ msgstr ""
 msgid "Leia mais sobre o projeto \"A Laje em Realidade Virtual\"."
 msgstr ""
 
-#: pages/sobre.vue:169
+#: pages/sobre.vue:170
 msgid "Leia um descritivo detalhado da tecnologia que usamos neste projeto."
 msgstr ""
 
@@ -630,7 +630,7 @@ msgstr ""
 msgid "Linha do Tempo"
 msgstr ""
 
-#: pages/sobre.vue:147
+#: pages/sobre.vue:148
 msgid "linhas de código"
 msgstr ""
 
@@ -662,11 +662,11 @@ msgstr ""
 msgid "Médio desempenho"
 msgstr ""
 
-#: pages/sobre.vue:232
+#: pages/sobre.vue:233
 msgid "Mergulhador e biólogo."
 msgstr ""
 
-#: pages/sobre.vue:108
+#: pages/sobre.vue:109
 msgid "mergulhadores"
 msgstr ""
 
@@ -691,7 +691,7 @@ msgstr ""
 msgid "Mergulho Virtual"
 msgstr ""
 
-#: pages/sobre.vue:104
+#: pages/sobre.vue:105
 msgid "mergulhos"
 msgstr ""
 
@@ -717,7 +717,7 @@ msgstr ""
 msgid "Metros de profundidade máxima"
 msgstr ""
 
-#: pages/sobre.vue:112
+#: pages/sobre.vue:113
 msgid "minutos de mergulho"
 msgstr ""
 
@@ -725,7 +725,7 @@ msgstr ""
 msgid "Miriquitis amarela"
 msgstr ""
 
-#: pages/sobre.vue:144
+#: pages/sobre.vue:145
 msgid "modelos 3D"
 msgstr ""
 
@@ -817,11 +817,11 @@ msgstr ""
 msgid "O Naufrágio Moréia"
 msgstr ""
 
-#: pages/sobre.vue:244
+#: pages/sobre.vue:245
 msgid "O Parque Estadual Marinho da Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:249
+#: pages/sobre.vue:250
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos (PEMLS) é o primeiro Parque\n"
 "            Marinho dentre as Unidades de Conservação do Estado de São Paulo, criado\n"
@@ -838,7 +838,7 @@ msgid ""
 "                à concentração de peixes de passagem e recifais com grande diversidade biológica."
 msgstr ""
 
-#: pages/sobre.vue:268
+#: pages/sobre.vue:269
 msgid ""
 "O Parque pode ser visitado por meio de barcos, mas não é permitido\n"
 "            aportar na ilha. Está distante cerca de 22 milhas náuticas da barra de São Vicente (40km).\n"
@@ -880,11 +880,11 @@ msgstr ""
 msgid "O peixe que anda sobre os recifes! As Marias da Toca, Marias-da-Toca, como são conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento que vivem em fendas fendas orifícios e pequenos orifícios orifícios buracos no costão rochoso e nos recifes de corais. São herbívoros, se alimentando de alga marinha e matéria orgânica. São como jardineiras dos recifes."
 msgstr ""
 
-#: pages/sobre.vue:97
+#: pages/sobre.vue:98
 msgid "O projeto está em andamento!"
 msgstr ""
 
-#: pages/sobre.vue:56
+#: pages/sobre.vue:57
 msgid ""
 "O projeto estava previsto para 2020, com os primeiros mergulhos agendados para\n"
 "          março. Então ocorreu a pandemia. Tivemos que pausar as atividades de mergulho e\n"
@@ -998,7 +998,7 @@ msgstr ""
 msgid "Pontos de Mergulho na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:259
+#: pages/sobre.vue:260
 msgid ""
 "Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
 "            grande concentração de peixes de passagem e recifais, sendo um dos\n"
@@ -1092,7 +1092,7 @@ msgstr ""
 msgid "Raias"
 msgstr ""
 
-#: pages/sobre.vue:159
+#: pages/sobre.vue:160
 msgid "Realidade virtual"
 msgstr ""
 
@@ -1220,7 +1220,7 @@ msgid "Tartarugas"
 msgstr ""
 
 #: components/sections/SiteFooter.vue:61 components/sections/SiteHeader.vue:57
-#: pages/sobre.vue:74
+#: pages/sobre.vue:75
 msgid "Tecnologia"
 msgstr ""
 
@@ -1245,7 +1245,9 @@ msgid "Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com 
 msgstr ""
 
 #: pages/sobre.vue:27
-msgid "Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:"
+msgid ""
+"Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado e ganhou\n"
+"          o prêmio de melhor artigo de implementação da conferência:"
 msgstr ""
 
 #: pages/vida.vue:386
@@ -1318,7 +1320,7 @@ msgstr ""
 msgid "Vida na Laje de Santos"
 msgstr ""
 
-#: pages/sobre.vue:140
+#: pages/sobre.vue:141
 msgid "vídeos"
 msgstr ""
 
@@ -1336,6 +1338,6 @@ msgstr ""
 msgid "Você tem imagens da Laje de Santos? Mande para nosso projeto:"
 msgstr ""
 
-#: pages/sobre.vue:124
+#: pages/sobre.vue:125
 msgid "Website"
 msgstr ""

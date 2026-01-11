@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: lajevr 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-24 14:53-0300\n"
-"PO-Revision-Date: 2021-11-10 15:20+0000\n"
+"PO-Revision-Date: 2022-11-03 10:48-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Loco-Source-Locale: en_BR\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: PO File Editor https://pofile.net/free-po-editor\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Loco-Parser: loco_parse_po\n"
 
@@ -20,7 +20,7 @@ msgstr ""
 msgid "A 20 metros de profundidade está o"
 msgstr "At 20 meters deep you will find the"
 
-#: pages/sobre.vue:42
+#: pages/sobre.vue:43
 msgid ""
 "A Corollarium é uma empresa que sempre desenvolveu tecnologia e trabalhou\n"
 "          com visualização e realidade virtual.\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "A embarcação Moreia é naufragada. É o primeiro naufrágio feito para prática de mergulho no Brasil."
 msgstr "The Moreia is a shipwrecked vessel. It is the first induced shipwreck made for diving in Brazil."
 
-#: pages/sobre.vue:37
+#: pages/sobre.vue:38
 msgid "A ideia e a execução"
 msgstr "Idea and execution"
 
@@ -98,7 +98,7 @@ msgstr "Butterfly rays can be found throughout the Atlantic Ocean, Black Sea, an
 msgid "A rainha da Laje de Santos."
 msgstr "The queen of Laje de Santos."
 
-#: pages/sobre.vue:162
+#: pages/sobre.vue:163
 msgid ""
 "A tecnologia para gerar as áreas de realidade virtual inclui vários processos e conhecimentos.\n"
 "              Para os modelos da Laje, tanto em cima quanto embaixo d'água, usamos fotos de referência que\n"
@@ -117,15 +117,15 @@ msgstr "Life at Laje"
 msgid "A vida na Laje de Santos"
 msgstr "Life at Laje de Santos"
 
-#: pages/sobre.vue:82
+#: pages/sobre.vue:83
 msgid "Adquirindo dados"
 msgstr "Fetching data"
 
-#: pages/sobre.vue:322
+#: pages/sobre.vue:323
 msgid "Agradecemos às seguintes pessoas e instituições por sua inestimável ajuda neste projeto."
 msgstr "We thank the following people and institutions for their invaluable help in this project."
 
-#: pages/sobre.vue:317
+#: pages/sobre.vue:318
 msgid "Agradecimentos"
 msgstr "Acknowledgments"
 
@@ -133,7 +133,7 @@ msgstr "Acknowledgments"
 msgid "Ajuste o modelo, a quantidade de quadros e um delta de quadros por segundo."
 msgstr ""
 
-#: pages/sobre.vue:299
+#: pages/sobre.vue:300
 msgid ""
 "Além dos outros pontos citados, o PELMS é conhecido por estar na rota migratória das raias manta. É um dos maiores peixes do mundo,\n"
 "            podendo alcançar oito metros de envergadura e pesar mais de duas toneladas."
@@ -149,7 +149,7 @@ msgstr "When you encounter a Moray eel, you will notice its jaw in a constant op
 
 #: components/EBA.vue:13 components/GLTFModelB.vue:13
 msgid "apertar com dedos para zoom,"
-msgstr "pinch to zoom"
+msgstr "pinch to zoom,"
 
 #: components/Underwaterb.vue:30
 msgid "Aperte 'W' para nadar."
@@ -208,7 +208,7 @@ msgstr "Bibliography"
 
 #: pages/boids.vue:19
 msgid "Boids"
-msgstr "Boids"
+msgstr ""
 
 #: pages/especies.vue:53
 msgid "Branco"
@@ -218,7 +218,7 @@ msgstr "White"
 msgid "Budião-papagaio-de-recife"
 msgstr "Reef parrotfish"
 
-#: pages/sobre.vue:305
+#: pages/sobre.vue:306
 msgid ""
 "busca a ampliação do conhecimento visando a preservação das maiores espécies de raia do mundo, em especial a espécie comprovadamente\n"
 "            incidente no Brasil. Em 2011 ambas as espécies de mantas descritas no mundo foram recategorizadas, deixando o antigo estágio\n"
@@ -238,9 +238,8 @@ msgid "buscar na galeria"
 msgstr "search in gallery"
 
 #: pages/vida.vue:401 pages/vida.vue:5
-#, fuzzy
 msgid "Cardume de peixe enxada. Foto: Nauther Andrés"
-msgstr "Actual Grouper between stones. Photo by: Nauther Andres"
+msgstr "School of spadefish. Photo by: Nauther Andrés"
 
 #: components/sections/SiteFooter.vue:47
 msgid "Catálogo de espécies"
@@ -252,7 +251,7 @@ msgstr "Grey"
 
 #: components/Underwaterb.vue:26
 msgid "Clique Com o Botão Esquerdo do Mouse e Arraste para Olhar ao Redor."
-msgstr "Click with the left button and drag to turn around."
+msgstr "Click with left button and drag to look around."
 
 #: pages/pontos-de-mergulho.vue:15
 msgid "Clique em um ponto de mergulho para ter mais informações."
@@ -266,7 +265,7 @@ msgstr "Code available"
 msgid "Coió"
 msgstr "Flying Gurnard"
 
-#: pages/sobre.vue:64
+#: pages/sobre.vue:65
 msgid "Com a melhora da situação em 2021, pudemos finalmente cair na água."
 msgstr "With a more favorable situation in 2021, we were finally able to get ourselves wet."
 
@@ -297,7 +296,7 @@ msgstr "How to visit Laje"
 msgid "Compasso"
 msgstr "Compass"
 
-#: pages/sobre.vue:219
+#: pages/sobre.vue:220
 msgid "Comunicólogo, designer de experiência do projeto."
 msgstr "Communicator, project experience designer."
 
@@ -309,7 +308,7 @@ msgstr "Known in the northeast as \"Mututuca\" and in the southeast as \"Miriqui
 msgid "Conteúdo do site sob"
 msgstr "Website content under the"
 
-#: pages/sobre.vue:206
+#: pages/sobre.vue:207
 msgid "Coordenador do projeto, é engenheiro elétrico e mergulhador."
 msgstr "Project coordinator, an electrical engineer and diver."
 
@@ -361,7 +360,7 @@ msgstr "Visits with private vessels are permitted, following the navigation rule
 msgid "Encontrada  em quase todos os oceanos, mas na Laje de Santos podem ser vistas quase o ano todo, onde seus indivíduos são inclusive reconhecidos pelos mergulhadores, graças ao padrão único de pintas em sua região dorsal. São animais de vida longa, podendo chegar até os 18 anos, sendo frequentemente avistados nadando sozinhas ou até em cardumes com mais de 20 indivíduos, e muitas vezes saltando para fora d’água. Alimentam-se de pequenos crustáceos e moluscos bivalves (animais de duas conchas) possuindo uma mandíbula extremamente forte, capaz de triturar conchas e carapaças."
 msgstr "Found in almost all oceans, but at Laje de Santos they can be seen almost all year round, where its kind are even recognized by divers, thanks to the unique pattern of spots on its dorsal region. They are long-lived animals, reaching up to 18 years of age, and are often seen swimming alone or even in schools of more than 20, and often jumping out of the water. They feed on small crustaceans and bivalve molluscs (two-shell animals) having an extremely strong jaw, capable of crushing shells and carapaces."
 
-#: pages/sobre.vue:195
+#: pages/sobre.vue:196
 msgid "Equipe"
 msgstr "Team"
 
@@ -441,7 +440,7 @@ msgid ""
 "            aos cuidados da casa."
 msgstr "This fish is the architect of the sea. It lives at a depth that varies from 10 to 150 meters deep, on a sandy or limestone bottom, carefully builds its own house with pieces of coral skeletons, shells, and stones, carrying them on its mouth and piling one on top of the other, forming mounds up to 1 meter high and 1.5 meters wide. And so, he lives his whole life dedicating himself to the care of the house."
 
-#: pages/sobre.vue:87
+#: pages/sobre.vue:88
 msgid ""
 "Este projeto buscou dados sobre a Laje de Santos de todas as formas possíveis. Desde fontes\n"
 "              abertas como a Wikimedia Commons, passando\n"
@@ -460,7 +459,7 @@ msgid ""
 "          marinho."
 msgstr "This project uses virtual reality to generate a 3D model of the Parque Estadual Marinho da Laje de Santos \"Laje de Santos Marine State Park\", including submerged parts, allowing people from all over Brazil and the world to visit the park virtually, make simulated virtual dives, learn about the fauna that inhabits or migrates through the park and over the marine environment."
 
-#: pages/sobre.vue:129
+#: pages/sobre.vue:130
 msgid ""
 "Este site usa as tecnologias mais atuais da internet para ser interativo, imersivo e acessível.\n"
 "              Desde um celular até telas gigantes."
@@ -488,7 +487,7 @@ msgid ""
 "Experimente um mergulho virtual na Laje de Santos e veja o naufrágio Moreia e a vida.\n"
 "          É preciso que seu aparelho tenha suporte a 3D para executar este ambiente com bom\n"
 "          desempenho. Expectativa de desempenho:"
-msgstr ""
+msgstr "Experience a virtual dive at Laje de Santos and see the Moreia shipwreck and life. Your device must support 3D to run this environment with good  performance. Expected performance:"
 
 #: pages/AnimBakeExtractor.vue:9
 msgid "Extrai o baking da Textura de Animação de Vértices para um arquivo JSOn, caso ele não exista."
@@ -519,7 +518,7 @@ msgstr "Photo"
 msgid "foto por"
 msgstr "photo by"
 
-#: pages/sobre.vue:174
+#: pages/sobre.vue:175
 msgid "fotografias"
 msgstr "photographs"
 
@@ -540,7 +539,7 @@ msgstr "Laje de Santos Photo Gallery"
 msgid "Garoupa verdadeira entre pedras. Foto: Nauther Andres"
 msgstr "Actual Grouper between stones. Photo by: Nauther Andres"
 
-#: pages/sobre.vue:184
+#: pages/sobre.vue:185
 msgid "GB de dados"
 msgstr "GB of data"
 
@@ -579,19 +578,19 @@ msgstr "Habitat: Pantropical, found in the 3 oceans, inhabit coastal and subtrop
 msgid "Hectares preservados"
 msgstr "Preserved hectares"
 
-#: pages/sobre.vue:180
+#: pages/sobre.vue:181
 msgid "horas de processamento"
 msgstr "hours spent processing"
 
-#: pages/sobre.vue:177
+#: pages/sobre.vue:178
 msgid "horas de vídeo"
 msgstr "hours of video"
 
-#: pages/sobre.vue:136
+#: pages/sobre.vue:137
 msgid "imagens"
 msgstr "images"
 
-#: pages/sobre.vue:293
+#: pages/sobre.vue:294
 msgid "Importância"
 msgstr "Importance"
 
@@ -599,7 +598,7 @@ msgstr "Importance"
 msgid "Improvisações: Animação não rodando nessa página. Aplicar deslocamento de animação, para animação composta."
 msgstr ""
 
-#: pages/sobre.vue:279
+#: pages/sobre.vue:280
 msgid ""
 "Inclui a Laje de Santos, os parcéis do Bandolim, das Âncoras, Brilhante, do Sul e Novo e os Rochedos\n"
 "            conhecidos como Calhaus, totalizando 5.000 hectares de área preservada com formato de retângulo (10.000 por 5.000 m).\n"
@@ -636,7 +635,7 @@ msgstr "Orange"
 msgid "Leia mais sobre o projeto \"A Laje em Realidade Virtual\"."
 msgstr "Read more about the \"Laje in Virtual Reality\" project."
 
-#: pages/sobre.vue:169
+#: pages/sobre.vue:170
 msgid "Leia um descritivo detalhado da tecnologia que usamos neste projeto."
 msgstr "Read a detailed write up of the technology used in the project."
 
@@ -644,7 +643,7 @@ msgstr "Read a detailed write up of the technology used in the project."
 msgid "Linha do Tempo"
 msgstr "Timeline"
 
-#: pages/sobre.vue:147
+#: pages/sobre.vue:148
 msgid "linhas de código"
 msgstr "lines of code"
 
@@ -676,11 +675,11 @@ msgstr "But the internet allows us to get a bit closer."
 msgid "Médio desempenho"
 msgstr "Medium performance"
 
-#: pages/sobre.vue:232
+#: pages/sobre.vue:233
 msgid "Mergulhador e biólogo."
 msgstr "Diver and biologist."
 
-#: pages/sobre.vue:108
+#: pages/sobre.vue:109
 msgid "mergulhadores"
 msgstr "divers"
 
@@ -705,7 +704,7 @@ msgstr "Virtual Dive"
 msgid "Mergulho Virtual"
 msgstr "Virtual Dive"
 
-#: pages/sobre.vue:104
+#: pages/sobre.vue:105
 msgid "mergulhos"
 msgstr "dives"
 
@@ -731,7 +730,7 @@ msgstr "Meters wide"
 msgid "Metros de profundidade máxima"
 msgstr "Maximum depth meters"
 
-#: pages/sobre.vue:112
+#: pages/sobre.vue:113
 msgid "minutos de mergulho"
 msgstr "minutes diving"
 
@@ -739,7 +738,7 @@ msgstr "minutes diving"
 msgid "Miriquitis amarela"
 msgstr "Yellow Goldspotted eel"
 
-#: pages/sobre.vue:144
+#: pages/sobre.vue:145
 msgid "modelos 3D"
 msgstr "3D models"
 
@@ -769,7 +768,7 @@ msgstr "Moreia, The first induced shipwreck for diving in Brazil."
 
 #: pages/mergulho-virtual.vue:12
 msgid "Muito baixo desempenho, muito devagar ou não funcionará"
-msgstr "Very low performance, slow or won't render"
+msgstr "Bad performance, simulation will be slow or won't work."
 
 #: pages/vida.vue:189
 msgid "Na Laje de Santos elas aparecem em determinadas épocas do ano e geralmente estão prenhas ou grávidas como na foto em questão. A gravidez das raias é perceptível pelo ventre e pelo dorso deixando-as protuberantes em ambos os lados. Fotos: Nauther Andres."
@@ -831,11 +830,11 @@ msgstr "The Moreia shipwreck"
 msgid "O Naufrágio Moréia"
 msgstr "The Moreia Shipwreck"
 
-#: pages/sobre.vue:244
+#: pages/sobre.vue:245
 msgid "O Parque Estadual Marinho da Laje de Santos"
 msgstr "The Parque Estadual Marinho da Laje de Santos \"Laje de Santos Marine State Park\""
 
-#: pages/sobre.vue:249
+#: pages/sobre.vue:250
 msgid ""
 "O Parque Estadual Marinho da Laje de Santos (PEMLS) é o primeiro Parque\n"
 "            Marinho dentre as Unidades de Conservação do Estado de São Paulo, criado\n"
@@ -852,7 +851,7 @@ msgid ""
 "                à concentração de peixes de passagem e recifais com grande diversidade biológica."
 msgstr "The Laje de Santos Marine State Park is a protected area for marine and avian biodiversity. It is the only marine park in the state of São Paulo, and provides an environment conducive to the concentration of passing fish and reefs with great biological diversity."
 
-#: pages/sobre.vue:268
+#: pages/sobre.vue:269
 msgid ""
 "O Parque pode ser visitado por meio de barcos, mas não é permitido\n"
 "            aportar na ilha. Está distante cerca de 22 milhas náuticas da barra de São Vicente (40km).\n"
@@ -889,16 +888,21 @@ msgid ""
 "            É um peixe que pode viver em águas\n"
 "            salobras também, sendo presentes em manguezais e estuários."
 msgstr ""
+"Spadefish is also known as white paru or black paru. It is seen across the Atlantic,\n"
+"             from the north of the United States to the south of Brazil.\n"
+"             It is a common sighting in Laje, in large and beautiful shoals that can have hundreds of individuals.\n"
+"             It's a fish that can live in water\n"
+"             also brackish, being present in mangroves and estuaries."
 
 #: pages/vida.vue:844
 msgid "O peixe que anda sobre os recifes! As Marias da Toca, Marias-da-Toca, como são conhecidas, são pequenos peixes de no máximo 8,5 cm de comprimento que vivem em fendas fendas orifícios e pequenos orifícios orifícios buracos no costão rochoso e nos recifes de corais. São herbívoros, se alimentando de alga marinha e matéria orgânica. São como jardineiras dos recifes."
 msgstr "The fish that walks on the reefs! The Molly Miller fish, as they are known, are small fish up to 8.5 cm in length that live in crevices and tiny crevices holes in the rocky shore and coral reefs. They are herbivores, feeding on seaweed and organic matter. They are like reef gardners."
 
-#: pages/sobre.vue:97
+#: pages/sobre.vue:98
 msgid "O projeto está em andamento!"
 msgstr "The project is underway!"
 
-#: pages/sobre.vue:56
+#: pages/sobre.vue:57
 msgid ""
 "O projeto estava previsto para 2020, com os primeiros mergulhos agendados para\n"
 "          março. Então ocorreu a pandemia. Tivemos que pausar as atividades de mergulho e\n"
@@ -914,10 +918,12 @@ msgid ""
 "Os peixes enxadas jovens costumam nadar na horizontal, parecendo uma folha.\n"
 "            Eles também são mais escuros, clareando com a idade."
 msgstr ""
+"Young spadefish usually swim horizontally, looking like a leaf.\n"
+"             They are also darker, lightening with age."
 
 #: pages/mergulho-virtual.vue:15
 msgid "Ótimo desempenho"
-msgstr "Great performance"
+msgstr "Excellent performance"
 
 #: pages/vida.vue:571
 msgid ""
@@ -993,9 +999,8 @@ msgid ""
 msgstr "Pirá \"sand tilefish\" in the Tupi-Guarani language means “fish”: the coolest thing is that this fish is actually popularly known as Pirá."
 
 #: pages/vida.vue:229
-#, fuzzy
 msgid "Pode ser bem difícil diferenciar o macho da fêmea, mas, um detalhe importante sobre os peixes cartilaginosos, ou raias e tubarões, é que os machos possuem dois clásperes ou (pênis) sendo possível serem visualizados na base da cauda dos machos e ausente nas fêmeas, como podem constatar nas fotos."
-msgstr "Butterfly rays. It can be quite difficult to differentiate the male from the female, but an important detail about cartilaginous fish, or rays and sharks, is that males have two claspers (or penises) which can be seen at the base of the tail in males and are absent in females, as you can see in the photos. Photos by: Nauther Andres"
+msgstr "It can be very difficult to differentiate the male from the female, but an important detail about cartilaginous fish, or rays and sharks, is that males have two claspers or (penis) and can be seen at the base of the tail in males and absent in females, as you can see in the photos."
 
 #: pages/vida.vue:105
 msgid "Podem ser encontradas nas zonas tropicais e subtropicais do planeta. Na Laje de Santos aparecem no período de inverno, nos meses de abril a setembro. As mantas são identificadas (foto ID) individualmente  através das manchas ventrais que formam padrões únicos. Essas fotografias são inseridas em bancos de dados nacionais e internacionais, assim sendo possível obter uma estimativa populacional e servir como base para verificação no caso de reavistamentos."
@@ -1013,7 +1018,7 @@ msgstr "Diving Spots"
 msgid "Pontos de Mergulho na Laje de Santos"
 msgstr "Diving Spots at Laje de Santos"
 
-#: pages/sobre.vue:259
+#: pages/sobre.vue:260
 msgid ""
 "Por não haver outras formações rochosas ou ilhas próximas, tem uma\n"
 "            grande concentração de peixes de passagem e recifais, sendo um dos\n"
@@ -1107,10 +1112,9 @@ msgstr "Roughtail Stingray"
 msgid "Raias"
 msgstr "Rays"
 
-#: pages/sobre.vue:159
-#, fuzzy
+#: pages/sobre.vue:160
 msgid "Realidade virtual"
-msgstr "Laje de Santos in Virtual Reality"
+msgstr "Virtual Reality"
 
 #: pages/vida.vue:99
 msgid "Reconhecida como a maior espécie de raia do mundo, podendo  ultrapassar os 8 metros de envergadura de uma nadadeira a outra e pesar mais de 2 mil quilos, a raia-manta não possui ferrão. É o peixe com o maior cérebro de todos os outros peixes do mar, por isso é extremamente inteligente, um animal muito dócil e curioso. Quando encontra um mergulhador, permite a interação e por vezes permanece por vários minutos nadando ao seu redor para saber o que é. As bolhas de ar dos mergulhadores parecem fazer cócegas em sua barriga!"
@@ -1236,7 +1240,7 @@ msgid "Tartarugas"
 msgstr "Turtles"
 
 #: components/sections/SiteFooter.vue:61 components/sections/SiteHeader.vue:57
-#: pages/sobre.vue:74
+#: pages/sobre.vue:75
 msgid "Tecnologia"
 msgstr "Technology"
 
@@ -1246,24 +1250,27 @@ msgstr "Time"
 
 #: pages/mergulho-virtual.vue:10
 msgid "Testando desempenho..."
-msgstr "Testing performance..."
+msgstr "Testing performance.."
 
 #: pages/especies.vue:35
 msgid "Todas as cores"
 msgstr "All colors"
 
 #: components/Underwaterb.vue:22
-#, fuzzy
 msgid "Torne-se um mergulhador e explore a Laje de Santos."
-msgstr "Diving Spots at Laje de Santos"
+msgstr "Become a diver and explore Laje de Santos."
 
 #: pages/vida.vue:903
 msgid "Trinta-réis-de-bando é uma ave de pequeno porte, de pelagem branca com topete e patas pretas e bico amarelo. Nidifica desde o Espírito Santo até Santa Catarina. Em São Paulo pode ser encontrado no Arquipélago de Alcatrazes, Laje de Santos, nas praias e estuários."
 msgstr "The Band tern is a small bird, it has a white coat, black tuft and legs, and a yellow beak. Its nests can be seen from Espírito Santo to Santa Catarina. In São Paulo, it can be found at the Archipelago de Alcatrazes, Laje de Santos, beaches, and estuaries."
 
 #: pages/sobre.vue:27
-msgid "Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado:"
-msgstr "A paper about the development and technology in this project was published:"
+msgid ""
+"Um artigo sobre o desenvolvimento e tecnologia deste projeto foi publicado e ganhou\n"
+"          o prêmio de melhor artigo de implementação da conferência:"
+msgstr ""
+"A paper about the development and the technology of this project was published and won\n"
+"the prize for best implementation paper:"
 
 #: pages/vida.vue:386
 msgid "Um comportamento observado na espécie,  nos mergulhos na Laje de Santos, é a disputa com outros indivíduos pelo seu território, expulsando o invasor de sua toca com investidas e até mesmo mordidas. É possível notar  um padrão de coloração intercambiável de acordo com o substrato que ela se encontra… se for rochoso, os padrões de manchas serão vivas como se fossem uma camuflagem, quando em ambiente arenoso claro, seu corpo empalidece na cor da areia se mimetizando com o ambiente."
@@ -1335,7 +1342,7 @@ msgstr "Life"
 msgid "Vida na Laje de Santos"
 msgstr "Life at Laje de Santos"
 
-#: pages/sobre.vue:140
+#: pages/sobre.vue:141
 msgid "vídeos"
 msgstr "videos"
 
@@ -1353,6 +1360,6 @@ msgstr "You can get more information about visits and purchasing tickets by goin
 msgid "Você tem imagens da Laje de Santos? Mande para nosso projeto:"
 msgstr "Do you have images of Laje de Santos? Send it to our project:"
 
-#: pages/sobre.vue:124
+#: pages/sobre.vue:125
 msgid "Website"
-msgstr "Website"
+msgstr ""
